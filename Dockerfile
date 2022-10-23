@@ -12,7 +12,6 @@ ENV NODE_ENV production
 COPY --from=builder /my-project/public                        ./public
 COPY --from=builder /my-project/.next                         ./.next
 COPY --from=builder /my-project/next.config.js                ./next.config.js
-COPY --from=builder /my-project/next-i18next.config.js        ./next-i18next.config.js
 COPY --from=builder /my-project/package.json                  ./package.json
 
 COPY --from=builder /my-project/yarn.lock                     ./yarn.lock
