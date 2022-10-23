@@ -2507,6 +2507,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/recoil@npm:^0.0.9":
+  version: 0.0.9
+  resolution: "@types/recoil@npm:0.0.9"
+  dependencies:
+    recoil: "*"
+  checksum: f4209a72dbbef74f3ba128678b0e9a24752273e5ae468c8ed51a6e5562561c214c250218224664410ca4d7f5f3764c1f657264bca0e09e63d52bfb53412e7cac
+  languageName: node
+  linkType: hard
+
 "@types/scheduler@npm:*":
   version: 0.16.2
   resolution: "@types/scheduler@npm:0.16.2"
@@ -4939,6 +4948,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hamt_plus@npm:1.0.2":
+  version: 1.0.2
+  resolution: "hamt_plus@npm:1.0.2"
+  checksum: af26ea32db03009019cc83dfa9411521a2fa16079443de1a502c9be46d8b3c975acda8ed93fc5750ef08d3186d35901e2d8cfe717dd54bea67b358601fa74e4c
+  languageName: node
+  linkType: hard
+
 "has-bigints@npm:^1.0.1, has-bigints@npm:^1.0.2":
   version: 1.0.2
   resolution: "has-bigints@npm:1.0.2"
@@ -7250,6 +7266,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"recoil@npm:*, recoil@npm:^0.7.6":
+  version: 0.7.6
+  resolution: "recoil@npm:0.7.6"
+  dependencies:
+    hamt_plus: 1.0.2
+  peerDependencies:
+    react: ">=16.13.1"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 2b31dd29a7e0b369bc986a16f7253006776845144684c9e38bb6760e4ea954c5d7dc682aaf88e815e69098b8dea3ff62b6fa4e6c156157a29d2d9cb824db1779
+  languageName: node
+  linkType: hard
+
 "redent@npm:^3.0.0":
   version: 3.0.0
   resolution: "redent@npm:3.0.0"
@@ -8130,6 +8162,7 @@ __metadata:
     "@types/react": 18.0.21
     "@types/react-dom": 18.0.6
     "@types/react-query": ^1.2.9
+    "@types/recoil": ^0.0.9
     "@types/styled-components": ^5.1.26
     "@types/testing-library__jest-dom": ^5.14.5
     "@typescript-eslint/eslint-plugin": ^5.40.0
@@ -8158,6 +8191,7 @@ __metadata:
     react-dom: 18.2.0
     react-is: ^18.2.0
     react-query: ^3.39.2
+    recoil: ^0.7.6
     styled-components: ^5.3.6
     styled-reset: ^4.4.2
     typescript: 4.8.4

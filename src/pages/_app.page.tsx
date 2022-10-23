@@ -7,6 +7,8 @@ import {
 } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import GlobalStyle from "styles/Global.styles";
+import { RecoilRoot } from "recoil";
+
 import AppLayout from "~/layouts/AppLayout";
 import "../styles/font-face.css";
 
@@ -19,10 +21,12 @@ function MyApp({
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <GlobalStyle />
-        <AppLayout>
-          <Component {...pageProps} />
-        </AppLayout>
+        <RecoilRoot>
+          <GlobalStyle />
+          <AppLayout>
+            <Component {...pageProps} />
+          </AppLayout>
+        </RecoilRoot>
       </Hydrate>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
