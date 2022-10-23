@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+COMMIT_MSG_FILE=$1
+branch_name=`git rev-parse --abbrev-ref HEAD`
+cut_number=`echo ${branch_name} | sed 's/^.*\(BIG-[0-9]*\).*/\1/g'`
+
+
+first_line=`head -n1 ${COMMIT_MSG_FILE}`
+
+if [ -z "$first_line" ]; then
+    sed -i ".bak" "1s/^/<prefix>: $cut_number /" $1
+fi
