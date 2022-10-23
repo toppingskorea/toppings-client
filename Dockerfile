@@ -9,7 +9,6 @@ FROM node:16
 WORKDIR /my-project
 ENV NODE_ENV production
 
-COPY                .env.production                           .
 COPY --from=builder /my-project/public                        ./public
 COPY --from=builder /my-project/.next                         ./.next
 COPY --from=builder /my-project/next.config.js                ./next.config.js
