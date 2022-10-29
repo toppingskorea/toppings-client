@@ -6440,6 +6440,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"kakao.maps.d.ts@npm:^0.1.33":
+  version: 0.1.33
+  resolution: "kakao.maps.d.ts@npm:0.1.33"
+  checksum: 50908b7ff8324530744625669eea01695e2137230fc9ffea300506cc995c7a1c011b8a3d3cad0c982b5a23ccab24417984ad9ccc228da9f9841c5c42e937e200
+  languageName: node
+  linkType: hard
+
 "kleur@npm:^3.0.3":
   version: 3.0.3
   resolution: "kleur@npm:3.0.3"
@@ -8714,6 +8721,7 @@ __metadata:
     jest: ^29.1.2
     jest-environment-jsdom: ^29.1.2
     js-cookie: ^3.0.1
+    kakao.maps.d.ts: ^0.1.33
     lint-staged: ^13.0.3
     next: v12.3.2-canary.43
     prettier: ^2.7.1

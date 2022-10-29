@@ -65,6 +65,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:29.1.2"],\
             ["jest-environment-jsdom", "npm:29.1.2"],\
             ["js-cookie", "npm:3.0.1"],\
+            ["kakao.maps.d.ts", "npm:0.1.33"],\
             ["lint-staged", "npm:13.0.3"],\
             ["next", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:12.3.2-canary.43"],\
             ["prettier", "npm:2.7.1"],\
@@ -9033,6 +9034,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["kakao.maps.d.ts", [\
+        ["npm:0.1.33", {\
+          "packageLocation": "./.yarn/cache/kakao.maps.d.ts-npm-0.1.33-58a98ec649-50908b7ff8.zip/node_modules/kakao.maps.d.ts/",\
+          "packageDependencies": [\
+            ["kakao.maps.d.ts", "npm:0.1.33"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["kleur", [\
         ["npm:3.0.3", {\
           "packageLocation": "./.yarn/cache/kleur-npm-3.0.3-f6f53649a4-df82cd1e17.zip/node_modules/kleur/",\
@@ -11627,6 +11637,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:29.1.2"],\
             ["jest-environment-jsdom", "npm:29.1.2"],\
             ["js-cookie", "npm:3.0.1"],\
+            ["kakao.maps.d.ts", "npm:0.1.33"],\
             ["lint-staged", "npm:13.0.3"],\
             ["next", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:12.3.2-canary.43"],\
             ["prettier", "npm:2.7.1"],\
