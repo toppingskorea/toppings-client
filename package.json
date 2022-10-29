@@ -19,6 +19,7 @@
     "@types/recoil": "^0.0.9",
     "axios": "^1.0.0",
     "dayjs": "^1.11.6",
+    "jose": "^4.10.4",
     "js-cookie": "^3.0.1",
     "next": "v12.3.2-canary.43",
     "react": "18.2.0",

@@ -64,6 +64,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["husky", "npm:8.0.1"],\
             ["jest", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:29.1.2"],\
             ["jest-environment-jsdom", "npm:29.1.2"],\
+            ["jose", "npm:4.10.4"],\
             ["js-cookie", "npm:3.0.1"],\
             ["kakao.maps.d.ts", "npm:0.1.33"],\
             ["lint-staged", "npm:13.0.3"],\
@@ -8857,6 +8858,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["jose", [\
+        ["npm:4.10.4", {\
+          "packageLocation": "./.yarn/cache/jose-npm-4.10.4-9ec976169f-0e6caaae0b.zip/node_modules/jose/",\
+          "packageDependencies": [\
+            ["jose", "npm:4.10.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["js-cookie", [\
         ["npm:3.0.1", {\
           "packageLocation": "./.yarn/cache/js-cookie-npm-3.0.1-04c7177de1-bb48de67e2.zip/node_modules/js-cookie/",\
@@ -11636,6 +11646,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["husky", "npm:8.0.1"],\
             ["jest", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:29.1.2"],\
             ["jest-environment-jsdom", "npm:29.1.2"],\
+            ["jose", "npm:4.10.4"],\
             ["js-cookie", "npm:3.0.1"],\
             ["kakao.maps.d.ts", "npm:0.1.33"],\
             ["lint-staged", "npm:13.0.3"],\
