@@ -5,5 +5,6 @@ declare module NodeJS {
     NEXT_PUBLIC_REDIRECT_URI: string;
     NEXT_PUBLIC_TOPPINGS_TOKEN_KEY: string;
     NEXT_PUBLIC_TOPPINGS_SERVER_URL: string;
+    NEXT_PUBLIC_REDIRECT_URI: string;
   }
 }
