@@ -4,8 +4,8 @@ import {
   QueryClient,
   QueryClientProvider,
   type DehydratedState
-} from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
+} from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import GlobalStyle from "styles/Global.styles";
 import { RecoilRoot } from "recoil";
 

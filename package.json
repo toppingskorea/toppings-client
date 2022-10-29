@@ -13,13 +13,14 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.13.4",
+    "@tanstack/react-query-devtools": "^4.13.4",
     "@types/recoil": "^0.0.9",
     "axios": "^1.0.0",
-    "next": "12.3.1",
+    "next": "^13.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-is": "^18.2.0",
-    "react-query": "^3.39.2",
     "recoil": "^0.7.6",
     "styled-components": "^5.3.6",
     "styled-reset": "^4.4.2"
@@ -34,7 +35,6 @@
     "@types/node": "18.8.2",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
-    "@types/react-query": "^1.2.9",
     "@types/styled-components": "^5.1.26",
     "@types/testing-library__jest-dom": "^5.14.5",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
