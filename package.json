@@ -13,13 +13,15 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@sentry/nextjs": "^7.17.2",
     "@tanstack/react-query": "^4.13.4",
     "@tanstack/react-query-devtools": "^4.13.4",
     "@types/recoil": "^0.0.9",
     "axios": "^1.0.0",
-    "next": "^13.0.0",
+    "next": "v12.3.2-canary.43",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.38.0",
     "react-is": "^18.2.0",
     "recoil": "^0.7.6",
     "styled-components": "^5.3.6",
