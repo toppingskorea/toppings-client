@@ -37,6 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/react", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:13.4.0"],\
             ["@types/axios", "npm:0.14.0"],\
             ["@types/jest", "npm:29.1.1"],\
+            ["@types/js-cookie", "npm:3.0.2"],\
             ["@types/node", "npm:18.8.2"],\
             ["@types/react", "npm:18.0.21"],\
             ["@types/react-dom", "npm:18.0.6"],\
@@ -62,6 +63,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["husky", "npm:8.0.1"],\
             ["jest", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:29.1.2"],\
             ["jest-environment-jsdom", "npm:29.1.2"],\
+            ["js-cookie", "npm:3.0.1"],\
             ["lint-staged", "npm:13.0.3"],\
             ["next", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:12.3.2-canary.43"],\
             ["prettier", "npm:2.7.1"],\
@@ -4288,6 +4290,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:29.1.1"],\
             ["expect", "npm:29.1.2"],\
             ["pretty-format", "npm:29.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/js-cookie", [\
+        ["npm:3.0.2", {\
+          "packageLocation": "./.yarn/cache/@types-js-cookie-npm-3.0.2-0fde2a4d71-7ab964288d.zip/node_modules/@types/js-cookie/",\
+          "packageDependencies": [\
+            ["@types/js-cookie", "npm:3.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8825,6 +8836,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["js-cookie", [\
+        ["npm:3.0.1", {\
+          "packageLocation": "./.yarn/cache/js-cookie-npm-3.0.1-04c7177de1-bb48de67e2.zip/node_modules/js-cookie/",\
+          "packageDependencies": [\
+            ["js-cookie", "npm:3.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["js-sdsl", [\
         ["npm:4.1.5", {\
           "packageLocation": "./.yarn/cache/js-sdsl-npm-4.1.5-66fcf4f580-695f657ddc.zip/node_modules/js-sdsl/",\
@@ -11534,6 +11554,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/react", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:13.4.0"],\
             ["@types/axios", "npm:0.14.0"],\
             ["@types/jest", "npm:29.1.1"],\
+            ["@types/js-cookie", "npm:3.0.2"],\
             ["@types/node", "npm:18.8.2"],\
             ["@types/react", "npm:18.0.21"],\
             ["@types/react-dom", "npm:18.0.6"],\
@@ -11559,6 +11580,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["husky", "npm:8.0.1"],\
             ["jest", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:29.1.2"],\
             ["jest-environment-jsdom", "npm:29.1.2"],\
+            ["js-cookie", "npm:3.0.1"],\
             ["lint-staged", "npm:13.0.3"],\
             ["next", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:12.3.2-canary.43"],\
             ["prettier", "npm:2.7.1"],\
