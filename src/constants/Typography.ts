@@ -14,11 +14,11 @@ const Text = styled.span<{
   letterSpacing?: number;
 }>`
   font-size: ${({ _fontSize }) => `${_fontSize}px`};
-  text-align: ${({ textAlign }) => textAlign ?? "left"};
-  font-weight: ${({ weight }) => weight ?? NORMAL_WEIGHT};
-  font-family: ${({ _fontFamily }) => _fontFamily ?? "NotoSansKR"};
-  color: ${({ _color }) => _color ?? Colors.black};
-  line-height: ${({ lineHeight }) => (lineHeight ? `${lineHeight}px` : "100%")};
+  text-align: ${({ textAlign = "left" }) => textAlign};
+  font-weight: ${({ weight = NORMAL_WEIGHT }) => weight};
+  font-family: ${({ _fontFamily = "NotoSansKR" }) => _fontFamily};
+  color: ${({ _color = Colors.black }) => _color};
+  line-height: ${({ lineHeight = "100%" }) => `${lineHeight}px`};
 
   ${({ whiteSpace }) => whiteSpace && `white-space: ${whiteSpace};`}
   ${({ letterSpacing }) =>
