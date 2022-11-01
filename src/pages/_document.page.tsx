@@ -1,4 +1,3 @@
-import type { DocumentContext, DocumentInitialProps } from "next/document";
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import Script from "next/script";
 import type { ReactElement } from "react";
@@ -11,14 +10,6 @@ type DocumentPropTypes = {
 };
 
 export default class MyDocument extends Document<DocumentPropTypes> {
-  static async getInitialProps(
-    ctx: DocumentContext
-  ): Promise<DocumentInitialProps> {
-    const initialProps = await Document.getInitialProps(ctx);
-
-    return { ...initialProps };
-  }
-
   render() {
     return (
       <Html lang="ko">
