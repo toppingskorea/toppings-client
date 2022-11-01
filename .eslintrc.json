@@ -39,6 +39,7 @@
         "argsIgnorePattern": "^_"
       }
     ],
+    "@typescript-eslint/consistent-type-imports": "error",
     "react/function-component-definition": 0,
     "react/destructuring-assignment": 0,
     "@typescript-eslint/prefer-namespace-keyword": 0,

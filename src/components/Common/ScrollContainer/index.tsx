@@ -1,7 +1,7 @@
 import { css, useTheme } from "@emotion/react";
+import type { RefObject } from "react";
 import {
   createContext,
-  RefObject,
   useContext,
   useEffect,
   useMemo,
