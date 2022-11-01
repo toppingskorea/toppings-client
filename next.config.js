@@ -3,12 +3,12 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  compiler: {
-    styledComponents: true
-  },
   pageExtensions: ["page.tsx", "page.ts"],
   images: {
     formats: ["image/webp"]
+  },
+  compiler: {
+    emotion: true
   },
   webpack: config => {
     config.module.rules.push({

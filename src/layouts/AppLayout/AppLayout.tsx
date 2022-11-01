@@ -1,7 +1,20 @@
-import Container from "./AppLayout.styles";
+import { css } from "@emotion/react";
+import { ScrollContainer } from "~/components/Common";
 import AppLayoutProps from "./AppLayout.types";
 
 const AppLayout = ({ children }: AppLayoutProps) => (
-  <Container>{children}</Container>
+  <ScrollContainer>
+    <main
+      css={css`
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      `}
+    >
+      {children}
+    </main>
+    {/* TODO: 추후 로딩 라우팅시 프로그레스 추가 필요  */}
+    {/* <PageLoader /> */}
+  </ScrollContainer>
 );
 export default AppLayout;

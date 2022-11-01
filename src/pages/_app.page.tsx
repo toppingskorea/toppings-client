@@ -1,4 +1,5 @@
-import type { AppProps } from "next/app";
+import { ThemeProvider } from "@emotion/react";
+import * as Sentry from "@sentry/nextjs";
 import {
   Hydrate,
   QueryClient,
@@ -6,15 +7,13 @@ import {
   type DehydratedState
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import GlobalStyle from "styles/Global.styles";
-import * as Sentry from "@sentry/nextjs";
-
+import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
-
+import { GlobalCSS, emotionTheme } from "~/styles";
+import { env } from "~/constants";
+import { useSentry } from "~/hooks";
 import AppLayout from "~/layouts/AppLayout";
 import "../styles/font-face.css";
-import { useSentry } from "~/hooks";
-import { env } from "~/constants";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -48,10 +47,12 @@ function MyApp({
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <RecoilRoot>
-          <GlobalStyle />
-          <AppLayout>
-            <Component {...pageProps} />
-          </AppLayout>
+          <ThemeProvider theme={emotionTheme}>
+            <GlobalCSS />
+            <AppLayout>
+              <Component {...pageProps} />
+            </AppLayout>
+          </ThemeProvider>
         </RecoilRoot>
       </Hydrate>
       <ReactQueryDevtools initialIsOpen={false} />
