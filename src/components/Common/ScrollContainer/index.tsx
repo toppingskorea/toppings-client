@@ -33,10 +33,11 @@ const ScrollContainer = ({ children }: ScrollContainerProps) => {
   const scrollContainerHeight = ref.current?.getClientRects()[0].height ?? 0;
   const scrollContainerWidth = ref.current?.getClientRects()[0].width ?? 0;
 
-  const handleResize = () => setHeight(window.innerHeight);
-
   useEffect(() => {
+    const handleResize = () => setHeight(window.innerHeight);
+
     handleResize();
+
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
