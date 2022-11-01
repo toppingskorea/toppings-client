@@ -1,7 +1,6 @@
 import { css, useTheme } from "@emotion/react";
 import {
   createContext,
-  ReactNode,
   RefObject,
   useContext,
   useEffect,
@@ -20,11 +19,11 @@ const Context = createContext({} as Value);
 
 export const useScrollContainer = () => useContext(Context);
 
-type Props = {
-  children: ReactNode;
-};
+interface ScrollContainerProps {
+  children: JSX.Element;
+}
 
-const ScrollContainer = ({ children }: Props) => {
+const ScrollContainer = ({ children }: ScrollContainerProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const theme = useTheme();
