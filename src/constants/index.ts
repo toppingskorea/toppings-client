@@ -1,4 +1,3 @@
-export { default as Colors } from "./Colors";
 export { default as media } from "./Media";
 export { default as Text } from "./Typography";
 export * from "./Variables";

@@ -1,6 +1,6 @@
-import type { CSSProperties } from "react";
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import Colors from "./Colors";
+import type { CSSProperties } from "react";
 import { NORMAL_WEIGHT } from "./Variables";
 
 const Text = styled.span<{
@@ -17,12 +17,15 @@ const Text = styled.span<{
   text-align: ${({ textAlign = "left" }) => textAlign};
   font-weight: ${({ weight = NORMAL_WEIGHT }) => weight};
   font-family: ${({ _fontFamily = "NotoSansKR" }) => _fontFamily};
-  color: ${({ _color = Colors.black }) => _color};
   line-height: ${({ lineHeight = "100%" }) => `${lineHeight}px`};
 
   ${({ whiteSpace }) => whiteSpace && `white-space: ${whiteSpace};`}
   ${({ letterSpacing }) =>
     letterSpacing && `letter-spacing: ${letterSpacing}px;`}
+
+${({ theme, _color = theme.colors.black }) => css`
+    color: ${_color};
+  `}
 `;
 
 export default Text;

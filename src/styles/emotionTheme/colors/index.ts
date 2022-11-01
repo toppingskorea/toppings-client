@@ -6,10 +6,10 @@
  <Dummy _color={theme.colors.black}/>
 */
 const colors = {
-  white: "#ffffff",
+  white: "#FFFFFF",
   black: "#000000",
 
-  kakaoYellow: "#fee102"
+  kakaoYellow: "#FEE102"
 } as const;
 
 export default colors;
