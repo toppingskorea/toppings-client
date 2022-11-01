@@ -11,7 +11,6 @@ import {
 } from "react";
 
 type Value = {
-  scrollToTop: () => void;
   scrollContainerRef: RefObject<HTMLDivElement>;
   scrollContainerHeight: number;
   scrollContainerWidth: number;
@@ -32,10 +31,6 @@ const ScrollContainer = ({ children }: Props) => {
 
   const [height, setHeight] = useState<number>(0);
 
-  const scrollToTop = () => {
-    ref.current?.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   const scrollContainerHeight = ref.current?.getClientRects()[0].height ?? 0;
   const scrollContainerWidth = ref.current?.getClientRects()[0].width ?? 0;
 
@@ -52,7 +47,6 @@ const ScrollContainer = ({ children }: Props) => {
   const contextValue = useMemo(
     () => ({
       scrollContainerRef: ref,
-      scrollToTop,
       scrollContainerHeight,
       scrollContainerWidth
     }),
