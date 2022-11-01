@@ -1,6 +1,9 @@
 import { css } from "@emotion/react";
 import { ScrollContainer } from "~/components/Common";
-import AppLayoutProps from "./AppLayout.types";
+
+interface AppLayoutProps {
+  children: JSX.Element | JSX.Element[];
+}
 
 const AppLayout = ({ children }: AppLayoutProps) => (
   <ScrollContainer>
