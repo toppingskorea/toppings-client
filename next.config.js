@@ -3,7 +3,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  pageExtensions: ["page.tsx", "page.ts"],
+  pageExtensions: ["page.tsx"],
   images: {
     formats: ["image/webp"]
   },
