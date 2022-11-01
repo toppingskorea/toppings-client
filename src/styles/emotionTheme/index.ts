@@ -5,5 +5,3 @@ const emotionTheme = {
 } as const;
 
 export default emotionTheme;
-
-export type EmotionTheme = typeof emotionTheme;
