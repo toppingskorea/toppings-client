@@ -9,7 +9,10 @@ type WithSuspense = <P extends object>(
   Fallback?: FC<P> | ReactNode
 ) => NextPage<P>;
 
-// Suspense작업을 hoc형태로 도와줍니다.
+/* 
+  Suspense작업을 hoc형태로 도와줍니다.
+  에러처리는 필요시 고려하여 확장합니다.
+*/
 const withSuspense: WithSuspense =
   (
     Component,
