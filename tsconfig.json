@@ -21,7 +21,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["kakao.maps.d.ts"]
+    "types": ["kakao.maps.d.ts"],
+    // css props를 사용하기 위함
+    "jsxImportSource": "@emotion/react"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src"],
   "exclude": ["node_modules"]

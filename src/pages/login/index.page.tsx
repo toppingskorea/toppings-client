@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
-import { Colors, env, Text } from "~/constants";
+import { env, Text } from "~/constants";
 
 const Login = () => {
   const router = useRouter();
@@ -13,9 +13,7 @@ const Login = () => {
   return (
     <div>
       <button type="button" onClick={handleClickLogin}>
-        <Text _fontSize={24} _color={Colors.white}>
-          로그인하기
-        </Text>
+        <Text _fontSize={24}>로그인하기</Text>
       </button>
     </div>
   );

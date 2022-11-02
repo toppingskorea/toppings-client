@@ -13,12 +13,16 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@sentry/nextjs": "^7.17.2",
     "@tanstack/react-query": "^4.13.4",
     "@tanstack/react-query-devtools": "^4.13.4",
+    "@toss/emotion-utils": "^1.0.5",
     "@types/recoil": "^0.0.9",
     "axios": "^1.0.0",
     "dayjs": "^1.11.6",
+    "framer-motion": "^7.6.2",
     "jose": "^4.10.4",
     "js-cookie": "^3.0.1",
     "next": "v12.3.2-canary.43",
@@ -26,10 +30,7 @@
     "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.38.0",
-    "react-is": "^18.2.0",
-    "recoil": "^0.7.6",
-    "styled-components": "^5.3.6",
-    "styled-reset": "^4.4.2"
+    "recoil": "^0.7.6"
   },
   "devDependencies": {
     "@babel/runtime": "^7.19.0",
@@ -42,11 +43,9 @@
     "@types/node": "18.8.2",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
-    "@types/styled-components": "^5.1.26",
     "@types/testing-library__jest-dom": "^5.14.5",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.20.0",
-    "babel-plugin-styled-components": "^2.0.7",
     "eslint": "8.24.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "12.3.1",

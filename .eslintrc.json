@@ -39,9 +39,12 @@
         "argsIgnorePattern": "^_"
       }
     ],
+    "@typescript-eslint/consistent-type-imports": "error",
     "react/function-component-definition": 0,
     "react/destructuring-assignment": 0,
     "@typescript-eslint/prefer-namespace-keyword": 0,
+    // for emotion
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
     "jsx-a11y/anchor-is-valid": [
       // nextjs 에서 a tag 에 href 를 기대하는 이슈로 인해
       "error",

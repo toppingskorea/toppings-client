@@ -1,7 +1,6 @@
-import { CSSProperties } from "react";
-import styled from "styled-components";
-import Colors from "./Colors";
-import { pxToRem } from "./Size";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import type { CSSProperties } from "react";
 import { NORMAL_WEIGHT } from "./Variables";
 
 const Text = styled.span<{
@@ -14,17 +13,19 @@ const Text = styled.span<{
   lineHeight?: number;
   letterSpacing?: number;
 }>`
-  font-size: ${({ _fontSize }) => pxToRem(_fontSize)};
-  text-align: ${({ textAlign }) => textAlign ?? "left"};
-  font-weight: ${({ weight }) => weight ?? NORMAL_WEIGHT};
-  font-family: ${({ _fontFamily }) => _fontFamily ?? "NotoSansKR"};
-  color: ${({ _color }) => _color ?? Colors.black};
-  line-height: ${({ lineHeight }) =>
-    lineHeight ? pxToRem(lineHeight) : "100%"};
+  font-size: ${({ _fontSize }) => `${_fontSize}px`};
+  text-align: ${({ textAlign = "left" }) => textAlign};
+  font-weight: ${({ weight = NORMAL_WEIGHT }) => weight};
+  font-family: ${({ _fontFamily = "NotoSansKR" }) => _fontFamily};
+  line-height: ${({ lineHeight = "100%" }) => `${lineHeight}px`};
 
   ${({ whiteSpace }) => whiteSpace && `white-space: ${whiteSpace};`}
   ${({ letterSpacing }) =>
-    letterSpacing && `letter-spacing: ${pxToRem(letterSpacing)};`}
+    letterSpacing && `letter-spacing: ${letterSpacing}px;`}
+
+${({ theme, _color = theme.colors.black }) => css`
+    color: ${_color};
+  `}
 `;
 
 export default Text;
