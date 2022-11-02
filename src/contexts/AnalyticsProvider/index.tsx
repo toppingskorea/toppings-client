@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import type { ReactNode } from "react";
 import { createContext, useEffect, useMemo } from "react";
 import GA from "react-ga4";
 import { env } from "~/constants";
@@ -10,7 +9,7 @@ interface ContextProps {
 const Context = createContext<ContextProps>({} as ContextProps);
 
 interface Props {
-  children: ReactNode;
+  children: JSX.Element;
 }
 
 const sendPageview = (pathname: string) => {
