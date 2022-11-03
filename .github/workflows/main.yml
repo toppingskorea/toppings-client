@@ -38,6 +38,16 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Setting .env for firebase
+        run: |
+          echo "NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY=${{ secrets.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY }}" >> .env
+          echo "NEXT_PUBLIC_REDIRECT_URI=${{ secrets.NEXT_PUBLIC_REDIRECT_URI }}" >> .env
+          echo "NEXT_PUBLIC_SENTRY_DSN=${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}" >> .env
+          echo "NEXT_PUBLIC_TOPPINGS_TOKEN_KEY=${{ secrets.NEXT_PUBLIC_TOPPINGS_TOKEN_KEY }}" >> .env
+          echo "NEXT_PUBLIC_TOPPINGS_SERVER_URL=${{ secrets.NEXT_PUBLIC_TOPPINGS_SERVER_URL }}" >> .env
+          echo "NEXT_PUBLIC_JWT_SECRET_KEY=${{ secrets.NEXT_PUBLIC_JWT_SECRET_KEY }}" >> .env
+          echo "NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ID }}" >> .env
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
