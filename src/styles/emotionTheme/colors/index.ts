@@ -8,7 +8,7 @@
 const colors = {
   white: "#FFFFFF",
   black: "#000000",
-  grayE8: "#e8e8e8",
+  grayE8: "#E8E8E8",
 
   kakaoYellow: "#FEE102"
 } as const;
