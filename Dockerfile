@@ -17,6 +17,7 @@ COPY --from=builder /my-project/package.json                  ./package.json
 COPY --from=builder /my-project/yarn.lock                     ./yarn.lock
 COPY --from=builder /my-project/.yarnrc.yml                   ./.yarnrc.yml
 COPY --from=builder /my-project/.pnp.cjs                      ./.pnp.cjs
+COPY --from=builder /my-project/.pnp.loader.mjs               ./.pnp.loader.mjs
 COPY --from=builder /my-project/.yarn                         ./.yarn
 
 EXPOSE 80
