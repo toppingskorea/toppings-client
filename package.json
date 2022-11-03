@@ -19,7 +19,6 @@
     "@tanstack/react-query": "^4.13.4",
     "@tanstack/react-query-devtools": "^4.13.4",
     "@toss/emotion-utils": "^1.0.5",
-    "@types/recoil": "^0.0.9",
     "axios": "^1.0.0",
     "dayjs": "^1.11.6",
     "framer-motion": "^7.6.2",
@@ -29,6 +28,7 @@
     "react": "18.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
+    "react-ga4": "^1.4.1",
     "react-hook-form": "^7.38.0",
     "recoil": "^0.7.6"
   },
@@ -43,6 +43,7 @@
     "@types/node": "18.8.2",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
+    "@types/recoil": "^0.0.9",
     "@types/testing-library__jest-dom": "^5.14.5",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.20.0",

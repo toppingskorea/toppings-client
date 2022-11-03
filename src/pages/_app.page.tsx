@@ -14,6 +14,7 @@ import { env } from "~/constants";
 import { useSentry } from "~/hooks";
 import AppLayout from "~/layouts/AppLayout";
 import "../styles/font-face.css";
+import { AnalyticsProvider } from "~/contexts";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -49,9 +50,11 @@ function MyApp({
         <RecoilRoot>
           <ThemeProvider theme={emotionTheme}>
             <GlobalCSS />
-            <AppLayout>
-              <Component {...pageProps} />
-            </AppLayout>
+            <AnalyticsProvider>
+              <AppLayout>
+                <Component {...pageProps} />
+              </AppLayout>
+            </AnalyticsProvider>
           </ThemeProvider>
         </RecoilRoot>
       </Hydrate>
