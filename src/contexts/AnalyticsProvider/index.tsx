@@ -4,7 +4,7 @@ import GA from "react-ga4";
 import { env } from "~/constants";
 
 interface ContextProps {
-  sendPageview: (pathname: string) => void;
+  sendPageView: (pathname: string) => void;
 }
 const Context = createContext<ContextProps>({} as ContextProps);
 
@@ -12,7 +12,7 @@ interface Props {
   children: JSX.Element;
 }
 
-const sendPageview = (pathname: string) => {
+const sendPageView = (pathname: string) => {
   GA.send({ hitType: "pageview", page: pathname });
 };
 
@@ -25,10 +25,10 @@ const AnalyticsProvider = ({ children }: Props) => {
   );
 
   useEffect(() => {
-    sendPageview(router.pathname);
+    sendPageView(router.pathname);
   }, [router.pathname]);
 
-  const providerValue = useMemo(() => ({ sendPageview }), []);
+  const providerValue = useMemo(() => ({ sendPageView }), []);
 
   return <Context.Provider value={providerValue}>{children}</Context.Provider>;
 };
