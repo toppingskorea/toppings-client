@@ -1,2 +1,2 @@
-export { default as withShareClick } from "./withShareClick";
+// eslint-disable-next-line import/prefer-default-export
 export { default as withSuspense } from "./withSuspense";
