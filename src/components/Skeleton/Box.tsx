@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import Base from "./Base";
 
 interface Props {
-  width?: Common.CSSPixelValue;
-  height?: Common.CSSPixelValue;
+  width: Common.CSSPixelValue;
+  height: Common.CSSPixelValue;
 }
 
 const Box = styled(Base)<Props>`
