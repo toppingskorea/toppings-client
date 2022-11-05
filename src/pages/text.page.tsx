@@ -1,22 +1,22 @@
-import type { ChangeEvent } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { textState } from "~/stores/atoms/common";
-import { textLengthState } from "~/stores/selectors/common";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { headerAtom, mapSourceAtom } from "~/recoil/atoms";
+import { withHeader } from "~/recoil/selectors";
 
 const Text = () => {
-  const setText = useSetRecoilState(textState);
-  const textLength = useRecoilValue(textLengthState);
+  const [header, setHeader] = useRecoilState(withHeader);
+  const maps = useRecoilValue(mapSourceAtom);
+  const commons = useRecoilValue(headerAtom);
 
-  const onChangeHandler = ({
-    target: { value }
-  }: ChangeEvent<HTMLInputElement>) => {
-    setText(value);
+  const clickHandler = () => {
+    setHeader("응가");
   };
 
   return (
     <div>
-      <input onChange={onChangeHandler} />
-      <p>Text의 길이: {textLength}</p>
+      {header}
+      <button type="button" onClick={clickHandler}>
+        눌러봐요
+      </button>
     </div>
   );
 };
