@@ -17,24 +17,16 @@ export const config = {
 const middleware: NextMiddleware = async request => {
   const toppingsToken = request.cookies.get(env.TOPPINGS_TOKEN_KEY);
 
-  if (
-    PROTECTED_ROUTE.reduce(
-      (acc, path) => acc || request.nextUrl.pathname.includes(path),
-      false
-    )
-  ) {
+  // 로그인 안한사람 방지
+  if (PROTECTED_ROUTE.includes(request.nextUrl.pathname)) {
     if (verifyToken(toppingsToken)) {
       return null;
     }
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  if (
-    LOGINED_PROTECTED_ROUTE.reduce(
-      (acc, path) => acc || request.nextUrl.pathname.includes(path),
-      false
-    )
-  ) {
+  // 로그인 한 사람 접근 불가
+  if (LOGINED_PROTECTED_ROUTE.includes(request.nextUrl.pathname)) {
     if (verifyToken(toppingsToken)) {
       return NextResponse.redirect(new URL("/map", request.url));
     }
