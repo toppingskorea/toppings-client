@@ -64,7 +64,7 @@ const ScrollContainer = ({ children }: Props) => {
           position: relative;
           overflow-x: hidden;
           max-width: 560px;
-          background-color: ${theme.colors.white};
+          background-color: ${theme.colors.black};
           margin: auto;
           height: ${`${height}`}px;
 

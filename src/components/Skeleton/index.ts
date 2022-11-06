@@ -3,11 +3,9 @@ import Box from "./Box";
 import Circle from "./Circle";
 import Paragraph from "./Paragraph";
 
-const Skeleton = {
+export default {
   Base,
   Box,
   Circle,
   Paragraph
 };
-
-export default Skeleton;
