@@ -5,17 +5,8 @@ import { Text } from "~/constants";
 const Index = () => {
   const theme = useTheme();
 
-  <Stack.Vertical gutter={32}>
-    <Text _fontSize={36} _color={theme.colors.white}>
-      I&apos;m toppings
-    </Text>
-    <Text _fontSize={24} _color={theme.colors.white}>
-      I&apos;m toppings
-    </Text>
-    <Text _fontSize={18} _color={theme.colors.white}>
-      I&apos;m toppings
-    </Text>
-    <Stack.Horizontal align="center">
+  return (
+    <Stack.Vertical gutter={32}>
       <Text _fontSize={36} _color={theme.colors.white}>
         I&apos;m toppings
       </Text>
@@ -25,30 +16,41 @@ const Index = () => {
       <Text _fontSize={18} _color={theme.colors.white}>
         I&apos;m toppings
       </Text>
-    </Stack.Horizontal>
-    <Flex.Center direction="column">
-      <Text _fontSize={36} _color={theme.colors.white}>
-        I&apos;m toppings
-      </Text>
-      <Text _fontSize={24} _color={theme.colors.white}>
-        I&apos;m toppings
-      </Text>
-      <Text _fontSize={18} _color={theme.colors.white}>
-        I&apos;m toppings
-      </Text>
-    </Flex.Center>
-    <Stack.Vertical gutter={500}>
-      <Text _fontSize={36} _color={theme.colors.white}>
-        I&apos;m toppings
-      </Text>
-      <Text _fontSize={24} _color={theme.colors.white}>
-        I&apos;m toppings
-      </Text>
-      <Text _fontSize={18} _color={theme.colors.white}>
-        I&apos;m toppings
-      </Text>
+      <Stack.Horizontal align="center">
+        <Text _fontSize={36} _color={theme.colors.white}>
+          I&apos;m toppings
+        </Text>
+        <Text _fontSize={24} _color={theme.colors.white}>
+          I&apos;m toppings
+        </Text>
+        <Text _fontSize={18} _color={theme.colors.white}>
+          I&apos;m toppings
+        </Text>
+      </Stack.Horizontal>
+      <Flex.Center direction="column">
+        <Text _fontSize={36} _color={theme.colors.white}>
+          I&apos;m toppings
+        </Text>
+        <Text _fontSize={24} _color={theme.colors.white}>
+          I&apos;m toppings
+        </Text>
+        <Text _fontSize={18} _color={theme.colors.white}>
+          I&apos;m toppings
+        </Text>
+      </Flex.Center>
+      <Stack.Vertical gutter={500}>
+        <Text _fontSize={36} _color={theme.colors.white}>
+          I&apos;m toppings
+        </Text>
+        <Text _fontSize={24} _color={theme.colors.white}>
+          I&apos;m toppings
+        </Text>
+        <Text _fontSize={18} _color={theme.colors.white}>
+          I&apos;m toppings
+        </Text>
+      </Stack.Vertical>
     </Stack.Vertical>
-  </Stack.Vertical>;
+  );
 };
 
 export default Index;
