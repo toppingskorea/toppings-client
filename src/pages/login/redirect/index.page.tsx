@@ -5,7 +5,7 @@ import { useTokenCookie } from "~/hooks";
 
 const Page: NextPage = () => {
   const router = useRouter();
-  const token = router.query.token as string;
+  const token = router.query.accessToken as string;
   const tokenCookie = useTokenCookie();
 
   useEffect(() => {
@@ -13,7 +13,8 @@ const Page: NextPage = () => {
       tokenCookie.set(token);
       router.replace("/");
     }
-  }, [router, token, tokenCookie]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router, token]);
 
   return <div>로딩중</div>;
 };

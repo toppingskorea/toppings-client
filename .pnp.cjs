@@ -41,6 +41,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/axios", "npm:0.14.0"],\
             ["@types/jest", "npm:29.1.1"],\
             ["@types/js-cookie", "npm:3.0.2"],\
+            ["@types/jwt-decode", "npm:3.1.0"],\
             ["@types/node", "npm:18.8.2"],\
             ["@types/react", "npm:18.0.21"],\
             ["@types/react-dom", "npm:18.0.6"],\
@@ -66,8 +67,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["husky", "npm:8.0.1"],\
             ["jest", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:29.1.2"],\
             ["jest-environment-jsdom", "npm:29.1.2"],\
-            ["jose", "npm:4.10.4"],\
             ["js-cookie", "npm:3.0.1"],\
+            ["jwt-decode", "npm:3.1.2"],\
             ["kakao.maps.d.ts", "npm:0.1.33"],\
             ["lint-staged", "npm:13.0.3"],\
             ["next", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:12.3.2-canary.43"],\
@@ -4680,6 +4681,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/jwt-decode", [\
+        ["npm:3.1.0", {\
+          "packageLocation": "./.yarn/cache/@types-jwt-decode-npm-3.1.0-7f93d5cb7a-82ff0b3826.zip/node_modules/@types/jwt-decode/",\
+          "packageDependencies": [\
+            ["@types/jwt-decode", "npm:3.1.0"],\
+            ["jwt-decode", "npm:3.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/minimatch", [\
         ["npm:5.1.2", {\
           "packageLocation": "./.yarn/cache/@types-minimatch-npm-5.1.2-aab9c394d3-0391a28286.zip/node_modules/@types/minimatch/",\
@@ -9185,15 +9196,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["jose", [\
-        ["npm:4.10.4", {\
-          "packageLocation": "./.yarn/cache/jose-npm-4.10.4-9ec976169f-0e6caaae0b.zip/node_modules/jose/",\
-          "packageDependencies": [\
-            ["jose", "npm:4.10.4"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["js-cookie", [\
         ["npm:3.0.1", {\
           "packageLocation": "./.yarn/cache/js-cookie-npm-3.0.1-04c7177de1-bb48de67e2.zip/node_modules/js-cookie/",\
@@ -9367,6 +9369,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jsx-ast-utils", "npm:3.3.3"],\
             ["array-includes", "npm:3.1.5"],\
             ["object.assign", "npm:4.1.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["jwt-decode", [\
+        ["npm:3.1.2", {\
+          "packageLocation": "./.yarn/cache/jwt-decode-npm-3.1.2-bf3ab26591-20a4b072d4.zip/node_modules/jwt-decode/",\
+          "packageDependencies": [\
+            ["jwt-decode", "npm:3.1.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -11926,6 +11937,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/axios", "npm:0.14.0"],\
             ["@types/jest", "npm:29.1.1"],\
             ["@types/js-cookie", "npm:3.0.2"],\
+            ["@types/jwt-decode", "npm:3.1.0"],\
             ["@types/node", "npm:18.8.2"],\
             ["@types/react", "npm:18.0.21"],\
             ["@types/react-dom", "npm:18.0.6"],\
@@ -11951,8 +11963,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["husky", "npm:8.0.1"],\
             ["jest", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:29.1.2"],\
             ["jest-environment-jsdom", "npm:29.1.2"],\
-            ["jose", "npm:4.10.4"],\
             ["js-cookie", "npm:3.0.1"],\
+            ["jwt-decode", "npm:3.1.2"],\
             ["kakao.maps.d.ts", "npm:0.1.33"],\
             ["lint-staged", "npm:13.0.3"],\
             ["next", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:12.3.2-canary.43"],\
