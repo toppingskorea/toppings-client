@@ -11,7 +11,7 @@ const LOGINED_PROTECTED_ROUTE = ["/login"];
 
 // 미들웨어를 발생시킬 라우트
 export const config = {
-  matcher: [...PROTECTED_ROUTE, ...LOGINED_PROTECTED_ROUTE]
+  matcher: ["/profile", "/login"]
 };
 
 const middleware: NextMiddleware = async request => {
