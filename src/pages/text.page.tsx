@@ -1,4 +1,5 @@
 import { useRecoilState, useRecoilValue } from "recoil";
+import { useWebSocket } from "~/hooks";
 import { headerAtom, mapSourceAtom } from "~/recoil/atoms";
 import { withHeader } from "~/recoil/selectors";
 
@@ -10,6 +11,22 @@ const Text = () => {
   const clickHandler = () => {
     setHeader("응가");
   };
+
+  useWebSocket({
+    destination: "/asd/asd",
+    callback: () => console.log("소켓값도착")
+  });
+
+  useWebSocket([
+    {
+      destination: "/asd/asd",
+      callback: () => console.log("소켓값도착")
+    },
+    {
+      destination: "/asd/asd2",
+      callback: () => console.log("소켓값도착2")
+    }
+  ]);
 
   return (
     <div>
