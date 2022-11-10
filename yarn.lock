@@ -1711,6 +1711,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash@npm:^4.14.188":
+  version: 4.14.188
+  resolution: "@types/lodash@npm:4.14.188"
+  checksum: 89c32f0a18e0da6ae914b430e76b3d0451c4c85b9c838b440c0c9a8d4966c8e2a76dbb30964c7126402856b2997ec56a8c36d8d6461ec14387689ec37594f09f
+  languageName: node
+  linkType: hard
+
 "@types/minimatch@npm:*":
   version: 5.1.2
   resolution: "@types/minimatch@npm:5.1.2"
@@ -5631,7 +5638,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.15":
+"lodash@npm:^4.17.15, lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -7618,6 +7625,7 @@ __metadata:
     "@types/jest": ^29.1.1
     "@types/js-cookie": ^3
     "@types/jwt-decode": ^3.1.0
+    "@types/lodash": ^4.14.188
     "@types/node": 18.8.2
     "@types/react": 18.0.21
     "@types/react-dom": 18.0.6
@@ -7648,6 +7656,7 @@ __metadata:
     jwt-decode: ^3.1.2
     kakao.maps.d.ts: ^0.1.33
     lint-staged: ^13.0.3
+    lodash: ^4.17.21
     next: ^13.0.2
     prettier: ^2.7.1
     react: 18.2.0
