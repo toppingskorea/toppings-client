@@ -1,22 +1,30 @@
-import { useEffect } from "react";
-import type { NextPage } from "next";
+import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useTokenCookie } from "~/hooks";
 
-const Page: NextPage = () => {
+const Redirect = ({
+  accessToken
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
-  const token = router.query.accessToken as string;
+
   const tokenCookie = useTokenCookie();
 
   useEffect(() => {
-    if (token) {
-      tokenCookie.set(token);
-      router.replace("/");
-    }
+    tokenCookie.set(accessToken);
+    router.replace("/");
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router, token]);
+  }, [router, accessToken]);
 
   return <div>로딩중</div>;
 };
 
-export default Page;
+export const getServerSideProps: GetServerSideProps<{
+  accessToken: string;
+}> = async context => ({
+  props: {
+    accessToken: context.query.accessToken as string
+  }
+});
+
+export default Redirect;
