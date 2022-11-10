@@ -45,17 +45,16 @@ const useWebSocket = (
     };
 
     client.connect({}, () => {
-      if (Array.isArray(subscribes)) {
+      if (Array.isArray(subscribes))
         subscribes.forEach(({ destination, callback, headers }) =>
           client.subscribe(destination, callback, headers)
         );
-      } else {
+      else
         client.subscribe(
           subscribes.destination,
           subscribes.callback,
           subscribes.headers
         );
-      }
     });
 
     return () => client.disconnect();
