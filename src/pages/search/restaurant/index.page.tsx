@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useInput } from "~/hooks";
+import { neverChecker } from "~/utils";
 
 const SearchRestaurant = () => {
   const { value, debouncedValue, onChange } = useInput({
@@ -24,7 +25,7 @@ const SearchRestaurant = () => {
             console.log("오류발생");
             break;
           default:
-            console.log("finish");
+            neverChecker(status);
         }
       },
       {
