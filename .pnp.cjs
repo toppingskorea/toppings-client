@@ -41,6 +41,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/axios", "npm:0.14.0"],\
             ["@types/jest", "npm:29.2.2"],\
             ["@types/js-cookie", "npm:3.0.2"],\
+            ["@types/jwt-decode", "npm:3.1.0"],\
             ["@types/node", "npm:18.8.2"],\
             ["@types/react", "npm:18.0.21"],\
             ["@types/react-dom", "npm:18.0.6"],\
@@ -67,8 +68,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["husky", "npm:8.0.2"],\
             ["jest", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:29.3.1"],\
             ["jest-environment-jsdom", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:29.3.1"],\
-            ["jose", "npm:4.11.0"],\
             ["js-cookie", "npm:3.0.1"],\
+            ["jwt-decode", "npm:3.1.2"],\
             ["kakao.maps.d.ts", "npm:0.1.33"],\
             ["lint-staged", "npm:13.0.3"],\
             ["next", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:13.0.2"],\
@@ -2490,6 +2491,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-json5-npm-0.0.29-f63a7916bd-e60b153664.zip/node_modules/@types/json5/",\
           "packageDependencies": [\
             ["@types/json5", "npm:0.0.29"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/jwt-decode", [\
+        ["npm:3.1.0", {\
+          "packageLocation": "./.yarn/cache/@types-jwt-decode-npm-3.1.0-7f93d5cb7a-82ff0b3826.zip/node_modules/@types/jwt-decode/",\
+          "packageDependencies": [\
+            ["@types/jwt-decode", "npm:3.1.0"],\
+            ["jwt-decode", "npm:3.1.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6956,15 +6967,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["jose", [\
-        ["npm:4.11.0", {\
-          "packageLocation": "./.yarn/cache/jose-npm-4.11.0-a7e91b2a34-8d81e978e0.zip/node_modules/jose/",\
-          "packageDependencies": [\
-            ["jose", "npm:4.11.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["js-cookie", [\
         ["npm:3.0.1", {\
           "packageLocation": "./.yarn/cache/js-cookie-npm-3.0.1-04c7177de1-bb48de67e2.zip/node_modules/js-cookie/",\
@@ -7131,6 +7133,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jsx-ast-utils", "npm:3.3.3"],\
             ["array-includes", "npm:3.1.6"],\
             ["object.assign", "npm:4.1.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["jwt-decode", [\
+        ["npm:3.1.2", {\
+          "packageLocation": "./.yarn/cache/jwt-decode-npm-3.1.2-bf3ab26591-20a4b072d4.zip/node_modules/jwt-decode/",\
+          "packageDependencies": [\
+            ["jwt-decode", "npm:3.1.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -9570,6 +9581,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/axios", "npm:0.14.0"],\
             ["@types/jest", "npm:29.2.2"],\
             ["@types/js-cookie", "npm:3.0.2"],\
+            ["@types/jwt-decode", "npm:3.1.0"],\
             ["@types/node", "npm:18.8.2"],\
             ["@types/react", "npm:18.0.21"],\
             ["@types/react-dom", "npm:18.0.6"],\
@@ -9596,8 +9608,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["husky", "npm:8.0.2"],\
             ["jest", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:29.3.1"],\
             ["jest-environment-jsdom", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:29.3.1"],\
-            ["jose", "npm:4.11.0"],\
             ["js-cookie", "npm:3.0.1"],\
+            ["jwt-decode", "npm:3.1.2"],\
             ["kakao.maps.d.ts", "npm:0.1.33"],\
             ["lint-staged", "npm:13.0.3"],\
             ["next", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:13.0.2"],\

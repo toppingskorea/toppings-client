@@ -1,20 +1,20 @@
-import type { JWTPayload } from "jose";
-import { jwtVerify } from "jose";
+import jwt from "jwt-decode";
 
-async function verifyToken(
-  token: string,
-  secret: string
-): Promise<JWTPayload | false> {
-  try {
-    const { payload } = await jwtVerify(
-      token,
-      new TextEncoder().encode(secret)
-    );
+/*
+  유효기간을 기준으로 토큰 검증을 진행합니다.
+  유효한 토큰이라면 true
+  유효하지 않은 토큰이라면 false를 반환합니다.
+*/
 
-    return payload;
-  } catch (error) {
-    return false;
+const verifyToken = (token?: string) => {
+  if (token) {
+    const decodedToken = jwt<{ exp: string }>(token);
+    if (Date.now() <= Number(decodedToken.exp) * 1000) {
+      return true;
+    }
   }
-}
+
+  return false;
+};
 
 export default verifyToken;
