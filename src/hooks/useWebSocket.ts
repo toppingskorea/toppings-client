@@ -39,17 +39,15 @@ const useWebSocket = (
   useEffect(() => {
     const sock = new SockJS(`${env.TOPPINGS_SERVER_URL}/stomp/subscribe`);
     const client = Stomp.over(sock);
+
     client.debug = () => {
       return null;
     };
+
     client.connect({}, () => {
       if (Array.isArray(subscribes)) {
-        subscribes.forEach(subscribe =>
-          client.subscribe(
-            subscribe.destination,
-            subscribe.callback,
-            subscribe.headers
-          )
+        subscribes.forEach(({ destination, callback, headers }) =>
+          client.subscribe(destination, callback, headers)
         );
       } else {
         client.subscribe(
@@ -59,6 +57,7 @@ const useWebSocket = (
         );
       }
     });
+
     return () => client.disconnect();
   }, [subscribes]);
 };

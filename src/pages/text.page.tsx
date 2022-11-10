@@ -17,17 +17,6 @@ const Text = () => {
     callback: () => console.log("소켓값도착")
   });
 
-  useWebSocket([
-    {
-      destination: "/asd/asd",
-      callback: () => console.log("소켓값도착")
-    },
-    {
-      destination: "/asd/asd2",
-      callback: () => console.log("소켓값도착2")
-    }
-  ]);
-
   return (
     <div>
       {header}
