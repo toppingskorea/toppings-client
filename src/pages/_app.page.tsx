@@ -9,12 +9,12 @@ import {
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
-import { GlobalCSS, emotionTheme } from "~/styles";
 import { env } from "~/constants";
+import { AnalyticsProvider } from "~/contexts";
 import { useSentry } from "~/hooks";
 import AppLayout from "~/layouts/AppLayout";
+import { emotionTheme, GlobalCSS } from "~/styles";
 import "../styles/font-face.css";
-import { AnalyticsProvider } from "~/contexts";
 
 const queryClient = new QueryClient({
   defaultOptions: {

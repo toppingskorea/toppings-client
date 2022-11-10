@@ -22,10 +22,8 @@ export default class MyDocument extends Document<DocumentPropTypes> {
             content="The best restaurant for me"
           />
           <link rel="icon" href="/favicon.ico" />
-          <Script
-            defer
-            type="text/javascript"
-            src={`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${env.KAKAO_JAVASCRIPT_KEY}&autoload=false&libraries=services`}
+          <script
+            src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${env.KAKAO_JAVASCRIPT_KEY}&libraries=services,clusterer,drawing`}
           />
           <Script
             defer
