@@ -15,7 +15,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@sentry/nextjs": "^7.17.2",
+    "@sentry/nextjs": "^7.18.0",
+    "@stomp/stompjs": "^6.1.2",
     "@tanstack/react-query": "^4.13.4",
     "@tanstack/react-query-devtools": "^4.13.4",
     "@toss/emotion-utils": "^1.0.5",
@@ -24,17 +25,17 @@
     "framer-motion": "^7.6.2",
     "js-cookie": "^3.0.1",
     "jwt-decode": "^3.1.2",
-    "next": "v12.3.2-canary.43",
+    "next": "^13.0.2",
     "react": "18.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
     "react-ga4": "^1.4.1",
     "react-hook-form": "^7.38.0",
-    "recoil": "^0.7.6"
+    "recoil": "^0.7.6",
+    "sockjs-client": "^1.6.1"
   },
   "devDependencies": {
     "@babel/runtime": "^7.19.0",
-    "@svgr/webpack": "^6.5.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@types/axios": "^0.14.0",
@@ -45,6 +46,7 @@
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "@types/recoil": "^0.0.9",
+    "@types/sockjs-client": "^1.5.1",
     "@types/testing-library__jest-dom": "^5.14.5",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.20.0",
