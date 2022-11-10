@@ -12,9 +12,19 @@ const SearchRestaurant = () => {
 
     ps.keywordSearch(
       debouncedValue,
-      (data, status, pagination) => {
-        if (status === kakao.maps.services.Status.OK) {
-          console.log(data);
+      (data, status) => {
+        switch (status) {
+          case kakao.maps.services.Status.OK:
+            console.log("성공");
+            break;
+          case kakao.maps.services.Status.ZERO_RESULT:
+            console.log("검색 결과가 없습니다.");
+            break;
+          case kakao.maps.services.Status.ERROR:
+            console.log("오류발생");
+            break;
+          default:
+            console.log("finish");
         }
       },
       {
