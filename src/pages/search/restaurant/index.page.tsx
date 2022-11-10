@@ -30,7 +30,9 @@ const SearchRestaurant = () => {
         }
       },
       {
-        category_group_code: ["FD6", "CE7"]
+        category_group_code: ["FD6", "CE7"],
+        x: 37.566826,
+        y: 126.9786567
       }
     );
   }, [debouncedValue]);
