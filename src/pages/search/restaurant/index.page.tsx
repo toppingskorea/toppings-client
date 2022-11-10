@@ -22,6 +22,7 @@ const SearchRestaurant = () => {
             console.log("검색 결과가 없습니다.");
             break;
           case kakao.maps.services.Status.ERROR:
+          case null:
             console.log("오류발생");
             break;
           default:
