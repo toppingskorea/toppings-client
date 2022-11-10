@@ -15,23 +15,16 @@ export const config = {
 };
 
 const middleware: NextMiddleware = async request => {
-  const toppingsToken = request.cookies.get(env.TOPPINGS_TOKEN_KEY);
+  const toppingsToken = request.cookies.get(env.TOPPINGS_TOKEN_KEY)?.value;
 
   // 로그인 안한사람 방지
-  if (PROTECTED_ROUTE.includes(request.nextUrl.pathname)) {
-    if (verifyToken(toppingsToken)) {
-      return null;
-    }
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
-
+  if (PROTECTED_ROUTE.includes(request.nextUrl.pathname))
+    if (!toppingsToken || !verifyToken(toppingsToken))
+      return NextResponse.redirect(new URL("/login", request.url));
   // 로그인 한 사람 접근 불가
-  if (LOGIN_PROTECTED_ROUTE.includes(request.nextUrl.pathname)) {
-    if (verifyToken(toppingsToken)) {
+  if (LOGIN_PROTECTED_ROUTE.includes(request.nextUrl.pathname))
+    if (toppingsToken && verifyToken(toppingsToken))
       return NextResponse.redirect(new URL("/map", request.url));
-    }
-  }
-
   return null;
 };
 
