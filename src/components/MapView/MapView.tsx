@@ -82,6 +82,10 @@ const MapView = ({ children }: Required<PropsWithChildren>) => {
         kakao.maps.event.addListener(map, "dragend", () => {
           setMapBounds(map.getBounds());
         });
+
+        kakao.maps.event.addListener(map, "zoom_changed", () => {
+          setMapBounds(map.getBounds());
+        });
       }
     });
   }, [
