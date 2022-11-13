@@ -6,13 +6,9 @@ const DEFAULT_LOCATION = {
   longitude: 126.8320344602386
 };
 
-export const headerAtom = atom({
-  key: "header",
-  default: "Toppings"
-});
-
+// eslint-disable-next-line import/prefer-default-export
 export const currentLocationAtom = atom({
-  key: "currentLocation",
+  key: "currentLocationAtom",
   default: {
     latitude: DEFAULT_LOCATION.latitude,
     longitude: DEFAULT_LOCATION.longitude

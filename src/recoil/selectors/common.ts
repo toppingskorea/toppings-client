@@ -1,15 +1,13 @@
 import { selector } from "recoil";
-import { headerAtom } from "../atoms/common";
+import { currentLocationAtom } from "../atoms/common";
 
 // eslint-disable-next-line import/prefer-default-export
-export const withHeader = selector({
-  key: "withHeader",
+export const withCurrentLocation = selector({
+  key: "withCurrentLocation",
   get: ({ get }) => {
-    const text = get(headerAtom);
-
-    return `${text}는 사랑이다.`;
+    return get(currentLocationAtom);
   },
-  set: ({ set }, newValue) => {
-    set(headerAtom, newValue);
+  set: ({ set }, newLocation) => {
+    set(currentLocationAtom, newLocation);
   }
 });
