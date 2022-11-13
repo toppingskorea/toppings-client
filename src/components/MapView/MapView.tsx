@@ -1,11 +1,61 @@
-import { useEffect, useRef, type PropsWithChildren } from "react";
+import {
+  memo,
+  useEffect,
+  useRef,
+  useState,
+  type PropsWithChildren
+} from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
+import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from "~/constants";
 import { currentLocationAtom } from "~/recoil/atoms";
-import { withKakaoMap } from "~/recoil/selectors";
+import { kakaoMapAtom } from "~/recoil/atoms/map";
+import {
+  withCurrentLocation,
+  withKakaoMap,
+  withMapBounds
+} from "~/recoil/selectors";
+
+// https://devtalk.kakao.com/t/topic/106470/8
+
+const Button = memo(() => {
+  const setCurrentLocation = useSetRecoilState(withCurrentLocation);
+
+  const success: PositionCallback = ({
+    coords: { latitude, longitude }
+  }: GeolocationPosition) => {
+    setCurrentLocation({ latitude, longitude });
+  };
+
+  const error: PositionErrorCallback = () => {
+    setCurrentLocation({
+      latitude: DEFAULT_LATITUDE,
+      longitude: DEFAULT_LONGITUDE
+    });
+  };
+
+  const options: PositionOptions = {
+    enableHighAccuracy: true,
+    maximumAge: 30000,
+    timeout: 27000
+  };
+
+  const getCurrentMapPosition = () => {
+    navigator.geolocation.watchPosition(success, error, options);
+  };
+
+  return (
+    <button type="button" onClick={getCurrentMapPosition}>
+      내 위치
+    </button>
+  );
+});
 
 const MapView = ({ children }: Required<PropsWithChildren>) => {
   const currentLocation = useRecoilValue(currentLocationAtom);
   const setKakaoMap = useSetRecoilState(withKakaoMap);
+  const setMapBounds = useSetRecoilState(withMapBounds);
+  const kakaoMap = useRecoilValue(kakaoMapAtom);
+  const [, setNewMap] = useState<kakao.maps.Map | null>(null);
 
   const mapRef = useRef<HTMLDivElement>(null);
 
@@ -27,9 +77,19 @@ const MapView = ({ children }: Required<PropsWithChildren>) => {
         });
 
         marker.setMap(map);
+        setNewMap(map);
+
+        kakao.maps.event.addListener(map, "dragend", () => {
+          setMapBounds(map.getBounds());
+        });
       }
     });
-  }, [currentLocation.latitude, currentLocation.longitude, setKakaoMap]);
+  }, [
+    currentLocation.latitude,
+    currentLocation.longitude,
+    setKakaoMap,
+    setMapBounds
+  ]);
 
   return (
     <div
@@ -43,5 +103,7 @@ const MapView = ({ children }: Required<PropsWithChildren>) => {
     </div>
   );
 };
+
+MapView.Button = Button;
 
 export default MapView;

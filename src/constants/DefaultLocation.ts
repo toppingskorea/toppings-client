@@ -1,0 +1,3 @@
+// 초기값 고양시청
+export const DEFAULT_LATITUDE = 37.65840919870283;
+export const DEFAULT_LONGITUDE = 126.8320344602386;

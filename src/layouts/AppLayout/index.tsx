@@ -14,7 +14,7 @@ const AppLayout = ({ children }: Props) => {
           display: flex;
           flex-direction: column;
           flex: 1;
-          background-color: ${theme.colors.black};
+          background-color: ${theme.colors.white};
         `}
       >
         {children}

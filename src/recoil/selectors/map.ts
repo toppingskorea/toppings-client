@@ -1,5 +1,5 @@
 import { selector } from "recoil";
-import { kakaoMapAtom } from "../atoms/map";
+import { kakaoMapAtom, mapBoundsAtom } from "../atoms/map";
 
 // eslint-disable-next-line import/prefer-default-export
 export const withKakaoMap = selector({
@@ -8,6 +8,16 @@ export const withKakaoMap = selector({
     return get(kakaoMapAtom);
   },
   set: ({ set }, newMap) => {
-    set(kakaoMapAtom, newMap as kakao.maps.Map);
+    set(kakaoMapAtom, newMap);
+  }
+});
+
+export const withMapBounds = selector({
+  key: "withMapBounds",
+  get: ({ get }) => {
+    return get(mapBoundsAtom);
+  },
+  set: ({ set }, newBounds) => {
+    set(mapBoundsAtom, newBounds);
   }
 });
