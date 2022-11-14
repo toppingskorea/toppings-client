@@ -1,2 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export { default as isServer } from "./isServer";
+export { default as checkDeeplyEqual } from "./checkDeeplyEqual";
+export { default as neverChecker } from "./neverChecker";
