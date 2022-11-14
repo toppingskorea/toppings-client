@@ -1,11 +1,9 @@
 import { css } from "@emotion/react";
 import { memo, useEffect, useRef, type PropsWithChildren } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from "~/constants";
+import { defaultLocation } from "~/constants";
 import { currentLocationAtom } from "~/recoil/atoms";
 import { withCurrentLocation, withMapBounds } from "~/recoil/selectors";
-
-// https://devtalk.kakao.com/t/topic/106470/8
 
 const Button = memo(() => {
   const setCurrentLocation = useSetRecoilState(withCurrentLocation);
@@ -18,8 +16,8 @@ const Button = memo(() => {
 
   const error: PositionErrorCallback = () => {
     setCurrentLocation({
-      latitude: DEFAULT_LATITUDE,
-      longitude: DEFAULT_LONGITUDE
+      latitude: defaultLocation.DEFAULT_LATITUDE,
+      longitude: defaultLocation.DEFAULT_LONGITUDE
     });
   };
 
