@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useTokenCookie } from "~/hooks";
 
-const Redirect = ({
+export default ({
   accessToken
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
@@ -26,5 +26,3 @@ export const getServerSideProps: GetServerSideProps<{
     accessToken: context.query.accessToken as string
   }
 });
-
-export default Redirect;

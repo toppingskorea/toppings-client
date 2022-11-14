@@ -1,11 +1,11 @@
 import { css } from "@emotion/react";
 import { motion } from "framer-motion";
-import MapView from "~/components/MapView";
+import Map from "~/components/Map";
 import { defaultScaleChangeVariants } from "~/constants";
 
 export default () => {
   return (
-    <MapView>
+    <Map>
       <motion.div
         initial="initial"
         animate="animate"
@@ -18,8 +18,8 @@ export default () => {
           z-index: 10;
         `}
       >
-        <MapView.Button />
+        <Map.Button />
       </motion.div>
-    </MapView>
+    </Map>
   );
 };

@@ -40,7 +40,7 @@ const Button = memo(() => {
   );
 });
 
-const MapView = ({ children }: Required<PropsWithChildren>) => {
+const Map = ({ children }: Required<PropsWithChildren>) => {
   const currentLocation = useRecoilValue(currentLocationAtom);
   const setMapBounds = useSetRecoilState(withMapBounds);
 
@@ -93,6 +93,6 @@ const MapView = ({ children }: Required<PropsWithChildren>) => {
   );
 };
 
-MapView.Button = Button;
+Map.Button = Button;
 
-export default MapView;
+export default Map;

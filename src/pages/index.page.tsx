@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Text } from "~/constants";
 import { useTokenCookie } from "~/hooks";
 
-const Index = () => {
+export default () => {
   const theme = useTheme();
   const tokenCookie = useTokenCookie();
 
@@ -70,5 +70,3 @@ const Index = () => {
     </Stack.Vertical>
   );
 };
-
-export default Index;
