@@ -1,14 +1,16 @@
 import { css } from "@emotion/react";
 import { motion } from "framer-motion";
 import MapView from "~/components/MapView";
+import { defaultScaleChangeVariants } from "~/constants";
 
-const Map = () => {
+export default () => {
   return (
     <MapView>
       <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        whileHover={{ scale: 1.2 }}
+        initial="initial"
+        animate="animate"
+        whileHover="whileHover"
+        variants={defaultScaleChangeVariants}
         css={css`
           position: absolute;
           top: 15px;
@@ -21,5 +23,3 @@ const Map = () => {
     </MapView>
   );
 };
-
-export default Map;

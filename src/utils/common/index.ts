@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
 export { default as isServer } from "./isServer";
+export { default as unknownCheck } from "./unknownCheck";

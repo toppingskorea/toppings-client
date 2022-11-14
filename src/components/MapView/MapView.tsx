@@ -1,19 +1,9 @@
-import {
-  memo,
-  useEffect,
-  useRef,
-  useState,
-  type PropsWithChildren
-} from "react";
+import { css } from "@emotion/react";
+import { memo, useEffect, useRef, type PropsWithChildren } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from "~/constants";
 import { currentLocationAtom } from "~/recoil/atoms";
-import { kakaoMapAtom } from "~/recoil/atoms/map";
-import {
-  withCurrentLocation,
-  withKakaoMap,
-  withMapBounds
-} from "~/recoil/selectors";
+import { withCurrentLocation, withMapBounds } from "~/recoil/selectors";
 
 // https://devtalk.kakao.com/t/topic/106470/8
 
@@ -52,10 +42,7 @@ const Button = memo(() => {
 
 const MapView = ({ children }: Required<PropsWithChildren>) => {
   const currentLocation = useRecoilValue(currentLocationAtom);
-  const setKakaoMap = useSetRecoilState(withKakaoMap);
   const setMapBounds = useSetRecoilState(withMapBounds);
-  const kakaoMap = useRecoilValue(kakaoMapAtom);
-  const [, setNewMap] = useState<kakao.maps.Map | null>(null);
 
   const mapRef = useRef<HTMLDivElement>(null);
 
@@ -77,7 +64,6 @@ const MapView = ({ children }: Required<PropsWithChildren>) => {
         });
 
         marker.setMap(map);
-        setNewMap(map);
 
         kakao.maps.event.addListener(map, "dragend", () => {
           setMapBounds(map.getBounds());
@@ -92,20 +78,15 @@ const MapView = ({ children }: Required<PropsWithChildren>) => {
         });
       }
     });
-  }, [
-    currentLocation.latitude,
-    currentLocation.longitude,
-    setKakaoMap,
-    setMapBounds
-  ]);
+  }, [currentLocation.latitude, currentLocation.longitude, setMapBounds]);
 
   return (
     <div
       ref={mapRef}
-      style={{
-        width: "100%",
-        height: "500px"
-      }}
+      css={css`
+        width: 100%;
+        height: 500px;
+      `}
     >
       {children}
     </div>
