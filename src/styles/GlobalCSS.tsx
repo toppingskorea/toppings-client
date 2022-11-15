@@ -8,6 +8,8 @@ const GlobalCSS = () => {
         * {
           user-select: none;
           box-sizing: border-box;
+          margin: 0;
+          padding: 0;
         }
 
         /* iOS 15이하 대응 */
@@ -22,15 +24,6 @@ const GlobalCSS = () => {
 
         input {
           outline: none;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          margin: 0;
         }
 
         a {
@@ -53,10 +46,6 @@ const GlobalCSS = () => {
         div,
         a {
           -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        }
-
-        body {
-          margin: 0;
         }
       `}
     />

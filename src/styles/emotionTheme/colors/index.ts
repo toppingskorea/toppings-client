@@ -9,7 +9,20 @@ const colors = {
   white: "#FFFFFF",
   black: "#000000",
   grayE8: "#E8E8E8",
+  primary: "#FF7D1F",
+  secondary: {
+    D9: "#D9D9D9",
+    "79": "#797979",
+    "6D": "#6D6D6D",
+    F1: "#F1F1F1",
+    "62": "#626262",
+    "47": "#474747"
+  },
 
+  dim: {
+    black: "rgba(0,0,0,0.3)",
+    orange: "rgba(255,125,31,0.8)"
+  },
   kakaoYellow: "#FEE102"
 } as const;
 

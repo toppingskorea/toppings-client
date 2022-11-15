@@ -1,7 +1,12 @@
-import { atom } from "recoil";
+import {
+  atom,
+  useRecoilState,
+  useRecoilValue,
+  useSetRecoilState
+} from "recoil";
 
 // eslint-disable-next-line import/prefer-default-export
-export const navigationAtom = atom<{
+const navigationAtom = atom<{
   top?: {
     title?: string;
     right?: JSX.Element;
@@ -13,3 +18,7 @@ export const navigationAtom = atom<{
     bottom: true
   }
 });
+
+export const useNavigation = () => useRecoilState(navigationAtom);
+export const useNavigationValue = () => useRecoilValue(navigationAtom);
+export const useNavigationSetter = () => useSetRecoilState(navigationAtom);

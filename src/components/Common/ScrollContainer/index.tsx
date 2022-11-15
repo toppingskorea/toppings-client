@@ -1,4 +1,5 @@
 import { css, useTheme } from "@emotion/react";
+import { flex } from "@toss/emotion-utils";
 import type { RefObject } from "react";
 import {
   createContext,
@@ -59,14 +60,9 @@ const ScrollContainer = ({ children }: Props) => {
         ref={ref}
         id="scrolled-container"
         css={css`
-          display: flex;
-          flex-direction: column;
+          ${flex({ direction: "column" })}
           position: relative;
           overflow-x: hidden;
-          max-width: 560px;
-          background-color: ${theme.colors.white};
-          margin: auto;
-          height: ${`${height}`}px;
 
           ::-webkit-scrollbar {
             width: 0px;
