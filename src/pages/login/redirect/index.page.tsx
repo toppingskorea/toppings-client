@@ -1,12 +1,11 @@
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useTokenCookie } from "~/hooks";
+import { useInternalRouter, useTokenCookie } from "~/hooks";
 
 export default ({
   accessToken
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const router = useRouter();
+  const router = useInternalRouter();
 
   const tokenCookie = useTokenCookie();
 

@@ -42,6 +42,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:29.2.2"],\
             ["@types/js-cookie", "npm:3.0.2"],\
             ["@types/jwt-decode", "npm:3.1.0"],\
+            ["@types/lodash", "npm:4.14.188"],\
             ["@types/node", "npm:18.8.2"],\
             ["@types/react", "npm:18.0.21"],\
             ["@types/react-dom", "npm:18.0.6"],\
@@ -72,6 +73,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jwt-decode", "npm:3.1.2"],\
             ["kakao.maps.d.ts", "npm:0.1.33"],\
             ["lint-staged", "npm:13.0.3"],\
+            ["lodash", "npm:4.17.21"],\
             ["next", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:13.0.2"],\
             ["prettier", "npm:2.7.1"],\
             ["react", "npm:18.2.0"],\
@@ -2501,6 +2503,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/jwt-decode", "npm:3.1.0"],\
             ["jwt-decode", "npm:3.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/lodash", [\
+        ["npm:4.14.188", {\
+          "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.188-a8d4045e40-89c32f0a18.zip/node_modules/@types/lodash/",\
+          "packageDependencies": [\
+            ["@types/lodash", "npm:4.14.188"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -9582,6 +9593,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:29.2.2"],\
             ["@types/js-cookie", "npm:3.0.2"],\
             ["@types/jwt-decode", "npm:3.1.0"],\
+            ["@types/lodash", "npm:4.14.188"],\
             ["@types/node", "npm:18.8.2"],\
             ["@types/react", "npm:18.0.21"],\
             ["@types/react-dom", "npm:18.0.6"],\
@@ -9612,6 +9624,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jwt-decode", "npm:3.1.2"],\
             ["kakao.maps.d.ts", "npm:0.1.33"],\
             ["lint-staged", "npm:13.0.3"],\
+            ["lodash", "npm:4.17.21"],\
             ["next", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:13.0.2"],\
             ["prettier", "npm:2.7.1"],\
             ["react", "npm:18.2.0"],\
