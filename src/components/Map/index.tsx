@@ -6,11 +6,7 @@ import { mapBoundsAtom } from "~/recoil/atoms/map";
 import MyLocationButton from "./Button";
 import useMapEvent from "./Map.hooks";
 
-interface Props {
-  children: JSX.Element;
-}
-
-const Map = ({ children }: Props) => {
+const Map = ({ children }: Util.PropsWithChild) => {
   const setMapBounds = useSetRecoilState(mapBoundsAtom);
   const { map, mapRef } = useMap();
 

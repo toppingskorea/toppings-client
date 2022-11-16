@@ -1,11 +1,7 @@
 import { css, useTheme } from "@emotion/react";
 import { ScrollContainer } from "~/components/Common";
 
-interface Props {
-  children: Util.SingleOrArray<JSX.Element>;
-}
-
-const AppLayout = ({ children }: Props) => {
+const AppLayout = ({ children }: Util.PropsWithChild) => {
   const theme = useTheme();
   return (
     <ScrollContainer>

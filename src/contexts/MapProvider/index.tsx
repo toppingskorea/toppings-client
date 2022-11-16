@@ -5,7 +5,6 @@ import {
   useMemo,
   useRef,
   useState,
-  type PropsWithChildren,
   type RefObject
 } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -22,7 +21,7 @@ const Context = createContext({
 
 export const useMap = () => useContext(Context);
 
-export const MapProvider = ({ children }: Required<PropsWithChildren>) => {
+export const MapProvider = ({ children }: Util.PropsWithChild) => {
   const currentLocation = useRecoilValue(currentLocationAtom);
   const setMapBounds = useSetRecoilState(mapBoundsAtom);
   const mapRef = useRef<HTMLDivElement>(null);
