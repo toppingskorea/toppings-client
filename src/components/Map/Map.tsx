@@ -1,83 +1,27 @@
 import { css } from "@emotion/react";
-import { memo, useEffect, useRef, type PropsWithChildren } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { defaultLocation } from "~/constants";
-import { currentLocationAtom } from "~/recoil/atoms";
-import { withCurrentLocation, withMapBounds } from "~/recoil/selectors";
+import { useCallback } from "react";
+import { useSetRecoilState } from "recoil";
+import { useMap } from "~/contexts";
+import { mapBoundsAtom } from "~/recoil/atoms/map";
+import MyLocationButton from "./Button";
+import useMapEvent from "./Map.hooks";
 
-const Button = memo(() => {
-  const setCurrentLocation = useSetRecoilState(withCurrentLocation);
+interface Props {
+  children: JSX.Element;
+}
 
-  const success: PositionCallback = ({
-    coords: { latitude, longitude }
-  }: GeolocationPosition) => {
-    setCurrentLocation({ latitude, longitude });
-  };
+const Map = ({ children }: Props) => {
+  const setMapBounds = useSetRecoilState(mapBoundsAtom);
+  const { map, mapRef } = useMap();
 
-  const error: PositionErrorCallback = () => {
-    setCurrentLocation({
-      latitude: defaultLocation.DEFAULT_LATITUDE,
-      longitude: defaultLocation.DEFAULT_LONGITUDE
-    });
-  };
+  const mapEventHandler = useCallback(() => {
+    if (map) setMapBounds(map.getBounds());
+  }, [map, setMapBounds]);
 
-  const options: PositionOptions = {
-    enableHighAccuracy: true,
-    maximumAge: 30000,
-    timeout: 27000
-  };
+  useMapEvent(map, "dragend", mapEventHandler);
+  useMapEvent(map, "zoom_changed", mapEventHandler);
 
-  const getCurrentMapPosition = () => {
-    navigator.geolocation.watchPosition(success, error, options);
-  };
-
-  return (
-    <button type="button" onClick={getCurrentMapPosition}>
-      내 위치
-    </button>
-  );
-});
-
-const Map = ({ children }: Required<PropsWithChildren>) => {
-  const currentLocation = useRecoilValue(currentLocationAtom);
-  const setMapBounds = useSetRecoilState(withMapBounds);
-
-  const mapRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    kakao.maps.load(() => {
-      if (mapRef.current) {
-        const latLng = new kakao.maps.LatLng(
-          currentLocation.latitude,
-          currentLocation.longitude
-        );
-        const options = {
-          center: latLng,
-          level: 2
-        };
-        const map = new kakao.maps.Map(mapRef.current, options);
-
-        const marker = new kakao.maps.Marker({
-          position: latLng
-        });
-
-        marker.setMap(map);
-
-        kakao.maps.event.addListener(map, "dragend", () => {
-          setMapBounds(map.getBounds());
-        });
-
-        kakao.maps.event.addListener(map, "zoom_changed", () => {
-          setMapBounds(map.getBounds());
-        });
-
-        kakao.maps.event.addListener(map, "bounds_changed", () => {
-          setMapBounds(map.getBounds());
-        });
-      }
-    });
-  }, [currentLocation.latitude, currentLocation.longitude, setMapBounds]);
-
+  // TODO: 디자인 맞춰서 width, height 변경하기
   return (
     <div
       ref={mapRef}
@@ -91,6 +35,6 @@ const Map = ({ children }: Required<PropsWithChildren>) => {
   );
 };
 
-Map.Button = Button;
+Map.MyLocationButton = MyLocationButton;
 
 export default Map;
