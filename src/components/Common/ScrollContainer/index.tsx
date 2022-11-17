@@ -1,5 +1,5 @@
 import { css, useTheme } from "@emotion/react";
-import { flex } from "@toss/emotion-utils";
+import { flex, height100 } from "@toss/emotion-utils";
 import type { PropsWithChildren, RefObject } from "react";
 import {
   createContext,
@@ -57,6 +57,7 @@ const ScrollContainer = ({ children }: PropsWithChildren) => {
         id="scrolled-container"
         css={css`
           ${flex({ direction: "column" })}
+          ${height100}
           position: relative;
           overflow-x: hidden;
 

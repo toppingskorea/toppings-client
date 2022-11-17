@@ -7,6 +7,7 @@ import {
   type DehydratedState
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Inter } from "@next/font/google";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import { GlobalCSS, emotionTheme } from "~/styles";
@@ -15,6 +16,8 @@ import { useSentry } from "~/hooks";
 import AppLayout from "~/layouts/AppLayout";
 import "../styles/font-face.css";
 import { AnalyticsProvider } from "~/contexts";
+
+const inter = Inter();
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -49,7 +52,7 @@ function MyApp({
       <Hydrate state={pageProps.dehydratedState}>
         <RecoilRoot>
           <ThemeProvider theme={emotionTheme}>
-            <GlobalCSS />
+            <GlobalCSS font={inter.style.fontFamily} />
             <AnalyticsProvider>
               <AppLayout>
                 <Component {...pageProps} />

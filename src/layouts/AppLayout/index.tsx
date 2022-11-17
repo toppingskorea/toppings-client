@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { flex } from "@toss/emotion-utils";
+import { flex, height100 } from "@toss/emotion-utils";
 import type { PropsWithChildren } from "react";
 import { PageLoader, ScrollContainer } from "~/components/Common";
 import { TopNavigator } from "~/components/Layout";
@@ -14,6 +14,7 @@ const AppLayout = ({ children }: PropsWithChildren) => {
       css={css`
         max-width: 560px;
         margin: 0 auto;
+        height: 100vh;
       `}
     >
       <ScrollContainer>
@@ -21,6 +22,7 @@ const AppLayout = ({ children }: PropsWithChildren) => {
         <main
           css={css`
             ${flex({ direction: "column" })}
+            ${height100}
           `}
         >
           {children}

@@ -1,13 +1,11 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import type { CSSProperties } from "react";
-import { NORMAL_WEIGHT } from "./Variables";
 
 const Text = styled.span<{
   _fontSize: number;
   textAlign?: CSSProperties["textAlign"];
   weight?: number;
-  _fontFamily?: "Roboto";
   _color?: string;
   whiteSpace?: CSSProperties["whiteSpace"];
   lineHeight?: number;
@@ -15,9 +13,8 @@ const Text = styled.span<{
 }>`
   font-size: ${({ _fontSize }) => `${_fontSize}px`};
   text-align: ${({ textAlign = "left" }) => textAlign};
-  font-weight: ${({ weight = NORMAL_WEIGHT }) => weight};
-  font-family: ${({ _fontFamily = "NotoSansKR" }) => _fontFamily};
-  line-height: ${({ lineHeight = "100%" }) => `${lineHeight}px`};
+  font-weight: ${({ weight = 400 }) => weight};
+  line-height: ${({ lineHeight }) => (lineHeight ? `${lineHeight}px` : "100%")};
 
   ${({ whiteSpace }) => whiteSpace && `white-space: ${whiteSpace};`}
   ${({ letterSpacing }) =>

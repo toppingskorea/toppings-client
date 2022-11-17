@@ -1,9 +1,13 @@
 import { Global, css } from "@emotion/react";
 
-const GlobalCSS = () => {
+const GlobalCSS = ({ font }: { font: string }) => {
   return (
     <Global
       styles={css`
+        html {
+          font-family: ${font};
+        }
+
         /* 앱처럼 user-select 제거 */
         * {
           user-select: none;
