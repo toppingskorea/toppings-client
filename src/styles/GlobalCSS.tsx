@@ -26,6 +26,17 @@ const GlobalCSS = () => {
           outline: none;
         }
 
+        button {
+          background-color: transparent;
+          cursor: pointer;
+          border: none;
+
+          &:disabled,
+          &[data-disabled="disabled"] {
+            cursor: not-allowed;
+          }
+        }
+
         a {
           color: inherit;
           text-decoration: none;

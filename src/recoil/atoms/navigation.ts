@@ -5,17 +5,18 @@ import {
   useSetRecoilState
 } from "recoil";
 
-// eslint-disable-next-line import/prefer-default-export
 const navigationAtom = atom<{
   top?: {
-    title?: string;
+    title?: JSX.Element;
     right?: JSX.Element;
+    marginBottom?: Common.CSSPixelValue;
   };
   bottom?: boolean;
 }>({
   key: "navigationAtom",
   default: {
-    bottom: true
+    top: undefined,
+    bottom: false
   }
 });
 

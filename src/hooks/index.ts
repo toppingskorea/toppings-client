@@ -7,3 +7,4 @@ export { default as usePreservedReference } from "./usePreservedReference";
 export { default as useDebounce } from "./useDebounce";
 export { default as useInput } from "./useInput";
 export { default as useInternalRouter } from "./useInternalRouter";
+export { default as useSetNavigation } from "./useSetNavigation";

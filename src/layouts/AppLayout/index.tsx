@@ -1,13 +1,14 @@
 import { css } from "@emotion/react";
 import { flex } from "@toss/emotion-utils";
-import { ScrollContainer } from "~/components/Common";
+import type { PropsWithChildren } from "react";
+import { PageLoader, ScrollContainer } from "~/components/Common";
+import { TopNavigator } from "~/components/Layout";
 import BottomNavigator from "~/components/Layout/BottomNavigator";
+import { useNavigationValue } from "~/recoil/atoms";
 
-interface Props {
-  children: Util.SingleOrArray<JSX.Element>;
-}
+const AppLayout = ({ children }: PropsWithChildren) => {
+  const state = useNavigationValue();
 
-const AppLayout = ({ children }: Props) => {
   return (
     <div
       css={css`
@@ -16,6 +17,7 @@ const AppLayout = ({ children }: Props) => {
       `}
     >
       <ScrollContainer>
+        {!!state.top && <TopNavigator />}
         <main
           css={css`
             ${flex({ direction: "column" })}
@@ -23,10 +25,9 @@ const AppLayout = ({ children }: Props) => {
         >
           {children}
         </main>
-        {/* TODO: 추후 로딩 라우팅시 프로그레스 추가 필요  */}
-        {/* <PageLoader /> */}
+        <PageLoader />
       </ScrollContainer>
-      <BottomNavigator />
+      {!!state.bottom && <BottomNavigator />}
     </div>
   );
 };

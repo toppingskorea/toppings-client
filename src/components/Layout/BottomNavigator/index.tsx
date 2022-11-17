@@ -1,4 +1,5 @@
 import { css, useTheme } from "@emotion/react";
+import { motion } from "framer-motion";
 import { flex, padding, position, width100 } from "@toss/emotion-utils";
 import { InternalLink } from "~/components/Common";
 import { useInternalRouter } from "~/hooks";
@@ -24,7 +25,7 @@ const BottomNavigator = () => {
         `}
       >
         {navList.map(({ icon, href }) => (
-          <li key={href}>
+          <motion.li key={href} whileTap={{ scale: 0.9 }}>
             <InternalLink
               href={href}
               css={css`
@@ -37,7 +38,7 @@ const BottomNavigator = () => {
             >
               {icon}
             </InternalLink>
-          </li>
+          </motion.li>
         ))}
       </ul>
     </nav>
