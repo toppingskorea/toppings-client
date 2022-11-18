@@ -29,18 +29,14 @@ const RegisterNationality = () => {
     }
   });
 
-  const {
-    props: keyword,
-    debouncedValue,
-    setValue
-  } = useInput({ useDebounce: true });
+  const { props: keyword, setValue } = useInput({});
 
   const filteredCountries = useMemo(() => {
     const obj: Partial<typeof countries> = {};
 
     const array = objectValues(countries).map(values => {
       return values.filter(value =>
-        value.name.toLowerCase().includes(debouncedValue.toLowerCase())
+        value.name.toLowerCase().includes(keyword.value.toLowerCase())
       );
     });
 
@@ -49,7 +45,7 @@ const RegisterNationality = () => {
     });
 
     return obj;
-  }, [debouncedValue]);
+  }, [keyword.value]);
 
   const boldQuery = (str: string, query: string) => {
     const n = str.toUpperCase();
@@ -104,7 +100,7 @@ const RegisterNationality = () => {
                         lineHeight={22}
                         key={country.code}
                       >
-                        {boldQuery(country.name, debouncedValue)}
+                        {boldQuery(country.name, keyword.value)}
                       </Text>
                     ))}
                   </Flex>
