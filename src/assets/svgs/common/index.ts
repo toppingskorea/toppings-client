@@ -4,3 +4,5 @@ export { default as Bell } from "./bell.svg";
 export { default as User } from "./user.svg";
 export { default as LeftArrow } from "./leftArrow.svg";
 export { default as Exit } from "./exit.svg";
+export { default as Search } from "./search.svg";
+export { default as CircleExit } from "./circleExit.svg";

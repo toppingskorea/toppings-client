@@ -28,6 +28,7 @@ const GlobalCSS = ({ font }: { font: string }) => {
 
         input {
           outline: none;
+          border: none;
         }
 
         button {

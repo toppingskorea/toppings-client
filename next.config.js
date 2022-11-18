@@ -11,6 +11,14 @@ const nextConfig = {
 
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: `http://api.toppings.co.kr:28080/:path*`
+      }
+    ];
+  },
   pageExtensions: ["page.tsx", "page.ts"],
   images: {
     formats: ["image/webp"]

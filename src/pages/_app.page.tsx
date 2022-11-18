@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@emotion/react";
+import { Inter } from "@next/font/google";
 import * as Sentry from "@sentry/nextjs";
 import {
   Hydrate,
@@ -6,16 +7,14 @@ import {
   QueryClientProvider,
   type DehydratedState
 } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { Inter } from "@next/font/google";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
-import { GlobalCSS, emotionTheme } from "~/styles";
 import { env } from "~/constants";
+import { AnalyticsProvider } from "~/contexts";
 import { useSentry } from "~/hooks";
 import AppLayout from "~/layouts/AppLayout";
+import { emotionTheme, GlobalCSS } from "~/styles";
 import "../styles/font-face.css";
-import { AnalyticsProvider } from "~/contexts";
 
 const inter = Inter();
 
@@ -61,7 +60,7 @@ function MyApp({
           </ThemeProvider>
         </RecoilRoot>
       </Hydrate>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );
 }

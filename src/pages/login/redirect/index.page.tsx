@@ -11,6 +11,7 @@ const Redirect = ({
 
   useEffect(() => {
     if (!tokenCookie.get()) tokenCookie.set(accessToken);
+
     router.replace("/");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router, accessToken]);
