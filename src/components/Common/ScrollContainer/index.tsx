@@ -15,7 +15,6 @@ type Value = {
   scrollContainerRef: RefObject<HTMLDivElement>;
   scrollContainerHeight: number;
   scrollContainerWidth: number;
-  scrollableHeight: number;
 };
 
 const Context = createContext({} as Value);
@@ -27,7 +26,6 @@ const ScrollContainer = ({ children }: PropsWithChildren) => {
   const router = useInternalRouter();
 
   const [height, setHeight] = useState<number>(0);
-  const [scrollableHeight, setScrollableHeight] = useState<number>(0);
 
   const scrollContainerHeight = ref.current?.getClientRects()[0].height ?? 0;
   const scrollContainerWidth = ref.current?.getClientRects()[0].width ?? 0;
@@ -35,7 +33,6 @@ const ScrollContainer = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     const handleResize = () => {
       setHeight(window.innerHeight);
-      if (ref.current) setScrollableHeight(ref.current?.scrollHeight);
     };
 
     handleResize();
@@ -50,10 +47,9 @@ const ScrollContainer = ({ children }: PropsWithChildren) => {
     () => ({
       scrollContainerRef: ref,
       scrollContainerHeight,
-      scrollContainerWidth,
-      scrollableHeight
+      scrollContainerWidth
     }),
-    [scrollContainerHeight, scrollContainerWidth, scrollableHeight]
+    [scrollContainerHeight, scrollContainerWidth]
   );
 
   return (
