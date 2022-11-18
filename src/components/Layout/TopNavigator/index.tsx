@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { LeftArrow } from "@svgs/common";
-import { flex, padding, Spacing } from "@toss/emotion-utils";
+import { flex, padding, position, Spacing } from "@toss/emotion-utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter } from "~/hooks";
@@ -12,40 +12,53 @@ const TopNavigator = () => {
 
   return (
     <AnimatePresence>
-      <nav
+      <header
         css={css`
-          ${flex({ justify: "space-between", align: "center" })}
-          ${padding({ x: 28, top: 56, bottom: state.top?.marginBottom ?? 24 })}
+          ${position("sticky", { top: 0 })}
+          backdrop-filter: blur(10px);
         `}
       >
-        <motion.button
-          type="button"
-          onClick={() => router.back()}
-          whileTap={{ scale: 0.9 }}
+        <nav
+          css={css`
+            ${flex({ justify: "space-between", align: "center" })}
+            ${padding({
+              x: 28,
+              top: 56,
+              bottom: state.top?.marginBottom ?? 24
+            })}
+          `}
         >
-          <LeftArrow />
-        </motion.button>
-
-        {state.top?.title ? (
-          <motion.div
-            variants={defaultSlideFadeInVariants("bottom")}
-            {...framerMocker}
-            css={css`
-              ${padding({ top: 20 })}
-            `}
+          <motion.button
+            type="button"
+            onClick={() => router.back()}
+            whileTap={{ scale: 0.9 }}
           >
-            {state.top?.title}
-          </motion.div>
-        ) : (
-          <Spacing size={0} />
-        )}
+            <LeftArrow />
+          </motion.button>
 
-        {state.top?.right ? (
-          <motion.div whileTap={{ scale: 0.9 }}>{state.top?.right}</motion.div>
-        ) : (
-          <Spacing size={0} />
-        )}
-      </nav>
+          {state.top?.title ? (
+            <motion.div
+              variants={defaultSlideFadeInVariants("bottom")}
+              {...framerMocker}
+              css={css`
+                ${padding({ top: 20 })}
+              `}
+            >
+              {state.top?.title}
+            </motion.div>
+          ) : (
+            <Spacing size={0} />
+          )}
+
+          {state.top?.right ? (
+            <motion.div whileTap={{ scale: 0.9 }}>
+              {state.top?.right}
+            </motion.div>
+          ) : (
+            <Spacing size={0} />
+          )}
+        </nav>
+      </header>
     </AnimatePresence>
   );
 };

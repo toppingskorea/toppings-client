@@ -1,7 +1,6 @@
 const countries = {
   A: [
     { name: "Afghanistan", code: "AF" },
-    { name: "Afghanistan", code: "AF" },
     { name: "Åland Islands", code: "AX" },
     { name: "Albania", code: "AL" },
     { name: "Algeria", code: "DZ" },

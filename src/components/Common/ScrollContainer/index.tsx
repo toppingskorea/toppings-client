@@ -1,4 +1,4 @@
-import { css, useTheme } from "@emotion/react";
+import { css } from "@emotion/react";
 import { flex, height100 } from "@toss/emotion-utils";
 import type { PropsWithChildren, RefObject } from "react";
 import {
@@ -9,11 +9,13 @@ import {
   useRef,
   useState
 } from "react";
+import { useInternalRouter } from "~/hooks";
 
 type Value = {
   scrollContainerRef: RefObject<HTMLDivElement>;
   scrollContainerHeight: number;
   scrollContainerWidth: number;
+  scrollableHeight: number;
 };
 
 const Context = createContext({} as Value);
@@ -22,16 +24,19 @@ export const useScrollContainer = () => useContext(Context);
 
 const ScrollContainer = ({ children }: PropsWithChildren) => {
   const ref = useRef<HTMLDivElement>(null);
-
-  const theme = useTheme();
+  const router = useInternalRouter();
 
   const [height, setHeight] = useState<number>(0);
+  const [scrollableHeight, setScrollableHeight] = useState<number>(0);
 
   const scrollContainerHeight = ref.current?.getClientRects()[0].height ?? 0;
   const scrollContainerWidth = ref.current?.getClientRects()[0].width ?? 0;
 
   useEffect(() => {
-    const handleResize = () => setHeight(window.innerHeight);
+    const handleResize = () => {
+      setHeight(window.innerHeight);
+      if (ref.current) setScrollableHeight(ref.current?.scrollHeight);
+    };
 
     handleResize();
 
@@ -45,9 +50,10 @@ const ScrollContainer = ({ children }: PropsWithChildren) => {
     () => ({
       scrollContainerRef: ref,
       scrollContainerHeight,
-      scrollContainerWidth
+      scrollContainerWidth,
+      scrollableHeight
     }),
-    [scrollContainerHeight, scrollContainerWidth]
+    [scrollContainerHeight, scrollContainerWidth, scrollableHeight]
   );
 
   return (
@@ -62,7 +68,7 @@ const ScrollContainer = ({ children }: PropsWithChildren) => {
           overflow-x: hidden;
 
           ::-webkit-scrollbar {
-            width: 0px;
+            width: 0;
           }
         `}
       >

@@ -18,5 +18,6 @@ declare module Route {
     | "/profile"
     | "/post"
     | "/post/add"
-    | "/notice";
+    | "/notice"
+    | "/register/nationality";
 }
