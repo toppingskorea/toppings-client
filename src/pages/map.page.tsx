@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Exit } from "~/assets/svgs/common";
-import { Text } from "~/constants";
+import { Text } from "~/components/Common/Typo";
 import { useNavigationSetter } from "~/recoil/atoms";
 
 const Map = () => {

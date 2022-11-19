@@ -11,13 +11,16 @@ import {
 } from "@toss/emotion-utils";
 import { Fragment, useMemo } from "react";
 import { SearchInput } from "~/components/Common";
-import { Text } from "~/constants";
-import countries from "~/constants/data/common/countries";
-import { useInput, useSetNavigation } from "~/hooks";
+import { OrangeTypo, Text } from "~/components/Common/Typo";
+import { countries } from "~/constants/data/common";
+import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
+import { useRegister } from "~/recoil/atoms";
 import { objectEntries, objectKeys, objectValues } from "~/utils";
 
 const RegisterNationality = () => {
+  const router = useInternalRouter();
   const theme = useTheme();
+  const [register, setRegister] = useRegister();
   useSetNavigation({
     top: {
       marginBottom: 35,
@@ -79,19 +82,14 @@ const RegisterNationality = () => {
             <Fragment key={key}>
               {value && value?.length > 0 && (
                 <>
-                  <Text
-                    _fontSize={23}
-                    _color={theme.colors.primary}
-                    weight={theme.weighs.semiBold}
-                  >
-                    {key}
-                  </Text>
+                  <OrangeTypo>{key}</OrangeTypo>
                   <Spacing size={10} />
                   <Flex
                     direction="column"
                     css={css`
                       ${gutter({ space: 15, direction: "vertical" })}
                     `}
+                    as="ul"
                   >
                     {value.map(country => (
                       <Text
@@ -99,6 +97,10 @@ const RegisterNationality = () => {
                         _color={theme.colors.secondary[62]}
                         lineHeight={22}
                         key={country.code}
+                        onClick={() => {
+                          setRegister({ ...register, country: country.name });
+                          router.push("/register/eatingHabits");
+                        }}
                       >
                         {boldQuery(country.name, keyword.value)}
                       </Text>
@@ -116,6 +118,7 @@ const RegisterNationality = () => {
           ${padding({ x: 16, y: 22 })};
           ${position("fixed", { bottom: 0 })}
           background-color: ${theme.colors.white};
+          max-width: ${560 - 32}px;
           ${width100}
         `}
       >

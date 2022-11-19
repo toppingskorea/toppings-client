@@ -12,7 +12,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { FilledButton } from "~/components/Common";
-import { env, Text } from "~/constants";
+import { Text } from "~/components/Common/Typo";
+import { env } from "~/constants";
 import { useSetNavigation } from "~/hooks";
 
 const Onboarding = () => {

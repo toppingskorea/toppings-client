@@ -1,4 +1,4 @@
-import { Text } from "~/constants";
+import { Text } from "~/components/Common/Typo";
 import { useSetNavigation } from "~/hooks";
 
 const Profile = () => {

@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
-import { env, Text } from "~/constants";
+import { env } from "~/constants";
+import { Text } from "~/components/Common/Typo";
 
 const Login = () => {
   const router = useRouter();

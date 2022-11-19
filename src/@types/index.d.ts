@@ -7,6 +7,10 @@ declare module Common {
 declare module Util {
   type SingleOrArray<T> = T | T[];
 }
+
+declare module Register {
+  type EatingHabit = "Diet" | "Religion";
+}
 declare module Route {
   type Path =
     | "/"
@@ -19,5 +23,6 @@ declare module Route {
     | "/post"
     | "/post/add"
     | "/notice"
-    | "/register/nationality";
+    | "/register/nationality"
+    | "/register/eatingHabits";
 }
