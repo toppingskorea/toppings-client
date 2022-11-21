@@ -77,6 +77,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["kakao.maps.d.ts", "npm:0.1.33"],\
             ["lint-staged", "npm:13.0.3"],\
             ["lodash", "npm:4.17.21"],\
+            ["lottie-react", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:2.3.1"],\
             ["next", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:13.0.2"],\
             ["prettier", "npm:2.7.1"],\
             ["react", "npm:18.2.0"],\
@@ -9756,6 +9757,42 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["lottie-react", [\
+        ["npm:2.3.1", {\
+          "packageLocation": "./.yarn/cache/lottie-react-npm-2.3.1-2c42200039-3f83511eec.zip/node_modules/lottie-react/",\
+          "packageDependencies": [\
+            ["lottie-react", "npm:2.3.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:2.3.1", {\
+          "packageLocation": "./.yarn/__virtual__/lottie-react-virtual-7badf21b72/0/cache/lottie-react-npm-2.3.1-2c42200039-3f83511eec.zip/node_modules/lottie-react/",\
+          "packageDependencies": [\
+            ["lottie-react", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:2.3.1"],\
+            ["@types/react", "npm:18.0.21"],\
+            ["@types/react-dom", "npm:18.0.6"],\
+            ["lottie-web", "npm:5.9.6"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lottie-web", [\
+        ["npm:5.9.6", {\
+          "packageLocation": "./.yarn/cache/lottie-web-npm-5.9.6-93f381883a-aed6a1d0c2.zip/node_modules/lottie-web/",\
+          "packageDependencies": [\
+            ["lottie-web", "npm:5.9.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["lru-cache", [\
         ["npm:6.0.0", {\
           "packageLocation": "./.yarn/cache/lru-cache-npm-6.0.0-b4c8668fe1-f97f499f89.zip/node_modules/lru-cache/",\
@@ -12117,6 +12154,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["kakao.maps.d.ts", "npm:0.1.33"],\
             ["lint-staged", "npm:13.0.3"],\
             ["lodash", "npm:4.17.21"],\
+            ["lottie-react", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:2.3.1"],\
             ["next", "virtual:ff9e29c099e4270f8f23c6cc6d26b022b7bb00e4ce376a39da81237d6975dc5cbcebb6eb5b75a06393b509d099042be021f534f22b310bf5f3a496ce517aa4bd#npm:13.0.2"],\
             ["prettier", "npm:2.7.1"],\
             ["react", "npm:18.2.0"],\

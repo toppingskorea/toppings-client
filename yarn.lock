@@ -7008,6 +7008,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lottie-react@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "lottie-react@npm:2.3.1"
+  dependencies:
+    lottie-web: ^5.9.4
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 3f83511eec9ef80c6500658fcb188f757c663c5de49de5cfd55d061d5de72b9242fd0a3b7ec7ce84bbad5acbcd7293468228a0f6cbe28e50e4c44e5b25df1c8d
+  languageName: node
+  linkType: hard
+
+"lottie-web@npm:^5.9.4":
+  version: 5.9.6
+  resolution: "lottie-web@npm:5.9.6"
+  checksum: aed6a1d0c24eefb6c42a42aae18f29737746551cfdc86319f1b9675f5bc276ba26971e8d2b0e1498df880571fe4bfe2fc87885a1d4f8a318d5e4e5b939b7a474
+  languageName: node
+  linkType: hard
+
 "lru-cache@npm:^6.0.0":
   version: 6.0.0
   resolution: "lru-cache@npm:6.0.0"
@@ -9104,6 +9123,7 @@ __metadata:
     kakao.maps.d.ts: ^0.1.33
     lint-staged: ^13.0.3
     lodash: ^4.17.21
+    lottie-react: ^2.3.1
     next: ^13.0.2
     prettier: ^2.7.1
     react: 18.2.0
