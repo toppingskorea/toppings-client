@@ -30,6 +30,7 @@ const middleware: NextMiddleware = async request => {
   // 로그인 리다이렉트
   if (request.nextUrl.pathname.startsWith("/login/redirect")) {
     const token = request.nextUrl.searchParams.get("accessToken");
+
     if (token) {
       const response = NextResponse.redirect(new URL("/map", request.url));
       response.cookies.set(env.TOPPINGS_TOKEN_KEY, token as string, {

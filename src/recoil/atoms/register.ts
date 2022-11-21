@@ -20,6 +20,6 @@ const registerAtom = atom<{
   }
 });
 
-export const useRegister = () => useRecoilState(registerAtom);
+export const useRegisterState = () => useRecoilState(registerAtom);
 export const useRegisterValue = () => useRecoilValue(registerAtom);
 export const useRegisterSetter = () => useSetRecoilState(registerAtom);

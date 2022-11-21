@@ -5,3 +5,4 @@ export const zIndex = {
 };
 
 export const DEFAULT_WIDTH = 390;
+export const VIEW_WIDTH = 560;

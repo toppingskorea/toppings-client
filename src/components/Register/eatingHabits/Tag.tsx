@@ -4,8 +4,12 @@ import { RoundedTag } from "~/components/Common";
 
 const Tag = ({
   children,
-  selected
-}: Pick<ComponentProps<typeof RoundedTag>, "children" | "selected">) => {
+  selected,
+  onClick
+}: Pick<
+  ComponentProps<typeof RoundedTag>,
+  "children" | "selected" | "onClick"
+>) => {
   const theme = useTheme();
   return (
     <RoundedTag
@@ -14,14 +18,15 @@ const Tag = ({
       defaultProps={{
         _color: theme.colors.secondary[69],
         bgColor: theme.colors.white,
-        borderColor: theme.colors.secondary.D9
+        bordercolor: theme.colors.secondary.D9
       }}
       selectedProps={{
         _color: theme.colors.white,
         bgColor: theme.colors.dim.orange,
-        borderColor: "transparent"
+        bordercolor: "transparent"
       }}
       selected={selected}
+      onClick={onClick}
     >
       {children}
     </RoundedTag>

@@ -12,15 +12,16 @@ import {
 import { Fragment, useMemo } from "react";
 import { SearchInput } from "~/components/Common";
 import { OrangeTypo, Text } from "~/components/Common/Typo";
+import { VIEW_WIDTH } from "~/constants";
 import { countries } from "~/constants/data/common";
 import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
-import { useRegister } from "~/recoil/atoms";
+import { useRegisterState } from "~/recoil/atoms";
 import { objectEntries, objectKeys, objectValues } from "~/utils";
 
 const RegisterNationality = () => {
   const router = useInternalRouter();
   const theme = useTheme();
-  const [register, setRegister] = useRegister();
+  const [register, setRegister] = useRegisterState();
   useSetNavigation({
     top: {
       marginBottom: 35,
@@ -118,7 +119,7 @@ const RegisterNationality = () => {
           ${padding({ x: 16, y: 22 })};
           ${position("fixed", { bottom: 0 })}
           background-color: ${theme.colors.white};
-          max-width: ${560 - 32}px;
+          max-width: ${VIEW_WIDTH - 32}px;
           ${width100}
         `}
       >
