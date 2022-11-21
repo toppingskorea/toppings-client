@@ -6,8 +6,10 @@ import {
   padding,
   position,
   SafeArea,
+  size,
   Spacing
 } from "@toss/emotion-utils";
+import { useOverlay } from "@toss/use-overlay";
 import { motion } from "framer-motion";
 import { Badge } from "~/components/Common";
 import { OrangeTypo, Text } from "~/components/Common/Typo";
@@ -23,6 +25,8 @@ const EatingHabits = () => {
   const theme = useTheme();
   const { mutate } = useRegister();
   const [register, setRegister] = useRegisterState();
+
+  const overlay = useOverlay();
 
   useSetNavigation({
     top: {
@@ -43,6 +47,20 @@ const EatingHabits = () => {
       )
     }
   });
+
+  const openSuccessModal = () => {
+    overlay.open(() => (
+      <div
+        css={css`
+          ${position("fixed", { top: 0, right: 0, bottom: 0, left: 0 })}
+          ${size.full}
+          background-color: ${theme.colors.white};
+        `}
+      >
+        ads
+      </div>
+    ));
+  };
 
   return (
     <SafeArea>
@@ -92,6 +110,7 @@ const EatingHabits = () => {
         css={css`
           ${position("absolute", { bottom: 44, right: 0 })}
         `}
+        onClick={openSuccessModal}
       >
         <Badge attach="right">Next</Badge>
       </motion.div>

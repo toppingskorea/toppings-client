@@ -7,6 +7,7 @@ import {
   QueryClientProvider,
   type DehydratedState
 } from "@tanstack/react-query";
+import { OverlayProvider } from "@toss/use-overlay";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import { env } from "~/constants";
@@ -14,7 +15,6 @@ import { AnalyticsProvider } from "~/contexts";
 import { useSentry } from "~/hooks";
 import AppLayout from "~/layouts/AppLayout";
 import { emotionTheme, GlobalCSS } from "~/styles";
-import "../styles/font-face.css";
 
 const inter = Inter();
 
@@ -53,9 +53,11 @@ function MyApp({
           <ThemeProvider theme={emotionTheme}>
             <GlobalCSS font={inter.style.fontFamily} />
             <AnalyticsProvider>
-              <AppLayout>
-                <Component {...pageProps} />
-              </AppLayout>
+              <OverlayProvider>
+                <AppLayout>
+                  <Component {...pageProps} />
+                </AppLayout>
+              </OverlayProvider>
             </AnalyticsProvider>
           </ThemeProvider>
         </RecoilRoot>

@@ -2682,6 +2682,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@toss/use-overlay@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "@toss/use-overlay@npm:1.2.1"
+  dependencies:
+    "@types/react": ^18.0.21
+  peerDependencies:
+    react: ^16.8 || ^17 || ^18
+  checksum: 4d231286aaeb4e6ebb2b32c7512bc91942f7274388f83856cdd9e59b64bacd92304505ee24fa9d41fe53abbe2c074da9ada95d56bcb8967178062bd5f37d3018
+  languageName: node
+  linkType: hard
+
 "@toss/utils@npm:^1.0.5":
   version: 1.0.5
   resolution: "@toss/utils@npm:1.0.5"
@@ -2935,7 +2946,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*":
+"@types/react@npm:*, @types/react@npm:^18.0.21":
   version: 18.0.25
   resolution: "@types/react@npm:18.0.25"
   dependencies:
@@ -9056,6 +9067,7 @@ __metadata:
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.4.0
     "@toss/emotion-utils": ^1.0.5
+    "@toss/use-overlay": ^1.2.1
     "@types/axios": ^0.14.0
     "@types/jest": ^29.1.1
     "@types/js-cookie": ^3
