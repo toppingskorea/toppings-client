@@ -31,17 +31,30 @@ const middleware: NextMiddleware = async request => {
   if (request.nextUrl.pathname.startsWith("/login/redirect")) {
     const token = request.nextUrl.searchParams.get("accessToken");
 
-    if (token) {
-      const response = NextResponse.redirect(new URL("/map", request.url));
-      response.cookies.set(env.TOPPINGS_TOKEN_KEY, token as string, {
-        httpOnly: true,
-        sameSite: "strict",
-        path: "/",
-        expires: dayjs().add(365, "day").toDate()
-      });
-      return response;
+    const response = NextResponse.redirect(new URL("/map", request.url));
+    response.cookies.set(env.TOPPINGS_TOKEN_KEY, token as string, {
+      httpOnly: true,
+      sameSite: "strict",
+      path: "/",
+      expires: dayjs().add(365, "day").toDate()
+    });
+
+    const retrievedValue = await (
+      await fetch(`http://api.toppings.co.kr:28080/user/role`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+    ).json();
+
+    if (retrievedValue.data === "ROLE_TEMP") {
+      return NextResponse.redirect(
+        new URL("/register/nationality", request.url)
+      );
     }
-    return NextResponse.redirect(new URL("/register/nationality", request.url));
+
+    return response;
   }
 
   return null;
