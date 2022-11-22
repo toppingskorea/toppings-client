@@ -25,6 +25,12 @@
     // css props를 사용하기 위함
     "jsxImportSource": "@emotion/react"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src"],
+  "include": [
+    "src/@types/images.d.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src"
+  ],
   "exclude": ["node_modules"]
 }
