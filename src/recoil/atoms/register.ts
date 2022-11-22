@@ -6,16 +6,14 @@ import {
 } from "recoil";
 
 const registerAtom = atom<{
-  code: string;
   country: string;
   habit?: {
     title: Register.EatingHabit;
     content: string;
-  };
+  }[];
 }>({
   key: "registerAtom",
   default: {
-    code: "",
     country: ""
   }
 });

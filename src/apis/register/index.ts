@@ -1,11 +1,15 @@
-import { http } from "~/constants";
+import { authRequest } from "~/constants";
 
 // eslint-disable-next-line import/prefer-default-export
 export const register = (payload: {
   country: string;
-  habit: { title: string; content: string }[];
+  habit?: { title: string; content: string }[];
 }) => {
-  return http.default.post("/api/user", {
-    data: payload
+  return authRequest.post("/api/user", {
+    country: payload.country,
+    habit: payload.habit?.map(_habit => ({
+      title: _habit.title,
+      content: _habit.content.replace(" ", "")
+    }))
   });
 };

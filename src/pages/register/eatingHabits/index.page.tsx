@@ -12,23 +12,38 @@ import {
 import { useOverlay } from "@toss/use-overlay";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
+import { useCallback } from "react";
 import { check } from "~/assets/json";
 import { Badge } from "~/components/Common";
 import { OrangeTypo, Text } from "~/components/Common/Typo";
 import { Tag } from "~/components/Register/eatingHabits";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { diets, religions } from "~/constants/data/common";
-import { useSetNavigation } from "~/hooks";
+import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useRegister } from "~/mutations/register";
 import { useRegisterState } from "~/recoil/atoms";
 import habitTitleList from "./eatingHabits.constants";
 
 const EatingHabits = () => {
+  const router = useInternalRouter();
   const theme = useTheme();
-  const { mutate } = useRegister();
   const [register, setRegister] = useRegisterState();
-
   const overlay = useOverlay();
+
+  const { mutate } = useRegister({
+    onSuccess: () => {
+      openSuccessModal();
+      setTimeout(() => {
+        router.push("/map");
+      }, 3000);
+    }
+  });
+
+  const onSubmitRegister = useCallback(() => {
+    mutate({
+      ...register
+    });
+  }, [mutate, register]);
 
   useSetNavigation({
     top: {
@@ -43,7 +58,11 @@ const EatingHabits = () => {
         </Text>
       ),
       right: (
-        <Text _fontSize={15} _color={theme.colors.secondary[69]}>
+        <Text
+          _fontSize={15}
+          _color={theme.colors.secondary[69]}
+          onClick={onSubmitRegister}
+        >
           Skip
         </Text>
       )
@@ -105,14 +124,18 @@ const EatingHabits = () => {
               {(habit === "Diet" ? diets : religions).map(content => (
                 <Tag
                   key={content}
-                  selected={register.habit?.content === content}
+                  selected={
+                    !!register.habit?.find(habit => habit.content === content)
+                  }
                   onClick={() => {
                     setRegister({
                       ...register,
-                      habit: {
-                        title: habit,
-                        content
-                      }
+                      habit: [
+                        {
+                          title: habit,
+                          content
+                        }
+                      ]
                     });
                   }}
                 >
@@ -129,7 +152,7 @@ const EatingHabits = () => {
         css={css`
           ${position("absolute", { bottom: 44, right: 0 })}
         `}
-        onClick={openSuccessModal}
+        onClick={onSubmitRegister}
       >
         <Badge attach="right">Next</Badge>
       </motion.div>

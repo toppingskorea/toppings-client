@@ -31,14 +31,6 @@ const middleware: NextMiddleware = async request => {
   if (request.nextUrl.pathname.startsWith("/login/redirect")) {
     const token = request.nextUrl.searchParams.get("accessToken");
 
-    const response = NextResponse.redirect(new URL("/map", request.url));
-    response.cookies.set(env.TOPPINGS_TOKEN_KEY, token as string, {
-      httpOnly: true,
-      sameSite: "strict",
-      path: "/",
-      expires: dayjs().add(365, "day").toDate()
-    });
-
     const retrievedValue = await (
       await fetch(`http://api.toppings.co.kr:28080/user/role`, {
         method: "GET",
@@ -48,11 +40,19 @@ const middleware: NextMiddleware = async request => {
       })
     ).json();
 
-    if (retrievedValue.data === "ROLE_TEMP") {
-      return NextResponse.redirect(
-        new URL("/register/nationality", request.url)
-      );
-    }
+    const response = NextResponse.redirect(
+      new URL(
+        retrievedValue.data === "ROLE_TEMP" ? "/register/nationality" : "/map",
+        request.url
+      )
+    );
+
+    response.cookies.set(env.TOPPINGS_TOKEN_KEY, token as string, {
+      // httpOnly: true,
+      sameSite: "strict",
+      path: "/",
+      expires: dayjs().add(365, "day").toDate()
+    });
 
     return response;
   }
