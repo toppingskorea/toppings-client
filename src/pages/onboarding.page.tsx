@@ -3,7 +3,9 @@ import { logo } from "@images/common";
 import {
   Flex,
   flex,
+  gutter,
   height100,
+  position,
   SafeArea,
   Spacing,
   width100
@@ -39,36 +41,47 @@ const Onboarding = () => {
       >
         <Spacing size={170} />
         <Image src={logo} alt="TOPPINGS" css={css``} />
-        <Spacing size={242} />
-        <Flex>
-          <Text
-            _fontSize={25}
-            _color={theme.colors.white}
-            weight={theme.weighs.medium}
+
+        <Flex
+          direction="column"
+          align="center"
+          css={css`
+            ${position("fixed", { bottom: 105 })}
+            ${gutter({ space: 35, direction: "vertical" })}
+          `}
+        >
+          <Flex
+            css={css`
+              ${gutter({ space: 6, direction: "horizontal" })}
+            `}
           >
-            Do you want to
-          </Text>
-          <Spacing direction="horizontal" size={6} />
-          <Text
-            _fontSize={25}
-            _color={theme.colors.white}
-            weight={theme.weighs.extraBold}
-          >
-            JOIN
-          </Text>
-        </Flex>
-        <Spacing size={35} />
-        <motion.div whileTap={{ scale: 0.9 }}>
-          <FilledButton width={106} height={33} onClick={onLoginHandler}>
             <Text
-              _fontSize={15}
-              _color={theme.colors.secondary["73"]}
+              _fontSize={25}
+              _color={theme.colors.white}
               weight={theme.weighs.medium}
             >
-              Click me!
+              Do you want to
             </Text>
-          </FilledButton>
-        </motion.div>
+            <Text
+              _fontSize={25}
+              _color={theme.colors.white}
+              weight={theme.weighs.extraBold}
+            >
+              JOIN
+            </Text>
+          </Flex>
+          <motion.div whileTap={{ scale: 0.9 }}>
+            <FilledButton width={106} height={33} onClick={onLoginHandler}>
+              <Text
+                _fontSize={15}
+                _color={theme.colors.secondary["73"]}
+                weight={theme.weighs.medium}
+              >
+                Click me!
+              </Text>
+            </FilledButton>
+          </motion.div>
+        </Flex>
       </section>
     </SafeArea>
   );
