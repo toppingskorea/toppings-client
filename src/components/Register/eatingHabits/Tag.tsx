@@ -1,18 +1,18 @@
 import { useTheme } from "@emotion/react";
 import type { ComponentProps } from "react";
-import { RoundedTag } from "~/components/Common";
+import { ClickableRoundedTag } from "~/components/Common";
 
 const Tag = ({
   children,
   selected,
   onClick
 }: Pick<
-  ComponentProps<typeof RoundedTag>,
+  ComponentProps<typeof ClickableRoundedTag>,
   "children" | "selected" | "onClick"
 >) => {
   const theme = useTheme();
   return (
-    <RoundedTag
+    <ClickableRoundedTag
       _fontSize={15}
       paddingX={19}
       defaultProps={{
@@ -29,7 +29,7 @@ const Tag = ({
       onClick={onClick}
     >
       {children}
-    </RoundedTag>
+    </ClickableRoundedTag>
   );
 };
 

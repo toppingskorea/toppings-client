@@ -12,7 +12,6 @@ import {
 import { Fragment, useMemo } from "react";
 import { SearchInput } from "~/components/Common";
 import { OrangeTypo, Text } from "~/components/Common/Typo";
-import { VIEW_WIDTH } from "~/constants";
 import { countries } from "~/constants/data/common";
 import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
 import { useRegisterState } from "~/recoil/atoms";
@@ -119,7 +118,7 @@ const RegisterNationality = () => {
           ${padding({ x: 16, y: 22 })};
           ${position("fixed", { bottom: 0 })}
           background-color: ${theme.colors.white};
-          max-width: ${VIEW_WIDTH - 32}px;
+          max-width: ${theme.dimensions.viewWidth - 32}px;
           ${width100}
         `}
       >

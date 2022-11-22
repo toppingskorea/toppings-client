@@ -6,7 +6,9 @@
  <Dummy height={theme.dimensions.bottomNavigationHeight}/>
 */
 const dimensions = {
-  bottomNavigationHeight: 85
+  bottomNavigationHeight: 85,
+  defaultWidth: 390,
+  viewWidth: 590
 } as const;
 
 export default dimensions;

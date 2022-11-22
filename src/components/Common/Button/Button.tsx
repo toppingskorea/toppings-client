@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { size, touchable } from "@toss/emotion-utils";
 import type { ButtonHTMLAttributes } from "react";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -13,9 +14,9 @@ const Button = (props: Props) => {
     <button
       type="button"
       css={css`
-        width: ${width}px;
-        height: ${height}px;
+        ${size({ width, height })}
         border-radius: 100px;
+        ${touchable}
       `}
       {...rest}
     >

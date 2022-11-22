@@ -26,3 +26,15 @@ declare module Route {
     | "/register/nationality"
     | "/register/eatingHabits";
 }
+
+declare module Profile {
+  interface UserDTO {
+    id: number;
+    name: string;
+    country: string;
+    habits: {
+      title: string;
+      content: string;
+    }[];
+  }
+}
