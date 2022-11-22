@@ -7,3 +7,4 @@ export { default as Exit } from "./exit.svg";
 export { default as Search } from "./search.svg";
 export { default as CircleExit } from "./circleExit.svg";
 export { default as Hamburger } from "./hamburger.svg";
+export { default as OrangePlus } from "./orangePlus.svg";

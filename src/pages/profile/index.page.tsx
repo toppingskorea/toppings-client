@@ -27,13 +27,14 @@ import {
   framerMocker,
   staggerOne
 } from "~/constants";
-import { useSetNavigation } from "~/hooks";
+import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useFetchUserInfo } from "~/queries/profile";
 import Keys from "~/queries/profile/keys";
 
 const Profile = () => {
   const theme = useTheme();
   const { data } = useFetchUserInfo();
+  const router = useInternalRouter();
 
   useSetNavigation({
     top: {
@@ -117,7 +118,12 @@ const Profile = () => {
             ${flex({ justify: "center" })}
           `}
         >
-          <FilledButton width={278} height={37} bgColor={theme.colors.primary}>
+          <FilledButton
+            width={278}
+            height={37}
+            bgColor={theme.colors.primary}
+            onClick={() => router.push("/profile/edit")}
+          >
             <Text
               _fontSize={17}
               _color={theme.colors.white}

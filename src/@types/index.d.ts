@@ -20,6 +20,7 @@ declare module Route {
     | "/search/restaurant"
     | "/search/local"
     | "/profile"
+    | "/profile/edit"
     | "/post"
     | "/post/add"
     | "/notice"
