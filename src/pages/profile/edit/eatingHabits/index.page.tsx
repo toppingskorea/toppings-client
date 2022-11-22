@@ -1,9 +1,12 @@
-import { useTheme } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
-import { SafeArea } from "@toss/emotion-utils";
+import { motion } from "framer-motion";
+import { flex, position, SafeArea } from "@toss/emotion-utils";
 import { useState } from "react";
+import { FilledButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SelectEatingHabit } from "~/components/Section";
+import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useSetNavigation } from "~/hooks";
 
 const ProfileEditEatingHabits = () => {
@@ -40,6 +43,34 @@ const ProfileEditEatingHabits = () => {
           ]);
         }}
       />
+
+      <motion.div
+        variants={defaultSlideFadeInVariants("bottom")}
+        {...framerMocker}
+        css={css`
+          ${position("fixed", {
+            bottom: theme.dimensions.bottomNavigationHeight + 34,
+            left: 0,
+            right: 0
+          })}
+          ${flex({ justify: "center" })}
+        `}
+      >
+        <FilledButton
+          width={278}
+          height={37}
+          bgColor={theme.colors.primary}
+          onClick={() => console.log("식습관 수정처리")}
+        >
+          <Text
+            _fontSize={17}
+            _color={theme.colors.white}
+            weight={theme.weighs.semiBold}
+          >
+            Save
+          </Text>
+        </FilledButton>
+      </motion.div>
     </SafeArea>
   );
 };

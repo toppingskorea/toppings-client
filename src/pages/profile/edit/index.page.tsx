@@ -1,4 +1,5 @@
 import { css, useTheme } from "@emotion/react";
+import { motion } from "framer-motion";
 import { avatar } from "@images/profile";
 import { Exit, OrangePlus } from "@svgs/common";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
@@ -18,9 +19,9 @@ import {
 import axios from "axios";
 import type { GetServerSideProps } from "next";
 import Image from "next/image";
-import { ComponentWithLabel, Input } from "~/components/Common";
+import { ComponentWithLabel, FilledButton, Input } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import { env } from "~/constants";
+import { defaultSlideFadeInVariants, env, framerMocker } from "~/constants";
 import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
 import { useFetchUserInfo } from "~/queries/profile";
 import Keys from "~/queries/profile/keys";
@@ -128,6 +129,33 @@ const ProfileEdit = () => {
             </Flex>
           </ComponentWithLabel>
         </Stack.Vertical>
+        <motion.div
+          variants={defaultSlideFadeInVariants("bottom")}
+          {...framerMocker}
+          css={css`
+            ${position("fixed", {
+              bottom: theme.dimensions.bottomNavigationHeight + 34,
+              left: 0,
+              right: 0
+            })}
+            ${flex({ justify: "center" })}
+          `}
+        >
+          <FilledButton
+            width={278}
+            height={37}
+            bgColor={theme.colors.primary}
+            onClick={() => console.log("회원정보수정 처리하기")}
+          >
+            <Text
+              _fontSize={17}
+              _color={theme.colors.white}
+              weight={theme.weighs.semiBold}
+            >
+              Register
+            </Text>
+          </FilledButton>
+        </motion.div>
       </section>
     </SafeArea>
   );
