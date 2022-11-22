@@ -1,12 +1,13 @@
 import { css, useTheme } from "@emotion/react";
+import { Exit } from "@svgs/common";
 import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
-import { Text } from "~/components/Common/Typo";
 import { SearchNationality } from "~/components/Section";
+import { Text } from "~/components/Common/Typo";
 import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
 import { useRegisterState } from "~/recoil/atoms";
 
-const RegisterNationality = () => {
+const ProfileEditNationality = () => {
   const router = useInternalRouter();
   const theme = useTheme();
   const [register, setRegister] = useRegisterState();
@@ -17,8 +18,10 @@ const RegisterNationality = () => {
         <Text _fontSize={23} weight={theme.weighs.bold}>
           Select a Nationality
         </Text>
-      )
-    }
+      ),
+      right: <Exit />
+    },
+    bottom: true
   });
 
   const { props: keyword, setValue } = useInput({});
@@ -36,7 +39,9 @@ const RegisterNationality = () => {
       <div
         css={css`
           ${padding({ x: 16, y: 22 })};
-          ${position("fixed", { bottom: 0 })}
+          ${position("fixed", {
+            bottom: theme.dimensions.bottomNavigationHeight
+          })}
           background-color: ${theme.colors.white};
           max-width: ${theme.dimensions.viewWidth - 32}px;
           ${width100}
@@ -53,4 +58,4 @@ const RegisterNationality = () => {
   );
 };
 
-export default RegisterNationality;
+export default ProfileEditNationality;

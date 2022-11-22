@@ -3,14 +3,12 @@ declare module Common {
   // eslint-disable-next-line @typescript-eslint/ban-types
   type NotNullishValue = {};
   type TransformOrigin = "top" | "right" | "bottom" | "left";
+  type EatingHabit = "Diet" | "Religion";
 }
 declare module Util {
   type SingleOrArray<T> = T | T[];
 }
 
-declare module Register {
-  type EatingHabit = "Diet" | "Religion";
-}
 declare module Route {
   type Path =
     | "/"
@@ -21,6 +19,8 @@ declare module Route {
     | "/search/local"
     | "/profile"
     | "/profile/edit"
+    | "/profile/edit/nationality"
+    | "/profile/edit/eatingHabits"
     | "/post"
     | "/post/add"
     | "/notice"
@@ -34,7 +34,7 @@ declare module Profile {
     name: string;
     country: string;
     habits: {
-      title: string;
+      title: Common.EatingHabit;
       content: string;
     }[];
   }

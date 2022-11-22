@@ -1,28 +1,17 @@
 import { css, useTheme } from "@emotion/react";
-import {
-  Flex,
-  flex,
-  gutter,
-  padding,
-  position,
-  SafeArea,
-  size,
-  Spacing
-} from "@toss/emotion-utils";
+import { Flex, gutter, position, SafeArea, size } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import { useCallback } from "react";
 import { check } from "~/assets/json";
 import { Badge } from "~/components/Common";
-import { OrangeTypo, Text } from "~/components/Common/Typo";
-import { Tag } from "~/components/Register/eatingHabits";
+import { Text } from "~/components/Common/Typo";
+import { SelectEatingHabit } from "~/components/Section";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
-import { diets, religions } from "~/constants/data/common";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useRegister } from "~/mutations/register";
 import { useRegisterState } from "~/recoil/atoms";
-import habitTitleList from "./eatingHabits.constants";
 
 const EatingHabits = () => {
   const router = useInternalRouter();
@@ -102,50 +91,21 @@ const EatingHabits = () => {
 
   return (
     <SafeArea>
-      <section
-        css={css`
-          ${flex({ direction: "column" })}
-          ${padding({ x: 30 })}
-          ${gutter({ direction: "vertical", space: 39 })}
-        `}
-      >
-        {habitTitleList.map(habit => (
-          <Flex direction="column" key={habit}>
-            <OrangeTypo>{habit}</OrangeTypo>
-            <Spacing size={13} />
-            <ul
-              css={css`
-                display: flex;
-                flex-wrap: wrap;
-                column-gap: 2px;
-                row-gap: 6px;
-              `}
-            >
-              {(habit === "Diet" ? diets : religions).map(content => (
-                <Tag
-                  key={content}
-                  selected={
-                    !!register.habit?.find(habit => habit.content === content)
-                  }
-                  onClick={() => {
-                    setRegister({
-                      ...register,
-                      habit: [
-                        {
-                          title: habit,
-                          content
-                        }
-                      ]
-                    });
-                  }}
-                >
-                  {content}
-                </Tag>
-              ))}
-            </ul>
-          </Flex>
-        ))}
-      </section>
+      <SelectEatingHabit
+        onClick={(title, content) => {
+          setRegister({
+            ...register,
+            habit: [
+              {
+                title,
+                content
+              }
+            ]
+          });
+        }}
+        habits={register.habit}
+      />
+
       <motion.div
         variants={defaultSlideFadeInVariants("right")}
         {...framerMocker}

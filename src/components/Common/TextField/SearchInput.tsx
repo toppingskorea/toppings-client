@@ -34,7 +34,7 @@ const SearchInput = (props: Props) => {
             <Search />
           </button>
         }
-        absoulteNode={
+        absoluteNode={
           <button
             type="button"
             onClick={() => setValue("")}

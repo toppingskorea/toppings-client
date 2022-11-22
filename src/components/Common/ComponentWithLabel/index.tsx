@@ -1,20 +1,21 @@
 import { useTheme } from "@emotion/react";
 import { Stack } from "@toss/emotion-utils";
 import type { PropsWithChildren } from "react";
-import React from "react";
 import { Text } from "../Typo";
 
 interface Props {
   label: string;
+  gutter?: number;
 }
 
 const ComponentWithLabel = ({
   label,
-  children
-}: Required<PropsWithChildren<Props>>) => {
+  children,
+  gutter
+}: PropsWithChildren<Props>) => {
   const theme = useTheme();
   return (
-    <Stack.Vertical>
+    <Stack.Vertical gutter={gutter}>
       <Text
         _fontSize={16}
         weight={theme.weighs.bold}

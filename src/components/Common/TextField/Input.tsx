@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import type { SerializedStyles } from "@emotion/react";
 import { css, jsx, useTheme } from "@emotion/react";
-import { Flex, width100 } from "@toss/emotion-utils";
+import { Flex, width100, padding as _padding } from "@toss/emotion-utils";
 import type {
   InputHTMLAttributes,
   ReactNode,
@@ -56,18 +57,18 @@ export interface Props extends InputAndTextarea {
   /**
    * 절대위치로 설정하고 싶은 노드입니다.
    */
-  absoulteNode?: ReactNode;
+  absoluteNode?: ReactNode;
 }
 
 const Input = ({
   as = "input",
   value,
   preAppend,
-  padding,
+  padding = _padding({ x: 18 }),
   autoFocus = false,
   onBlur,
   height,
-  absoulteNode,
+  absoluteNode,
   ...props
 }: Props) => {
   const theme = useTheme();
@@ -85,6 +86,7 @@ const Input = ({
     <Flex
       css={css`
         position: relative;
+        ${width100}
       `}
     >
       <>
@@ -108,7 +110,7 @@ const Input = ({
           },
           null
         )}
-        {absoulteNode && <div>{absoulteNode}</div>}
+        {absoluteNode && <>{absoluteNode}</>}
       </>
     </Flex>
   );

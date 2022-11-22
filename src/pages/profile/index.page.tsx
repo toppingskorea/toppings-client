@@ -11,10 +11,10 @@ import {
   Spacing,
   Stack
 } from "@toss/emotion-utils";
+import axios from "axios";
 import { motion } from "framer-motion";
 import type { GetServerSideProps } from "next";
 import Image from "next/image";
-import { getUserInfo } from "~/apis";
 import {
   ComponentWithLabel,
   FilledButton,
@@ -24,6 +24,7 @@ import { Text } from "~/components/Common/Typo";
 import { LabelWithEllipse } from "~/components/Profile";
 import {
   defaultSlideFadeInVariants,
+  env,
   framerMocker,
   staggerOne
 } from "~/constants";
@@ -79,7 +80,7 @@ const Profile = () => {
           </motion.ul>
         </Stack.Horizontal>
         <Spacing size={58} />
-        <ComponentWithLabel label="Nationality">
+        <ComponentWithLabel label="Nationality" gutter={11}>
           <RoundedTag
             paddingX={20}
             defaultProps={{
@@ -93,7 +94,7 @@ const Profile = () => {
           </RoundedTag>
         </ComponentWithLabel>
         <Spacing size={26} />
-        <ComponentWithLabel label="Eating habit">
+        <ComponentWithLabel label="Eating habit" gutter={11}>
           <RoundedTag
             paddingX={20}
             defaultProps={{
@@ -140,9 +141,20 @@ const Profile = () => {
 
 export default Profile;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async context => {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(Keys.user(), getUserInfo);
+
+  await queryClient.prefetchQuery(Keys.user(), async () => {
+    const { data } = await axios.get<{ data: Profile.UserDTO }>(
+      `${env.TOPPINGS_SERVER_URL}/user`,
+      {
+        headers: {
+          Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`
+        }
+      }
+    );
+    return data.data;
+  });
 
   return {
     props: {

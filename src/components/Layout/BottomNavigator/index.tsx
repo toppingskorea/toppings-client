@@ -13,6 +13,7 @@ const BottomNavigator = () => {
       css={css`
         ${position("fixed", { bottom: 0 })};
         ${width100}
+        background-color: ${theme.colors.white};
         max-width: inherit;
         height: ${theme.dimensions.bottomNavigationHeight}px;
 
