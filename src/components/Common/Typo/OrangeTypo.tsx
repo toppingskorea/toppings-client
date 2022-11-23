@@ -9,6 +9,7 @@ const OrangeTypo = (
   >
 ) => {
   const theme = useTheme();
+
   return (
     <Text
       weight={theme.weighs.bold}
