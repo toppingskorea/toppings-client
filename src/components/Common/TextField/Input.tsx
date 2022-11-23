@@ -62,11 +62,9 @@ export interface Props extends InputAndTextarea {
 
 const Input = ({
   as = "input",
-  value,
   preAppend,
   padding = _padding({ x: 18 }),
   autoFocus = false,
-  onBlur,
   height,
   absoluteNode,
   ...rest
@@ -104,8 +102,6 @@ const Input = ({
               border-radius: 10px;
             `,
             ref: inputRef,
-            onBlur,
-            value,
             ...rest
           },
           null
