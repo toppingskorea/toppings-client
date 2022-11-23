@@ -1,2 +1,2 @@
-const religions = ["Buddhism", "Hinduism", "Islam"];
+const religions = ["Buddhism", "Hinduism", "Islam"] as const;
 export default religions;
