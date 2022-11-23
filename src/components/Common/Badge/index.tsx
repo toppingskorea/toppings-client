@@ -4,8 +4,7 @@ import { useMemo } from "react";
 import { Text } from "../Typo";
 
 interface Props {
-  width?: number;
-  height?: number;
+  size: Parameters<typeof size>[0];
   paddingLeft?: number;
   _fontSize?: number;
   children: string;
@@ -16,8 +15,7 @@ interface Props {
 
 const Badge = ({
   children,
-  width = 128,
-  height = 37,
+  size: _size = { width: 128, height: 37 },
   paddingLeft = 22,
   _fontSize = 18,
   attach
@@ -30,7 +28,7 @@ const Badge = ({
     <Flex
       align="center"
       css={css`
-        ${size({ width, height })}
+        ${size(_size)}
         ${padding({ left: paddingLeft })}
         ${touchable}
         border-radius: ${isLeft ? `0 10px 10px  0` : `10px 0 0  10px`};
