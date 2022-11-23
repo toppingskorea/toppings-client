@@ -9,7 +9,6 @@ import {
   useRef,
   useState
 } from "react";
-import { useInternalRouter } from "~/hooks";
 
 type Value = {
   scrollContainerRef: RefObject<HTMLDivElement>;
@@ -23,7 +22,6 @@ export const useScrollContainer = () => useContext(Context);
 
 const ScrollContainer = ({ children }: PropsWithChildren) => {
   const ref = useRef<HTMLDivElement>(null);
-  const router = useInternalRouter();
 
   const [height, setHeight] = useState<number>(0);
 
