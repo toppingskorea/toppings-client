@@ -7,11 +7,11 @@ const useMapEvent = (
 ) => {
   // eslint-disable-next-line consistent-return
   useEffect(() => {
-    if (target) {
-      kakao.maps.event.addListener(target, type, handler);
+    if (target) kakao.maps.event.addListener(target, type, handler);
 
-      return () => kakao.maps.event.removeListener(target, type, handler);
-    }
+    return () => {
+      if (target) kakao.maps.event.removeListener(target, type, handler);
+    };
   }, [handler, target, type]);
 };
 
