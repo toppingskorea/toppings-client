@@ -11,6 +11,7 @@ const Tag = ({
   "children" | "selected" | "onClick"
 >) => {
   const theme = useTheme();
+
   return (
     <ClickableRoundedTag
       _fontSize={15}

@@ -7,7 +7,9 @@ interface Props extends HTMLAttributes<HTMLSpanElement> {
   _fontSize: number;
   textAlign?: CSSProperties["textAlign"];
   weight?: Util.ValueOf<typeof emotionTheme.weighs>;
-  _color?: Util.ValueOf<typeof emotionTheme.colors>;
+  _color?:
+    | Util.ValueOf<typeof emotionTheme.colors>
+    | Util.ValueOf<typeof emotionTheme.colors.secondary>;
   whiteSpace?: CSSProperties["whiteSpace"];
   lineHeight?: number;
   letterSpacing?: number;

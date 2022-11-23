@@ -4,7 +4,9 @@ import type { emotionTheme } from "~/styles";
 import { Button } from ".";
 
 interface Props extends ComponentProps<typeof Button> {
-  bgColor?: Util.ValueOf<typeof emotionTheme.colors>;
+  bgColor?:
+    | Util.ValueOf<typeof emotionTheme.colors>
+    | Util.ValueOf<typeof emotionTheme.colors.secondary>;
 }
 
 const FilledButton = ({ children, bgColor, ...rest }: Props) => {
