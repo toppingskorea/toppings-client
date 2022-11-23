@@ -12,6 +12,7 @@ interface Props extends ComponentProps<typeof Input> {
 const SearchInput = (props: Props) => {
   const { onSubmit, setValue, value, ...rest } = props;
   const theme = useTheme();
+
   return (
     <div
       css={css`
