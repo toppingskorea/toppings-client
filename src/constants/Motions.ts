@@ -1,5 +1,5 @@
 import type { Variants } from "framer-motion";
-import { unknownCheck } from "~/utils";
+import { neverChecker } from "~/utils";
 
 export const defaultEasing = [0.6, -0.05, 0.01, 0.99];
 
@@ -52,7 +52,7 @@ const generateVariantFromTransformOrigin = (origin: Common.TransformOrigin) => {
         x: "-100%"
       };
     default:
-      return unknownCheck(origin);
+      return neverChecker(origin);
   }
 };
 
