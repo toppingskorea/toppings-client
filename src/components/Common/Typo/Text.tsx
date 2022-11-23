@@ -1,12 +1,13 @@
 import { css } from "@emotion/react";
 import type { CSSProperties, HTMLAttributes } from "react";
 import React from "react";
+import { emotionTheme } from "~/styles";
 
 interface Props extends HTMLAttributes<HTMLSpanElement> {
   _fontSize: number;
   textAlign?: CSSProperties["textAlign"];
-  weight?: number;
-  _color?: string;
+  weight?: Util.ValueOf<typeof emotionTheme.weighs>;
+  _color?: Util.ValueOf<typeof emotionTheme.colors>;
   whiteSpace?: CSSProperties["whiteSpace"];
   lineHeight?: number;
   letterSpacing?: number;
@@ -15,8 +16,8 @@ interface Props extends HTMLAttributes<HTMLSpanElement> {
 const Text = ({
   _fontSize,
   textAlign = "left",
-  weight = 400,
-  _color = "#000",
+  weight = emotionTheme.weighs.normal,
+  _color = emotionTheme.colors.black,
   whiteSpace,
   lineHeight,
   letterSpacing,
