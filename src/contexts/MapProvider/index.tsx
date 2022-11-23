@@ -7,9 +7,8 @@ import {
   useState,
   type RefObject
 } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { currentLocationAtom } from "~/recoil/atoms";
-import { mapBoundsAtom } from "~/recoil/atoms/map";
+import { useCurrentLocationValue } from "~/recoil/atoms";
+import { useMapBoundsSetter } from "~/recoil/atoms/map";
 
 const Context = createContext({
   map: null,
@@ -22,8 +21,8 @@ const Context = createContext({
 export const useMap = () => useContext(Context);
 
 export const MapProvider = ({ children }: Util.PropsWithChild) => {
-  const currentLocation = useRecoilValue(currentLocationAtom);
-  const setMapBounds = useSetRecoilState(mapBoundsAtom);
+  const currentLocation = useCurrentLocationValue();
+  const setMapBounds = useMapBoundsSetter();
   const mapRef = useRef<HTMLDivElement>(null);
   const [kakaoMap, setKakaoMap] = useState<kakao.maps.Map | null>(null);
 

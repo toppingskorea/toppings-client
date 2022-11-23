@@ -1,8 +1,10 @@
 /* eslint-disable import/prefer-default-export */
-import { atom } from "recoil";
+import { atom, useSetRecoilState } from "recoil";
 
 // ha: west oa: east pa: south qa: north 순서
-export const mapBoundsAtom = atom<kakao.maps.LatLngBounds | null>({
+const mapBoundsAtom = atom<kakao.maps.LatLngBounds | null>({
   key: "mapBounds",
   default: null
 });
+
+export const useMapBoundsSetter = () => useSetRecoilState(mapBoundsAtom);

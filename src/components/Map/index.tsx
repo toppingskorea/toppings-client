@@ -1,13 +1,12 @@
 import { css } from "@emotion/react";
 import { useCallback } from "react";
-import { useSetRecoilState } from "recoil";
 import { useMap } from "~/contexts";
-import { mapBoundsAtom } from "~/recoil/atoms/map";
+import { useMapBoundsSetter } from "~/recoil/atoms";
 import MyLocationButton from "./Button";
 import useMapEvent from "./Map.hooks";
 
 const Map = ({ children }: Util.PropsWithChild) => {
-  const setMapBounds = useSetRecoilState(mapBoundsAtom);
+  const setMapBounds = useMapBoundsSetter();
   const { map, mapRef } = useMap();
 
   const mapEventHandler = useCallback(() => {

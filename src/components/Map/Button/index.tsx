@@ -1,9 +1,8 @@
-import { useSetRecoilState } from "recoil";
 import { defaultLocation } from "~/constants";
-import { withCurrentLocation } from "~/recoil/selectors";
+import { useCurrentLocationSetter } from "~/recoil/atoms";
 
 const MyLocationButton = () => {
-  const setCurrentLocation = useSetRecoilState(withCurrentLocation);
+  const setCurrentLocation = useCurrentLocationSetter();
 
   const success: PositionCallback = ({
     coords: { latitude, longitude }
