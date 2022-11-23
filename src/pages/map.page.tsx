@@ -4,7 +4,7 @@ import Map from "~/components/Map";
 import { defaultScaleChangeVariants } from "~/constants";
 import { MapProvider } from "~/contexts";
 
-export default () => {
+const MapPage = () => {
   return (
     <MapProvider>
       <Map>
@@ -26,3 +26,5 @@ export default () => {
     </MapProvider>
   );
 };
+
+export default MapPage;
