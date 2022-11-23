@@ -69,7 +69,7 @@ const Input = ({
   onBlur,
   height,
   absoluteNode,
-  ...props
+  ...rest
 }: Props) => {
   const theme = useTheme();
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -106,7 +106,7 @@ const Input = ({
             ref: inputRef,
             onBlur,
             value,
-            ...props
+            ...rest
           },
           null
         )}

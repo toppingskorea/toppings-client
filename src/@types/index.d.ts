@@ -7,6 +7,7 @@ declare module Common {
 }
 declare module Util {
   type SingleOrArray<T> = T | T[];
+  type ValueOf<T> = T[keyof T];
 }
 
 declare module Route {
