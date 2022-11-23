@@ -29,9 +29,7 @@ const ScrollContainer = ({ children }: PropsWithChildren) => {
   const scrollContainerWidth = ref.current?.getClientRects()[0].width ?? 0;
 
   useEffect(() => {
-    const handleResize = () => {
-      setHeight(window.innerHeight);
-    };
+    const handleResize = () => setHeight(window.innerHeight);
 
     handleResize();
 
