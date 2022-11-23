@@ -9,14 +9,12 @@ const setRequest = async (
   config: AxiosRequestConfig,
   contentType = "application/json"
 ) => {
-  if (config) {
-    if (config.headers)
-      // eslint-disable-next-line no-param-reassign
-      config.headers = {
-        Authorization: `Bearer ${getCookieToken()}`,
-        ContentType: contentType
-      };
-  }
+  if (config && config.headers)
+    // eslint-disable-next-line no-param-reassign
+    config.headers = {
+      Authorization: `Bearer ${getCookieToken()}`,
+      ContentType: contentType
+    };
 
   return config;
 };
