@@ -8,6 +8,7 @@ import navList from "./BottomNavigator.constants";
 const BottomNavigator = () => {
   const theme = useTheme();
   const { asPath } = useInternalRouter();
+
   return (
     <nav
       css={css`
