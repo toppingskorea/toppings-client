@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { Text } from "../Typo";
 
 interface Props {
-  size: Parameters<typeof size>[0];
+  size?: Parameters<typeof size>[0];
   paddingLeft?: number;
   _fontSize?: number;
   children: string;

@@ -71,7 +71,13 @@ const Onboarding = () => {
             </Text>
           </Flex>
           <motion.div whileTap={{ scale: 0.9 }}>
-            <FilledButton width={106} height={33} onClick={onLoginHandler}>
+            <FilledButton
+              size={{
+                width: 106,
+                height: 33
+              }}
+              onClick={onLoginHandler}
+            >
               <Text
                 _fontSize={15}
                 _color={theme.colors.secondary["73"]}

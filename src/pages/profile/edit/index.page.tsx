@@ -142,8 +142,10 @@ const ProfileEdit = () => {
           `}
         >
           <FilledButton
-            width={278}
-            height={37}
+            size={{
+              width: 278,
+              height: 37
+            }}
             bgColor={theme.colors.primary}
             onClick={() => console.log("회원정보수정 처리하기")}
           >

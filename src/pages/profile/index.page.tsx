@@ -120,8 +120,10 @@ const Profile = () => {
           `}
         >
           <FilledButton
-            width={278}
-            height={37}
+            size={{
+              width: 278,
+              height: 37
+            }}
             bgColor={theme.colors.primary}
             onClick={() => router.push("/profile/edit")}
           >

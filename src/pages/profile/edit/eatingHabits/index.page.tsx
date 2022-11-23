@@ -57,8 +57,10 @@ const ProfileEditEatingHabits = () => {
         `}
       >
         <FilledButton
-          width={278}
-          height={37}
+          size={{
+            width: 278,
+            height: 37
+          }}
           bgColor={theme.colors.primary}
           onClick={() => console.log("식습관 수정처리")}
         >

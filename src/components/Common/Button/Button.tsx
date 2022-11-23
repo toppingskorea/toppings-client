@@ -3,18 +3,15 @@ import { size, touchable } from "@toss/emotion-utils";
 import type { ButtonHTMLAttributes } from "react";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  width: number;
-  height: number;
+  size: Parameters<typeof size>[0];
 }
 
-const Button = (props: Props) => {
-  const { children, width, height, ...rest } = props;
-
+const Button = ({ children, size: _size, ...rest }: Props) => {
   return (
     <button
       type="button"
       css={css`
-        ${size({ width, height })}
+        ${size(_size)}
         border-radius: 100px;
         ${touchable}
       `}
