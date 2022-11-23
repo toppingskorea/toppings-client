@@ -90,4 +90,4 @@ export const framerMocker = {
   initial: "initial",
   animate: "animate",
   exit: "exit"
-};
+} as const;
