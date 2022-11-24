@@ -1,7 +1,5 @@
-import React from "react";
-
-const Regirect = () => {
+const Redirect = () => {
   return <div>로딩</div>;
 };
 
-export default Regirect;
+export default Redirect;

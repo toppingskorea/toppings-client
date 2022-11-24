@@ -1,13 +1,16 @@
 declare module Common {
   type CSSPixelValue = string | number;
+  type TransformOrigin = "top" | "right" | "bottom" | "left";
   // eslint-disable-next-line @typescript-eslint/ban-types
   type NotNullishValue = {};
   type TransformOrigin = "top" | "right" | "bottom" | "left";
   type EatingHabit = "Diet" | "Religion";
 }
+
 declare module Util {
   type SingleOrArray<T> = T | T[];
   type ValueOf<T> = T[keyof T];
+  type PropsWithChild<P = unknown> = P & { children: JSX.Element };
 }
 
 declare module Route {
@@ -39,4 +42,22 @@ declare module Profile {
       content: string;
     }[];
   }
+}
+
+declare module Map {
+  type EventsType =
+    | "center_changed"
+    | "zoom_start"
+    | "zoom_changed"
+    | "bounds_changed"
+    | "click"
+    | "dblclick"
+    | "rightclick"
+    | "mousemove"
+    | "dragstart"
+    | "drag"
+    | "dragend"
+    | "idle"
+    | "tilesloaded"
+    | "maptypeid_changed";
 }

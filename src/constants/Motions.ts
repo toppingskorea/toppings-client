@@ -85,7 +85,6 @@ export const defaultSlideFadeInVariants = (
     }
   };
 };
-
 export const framerMocker = {
   initial: "initial",
   animate: "animate",

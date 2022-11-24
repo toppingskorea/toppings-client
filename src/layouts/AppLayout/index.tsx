@@ -1,12 +1,11 @@
 import { css } from "@emotion/react";
 import { flex, height100 } from "@toss/emotion-utils";
-import type { PropsWithChildren } from "react";
 import { PageLoader, ScrollContainer } from "~/components/Common";
 import { TopNavigator } from "~/components/Layout";
 import BottomNavigator from "~/components/Layout/BottomNavigator";
 import { useNavigationValue } from "~/recoil/atoms";
 
-const AppLayout = ({ children }: PropsWithChildren) => {
+const AppLayout = ({ children }: Util.PropsWithChild) => {
   const state = useNavigationValue();
 
   return (

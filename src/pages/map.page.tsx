@@ -1,22 +1,30 @@
-import { useEffect } from "react";
-import { Exit } from "~/assets/svgs/common";
-import { Text } from "~/components/Common/Typo";
-import { useNavigationSetter } from "~/recoil/atoms";
+import { css } from "@emotion/react";
+import { motion } from "framer-motion";
+import Map from "~/components/Map";
+import { defaultScaleChangeVariants } from "~/constants";
+import { MapProvider } from "~/contexts";
 
-const Map = () => {
-  const setter = useNavigationSetter();
-
-  useEffect(() => {
-    setter({
-      top: {
-        right: <Exit />,
-        title: <Text _fontSize={24}>Map</Text>
-      },
-      bottom: true
-    });
-  }, [setter]);
-
-  return <div>map</div>;
+const MapPage = () => {
+  return (
+    <MapProvider>
+      <Map>
+        <motion.div
+          initial="initial"
+          animate="animate"
+          whileHover="whileHover"
+          variants={defaultScaleChangeVariants}
+          css={css`
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 10;
+          `}
+        >
+          <Map.MyLocationButton />
+        </motion.div>
+      </Map>
+    </MapProvider>
+  );
 };
 
-export default Map;
+export default MapPage;

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Text } from "~/components/Common/Typo";
 import { useTokenCookie } from "~/hooks";
 
-const Index = () => {
+const IndexPage = () => {
   const theme = useTheme();
   const tokenCookie = useTokenCookie();
 
@@ -71,4 +71,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default IndexPage;

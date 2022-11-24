@@ -8,15 +8,11 @@ interface ContextProps {
 }
 const Context = createContext<ContextProps>({} as ContextProps);
 
-interface Props {
-  children: JSX.Element;
-}
-
 const sendPageView = (pathname: string) => {
   GA.send({ hitType: "pageview", page: pathname });
 };
 
-const AnalyticsProvider = ({ children }: Props) => {
+const AnalyticsProvider = ({ children }: Util.PropsWithChild) => {
   const router = useRouter();
 
   useEffect(
