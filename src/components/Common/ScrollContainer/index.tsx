@@ -19,11 +19,7 @@ const Context = createContext({} as Value);
 
 export const useScrollContainer = () => useContext(Context);
 
-interface Props {
-  children: JSX.Element;
-}
-
-const ScrollContainer = ({ children }: Props) => {
+const ScrollContainer = ({ children }: Util.PropsWithChild) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const theme = useTheme();

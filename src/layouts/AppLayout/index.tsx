@@ -1,11 +1,7 @@
 import { css, useTheme } from "@emotion/react";
 import { ScrollContainer } from "~/components/Common";
 
-interface Props {
-  children: Util.SingleOrArray<JSX.Element>;
-}
-
-const AppLayout = ({ children }: Props) => {
+const AppLayout = ({ children }: Util.PropsWithChild) => {
   const theme = useTheme();
   return (
     <ScrollContainer>
@@ -14,7 +10,7 @@ const AppLayout = ({ children }: Props) => {
           display: flex;
           flex-direction: column;
           flex: 1;
-          background-color: ${theme.colors.black};
+          background-color: ${theme.colors.white};
         `}
       >
         {children}

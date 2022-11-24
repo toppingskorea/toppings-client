@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
 export { default as AnalyticsProvider } from "./AnalyticsProvider";
+export { MapProvider, useMap } from "./MapProvider";
