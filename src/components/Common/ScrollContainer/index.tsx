@@ -1,5 +1,6 @@
-import { css, useTheme } from "@emotion/react";
-import type { RefObject } from "react";
+import { css } from "@emotion/react";
+import { flex, height100 } from "@toss/emotion-utils";
+import type { PropsWithChildren, RefObject } from "react";
 import {
   createContext,
   useContext,
@@ -19,10 +20,8 @@ const Context = createContext({} as Value);
 
 export const useScrollContainer = () => useContext(Context);
 
-const ScrollContainer = ({ children }: Util.PropsWithChild) => {
+const ScrollContainer = ({ children }: PropsWithChildren) => {
   const ref = useRef<HTMLDivElement>(null);
-
-  const theme = useTheme();
 
   const [height, setHeight] = useState<number>(0);
 
@@ -55,17 +54,13 @@ const ScrollContainer = ({ children }: Util.PropsWithChild) => {
         ref={ref}
         id="scrolled-container"
         css={css`
-          display: flex;
-          flex-direction: column;
+          ${flex({ direction: "column" })}
+          ${height100}
           position: relative;
           overflow-x: hidden;
-          max-width: 560px;
-          background-color: ${theme.colors.white};
-          margin: auto;
-          height: ${`${height}`}px;
 
           ::-webkit-scrollbar {
-            width: 0px;
+            width: 0;
           }
         `}
       >

@@ -1,7 +1,7 @@
 import { useTheme } from "@emotion/react";
 import { Flex, Stack } from "@toss/emotion-utils";
 import Link from "next/link";
-import { Text } from "~/constants";
+import { Text } from "~/components/Common/Typo";
 import { useTokenCookie } from "~/hooks";
 
 const IndexPage = () => {

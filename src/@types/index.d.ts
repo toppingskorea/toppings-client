@@ -3,10 +3,13 @@ declare module Common {
   type TransformOrigin = "top" | "right" | "bottom" | "left";
   // eslint-disable-next-line @typescript-eslint/ban-types
   type NotNullishValue = {};
+  type TransformOrigin = "top" | "right" | "bottom" | "left";
+  type EatingHabit = "Diet" | "Religion";
 }
 
 declare module Util {
   type SingleOrArray<T> = T | T[];
+  type ValueOf<T> = T[keyof T];
   type PropsWithChild<P = unknown> = P & { children: JSX.Element };
 }
 
@@ -19,7 +22,26 @@ declare module Route {
     | "/search/restaurant"
     | "/search/local"
     | "/profile"
-    | "/text";
+    | "/profile/edit"
+    | "/profile/edit/nationality"
+    | "/profile/edit/eatingHabits"
+    | "/post"
+    | "/post/add"
+    | "/notice"
+    | "/register/nationality"
+    | "/register/eatingHabits";
+}
+
+declare module Profile {
+  interface UserDTO {
+    id: number;
+    name: string;
+    country: string;
+    habits: {
+      title: Common.EatingHabit;
+      content: string;
+    }[];
+  }
 }
 
 declare module Map {

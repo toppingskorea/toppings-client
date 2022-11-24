@@ -3,6 +3,14 @@ import { neverChecker } from "~/utils";
 
 export const defaultEasing = [0.6, -0.05, 0.01, 0.99];
 
+export const staggerOne: Variants = {
+  animate: { transition: { staggerChildren: 0.1 } }
+};
+
+export const staggerHalf: Variants = {
+  animate: { transition: { staggerChildren: 0.05 } }
+};
+
 export const defaultFadeInVariants: Variants = {
   initial: {
     opacity: 0,
@@ -77,3 +85,8 @@ export const defaultSlideFadeInVariants = (
     }
   };
 };
+export const framerMocker = {
+  initial: "initial",
+  animate: "animate",
+  exit: "exit"
+} as const;

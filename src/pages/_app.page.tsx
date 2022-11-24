@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@emotion/react";
+import { Inter } from "@next/font/google";
 import * as Sentry from "@sentry/nextjs";
 import {
   Hydrate,
@@ -6,7 +7,7 @@ import {
   QueryClientProvider,
   type DehydratedState
 } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { OverlayProvider } from "@toss/use-overlay";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import { env } from "~/constants";
@@ -14,7 +15,8 @@ import { AnalyticsProvider } from "~/contexts";
 import { useSentry } from "~/hooks";
 import AppLayout from "~/layouts/AppLayout";
 import { emotionTheme, GlobalCSS } from "~/styles";
-import "../styles/font-face.css";
+
+const inter = Inter();
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -49,16 +51,18 @@ function MyApp({
       <Hydrate state={pageProps.dehydratedState}>
         <RecoilRoot>
           <ThemeProvider theme={emotionTheme}>
-            <GlobalCSS />
+            <GlobalCSS font={inter.style.fontFamily} />
             <AnalyticsProvider>
-              <AppLayout>
-                <Component {...pageProps} />
-              </AppLayout>
+              <OverlayProvider>
+                <AppLayout>
+                  <Component {...pageProps} />
+                </AppLayout>
+              </OverlayProvider>
             </AnalyticsProvider>
           </ThemeProvider>
         </RecoilRoot>
       </Hydrate>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );
 }

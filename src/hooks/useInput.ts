@@ -71,18 +71,19 @@ const useInput = ({
   );
 
   return {
-    value,
+    props: {
+      value,
+      /**
+       * input 요소의 onChange 를 처리하는 함수입니다.
+       *
+       * ```js
+       * <input value={...} onChange={onChange} />
+       * ```
+       */
+      onChange
+    },
 
     setValue: handleSetValue,
-
-    /**
-     * input 요소의 onChange 를 처리하는 함수입니다.
-     *
-     * ```js
-     * <input value={...} onChange={onChange} />
-     * ```
-     */
-    onChange,
 
     /**
      * value를 debounce한 string입니다.

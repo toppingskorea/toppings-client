@@ -1,7 +1,7 @@
 import { useTheme } from "@emotion/react";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useEffect, useState } from "react";
-import { Text } from "~/constants";
+import { Text } from "~/components/Common/Typo";
 import { useInput } from "~/hooks";
 import { neverChecker } from "~/utils";
 
@@ -12,7 +12,7 @@ const Search = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const theme = useTheme();
 
-  const { value, debouncedValue, onChange } = useInput({
+  const { props: keyword, debouncedValue } = useInput({
     useDebounce: true,
     debounceTimeout: 300
   });
@@ -52,7 +52,7 @@ const Search = ({
 
   return (
     <div>
-      <input value={value} onChange={onChange} />
+      <input {...keyword} />
       <div>
         {data.map(item => (
           <div>

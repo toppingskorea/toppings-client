@@ -1,23 +1,35 @@
-import { css, useTheme } from "@emotion/react";
-import { ScrollContainer } from "~/components/Common";
+import { css } from "@emotion/react";
+import { flex, height100 } from "@toss/emotion-utils";
+import { PageLoader, ScrollContainer } from "~/components/Common";
+import { TopNavigator } from "~/components/Layout";
+import BottomNavigator from "~/components/Layout/BottomNavigator";
+import { useNavigationValue } from "~/recoil/atoms";
 
 const AppLayout = ({ children }: Util.PropsWithChild) => {
-  const theme = useTheme();
+  const state = useNavigationValue();
+
   return (
-    <ScrollContainer>
-      <main
-        css={css`
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          background-color: ${theme.colors.white};
-        `}
-      >
-        {children}
-      </main>
-      {/* TODO: 추후 로딩 라우팅시 프로그레스 추가 필요  */}
-      {/* <PageLoader /> */}
-    </ScrollContainer>
+    <div
+      css={css`
+        max-width: 560px;
+        margin: 0 auto;
+        height: 100vh;
+      `}
+    >
+      <ScrollContainer>
+        {!!state.top && <TopNavigator />}
+        <main
+          css={css`
+            ${flex({ direction: "column" })}
+            ${height100}
+          `}
+        >
+          {children}
+        </main>
+        <PageLoader />
+      </ScrollContainer>
+      {!!state.bottom && <BottomNavigator />}
+    </div>
   );
 };
 export default AppLayout;
