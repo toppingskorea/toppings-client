@@ -1,15 +1,13 @@
 import styled from "@emotion/styled";
+import { size as _size } from "@toss/emotion-utils";
 import Base from "./Base";
 
 interface Props {
-  width: Common.CSSPixelValue;
-  height: Common.CSSPixelValue;
+  size: Parameters<typeof _size>[0];
 }
 
 const Box = styled(Base)<Props>`
-  width: ${({ width }) => (typeof width === "number" ? `${width}px` : width)};
-  height: ${({ height }) =>
-    typeof height === "number" ? `${height}px` : height};
+  ${({ size }) => _size(size)}
 `;
 
 export default Box;

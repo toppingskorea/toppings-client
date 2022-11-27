@@ -44,8 +44,10 @@ const Paragraph = ({
       if (index === line - 1) {
         return (
           <Box
-            width={`${lastLineWidthRandomRatio}%`}
-            height={fontSize}
+            size={{
+              width: `${lastLineWidthRandomRatio}%`,
+              height: fontSize
+            }}
             key={index}
           />
         );
@@ -54,14 +56,24 @@ const Paragraph = ({
       if (!((index + 1) % lineBreak)) {
         return (
           <Box
-            width={`${middleLineWidthRandomRatio}%`}
-            height={fontSize}
+            size={{
+              width: `${middleLineWidthRandomRatio}%`,
+              height: fontSize
+            }}
             key={index}
           />
         );
       }
 
-      return <Box width="100%" height={fontSize} key={index} />;
+      return (
+        <Box
+          size={{
+            width: "100%",
+            height: fontSize
+          }}
+          key={index}
+        />
+      );
     },
     [
       fontSize,

@@ -71,7 +71,6 @@ const Input = ({
 }: Props) => {
   const theme = useTheme();
   const inputRef = useRef<HTMLInputElement | null>(null);
-
   // input auto focus하면서 커서 맨 뒤로 보내기
   useEffect(() => {
     if (!autoFocus) return;
