@@ -4,3 +4,4 @@ export { default as neverChecker } from "./neverChecker";
 export { default as objectKeys } from "./objectKeys";
 export { default as objectEntries } from "./objectEntries";
 export { default as objectValues } from "./objectValues";
+export { default as queryChunk } from "./queryChunk";

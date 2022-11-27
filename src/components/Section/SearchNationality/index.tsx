@@ -1,8 +1,15 @@
 import { css, useTheme } from "@emotion/react";
-import { Flex, flex, gutter, padding, Spacing } from "@toss/emotion-utils";
-import { Fragment, useMemo } from "react";
+import {
+  Flex,
+  flex,
+  gutter,
+  padding,
+  Spacing,
+  touchable
+} from "@toss/emotion-utils";
+import { Fragment, useCallback, useMemo } from "react";
 import { countries } from "~/constants/data/common";
-import { objectEntries, objectKeys, objectValues } from "~/utils";
+import { objectEntries, objectKeys, objectValues, queryChunk } from "~/utils";
 import { OrangeTypo, Text } from "../../Common/Typo";
 
 interface Props {
@@ -28,24 +35,27 @@ const SearchNationality = ({ keyword, onCountryClick }: Props) => {
     return obj;
   }, [keyword]);
 
-  const boldQuery = (str: string, query: string) => {
-    const n = str.toUpperCase();
-    const q = query.toUpperCase();
-    const x = n.indexOf(q);
-    if (!q || x === -1) {
-      return str; // bail early
-    }
-    const l = q.length;
-    return (
-      <>
-        {str.substr(0, x)}
-        <Text _fontSize={16} weight={theme.weighs.bold}>
-          {str.substr(x, l)}
-        </Text>
-        {str.substr(x + l)}
-      </>
-    );
-  };
+  const renderQueriedText = useCallback(
+    (name: string) => {
+      const chunk = queryChunk(name, keyword);
+
+      if (Array.isArray(chunk)) {
+        const [left, _keyword, right] = chunk;
+        return (
+          <>
+            {left}
+            <Text _fontSize={16} weight={theme.weighs.bold}>
+              {_keyword}
+            </Text>
+            {right}
+          </>
+        );
+      }
+
+      return chunk;
+    },
+    [keyword, theme.weighs.bold]
+  );
 
   return (
     <section
@@ -77,8 +87,11 @@ const SearchNationality = ({ keyword, onCountryClick }: Props) => {
                       onClick={() => {
                         onCountryClick(country.name);
                       }}
+                      css={css`
+                        ${touchable}
+                      `}
                     >
-                      {boldQuery(country.name, keyword)}
+                      {renderQueriedText(country.name)}
                     </Text>
                   ))}
                 </Flex>
