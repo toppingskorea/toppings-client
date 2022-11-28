@@ -1,8 +1,8 @@
-import { authRequest } from "~/constants";
+import { authRequest, env } from "~/constants";
 
 export const getUserInfo = async () => {
   const { data } = await authRequest.get<{ data: Profile.UserDTO }>(
-    "/api/user"
+    `${env.TOPPINGS_SERVER_URL}/user`
   );
 
   return data.data;

@@ -1,15 +1,25 @@
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { Flex, flex, padding, size, Stack } from "@toss/emotion-utils";
-import { FilledButton } from "~/components/Common";
+import { useOverlay } from "@toss/use-overlay";
+import axios from "axios";
+import type { GetServerSideProps } from "next";
+import { useCallback } from "react";
+import { FilledButton, SuccessModal } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { UserInfo } from "~/components/Profile/edit";
-import { useSetNavigation } from "~/hooks";
+import { env } from "~/constants";
+import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useUpdateUserInfo } from "~/mutations/profile";
-import { useEditValue } from "~/recoil/atoms/edit";
+import { useFetchUserInfo } from "~/queries/profile";
+import Keys from "~/queries/profile/keys";
+import { useEditValue } from "~/recoil/atoms";
 
 const ProfileEdit = () => {
+  const router = useInternalRouter();
   const theme = useTheme();
+  const overlay = useOverlay();
 
   useSetNavigation({
     top: {
@@ -20,8 +30,37 @@ const ProfileEdit = () => {
     bottom: true
   });
 
+  const { data } = useFetchUserInfo();
   const edit = useEditValue();
-  const { mutate } = useUpdateUserInfo();
+
+  const { mutate } = useUpdateUserInfo({
+    onSuccess: () => {
+      overlay.open(() => <SuccessModal />);
+
+      setTimeout(() => {
+        router.push("/profile");
+      }, 2000);
+    }
+  });
+
+  const onClickRegisterHandler = useCallback(() => {
+    mutate({
+      name: edit.name ?? data.name,
+      country: edit.country ?? data.country,
+      habits: edit.habits ?? data.habits,
+      profile: edit.profile ?? data.profile
+    });
+  }, [
+    data.country,
+    data.habits,
+    data.name,
+    data.profile,
+    edit.country,
+    edit.habits,
+    edit.name,
+    edit.profile,
+    mutate
+  ]);
 
   return (
     <section
@@ -48,7 +87,7 @@ const ProfileEdit = () => {
               height: 37
             }}
             bgColor={theme.colors.primary}
-            onClick={() => mutate(edit)}
+            onClick={onClickRegisterHandler}
           >
             <Text
               _fontSize={17}
@@ -65,3 +104,25 @@ const ProfileEdit = () => {
 };
 
 export default ProfileEdit;
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(Keys.user(), async () => {
+    const { data } = await axios.get<{ data: Profile.UserDTO }>(
+      `${env.TOPPINGS_SERVER_URL}/user`,
+      {
+        headers: {
+          Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`
+        }
+      }
+    );
+    return data.data;
+  });
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient)
+    }
+  };
+};

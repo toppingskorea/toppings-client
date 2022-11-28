@@ -5,12 +5,14 @@ import Image from "next/image";
 import { useId } from "react";
 import { avatar } from "~/assets/images/profile";
 import { OrangePlus } from "~/assets/svgs/common";
-import { useEditState } from "~/recoil/atoms/edit";
+import { useFetchUserInfo } from "~/queries/profile";
+import { useEditState } from "~/recoil/atoms";
 import { imageUploader } from "~/utils";
 
 const ProfileImage = () => {
   const id = useId();
 
+  const { data } = useFetchUserInfo();
   const [edit, setEdit] = useEditState();
 
   return (
@@ -29,7 +31,7 @@ const ProfileImage = () => {
         `}
       >
         <Image
-          src={edit.profile ?? avatar}
+          src={edit.profile || data.profile || avatar}
           alt="dummy"
           width={88}
           height={88}

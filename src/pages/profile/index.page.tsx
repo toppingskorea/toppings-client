@@ -63,7 +63,7 @@ const Profile = () => {
       >
         <Stack.Horizontal align="center" gutter={37}>
           <Image
-            src={data.profile ?? avatar}
+            src={data.profile || avatar}
             alt="dummy"
             width={88}
             height={88}

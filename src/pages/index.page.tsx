@@ -1,74 +1,96 @@
-import { useTheme } from "@emotion/react";
-import { Flex, Stack } from "@toss/emotion-utils";
-import Link from "next/link";
+import { css, useTheme } from "@emotion/react";
+import { logo } from "@images/common";
+import {
+  Flex,
+  flex,
+  gutter,
+  height100,
+  position,
+  SafeArea,
+  Spacing,
+  width100
+} from "@toss/emotion-utils";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { FilledButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import { useTokenCookie } from "~/hooks";
+import { env } from "~/constants";
+import { useSetNavigation } from "~/hooks";
 
-const IndexPage = () => {
+const Onboarding = () => {
+  useSetNavigation();
   const theme = useTheme();
-  const tokenCookie = useTokenCookie();
+  const router = useRouter();
 
-  const logoutHandler = () => {
-    tokenCookie.remove();
+  const kakaoUrl = `${env.TOPPINGS_SERVER_URL}/oauth2/authorization/kakao?redirect_uri=${env.REDIRECT_URI}`;
+
+  const onLoginHandler = () => {
+    router.replace(kakaoUrl);
   };
 
   return (
-    <Stack.Vertical gutter={32}>
-      <button type="button" onClick={logoutHandler}>
-        <Text _fontSize={36} _color={theme.colors.kakaoYellow}>
-          로그아웃하기
-        </Text>
-      </button>
-      <Link href="/login" passHref>
-        <Text _fontSize={36} _color={theme.colors.kakaoYellow}>
-          로그인하러가기
-        </Text>
-      </Link>
+    <SafeArea>
+      <section
+        css={css`
+          ${flex({ direction: "column", align: "center" })}
+          ${width100}
+        ${height100}
+        background-color: ${theme.colors.primary};
+        `}
+      >
+        <Spacing size={170} />
+        <Image src={logo} alt="TOPPINGS" css={css``} />
 
-      <Text _fontSize={36} _color={theme.colors.white}>
-        I&apos;m toppings
-      </Text>
-      <Text _fontSize={24} _color={theme.colors.white}>
-        I&apos;m toppings
-      </Text>
-      <Text _fontSize={18} _color={theme.colors.white}>
-        I&apos;m toppings
-      </Text>
-      <Stack.Horizontal align="center">
-        <Text _fontSize={36} _color={theme.colors.white}>
-          I&apos;m toppings
-        </Text>
-        <Text _fontSize={24} _color={theme.colors.white}>
-          I&apos;m toppings
-        </Text>
-        <Text _fontSize={18} _color={theme.colors.white}>
-          I&apos;m toppings
-        </Text>
-      </Stack.Horizontal>
-      <Flex.Center direction="column">
-        <Text _fontSize={36} _color={theme.colors.white}>
-          I&apos;m toppings
-        </Text>
-        <Text _fontSize={24} _color={theme.colors.white}>
-          I&apos;m toppings
-        </Text>
-        <Text _fontSize={18} _color={theme.colors.white}>
-          I&apos;m toppings
-        </Text>
-      </Flex.Center>
-      <Stack.Vertical gutter={500}>
-        <Text _fontSize={36} _color={theme.colors.white}>
-          I&apos;m toppings
-        </Text>
-        <Text _fontSize={24} _color={theme.colors.white}>
-          I&apos;m toppings
-        </Text>
-        <Text _fontSize={18} _color={theme.colors.white}>
-          I&apos;m toppings
-        </Text>
-      </Stack.Vertical>
-    </Stack.Vertical>
+        <Flex
+          direction="column"
+          align="center"
+          css={css`
+            ${position("fixed", { bottom: 105 })}
+            ${gutter({ space: 35, direction: "vertical" })}
+          `}
+        >
+          <Flex
+            css={css`
+              ${gutter({ space: 6, direction: "horizontal" })}
+            `}
+          >
+            <Text
+              _fontSize={25}
+              _color={theme.colors.white}
+              weight={theme.weighs.medium}
+            >
+              Do you want to
+            </Text>
+            <Text
+              _fontSize={25}
+              _color={theme.colors.white}
+              weight={theme.weighs.extraBold}
+            >
+              JOIN
+            </Text>
+          </Flex>
+          <motion.div whileTap={{ scale: 0.9 }}>
+            <FilledButton
+              size={{
+                width: 106,
+                height: 33
+              }}
+              onClick={onLoginHandler}
+            >
+              <Text
+                _fontSize={15}
+                _color={theme.colors.secondary["73"]}
+                weight={theme.weighs.medium}
+              >
+                Click me!
+              </Text>
+            </FilledButton>
+          </motion.div>
+        </Flex>
+      </section>
+    </SafeArea>
   );
 };
 
-export default IndexPage;
+export default Onboarding;

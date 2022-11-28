@@ -3,7 +3,8 @@ import { Flex, position, Spacing, width100 } from "@toss/emotion-utils";
 import { ComponentWithLabel, Input } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter } from "~/hooks";
-import { useEditState } from "~/recoil/atoms/edit";
+import { useFetchUserInfo } from "~/queries/profile";
+import { useEditState } from "~/recoil/atoms";
 import ClickableInput from "./ClickableInput";
 import ProfileImage from "./ProfileImage";
 
@@ -11,7 +12,9 @@ import ProfileImage from "./ProfileImage";
 const UserInfo = () => {
   const theme = useTheme();
   const router = useInternalRouter();
-  const [user, setUser] = useEditState();
+
+  const { data } = useFetchUserInfo();
+  const [edit, setEdit] = useEditState();
 
   return (
     <>
@@ -28,8 +31,8 @@ const UserInfo = () => {
           <Spacing size={3} direction="horizontal" />
           <Input
             height={39}
-            value={user.name}
-            onChange={e => setUser({ ...user, name: e.target.value })}
+            value={edit.name === undefined ? data.name : edit.name}
+            onChange={e => setEdit({ ...edit, name: e.target.value })}
             absoluteNode={
               <Text
                 _fontSize={11}
@@ -57,7 +60,7 @@ const UserInfo = () => {
         label="Nationality"
         inputProps={{
           onClick: () => router.push("/profile/edit/nationality"),
-          placeholder: user.country
+          placeholder: edit.country || data.country
         }}
       />
 
@@ -65,7 +68,8 @@ const UserInfo = () => {
         label="Eating habit"
         inputProps={{
           onClick: () => router.push("/profile/edit/eatingHabits"),
-          placeholder: user.habits[0].content
+          placeholder:
+            (edit.habits && edit.habits[0].content) || data.habits[0].content
         }}
       />
     </>

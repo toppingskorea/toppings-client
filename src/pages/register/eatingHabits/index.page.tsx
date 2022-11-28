@@ -1,11 +1,11 @@
 import { css, useTheme } from "@emotion/react";
-import { Flex, gutter, position, SafeArea, size } from "@toss/emotion-utils";
+import { position, SafeArea } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { motion } from "framer-motion";
-import Lottie from "lottie-react";
+
 import { useCallback } from "react";
-import { check } from "~/assets/json";
-import { Badge } from "~/components/Common";
+
+import { Badge, SuccessModal } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SelectEatingHabit } from "~/components/Section";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
@@ -59,34 +59,7 @@ const EatingHabits = () => {
   });
 
   const openSuccessModal = () => {
-    overlay.open(() => (
-      <Flex.Center
-        direction="column"
-        css={css`
-          ${position("fixed", { top: 0, right: 0, bottom: 0, left: 0 })}
-          ${size.full}
-          ${gutter({ direction: "vertical", space: 30 })}
-          background-color: ${theme.colors.white};
-        `}
-      >
-        <Lottie
-          loop
-          autoplay
-          animationData={check}
-          css={css`
-            ${size({ width: 42, height: 42 })}
-          `}
-        />
-
-        <Text
-          _fontSize={23}
-          weight={theme.weighs.heavy}
-          _color={theme.colors.secondary[47]}
-        >
-          Complete!
-        </Text>
-      </Flex.Center>
-    ));
+    overlay.open(() => <SuccessModal />);
   };
 
   return (

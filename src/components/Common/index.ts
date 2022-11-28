@@ -10,3 +10,4 @@ export { default as Badge } from "./Badge";
 export * from "./RoundedTag";
 export * from "./Button";
 export * from "./TextField";
+export * from "./Modal";

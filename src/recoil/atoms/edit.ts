@@ -4,13 +4,16 @@ import {
   useRecoilValue,
   useSetRecoilState
 } from "recoil";
-import { editSelector } from "../selector";
 
-const editAtom = atom<Omit<Profile.UserDTO, "id">>({
+const editAtom = atom<
+  Partial<Pick<Profile.UserDTO, "country" | "habits" | "profile" | "name">>
+>({
   key: "editAtom",
-  default: editSelector
+  default: {}
 });
 
+export default editAtom;
+
 export const useEditState = () => useRecoilState(editAtom);
-export const useEditSetter = () => useSetRecoilState(editAtom);
 export const useEditValue = () => useRecoilValue(editAtom);
+export const useEditSetter = () => useSetRecoilState(editAtom);
