@@ -6,6 +6,7 @@ import { Text } from "../../Typo";
 
 const SuccessModal = () => {
   const theme = useTheme();
+
   return (
     <Flex.Center
       direction="column"
