@@ -26,6 +26,7 @@ declare module Route {
     | "/profile/saved"
     | "/profile/reviews"
     | "/profile/edit"
+    | "/profile/menu"
     | "/profile/edit/nationality"
     | "/profile/edit/eatingHabits"
     | "/post"

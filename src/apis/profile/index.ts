@@ -21,3 +21,7 @@ export const updateUserInfo = async (
 
   return data.data;
 };
+
+export const logout = async () => {
+  await authRequest.get("/api/logout");
+};

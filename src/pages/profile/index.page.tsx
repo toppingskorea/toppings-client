@@ -40,9 +40,12 @@ const Profile = () => {
   useSetNavigation({
     top: {
       right: (
-        <motion.div>
+        <motion.button
+          onClick={() => router.push("/profile/menu")}
+          title="메뉴 바로가기"
+        >
           <Hamburger />
-        </motion.div>
+        </motion.button>
       ),
       title: (
         <Text _fontSize={24} _color={theme.colors.secondary[47]}>
