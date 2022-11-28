@@ -1,16 +1,18 @@
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
-import { motion } from "framer-motion";
 import { flex, position, SafeArea } from "@toss/emotion-utils";
-import { useState } from "react";
+import { motion } from "framer-motion";
 import { FilledButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SelectEatingHabit } from "~/components/Section";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
-import { useSetNavigation } from "~/hooks";
+import { useInternalRouter, useSetNavigation } from "~/hooks";
+import { useEditState } from "~/recoil/atoms/edit";
 
 const ProfileEditEatingHabits = () => {
+  const router = useInternalRouter();
   const theme = useTheme();
+  const [edit, setEdit] = useEditState();
   useSetNavigation({
     top: {
       title: (
@@ -27,20 +29,20 @@ const ProfileEditEatingHabits = () => {
     bottom: true
   });
 
-  const [habits, setHabits] =
-    useState<Pick<Profile.UserDTO, "habits">["habits"]>();
-
   return (
     <SafeArea>
       <SelectEatingHabit
-        habits={habits}
+        habits={edit.habits}
         onClick={(title, content) => {
-          setHabits([
-            {
-              title,
-              content
-            }
-          ]);
+          setEdit({
+            ...edit,
+            habits: [
+              {
+                title,
+                content
+              }
+            ]
+          });
         }}
       />
 
@@ -62,7 +64,7 @@ const ProfileEditEatingHabits = () => {
             height: 37
           }}
           bgColor={theme.colors.primary}
-          onClick={() => console.log("식습관 수정처리")}
+          onClick={() => router.back()}
         >
           <Text
             _fontSize={17}

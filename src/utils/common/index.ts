@@ -5,3 +5,5 @@ export { default as objectKeys } from "./objectKeys";
 export { default as objectEntries } from "./objectEntries";
 export { default as objectValues } from "./objectValues";
 export { default as queryChunk } from "./queryChunk";
+export { default as imageUploader } from "./imageUploader";
+export { default as encodeFileToBase64 } from "./encodeFileToBase64";

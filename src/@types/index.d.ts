@@ -22,6 +22,9 @@ declare module Route {
     | "/search/restaurant"
     | "/search/local"
     | "/profile"
+    | "/profile/posts"
+    | "/profile/saved"
+    | "/profile/reviews"
     | "/profile/edit"
     | "/profile/edit/nationality"
     | "/profile/edit/eatingHabits"
@@ -37,10 +40,14 @@ declare module Profile {
     id: number;
     name: string;
     country: string;
+    profile?: string;
     habits: {
       title: Common.EatingHabit;
       content: string;
     }[];
+    postCount: number;
+    scrapCount: number;
+    reviewCount: number;
   }
 }
 

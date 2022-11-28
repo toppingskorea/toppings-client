@@ -62,7 +62,15 @@ const Profile = () => {
         `}
       >
         <Stack.Horizontal align="center" gutter={37}>
-          <Image src={avatar} alt="dummy" width={88} height={88} />
+          <Image
+            src={data.profile ?? avatar}
+            alt="dummy"
+            width={88}
+            height={88}
+            css={css`
+              border-radius: 50%;
+            `}
+          />
 
           <motion.ul
             variants={staggerOne}
@@ -72,11 +80,15 @@ const Profile = () => {
               ${gutter({ direction: "horizontal", space: 24 })}
             `}
           >
-            {["Posts", "Saved", "Reviews"].map(label => (
-              <LabelWithEllipse label={label} key={label} route="/">
-                {23}
-              </LabelWithEllipse>
-            ))}
+            <LabelWithEllipse label="Posts" route="/profile/posts">
+              {data.postCount}
+            </LabelWithEllipse>
+            <LabelWithEllipse label="Saved" route="/profile/saved">
+              {data.scrapCount}
+            </LabelWithEllipse>
+            <LabelWithEllipse label="Reviews" route="/profile/reviews">
+              {data.reviewCount}
+            </LabelWithEllipse>
           </motion.ul>
         </Stack.Horizontal>
         <Spacing size={58} />
@@ -90,7 +102,7 @@ const Profile = () => {
             }}
             _fontSize={15}
           >
-            Indonasian
+            {data.country}
           </RoundedTag>
         </ComponentWithLabel>
         <Spacing size={26} />
@@ -104,7 +116,7 @@ const Profile = () => {
             }}
             _fontSize={15}
           >
-            Islam
+            {data.habits[0].content}
           </RoundedTag>
         </ComponentWithLabel>
         <motion.div
