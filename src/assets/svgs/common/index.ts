@@ -8,3 +8,5 @@ export { default as Search } from "./search.svg";
 export { default as CircleExit } from "./circleExit.svg";
 export { default as Hamburger } from "./hamburger.svg";
 export { default as OrangePlus } from "./orangePlus.svg";
+export { default as Minus } from "./minus.svg";
+export { default as GrayPlus } from "./grayPlus.svg";
