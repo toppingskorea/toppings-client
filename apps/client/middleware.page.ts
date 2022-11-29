@@ -51,10 +51,7 @@ const middleware: NextMiddleware = async request => {
     ).json();
 
     const response = NextResponse.redirect(
-      new URL(
-        retrievedValue.data === "ROLE_TEMP" ? "/register/nationality" : "/map",
-        request.url
-      )
+      new URL("/register/nationality", request.url)
     );
 
     response.cookies.set(env.TOPPINGS_TOKEN_KEY, token as string, {
