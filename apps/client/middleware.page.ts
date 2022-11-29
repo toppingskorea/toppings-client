@@ -39,6 +39,7 @@ const middleware: NextMiddleware = async request => {
   // 로그인 리다이렉트
   if (request.nextUrl.pathname.startsWith("/login/redirect")) {
     const token = request.nextUrl.searchParams.get("accessToken");
+    console.log(token);
 
     const retrievedValue = await (
       await fetch(`http://api.toppings.co.kr:28080/user/role`, {
@@ -49,12 +50,14 @@ const middleware: NextMiddleware = async request => {
       })
     ).json();
 
-    const response = NextResponse.redirect(
-      new URL(
-        retrievedValue.data === "ROLE_TEMP" ? "/register/nationality" : "/map",
-        request.url
-      )
-    );
+    console.log(retrievedValue.data);
+
+    const nextUrl = request.nextUrl.clone();
+    nextUrl.pathname =
+      retrievedValue.data === "ROLE_TEMP" ? "/register/nationality" : "/map";
+    nextUrl.search = "";
+
+    const response = NextResponse.redirect(nextUrl);
 
     response.cookies.set(env.TOPPINGS_TOKEN_KEY, token as string, {
       // httpOnly: true,
