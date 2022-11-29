@@ -39,18 +39,15 @@ const middleware: NextMiddleware = async request => {
   // 로그인 리다이렉트
   if (request.nextUrl.pathname.startsWith("/login/redirect")) {
     const token = request.nextUrl.searchParams.get("accessToken");
-    console.log(token);
 
     const retrievedValue = await (
-      await fetch(`http://api.toppings.co.kr:28080/user/role`, {
+      await fetch(new URL("http://api.toppings.co.kr:28080/user/role").href, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
     ).json();
-
-    console.log(retrievedValue.data);
 
     const nextUrl = request.nextUrl.clone();
     nextUrl.pathname =
