@@ -41,18 +41,21 @@ const middleware: NextMiddleware = async request => {
   if (request.nextUrl.pathname.startsWith("/login/redirect")) {
     const token = request.nextUrl.searchParams.get("accessToken");
 
-    const retrievedValue = await (
-      await fetch(`http://api.toppings.co.kr:28080/user/role`, {
+    const retrievedValue = await fetch(
+      `http://api.toppings.co.kr:28080/user/role`,
+      {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`
         }
-      })
-    ).json();
+      }
+    );
+
+    const json = await retrievedValue.json();
 
     const response = NextResponse.redirect(
       new URL(
-        retrievedValue.data === "ROLE_TEMP" ? "/register/nationality" : "/map",
+        json.data === "ROLE_TEMP" ? "/register/nationality" : "/map",
         request.url
       )
     );
