@@ -1,3 +1,5 @@
+import { useCurrentLocationValue } from "@atoms/index";
+import { useMapBoundsSetter } from "@atoms/map";
 import {
   createContext,
   useContext,
@@ -7,8 +9,6 @@ import {
   useState,
   type RefObject
 } from "react";
-import { useCurrentLocationValue } from "~/recoil/atoms";
-import { useMapBoundsSetter } from "~/recoil/atoms/map";
 
 const Context = createContext({
   map: null,

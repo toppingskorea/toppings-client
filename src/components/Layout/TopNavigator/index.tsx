@@ -1,10 +1,10 @@
+import { useNavigationValue } from "@atoms/index";
 import { css } from "@emotion/react";
 import { LeftArrow } from "@svgs/common";
 import { flex, padding, position, Spacing } from "@toss/emotion-utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter } from "~/hooks";
-import { useNavigationValue } from "~/recoil/atoms";
 
 const TopNavigator = () => {
   const router = useInternalRouter();

@@ -2,8 +2,8 @@ import { css, useTheme } from "@emotion/react";
 import { AnimatePresence, motion } from "framer-motion";
 import Router from "next/router";
 import { useEffect, useState } from "react";
+import { useNavigationSetter } from "@atoms/index";
 import { useInternalRouter } from "~/hooks";
-import { useNavigationSetter } from "~/recoil/atoms";
 import { useScrollContainer } from "../ScrollContainer";
 
 const PageLoader = () => {
