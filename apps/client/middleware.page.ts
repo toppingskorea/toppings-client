@@ -25,7 +25,7 @@ export const config = {
   runtime: "experimental-edge"
 };
 
-const middleware: NextMiddleware = async (request, event) => {
+const middleware: NextMiddleware = async request => {
   const toppingsToken = request.cookies.get(env.TOPPINGS_TOKEN_KEY)?.value;
 
   // 로그인 안한사람 방지
@@ -50,23 +50,12 @@ const middleware: NextMiddleware = async (request, event) => {
       })
     ).json();
 
-    let destination = "";
-
-    event.waitUntil(
-      fetch(`http://api.toppings.co.kr:28080/user/role`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-        .then(data => data.json())
-        .then(result => {
-          destination =
-            result.data === "ROLE_TEMP" ? "/register/nationality" : "/map";
-        })
+    const response = NextResponse.redirect(
+      new URL(
+        retrievedValue.data === "ROLE_TEMP" ? "/register/nationality" : "/map",
+        request.url
+      )
     );
-
-    const response = NextResponse.redirect(new URL(destination, request.url));
 
     response.cookies.set(env.TOPPINGS_TOKEN_KEY, token as string, {
       // httpOnly: true,
