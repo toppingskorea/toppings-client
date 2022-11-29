@@ -1,4 +1,4 @@
-import { useEditState } from "@atoms/index/edit";
+import { useEditState } from "@atoms/edit";
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
