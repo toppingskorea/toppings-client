@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import { useEditState } from "@atoms/index";
 import { css } from "@emotion/react";
 import { avatar } from "@images/profile";
 import { OrangePlus } from "@svgs/common";
@@ -6,7 +7,6 @@ import { flex, gutter, touchable } from "@toss/emotion-utils";
 import Image from "next/image";
 import { useId } from "react";
 import { useFetchUserInfo } from "~/queries/profile";
-import { useEditState } from "~/recoil/atoms";
 import { imageUploader } from "~/utils";
 
 const ProfileImage = () => {

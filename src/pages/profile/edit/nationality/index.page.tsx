@@ -1,3 +1,4 @@
+import { useEditState } from "@atoms/index/edit";
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
@@ -5,7 +6,6 @@ import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SearchNationality } from "~/components/Section";
 import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
-import { useEditState } from "~/recoil/atoms/edit";
 
 const ProfileEditNationality = () => {
   const router = useInternalRouter();

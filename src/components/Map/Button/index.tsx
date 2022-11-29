@@ -1,6 +1,6 @@
+import { useCurrentLocationSetter } from "@atoms/index";
 import { useCallback, useMemo } from "react";
 import { defaultLocation } from "~/constants";
-import { useCurrentLocationSetter } from "~/recoil/atoms";
 
 const MyLocationButton = () => {
   const setCurrentLocation = useCurrentLocationSetter();

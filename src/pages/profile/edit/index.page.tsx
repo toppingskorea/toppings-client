@@ -1,3 +1,4 @@
+import { useEditValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
@@ -14,7 +15,6 @@ import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useUpdateUserInfo } from "~/mutations/profile";
 import { useFetchUserInfo } from "~/queries/profile";
 import Keys from "~/queries/profile/keys";
-import { useEditValue } from "~/recoil/atoms";
 
 const ProfileEdit = () => {
   const router = useInternalRouter();
