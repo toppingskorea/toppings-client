@@ -10,6 +10,7 @@ const RegisterNationality = () => {
   const router = useInternalRouter();
   const theme = useTheme();
   const [register, setRegister] = useRegisterState();
+  
   useSetNavigation({
     top: {
       marginBottom: 35,
