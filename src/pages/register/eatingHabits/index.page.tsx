@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 
 import { useCallback } from "react";
 
+import { useRegisterState } from "@atoms/index";
 import { Badge, SuccessModal } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SelectEatingHabit } from "~/components/Section";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useRegister } from "~/mutations/register";
-import { useRegisterState } from "~/recoil/atoms";
 
 const EatingHabits = () => {
   const router = useInternalRouter();

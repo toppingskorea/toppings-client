@@ -1,10 +1,10 @@
+import { useRegisterState } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SearchNationality } from "~/components/Section";
 import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
-import { useRegisterState } from "~/recoil/atoms";
 
 const RegisterNationality = () => {
   const router = useInternalRouter();

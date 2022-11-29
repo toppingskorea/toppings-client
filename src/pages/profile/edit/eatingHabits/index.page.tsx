@@ -1,3 +1,4 @@
+import { useEditState } from "@atoms/index/edit";
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { flex, position, SafeArea } from "@toss/emotion-utils";
@@ -7,7 +8,6 @@ import { Text } from "~/components/Common/Typo";
 import { SelectEatingHabit } from "~/components/Section";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
-import { useEditState } from "~/recoil/atoms/edit";
 
 const ProfileEditEatingHabits = () => {
   const router = useInternalRouter();
@@ -64,7 +64,7 @@ const ProfileEditEatingHabits = () => {
             height: 37
           }}
           bgColor={theme.colors.primary}
-          onClick={() => router.back()}
+          onClick={router.back}
         >
           <Text
             _fontSize={17}

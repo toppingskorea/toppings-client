@@ -1,10 +1,10 @@
+import { useEditState } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { Flex, position, Spacing, width100 } from "@toss/emotion-utils";
 import { ComponentWithLabel, Input } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter } from "~/hooks";
 import { useFetchUserInfo } from "~/queries/profile";
-import { useEditState } from "~/recoil/atoms";
 import ClickableInput from "./ClickableInput";
 import ProfileImage from "./ProfileImage";
 

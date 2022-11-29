@@ -6,7 +6,9 @@
       "~/*": ["./*"],
       "@images/*": ["./assets/images/*"],
       "@svgs/*": ["./assets/svgs/*"],
-      "@stores/*": ["./stores/ducks/*"]
+      "@stores/*": ["./stores/ducks/*"],
+      "@atoms/*": ["./recoil/atoms/*"],
+      "@selectors/*": ["./recoil/selectors/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

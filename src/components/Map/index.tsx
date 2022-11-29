@@ -1,7 +1,7 @@
+import { useMapBoundsSetter } from "@atoms/index";
 import { css } from "@emotion/react";
 import { useCallback } from "react";
 import { useMap } from "~/contexts";
-import { useMapBoundsSetter } from "~/recoil/atoms";
 import MyLocationButton from "./Button";
 import useMapEvent from "./Map.hooks";
 
