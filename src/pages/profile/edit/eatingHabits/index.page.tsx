@@ -64,7 +64,7 @@ const ProfileEditEatingHabits = () => {
             height: 37
           }}
           bgColor={theme.colors.primary}
-          onClick={() => router.back()}
+          onClick={router.back}
         >
           <Text
             _fontSize={17}
