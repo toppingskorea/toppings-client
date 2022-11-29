@@ -1,16 +1,17 @@
+import { useEditState } from "@atoms/index/edit";
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
-import { SearchNationality } from "~/components/Section";
 import { Text } from "~/components/Common/Typo";
+import { SearchNationality } from "~/components/Section";
 import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
-import { useRegisterState } from "~/recoil/atoms";
 
 const ProfileEditNationality = () => {
   const router = useInternalRouter();
   const theme = useTheme();
-  const [register, setRegister] = useRegisterState();
+  const [edit, setEdit] = useEditState();
+
   useSetNavigation({
     top: {
       marginBottom: 35,
@@ -31,8 +32,8 @@ const ProfileEditNationality = () => {
       <SearchNationality
         keyword={keyword.value}
         onCountryClick={name => {
-          setRegister({ ...register, country: name });
-          router.push("/register/eatingHabits");
+          setEdit({ ...edit, country: name });
+          router.back();
         }}
       />
 

@@ -1,6 +1,6 @@
+import type { useNavigationValue } from "@atoms/index";
+import { useNavigationSetter } from "@atoms/index";
 import { useEffect } from "react";
-import type { useNavigationValue } from "~/recoil/atoms";
-import { useNavigationSetter } from "~/recoil/atoms";
 
 const useSetNavigation = (
   props: ReturnType<typeof useNavigationValue> = {

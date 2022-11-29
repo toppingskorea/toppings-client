@@ -5,14 +5,23 @@ import { env } from "~/constants";
 import verifyToken from "./utils/auth/verifyToken";
 
 // 로그인한 유저만 접근할 수 있는 라우트
-const PROTECTED_ROUTE = ["/profile"];
+const PROTECTED_ROUTE = [
+  "/profile",
+  "/profile/posts",
+  "/profile/saved",
+  "/profile/reviews",
+  "/profile/edit",
+  "/profile/menu",
+  "/profile/edit/nationality",
+  "/profile/edit/eatingHabits"
+];
 
 // 로그인한 유저는 접근할 수 없는 라우트
 const LOGIN_PROTECTED_ROUTE = ["/login"];
 
 // 미들웨어를 발생시킬 라우트
 export const config = {
-  matcher: ["/profile", "/login", "/login/redirect"]
+  matcher: ["/profile/:path*", "/login", "/login/redirect"]
 };
 
 const middleware: NextMiddleware = async request => {
