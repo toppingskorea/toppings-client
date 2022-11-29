@@ -9,7 +9,7 @@ import {
 } from "@toss/emotion-utils";
 import { Fragment, useCallback, useMemo } from "react";
 import { countries } from "~/constants/data/common";
-import { objectEntries, objectKeys, objectValues, queryChunk } from "~/utils";
+import { objectEntries, objectKeys, objectValues, queryChunk } from "~/index";
 import { OrangeTypo, Text } from "../../Common/Typo";
 
 interface Props {

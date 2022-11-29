@@ -1,6 +1,6 @@
 import type { AxiosInstance, AxiosRequestConfig } from "axios";
 import axios from "axios";
-import { getCookieToken } from "~/utils";
+import { getCookieToken } from "~/index";
 
 const authRequest: AxiosInstance = axios.create({});
 const formDataRequest: AxiosInstance = axios.create({});

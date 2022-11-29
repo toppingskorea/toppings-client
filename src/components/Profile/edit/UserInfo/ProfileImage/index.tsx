@@ -6,8 +6,8 @@ import { OrangePlus } from "@svgs/common";
 import { flex, gutter, touchable } from "@toss/emotion-utils";
 import Image from "next/image";
 import { useId } from "react";
+import { imageUploader } from "~/index";
 import { useFetchUserInfo } from "~/queries/profile";
-import { imageUploader } from "~/utils";
 
 const ProfileImage = () => {
   const id = useId();

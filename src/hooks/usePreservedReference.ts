@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { checkDeeplyEqual } from "~/utils";
+import { checkDeeplyEqual } from "~/index";
 
 /**
  * @description

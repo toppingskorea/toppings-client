@@ -1,5 +1,5 @@
 import type { Variants } from "framer-motion";
-import { neverChecker } from "~/utils";
+import { neverChecker } from "~/index";
 
 export const defaultEasing = [0.6, -0.05, 0.01, 0.99];
 
