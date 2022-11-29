@@ -40,7 +40,7 @@ const Onboarding = () => {
         `}
       >
         <Spacing size={170} />
-        <Image src={logo} alt="TOPPINGS" css={css``} />
+        <Image src={logo} alt="TOPPINGS" />
 
         <Flex
           direction="column"
