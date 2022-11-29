@@ -11,17 +11,22 @@ export type CommonProps = Omit<ComponentProps<typeof Text>, "_fontSize"> & {
 interface Props {
   children: string;
   _fontSize: number;
-  paddingX: number;
+  padding: Parameters<typeof padding>[0];
   defaultProps: CommonProps;
 }
 
-const RoundedTag = ({ children, defaultProps, paddingX, _fontSize }: Props) => {
+const RoundedTag = ({
+  children,
+  defaultProps,
+  padding: _padding,
+  _fontSize
+}: Props) => {
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <li
       css={css`
         display: inline-block;
-        ${padding({ y: 7, x: paddingX })}
+        ${padding(_padding)}
         width:fit-content;
         background-color: ${defaultProps.bgColor};
         border-radius: 100px;

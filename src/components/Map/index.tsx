@@ -1,11 +1,14 @@
-import { css } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
 import { useCallback } from "react";
 import { useMap } from "~/contexts";
 import { useMapBoundsSetter } from "~/recoil/atoms";
-import MyLocationButton from "./Button";
+import FilteringButton from "./Button/FilteringButton";
+import MyLocationButton from "./Button/MyLocationButton";
+import RecentButton from "./Button/RecentButton";
 import useMapEvent from "./Map.hooks";
 
 const Map = ({ children }: Util.PropsWithChild) => {
+  const theme = useTheme();
   const setMapBounds = useMapBoundsSetter();
   const { map, mapRef } = useMap();
 
@@ -16,13 +19,12 @@ const Map = ({ children }: Util.PropsWithChild) => {
   useMapEvent(map, "dragend", mapEventHandler);
   useMapEvent(map, "zoom_changed", mapEventHandler);
 
-  // TODO: 디자인 맞춰서 width, height 변경하기
   return (
     <div
       ref={mapRef}
       css={css`
         width: 100%;
-        height: 500px;
+        height: calc(100% - ${theme.dimensions.bottomNavigationHeight}px);
       `}
     >
       {children}
@@ -31,5 +33,7 @@ const Map = ({ children }: Util.PropsWithChild) => {
 };
 
 Map.MyLocationButton = MyLocationButton;
+Map.RecentButton = RecentButton;
+Map.FilteringButton = FilteringButton;
 
 export default Map;

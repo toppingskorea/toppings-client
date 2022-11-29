@@ -11,6 +11,7 @@ const colors = {
   grayE8: "#E8E8E8",
   primary: "#FF7D1F",
   secondary: {
+    A2: "#A2A2A2",
     D9: "#D9D9D9",
     "79": "#797979",
     "73": "#737272",

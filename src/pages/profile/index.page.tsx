@@ -82,7 +82,10 @@ const Profile = () => {
         <Spacing size={58} />
         <ComponentWithLabel label="Nationality" gutter={11}>
           <RoundedTag
-            paddingX={20}
+            padding={{
+              x: 20,
+              y: 7
+            }}
             defaultProps={{
               bgColor: theme.colors.primary,
               bordercolor: "transparent",
@@ -96,7 +99,10 @@ const Profile = () => {
         <Spacing size={26} />
         <ComponentWithLabel label="Eating habit" gutter={11}>
           <RoundedTag
-            paddingX={20}
+            padding={{
+              x: 20,
+              y: 7
+            }}
             defaultProps={{
               bgColor: theme.colors.primary,
               bordercolor: "transparent",

@@ -1,27 +1,18 @@
-import { css } from "@emotion/react";
-import { motion } from "framer-motion";
 import Map from "~/components/Map";
-import { defaultScaleChangeVariants } from "~/constants";
 import { MapProvider } from "~/contexts";
+import { useSetNavigation } from "~/hooks";
 
 const MapPage = () => {
+  useSetNavigation({
+    bottom: true
+  });
+
   return (
     <MapProvider>
       <Map>
-        <motion.div
-          initial="initial"
-          animate="animate"
-          whileHover="whileHover"
-          variants={defaultScaleChangeVariants}
-          css={css`
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            z-index: 10;
-          `}
-        >
-          <Map.MyLocationButton />
-        </motion.div>
+        <Map.MyLocationButton />
+        <Map.RecentButton />
+        <Map.FilteringButton />
       </Map>
     </MapProvider>
   );
