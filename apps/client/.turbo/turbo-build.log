@@ -3,19 +3,7 @@ info  - Loaded env from /Users/chanhyuk-tech/Desktop/project/toppings-client/app
 info  - Linting and checking validity of types...
 error - ESLint must be installed in order to run during builds: yarn add --dev eslint
 info  - Creating an optimized production build...
-warn  - Compiled with warnings
-
-../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js
-A Node.js API is used (Buffer at line: 138) which is not supported in the Edge Runtime.
-Learn more: https://nextjs.org/docs/api-reference/edge-runtime
-
-Import trace for requested module:
-../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js
-../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/axios.js
-../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/index.js
-./constants/Api.ts
-./constants/index.ts
-
+info  - Compiled successfully
 info  - Collecting page data...
 info  - Generating static pages (0/16)
 info  - Generating static pages (4/16)
@@ -50,7 +38,7 @@ Route (pages)                              Size     First Load JS
   ├ chunks/pages/_app-b33c9b2b3b16c9cc.js  237 kB
   └ chunks/webpack-c7d671fbd3a7f0f1.js     1.14 kB
 
-ƒ Middleware                               58.4 kB
+ƒ Middleware                               58.5 kB
 
 λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
 ○  (Static)  automatically rendered as static HTML (uses no initial props)

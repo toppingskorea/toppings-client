@@ -21,7 +21,8 @@ const LOGIN_PROTECTED_ROUTE = ["/login"];
 
 // 미들웨어를 발생시킬 라우트
 export const config = {
-  matcher: ["/profile/:path*", "/login", "/login/redirect"]
+  matcher: ["/profile/:path*", "/login", "/login/redirect"],
+  runtime: "experimental-edge"
 };
 
 const middleware: NextMiddleware = async request => {
@@ -41,7 +42,7 @@ const middleware: NextMiddleware = async request => {
     const token = request.nextUrl.searchParams.get("accessToken");
 
     const retrievedValue = await (
-      await fetch(new URL("http://api.toppings.co.kr:28080/user/role").href, {
+      await fetch(`http://api.toppings.co.kr:28080/user/role`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`
@@ -49,12 +50,12 @@ const middleware: NextMiddleware = async request => {
       })
     ).json();
 
-    const nextUrl = request.nextUrl.clone();
-    nextUrl.pathname =
-      retrievedValue.data === "ROLE_TEMP" ? "/register/nationality" : "/map";
-    nextUrl.search = "";
-
-    const response = NextResponse.redirect(nextUrl);
+    const response = NextResponse.redirect(
+      new URL(
+        retrievedValue.data === "ROLE_TEMP" ? "/register/nationality" : "/map",
+        request.url
+      )
+    );
 
     response.cookies.set(env.TOPPINGS_TOKEN_KEY, token as string, {
       // httpOnly: true,
