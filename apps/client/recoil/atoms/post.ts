@@ -1,4 +1,9 @@
-import { atom, useRecoilState, useRecoilValue } from "recoil";
+import {
+  atom,
+  useRecoilState,
+  useRecoilValue,
+  useResetRecoilState
+} from "recoil";
 import type { types } from "~/constants/data/common";
 
 const postUploadAtom = atom<{
@@ -15,3 +20,4 @@ const postUploadAtom = atom<{
 
 export const usePostUploadState = () => useRecoilState(postUploadAtom);
 export const usePostUploadValue = () => useRecoilValue(postUploadAtom);
+export const usePostUploadReset = () => useResetRecoilState(postUploadAtom);

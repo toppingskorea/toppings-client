@@ -1,21 +1,31 @@
+import {
+  usePostUploadReset,
+  usePostUploadValue,
+  useRestaurantReset,
+  useRestaurantValue
+} from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
-import { usePostUploadValue, useRestaurantValue } from "@atoms/index";
-import { useCallback } from "react";
 import { useOverlay } from "@toss/use-overlay";
+import { useCallback } from "react";
 import { FilledButton, SuccessModal } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import { useUploadPost } from "~/mutations/post";
 import { types } from "~/constants/data/common";
 import { useInternalRouter } from "~/hooks";
+import { useUploadPost } from "~/mutations/post";
 
 const Register = () => {
   const theme = useTheme();
   const overlay = useOverlay();
   const router = useInternalRouter();
   const restaurant = useRestaurantValue();
+  const restaurantReset = useRestaurantReset();
   const postUpload = usePostUploadValue();
-  const { mutate: uploadPostMutate } = useUploadPost({
-    onSuccess: () => {
+  const postUploadReset = usePostUploadReset();
+
+  const { mutate: uploadPostMutate } = useUploadPost(
+    () => {
+      restaurantReset();
+      postUploadReset();
       overlay.open(() => (
         <SuccessModal description="It will be uploaded after approval from the manager." />
       ));
@@ -24,7 +34,7 @@ const Register = () => {
         router.replace("/map");
       }, 3000);
     }
-  });
+  );
 
   const onRegisterHandler = useCallback(() => {
     if (!restaurant) {

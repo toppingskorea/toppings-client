@@ -10,3 +10,4 @@ export { default as Hamburger } from "./hamburger.svg";
 export { default as OrangePlus } from "./orangePlus.svg";
 export { default as Minus } from "./minus.svg";
 export { default as GrayPlus } from "./grayPlus.svg";
+export { default as Star } from "./star.svg";

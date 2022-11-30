@@ -2,6 +2,7 @@ import {
   atom,
   useRecoilState,
   useRecoilValue,
+  useResetRecoilState,
   useSetRecoilState
 } from "recoil";
 
@@ -35,3 +36,5 @@ export const useRestaurantState = () => useRecoilState(searchRestaurantAtom);
 export const useRestaurantValue = () => useRecoilValue(searchRestaurantAtom);
 export const useRestaurantSetter = () =>
   useSetRecoilState(searchRestaurantAtom);
+export const useRestaurantReset = () =>
+  useResetRecoilState(searchRestaurantAtom);
