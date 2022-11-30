@@ -80,7 +80,7 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
           type="file"
           accept="image/*"
           onChange={async e => {
-            const base64 = await imageUploader(e);
+            const base64 = await imageUploader(e, true);
             if (base64) setImages([...images, base64]);
           }}
           css={css`
