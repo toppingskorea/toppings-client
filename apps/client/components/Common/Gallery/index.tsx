@@ -10,6 +10,7 @@ import {
   touchable
 } from "@toss/emotion-utils";
 import Image from "next/image";
+import { hiddenScroll } from "~/styles/emotionUtils";
 import { Text } from "../Typo";
 
 interface Props {
@@ -25,9 +26,7 @@ const Gallery = ({ images }: Props) => {
         ${gutter({ direction: "horizontal", space: 6 })}
         ${padding({ top: 8 })}
         overflow-x: scroll;
-        ::-webkit-scrollbar {
-          display: none;
-        }
+        ${hiddenScroll}
       `}
     >
       {images.map((image, index) => (

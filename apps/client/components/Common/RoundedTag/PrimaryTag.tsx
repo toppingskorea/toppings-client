@@ -2,7 +2,7 @@ import { useTheme } from "@emotion/react";
 import type { ComponentProps } from "react";
 import { ClickableRoundedTag } from "~/components/Common";
 
-const Tag = ({
+const PrimaryTag = ({
   children,
   selected,
   onClick
@@ -34,4 +34,4 @@ const Tag = ({
   );
 };
 
-export default Tag;
+export default PrimaryTag;

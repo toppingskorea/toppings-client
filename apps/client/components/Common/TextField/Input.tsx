@@ -99,6 +99,8 @@ const Input = ({
               margin-left: ${preAppend ? "14px" : "auto"};
               border: 1px solid ${theme.colors.secondary.B8};
               border-radius: 10px;
+              font-family: inherit;
+
             `,
             ref: inputRef,
             ...rest

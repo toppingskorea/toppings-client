@@ -1,0 +1,1 @@
+export {default as HorizontalCategories} from './HorizontalCategories'

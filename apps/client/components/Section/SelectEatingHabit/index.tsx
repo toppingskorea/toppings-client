@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
 import { Flex, flex, gutter, padding, Spacing } from "@toss/emotion-utils";
+import { PrimaryTag } from "~/components/Common";
 import { OrangeTypo } from "~/components/Common/Typo";
 import { diets, religions } from "~/constants/data/common";
 import habitTitleList from "~/constants/data/common/habitTitleList";
-import Tag from "./Tag";
 
 interface Props {
   onClick: (title: Common.EatingHabit, content: string) => void;
@@ -32,7 +32,7 @@ const SelectEatingHabit = ({ onClick, habits }: Props) => {
             `}
           >
             {(habit === "Diet" ? diets : religions).map(content => (
-              <Tag
+              <PrimaryTag
                 key={content}
                 selected={!!habits?.find(habit => habit.content === content)}
                 onClick={() => {
@@ -40,7 +40,7 @@ const SelectEatingHabit = ({ onClick, habits }: Props) => {
                 }}
               >
                 {content}
-              </Tag>
+              </PrimaryTag>
             ))}
           </ul>
         </Flex>
