@@ -1,93 +1,60 @@
-import { useTheme } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
+import { Exit } from "@svgs/common";
+import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useEffect, useState } from "react";
-import { Text } from "~/components/Common/Typo";
-import { useInput, useInternalRouter } from "~/hooks";
-import { useRestaurantSetter } from "~/recoil/atoms/search";
-import { neverChecker } from "~/utils";
+import { SearchInput } from "~/components/Common";
+import { Result } from "~/components/Search";
+import { useInput, useSetNavigation } from "~/hooks";
 
-type SearchType = "restaurant" | "local";
+export type SearchType = "restaurant" | "local";
 
 const Search = ({
   type
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const router = useInternalRouter();
+  useSetNavigation({
+    top: {
+      marginBottom: 35,
+      right: <Exit />
+    }
+  });
   const theme = useTheme();
 
-  const { props: keyword, debouncedValue } = useInput({
-    initialValue: " ",
+  const {
+    props: keyword,
+    debouncedValue,
+    setValue
+  } = useInput({
+    initialValue: "",
     useDebounce: true,
     debounceTimeout: 300
   });
 
-  const setRestaurant = useRestaurantSetter();
-
-  const [data, setData] = useState<kakao.maps.services.PlacesSearchResult>([]);
-
-  useEffect(() => {
-    const ps = new kakao.maps.services.Places();
-
-    ps.keywordSearch(
-      debouncedValue,
-      (data, status) => {
-        switch (status) {
-          case kakao.maps.services.Status.OK:
-            console.log("성공");
-            setData(data);
-            break;
-          case kakao.maps.services.Status.ZERO_RESULT:
-            console.log("검색 결과가 없습니다.");
-            break;
-          case kakao.maps.services.Status.ERROR:
-          case null:
-            console.log("오류발생");
-            break;
-          default:
-            neverChecker(status);
-        }
-      },
-      {
-        category_group_code: type === "restaurant" ? ["FD6", "CE7"] : undefined,
-        // TODO: recoil value 및 사용자 주소로 대체
-        x: 37.566826,
-        y: 126.9786567
-      }
-    );
-  }, [debouncedValue, type]);
-
   return (
-    <div>
-      <input {...keyword} />
-      <div>
-        {data.map(item => (
-          <button
-            type="button"
-            onClick={() => {
-              setRestaurant({
-                address_name: item.address_name,
-                category_group_name: item.category_group_name,
-                id: item.id,
-                place_name: item.place_name,
-                road_address_name: item.road_address_name,
-                x: item.x,
-                y: item.y
-              });
-              router.back();
-            }}
-          >
-            <Text _fontSize={16} _color={theme.colors.kakaoYellow}>
-              {item.place_name}
-            </Text>
-            <Text _fontSize={16} _color={theme.colors.black}>
-              {item.address_name}
-            </Text>
-            <Text _fontSize={16} _color={theme.colors.black}>
-              {item.road_address_name}
-            </Text>
-          </button>
-        ))}
+    <SafeArea>
+      <section
+        css={css`
+          ${padding({ x: 16 })}
+        `}
+      >
+        <Result value={debouncedValue} type={type} />
+      </section>
+      <div
+        css={css`
+          ${position("fixed", { bottom: 0 })}
+          ${padding({ x: 16, y: 22 })};
+          background-color: ${theme.colors.white};
+          max-width: ${theme.dimensions.viewWidth - 32}px;
+          ${width100}
+        `}
+      >
+        <SearchInput
+          onSubmit={() => console.log("sad")}
+          placeholder="Search for a nationality"
+          setValue={setValue}
+          {...keyword}
+        />
       </div>
-    </div>
+    </SafeArea>
   );
 };
 
@@ -100,3 +67,13 @@ export const getServerSideProps: GetServerSideProps<{
 });
 
 export default Search;
+
+// setRestaurant({
+//   address_name: item.address_name,
+//   category_group_name: item.category_group_name,
+//   id: item.id,
+//   place_name: item.place_name,
+//   road_address_name: item.road_address_name,
+//   x: item.x,
+//   y: item.y
+// });
