@@ -67,13 +67,3 @@ export const getServerSideProps: GetServerSideProps<{
 });
 
 export default Search;
-
-// setRestaurant({
-//   address_name: item.address_name,
-//   category_group_name: item.category_group_name,
-//   id: item.id,
-//   place_name: item.place_name,
-//   road_address_name: item.road_address_name,
-//   x: item.x,
-//   y: item.y
-// });
