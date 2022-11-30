@@ -1,10 +1,10 @@
 import { css, useTheme } from "@emotion/react";
 import { PrimaryTag } from "~/components/Common";
-import types from "./HorizontalCategories.constants";
+import { types } from "~/constants/data/common";
 
 interface Props {
-  value: string;
-  onClick: (type: string) => void;
+  value?: Util.ElementType<typeof types>["label"];
+  onClick: (type: Util.ElementType<typeof types>["label"]) => void;
 }
 
 const HorizontalCategories = ({ value, onClick }: Props) => {
@@ -14,18 +14,18 @@ const HorizontalCategories = ({ value, onClick }: Props) => {
       css={css`
         display: flex;
         flex-wrap: wrap;
-        width: 500px;
+        width: ${theme.dimensions.viewWidth}px;
         column-gap: 6px;
         row-gap: 8px;
       `}
     >
-      {types.map(type => (
+      {types.map(({ label }) => (
         <PrimaryTag
-          key={type}
-          selected={value === type}
-          onClick={() => onClick(type)}
+          key={label}
+          selected={value === label}
+          onClick={() => onClick(label)}
         >
-          {type}
+          {label}
         </PrimaryTag>
       ))}
     </ul>

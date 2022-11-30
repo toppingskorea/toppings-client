@@ -78,7 +78,7 @@ const ProfileEdit = () => {
         <Flex
           justify="center"
           css={css`
-            ${padding({ bottom: theme.dimensions.bottomNavigationHeight + 5 })}
+            ${padding({ bottom: 5 })}
           `}
         >
           <FilledButton
@@ -86,7 +86,7 @@ const ProfileEdit = () => {
               width: 278,
               height: 37
             }}
-            bgColor={theme.colors.primary}
+            bgcolor={theme.colors.primary}
             onClick={onClickRegisterHandler}
           >
             <Text

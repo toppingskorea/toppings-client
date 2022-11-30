@@ -2,7 +2,8 @@ import { useTheme } from "@emotion/react";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useEffect, useState } from "react";
 import { Text } from "~/components/Common/Typo";
-import { useInput } from "~/hooks";
+import { useInput, useInternalRouter } from "~/hooks";
+import { useRestaurantSetter } from "~/recoil/atoms/search";
 import { neverChecker } from "~/utils";
 
 type SearchType = "restaurant" | "local";
@@ -10,12 +11,16 @@ type SearchType = "restaurant" | "local";
 const Search = ({
   type
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const router = useInternalRouter();
   const theme = useTheme();
 
   const { props: keyword, debouncedValue } = useInput({
+    initialValue: " ",
     useDebounce: true,
     debounceTimeout: 300
   });
+
+  const setRestaurant = useRestaurantSetter();
 
   const [data, setData] = useState<kakao.maps.services.PlacesSearchResult>([]);
 
@@ -55,17 +60,31 @@ const Search = ({
       <input {...keyword} />
       <div>
         {data.map(item => (
-          <div>
+          <button
+            type="button"
+            onClick={() => {
+              setRestaurant({
+                address_name: item.address_name,
+                category_group_name: item.category_group_name,
+                id: item.id,
+                place_name: item.place_name,
+                road_address_name: item.road_address_name,
+                x: item.x,
+                y: item.y
+              });
+              router.back();
+            }}
+          >
             <Text _fontSize={16} _color={theme.colors.kakaoYellow}>
               {item.place_name}
             </Text>
-            <Text _fontSize={16} _color={theme.colors.white}>
+            <Text _fontSize={16} _color={theme.colors.black}>
               {item.address_name}
             </Text>
-            <Text _fontSize={16} _color={theme.colors.white}>
+            <Text _fontSize={16} _color={theme.colors.black}>
               {item.road_address_name}
             </Text>
-          </div>
+          </button>
         ))}
       </div>
     </div>

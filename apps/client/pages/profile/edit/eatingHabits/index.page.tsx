@@ -63,7 +63,7 @@ const ProfileEditEatingHabits = () => {
             width: 278,
             height: 37
           }}
-          bgColor={theme.colors.primary}
+          bgcolor={theme.colors.primary}
           onClick={router.back}
         >
           <Text

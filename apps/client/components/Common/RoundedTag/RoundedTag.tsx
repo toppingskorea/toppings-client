@@ -4,7 +4,7 @@ import type { ComponentProps } from "react";
 import { Text } from "../Typo";
 
 export type CommonProps = Omit<ComponentProps<typeof Text>, "_fontSize"> & {
-  bgColor: string;
+  bgcolor: string;
   bordercolor: string;
 };
 
@@ -23,7 +23,7 @@ const RoundedTag = ({ children, defaultProps, paddingX, _fontSize }: Props) => {
         display: inline-block;
         ${padding({ y: 7, x: paddingX })}
         width:fit-content;
-        background-color: ${defaultProps.bgColor};
+        background-color: ${defaultProps.bgcolor};
         border-radius: 100px;
         border: 1px solid;
         border-color: ${defaultProps.bordercolor};

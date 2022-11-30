@@ -99,7 +99,7 @@ const Profile = () => {
           <RoundedTag
             paddingX={20}
             defaultProps={{
-              bgColor: theme.colors.primary,
+              bgcolor: theme.colors.primary,
               bordercolor: "transparent",
               _color: theme.colors.white
             }}
@@ -113,7 +113,7 @@ const Profile = () => {
           <RoundedTag
             paddingX={20}
             defaultProps={{
-              bgColor: theme.colors.primary,
+              bgcolor: theme.colors.primary,
               bordercolor: "transparent",
               _color: theme.colors.white
             }}
@@ -139,7 +139,7 @@ const Profile = () => {
               width: 278,
               height: 37
             }}
-            bgColor={theme.colors.primary}
+            bgcolor={theme.colors.primary}
             onClick={() => router.push("/profile/edit")}
           >
             <Text

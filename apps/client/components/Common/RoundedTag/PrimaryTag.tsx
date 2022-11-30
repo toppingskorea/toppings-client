@@ -18,12 +18,12 @@ const PrimaryTag = ({
       paddingX={19}
       defaultProps={{
         _color: theme.colors.secondary[69],
-        bgColor: theme.colors.white,
+        bgcolor: theme.colors.white,
         bordercolor: theme.colors.secondary.D9
       }}
       selectedProps={{
         _color: theme.colors.white,
-        bgColor: theme.colors.dim.orange,
+        bgcolor: theme.colors.dim.orange,
         bordercolor: "transparent"
       }}
       selected={selected}

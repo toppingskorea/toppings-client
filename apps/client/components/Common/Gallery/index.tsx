@@ -1,5 +1,5 @@
 import { css, useTheme } from "@emotion/react";
-import { GrayPlus, Minus } from "@svgs/common";
+import { GrayPlus } from "@svgs/common";
 import {
   Flex,
   flex,
@@ -9,90 +9,90 @@ import {
   size,
   touchable
 } from "@toss/emotion-utils";
-import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
+import { useId } from "react";
 import { hiddenScroll } from "~/styles/emotionUtils";
+import { imageUploader } from "~/utils";
 import { Text } from "../Typo";
+import Item from "./Item";
 
 interface Props {
   images: string[];
+  setImages: (images:string[]) => void;
+  totalNumber?: number;
 }
 
-const Gallery = ({ images }: Props) => {
+const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
+  const id = useId();
   const theme = useTheme();
+
   return (
-    <ul
-      css={css`
-        ${flex({ direction: "row" })}
-        ${gutter({ direction: "horizontal", space: 6 })}
-        ${padding({ top: 8 })}
-        overflow-x: scroll;
-        ${hiddenScroll}
-      `}
-    >
-      {images.map((image, index) => (
+    <AnimatePresence>
+      <motion.ul
+        layout
+        css={css`
+          ${flex({ direction: "row" })}
+          ${gutter({ direction: "horizontal", space: 6 })}
+          ${padding({ top: 8 })}
+          overflow-x: scroll;
+          ${hiddenScroll}
+        `}
+      >
+        {images.map(image => (
+          <Item
+            key={image.slice(0, 50)}
+            image={image}
+            onClick={() => setImages(images.filter(item => item !== image))}
+          />
+        ))}
         <li
-          // eslint-disable-next-line react/no-array-index-key
-          key={index}
           css={css`
             position: relative;
             display: inline-block;
+            border: 1px dashed ${theme.colors.secondary.B8};
+            border-radius: 10px;
           `}
         >
-          <Minus
+          <label htmlFor={id}>
+            <Flex.Center
+              css={css`
+                ${size({
+                  width: 100,
+                  height: 100
+                })};
+
+                ${touchable}
+              `}
+            >
+              <GrayPlus />
+            </Flex.Center>
+
+            <Text
+              _fontSize={10}
+              _color={theme.colors.secondary[79]}
+              css={css`
+                ${position("absolute", { bottom: 10, left: "50%" })}
+                transform: translate3d(-50%,0,0);
+              `}
+            >
+              {images.length} / {totalNumber}
+            </Text>
+          </label>
+          <input
+            id={id}
+            type="file"
+            accept="image/*"
+            onChange={async e => {
+              const base64 = await imageUploader(e);
+              if (base64) setImages([...images, base64]);
+            }}
             css={css`
-              ${position("absolute", {
-                top: 0,
-                right: 0
-              })}
-              transform: translate3d(50%,-50%,0);
-              ${touchable}
-            `}
-          />
-          <Image
-            src={image}
-            alt=""
-            width={100}
-            height={100}
-            css={css`
-              border-radius: 10px;
+              display: none;
             `}
           />
         </li>
-      ))}
-      <li
-        css={css`
-          position: relative;
-          display: inline-block;
-          border: 1px dashed ${theme.colors.secondary.B8};
-          border-radius: 10px;
-        `}
-      >
-        <Flex.Center
-          as="button"
-          css={css`
-            ${size({
-              width: 100,
-              height: 100
-            })};
-
-            ${touchable}
-          `}
-        >
-          <GrayPlus />
-        </Flex.Center>
-
-        <Text
-          _fontSize={10}
-          _color={theme.colors.secondary[79]}
-          css={css`
-            ${position("absolute", { bottom: 10, left: "50%" })}
-            transform: translate3d(-50%,0,0);
-          `}
-        >
-          3 / 5
-        </Text>
-      </li>
-    </ul>
+      </motion.ul>
+    </AnimatePresence>
   );
 };
 

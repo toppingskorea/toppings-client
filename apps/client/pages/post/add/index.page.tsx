@@ -1,21 +1,17 @@
 import { css, useTheme } from "@emotion/react";
+import { usePostUploadState, useRestaurantValue } from "@atoms/index";
 import { Exit } from "@svgs/common";
 import { padding, size, Spacing, Stack, touchable } from "@toss/emotion-utils";
-import { useState } from "react";
-import {
-  ComponentWithLabel,
-  FilledButton,
-  Gallery,
-  Input
-} from "~/components/Common";
-import { Text } from "~/components/Common/Typo";
-import { HorizontalCategories } from "~/components/Post";
-import { useSetNavigation } from "~/hooks";
+import { ComponentWithLabel, Gallery, Input } from "~/components/Common";
+import { HorizontalCategories, Register } from "~/components/Post";
+import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { hiddenScroll } from "~/styles/emotionUtils";
-import dummyImages from "./dummy.constants";
 
 const PostAdd = () => {
   const theme = useTheme();
+  const router = useInternalRouter();
+  const restaurant = useRestaurantValue();
+  const [postUpload, setPostUpload] = usePostUploadState();
 
   useSetNavigation({
     top: {
@@ -24,8 +20,6 @@ const PostAdd = () => {
     },
     bottom: true
   });
-
-  const [type, setType] = useState<string>("");
 
   return (
     <Stack.Vertical gutter={22}>
@@ -36,16 +30,19 @@ const PostAdd = () => {
         `}
       >
         <ComponentWithLabel label="Picture" gutter={6}>
-          <Gallery images={dummyImages} />
+          <Gallery
+            images={postUpload.images}
+            setImages={images => setPostUpload({ ...postUpload, images })}
+          />
         </ComponentWithLabel>
 
         <ComponentWithLabel label="Name" gutter={6}>
           <Input
-            as="textarea"
-            height={58}
             readOnly
-            placeholder={`Please write a restaurant name\nyou want to review`}
-            padding={padding({ x: 15, y: 10 })}
+            placeholder="Please click to find your restaurant"
+            height={39}
+            onClick={() => router.push("/search/restaurant")}
+            value={restaurant?.place_name}
             css={css`
               ${touchable}
               overflow-y: hidden;
@@ -58,7 +55,7 @@ const PostAdd = () => {
         </ComponentWithLabel>
 
         <ComponentWithLabel label="Location" gutter={6}>
-          <Input height={40} readOnly />
+          <Input height={40} readOnly value={restaurant?.road_address_name} />
         </ComponentWithLabel>
 
         <ComponentWithLabel label="Description" gutter={6}>
@@ -67,6 +64,10 @@ const PostAdd = () => {
             height={156}
             placeholder={`Please write a detailed description\nof the food`}
             padding={padding({ x: 12, y: 12 })}
+            value={postUpload.description}
+            onChange={e =>
+              setPostUpload({ ...postUpload, description: e.target.value })
+            }
             css={css`
               ${touchable}
               font-size: 16px;
@@ -77,6 +78,7 @@ const PostAdd = () => {
           />
         </ComponentWithLabel>
       </Stack.Vertical>
+
       <div
         css={css`
           ${padding({ left: 25 })}
@@ -91,30 +93,18 @@ const PostAdd = () => {
             `}
           >
             <HorizontalCategories
-              value={type}
-              onClick={type => setType(type)}
+              value={postUpload.type}
+              onClick={type => setPostUpload({ ...postUpload, type })}
             />
           </div>
         </ComponentWithLabel>
       </div>
+
       <Spacing size={75} />
 
-      <FilledButton
-        size={{
-          width: 278,
-          height: 38
-        }}
-        bgColor={theme.colors.primary}
-        css={css`
-          margin: 0 auto;
-        `}
-      >
-        <Text _fontSize={17} _color={theme.colors.white}>
-          Register
-        </Text>
-      </FilledButton>
+      <Register />
 
-      <Spacing size={theme.dimensions.bottomNavigationHeight + 34} />
+      <Spacing size={34} />
     </Stack.Vertical>
   );
 };

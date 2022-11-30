@@ -1,10 +1,14 @@
 import { css, useTheme } from "@emotion/react";
-import { Flex, gutter, position, size } from "@toss/emotion-utils";
+import { Flex, gutter, position, size, Spacing } from "@toss/emotion-utils";
 import Lottie from "lottie-react";
 import { check } from "~/assets/json";
 import { Text } from "../../Typo";
 
-const SuccessModal = () => {
+interface Props {
+  description?: string;
+}
+
+const SuccessModal = ({ description }: Props) => {
   const theme = useTheme();
 
   return (
@@ -33,6 +37,14 @@ const SuccessModal = () => {
       >
         Complete!
       </Text>
+      {description && (
+        <>
+          <Spacing size={6} />
+          <Text _fontSize={16} _color={theme.colors.secondary[47]}>
+            {description}
+          </Text>
+        </>
+      )}
     </Flex.Center>
   );
 };
