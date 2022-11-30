@@ -1,0 +1,18 @@
+{
+  "extends": "@toppings/ts-config/base.json",
+  "compilerOptions": {
+    "paths": {
+      "~/*": ["./*"],
+      "@images/*": ["./assets/images/*"],
+      "@svgs/*": ["./assets/svgs/*"],
+      "@stores/*": ["./stores/ducks/*"],
+      "@atoms/*": ["./recoil/atoms/*"],
+      "@selectors/*": ["./recoil/selectors/*"]
+    },
+    // css props를 사용하기 위함
+    "jsxImportSource": "@emotion/react",
+    "types": ["kakao.maps.d.ts"]
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

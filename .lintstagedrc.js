@@ -1,13 +1,13 @@
-const path = require("path");
-
-const buildPrettierCommand = () => `yarn prettier --write .`;
-
-const buildEslintCommand = filenames =>
-  `yarn lint --file ${filenames
-    .map(f => path.relative(process.cwd(), f))
-    .join(" --file ")}`;
+const getLintStagedSetting = ( packageName) => {
+  return Object.fromEntries([
+    [
+      `${packageName}/**/*.+(ts|tsx)`,
+      [() => `yarn tsc -p ${packageName}/tsconfig.json --noEmit`],
+    ],
+  ])
+}
 
 module.exports = {
-  "*.{js,jsx,ts,tsx}": [buildPrettierCommand, buildEslintCommand]
-  // 他に実行したいコマンドをここに書く
-};
+  ...getLintStagedSetting("packages/client"),
+  ...getLintStagedSetting("packages/corp"),
+}
