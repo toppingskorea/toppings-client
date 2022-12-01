@@ -51,6 +51,20 @@ declare module Profile {
     scrapCount: number;
     reviewCount: number;
   }
+
+  interface PostDTO {
+    id: number;
+    name: string;
+    address: string;
+    latitude: number;
+    longitude: number;
+    description: string;
+    type: string;
+    thumbnail: string;
+    likeCount: number;
+    writer: string;
+    like: boolean;
+  }
 }
 
 declare module Map {
