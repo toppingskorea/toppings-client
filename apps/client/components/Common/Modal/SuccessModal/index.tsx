@@ -1,7 +1,7 @@
 import { css, useTheme } from "@emotion/react";
 import { Flex, gutter, position, size, Spacing } from "@toss/emotion-utils";
 import Lottie from "lottie-react";
-import { check } from "~/assets/json";
+import { star } from "~/assets/json";
 import { Text } from "../../Typo";
 
 interface Props {
@@ -24,7 +24,7 @@ const SuccessModal = ({ description }: Props) => {
       <Lottie
         loop
         autoplay
-        animationData={check}
+        animationData={star}
         css={css`
           ${size({ width: 42, height: 42 })}
         `}
