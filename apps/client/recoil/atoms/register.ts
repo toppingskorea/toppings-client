@@ -2,6 +2,7 @@ import {
   atom,
   useRecoilState,
   useRecoilValue,
+  useResetRecoilState,
   useSetRecoilState
 } from "recoil";
 
@@ -21,3 +22,4 @@ const registerAtom = atom<{
 export const useRegisterState = () => useRecoilState(registerAtom);
 export const useRegisterValue = () => useRecoilValue(registerAtom);
 export const useRegisterSetter = () => useSetRecoilState(registerAtom);
+export const useRegisterReset = () => useResetRecoilState(registerAtom);

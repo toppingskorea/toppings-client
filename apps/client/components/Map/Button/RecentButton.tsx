@@ -12,7 +12,6 @@ const RecentButton = () => {
   return (
     <motion.button
       type="button"
-      onClick={() => push("/recent")}
       initial="initial"
       animate="animate"
       whileHover="whileHover"

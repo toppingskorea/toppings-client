@@ -14,7 +14,7 @@ import tags from "./recent.constants";
 
 const RecentPage = () => {
   const theme = useTheme();
-  const { push, asPath } = useRouter();
+  const { push, pathname } = useRouter();
   const queryClient = useQueryClient();
   const [register, setRegister] = useRegisterState();
   const { mutate } = useUploadRecentHistory({
@@ -82,7 +82,7 @@ const RecentPage = () => {
               }}
               _fontSize={17}
               defaultProps={{
-                bgColor: asPath.includes(ID)
+                bgColor: pathname.includes(ID)
                   ? theme.colors.primary
                   : theme.colors.white,
                 bordercolor: theme.colors.secondary.D9

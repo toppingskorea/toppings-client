@@ -1,36 +1,24 @@
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
-import { useQueryClient } from "@tanstack/react-query";
 import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import { RoundedTag, SearchInput } from "~/components/Common";
 import { SearchNationality } from "~/components/Section";
 import { useInput, useSetNavigation } from "~/hooks";
-import {
-  useDeleteRecentAllHistory,
-  useUploadRecentHistory
-} from "~/mutations/recent";
-import Keys from "~/queries/recent/keys";
-import { useRegisterState } from "~/recoil/atoms";
+import useFetchRestaurantByCountry from "~/mutations/recent/useFetchRestaurantByCountry";
+import { useMapSearchByCountrySetter, useRegisterState } from "~/recoil/atoms";
 import tags from "./recent.constants";
 
 const RecentPage = () => {
   const theme = useTheme();
-  const { push } = useRouter();
-  const queryClient = useQueryClient();
+  const { push, pathname } = useRouter();
   const [register, setRegister] = useRegisterState();
-  const { mutate } = useUploadRecentHistory({
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: Keys.recent()
-      });
-    }
-  });
-  const { mutate: deleteMutate } = useDeleteRecentAllHistory({
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: Keys.recent()
-      });
+  const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const { mutate } = useFetchRestaurantByCountry({
+    onSuccess: async data => {
+      await setMapSearchByCountry(data);
+
+      push("/map");
     }
   });
 
@@ -49,7 +37,7 @@ const RecentPage = () => {
         keyword={keyword.value}
         onCountryClick={name => {
           setRegister({ ...register, country: name });
-          push("/register/eatingHabits");
+          mutate(name);
         }}
       />
 
@@ -77,7 +65,9 @@ const RecentPage = () => {
               }}
               _fontSize={17}
               defaultProps={{
-                bgColor: theme.colors.white,
+                bgColor: pathname.includes(ID)
+                  ? theme.colors.primary
+                  : theme.colors.white,
                 bordercolor: theme.colors.secondary.D9
               }}
               onClick={() => push(`/recent/${ID}`)}

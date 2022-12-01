@@ -5,6 +5,7 @@ import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { useCallback } from "react";
 import {
   Badge,
   RemoveAlertModal,
@@ -40,6 +41,10 @@ const RecentPage = () => {
   });
 
   const { props: keyword, setValue } = useInput({});
+  const MemoizeRemoveAlertModal = useCallback(
+    (exit: VoidFunction) => <RemoveAlertModal exit={exit} />,
+    []
+  );
 
   return (
     <SafeArea>
@@ -71,9 +76,7 @@ const RecentPage = () => {
           }}
           _fontSize={13}
           onClick={() => {
-            overlay.open(({ isOpen, exit }) => (
-              <RemoveAlertModal exit={exit} />
-            ));
+            overlay.open(({ exit }) => MemoizeRemoveAlertModal(exit));
           }}
           isTouchable
         >

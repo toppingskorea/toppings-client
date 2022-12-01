@@ -20,3 +20,11 @@ export const deleteRecentAllHistory = async () => {
 export const deleteRecentHistory = async (id: number) => {
   await authRequest.delete(`/api/recent/${id}`);
 };
+
+export const getRestaurantByCountry = async (country: string) => {
+  const { data } = await authRequest.get<{
+    data: Restaurant.SearchByCountryDTO[];
+  }>(`/api/restaurant?type=Country&country=${country}`);
+
+  return data.data;
+};

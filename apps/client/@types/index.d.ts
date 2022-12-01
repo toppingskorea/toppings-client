@@ -88,3 +88,19 @@ declare module Recent {
     category: string;
   }
 }
+
+declare module Restaurant {
+  interface SearchByCountryDTO {
+    id: number;
+    name: string;
+    latitude: number;
+    longitude: number;
+    description: string;
+    type: string;
+    thumbnail: string;
+    likeCount: number;
+    writer: string;
+    filterLikeCount: number;
+    like: boolean;
+  }
+}
