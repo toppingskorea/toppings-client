@@ -37,7 +37,7 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
     >
       {images.map(image => (
         <Item
-          key={image.slice(0, 150)}
+          key={image.slice(0, 1000)}
           image={image}
           onClick={() => setImages(images.filter(item => item !== image))}
         />

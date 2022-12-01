@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/consistent-type-imports */
 declare module Common {
   type CSSPixelValue = string | number;
   type TransformOrigin = "top" | "right" | "bottom" | "left";
@@ -63,6 +64,25 @@ declare module Profile {
     thumbnail: string;
     likeCount: number;
     writer: string;
+    like: boolean;
+  }
+}
+
+declare module Restaurant {
+  interface DetailDTO {
+    id: number;
+    name: string;
+    address: string;
+    longitude: number;
+    latitude: number;
+    description: string;
+    type: Util.ElementType<
+      typeof import("~/constants/data/common").types
+    >["label"];
+    images: string[];
+    code: string;
+    writer: string;
+    scrap: boolean;
     like: boolean;
   }
 }

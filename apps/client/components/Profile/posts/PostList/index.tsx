@@ -13,7 +13,7 @@ const PostList = () => {
       `}
     >
       {posts.map(post => (
-        <Item post={post} />
+        <Item key={post.id} post={post} />
       ))}
     </ul>
   );

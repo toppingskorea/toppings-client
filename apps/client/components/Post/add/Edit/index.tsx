@@ -1,0 +1,112 @@
+import {
+    usePostUploadReset,
+    usePostUploadValue,
+    useRestaurantReset,
+    useRestaurantValue
+} from "@atoms/index";
+import { useTheme } from "@emotion/react";
+import { Stack } from "@toss/emotion-utils";
+import { useOverlay } from "@toss/use-overlay";
+import { useCallback } from "react";
+import { FilledButton, SuccessModal } from "~/components/Common";
+import { Text } from "~/components/Common/Typo";
+import { types } from "~/constants/data/common";
+import { useInternalRouter } from "~/hooks";
+import { useDeletePost, useUpdatePost } from "~/mutations/post";
+
+const Edit = () => {
+  const theme = useTheme();
+  const overlay = useOverlay();
+  const router = useInternalRouter();
+  const restaurant = useRestaurantValue();
+  const restaurantReset = useRestaurantReset();
+  const postUploadReset = usePostUploadReset();
+  const postUpload = usePostUploadValue();
+
+  // 수정, 삭제 모두 성공했을때 다음 함수를 실행시킵니다.
+  const commonOnSuccess = useCallback(
+    (description: string) => {
+      restaurantReset();
+      postUploadReset();
+      overlay.open(() => <SuccessModal description={description} />);
+      setTimeout(() => {
+        overlay.close();
+        router.replace("/map");
+      }, 3000);
+    },
+    [overlay, postUploadReset, restaurantReset, router]
+  );
+
+  const { mutate: uploadPostMutate } = useUpdatePost(() => {
+    commonOnSuccess("The modification is complete.");
+  });
+  const { mutate: deletePostMutate } = useDeletePost(() => {
+    commonOnSuccess("The Deletion is complete.");
+  });
+
+  const onEditHandler = useCallback(() => {
+    if (!restaurant) {
+      // TODO: 시연님 토스트 만들어주면 하기
+      console.log("식당선택 부탁");
+      return;
+    }
+
+    uploadPostMutate({
+      id: postUpload.id!,
+      payload: {
+        address: restaurant.address_name,
+        code: restaurant.id,
+        description: postUpload.description,
+        images: postUpload.images,
+        latitude: +restaurant.y,
+        longitude: +restaurant.x,
+        name: restaurant.place_name,
+        type: types.filter(({ label }) => label === postUpload.type)[0].value,
+        zipcode: "몰라집코드"
+      }
+    });
+  }, [
+    postUpload.description,
+    postUpload.id,
+    postUpload.images,
+    postUpload.type,
+    restaurant,
+    uploadPostMutate
+  ]);
+
+  const onDeleteHandler = useCallback(() => {
+    deletePostMutate(postUpload.id!);
+  }, [deletePostMutate, postUpload.id]);
+
+  return (
+    <Stack.Vertical align="center" gutter={12}>
+      <FilledButton
+        size={{
+          width: 278,
+          height: 38
+        }}
+        bgcolor={theme.colors.primary}
+        onClick={onEditHandler}
+      >
+        <Text _fontSize={17} _color={theme.colors.white}>
+          Edit
+        </Text>
+      </FilledButton>
+      <FilledButton
+        size={{
+          width: 278,
+          height: 38
+        }}
+        bgcolor={theme.colors.secondary.D9}
+        // TODO: 동규님 모달 받으면 모달에서 핸들러 하기
+        onClick={onDeleteHandler}
+      >
+        <Text _fontSize={17} _color={theme.colors.white}>
+          Delete
+        </Text>
+      </FilledButton>
+    </Stack.Vertical>
+  );
+};
+
+export default Edit;

@@ -1,9 +1,15 @@
+import {
+  usePostUploadReset,
+  usePostUploadState,
+  useRestaurantReset,
+  useRestaurantValue
+} from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
-import { usePostUploadState, useRestaurantValue } from "@atoms/index";
 import { Exit } from "@svgs/common";
 import { padding, size, Spacing, Stack, touchable } from "@toss/emotion-utils";
+import { useEffect, useMemo } from "react";
 import { ComponentWithLabel, Gallery, Input } from "~/components/Common";
-import { HorizontalCategories, Register } from "~/components/Post";
+import { Edit, HorizontalCategories, Register } from "~/components/Post";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { hiddenScroll } from "~/styles/emotionUtils";
 
@@ -12,6 +18,10 @@ const PostAdd = () => {
   const router = useInternalRouter();
   const restaurant = useRestaurantValue();
   const [postUpload, setPostUpload] = usePostUploadState();
+  const restaurantReset = useRestaurantReset();
+  const postUploadReset = usePostUploadReset();
+
+  const isModifyMode = useMemo(() => !!postUpload.id, [postUpload.id]);
 
   useSetNavigation({
     top: {
@@ -20,6 +30,12 @@ const PostAdd = () => {
     },
     bottom: true
   });
+  useEffect(() => {
+    return () => {
+      restaurantReset();
+      postUploadReset();
+    };
+  }, [postUploadReset, restaurantReset]);
 
   return (
     <Stack.Vertical gutter={22}>
@@ -55,7 +71,7 @@ const PostAdd = () => {
         </ComponentWithLabel>
 
         <ComponentWithLabel label="Location" gutter={6}>
-          <Input height={40} readOnly value={restaurant?.road_address_name} />
+          <Input height={40} disabled value={restaurant?.road_address_name} />
         </ComponentWithLabel>
 
         <ComponentWithLabel label="Description" gutter={6}>
@@ -100,9 +116,9 @@ const PostAdd = () => {
         </ComponentWithLabel>
       </div>
 
-      <Spacing size={75} />
-
-      <Register />
+      <Spacing size={45} />
+      
+      {isModifyMode ? <Edit /> : <Register />}
 
       <Spacing size={34} />
     </Stack.Vertical>

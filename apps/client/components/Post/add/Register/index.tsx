@@ -19,22 +19,20 @@ const Register = () => {
   const router = useInternalRouter();
   const restaurant = useRestaurantValue();
   const restaurantReset = useRestaurantReset();
-  const postUpload = usePostUploadValue();
   const postUploadReset = usePostUploadReset();
+  const postUpload = usePostUploadValue();
 
-  const { mutate: uploadPostMutate } = useUploadPost(
-    () => {
-      restaurantReset();
-      postUploadReset();
-      overlay.open(() => (
-        <SuccessModal description="It will be uploaded after approval from the manager." />
-      ));
-      setTimeout(() => {
-        overlay.close();
-        router.replace("/map");
-      }, 3000);
-    }
-  );
+  const { mutate: uploadPostMutate } = useUploadPost(() => {
+    restaurantReset();
+    postUploadReset();
+    overlay.open(() => (
+      <SuccessModal description="It will be uploaded after approval from the manager." />
+    ));
+    setTimeout(() => {
+      overlay.close();
+      router.replace("/map");
+    }, 3000);
+  });
 
   const onRegisterHandler = useCallback(() => {
     if (!restaurant) {
