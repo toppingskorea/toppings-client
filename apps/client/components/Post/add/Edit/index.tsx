@@ -1,8 +1,8 @@
 import {
-    usePostUploadReset,
-    usePostUploadValue,
-    useRestaurantReset,
-    useRestaurantValue
+  usePostUploadReset,
+  usePostUploadValue,
+  useRestaurantReset,
+  useRestaurantValue
 } from "@atoms/index";
 import { useTheme } from "@emotion/react";
 import { Stack } from "@toss/emotion-utils";
@@ -26,11 +26,11 @@ const Edit = () => {
   // 수정, 삭제 모두 성공했을때 다음 함수를 실행시킵니다.
   const commonOnSuccess = useCallback(
     (description: string) => {
-      restaurantReset();
-      postUploadReset();
       overlay.open(() => <SuccessModal description={description} />);
       setTimeout(() => {
         overlay.close();
+        restaurantReset();
+        postUploadReset();
         router.replace("/map");
       }, 3000);
     },
