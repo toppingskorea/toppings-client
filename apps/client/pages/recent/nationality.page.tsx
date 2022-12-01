@@ -1,21 +1,38 @@
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
+import { useQueryClient } from "@tanstack/react-query";
 import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
-import { motion } from "framer-motion";
-import { useState } from "react";
-import {
-  Badge,
-  RoundedTag,
-  SearchInput,
-  SSRSafeSuspense
-} from "~/components/Common";
-import { History } from "~/components/Recent";
-import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
+import { useRouter } from "next/router";
+import { RoundedTag, SearchInput } from "~/components/Common";
+import { SearchNationality } from "~/components/Section";
 import { useInput, useSetNavigation } from "~/hooks";
+import {
+  useDeleteRecentAllHistory,
+  useUploadRecentHistory
+} from "~/mutations/recent";
+import Keys from "~/queries/recent/keys";
+import { useRegisterState } from "~/recoil/atoms";
+import tags from "./recent.constants";
 
 const RecentPage = () => {
   const theme = useTheme();
-  const [recentItems, setRecentItems] = useState<string[]>([]);
+  const { push } = useRouter();
+  const queryClient = useQueryClient();
+  const [register, setRegister] = useRegisterState();
+  const { mutate } = useUploadRecentHistory({
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: Keys.recent()
+      });
+    }
+  });
+  const { mutate: deleteMutate } = useDeleteRecentAllHistory({
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: Keys.recent()
+      });
+    }
+  });
 
   useSetNavigation({
     top: {
@@ -28,41 +45,13 @@ const RecentPage = () => {
 
   return (
     <SafeArea>
-      <motion.div
-        variants={defaultSlideFadeInVariants("right")}
-        {...framerMocker}
-        css={css`
-          ${position("absolute", { top: 114, left: 0 })}
-        `}
-      >
-        <Badge attach="left">Recent</Badge>
-      </motion.div>
-      <motion.div
-        variants={defaultSlideFadeInVariants("left")}
-        {...framerMocker}
-        css={css`
-          ${position("absolute", { top: 114, right: 0 })}
-        `}
-      >
-        <RoundedTag
-          padding={{
-            x: 10,
-            y: 6
-          }}
-          defaultProps={{
-            bgColor: theme.colors.secondary.F1,
-            bordercolor: "transparent",
-            _color: theme.colors.secondary.A2
-          }}
-          _fontSize={13}
-        >
-          remove all
-        </RoundedTag>
-      </motion.div>
-
-      <SSRSafeSuspense fallback={<div>하이</div>}>
-        <History recentItems={recentItems} />
-      </SSRSafeSuspense>
+      <SearchNationality
+        keyword={keyword.value}
+        onCountryClick={name => {
+          setRegister({ ...register, country: name });
+          push("/register/eatingHabits");
+        }}
+      />
 
       <div
         css={css`
@@ -79,9 +68,9 @@ const RecentPage = () => {
             overflow-x: auto;
           `}
         >
-          {["Restaurant", "Nationality", "Eating  habit"].map(item => (
+          {tags.map(({ ID, NAME }) => (
             <RoundedTag
-              key={item}
+              key={ID}
               padding={{
                 x: 16,
                 y: 7
@@ -91,8 +80,9 @@ const RecentPage = () => {
                 bgColor: theme.colors.white,
                 bordercolor: theme.colors.secondary.D9
               }}
+              onClick={() => push(`/recent/${ID}`)}
             >
-              {item}
+              {NAME}
             </RoundedTag>
           ))}
         </ul>
@@ -108,7 +98,7 @@ const RecentPage = () => {
         `}
       >
         <SearchInput
-          onSubmit={() => setRecentItems(prev => [...prev, keyword.value])}
+          onSubmit={() => console.log("sad")}
           placeholder="Enter nationality name"
           setValue={setValue}
           {...keyword}

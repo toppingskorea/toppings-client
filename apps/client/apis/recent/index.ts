@@ -8,3 +8,15 @@ export const getRecentHistory = async () => {
 
   return data.data;
 };
+
+export const addRecentHistory = async (history: Recent.AddHistory) => {
+  await authRequest.post("/api/recent", history);
+};
+
+export const deleteRecentAllHistory = async () => {
+  await authRequest.delete("/api/recent");
+};
+
+export const deleteRecentHistory = async (id: number) => {
+  await authRequest.delete(`/api/recent/${id}`);
+};

@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
+export { default as RemoveHistory } from "./removeHistory.svg";
 export { default as Timeline } from "./timeline.svg";

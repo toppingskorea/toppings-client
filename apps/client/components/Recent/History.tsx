@@ -1,16 +1,23 @@
 import { css } from "@emotion/react";
-import { flex } from "@toss/emotion-utils";
-import { Timeline } from "~/assets/svgs/recent";
+import { RemoveHistory, Timeline } from "@svgs/recent";
+import { useQueryClient } from "@tanstack/react-query";
+import { Flex, flex, touchable } from "@toss/emotion-utils";
+import { memo } from "react";
+import { useDeleteRecentHistory } from "~/mutations/recent";
 import { useFetchRecentHistory } from "~/queries/recent";
+import Keys from "~/queries/recent/keys";
 
-interface Props {
-  recentItems: string[];
-}
-
-const History = ({ recentItems }: Props) => {
+const History = () => {
+  const queryClient = useQueryClient();
   const { data } = useFetchRecentHistory();
+  const { mutate } = useDeleteRecentHistory({
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: Keys.recent()
+      });
+    }
+  });
 
-  console.log(data);
   return (
     <div
       css={css`
@@ -18,14 +25,22 @@ const History = ({ recentItems }: Props) => {
         margin-left: 27px;
       `}
     >
-      {recentItems.map(item => (
-        <div key={item}>
-          <Timeline />
-          {item}
-        </div>
+      {data.map(({ id, keyword }) => (
+        <Flex key={id} justify="space-between">
+          <Flex.Center>
+            <Timeline />
+            {keyword}
+          </Flex.Center>
+          <RemoveHistory
+            onClick={() => mutate(id)}
+            css={css`
+              ${touchable}
+            `}
+          />
+        </Flex>
       ))}
     </div>
   );
 };
 
-export default History;
+export default memo(History);
