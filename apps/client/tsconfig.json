@@ -3,8 +3,8 @@
   "compilerOptions": {
     "paths": {
       "~/*": ["./*"],
-      "@images/*": ["./assets/images/*"],
       "@svgs/*": ["./assets/svgs/*"],
+      "@images/*": ["./assets/images/*"],
       "@stores/*": ["./stores/ducks/*"],
       "@atoms/*": ["./recoil/atoms/*"],
       "@selectors/*": ["./recoil/selectors/*"]

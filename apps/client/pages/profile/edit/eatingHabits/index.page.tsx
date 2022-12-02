@@ -11,16 +11,12 @@ import { useInternalRouter, useSetNavigation } from "~/hooks";
 
 const ProfileEditEatingHabits = () => {
   const router = useInternalRouter();
-  const theme = useTheme();
+  const { colors, weighs, dimensions } = useTheme();
   const [edit, setEdit] = useEditState();
   useSetNavigation({
     top: {
       title: (
-        <Text
-          _fontSize={23}
-          weight={theme.weighs.bold}
-          _color={theme.colors.secondary[47]}
-        >
+        <Text _fontSize={23} weight={weighs.bold} _color={colors.secondary[47]}>
           Select a Eating Habit
         </Text>
       ),
@@ -51,7 +47,7 @@ const ProfileEditEatingHabits = () => {
         {...framerMocker}
         css={css`
           ${position("fixed", {
-            bottom: theme.dimensions.bottomNavigationHeight + 34,
+            bottom: dimensions.bottomNavigationHeight + 34,
             left: 0,
             right: 0
           })}
@@ -63,14 +59,10 @@ const ProfileEditEatingHabits = () => {
             width: 278,
             height: 37
           }}
-          bgColor={theme.colors.primary}
+          bgcolor={colors.primary}
           onClick={router.back}
         >
-          <Text
-            _fontSize={17}
-            _color={theme.colors.white}
-            weight={theme.weighs.semiBold}
-          >
+          <Text _fontSize={17} _color={colors.white} weight={weighs.semiBold}>
             Save
           </Text>
         </FilledButton>

@@ -2,7 +2,7 @@ import { useTheme } from "@emotion/react";
 import type { ComponentProps } from "react";
 import { ClickableRoundedTag } from "~/components/Common";
 
-const Tag = ({
+const PrimaryTag = ({
   children,
   selected,
   onClick
@@ -10,20 +10,20 @@ const Tag = ({
   ComponentProps<typeof ClickableRoundedTag>,
   "children" | "selected" | "onClick"
 >) => {
-  const theme = useTheme();
+  const { colors } = useTheme();
 
   return (
     <ClickableRoundedTag
       _fontSize={15}
       paddingX={19}
       defaultProps={{
-        _color: theme.colors.secondary[69],
-        bgColor: theme.colors.white,
-        bordercolor: theme.colors.secondary.D9
+        _color: colors.secondary[69],
+        bgcolor: colors.white,
+        bordercolor: colors.secondary.D9
       }}
       selectedProps={{
-        _color: theme.colors.white,
-        bgColor: theme.colors.dim.orange,
+        _color: colors.white,
+        bgcolor: colors.dim.orange,
         bordercolor: "transparent"
       }}
       selected={selected}
@@ -34,4 +34,4 @@ const Tag = ({
   );
 };
 
-export default Tag;
+export default PrimaryTag;

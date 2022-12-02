@@ -69,7 +69,7 @@ const Input = ({
   absoluteNode,
   ...rest
 }: Props) => {
-  const theme = useTheme();
+  const { colors } = useTheme();
   const inputRef = useRef<HTMLInputElement | null>(null);
   // input auto focus하면서 커서 맨 뒤로 보내기
   useEffect(() => {
@@ -97,8 +97,9 @@ const Input = ({
               ${padding}
               height:${height ? `${height}px` : "unset"};
               margin-left: ${preAppend ? "14px" : "auto"};
-              border: 1px solid ${theme.colors.secondary.B8};
+              border: 1px solid ${colors.secondary.B8};
               border-radius: 10px;
+              font-family: inherit;
             `,
             ref: inputRef,
             ...rest

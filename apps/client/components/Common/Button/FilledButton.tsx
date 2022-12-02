@@ -4,18 +4,18 @@ import type { emotionTheme } from "~/styles";
 import { Button } from ".";
 
 interface Props extends ComponentProps<typeof Button> {
-  bgColor?:
+  bgcolor?:
     | Util.ValueOf<typeof emotionTheme.colors>
     | Util.ValueOf<typeof emotionTheme.colors.secondary>;
 }
 
-const FilledButton = ({ children, bgColor, ...rest }: Props) => {
-  const theme = useTheme();
+const FilledButton = ({ children, bgcolor, ...rest }: Props) => {
+  const { colors } = useTheme();
 
   return (
     <Button
       css={css`
-        background-color: ${bgColor || theme.colors.white};
+        background-color: ${bgcolor || colors.white};
       `}
       {...rest}
     >

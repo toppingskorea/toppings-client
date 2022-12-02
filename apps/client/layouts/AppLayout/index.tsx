@@ -1,12 +1,13 @@
 import { useNavigationValue } from "@atoms/index";
-import { css } from "@emotion/react";
-import { flex, height100 } from "@toss/emotion-utils";
+import { css, useTheme } from "@emotion/react";
+import { flex, height100, Spacing } from "@toss/emotion-utils";
 import { PageLoader, ScrollContainer } from "~/components/Common";
 import { TopNavigator } from "~/components/Layout";
 import BottomNavigator from "~/components/Layout/BottomNavigator";
 
 const AppLayout = ({ children }: Util.PropsWithChild) => {
   const state = useNavigationValue();
+  const { dimensions } = useTheme();
 
   return (
     <div
@@ -25,6 +26,7 @@ const AppLayout = ({ children }: Util.PropsWithChild) => {
           `}
         >
           {children}
+          {state.bottom && <Spacing size={dimensions.bottomNavigationHeight} />}
         </main>
         <PageLoader />
       </ScrollContainer>

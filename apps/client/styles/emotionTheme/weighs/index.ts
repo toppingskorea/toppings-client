@@ -1,9 +1,9 @@
 /*
  사용하는 부분에선 다음과 같이 사용해주세요.
  import { useTheme } from "@emotion/react"
- const theme = useTheme()
+ const {weighs} = useTheme()
 
- <Dummy height={theme.weighs.light}/>
+ <Dummy height={weighs.light}/>
 */
 const weighs = {
   light: 300,

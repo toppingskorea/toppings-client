@@ -1,5 +1,6 @@
 const Keys = {
-  user: () => ["user"]
+  user: () => ["user"],
+  posts: () => ["posts"]
 };
 
 export default Keys;

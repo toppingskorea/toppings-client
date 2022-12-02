@@ -9,6 +9,7 @@ import {
   useRef,
   useState
 } from "react";
+import { hiddenScroll } from "~/styles/emotionUtils";
 
 type Value = {
   scrollContainerRef: RefObject<HTMLDivElement>;
@@ -58,10 +59,7 @@ const ScrollContainer = ({ children }: PropsWithChildren) => {
           ${height100}
           position: relative;
           overflow-x: hidden;
-
-          ::-webkit-scrollbar {
-            width: 0;
-          }
+          ${hiddenScroll}
         `}
       >
         {children}

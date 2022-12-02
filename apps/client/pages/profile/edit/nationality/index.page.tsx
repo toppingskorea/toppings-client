@@ -9,14 +9,14 @@ import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
 
 const ProfileEditNationality = () => {
   const router = useInternalRouter();
-  const theme = useTheme();
+  const { colors, weighs, dimensions } = useTheme();
   const [edit, setEdit] = useEditState();
 
   useSetNavigation({
     top: {
       marginBottom: 35,
       title: (
-        <Text _fontSize={23} weight={theme.weighs.bold}>
+        <Text _fontSize={23} weight={weighs.bold}>
           Select a Nationality
         </Text>
       ),
@@ -41,10 +41,10 @@ const ProfileEditNationality = () => {
         css={css`
           ${padding({ x: 16, y: 22 })};
           ${position("fixed", {
-            bottom: theme.dimensions.bottomNavigationHeight
+            bottom: dimensions.bottomNavigationHeight
           })}
-          background-color: ${theme.colors.white};
-          max-width: ${theme.dimensions.viewWidth - 32}px;
+          background-color: ${colors.white};
+          max-width: ${dimensions.viewWidth - 32}px;
           ${width100}
         `}
       >

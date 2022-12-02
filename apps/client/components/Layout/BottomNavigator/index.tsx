@@ -6,7 +6,7 @@ import { useInternalRouter } from "~/hooks";
 import navList from "./BottomNavigator.constants";
 
 const BottomNavigator = () => {
-  const theme = useTheme();
+  const { colors, dimensions } = useTheme();
   const { asPath } = useInternalRouter();
 
   return (
@@ -14,9 +14,9 @@ const BottomNavigator = () => {
       css={css`
         ${position("fixed", { bottom: 0 })};
         ${width100}
-        background-color: ${theme.colors.white};
+        background-color: ${colors.white};
         max-width: inherit;
-        height: ${theme.dimensions.bottomNavigationHeight}px;
+        height: ${dimensions.bottomNavigationHeight}px;
 
         ${padding({ x: 45, top: 20 })}
       `}
@@ -32,9 +32,7 @@ const BottomNavigator = () => {
               href={href}
               css={css`
                 path {
-                  fill: ${theme.colors.secondary[
-                    href === asPath ? "6D" : "D9"
-                  ]};
+                  fill: ${colors.secondary[href === asPath ? "6D" : "D9"]};
                 }
               `}
             >

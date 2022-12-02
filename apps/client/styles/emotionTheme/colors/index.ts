@@ -1,9 +1,9 @@
 /*
  사용하는 부분에선 다음과 같이 사용해주세요.
  import { useTheme } from "@emotion/react"
- const theme = useTheme()
+ const {colors} = useTheme()
 
- <Dummy _color={theme.colors.black}/>
+ <Dummy _color={colors.black}/>
 */
 const colors = {
   white: "#FFFFFF",
@@ -22,7 +22,9 @@ const colors = {
     "49": "#494949",
     B8: "#B8B8B8",
     "69": "#696969",
-    "66": "#666666"
+    "66": "#666666",
+    "52": "#525252",
+    "34": "#343434"
   },
 
   dim: {

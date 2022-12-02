@@ -11,7 +11,7 @@ interface Props extends ComponentProps<typeof Input> {
 
 const SearchInput = (props: Props) => {
   const { onSubmit, setValue, value, ...rest } = props;
-  const theme = useTheme();
+  const { colors, weighs } = useTheme();
 
   return (
     <div
@@ -22,12 +22,12 @@ const SearchInput = (props: Props) => {
       <Input
         css={css`
           border-radius: 100px;
-          background-color: ${theme.colors.secondary.D9};
+          background-color: ${colors.secondary.D9};
           border: none;
           font-size: 17px;
-          font-weight: ${theme.weighs.medium};
+          font-weight: ${weighs.medium};
           &::placeholder {
-            color: ${theme.colors.white};
+            color: ${colors.white};
           }
         `}
         preAppend={

@@ -8,14 +8,14 @@ const OrangeTypo = (
     "_fontSize" | "weight" | "lineHeight" | "_color"
   >
 ) => {
-  const theme = useTheme();
+  const { colors, weighs } = useTheme();
 
   return (
     <Text
-      weight={theme.weighs.bold}
+      weight={weighs.bold}
       _fontSize={23}
       lineHeight={28}
-      _color={theme.colors.primary}
+      _color={colors.primary}
       {...props}
     />
   );
