@@ -14,7 +14,7 @@ interface Props {
 
 const Result = ({ value, type }: Props) => {
   const theme = useTheme();
-  const router = useInternalRouter();
+  const { push } = useInternalRouter();
   const setRestaurant = useRestaurantSetter();
   const [result, setResult] = useState<kakao.maps.services.PlacesSearchResult>(
     []
@@ -106,7 +106,7 @@ const Result = ({ value, type }: Props) => {
             `}
             onClick={() => {
               onItemClickHandler(item);
-              router.push("/post/add");
+              push("/post/add");
             }}
           >
             <Text _fontSize={12} _color={theme.colors.secondary[52]}>

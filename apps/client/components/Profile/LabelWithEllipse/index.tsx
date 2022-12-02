@@ -14,7 +14,7 @@ interface Props extends ComponentProps<typeof Ellipse> {
 
 const LabelWithEllipse = ({ label, children, route }: Props) => {
   const theme = useTheme();
-  const router = useInternalRouter();
+  const { push } = useInternalRouter();
 
   return (
     <motion.li
@@ -24,7 +24,7 @@ const LabelWithEllipse = ({ label, children, route }: Props) => {
         ${touchable}
       `}
       variants={defaultSlideFadeInVariants("bottom")}
-      onClick={() => router.push(route)}
+      onClick={() => push(route)}
     >
       <Text _fontSize={13} _color={theme.colors.secondary[49]}>
         {label}

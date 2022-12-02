@@ -6,7 +6,7 @@ import { usePostUploadSetter, useRestaurantSetter } from "~/recoil/atoms";
 const PostDetail = ({
   id
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const router = useInternalRouter();
+  const { push } = useInternalRouter();
 
   const setRestaurant = useRestaurantSetter();
   const setPostUpload = usePostUploadSetter();
@@ -34,7 +34,7 @@ const PostDetail = ({
             id: result.id
           });
 
-          router.push("/post/add");
+          push("/post/add");
         }}
       >
         수정하로 가자!

@@ -15,7 +15,7 @@ import { hiddenScroll } from "~/styles/emotionUtils";
 
 const PostAdd = () => {
   const theme = useTheme();
-  const router = useInternalRouter();
+  const { push } = useInternalRouter();
   const restaurant = useRestaurantValue();
   const [postUpload, setPostUpload] = usePostUploadState();
   const restaurantReset = useRestaurantReset();
@@ -57,7 +57,7 @@ const PostAdd = () => {
             readOnly
             placeholder="Please click to find your restaurant"
             height={39}
-            onClick={() => router.push("/search/restaurant")}
+            onClick={() => push("/search/restaurant")}
             value={restaurant?.place_name}
             css={css`
               ${touchable}
@@ -117,7 +117,7 @@ const PostAdd = () => {
       </div>
 
       <Spacing size={45} />
-      
+
       {isModifyMode ? <Edit /> : <Register />}
 
       <Spacing size={34} />

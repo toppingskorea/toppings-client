@@ -16,7 +16,7 @@ import { useUpdateUserInfo } from "~/mutations/profile";
 import { Keys, useFetchUserInfo } from "~/queries/profile";
 
 const ProfileEdit = () => {
-  const router = useInternalRouter();
+  const { push } = useInternalRouter();
   const theme = useTheme();
   const overlay = useOverlay();
 
@@ -37,7 +37,7 @@ const ProfileEdit = () => {
       overlay.open(() => <SuccessModal />);
 
       setTimeout(() => {
-        router.push("/profile");
+        push("/profile");
       }, 2000);
     }
   });

@@ -11,7 +11,7 @@ import ProfileImage from "./ProfileImage";
 // 수정할 수 있는 유저의 정보를 나타냅니다.
 const UserInfo = () => {
   const theme = useTheme();
-  const router = useInternalRouter();
+  const {push} = useInternalRouter();
 
   const { data } = useFetchUserInfo();
   const [edit, setEdit] = useEditState();
@@ -59,7 +59,7 @@ const UserInfo = () => {
       <ClickableInput
         label="Nationality"
         inputProps={{
-          onClick: () => router.push("/profile/edit/nationality"),
+          onClick: () => push("/profile/edit/nationality"),
           placeholder: edit.country || data.country
         }}
       />
@@ -67,7 +67,7 @@ const UserInfo = () => {
       <ClickableInput
         label="Eating habit"
         inputProps={{
-          onClick: () => router.push("/profile/edit/eatingHabits"),
+          onClick: () => push("/profile/edit/eatingHabits"),
           placeholder:
             (edit.habits && edit.habits[0].content) || data.habits[0].content
         }}

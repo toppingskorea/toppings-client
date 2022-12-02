@@ -8,7 +8,7 @@ import { useInternalRouter } from "~/hooks";
 
 const DuplicatedOverlay = () => {
   const theme = useTheme();
-  const router = useInternalRouter();
+  const { push } = useInternalRouter();
 
   return (
     <OrangeSection
@@ -30,7 +30,7 @@ const DuplicatedOverlay = () => {
           }}
           // TODO:이 식당의 리뷰있는곳으로 가기
           onClick={() => {
-            router.push("/map");
+            push("/map");
           }}
           css={css`
             ${flex({

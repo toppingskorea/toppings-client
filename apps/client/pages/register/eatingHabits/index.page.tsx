@@ -14,7 +14,7 @@ import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useRegister } from "~/mutations/register";
 
 const EatingHabits = () => {
-  const router = useInternalRouter();
+  const { push } = useInternalRouter();
   const theme = useTheme();
   const [register, setRegister] = useRegisterState();
   const overlay = useOverlay();
@@ -23,7 +23,7 @@ const EatingHabits = () => {
     onSuccess: () => {
       openSuccessModal();
       setTimeout(() => {
-        router.push("/map");
+        push("/map");
       }, 3000);
     }
   });

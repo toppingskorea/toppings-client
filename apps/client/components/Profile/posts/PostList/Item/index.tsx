@@ -21,7 +21,7 @@ interface Props {
 
 const Item = ({ post }: Props) => {
   const theme = useTheme();
-  const router = useRouter();
+  const { push } = useRouter();
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
@@ -34,7 +34,7 @@ const Item = ({ post }: Props) => {
         ${touchable}
         border-bottom: 1px solid ${theme.colors.secondary.D9};
       `}
-      onClick={() => router.push(`/post/${post.id}`)}
+      onClick={() => push(`/post/${post.id}`)}
     >
       <Image
         src={post.thumbnail}

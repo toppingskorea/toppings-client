@@ -7,10 +7,10 @@ import { SearchNationality } from "~/components/Section";
 import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
 
 const RegisterNationality = () => {
-  const router = useInternalRouter();
+  const { push } = useInternalRouter();
   const theme = useTheme();
   const [register, setRegister] = useRegisterState();
-  
+
   useSetNavigation({
     top: {
       marginBottom: 35,
@@ -30,7 +30,7 @@ const RegisterNationality = () => {
         keyword={keyword.value}
         onCountryClick={name => {
           setRegister({ ...register, country: name });
-          router.push("/register/eatingHabits");
+          push("/register/eatingHabits");
         }}
       />
 
