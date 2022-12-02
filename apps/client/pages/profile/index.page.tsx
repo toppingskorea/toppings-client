@@ -130,7 +130,7 @@ const Profile = () => {
               left: 0,
               right: 0
             })}
-            ${flex({ justify: "{colors,di}" })}
+            ${flex({ justify: "center" })}
           `}
         >
           <FilledButton
