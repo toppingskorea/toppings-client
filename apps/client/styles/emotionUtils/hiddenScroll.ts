@@ -10,6 +10,7 @@ import { css } from "@emotion/react";
 const hiddenScroll = css`
   ::-webkit-scrollbar {
     display: none;
+    width: 0;
   }
 `;
 
