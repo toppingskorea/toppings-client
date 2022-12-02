@@ -3,8 +3,8 @@ import { Flex, Spacing } from "@toss/emotion-utils";
 import { Text } from "../Typo";
 
 interface Props {
-  likeCount: number;
   like: boolean;
+  likeCount: number;
 }
 
 const HeartWithNumber = ({ like, likeCount }: Props) => {
