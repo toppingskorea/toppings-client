@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+// Edit이 랜더링 된다는 것은 postUpload.id 가 있다는 것입니다.
 import {
   usePostUploadReset,
   usePostUploadValue,
@@ -37,7 +39,7 @@ const Edit = () => {
     [overlay, postUploadReset, restaurantReset, router]
   );
 
-  const { mutate: uploadPostMutate } = useUpdatePost(() => {
+  const { mutate: updatePostMutate } = useUpdatePost(() => {
     commonOnSuccess("The modification is complete.");
   });
   const { mutate: deletePostMutate } = useDeletePost(() => {
@@ -51,7 +53,7 @@ const Edit = () => {
       return;
     }
 
-    uploadPostMutate({
+    updatePostMutate({
       id: postUpload.id!,
       payload: {
         address: restaurant.address_name,
@@ -71,7 +73,7 @@ const Edit = () => {
     postUpload.images,
     postUpload.type,
     restaurant,
-    uploadPostMutate
+    updatePostMutate
   ]);
 
   const onDeleteHandler = useCallback(() => {
