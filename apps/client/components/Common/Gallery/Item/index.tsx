@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
+import { Minus } from "@svgs/common";
 import { position, touchable } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Minus } from "~/assets/svgs/common";
 import { defaultScaleChangeVariants } from "~/constants";
 
 interface Props {
