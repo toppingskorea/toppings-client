@@ -22,6 +22,7 @@ const Result = ({ value, type }: Props) => {
 
   useEffect(() => {
     const ps = new kakao.maps.services.Places();
+
     if (value)
       ps.keywordSearch(
         value,
