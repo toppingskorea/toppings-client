@@ -16,7 +16,7 @@ const DuplicatedOverlay = () => {
         <Text
           _fontSize={16}
           _color={theme.colors.white}
-          whiteSpace="pre"
+          whiteSpace="pre-line"
           textAlign="center"
         >
           There toppings is{"\n"}already registered 🤔
