@@ -9,6 +9,7 @@ interface Props {
 
 const HorizontalCategories = ({ value, onClick }: Props) => {
   const { dimensions } = useTheme();
+
   return (
     <ul
       css={css`
