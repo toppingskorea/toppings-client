@@ -8,13 +8,13 @@ interface Props {
 }
 
 const HorizontalCategories = ({ value, onClick }: Props) => {
-  const theme = useTheme();
+  const { dimensions } = useTheme();
   return (
     <ul
       css={css`
         display: flex;
         flex-wrap: wrap;
-        width: ${theme.dimensions.viewWidth}px;
+        width: ${dimensions.viewWidth}px;
         column-gap: 6px;
         row-gap: 8px;
       `}

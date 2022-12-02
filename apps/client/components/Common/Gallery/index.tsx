@@ -23,7 +23,7 @@ interface Props {
 
 const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
   const id = useId();
-  const theme = useTheme();
+  const { colors } = useTheme();
 
   return (
     <ul
@@ -46,7 +46,7 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
         css={css`
           position: relative;
           display: inline-block;
-          border: 1px dashed ${theme.colors.secondary.B8};
+          border: 1px dashed ${colors.secondary.B8};
           border-radius: 10px;
         `}
       >
@@ -66,7 +66,7 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
 
           <Text
             _fontSize={10}
-            _color={theme.colors.secondary[79]}
+            _color={colors.secondary[79]}
             css={css`
               ${position("absolute", { bottom: 10, left: "50%" })}
               transform: translate3d(-50%,0,0);

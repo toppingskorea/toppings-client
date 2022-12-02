@@ -7,7 +7,7 @@ import { useFetchUserInfo } from "~/queries/profile";
 import { hexToRgba } from "~/utils";
 
 const UserBadge = () => {
-  const theme = useTheme();
+  const {colors,weighs} = useTheme();
   const { data: user } = useFetchUserInfo();
 
   return (
@@ -21,7 +21,7 @@ const UserBadge = () => {
         ${margin({ top: 60, x: "auto" })};
         ${gutter({ direction: "horizontal", space: 12 })};
         border-radius: 40px;
-        box-shadow: 0 4px 4px ${hexToRgba(theme.colors.black, 0.25)};
+        box-shadow: 0 4px 4px ${hexToRgba(colors.black, 0.25)};
       `}
     >
       <Image
@@ -32,8 +32,8 @@ const UserBadge = () => {
       />
       <Text
         _fontSize={17}
-        weight={theme.weighs.semiBold}
-        _color={theme.colors.secondary[47]}
+        weight={weighs.semiBold}
+        _color={colors.secondary[47]}
       >
         {user.name}
       </Text>

@@ -17,7 +17,7 @@ import { Keys, useFetchUserInfo } from "~/queries/profile";
 
 const ProfileEdit = () => {
   const { push } = useInternalRouter();
-  const theme = useTheme();
+  const { colors, weighs } = useTheme();
   const overlay = useOverlay();
 
   useSetNavigation({
@@ -85,14 +85,10 @@ const ProfileEdit = () => {
               width: 278,
               height: 37
             }}
-            bgcolor={theme.colors.primary}
+            bgcolor={colors.primary}
             onClick={onClickRegisterHandler}
           >
-            <Text
-              _fontSize={17}
-              _color={theme.colors.white}
-              weight={theme.weighs.semiBold}
-            >
+            <Text _fontSize={17} _color={colors.white} weight={weighs.semiBold}>
               Register
             </Text>
           </FilledButton>

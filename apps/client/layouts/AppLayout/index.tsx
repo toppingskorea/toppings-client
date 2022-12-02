@@ -7,7 +7,7 @@ import BottomNavigator from "~/components/Layout/BottomNavigator";
 
 const AppLayout = ({ children }: Util.PropsWithChild) => {
   const state = useNavigationValue();
-  const theme = useTheme();
+  const { dimensions } = useTheme();
 
   return (
     <div
@@ -26,9 +26,7 @@ const AppLayout = ({ children }: Util.PropsWithChild) => {
           `}
         >
           {children}
-          {state.bottom && (
-            <Spacing size={theme.dimensions.bottomNavigationHeight} />
-          )}
+          {state.bottom && <Spacing size={dimensions.bottomNavigationHeight} />}
         </main>
         <PageLoader />
       </ScrollContainer>

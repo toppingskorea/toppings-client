@@ -13,7 +13,7 @@ interface Props {
 }
 
 const Result = ({ value, type }: Props) => {
-  const theme = useTheme();
+  const { colors, weighs } = useTheme();
   const { push } = useInternalRouter();
   const setRestaurant = useRestaurantSetter();
   const [result, setResult] = useState<kakao.maps.services.PlacesSearchResult>(
@@ -61,7 +61,7 @@ const Result = ({ value, type }: Props) => {
         return (
           <>
             {left}
-            <Text _fontSize={16} weight={theme.weighs.bold}>
+            <Text _fontSize={16} weight={weighs.bold}>
               {_keyword}
             </Text>
             {right}
@@ -71,7 +71,7 @@ const Result = ({ value, type }: Props) => {
 
       return chunk;
     },
-    [theme.weighs.bold, value]
+    [weighs.bold, value]
   );
 
   const onItemClickHandler = useCallback(
@@ -95,7 +95,7 @@ const Result = ({ value, type }: Props) => {
         <li
           css={css`
             ${padding({ x: 8, y: 10 })}
-            border-bottom: 1px solid ${theme.colors.secondary.D9};
+            border-bottom: 1px solid ${colors.secondary.D9};
             ${touchable}
           `}
         >
@@ -109,16 +109,16 @@ const Result = ({ value, type }: Props) => {
               push("/post/add");
             }}
           >
-            <Text _fontSize={12} _color={theme.colors.secondary[52]}>
+            <Text _fontSize={12} _color={colors.secondary[52]}>
               {item.category_group_name}
             </Text>
             <Spacing size={6} />
             <Flex align="center">
-              <Text _fontSize={16} _color={theme.colors.secondary[34]}>
+              <Text _fontSize={16} _color={colors.secondary[34]}>
                 {renderQueriedText(item.place_name)}
               </Text>
               <Spacing size={12} direction="horizontal" />
-              <Text _fontSize={10} _color={theme.colors.secondary[47]}>
+              <Text _fontSize={10} _color={colors.secondary[47]}>
                 {item.road_address_name}
               </Text>
             </Flex>

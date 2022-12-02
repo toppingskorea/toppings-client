@@ -10,8 +10,8 @@ import ProfileImage from "./ProfileImage";
 
 // 수정할 수 있는 유저의 정보를 나타냅니다.
 const UserInfo = () => {
-  const theme = useTheme();
-  const {push} = useInternalRouter();
+  const { colors, weighs } = useTheme();
+  const { push } = useInternalRouter();
 
   const { data } = useFetchUserInfo();
   const [edit, setEdit] = useEditState();
@@ -36,8 +36,8 @@ const UserInfo = () => {
             absoluteNode={
               <Text
                 _fontSize={11}
-                weight={theme.weighs.light}
-                _color={theme.colors.secondary[66]}
+                weight={weighs.light}
+                _color={colors.secondary[66]}
                 css={css`
                   ${position("absolute", { bottom: -8, left: 8 })}
                   transform: translate3d(0,100%,0);

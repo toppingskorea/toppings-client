@@ -10,12 +10,12 @@ interface Props extends ComponentProps<typeof Button> {
 }
 
 const FilledButton = ({ children, bgcolor, ...rest }: Props) => {
-  const theme = useTheme();
+  const { colors } = useTheme();
 
   return (
     <Button
       css={css`
-        background-color: ${bgcolor || theme.colors.white};
+        background-color: ${bgcolor || colors.white};
       `}
       {...rest}
     >

@@ -14,7 +14,7 @@ import { useInternalRouter } from "~/hooks";
 import { useUploadPost } from "~/mutations/post";
 
 const Register = () => {
-  const theme = useTheme();
+  const { colors } = useTheme();
   const overlay = useOverlay();
   const router = useInternalRouter();
   const restaurant = useRestaurantValue();
@@ -66,13 +66,13 @@ const Register = () => {
         width: 278,
         height: 38
       }}
-      bgcolor={theme.colors.primary}
+      bgcolor={colors.primary}
       onClick={onRegisterHandler}
       css={css`
         margin: 0 auto;
       `}
     >
-      <Text _fontSize={17} _color={theme.colors.white}>
+      <Text _fontSize={17} _color={colors.white}>
         Register
       </Text>
     </FilledButton>

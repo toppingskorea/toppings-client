@@ -17,7 +17,7 @@ import { useInternalRouter } from "~/hooks";
 import { useDeletePost, useUpdatePost } from "~/mutations/post";
 
 const Edit = () => {
-  const theme = useTheme();
+  const {colors} = useTheme();
   const overlay = useOverlay();
   const router = useInternalRouter();
   const restaurant = useRestaurantValue();
@@ -87,10 +87,10 @@ const Edit = () => {
           width: 278,
           height: 38
         }}
-        bgcolor={theme.colors.primary}
+        bgcolor={colors.primary}
         onClick={onEditHandler}
       >
-        <Text _fontSize={17} _color={theme.colors.white}>
+        <Text _fontSize={17} _color={colors.white}>
           Edit
         </Text>
       </FilledButton>
@@ -99,11 +99,11 @@ const Edit = () => {
           width: 278,
           height: 38
         }}
-        bgcolor={theme.colors.secondary.D9}
+        bgcolor={colors.secondary.D9}
         // TODO: 동규님 모달 받으면 모달에서 핸들러 하기
         onClick={onDeleteHandler}
       >
-        <Text _fontSize={17} _color={theme.colors.white}>
+        <Text _fontSize={17} _color={colors.white}>
           Delete
         </Text>
       </FilledButton>

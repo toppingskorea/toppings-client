@@ -18,7 +18,7 @@ interface Props {
 }
 
 const OrangeSection = ({ description, button }: Props) => {
-  const theme = useTheme();
+  const { colors } = useTheme();
   return (
     <SafeArea>
       <section
@@ -26,7 +26,7 @@ const OrangeSection = ({ description, button }: Props) => {
           ${position("fixed", 0, 0, 0, 0)}
           ${flex({ direction: "column", align: "center" })}
           ${size.full}
-          background-color: ${theme.colors.primary};
+          background-color: ${colors.primary};
         `}
       >
         <Spacing size={170} />

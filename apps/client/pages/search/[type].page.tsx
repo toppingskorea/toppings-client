@@ -17,7 +17,7 @@ const Search = ({
       right: <Exit />
     }
   });
-  const theme = useTheme();
+  const { colors, dimensions } = useTheme();
 
   const {
     props: keyword,
@@ -42,8 +42,8 @@ const Search = ({
         css={css`
           ${position("fixed", { bottom: 0 })}
           ${padding({ x: 16, y: 22 })};
-          background-color: ${theme.colors.white};
-          max-width: ${theme.dimensions.viewWidth - 32}px;
+          background-color: ${colors.white};
+          max-width: ${dimensions.viewWidth - 32}px;
           ${width100}
         `}
       >

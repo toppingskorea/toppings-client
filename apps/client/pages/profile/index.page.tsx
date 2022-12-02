@@ -32,7 +32,7 @@ import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { Keys, useFetchUserInfo } from "~/queries/profile";
 
 const Profile = () => {
-  const theme = useTheme();
+  const { colors, weighs, dimensions } = useTheme();
   const { data } = useFetchUserInfo();
   const { push } = useInternalRouter();
 
@@ -47,7 +47,7 @@ const Profile = () => {
         </motion.button>
       ),
       title: (
-        <Text _fontSize={24} _color={theme.colors.secondary[47]}>
+        <Text _fontSize={24} _color={colors.secondary[47]}>
           {data?.name ?? ""}
         </Text>
       ),
@@ -98,9 +98,9 @@ const Profile = () => {
           <RoundedTag
             paddingX={20}
             defaultProps={{
-              bgcolor: theme.colors.primary,
+              bgcolor: colors.primary,
               bordercolor: "transparent",
-              _color: theme.colors.white
+              _color: colors.white
             }}
             _fontSize={15}
           >
@@ -112,9 +112,9 @@ const Profile = () => {
           <RoundedTag
             paddingX={20}
             defaultProps={{
-              bgcolor: theme.colors.primary,
+              bgcolor: colors.primary,
               bordercolor: "transparent",
-              _color: theme.colors.white
+              _color: colors.white
             }}
             _fontSize={15}
           >
@@ -126,11 +126,11 @@ const Profile = () => {
           {...framerMocker}
           css={css`
             ${position("fixed", {
-              bottom: theme.dimensions.bottomNavigationHeight + 34,
+              bottom: dimensions.bottomNavigationHeight + 34,
               left: 0,
               right: 0
             })}
-            ${flex({ justify: "center" })}
+            ${flex({ justify: "{colors,di}" })}
           `}
         >
           <FilledButton
@@ -138,14 +138,10 @@ const Profile = () => {
               width: 278,
               height: 37
             }}
-            bgcolor={theme.colors.primary}
+            bgcolor={colors.primary}
             onClick={() => push("/profile/edit")}
           >
-            <Text
-              _fontSize={17}
-              _color={theme.colors.white}
-              weight={theme.weighs.semiBold}
-            >
+            <Text _fontSize={17} _color={colors.white} weight={weighs.semiBold}>
               Edit profile
             </Text>
           </FilledButton>

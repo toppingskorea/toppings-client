@@ -13,7 +13,7 @@ interface Props extends ComponentProps<typeof Ellipse> {
 }
 
 const LabelWithEllipse = ({ label, children, route }: Props) => {
-  const theme = useTheme();
+  const { colors } = useTheme();
   const { push } = useInternalRouter();
 
   return (
@@ -26,7 +26,7 @@ const LabelWithEllipse = ({ label, children, route }: Props) => {
       variants={defaultSlideFadeInVariants("bottom")}
       onClick={() => push(route)}
     >
-      <Text _fontSize={13} _color={theme.colors.secondary[49]}>
+      <Text _fontSize={13} _color={colors.secondary[49]}>
         {label}
       </Text>
       <Ellipse>{children}</Ellipse>

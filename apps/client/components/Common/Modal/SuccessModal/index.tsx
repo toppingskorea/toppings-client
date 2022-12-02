@@ -9,7 +9,7 @@ interface Props {
 }
 
 const SuccessModal = ({ description }: Props) => {
-  const theme = useTheme();
+  const { colors, weighs } = useTheme();
 
   return (
     <Flex.Center
@@ -18,7 +18,7 @@ const SuccessModal = ({ description }: Props) => {
         ${position("fixed", { top: 0, right: 0, bottom: 0, left: 0 })}
         ${size.full}
           ${gutter({ direction: "vertical", space: 30 })}
-          background-color: ${theme.colors.white};
+          background-color: ${colors.white};
       `}
     >
       <Lottie
@@ -30,17 +30,13 @@ const SuccessModal = ({ description }: Props) => {
         `}
       />
 
-      <Text
-        _fontSize={23}
-        weight={theme.weighs.heavy}
-        _color={theme.colors.secondary[47]}
-      >
+      <Text _fontSize={23} weight={weighs.heavy} _color={colors.secondary[47]}>
         Complete!
       </Text>
       {description && (
         <>
           <Spacing size={6} />
-          <Text _fontSize={16} _color={theme.colors.secondary[47]}>
+          <Text _fontSize={16} _color={colors.secondary[47]}>
             {description}
           </Text>
         </>

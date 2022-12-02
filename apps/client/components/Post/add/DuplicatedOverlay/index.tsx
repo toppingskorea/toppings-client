@@ -7,7 +7,7 @@ import { OrangeSection } from "~/components/Section";
 import { useInternalRouter } from "~/hooks";
 
 const DuplicatedOverlay = () => {
-  const theme = useTheme();
+  const { colors, weighs } = useTheme();
   const { push } = useInternalRouter();
 
   return (
@@ -15,7 +15,7 @@ const DuplicatedOverlay = () => {
       description={
         <Text
           _fontSize={16}
-          _color={theme.colors.white}
+          _color={colors.white}
           whiteSpace="pre-line"
           textAlign="center"
         >
@@ -43,8 +43,8 @@ const DuplicatedOverlay = () => {
           <Star />
           <Text
             _fontSize={15}
-            _color={theme.colors.secondary[49]}
-            weight={theme.weighs.medium}
+            _color={colors.secondary[49]}
+            weight={weighs.medium}
           >
             Go to write a review
           </Text>

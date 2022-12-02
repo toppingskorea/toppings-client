@@ -14,7 +14,7 @@ import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { hiddenScroll } from "~/styles/emotionUtils";
 
 const PostAdd = () => {
-  const theme = useTheme();
+  const { colors } = useTheme();
   const { push } = useInternalRouter();
   const restaurant = useRestaurantValue();
   const [postUpload, setPostUpload] = usePostUploadState();
@@ -64,7 +64,7 @@ const PostAdd = () => {
               overflow-y: hidden;
               &::placeholder {
                 font-size: 16px;
-                color: ${theme.colors.secondary.B8};
+                color: ${colors.secondary.B8};
               }
             `}
           />
@@ -88,7 +88,7 @@ const PostAdd = () => {
               ${touchable}
               font-size: 16px;
               &::placeholder {
-                color: ${theme.colors.secondary.B8};
+                color: ${colors.secondary.B8};
               }
             `}
           />
