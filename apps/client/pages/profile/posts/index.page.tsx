@@ -5,7 +5,7 @@ import type { GetServerSideProps } from "next";
 import { PostList, UserBadge } from "~/components/Profile/posts";
 import { env } from "~/constants";
 import { useSetNavigation } from "~/hooks";
-import Keys from "~/queries/profile/keys";
+import { Keys } from "~/queries/profile";
 
 const ProfilePosts = () => {
   useSetNavigation({
@@ -15,8 +15,8 @@ const ProfilePosts = () => {
   return (
     <section>
       <UserBadge />
-      <Spacing size={30}/>
-      <PostList/>
+      <Spacing size={30} />
+      <PostList />
     </section>
   );
 };
@@ -25,7 +25,6 @@ export default ProfilePosts;
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const queryClient = new QueryClient();
-
 
   // 유저 정보
   await queryClient.prefetchQuery(Keys.user(), async () => {

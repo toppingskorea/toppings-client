@@ -13,8 +13,7 @@ import { UserInfo } from "~/components/Profile/edit";
 import { env } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useUpdateUserInfo } from "~/mutations/profile";
-import { useFetchUserInfo } from "~/queries/profile";
-import Keys from "~/queries/profile/keys";
+import { Keys, useFetchUserInfo } from "~/queries/profile";
 
 const ProfileEdit = () => {
   const router = useInternalRouter();
