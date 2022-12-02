@@ -59,6 +59,7 @@ const Result = ({ value, type }: Props) => {
 
       if (Array.isArray(chunk)) {
         const [left, _keyword, right] = chunk;
+
         return (
           <>
             {left}
