@@ -1,6 +1,6 @@
 import { css, useTheme } from "@emotion/react";
+import { Star } from "@svgs/common";
 import { flex, gutter } from "@toss/emotion-utils";
-import { Star } from "~/assets/svgs/common";
 import { FilledButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { OrangeSection } from "~/components/Section";
