@@ -62,6 +62,7 @@ const PostAdd = () => {
             css={css`
               ${touchable}
               overflow-y: hidden;
+              font-size: 16px;
               &::placeholder {
                 font-size: 16px;
                 color: ${colors.secondary.B8};
