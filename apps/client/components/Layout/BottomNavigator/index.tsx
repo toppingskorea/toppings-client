@@ -4,10 +4,13 @@ import { flex, padding, position, width100 } from "@toss/emotion-utils";
 import { InternalLink } from "~/components/Common";
 import { useInternalRouter } from "~/hooks";
 import navList from "./BottomNavigator.constants";
+import { usePostUploadReset, useRestaurantReset } from "~/recoil/atoms";
 
 const BottomNavigator = () => {
   const { colors, dimensions } = useTheme();
   const { asPath } = useInternalRouter();
+  const restaurantReset = useRestaurantReset();
+  const postUploadReset = usePostUploadReset();
 
   return (
     <nav
@@ -35,6 +38,12 @@ const BottomNavigator = () => {
                   fill: ${colors.secondary[href === asPath ? "6D" : "D9"]};
                 }
               `}
+            onClick={()=>{
+              if(href === "/post/add"){
+                restaurantReset();
+                postUploadReset();
+              }
+            }}
             >
               {icon}
             </InternalLink>
