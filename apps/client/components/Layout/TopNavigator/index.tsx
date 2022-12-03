@@ -1,5 +1,5 @@
 import { useNavigationValue } from "@atoms/index";
-import { css } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
 import { LeftArrow } from "@svgs/common";
 import { flex, padding, position, Spacing } from "@toss/emotion-utils";
 import { AnimatePresence, motion } from "framer-motion";
@@ -7,6 +7,7 @@ import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter } from "~/hooks";
 
 const TopNavigator = () => {
+  const { zIndex } = useTheme();
   const router = useInternalRouter();
   const state = useNavigationValue();
 
@@ -15,6 +16,7 @@ const TopNavigator = () => {
       <header
         css={css`
           ${position("sticky", { top: 0 })}
+          z-index: ${zIndex.one};
           backdrop-filter: blur(10px);
         `}
       >
