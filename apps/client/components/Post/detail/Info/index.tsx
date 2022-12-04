@@ -10,7 +10,12 @@ import {
   Share
 } from "~/assets/svgs/common";
 import { Text } from "~/components/Common/Typo";
-import { useDeleteScrap, usePostScrap } from "~/mutations/restaurant";
+import {
+  useDeleteLike,
+  useDeleteScrap,
+  usePostLike,
+  usePostScrap
+} from "~/mutations/restaurant";
 import { clipboard } from "~/utils";
 
 type Props = Pick<
@@ -39,6 +44,8 @@ const Info = ({
 
   const { mutate: postScrapMutate } = usePostScrap(id);
   const { mutate: deleteScrapMutate } = useDeleteScrap(id);
+  const { mutate: postLikeMutate } = usePostLike(id);
+  const { mutate: deleteLikeMutate } = useDeleteLike(id);
 
   return (
     <Stack.Vertical
@@ -107,11 +114,22 @@ const Info = ({
             {scrap ? <FilledScrap /> : <EmptyScrap />}
           </button>
           <Flex direction="column" align="center">
-            {like ? (
-              <OrangeHeart width={20} height={17} />
-            ) : (
-              <EmptyHeart width={20} height={17} />
-            )}
+            <button
+              type="button"
+              onClick={() => {
+                if (like) {
+                  deleteLikeMutate(id);
+                } else {
+                  postLikeMutate(id);
+                }
+              }}
+            >
+              {like ? (
+                <OrangeHeart width={20} height={17} />
+              ) : (
+                <EmptyHeart width={20} height={17} />
+              )}
+            </button>
             <Spacing size={6} />
             <Text _fontSize={10} _color={colors.secondary.A3}>
               {likeCount}

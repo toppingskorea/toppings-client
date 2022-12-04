@@ -6,6 +6,22 @@ const usePostLike = (id: number) => {
   const queryClient = useQueryClient();
 
   return useMutation(postLike, {
+    onMutate: async id => {
+      await queryClient.cancelQueries({ queryKey: Keys.restaurant(id) });
+
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const previous = queryClient.getQueryData<Restaurant.DetailDTO>(
+        Keys.restaurant(id)
+      )!;
+
+      queryClient.setQueryData<Restaurant.DetailDTO>(Keys.restaurant(id), {
+        ...previous,
+        like: true,
+        likeCount: previous.likeCount + 1
+      });
+
+      return { previous };
+    },
     onSuccess: () => {
       queryClient.invalidateQueries(Keys.restaurant(id));
     },
