@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { RemoveHistory, Timeline } from "@svgs/recent";
 import { useQueryClient } from "@tanstack/react-query";
-import { Flex, flex, touchable } from "@toss/emotion-utils";
+import { Flex, flex, padding, touchable } from "@toss/emotion-utils";
 import { memo } from "react";
 import { useDeleteRecentHistory } from "~/mutations/recent";
 import { useFetchRecentHistory } from "~/queries/recent";
@@ -22,12 +22,19 @@ const History = () => {
     <div
       css={css`
         ${flex({ direction: "column" })}
-        margin-left: 27px;
+        ${padding({
+          x: 27,
+          y: 0
+        })}
       `}
     >
       {data.map(({ id, keyword }) => (
-        <Flex key={id} justify="space-between">
-          <Flex.Center>
+        <Flex key={id} justify="space-between" align="center">
+          <Flex.Center
+            css={css`
+              gap: 12px;
+            `}
+          >
             <Timeline />
             {keyword}
           </Flex.Center>
