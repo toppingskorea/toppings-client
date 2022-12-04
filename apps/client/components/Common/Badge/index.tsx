@@ -20,7 +20,7 @@ const Badge = ({
   _fontSize = 18,
   attach
 }: Props) => {
-  const theme = useTheme();
+  const { colors } = useTheme();
 
   const isLeft = useMemo(() => attach === "left", [attach]);
 
@@ -32,10 +32,10 @@ const Badge = ({
         ${padding({ left: paddingLeft })}
         ${touchable}
         border-radius: ${isLeft ? `0 10px 10px  0` : `10px 0 0  10px`};
-        background-color: ${theme.colors.primary};
+        background-color: ${colors.primary};
       `}
     >
-      <Text _fontSize={_fontSize} _color={theme.colors.white}>
+      <Text _fontSize={_fontSize} _color={colors.white}>
         {children}
       </Text>
     </Flex>

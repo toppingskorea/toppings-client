@@ -13,12 +13,11 @@ import { UserInfo } from "~/components/Profile/edit";
 import { env } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useUpdateUserInfo } from "~/mutations/profile";
-import { useFetchUserInfo } from "~/queries/profile";
-import Keys from "~/queries/profile/keys";
+import { Keys, useFetchUserInfo } from "~/queries/profile";
 
 const ProfileEdit = () => {
-  const router = useInternalRouter();
-  const theme = useTheme();
+  const { push } = useInternalRouter();
+  const { colors, weighs } = useTheme();
   const overlay = useOverlay();
 
   useSetNavigation({
@@ -38,7 +37,7 @@ const ProfileEdit = () => {
       overlay.open(() => <SuccessModal />);
 
       setTimeout(() => {
-        router.push("/profile");
+        push("/profile");
       }, 2000);
     }
   });
@@ -78,7 +77,7 @@ const ProfileEdit = () => {
         <Flex
           justify="center"
           css={css`
-            ${padding({ bottom: theme.dimensions.bottomNavigationHeight + 5 })}
+            ${padding({ bottom: 5 })}
           `}
         >
           <FilledButton
@@ -86,14 +85,10 @@ const ProfileEdit = () => {
               width: 278,
               height: 37
             }}
-            bgColor={theme.colors.primary}
+            bgcolor={colors.primary}
             onClick={onClickRegisterHandler}
           >
-            <Text
-              _fontSize={17}
-              _color={theme.colors.white}
-              weight={theme.weighs.semiBold}
-            >
+            <Text _fontSize={17} _color={colors.white} weight={weighs.semiBold}>
               Register
             </Text>
           </FilledButton>

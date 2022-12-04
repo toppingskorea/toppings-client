@@ -7,15 +7,15 @@ import { SearchNationality } from "~/components/Section";
 import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
 
 const RegisterNationality = () => {
-  const router = useInternalRouter();
-  const theme = useTheme();
+  const { push } = useInternalRouter();
+  const {colors,weighs,dimensions} = useTheme();
   const [register, setRegister] = useRegisterState();
-  
+
   useSetNavigation({
     top: {
       marginBottom: 35,
       title: (
-        <Text _fontSize={23} weight={theme.weighs.bold}>
+        <Text _fontSize={23} weight={weighs.bold}>
           Select a Nationality
         </Text>
       )
@@ -30,7 +30,7 @@ const RegisterNationality = () => {
         keyword={keyword.value}
         onCountryClick={name => {
           setRegister({ ...register, country: name });
-          router.push("/register/eatingHabits");
+          push("/register/eatingHabits");
         }}
       />
 
@@ -38,8 +38,8 @@ const RegisterNationality = () => {
         css={css`
           ${padding({ x: 16, y: 22 })};
           ${position("fixed", { bottom: 0 })}
-          background-color: ${theme.colors.white};
-          max-width: ${theme.dimensions.viewWidth - 32}px;
+          background-color: ${colors.white};
+          max-width: ${dimensions.viewWidth - 32}px;
           ${width100}
         `}
       >

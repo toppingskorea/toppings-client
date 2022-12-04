@@ -13,13 +13,13 @@ const ComponentWithLabel = ({
   children,
   gutter
 }: PropsWithChildren<Props>) => {
-  const theme = useTheme();
+  const { colors, weighs } = useTheme();
   return (
     <Stack.Vertical gutter={gutter}>
       <Text
         _fontSize={16}
-        weight={theme.weighs.bold}
-        _color={theme.colors.secondary[62]}
+        weight={weighs.bold}
+        _color={colors.secondary[62]}
       >
         {label}
       </Text>

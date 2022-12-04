@@ -18,7 +18,7 @@ interface Props {
 }
 
 const SearchNationality = ({ keyword, onCountryClick }: Props) => {
-  const theme = useTheme();
+  const { colors, weighs } = useTheme();
   const filteredCountries = useMemo(() => {
     const obj: Partial<typeof countries> = {};
 
@@ -44,7 +44,7 @@ const SearchNationality = ({ keyword, onCountryClick }: Props) => {
         return (
           <>
             {left}
-            <Text _fontSize={16} weight={theme.weighs.bold}>
+            <Text _fontSize={16} weight={weighs.bold}>
               {_keyword}
             </Text>
             {right}
@@ -54,7 +54,7 @@ const SearchNationality = ({ keyword, onCountryClick }: Props) => {
 
       return chunk;
     },
-    [keyword, theme.weighs.bold]
+    [keyword, weighs.bold]
   );
 
   return (
@@ -81,7 +81,7 @@ const SearchNationality = ({ keyword, onCountryClick }: Props) => {
                   {value.map(country => (
                     <Text
                       _fontSize={16}
-                      _color={theme.colors.secondary[62]}
+                      _color={colors.secondary[62]}
                       lineHeight={22}
                       key={country.code}
                       onClick={() => {

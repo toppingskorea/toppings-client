@@ -7,7 +7,7 @@ import { useInternalRouter } from "~/hooks";
 import { useScrollContainer } from "../ScrollContainer";
 
 const PageLoader = () => {
-  const theme = useTheme();
+  const { colors } = useTheme();
   const router = useInternalRouter();
 
   const [isProgressBar, setIsProgressBar] = useState(false);
@@ -74,9 +74,9 @@ const PageLoader = () => {
               animation-timing-function: linear;
               background: linear-gradient(
                 to right,
-                ${theme.colors.secondary[47]} 8%,
-                ${theme.colors.secondary[62]} 18%,
-                ${theme.colors.secondary["6D"]} 33%
+                ${colors.secondary[47]} 8%,
+                ${colors.secondary[62]} 18%,
+                ${colors.secondary["6D"]} 33%
               );
               background-size: 800px 104px;
               position: absolute;
@@ -97,7 +97,7 @@ const PageLoader = () => {
             exit={{ opacity: 0 }}
             css={css`
               height: 100%;
-              background-color: ${theme.colors.secondary.F1};
+              background-color: ${colors.secondary.F1};
             `}
           />
         </div>

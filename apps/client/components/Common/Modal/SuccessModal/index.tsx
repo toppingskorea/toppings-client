@@ -1,11 +1,15 @@
 import { css, useTheme } from "@emotion/react";
-import { Flex, gutter, position, size } from "@toss/emotion-utils";
+import { Flex, gutter, position, size, Spacing } from "@toss/emotion-utils";
 import Lottie from "lottie-react";
-import { check } from "~/assets/json";
+import { star } from "~/assets/json";
 import { Text } from "../../Typo";
 
-const SuccessModal = () => {
-  const theme = useTheme();
+interface Props {
+  description?: string;
+}
+
+const SuccessModal = ({ description }: Props) => {
+  const { colors, weighs } = useTheme();
 
   return (
     <Flex.Center
@@ -14,25 +18,29 @@ const SuccessModal = () => {
         ${position("fixed", { top: 0, right: 0, bottom: 0, left: 0 })}
         ${size.full}
           ${gutter({ direction: "vertical", space: 30 })}
-          background-color: ${theme.colors.white};
+          background-color: ${colors.white};
       `}
     >
       <Lottie
         loop
         autoplay
-        animationData={check}
+        animationData={star}
         css={css`
           ${size({ width: 42, height: 42 })}
         `}
       />
 
-      <Text
-        _fontSize={23}
-        weight={theme.weighs.heavy}
-        _color={theme.colors.secondary[47]}
-      >
+      <Text _fontSize={23} weight={weighs.heavy} _color={colors.secondary[47]}>
         Complete!
       </Text>
+      {description && (
+        <>
+          <Spacing size={6} />
+          <Text _fontSize={16} _color={colors.secondary[47]}>
+            {description}
+          </Text>
+        </>
+      )}
     </Flex.Center>
   );
 };

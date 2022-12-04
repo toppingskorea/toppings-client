@@ -13,7 +13,8 @@ const PROTECTED_ROUTE = [
   "/profile/edit",
   "/profile/menu",
   "/profile/edit/nationality",
-  "/profile/edit/eatingHabits"
+  "/profile/edit/eatingHabits",
+  "/post/add"
 ];
 
 // 로그인한 유저는 접근할 수 없는 라우트
@@ -21,8 +22,7 @@ const LOGIN_PROTECTED_ROUTE = ["/login"];
 
 // 미들웨어를 발생시킬 라우트
 export const config = {
-  matcher: ["/profile/:path*", "/login", "/login/redirect"],
-  runtime: "experimental-edge"
+  matcher: ["/profile/:path*", "/login", "/login/redirect","/post/add"]
 };
 
 const middleware: NextMiddleware = async request => {

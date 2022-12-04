@@ -29,8 +29,8 @@ const ClickableRoundedTag = ({
         ${touchable}
 
         background-color: ${selected
-          ? selectedProps.bgColor
-          : defaultProps.bgColor};
+          ? selectedProps.bgcolor
+          : defaultProps.bgcolor};
         border-radius: 100px;
         border: 1px solid;
         border-color: ${selected
