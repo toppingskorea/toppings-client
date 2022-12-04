@@ -96,32 +96,42 @@ const RecentPage = () => {
           })}
         `}
       >
-        <ul
+        <div
           css={css`
-            display: flex;
-            gap: 20px;
-            white-space: nowrap;
-            overflow-x: auto;
+            width: 100vw;
+            overflow-x: scroll;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            scrollbar-width: none;
           `}
         >
-          {tags.map(({ ID, NAME }) => (
-            <RoundedTag
-              key={ID}
-              padding={{
-                x: 16,
-                y: 7
-              }}
-              _fontSize={17}
-              defaultProps={{
-                bgColor: theme.colors.white,
-                bordercolor: theme.colors.secondary.D9
-              }}
-              onClick={() => push(`${asPath}/${ID}`)}
-            >
-              {NAME}
-            </RoundedTag>
-          ))}
-        </ul>
+          <ul
+            css={css`
+              display: flex;
+              gap: 4px;
+              white-space: nowrap;
+            `}
+          >
+            {tags.map(({ ID, NAME }) => (
+              <RoundedTag
+                key={ID}
+                padding={{
+                  x: 16,
+                  y: 7
+                }}
+                _fontSize={17}
+                defaultProps={{
+                  bgColor: theme.colors.white,
+                  bordercolor: theme.colors.secondary.D9
+                }}
+                onClick={() => push(`${asPath}/${ID}`)}
+              >
+                {NAME}
+              </RoundedTag>
+            ))}
+          </ul>
+        </div>
       </div>
 
       <div
