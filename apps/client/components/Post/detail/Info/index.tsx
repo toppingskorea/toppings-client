@@ -1,6 +1,5 @@
 import { css, useTheme } from "@emotion/react";
 import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
-import { motion } from "framer-motion";
 import {
   Copy,
   EmptyHeart,
@@ -9,6 +8,7 @@ import {
   OrangeHeart,
   Share
 } from "~/assets/svgs/common";
+import { MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import {
   useDeleteLike,
@@ -74,16 +74,16 @@ const Info = ({
             <Text _fontSize={14} _color={colors.secondary[47]}>
               {address}
             </Text>
-            <motion.button
-              whileTap={{ scale: 0.9 }}
+            <MotionButton
               onClick={() => clipboard(address)}
             >
               <Copy />
-            </motion.button>
+            </MotionButton>
           </Flex>
         </Stack.Vertical>
 
         <Stack.Horizontal gutter={20} align="flex-start">
+          {/* TODO: device share 기능 배포후 확인 필요 */}
           <button
             type="button"
             onClick={() => {
@@ -96,7 +96,6 @@ const Info = ({
               if (navigator.canShare && navigator.canShare(shareData)) {
                 navigator.share(shareData);
               }
-              // share the URL of MDN
             }}
           >
             <Share />

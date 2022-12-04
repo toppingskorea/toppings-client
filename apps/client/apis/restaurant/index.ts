@@ -1,4 +1,4 @@
-import { authRequest } from "~/constants";
+import { authRequest, env } from "~/constants";
 
 export const getRestaurant = async (id: number) => {
   const { data } = await authRequest.get<{ data: Restaurant.DetailDTO }>(
@@ -22,4 +22,32 @@ export const postLike = async (id: number) => {
 
 export const deleteLike = async (id: number) => {
   await authRequest.delete(`/api/restaurant/${id}/like`);
+};
+
+export const getLikePercent = async ({
+  id,
+  ssr
+}: {
+  id: number;
+  ssr?: boolean;
+}) => {
+  const { data } = await authRequest.get<{ data: Restaurant.LikePercentDTO }>(
+    `${ssr ? env.TOPPINGS_SERVER_URL : "/api"}/restaurant/${id}/like`
+  );
+
+  return data.data;
+};
+
+export const getReviews = async ({
+  id,
+  ssr
+}: {
+  id: number;
+  ssr?: boolean;
+}) => {
+  const { data } = await authRequest.get<{ data: Restaurant.ReviewDTO[] }>(
+    `${ssr ? env.TOPPINGS_SERVER_URL : "/api"}/restaurant/${id}/review`
+  );
+
+  return data.data;
 };

@@ -87,6 +87,30 @@ declare module Restaurant {
     like: boolean;
     likeCount: number;
   }
+
+  interface LikePercentDTO {
+    countryPercent: {
+      country: string;
+      count: number;
+      percent: number;
+    }[];
+
+    habitPercent: {
+      habit: string;
+      count: number;
+      percent: number;
+    }[];
+  }
+
+  interface ReviewDTO {
+    id: number;
+    thumbnail: string;
+    modifiedAt: string;
+    name: string;
+    country: string;
+    isMine: boolean;
+    description:string
+  }
 }
 
 declare module Map {

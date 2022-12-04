@@ -4,18 +4,17 @@ import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
 import axios from "axios";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Image from "next/image";
+import { getLikePercent, getReviews } from "~/apis/restaurant";
 import { Edit } from "~/assets/svgs/common";
+import { Badge } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import { ImageCarousel, Info } from "~/components/Post";
+import { ImageCarousel, Info, Likes, Reviews } from "~/components/Post";
 import { env } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { Keys, useFetchRestaurant } from "~/queries/restaurant";
 import { usePostUploadSetter, useRestaurantSetter } from "~/recoil/atoms";
 import { pick } from "~/utils";
-
-const DEFAULT_CDN_URL =
-  "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.4/flags/4x3/";
-const DEFAULT_CDN_SUFFIX = "svg";
+import { countryToSvg } from "~/utils/country";
 
 const PostDetail = ({
   id
@@ -23,13 +22,12 @@ const PostDetail = ({
   const { colors, weighs } = useTheme();
   const { data } = useFetchRestaurant(+id);
 
-  // console.log(objectValues(countries).flat().find(country => country.name === data.));
   useSetNavigation({
     top: {
       title: (
         <Flex align="center">
           <Image
-            src={`${DEFAULT_CDN_URL}kr.${DEFAULT_CDN_SUFFIX}`}
+            src={countryToSvg(data.country)}
             width={24}
             height={24}
             alt={`${data.writer}'s country flag`}
@@ -105,6 +103,32 @@ const PostDetail = ({
           ])}
         />
       </Stack.Vertical>
+      <Spacing size={20} />
+
+      <Badge
+        attach="left"
+        size={{
+          width: 160,
+          height: 34
+        }}
+      >
+        Likes
+      </Badge>
+      <Spacing size={20} />
+      <Likes id={id} />
+      <Spacing size={30} />
+
+      <Badge
+        attach="left"
+        size={{
+          width: 160,
+          height: 34
+        }}
+      >
+        Reviews
+      </Badge>
+      <Spacing size={20} />
+      <Reviews id={id} />
     </section>
   );
 };
@@ -113,6 +137,8 @@ export const getServerSideProps: GetServerSideProps<{
   id: string;
 }> = async context => {
   const id = context.query.id as string;
+
+  // 사용자의 좋아요 & 스크랩을 확인해야하므로 쿠키를 통한 데이터 패칭
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(Keys.restaurant(+id), async () => {
@@ -127,6 +153,14 @@ export const getServerSideProps: GetServerSideProps<{
 
     return data.data;
   });
+
+  await queryClient.prefetchQuery(Keys.likePercent(+id), () =>
+    getLikePercent({ id: +id, ssr: true })
+  );
+
+  await queryClient.prefetchQuery(Keys.reviews(+id), () =>
+    getReviews({ id: +id, ssr: true })
+  );
 
   return {
     props: {

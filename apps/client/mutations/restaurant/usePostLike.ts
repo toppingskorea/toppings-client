@@ -24,6 +24,7 @@ const usePostLike = (id: number) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(Keys.restaurant(id));
+      queryClient.invalidateQueries(Keys.likePercent(id));
     },
     onError: () => {
       alert("로그인 이후 이용가능합니다!");
