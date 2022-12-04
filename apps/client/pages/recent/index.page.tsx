@@ -92,7 +92,8 @@ const RecentPage = () => {
       <div
         css={css`
           ${position("fixed", {
-            bottom: theme.dimensions.bottomNavigationHeight
+            bottom: theme.dimensions.bottomNavigationHeight,
+            left: 27
           })}
         `}
       >
