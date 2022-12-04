@@ -13,3 +13,4 @@ export * from "./RoundedTag";
 export * from "./Button";
 export * from "./TextField";
 export * from "./Modal";
+export * from "./SnapCarousel";

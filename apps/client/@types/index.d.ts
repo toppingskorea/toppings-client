@@ -82,6 +82,7 @@ declare module Restaurant {
     images: string[];
     code: string;
     writer: string;
+    country: string;
     scrap: boolean;
     like: boolean;
   }

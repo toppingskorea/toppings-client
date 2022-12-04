@@ -1,8 +1,15 @@
 import axios from "axios";
+import { env } from "~/constants";
 
-export const getRestaurant = async (id: number) => {
+export const getRestaurant = async ({
+  id,
+  ssr
+}: {
+  id: string;
+  ssr?: boolean;
+}) => {
   const { data } = await axios.get<{ data: Restaurant.DetailDTO }>(
-    `/api/restaurant/${id}`
+    `${ssr ? env.TOPPINGS_SERVER_URL : "/api"}/restaurant/${id}`
   );
 
   return data.data;

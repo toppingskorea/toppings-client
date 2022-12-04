@@ -13,3 +13,8 @@ export { default as EmptyHeart } from "./emptyHeart.svg";
 export { default as Minus } from "./minus.svg";
 export { default as GrayPlus } from "./grayPlus.svg";
 export { default as Star } from "./star.svg";
+export { default as Edit } from "./edit.svg";
+export { default as Share } from "./share.svg";
+export { default as FilledScrap } from "./filledScrap.svg";
+export { default as EmptyScrap } from "./emptyScrap.svg";
+export { default as Copy } from "./copy.svg";

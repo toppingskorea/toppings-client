@@ -21,6 +21,7 @@ const nextConfig = {
   },
   pageExtensions: ["page.tsx", "page.ts"],
   images: {
+    domains: ["cdnjs.cloudflare.com"],
     formats: ["image/webp"]
   },
   compiler: {
