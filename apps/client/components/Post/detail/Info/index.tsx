@@ -1,5 +1,5 @@
 import { css, useTheme } from "@emotion/react";
-import { Flex, size, Stack } from "@toss/emotion-utils";
+import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import {
   Copy,
@@ -10,15 +10,36 @@ import {
   Share
 } from "~/assets/svgs/common";
 import { Text } from "~/components/Common/Typo";
+import { useDeleteScrap, usePostScrap } from "~/mutations/restaurant";
 import { clipboard } from "~/utils";
 
 type Props = Pick<
   Restaurant.DetailDTO,
-  "id" | "name" | "address" | "description" | "type" | "scrap" | "like"
+  | "id"
+  | "name"
+  | "address"
+  | "description"
+  | "type"
+  | "scrap"
+  | "like"
+  | "likeCount"
 >;
 
-const Info = ({ address, description, id, like, name, scrap, type }: Props) => {
+const Info = ({
+  address,
+  description,
+  id,
+  like,
+  name,
+  scrap,
+  type,
+  likeCount
+}: Props) => {
   const { colors, weighs } = useTheme();
+
+  const { mutate: postScrapMutate } = usePostScrap(id);
+  const { mutate: deleteScrapMutate } = useDeleteScrap(id);
+
   return (
     <Stack.Vertical
       css={css`
@@ -55,15 +76,46 @@ const Info = ({ address, description, id, like, name, scrap, type }: Props) => {
           </Flex>
         </Stack.Vertical>
 
-        <Stack.Horizontal gutter={20}>
-          <Share />
-          {scrap ? <FilledScrap /> : <EmptyScrap />}
-          <Flex direction="column">
+        <Stack.Horizontal gutter={20} align="flex-start">
+          <button
+            type="button"
+            onClick={() => {
+              const shareData = {
+                title: document.title,
+                text: "Hello World",
+                url: "https://developer.mozilla.org"
+              };
+
+              if (navigator.canShare && navigator.canShare(shareData)) {
+                navigator.share(shareData);
+              }
+              // share the URL of MDN
+            }}
+          >
+            <Share />
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              if (scrap) {
+                deleteScrapMutate(id);
+              } else {
+                postScrapMutate(id);
+              }
+            }}
+          >
+            {scrap ? <FilledScrap /> : <EmptyScrap />}
+          </button>
+          <Flex direction="column" align="center">
             {like ? (
               <OrangeHeart width={20} height={17} />
             ) : (
               <EmptyHeart width={20} height={17} />
             )}
+            <Spacing size={6} />
+            <Text _fontSize={10} _color={colors.secondary.A3}>
+              {likeCount}
+            </Text>
           </Flex>
         </Stack.Horizontal>
       </Flex>

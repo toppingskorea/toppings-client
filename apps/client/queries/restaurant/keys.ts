@@ -1,5 +1,5 @@
 const Keys = {
-  restaurant: (id: string) => ["restaurant", id]
+  restaurant: (id: number) => ["restaurant", id]
 };
 
 export default Keys;

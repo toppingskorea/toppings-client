@@ -85,6 +85,7 @@ declare module Restaurant {
     country: string;
     scrap: boolean;
     like: boolean;
+    likeCount: number;
   }
 }
 

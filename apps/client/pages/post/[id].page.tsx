@@ -1,12 +1,13 @@
 import { css, useTheme } from "@emotion/react";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
+import axios from "axios";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Image from "next/image";
-import { getRestaurant } from "~/apis/restaurant";
 import { Edit } from "~/assets/svgs/common";
 import { Text } from "~/components/Common/Typo";
 import { ImageCarousel, Info } from "~/components/Post";
+import { env } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { Keys, useFetchRestaurant } from "~/queries/restaurant";
 import { usePostUploadSetter, useRestaurantSetter } from "~/recoil/atoms";
@@ -20,7 +21,7 @@ const PostDetail = ({
   id
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { colors, weighs } = useTheme();
-  const { data } = useFetchRestaurant(id);
+  const { data } = useFetchRestaurant(+id);
 
   // console.log(objectValues(countries).flat().find(country => country.name === data.));
   useSetNavigation({
@@ -99,7 +100,8 @@ const PostDetail = ({
             "description",
             "type",
             "scrap",
-            "like"
+            "like",
+            "likeCount"
           ])}
         />
       </Stack.Vertical>
@@ -107,15 +109,24 @@ const PostDetail = ({
   );
 };
 
-export default PostDetail;
-
-export const getServerSideProps: GetServerSideProps = async context => {
+export const getServerSideProps: GetServerSideProps<{
+  id: string;
+}> = async context => {
   const id = context.query.id as string;
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(Keys.restaurant(id), () =>
-    getRestaurant({ id, ssr: true })
-  );
+  await queryClient.prefetchQuery(Keys.restaurant(+id), async () => {
+    const { data } = await axios.get<{ data: Restaurant.DetailDTO }>(
+      `${env.TOPPINGS_SERVER_URL}/restaurant/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`
+        }
+      }
+    );
+
+    return data.data;
+  });
 
   return {
     props: {
@@ -124,3 +135,5 @@ export const getServerSideProps: GetServerSideProps = async context => {
     }
   };
 };
+
+export default PostDetail;

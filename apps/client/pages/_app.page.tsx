@@ -6,6 +6,7 @@ import {
   QueryClientProvider,
   type DehydratedState
 } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { OverlayProvider } from "@toss/use-overlay";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
@@ -59,7 +60,7 @@ function MyApp({
           </ThemeProvider>
         </RecoilRoot>
       </Hydrate>
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

@@ -14,8 +14,9 @@ const ImageCarousel = ({ images }: Props) => {
   return (
     <>
       <SnapCarousel.Wrapper ref={setCarouselWrapperRef}>
-        {images.map(image => (
-          <SnapCarousel.Item>
+        {images.map((image, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <SnapCarousel.Item key={index}>
             <Image
               src={image}
               alt=""
