@@ -36,7 +36,7 @@ const Likes = ({ id }: Props) => {
                 />
               }
               item={country}
-              innerColor={index === 0 ? undefined : colors.secondary["A3"]}
+              innerColor={index === 0 ? undefined : colors.secondary.A3}
             />
           ))}
         </Stack.Vertical>
