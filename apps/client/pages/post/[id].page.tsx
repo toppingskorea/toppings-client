@@ -115,6 +115,7 @@ const PostDetail = ({
       </Badge>
       <Spacing size={20} />
       <Likes id={id} />
+
       <Spacing size={30} />
 
       <Badge

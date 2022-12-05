@@ -25,7 +25,7 @@ const Likes = ({ id }: Props) => {
         </Text>
 
         <Stack.Vertical gutter={6}>
-          {data.countryPercent.map(country => (
+          {data.countryPercent.map((country, index) => (
             <PercentBar
               prepend={
                 <Image
@@ -36,18 +36,19 @@ const Likes = ({ id }: Props) => {
                 />
               }
               item={country}
+              innerColor={index === 0 ? undefined : colors.secondary["A3"]}
             />
           ))}
         </Stack.Vertical>
       </Flex>
-      
+
       <Flex justify="space-between">
         <Text _fontSize={13} _color={colors.secondary[47]}>
           Eating Habit
         </Text>
 
         <Stack.Vertical gutter={12} align="flex-end">
-          {data.habitPercent.map(habit => (
+          {data.habitPercent.map((habit, index) => (
             <PercentBar
               prepend={
                 <Text _fontSize={10} _color={colors.secondary[42]}>
@@ -55,6 +56,7 @@ const Likes = ({ id }: Props) => {
                 </Text>
               }
               item={habit}
+              innerColor={index === 0 ? undefined : colors.secondary.A3}
             />
           ))}
         </Stack.Vertical>

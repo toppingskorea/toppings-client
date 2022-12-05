@@ -1,13 +1,21 @@
 import { css, useTheme } from "@emotion/react";
 import { size, Stack } from "@toss/emotion-utils";
+import { emotionTheme } from "~/styles";
 import { Text } from "../Typo";
 
 interface Props {
   prepend: JSX.Element;
   item: Common.PercentDTO;
+  innerColor?:
+    | typeof emotionTheme.colors.primary
+    | typeof emotionTheme.colors.secondary["A3"];
 }
 
-const PercentBar = ({ prepend, item }: Props) => {
+const PercentBar = ({
+  prepend,
+  item,
+  innerColor = emotionTheme.colors.primary
+}: Props) => {
   const { colors } = useTheme();
 
   return (
@@ -31,7 +39,7 @@ const PercentBar = ({ prepend, item }: Props) => {
               height: 8
             })}
             border-radius: 100px;
-            background-color: ${colors.secondary.FF};
+            background-color: ${innerColor};
           `}
         />
       </div>
