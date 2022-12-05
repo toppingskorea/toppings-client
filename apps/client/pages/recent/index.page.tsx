@@ -70,7 +70,7 @@ const RecentPage = () => {
             y: 6
           }}
           defaultProps={{
-            bgColor: theme.colors.secondary.F1,
+            bgcolor: theme.colors.secondary.F1,
             bordercolor: "transparent",
             _color: theme.colors.secondary.A2
           }}
@@ -123,7 +123,7 @@ const RecentPage = () => {
                 }}
                 _fontSize={17}
                 defaultProps={{
-                  bgColor: theme.colors.white,
+                  bgcolor: theme.colors.white,
                   bordercolor: theme.colors.secondary.D9
                 }}
                 onClick={() => push(`${asPath}/${ID}`)}

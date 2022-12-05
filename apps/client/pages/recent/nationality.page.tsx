@@ -65,7 +65,7 @@ const RecentPage = () => {
               }}
               _fontSize={17}
               defaultProps={{
-                bgColor: pathname.includes(ID)
+                bgcolor: pathname.includes(ID)
                   ? theme.colors.primary
                   : theme.colors.white,
                 bordercolor: theme.colors.secondary.D9
