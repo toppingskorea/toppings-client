@@ -1,11 +1,11 @@
 import { css, useTheme } from "@emotion/react";
+import { Edit } from "@svgs/common";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
 import axios from "axios";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Image from "next/image";
 import { getLikePercent, getReviews } from "~/apis/restaurant";
-import { Edit } from "~/assets/svgs/common";
 import { Badge } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { ImageCarousel, Info, Likes, Reviews } from "~/components/Post";

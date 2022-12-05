@@ -1,5 +1,4 @@
 import { css, useTheme } from "@emotion/react";
-import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
 import {
   Copy,
   EmptyHeart,
@@ -7,7 +6,8 @@ import {
   FilledScrap,
   OrangeHeart,
   Share
-} from "~/assets/svgs/common";
+} from "@svgs/common";
+import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
 import { MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import {
@@ -74,9 +74,7 @@ const Info = ({
             <Text _fontSize={14} _color={colors.secondary[47]}>
               {address}
             </Text>
-            <MotionButton
-              onClick={() => clipboard(address)}
-            >
+            <MotionButton onClick={() => clipboard(address)}>
               <Copy />
             </MotionButton>
           </Flex>
