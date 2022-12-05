@@ -22,6 +22,10 @@ const PostDetail = ({
   const { colors, weighs } = useTheme();
   const { data } = useFetchRestaurant(+id);
 
+  const setRestaurant = useRestaurantSetter();
+  const setPostUpload = usePostUploadSetter();
+  const { push } = useInternalRouter();
+
   useSetNavigation({
     top: {
       title: (
@@ -72,11 +76,6 @@ const PostDetail = ({
     },
     bottom: true
   });
-
-  const { push } = useInternalRouter();
-
-  const setRestaurant = useRestaurantSetter();
-  const setPostUpload = usePostUploadSetter();
 
   return (
     <section>

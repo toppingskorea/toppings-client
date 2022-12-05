@@ -1,7 +1,7 @@
 import { css, useTheme } from "@emotion/react";
 import { flex, gutter, size } from "@toss/emotion-utils";
-import throttle from "lodash/throttle";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
+import useIndicator from "./Indicator.hooks";
 
 interface IndicatorProps {
   wrapperRef: HTMLDivElement | null;
@@ -45,34 +45,3 @@ const Indicator = ({ wrapperRef }: IndicatorProps) => {
 };
 
 export default Indicator;
-
-interface UseIndicatorProps {
-  wrapperRef: HTMLDivElement | null;
-}
-
-function useIndicator({ wrapperRef }: UseIndicatorProps) {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-
-  const throttledOnScroll = useMemo(
-    () =>
-      throttle(() => {
-        if (!wrapperRef) return;
-        const { offsetWidth, scrollLeft } = wrapperRef;
-        const tempIndex = Math.round(scrollLeft / offsetWidth);
-        setCurrentIndex(tempIndex);
-      }, 300),
-    [wrapperRef]
-  );
-
-  useEffect(() => {
-    if (!wrapperRef) return;
-    wrapperRef.addEventListener("scroll", throttledOnScroll);
-
-    // eslint-disable-next-line consistent-return
-    return () => {
-      wrapperRef.removeEventListener("scroll", throttledOnScroll);
-    };
-  }, [throttledOnScroll, wrapperRef]);
-
-  return { currentIndex };
-}
