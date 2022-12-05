@@ -1,6 +1,7 @@
 import { css, useTheme } from "@emotion/react";
 import { Flex, padding, Spacing, Stack, width100 } from "@toss/emotion-utils";
 import Image from "next/image";
+import { avatar } from "~/assets/images/profile";
 import { Text } from "~/components/Common/Typo";
 import { useFetchReviews } from "~/queries/restaurant";
 import { countryToSvg } from "~/utils/country";
@@ -23,7 +24,9 @@ const Reviews = ({ id }: Props) => {
         <li>
           <Flex>
             <Image
-              src={review.thumbnail}
+              src={
+                review.thumbnail.includes("data") ? review.thumbnail : avatar
+              }
               alt=""
               width={64}
               height={64}
