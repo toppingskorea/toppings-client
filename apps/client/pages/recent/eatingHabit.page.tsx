@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { RoundedTag, SearchInput } from "~/components/Common";
 import { SelectEatingHabit } from "~/components/Section";
 import { useInput, useSetNavigation } from "~/hooks";
+import { useUploadRecentHistory } from "~/mutations/recent";
 import useFetchEatingHabitByFiltering from "~/mutations/recent/useFetchEatingHabitByFiltering";
 import { useMapSearchByCountrySetter, useRegisterState } from "~/recoil/atoms";
 import tags from "./recent.constants";
@@ -13,6 +14,7 @@ const RecentPage = () => {
   const { push, pathname } = useRouter();
   const [register, setRegister] = useRegisterState();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const { mutate: recentHistoryMutate } = useUploadRecentHistory();
   const { mutate } = useFetchEatingHabitByFiltering({
     onSuccess: async data => {
       await setMapSearchByCountry(data);
@@ -41,6 +43,11 @@ const RecentPage = () => {
                 content
               }
             ]
+          });
+          recentHistoryMutate({
+            type: "Filter",
+            keyword: content,
+            category: "Habit"
           });
           mutate({ habitTitle: title, habit: content });
         }}

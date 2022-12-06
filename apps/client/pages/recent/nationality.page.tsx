@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { RoundedTag, SearchInput } from "~/components/Common";
 import { SearchNationality } from "~/components/Section";
 import { useInput, useSetNavigation } from "~/hooks";
+import { useUploadRecentHistory } from "~/mutations/recent";
 import useFetchRestaurantByCountry from "~/mutations/recent/useFetchRestaurantByCountry";
 import { useMapSearchByCountrySetter, useRegisterState } from "~/recoil/atoms";
 import tags from "./recent.constants";
@@ -14,9 +15,10 @@ const RecentPage = () => {
   const { push, pathname } = useRouter();
   const [register, setRegister] = useRegisterState();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const { mutate: recentHistoryMutate } = useUploadRecentHistory();
   const { mutate } = useFetchRestaurantByCountry({
-    onSuccess: async data => {
-      await setMapSearchByCountry(data);
+    onSuccess: data => {
+      setMapSearchByCountry(data);
 
       push("/map");
     }
@@ -37,6 +39,11 @@ const RecentPage = () => {
         keyword={keyword.value}
         onCountryClick={name => {
           setRegister({ ...register, country: name });
+          recentHistoryMutate({
+            type: "Filter",
+            keyword: name,
+            category: "Country"
+          });
           mutate(name);
         }}
       />
@@ -88,7 +95,7 @@ const RecentPage = () => {
         `}
       >
         <SearchInput
-          onSubmit={() => console.log("sad")}
+          onSubmit={() => 1}
           placeholder="Enter nationality name"
           setValue={setValue}
           {...keyword}

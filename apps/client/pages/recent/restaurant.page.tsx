@@ -1,34 +1,20 @@
 import { css, useTheme } from "@emotion/react";
-import { useQueryClient } from "@tanstack/react-query";
 import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import { RoundedTag, SearchInput } from "~/components/Common";
 import { useInput, useSetNavigation } from "~/hooks";
-import {
-  useDeleteRecentAllHistory,
-  useUploadRecentHistory
-} from "~/mutations/recent";
-import Keys from "~/queries/recent/keys";
-import { useRegisterState } from "~/recoil/atoms";
+import { useUploadRecentHistory } from "~/mutations/recent";
+import useFetchRestaurantNameByFiltering from "~/mutations/recent/useFetchRestaurantNameByFiltering";
 import tags from "./recent.constants";
 
 const RecentPage = () => {
   const theme = useTheme();
   const { push, pathname } = useRouter();
-  const queryClient = useQueryClient();
-  const [register, setRegister] = useRegisterState();
-  const { mutate } = useUploadRecentHistory({
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: Keys.recent()
-      });
-    }
-  });
-  const { mutate: deleteMutate } = useDeleteRecentAllHistory({
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: Keys.recent()
-      });
+  // 클릭한 카드의 값들이 들어가게(content, restaurantId)
+  const { mutate: recentHistoryMutate } = useUploadRecentHistory();
+  const { mutate } = useFetchRestaurantNameByFiltering({
+    onSuccess: data => {
+      console.log(data);
     }
   });
 
@@ -40,6 +26,7 @@ const RecentPage = () => {
 
   const { props: keyword, setValue } = useInput({});
 
+  // TODO: 찬혁이 답장 오면 카드 만들지 정하기
   return (
     <SafeArea>
       <div
@@ -52,7 +39,9 @@ const RecentPage = () => {
         `}
       >
         <SearchInput
-          onSubmit={() => console.log("sad")}
+          onSubmit={() => {
+            mutate(keyword.value);
+          }}
           placeholder="enter the restaurant name"
           setValue={setValue}
           {...keyword}

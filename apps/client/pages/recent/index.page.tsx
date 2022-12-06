@@ -1,6 +1,5 @@
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
-import { useQueryClient } from "@tanstack/react-query";
 import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { motion } from "framer-motion";
@@ -16,22 +15,12 @@ import {
 import { History } from "~/components/Recent";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInput, useSetNavigation } from "~/hooks";
-import { useUploadRecentHistory } from "~/mutations/recent";
-import Keys from "~/queries/recent/keys";
 import tags from "./recent.constants";
 
 const RecentPage = () => {
   const theme = useTheme();
   const { push, asPath } = useRouter();
-  const queryClient = useQueryClient();
   const overlay = useOverlay();
-  const { mutate } = useUploadRecentHistory({
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: Keys.recent()
-      });
-    }
-  });
 
   useSetNavigation({
     top: {
@@ -145,13 +134,7 @@ const RecentPage = () => {
         `}
       >
         <SearchInput
-          onSubmit={() => {
-            mutate({
-              type: "Filter",
-              keyword: keyword.value,
-              category: "Habit"
-            });
-          }}
+          onSubmit={() => console.log("sad")}
           placeholder="Enter nationality name"
           setValue={setValue}
           {...keyword}

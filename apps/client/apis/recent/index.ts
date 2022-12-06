@@ -42,3 +42,11 @@ export const getEatingHabitByFiltering = async ({
 
   return data.data;
 };
+
+export const getRestaurantNameByFiltering = async (name: string) => {
+  const { data } = await authRequest.get<{
+    data: Restaurant.SearchByCountryDTO[];
+  }>(`/api/restaurant?type=Name&name=${name}`);
+
+  return data.data;
+};

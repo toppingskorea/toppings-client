@@ -13,7 +13,7 @@ interface Props {
 const RemoveAlertModal = ({ exit }: Props) => {
   const theme = useTheme();
   const queryClient = useQueryClient();
-  const { mutate: deleteMutate } = useDeleteRecentAllHistory({
+  const { mutate: deleteAllMutate } = useDeleteRecentAllHistory({
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: Keys.recent()
@@ -77,7 +77,7 @@ const RemoveAlertModal = ({ exit }: Props) => {
             ${touchable}
           `}
           onClick={() => {
-            deleteMutate();
+            deleteAllMutate();
             exit();
           }}
         >

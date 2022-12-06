@@ -13,13 +13,18 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants } from "~/constants";
-import { useRegisterReset, useRegisterValue } from "~/recoil/atoms";
+import {
+  useMapSearchByCountrySetter,
+  useRegisterReset,
+  useRegisterValue
+} from "~/recoil/atoms";
 
 const FilteringButton = () => {
   const { colors } = useTheme();
   const { push } = useRouter();
   const register = useRegisterValue();
   const resetRegister = useRegisterReset();
+  const setMapSearchByCountry = useMapSearchByCountrySetter();
 
   return (
     <Flex.Center
@@ -51,7 +56,7 @@ const FilteringButton = () => {
           <Text _fontSize={17} _color={colors.white}>
             {register.country}
           </Text>
-          <Exit />
+          <Exit onClick={() => console.log("hi")} />
         </div>
       )}
 
