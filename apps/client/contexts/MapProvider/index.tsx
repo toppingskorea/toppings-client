@@ -43,30 +43,31 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
         const imageSrc =
           "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
-        const positions = [
-          {
-            title: "카카오",
-            latLng: new kakao.maps.LatLng(33.450705, 126.570677)
-          },
-          {
-            title: "생태연못",
-            latLng: new kakao.maps.LatLng(33.450936, 126.569477)
-          },
-          {
-            title: "텃밭",
-            latLng: new kakao.maps.LatLng(33.450879, 126.56994)
-          },
-          {
-            title: "근린공원",
-            latLng: new kakao.maps.LatLng(33.451393, 126.570738)
-          }
-        ];
+        // test용 주석(삭제 추후에 할 것임)
+        // const positions = [
+        //   {
+        //     title: "카카오",
+        //     latLng: new kakao.maps.LatLng(33.450705, 126.570677)
+        //   },
+        //   {
+        //     title: "생태연못",
+        //     latLng: new kakao.maps.LatLng(33.450936, 126.569477)
+        //   },
+        //   {
+        //     title: "텃밭",
+        //     latLng: new kakao.maps.LatLng(33.450879, 126.56994)
+        //   },
+        //   {
+        //     title: "근린공원",
+        //     latLng: new kakao.maps.LatLng(33.451393, 126.570738)
+        //   }
+        // ];
 
-        if (mapSearchByCountry) {
-          // const positions = mapSearchByCountry.map(item => ({
-          //   title: item.name,
-          //   latLng: new kakao.maps.LatLng(item.latitude, item.longitude)
-          // }));
+        if (mapSearchByCountry && mapSearchByCountry.length) {
+          const positions = mapSearchByCountry.map(item => ({
+            title: item.name,
+            latLng: new kakao.maps.LatLng(item.latitude, item.longitude)
+          }));
           const imageSize = new kakao.maps.Size(24, 35);
 
           // 마커 이미지를 생성합니다

@@ -129,16 +129,17 @@ declare module Recent {
 
 declare module Restaurant {
   interface SearchByCountryDTO {
-    id: number;
-    name: string;
-    latitude: number;
-    longitude: number;
+    address?: string;
     description: string;
-    type: string;
-    thumbnail: string;
-    likeCount: number;
-    writer: string;
     filterLikeCount: number;
+    id: number;
+    latitude: number;
     like: boolean;
+    likeCount: number;
+    longitude: number;
+    name: string;
+    thumbnail: string;
+    type: string;
+    writer: string;
   }
 }
