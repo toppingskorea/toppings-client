@@ -1,6 +1,6 @@
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
-import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
+import { position, SafeArea } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
@@ -9,7 +9,6 @@ import {
   Badge,
   RemoveAlertModal,
   RoundedTag,
-  SearchInput,
   SSRSafeSuspense
 } from "~/components/Common";
 import { History } from "~/components/Recent";
@@ -80,9 +79,9 @@ const RecentPage = () => {
 
       <div
         css={css`
-          ${position("fixed", {
+          ${position("absolute", {
             bottom: theme.dimensions.bottomNavigationHeight,
-            left: 27
+            left: 0
           })}
         `}
       >
@@ -122,23 +121,6 @@ const RecentPage = () => {
             ))}
           </ul>
         </div>
-      </div>
-
-      <div
-        css={css`
-          ${padding({ x: 16, y: 22 })};
-          ${position("fixed", { bottom: 0 })}
-          background-color: ${theme.colors.white};
-          max-width: ${theme.dimensions.viewWidth - 32}px;
-          ${width100}
-        `}
-      >
-        <SearchInput
-          onSubmit={() => console.log("sad")}
-          placeholder="Enter nationality name"
-          setValue={setValue}
-          {...keyword}
-        />
       </div>
     </SafeArea>
   );
