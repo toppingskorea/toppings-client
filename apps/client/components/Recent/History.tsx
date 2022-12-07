@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { RemoveHistory, Timeline } from "@svgs/recent";
 import { useQueryClient } from "@tanstack/react-query";
-import { Flex, flex, padding, touchable } from "@toss/emotion-utils";
+import { Flex, flex, gutter, padding, touchable } from "@toss/emotion-utils";
 import { memo } from "react";
 import { useDeleteRecentHistory } from "~/mutations/recent";
 import { useFetchRecentHistory } from "~/queries/recent";
@@ -22,6 +22,7 @@ const History = () => {
     <div
       css={css`
         ${flex({ direction: "column" })}
+        ${gutter("vertical", 23)}
         ${padding({
           x: 27,
           y: 0

@@ -4,6 +4,7 @@ import { Flex, gutter, position, size, touchable } from "@toss/emotion-utils";
 import { memo } from "react";
 import { useDeleteRecentAllHistory } from "~/mutations/recent";
 import Keys from "~/queries/recent/keys";
+import { hexToRgba } from "~/utils";
 import { Text } from "../../Typo";
 
 interface Props {
@@ -11,7 +12,7 @@ interface Props {
 }
 
 const RemoveAlertModal = ({ exit }: Props) => {
-  const theme = useTheme();
+  const { colors, weighs } = useTheme();
   const queryClient = useQueryClient();
   const { mutate: deleteAllMutate } = useDeleteRecentAllHistory({
     onSuccess: () => {
@@ -28,8 +29,7 @@ const RemoveAlertModal = ({ exit }: Props) => {
         ${position("fixed", { top: 0, right: 0, bottom: 0, left: 0 })}
         ${size.full}
         ${gutter({ direction: "vertical", space: 30 })}
-        background-color: ${theme.colors.black};
-        opacity: 0.3;
+        background-color: ${hexToRgba(colors.black, 0.3)};
       `}
     >
       <Flex.Center
@@ -37,19 +37,15 @@ const RemoveAlertModal = ({ exit }: Props) => {
           width: 50px;
           height: 50px;
           border-radius: 50%;
-          background-color: ${theme.colors.secondary.E2};
+          background-color: ${colors.secondary.E2};
           opacity: 0.9;
         `}
       >
-        <Text _fontSize={32} _color={theme.colors.primary}>
+        <Text _fontSize={32} _color={colors.primary}>
           !
         </Text>
       </Flex.Center>
-      <Text
-        _fontSize={23}
-        weight={theme.weighs.heavy}
-        _color={theme.colors.white}
-      >
+      <Text _fontSize={23} weight={weighs.heavy} _color={colors.white}>
         Are you sure?
       </Text>
 
@@ -60,8 +56,8 @@ const RemoveAlertModal = ({ exit }: Props) => {
       >
         <Text
           _fontSize={18}
-          weight={theme.weighs.bold}
-          _color={theme.colors.primary}
+          weight={weighs.bold}
+          _color={colors.primary}
           css={css`
             ${touchable}
           `}
@@ -71,8 +67,8 @@ const RemoveAlertModal = ({ exit }: Props) => {
         </Text>
         <Text
           _fontSize={18}
-          weight={theme.weighs.bold}
-          _color={theme.colors.primary}
+          weight={weighs.bold}
+          _color={colors.primary}
           css={css`
             ${touchable}
           `}
