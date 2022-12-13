@@ -1,4 +1,5 @@
 import { authRequest } from "~/constants";
+import type { Direction } from "~/recoil/atoms";
 
 // eslint-disable-next-line import/prefer-default-export
 export const getRecentHistory = async () => {
@@ -9,7 +10,9 @@ export const getRecentHistory = async () => {
   return data.data;
 };
 
-export const addRecentHistory = async (history: Recent.AddHistory) => {
+export const addRecentHistory = async (
+  history: Omit<Recent.HistoryDTO, "id">
+) => {
   await authRequest.post("/api/recent", history);
 };
 
@@ -47,6 +50,18 @@ export const getRestaurantNameByFiltering = async (name: string) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByCountryDTO[];
   }>(`/api/restaurant?type=Name&name=${name}`);
+
+  return data.data;
+};
+
+export const getDefaultMap = async (
+  direction: kakao.maps.LatLngBounds & Direction
+) => {
+  const { data } = await authRequest.get<{
+    data: Restaurant.SearchByCountryDTO[];
+  }>(
+    `/api/restaurant?type=Map&y1=${direction.ha}&y2=${direction.oa}&x1=${direction.qa}&x2=${direction.pa}`
+  );
 
   return data.data;
 };

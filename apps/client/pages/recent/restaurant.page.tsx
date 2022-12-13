@@ -1,6 +1,5 @@
 import { css, useTheme } from "@emotion/react";
 import {
-  flex,
   Flex,
   padding,
   position,
@@ -10,11 +9,13 @@ import {
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { ClickedHeart, NotClickedHeart } from "~/assets/svgs/recent";
 import { RoundedTag, SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useInput, useSetNavigation } from "~/hooks";
 import { useUploadRecentHistory } from "~/mutations/recent";
 import useFetchRestaurantNameByFiltering from "~/mutations/recent/useFetchRestaurantNameByFiltering";
+import { useCurrentLocationSetter } from "~/recoil/atoms";
 import weighs from "~/styles/emotionTheme/weighs";
 import tags from "./recent.constants";
 
@@ -24,11 +25,11 @@ const RecentPage = () => {
   const [restaurantList, setRestaurantList] = useState<
     Restaurant.SearchByCountryDTO[] | null
   >(null);
+  const setCurrentLocation = useCurrentLocationSetter();
   // 클릭한 카드의 값들이 들어가게(content, restaurantId)
   const { mutate: recentHistoryMutate } = useUploadRecentHistory();
   const { mutate } = useFetchRestaurantNameByFiltering({
     onSuccess: data => {
-      console.log(data);
       setRestaurantList(data);
     }
   });
@@ -41,7 +42,6 @@ const RecentPage = () => {
 
   const { props: keyword, setValue } = useInput({});
 
-  // TODO: 찬혁이 답장 오면 카드 만들지 정하기
   return (
     <SafeArea>
       <div
@@ -68,78 +68,95 @@ const RecentPage = () => {
           width: 100%;
         `}
       >
-        {restaurantList?.map(
-          ({ thumbnail, name, id, type, writer, address, likeCount }) => (
+        {restaurantList?.map(item => (
+          <Flex
+            onClick={() => {
+              setCurrentLocation({
+                latitude: item.latitude,
+                longitude: item.longitude
+              });
+              recentHistoryMutate({
+                type: "Filter",
+                keyword: item.name,
+                category: "Name",
+                content: item.address,
+                restaurantId: item.id
+              });
+
+              push("/map");
+            }}
+            key={item.id}
+            justify="space-between"
+            css={css`
+              width: 100%;
+              border-bottom: 1px solid ${colors.secondary.DF};
+              padding-bottom: 10px;
+            `}
+          >
             <Flex
-              key={id}
-              justify="space-between"
               css={css`
-                width: 100%;
+                gap: 13px;
               `}
             >
+              <Image
+                src={item.thumbnail}
+                width={80}
+                height={80}
+                alt=""
+                css={css`
+                  border: 1px solid black;
+                  border-radius: 7px;
+                `}
+              />
+
               <Flex
+                justify="space-between"
+                direction="column"
                 css={css`
-                  gap: 13px;
+                  gap: 7px;
                 `}
               >
-                <Image
-                  src={thumbnail}
-                  width={80}
-                  height={80}
-                  alt=""
-                  css={css`
-                    border: 1px solid black;
-                    border-radius: 7px;
-                  `}
-                />
-
-                <Flex
-                  justify="space-between"
-                  direction="column"
-                  css={css`
-                    gap: 7px;
-                  `}
-                >
-                  <div>
-                    <Text _fontSize={13} _color={colors.secondary[52]}>
-                      {type}
-                    </Text>
-                    <Flex
-                      align="center"
-                      css={css`
-                        gap: 6px;
-                      `}
-                    >
-                      <Text
-                        _fontSize={16}
-                        _color={colors.secondary["4B"]}
-                        weight={weighs.semiBold}
-                      >
-                        {name}
-                      </Text>
-                      <Text _fontSize={10} _color={colors.secondary["4B"]}>
-                        {writer}
-                      </Text>
-                    </Flex>
-                  </div>
-                  <Text _fontSize={10} _color={colors.secondary["46"]}>
-                    {address}
+                <div>
+                  <Text _fontSize={13} _color={colors.secondary[52]}>
+                    {item.type}
                   </Text>
-                </Flex>
+                  <Flex
+                    align="center"
+                    css={css`
+                      gap: 6px;
+                    `}
+                  >
+                    <Text
+                      _fontSize={16}
+                      _color={colors.secondary["4B"]}
+                      weight={weighs.semiBold}
+                    >
+                      {item.name}
+                    </Text>
+                    <Text _fontSize={10} _color={colors.secondary["4B"]}>
+                      {item.writer}
+                    </Text>
+                  </Flex>
+                </div>
+                <Text _fontSize={10} _color={colors.secondary["46"]}>
+                  {item.address}
+                </Text>
               </Flex>
+            </Flex>
 
-              <Text
-                _fontSize={12}
-                _color={colors.secondary["4B"]}
-                css={css`
-                  ${flex({ align: "flex-end" })}
-                `}
-              >
-                {likeCount}
+            <Flex
+              align="flex-end"
+              css={css`
+                gap: 6px;
+              `}
+            >
+              {item.like ? <ClickedHeart /> : <NotClickedHeart />}
+              <Text _fontSize={12} _color={colors.secondary["4B"]}>
+                {item.likeCount}
               </Text>
             </Flex>
-          )
-        )}
+          </Flex>
+        ))}
       </div>
       <div
         css={css`

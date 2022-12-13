@@ -119,12 +119,6 @@ declare module Recent {
     content?: string;
     restaurantId?: number;
   }
-
-  interface AddHistory {
-    keyword: string;
-    type: string;
-    category: string;
-  }
 }
 
 declare module Restaurant {

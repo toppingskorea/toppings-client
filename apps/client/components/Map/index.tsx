@@ -1,7 +1,7 @@
 import { css, useTheme } from "@emotion/react";
 import { useCallback } from "react";
 import { useMap } from "~/contexts";
-import { useMapBoundsSetter } from "~/recoil/atoms";
+import { useMapBoundsSetter, type Direction } from "~/recoil/atoms";
 import FilteringButton from "./Button/FilteringButton";
 import MyLocationButton from "./Button/MyLocationButton";
 import RecentButton from "./Button/RecentButton";
@@ -13,7 +13,9 @@ const Map = ({ children }: Util.PropsWithChild) => {
   const { map, mapRef } = useMap();
 
   const mapEventHandler = useCallback(() => {
-    if (map) setMapBounds(map.getBounds());
+    if (map) {
+      setMapBounds(map.getBounds() as kakao.maps.LatLngBounds & Direction);
+    }
   }, [map, setMapBounds]);
 
   useMapEvent(map, "dragend", mapEventHandler);

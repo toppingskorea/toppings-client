@@ -1,5 +1,5 @@
 import { useCurrentLocationValue } from "@atoms/index";
-import { useMapBoundsSetter, useMapSearchByCountryValue } from "@atoms/map";
+import { useMapSearchByCountryValue } from "@atoms/map";
 import {
   createContext,
   useContext,
@@ -23,7 +23,7 @@ export const useMap = () => useContext(Context);
 export const MapProvider = ({ children }: Util.PropsWithChild) => {
   const mapSearchByCountry = useMapSearchByCountryValue();
   const currentLocation = useCurrentLocationValue();
-  const setMapBounds = useMapBoundsSetter();
+  // const setMapBounds = useMapBoundsSetter();
   const mapRef = useRef<HTMLDivElement>(null);
   const [kakaoMap, setKakaoMap] = useState<kakao.maps.Map | null>(null);
 
@@ -95,12 +95,7 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
         setKakaoMap(map);
       }
     });
-  }, [
-    currentLocation.latitude,
-    currentLocation.longitude,
-    mapSearchByCountry,
-    setMapBounds
-  ]);
+  }, [currentLocation.latitude, currentLocation.longitude, mapSearchByCountry]);
 
   const providerValue = useMemo(() => ({ map: kakaoMap, mapRef }), [kakaoMap]);
 

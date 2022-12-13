@@ -17,6 +17,7 @@ const History = () => {
       });
     }
   });
+  console.log(data);
 
   return (
     <div
@@ -29,7 +30,7 @@ const History = () => {
         })}
       `}
     >
-      {data.map(({ id, keyword }) => (
+      {data.map(({ id, keyword, category }) => (
         <Flex key={id} justify="space-between" align="center">
           <Flex.Center
             css={css`

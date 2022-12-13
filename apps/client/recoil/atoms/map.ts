@@ -1,11 +1,19 @@
 import { atom, useRecoilValue, useSetRecoilState } from "recoil";
 
 // ha: west oa: east pa: south qa: north 순서
-const mapBoundsAtom = atom<kakao.maps.LatLngBounds | null>({
+export interface Direction {
+  qa: number;
+  oa: number;
+  pa: number;
+  ha: number;
+}
+
+const mapBoundsAtom = atom<(kakao.maps.LatLngBounds & Direction) | null>({
   key: "mapBounds",
   default: null
 });
 
+export const useMapBoundsValue = () => useRecoilValue(mapBoundsAtom);
 export const useMapBoundsSetter = () => useSetRecoilState(mapBoundsAtom);
 
 const mapSearchByCountryAtom = atom<Restaurant.SearchByCountryDTO[] | null>({
