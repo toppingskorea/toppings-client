@@ -66,10 +66,11 @@ const Profile = () => {
         <Stack.Horizontal align="center" gutter={37}>
           <Image
             src={data.profile || avatar}
-            alt="dummy"
+            alt={`${data.name}'s profile`}
             width={88}
             height={88}
             css={css`
+              min-width: 88px;
               border-radius: 50%;
             `}
           />

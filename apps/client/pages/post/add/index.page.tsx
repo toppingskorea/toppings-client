@@ -1,13 +1,8 @@
-import {
-  usePostUploadReset,
-  usePostUploadState,
-  useRestaurantReset,
-  useRestaurantValue
-} from "@atoms/index";
+import { usePostUploadState, useRestaurantValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { padding, size, Spacing, Stack, touchable } from "@toss/emotion-utils";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { ComponentWithLabel, Gallery, Input } from "~/components/Common";
 import { Edit, HorizontalCategories, Register } from "~/components/Post";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
@@ -18,8 +13,6 @@ const PostAdd = () => {
   const { push } = useInternalRouter();
   const restaurant = useRestaurantValue();
   const [postUpload, setPostUpload] = usePostUploadState();
-  const restaurantReset = useRestaurantReset();
-  const postUploadReset = usePostUploadReset();
 
   const isModifyMode = useMemo(() => !!postUpload.id, [postUpload.id]);
 
@@ -30,12 +23,6 @@ const PostAdd = () => {
     },
     bottom: true
   });
-  useEffect(() => {
-    return () => {
-      restaurantReset();
-      postUploadReset();
-    };
-  }, [postUploadReset, restaurantReset]);
 
   return (
     <Stack.Vertical gutter={22}>
@@ -62,6 +49,7 @@ const PostAdd = () => {
             css={css`
               ${touchable}
               overflow-y: hidden;
+              font-size: 16px;
               &::placeholder {
                 font-size: 16px;
                 color: ${colors.secondary.B8};

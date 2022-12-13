@@ -7,7 +7,7 @@ import { useFetchUserInfo } from "~/queries/profile";
 import { hexToRgba } from "~/utils";
 
 const UserBadge = () => {
-  const {colors,weighs} = useTheme();
+  const { colors, weighs } = useTheme();
   const { data: user } = useFetchUserInfo();
 
   return (
@@ -29,6 +29,9 @@ const UserBadge = () => {
         alt={`${user.name}'s profile`}
         width={28}
         height={28}
+        css={css`
+          border-radius: 50%;
+        `}
       />
       <Text
         _fontSize={17}
