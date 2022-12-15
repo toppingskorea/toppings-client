@@ -26,7 +26,6 @@ const RecentPage = () => {
     Restaurant.SearchByCountryDTO[] | null
   >(null);
   const setCurrentLocation = useCurrentLocationSetter();
-  // 클릭한 카드의 값들이 들어가게(content, restaurantId)
   const { mutate: recentHistoryMutate } = useUploadRecentHistory();
   const { mutate } = useFetchRestaurantNameByFiltering({
     onSuccess: data => {

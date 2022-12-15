@@ -125,7 +125,7 @@ declare module Restaurant {
   interface SearchByCountryDTO {
     address?: string;
     description: string;
-    filterLikeCount: number;
+    filterLikeCount?: number;
     id: number;
     latitude: number;
     like: boolean;

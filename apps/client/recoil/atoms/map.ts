@@ -1,4 +1,9 @@
-import { atom, useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  atom,
+  useRecoilState,
+  useRecoilValue,
+  useSetRecoilState
+} from "recoil";
 
 // ha: west oa: east pa: south qa: north 순서
 export interface Direction {
@@ -13,6 +18,7 @@ const mapBoundsAtom = atom<(kakao.maps.LatLngBounds & Direction) | null>({
   default: null
 });
 
+export const useMapBounds = () => useRecoilState(mapBoundsAtom);
 export const useMapBoundsValue = () => useRecoilValue(mapBoundsAtom);
 export const useMapBoundsSetter = () => useSetRecoilState(mapBoundsAtom);
 

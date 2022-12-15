@@ -23,7 +23,6 @@ export const useMap = () => useContext(Context);
 export const MapProvider = ({ children }: Util.PropsWithChild) => {
   const mapSearchByCountry = useMapSearchByCountryValue();
   const currentLocation = useCurrentLocationValue();
-  // const setMapBounds = useMapBoundsSetter();
   const mapRef = useRef<HTMLDivElement>(null);
   const [kakaoMap, setKakaoMap] = useState<kakao.maps.Map | null>(null);
 
@@ -42,26 +41,6 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
 
         const imageSrc =
           "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-
-        // test용 주석(삭제 추후에 할 것임)
-        // const positions = [
-        //   {
-        //     title: "카카오",
-        //     latLng: new kakao.maps.LatLng(33.450705, 126.570677)
-        //   },
-        //   {
-        //     title: "생태연못",
-        //     latLng: new kakao.maps.LatLng(33.450936, 126.569477)
-        //   },
-        //   {
-        //     title: "텃밭",
-        //     latLng: new kakao.maps.LatLng(33.450879, 126.56994)
-        //   },
-        //   {
-        //     title: "근린공원",
-        //     latLng: new kakao.maps.LatLng(33.451393, 126.570738)
-        //   }
-        // ];
 
         if (mapSearchByCountry && mapSearchByCountry.length) {
           const positions = mapSearchByCountry.map(item => ({
