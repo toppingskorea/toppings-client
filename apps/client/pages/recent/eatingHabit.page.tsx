@@ -34,6 +34,7 @@ const RecentPage = () => {
   return (
     <SafeArea>
       <SelectEatingHabit
+        isRecent
         onClick={(title, content) => {
           setRegister({
             ...register,
