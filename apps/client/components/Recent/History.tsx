@@ -2,12 +2,14 @@ import { css } from "@emotion/react";
 import { RemoveHistory, Timeline } from "@svgs/recent";
 import { useQueryClient } from "@tanstack/react-query";
 import { Flex, flex, gutter, padding, touchable } from "@toss/emotion-utils";
+import { useRouter } from "next/router";
 import { memo } from "react";
 import { useDeleteRecentHistory } from "~/mutations/recent";
 import { useFetchRecentHistory } from "~/queries/recent";
 import Keys from "~/queries/recent/keys";
 
 const History = () => {
+  const { push } = useRouter();
   const queryClient = useQueryClient();
   const { data } = useFetchRecentHistory();
   const { mutate } = useDeleteRecentHistory({
@@ -17,7 +19,6 @@ const History = () => {
       });
     }
   });
-  console.log(data);
 
   return (
     <div
@@ -30,12 +31,13 @@ const History = () => {
         })}
       `}
     >
-      {data.map(({ id, keyword, category }) => (
+      {data.map(({ id, keyword }) => (
         <Flex key={id} justify="space-between" align="center">
           <Flex.Center
             css={css`
               gap: 12px;
             `}
+            onClick={() => push(`/post/${id}`)}
           >
             <Timeline />
             {keyword}

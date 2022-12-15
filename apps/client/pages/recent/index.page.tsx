@@ -13,7 +13,7 @@ import {
 } from "~/components/Common";
 import { History } from "~/components/Recent";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
-import { useInput, useSetNavigation } from "~/hooks";
+import { useSetNavigation } from "~/hooks";
 import tags from "./recent.constants";
 
 const RecentPage = () => {
@@ -28,7 +28,6 @@ const RecentPage = () => {
     }
   });
 
-  const { props: keyword, setValue } = useInput({});
   const MemoizeRemoveAlertModal = useCallback(
     (exit: VoidFunction) => <RemoveAlertModal exit={exit} />,
     []

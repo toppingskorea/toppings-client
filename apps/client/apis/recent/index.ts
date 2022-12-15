@@ -1,7 +1,6 @@
 import { authRequest } from "~/constants";
 import type { Direction } from "~/recoil/atoms";
 
-// eslint-disable-next-line import/prefer-default-export
 export const getRecentHistory = async () => {
   const { data } = await authRequest.get<{ data: Recent.HistoryDTO[] }>(
     "/api/recent?type=Filter"
