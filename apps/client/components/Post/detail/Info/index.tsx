@@ -91,9 +91,8 @@ const Info = ({
                 url: "https://developer.mozilla.org"
               };
 
-              if (navigator.canShare && navigator.canShare(shareData)) {
+              if (navigator.canShare && navigator.canShare(shareData))
                 navigator.share(shareData);
-              }
             }}
           >
             <Share />
@@ -101,11 +100,8 @@ const Info = ({
           <button
             type="button"
             onClick={() => {
-              if (scrap) {
-                deleteScrapMutate(id);
-              } else {
-                postScrapMutate(id);
-              }
+              if (scrap) deleteScrapMutate(id);
+              else postScrapMutate(id);
             }}
           >
             {scrap ? <FilledScrap /> : <EmptyScrap />}
@@ -114,11 +110,8 @@ const Info = ({
             <button
               type="button"
               onClick={() => {
-                if (like) {
-                  deleteLikeMutate(id);
-                } else {
-                  postLikeMutate(id);
-                }
+                if (like) deleteLikeMutate(id);
+                else postLikeMutate(id);
               }}
             >
               {like ? (
