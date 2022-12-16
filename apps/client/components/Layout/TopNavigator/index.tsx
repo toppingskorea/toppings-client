@@ -3,12 +3,13 @@ import { css, useTheme } from "@emotion/react";
 import { LeftArrow } from "@svgs/common";
 import { flex, padding, position, Spacing } from "@toss/emotion-utils";
 import { AnimatePresence, motion } from "framer-motion";
+import { MotionButton } from "~/components/Common";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter } from "~/hooks";
 
 const TopNavigator = () => {
-  const { zIndex } = useTheme();
-  const router = useInternalRouter();
+  const { zIndexs } = useTheme();
+  const { back } = useInternalRouter();
   const state = useNavigationValue();
 
   return (
@@ -16,7 +17,7 @@ const TopNavigator = () => {
       <header
         css={css`
           ${position("sticky", { top: 0 })}
-          z-index: ${zIndex.one};
+          z-index: ${zIndexs.one};
           backdrop-filter: blur(10px);
         `}
       >
@@ -30,13 +31,9 @@ const TopNavigator = () => {
             })}
           `}
         >
-          <motion.button
-            type="button"
-            onClick={() => router.back()}
-            whileTap={{ scale: 0.9 }}
-          >
+          <MotionButton onClick={back}>
             <LeftArrow />
-          </motion.button>
+          </MotionButton>
 
           {state.top?.title ? (
             <motion.div
@@ -53,9 +50,7 @@ const TopNavigator = () => {
           )}
 
           {state.top?.right ? (
-            <motion.div whileTap={{ scale: 0.9 }}>
-              {state.top?.right}
-            </motion.div>
+            <MotionButton>{state.top?.right}</MotionButton>
           ) : (
             <Spacing size={0} />
           )}

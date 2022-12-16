@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
 import type { CSSProperties, HTMLAttributes } from "react";
-import React from "react";
 import { emotionTheme } from "~/styles";
 
 interface Props extends HTMLAttributes<HTMLSpanElement> {

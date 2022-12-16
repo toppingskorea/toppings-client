@@ -6,6 +6,11 @@ declare module Common {
   type NotNullishValue = {};
   type TransformOrigin = "top" | "right" | "bottom" | "left";
   type EatingHabit = "Diet" | "Religion";
+
+  interface PercentDTO {
+    count: number;
+    percent: number;
+  }
 }
 
 declare module Util {
@@ -82,8 +87,34 @@ declare module Restaurant {
     images: string[];
     code: string;
     writer: string;
+    country: string;
     scrap: boolean;
     like: boolean;
+    likeCount: number;
+  }
+
+  interface LikePercentDTO {
+    countryPercent: {
+      country: string;
+      count: number;
+      percent: number;
+    }[];
+
+    habitPercent: {
+      habit: string;
+      count: number;
+      percent: number;
+    }[];
+  }
+
+  interface ReviewDTO {
+    id: number;
+    thumbnail: string;
+    modifiedAt: string;
+    name: string;
+    country: string;
+    isMine: boolean;
+    description: string;
   }
 }
 

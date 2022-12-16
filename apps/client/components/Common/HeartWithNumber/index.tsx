@@ -10,7 +10,11 @@ interface Props {
 const HeartWithNumber = ({ like, likeCount }: Props) => {
   return (
     <Flex>
-      {like ? <OrangeHeart /> : <EmptyHeart />}
+      {like ? (
+        <OrangeHeart width={13} height={12} />
+      ) : (
+        <EmptyHeart width={13} height={12} />
+      )}
       <Spacing size={4} direction="horizontal" />
       <Text _fontSize={12}>{likeCount}</Text>
     </Flex>
