@@ -9,7 +9,7 @@ import { useInternalRouter } from "~/hooks";
 
 const TopNavigator = () => {
   const { zIndex } = useTheme();
-  const router = useInternalRouter();
+  const { back } = useInternalRouter();
   const state = useNavigationValue();
 
   return (
@@ -31,7 +31,7 @@ const TopNavigator = () => {
             })}
           `}
         >
-          <MotionButton onClick={() => router.back()}>
+          <MotionButton onClick={back}>
             <LeftArrow />
           </MotionButton>
 
