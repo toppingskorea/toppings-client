@@ -1,13 +1,13 @@
 import colors from "./colors";
 import dimensions from "./dimensions";
 import weighs from "./weighs";
-import zIndex from "./zIndex";
+import zIndexs from "./zIndexs";
 
 const emotionTheme = {
   colors,
   dimensions,
   weighs,
-  zIndex
+  zIndexs
 } as const;
 
 export default emotionTheme;
