@@ -27,6 +27,7 @@ const Likes = ({ id }: Props) => {
         <Stack.Vertical gutter={6}>
           {data.countryPercent.map((country, index) => (
             <PercentBar
+              key={country.country}
               prepend={
                 <Image
                   src={countryToSvg(country.country)}
