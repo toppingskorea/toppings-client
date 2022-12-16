@@ -11,8 +11,8 @@ interface Props {
 }
 const Likes = ({ id }: Props) => {
   const { colors } = useTheme();
-
   const { data } = useFetchLikePercent(+id);
+
   return (
     <Stack.Vertical
       css={css`
