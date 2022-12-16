@@ -21,7 +21,7 @@ const Reviews = ({ id }: Props) => {
       `}
     >
       {data.map(review => (
-        <li>
+        <li key={review.id}>
           <Flex>
             <Image
               src={

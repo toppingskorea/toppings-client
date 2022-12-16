@@ -51,6 +51,7 @@ const Likes = ({ id }: Props) => {
         <Stack.Vertical gutter={12} align="flex-end">
           {data.habitPercent.map((habit, index) => (
             <PercentBar
+              key={habit.habit}
               prepend={
                 <Text _fontSize={10} _color={colors.secondary[42]}>
                   {habit.habit}
