@@ -14,8 +14,12 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/api/:path*",
-        destination: `http://api.toppings.co.kr:28080/:path*`
+        source: "/v1/:path*",
+        destination: `http://api.toppings.co.kr:28080/api/v1/:path*`
+      },
+      {
+        source: "/v2/:path*",
+        destination: `http://api.toppings.co.kr:28080/api/v2/:path*`
       }
     ];
   },

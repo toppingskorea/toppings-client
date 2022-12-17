@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
   // 유저 정보
   await queryClient.prefetchQuery(Keys.user(), async () => {
     const { data } = await axios.get<{ data: Profile.UserDTO }>(
-      `${env.TOPPINGS_SERVER_URL}/user`,
+      `${env.TOPPINGS_SERVER_URL}/api/v1/user`,
       {
         headers: {
           Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`
@@ -42,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
   // 해당 유저 Posts
   await queryClient.prefetchQuery(Keys.posts(), async () => {
     const { data } = await axios.get<{ data: Profile.PostDTO[] }>(
-      `${env.TOPPINGS_SERVER_URL}/user/restaurant`,
+      `${env.TOPPINGS_SERVER_URL}/api/v1/user/restaurant`,
       {
         headers: {
           Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`

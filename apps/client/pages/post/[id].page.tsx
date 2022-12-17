@@ -143,7 +143,7 @@ export const getServerSideProps: GetServerSideProps<{
 
   await queryClient.prefetchQuery(Keys.restaurant(+id), async () => {
     const { data } = await axios.get<{ data: Restaurant.DetailDTO }>(
-      `${env.TOPPINGS_SERVER_URL}/restaurant/${id}`,
+      `${env.TOPPINGS_SERVER_URL}/api/v1/restaurant/${id}`,
       {
         headers: {
           Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`

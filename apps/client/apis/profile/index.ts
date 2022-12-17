@@ -2,9 +2,7 @@ import { authRequest } from "~/constants";
 
 // 프로필
 export const getUserInfo = async () => {
-  const { data } = await authRequest.get<{ data: Profile.UserDTO }>(
-    `/api/user`
-  );
+  const { data } = await authRequest.get<{ data: Profile.UserDTO }>(`/v1/user`);
 
   return data.data;
 };
@@ -16,7 +14,7 @@ export const updateUserInfo = async (
   >
 ) => {
   const { data } = await authRequest.put<{ data: Profile.UserDTO }>(
-    "/api/user",
+    "/v1/user",
     payload
   );
 
@@ -24,13 +22,13 @@ export const updateUserInfo = async (
 };
 
 export const logout = async () => {
-  await authRequest.get("/api/logout");
+  await authRequest.get("/v1/logout");
 };
 
 // 유저 Posts
 export const getUserPosts = async () => {
   const { data } = await authRequest.get<{ data: Profile.PostDTO[] }>(
-    `/api/user/restaurant`
+    `/v1/user/restaurant`
   );
 
   return data.data;
