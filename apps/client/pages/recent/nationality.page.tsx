@@ -59,33 +59,46 @@ const RecentPage = () => {
           backdrop-filter: blur(10px);
         `}
       >
-        <ul
+        <div
           css={css`
-            display: flex;
-            gap: 20px;
-            white-space: nowrap;
-            overflow-x: auto;
+            width: 100vw;
+            overflow-x: scroll;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            scrollbar-width: none;
           `}
         >
-          {tags.map(({ ID, NAME }) => (
-            <RoundedTag
-              key={ID}
-              padding={{
-                x: 16,
-                y: 7
-              }}
-              _fontSize={17}
-              defaultProps={{
-                bgcolor: pathname.includes(ID) ? colors.primary : colors.white,
-                bordercolor: colors.secondary.D9,
-                _color: pathname.includes(ID) ? colors.white : colors.black
-              }}
-              onClick={() => push(`/recent/${ID}`)}
-            >
-              {NAME}
-            </RoundedTag>
-          ))}
-        </ul>
+          <ul
+            css={css`
+              display: flex;
+              gap: 20px;
+              white-space: nowrap;
+            `}
+          >
+            {tags.map(({ ID, NAME }) => (
+              <RoundedTag
+                key={ID}
+                isTouchable
+                padding={{
+                  x: 16,
+                  y: 7
+                }}
+                _fontSize={17}
+                defaultProps={{
+                  bgcolor: pathname.includes(ID)
+                    ? colors.primary
+                    : colors.white,
+                  bordercolor: colors.secondary.D9,
+                  _color: pathname.includes(ID) ? colors.white : colors.black
+                }}
+                onClick={() => push(`/recent/${ID}`)}
+              >
+                {NAME}
+              </RoundedTag>
+            ))}
+          </ul>
+        </div>
       </div>
 
       <div
