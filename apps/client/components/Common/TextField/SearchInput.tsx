@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 import { Input } from ".";
 
 interface Props extends ComponentProps<typeof Input> {
-  onSubmit: VoidFunction;
+  onSubmit?: VoidFunction;
   setValue: (value: string) => void;
 }
 

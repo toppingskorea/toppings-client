@@ -111,7 +111,6 @@ const RecentPage = () => {
         `}
       >
         <SearchInput
-          onSubmit={() => 1}
           placeholder="Enter nationality name"
           setValue={setValue}
           {...keyword}
