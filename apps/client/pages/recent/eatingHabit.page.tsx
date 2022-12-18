@@ -12,7 +12,7 @@ import { useMapSearchByCountrySetter, useRegisterState } from "~/recoil/atoms";
 import tags from "./recent.constants";
 
 const RecentPage = () => {
-  const theme = useTheme();
+  const { colors, dimensions } = useTheme();
   const { push, pathname } = useRouter();
   const [register, setRegister] = useRegisterState();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
@@ -64,7 +64,7 @@ const RecentPage = () => {
       <div
         css={css`
           ${position("fixed", {
-            bottom: theme.dimensions.bottomNavigationHeight
+            bottom: dimensions.bottomNavigationHeight
           })}
         `}
       >
@@ -85,10 +85,8 @@ const RecentPage = () => {
               }}
               _fontSize={17}
               defaultProps={{
-                bgcolor: pathname.includes(ID)
-                  ? theme.colors.primary
-                  : theme.colors.white,
-                bordercolor: theme.colors.secondary.D9
+                bgcolor: pathname.includes(ID) ? colors.primary : colors.white,
+                bordercolor: colors.secondary.D9
               }}
               onClick={() => push(`/recent/${ID}`)}
             >
@@ -102,8 +100,8 @@ const RecentPage = () => {
         css={css`
           ${padding({ x: 16, y: 22 })};
           ${position("fixed", { bottom: 0 })}
-          background-color: ${theme.colors.white};
-          max-width: ${theme.dimensions.viewWidth - 32}px;
+          background-color: ${colors.white};
+          max-width: ${dimensions.viewWidth - 32}px;
           ${width100}
         `}
       >
