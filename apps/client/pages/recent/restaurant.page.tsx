@@ -9,7 +9,7 @@ import {
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { ClickedHeart, NotClickedHeart } from "~/assets/svgs/recent";
+import { EmptyHeart, OrangeHeart } from "~/assets/svgs/common";
 import { RoundedTag, SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useInput, useSetNavigation } from "~/hooks";
@@ -149,7 +149,7 @@ const RecentPage = () => {
                 gap: 6px;
               `}
             >
-              {item.like ? <ClickedHeart /> : <NotClickedHeart />}
+              {item.like ? <OrangeHeart /> : <EmptyHeart />}
               <Text _fontSize={12} _color={colors.secondary["4B"]}>
                 {item.likeCount}
               </Text>
