@@ -100,6 +100,7 @@ const RecentPage = () => {
             bottom: dimensions.bottomNavigationHeight,
             left: 0
           })}
+          backdrop-filter: blur(10px);
         `}
       >
         <div
@@ -120,21 +121,22 @@ const RecentPage = () => {
             `}
           >
             {tags.map(({ ID, NAME }) => (
-              <RoundedTag
-                key={ID}
-                padding={{
-                  x: 16,
-                  y: 7
-                }}
-                _fontSize={17}
-                defaultProps={{
-                  bgcolor: colors.white,
-                  bordercolor: colors.secondary.D9
-                }}
-                onClick={() => push(`${asPath}/${ID}`)}
-              >
-                {NAME}
-              </RoundedTag>
+              <div key={ID}>
+                <RoundedTag
+                  padding={{
+                    x: 16,
+                    y: 7
+                  }}
+                  _fontSize={17}
+                  defaultProps={{
+                    bgcolor: colors.white,
+                    bordercolor: colors.secondary.D9
+                  }}
+                  onClick={() => push(`${asPath}/${ID}`)}
+                >
+                  {NAME}
+                </RoundedTag>
+              </div>
             ))}
           </ul>
         </div>

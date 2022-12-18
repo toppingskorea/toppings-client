@@ -56,6 +56,7 @@ const RecentPage = () => {
           ${position("fixed", {
             bottom: dimensions.bottomNavigationHeight
           })}
+          backdrop-filter: blur(10px);
         `}
       >
         <ul
@@ -76,7 +77,8 @@ const RecentPage = () => {
               _fontSize={17}
               defaultProps={{
                 bgcolor: pathname.includes(ID) ? colors.primary : colors.white,
-                bordercolor: colors.secondary.D9
+                bordercolor: colors.secondary.D9,
+                _color: pathname.includes(ID) ? colors.white : colors.black
               }}
               onClick={() => push(`/recent/${ID}`)}
             >
