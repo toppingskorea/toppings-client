@@ -142,7 +142,7 @@ const RecentPage = () => {
                         {item.name}
                       </Text>
                       <Text _fontSize={10} _color={colors.secondary["4B"]}>
-                        {item.writer}
+                        by {item.writer}
                       </Text>
                     </Flex>
                   </div>
