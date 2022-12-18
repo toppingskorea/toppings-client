@@ -36,30 +36,22 @@ const RecentPage = () => {
 
   return (
     <SafeArea>
-      <SelectEatingHabit
-        isRecent
-        onClick={(title, content) => {
-          setRegister({
-            ...register,
-            habit: [
-              {
-                title,
-                content
-              }
-            ]
-          });
-          uploadRecentHistoryMutate({
-            type: "Filter",
-            keyword: content,
-            category: "Habit"
-          });
-          fetchEatingHabitByFilteringMutate({
-            habitTitle: title,
-            habit: content
-          });
-        }}
-        habits={register.habit}
-      />
+      <div
+        css={css`
+          ${padding({ x: 16, y: 22 })};
+          ${position("fixed", { bottom: 0 })}
+          background-color: ${colors.white};
+          max-width: ${dimensions.viewWidth - 32}px;
+          ${width100}
+        `}
+      >
+        <SearchInput
+          onSubmit={() => console.log("sad")}
+          placeholder="enter nationality name"
+          setValue={setValue}
+          {...keyword}
+        />
+      </div>
 
       <div
         css={css`
@@ -110,22 +102,30 @@ const RecentPage = () => {
         </div>
       </div>
 
-      <div
-        css={css`
-          ${padding({ x: 16, y: 22 })};
-          ${position("fixed", { bottom: 0 })}
-          background-color: ${colors.white};
-          max-width: ${dimensions.viewWidth - 32}px;
-          ${width100}
-        `}
-      >
-        <SearchInput
-          onSubmit={() => console.log("sad")}
-          placeholder="enter nationality name"
-          setValue={setValue}
-          {...keyword}
-        />
-      </div>
+      <SelectEatingHabit
+        isRecent
+        onClick={(title, content) => {
+          setRegister({
+            ...register,
+            habit: [
+              {
+                title,
+                content
+              }
+            ]
+          });
+          uploadRecentHistoryMutate({
+            type: "Filter",
+            keyword: content,
+            category: "Habit"
+          });
+          fetchEatingHabitByFilteringMutate({
+            habitTitle: title,
+            habit: content
+          });
+        }}
+        habits={register.habit}
+      />
     </SafeArea>
   );
 };

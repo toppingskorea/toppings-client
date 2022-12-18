@@ -38,18 +38,21 @@ const RecentPage = () => {
 
   return (
     <SafeArea>
-      <SearchNationality
-        keyword={keyword.value}
-        onCountryClick={name => {
-          setRegister({ ...register, country: name });
-          uploadRecentHistoryMutate({
-            type: "Filter",
-            keyword: name,
-            category: "Country"
-          });
-          fetchRestaurantByCountryMutate(name);
-        }}
-      />
+      <div
+        css={css`
+          ${padding({ x: 16, y: 22 })};
+          ${position("fixed", { bottom: 0 })}
+          background-color: ${colors.white};
+          max-width: ${dimensions.viewWidth - 32}px;
+          ${width100}
+        `}
+      >
+        <SearchInput
+          placeholder="Enter nationality name"
+          setValue={setValue}
+          {...keyword}
+        />
+      </div>
 
       <div
         css={css`
@@ -101,21 +104,18 @@ const RecentPage = () => {
         </div>
       </div>
 
-      <div
-        css={css`
-          ${padding({ x: 16, y: 22 })};
-          ${position("fixed", { bottom: 0 })}
-          background-color: ${colors.white};
-          max-width: ${dimensions.viewWidth - 32}px;
-          ${width100}
-        `}
-      >
-        <SearchInput
-          placeholder="Enter nationality name"
-          setValue={setValue}
-          {...keyword}
-        />
-      </div>
+      <SearchNationality
+        keyword={keyword.value}
+        onCountryClick={name => {
+          setRegister({ ...register, country: name });
+          uploadRecentHistoryMutate({
+            type: "Filter",
+            keyword: name,
+            category: "Country"
+          });
+          fetchRestaurantByCountryMutate(name);
+        }}
+      />
     </SafeArea>
   );
 };
