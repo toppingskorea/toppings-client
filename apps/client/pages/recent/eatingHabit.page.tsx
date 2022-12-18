@@ -4,8 +4,10 @@ import { useRouter } from "next/router";
 import { RoundedTag, SearchInput } from "~/components/Common";
 import { SelectEatingHabit } from "~/components/Section";
 import { useInput, useSetNavigation } from "~/hooks";
-import { useUploadRecentHistory } from "~/mutations/recent";
-import useFetchEatingHabitByFiltering from "~/mutations/recent/useFetchEatingHabitByFiltering";
+import {
+  useFetchEatingHabitByFiltering,
+  useUploadRecentHistory
+} from "~/mutations/recent";
 import { useMapSearchByCountrySetter, useRegisterState } from "~/recoil/atoms";
 import tags from "./recent.constants";
 

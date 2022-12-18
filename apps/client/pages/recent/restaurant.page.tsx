@@ -13,8 +13,10 @@ import { EmptyHeart, OrangeHeart } from "~/assets/svgs/common";
 import { RoundedTag, SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useInput, useSetNavigation } from "~/hooks";
-import { useUploadRecentHistory } from "~/mutations/recent";
-import useFetchRestaurantNameByFiltering from "~/mutations/recent/useFetchRestaurantNameByFiltering";
+import {
+  useFetchRestaurantNameByFiltering,
+  useUploadRecentHistory
+} from "~/mutations/recent";
 import { useCurrentLocationSetter } from "~/recoil/atoms";
 import weighs from "~/styles/emotionTheme/weighs";
 import tags from "./recent.constants";

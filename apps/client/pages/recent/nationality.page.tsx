@@ -5,8 +5,10 @@ import { useRouter } from "next/router";
 import { RoundedTag, SearchInput } from "~/components/Common";
 import { SearchNationality } from "~/components/Section";
 import { useInput, useSetNavigation } from "~/hooks";
-import { useUploadRecentHistory } from "~/mutations/recent";
-import useFetchRestaurantByCountry from "~/mutations/recent/useFetchRestaurantByCountry";
+import {
+  useFetchRestaurantByCountry,
+  useUploadRecentHistory
+} from "~/mutations/recent";
 import { useMapSearchByCountrySetter, useRegisterState } from "~/recoil/atoms";
 import tags from "./recent.constants";
 
