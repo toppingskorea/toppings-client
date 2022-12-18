@@ -2,7 +2,7 @@ import { css, useTheme } from "@emotion/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Flex, gutter, position, size, touchable } from "@toss/emotion-utils";
 import { memo } from "react";
-import { useDeleteRecentAllHistory } from "~/mutations/recent";
+import { useDeleteAllRecentHistory } from "~/mutations/recent";
 import Keys from "~/queries/recent/keys";
 import { hexToRgba } from "~/utils";
 import { Text } from "../../Typo";
@@ -14,7 +14,7 @@ interface Props {
 const RemoveAlertModal = ({ exit }: Props) => {
   const { colors, weighs } = useTheme();
   const queryClient = useQueryClient();
-  const { mutate: deleteAllMutate } = useDeleteRecentAllHistory({
+  const { mutate: deleteAllMutate } = useDeleteAllRecentHistory({
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: Keys.recent()

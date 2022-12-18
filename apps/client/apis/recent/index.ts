@@ -18,7 +18,7 @@ export const addRecentHistory = async (
 };
 
 // 최근검색 / 최근 검색어 전체 삭제
-export const deleteRecentAllHistory = async () => {
+export const deleteAllRecentHistory = async () => {
   await authRequest.delete("/v1/recent");
 };
 
