@@ -1,6 +1,6 @@
 import { css, useTheme } from "@emotion/react";
 import { CurrentPlace } from "@svgs/map";
-import { position } from "@toss/emotion-utils";
+import { flex, position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { useCallback, useMemo } from "react";
 import { defaultLocation, defaultScaleChangeVariants } from "~/constants";
@@ -46,6 +46,7 @@ const MyLocationButton = () => {
       whileHover="whileHover"
       variants={defaultScaleChangeVariants}
       css={css`
+        ${flex("center")}
         ${position("absolute", {
           bottom: 16,
           left: 17
