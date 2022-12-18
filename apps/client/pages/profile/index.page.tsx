@@ -34,6 +34,8 @@ import { Keys, useFetchUserInfo } from "~/queries/profile";
 const Profile = () => {
   const { colors, weighs, dimensions } = useTheme();
   const { data } = useFetchUserInfo();
+  console.log(data);
+
   const { push } = useInternalRouter();
 
   useSetNavigation({
@@ -66,10 +68,11 @@ const Profile = () => {
         <Stack.Horizontal align="center" gutter={37}>
           <Image
             src={data.profile || avatar}
-            alt="dummy"
+            alt={`${data.name}'s profile`}
             width={88}
             height={88}
             css={css`
+              min-width: 88px;
               border-radius: 50%;
             `}
           />
@@ -164,7 +167,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
   await queryClient.prefetchQuery(Keys.user(), async () => {
     const { data } = await axios.get<{ data: Profile.UserDTO }>(
-      `${env.TOPPINGS_SERVER_URL}/user`,
+      `${env.TOPPINGS_SERVER_URL}/api/v1/user`,
       {
         headers: {
           Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`

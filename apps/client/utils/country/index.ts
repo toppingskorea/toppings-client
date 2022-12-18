@@ -1,0 +1,1 @@
+export {default as countryToSvg} from './countryToSvg'

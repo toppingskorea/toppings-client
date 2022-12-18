@@ -59,6 +59,7 @@ const ScrollContainer = ({ children }: PropsWithChildren) => {
           ${height100}
           position: relative;
           overflow-x: hidden;
+
           ${hiddenScroll}
         `}
       >

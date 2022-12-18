@@ -105,7 +105,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
   await queryClient.prefetchQuery(Keys.user(), async () => {
     const { data } = await axios.get<{ data: Profile.UserDTO }>(
-      `${env.TOPPINGS_SERVER_URL}/user`,
+      `${env.TOPPINGS_SERVER_URL}/api/v1/user`,
       {
         headers: {
           Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`

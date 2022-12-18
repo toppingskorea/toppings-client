@@ -11,6 +11,7 @@ const hiddenScroll = css`
   ::-webkit-scrollbar {
     display: none;
     width: 0;
+    background-color: transparent;
   }
 `;
 

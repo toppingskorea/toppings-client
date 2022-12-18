@@ -43,7 +43,7 @@ const UserInfo = () => {
                   transform: translate3d(0,100%,0);
                 `}
               >
-                enter only english letters (a-z) and numbers within 6-20
+                Enter only english letters (a-z) and numbers within 6-20
                 {"\n"}characters for the user name.
               </Text>
             }
