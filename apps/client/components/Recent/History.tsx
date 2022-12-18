@@ -25,8 +25,7 @@ const History = () => {
         ${flex({ direction: "column" })}
         ${gutter("vertical", 23)}
         ${padding({
-          x: 27,
-          y: 0
+          x: 27
         })}
       `}
     >
