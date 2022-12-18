@@ -40,8 +40,8 @@ const RecentPage = () => {
     page: "recent"
   });
 
-  const MemoizeRemoveAlertModal = useCallback(
-    (exit: VoidFunction) => (
+  const removeAllHistoryHandler = useCallback(() => {
+    overlay.open(({ exit }) => (
       <AlertModal
         exitFn={exit}
         deleteFn={() => {
@@ -49,9 +49,8 @@ const RecentPage = () => {
           overlay.close();
         }}
       />
-    ),
-    [deleteAllMutate, overlay]
-  );
+    ));
+  }, [deleteAllMutate, overlay]);
 
   return (
     <SafeArea>
@@ -83,9 +82,7 @@ const RecentPage = () => {
             _color: colors.secondary.A2
           }}
           _fontSize={13}
-          onClick={() => {
-            overlay.open(({ exit }) => MemoizeRemoveAlertModal(exit));
-          }}
+          onClick={removeAllHistoryHandler}
           isTouchable
         >
           remove all
