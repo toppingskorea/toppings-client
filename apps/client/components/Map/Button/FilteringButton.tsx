@@ -13,7 +13,7 @@ import {
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
-import { defaultScaleChangeVariants } from "~/constants";
+import { defaultScaleChangeVariants, framerMocker } from "~/constants";
 import { useRegisterValue } from "~/recoil/atoms";
 
 const FilteringButton = () => {
@@ -58,9 +58,7 @@ const FilteringButton = () => {
       <motion.button
         type="button"
         onClick={() => push("/recent")}
-        initial="initial"
-        animate="animate"
-        whileHover="whileHover"
+        {...framerMocker}
         variants={defaultScaleChangeVariants}
         css={css`
           ${flex("center")}
