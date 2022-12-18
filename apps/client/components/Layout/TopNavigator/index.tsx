@@ -18,7 +18,7 @@ const TopNavigator = () => {
         css={css`
           ${position("sticky", { top: 0 })}
           z-index: ${zIndexs.one};
-          backdrop-filter: blur(10px);
+          ${state.page !== "recent" && "backdrop-filter: blur(10px)"};
         `}
       >
         <nav

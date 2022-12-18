@@ -3,7 +3,7 @@ import type { Direction } from "~/recoil/atoms";
 
 export const getRecentHistory = async () => {
   const { data } = await authRequest.get<{ data: Recent.HistoryDTO[] }>(
-    "/api/recent?type=Filter"
+    "/v1/recent?type=Filter"
   );
 
   return data.data;
@@ -12,21 +12,21 @@ export const getRecentHistory = async () => {
 export const addRecentHistory = async (
   history: Omit<Recent.HistoryDTO, "id">
 ) => {
-  await authRequest.post("/api/recent", history);
+  await authRequest.post("/v1/recent", history);
 };
 
 export const deleteRecentAllHistory = async () => {
-  await authRequest.delete("/api/recent");
+  await authRequest.delete("/v1/recent");
 };
 
 export const deleteRecentHistory = async (id: number) => {
-  await authRequest.delete(`/api/recent/${id}`);
+  await authRequest.delete(`/v1/recent/${id}`);
 };
 
 export const getRestaurantByCountry = async (country: string) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByCountryDTO[];
-  }>(`/api/restaurant?type=Country&country=${country}`);
+  }>(`/v1/restaurant?type=Country&country=${country}`);
 
   return data.data;
 };
@@ -40,7 +40,7 @@ export const getEatingHabitByFiltering = async ({
 }) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByCountryDTO[];
-  }>(`/api/restaurant?type=Habit&habit=${habit}&habitTitle=${habitTitle}`);
+  }>(`/v1/restaurant?type=Habit&habit=${habit}&habitTitle=${habitTitle}`);
 
   return data.data;
 };
@@ -48,7 +48,7 @@ export const getEatingHabitByFiltering = async ({
 export const getRestaurantNameByFiltering = async (name: string) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByCountryDTO[];
-  }>(`/api/restaurant?type=Name&name=${name}`);
+  }>(`/v1/restaurant?type=Name&name=${name}`);
 
   return data.data;
 };
@@ -59,7 +59,7 @@ export const getDefaultMap = async (
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByCountryDTO[];
   }>(
-    `/api/restaurant?type=Map&y1=${direction.ha}&y2=${direction.oa}&x1=${direction.qa}&x2=${direction.pa}`
+    `/v1/restaurant?type=Map&y1=${direction.ha}&y2=${direction.oa}&x1=${direction.qa}&x2=${direction.pa}`
   );
 
   return data.data;
