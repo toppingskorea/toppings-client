@@ -1,4 +1,5 @@
 import { css, useTheme } from "@emotion/react";
+import { EmptyHeart, OrangeHeart } from "@svgs/common";
 import {
   Flex,
   padding,
@@ -9,7 +10,6 @@ import {
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { EmptyHeart, OrangeHeart } from "~/assets/svgs/common";
 import { RoundedTag, SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useInput, useSetNavigation } from "~/hooks";
@@ -28,12 +28,13 @@ const RecentPage = () => {
     Restaurant.SearchByCountryDTO[] | null
   >(null);
   const setCurrentLocation = useCurrentLocationSetter();
-  const { mutate: recentHistoryMutate } = useUploadRecentHistory();
-  const { mutate } = useFetchRestaurantNameByFiltering({
-    onSuccess: data => {
-      setRestaurantList(data);
-    }
-  });
+  const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
+  const { mutate: fetchRestaurantNameByFilteringMutate } =
+    useFetchRestaurantNameByFiltering({
+      onSuccess: data => {
+        setRestaurantList(data);
+      }
+    });
 
   useSetNavigation({
     top: {
@@ -56,7 +57,7 @@ const RecentPage = () => {
       >
         <SearchInput
           onSubmit={() => {
-            mutate(keyword.value);
+            fetchRestaurantNameByFilteringMutate(keyword.value);
           }}
           placeholder="enter the restaurant name"
           setValue={setValue}
@@ -76,7 +77,7 @@ const RecentPage = () => {
                 latitude: item.latitude,
                 longitude: item.longitude
               });
-              recentHistoryMutate({
+              uploadRecentHistoryMutate({
                 type: "Filter",
                 keyword: item.name,
                 category: "Name",

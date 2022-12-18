@@ -16,14 +16,15 @@ const RecentPage = () => {
   const { push, pathname } = useRouter();
   const [register, setRegister] = useRegisterState();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
-  const { mutate: recentHistoryMutate } = useUploadRecentHistory();
-  const { mutate } = useFetchEatingHabitByFiltering({
-    onSuccess: data => {
-      setMapSearchByCountry(data);
+  const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
+  const { mutate: fetchEatingHabitByFilteringMutate } =
+    useFetchEatingHabitByFiltering({
+      onSuccess: data => {
+        setMapSearchByCountry(data);
 
-      push("/map");
-    }
-  });
+        push("/map");
+      }
+    });
 
   useSetNavigation({
     top: {
@@ -47,12 +48,15 @@ const RecentPage = () => {
               }
             ]
           });
-          recentHistoryMutate({
+          uploadRecentHistoryMutate({
             type: "Filter",
             keyword: content,
             category: "Habit"
           });
-          mutate({ habitTitle: title, habit: content });
+          fetchEatingHabitByFilteringMutate({
+            habitTitle: title,
+            habit: content
+          });
         }}
         habits={register.habit}
       />

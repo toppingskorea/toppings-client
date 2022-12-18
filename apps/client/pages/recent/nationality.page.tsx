@@ -17,14 +17,15 @@ const RecentPage = () => {
   const { push, pathname } = useRouter();
   const [register, setRegister] = useRegisterState();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
-  const { mutate: recentHistoryMutate } = useUploadRecentHistory();
-  const { mutate } = useFetchRestaurantByCountry({
-    onSuccess: data => {
-      setMapSearchByCountry(data);
+  const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
+  const { mutate: fetchRestaurantByCountryMutate } =
+    useFetchRestaurantByCountry({
+      onSuccess: data => {
+        setMapSearchByCountry(data);
 
-      push("/map");
-    }
-  });
+        push("/map");
+      }
+    });
 
   useSetNavigation({
     top: {
@@ -41,12 +42,12 @@ const RecentPage = () => {
         keyword={keyword.value}
         onCountryClick={name => {
           setRegister({ ...register, country: name });
-          recentHistoryMutate({
+          uploadRecentHistoryMutate({
             type: "Filter",
             keyword: name,
             category: "Country"
           });
-          mutate(name);
+          fetchRestaurantByCountryMutate(name);
         }}
       />
 
