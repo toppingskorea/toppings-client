@@ -1,9 +1,13 @@
-import { useMutation, type UseQueryOptions } from "@tanstack/react-query";
+import { useMutation, type UseMutationOptions } from "@tanstack/react-query";
 import { getEatingHabitByFiltering } from "~/apis/recent";
 
 const useFetchEatingHabitByFiltering = (
   options: Pick<
-    UseQueryOptions<Awaited<ReturnType<typeof getEatingHabitByFiltering>>>,
+    UseMutationOptions<
+      Awaited<ReturnType<typeof getEatingHabitByFiltering>>,
+      unknown,
+      Parameters<typeof getEatingHabitByFiltering>[0]
+    >,
     "onSuccess"
   >
 ) => {

@@ -1,9 +1,13 @@
-import { useMutation, type UseQueryOptions } from "@tanstack/react-query";
+import { useMutation, type UseMutationOptions } from "@tanstack/react-query";
 import { getRestaurantNameByFiltering } from "~/apis/recent";
 
 const useFetchRestaurantNameByFiltering = (
   options: Pick<
-    UseQueryOptions<Awaited<ReturnType<typeof getRestaurantNameByFiltering>>>,
+    UseMutationOptions<
+      Awaited<ReturnType<typeof getRestaurantNameByFiltering>>,
+      unknown,
+      Parameters<typeof getRestaurantNameByFiltering>[0]
+    >,
     "onSuccess"
   >
 ) => {

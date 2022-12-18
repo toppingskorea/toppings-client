@@ -1,8 +1,15 @@
-import { useMutation, type UseQueryOptions } from "@tanstack/react-query";
+import { useMutation, type UseMutationOptions } from "@tanstack/react-query";
 import { deleteRecentHistory } from "~/apis/recent";
 
 const useDeleteRecentHistory = (
-  options: Pick<UseQueryOptions, "onSuccess">
+  options: Pick<
+    UseMutationOptions<
+      Awaited<ReturnType<typeof deleteRecentHistory>>,
+      unknown,
+      Parameters<typeof deleteRecentHistory>[0]
+    >,
+    "onSuccess"
+  >
 ) => {
   return useMutation(deleteRecentHistory, options);
 };
