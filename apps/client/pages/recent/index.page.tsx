@@ -13,6 +13,7 @@ import {
   SSRSafeSuspense
 } from "~/components/Common";
 import { History } from "~/components/Recent";
+import Skeleton from "~/components/Skeleton";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useSetNavigation } from "~/hooks";
 import { useDeleteAllRecentHistory } from "~/mutations/recent";
@@ -41,12 +42,12 @@ const RecentPage = () => {
   });
 
   const removeAllHistoryHandler = useCallback(() => {
-    overlay.open(({ exit }) => (
+    overlay.open(({ exit, close }) => (
       <AlertModal
         exitFn={exit}
         deleteFn={() => {
           deleteAllMutate();
-          overlay.close();
+          close();
         }}
       />
     ));
@@ -89,8 +90,7 @@ const RecentPage = () => {
         </RoundedTag>
       </motion.div>
 
-      {/* TODO: skelton */}
-      <SSRSafeSuspense fallback={<div>하이</div>}>
+      <SSRSafeSuspense fallback={<Skeleton.Paragraph />}>
         <History />
       </SSRSafeSuspense>
 
