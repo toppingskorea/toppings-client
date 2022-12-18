@@ -24,9 +24,8 @@ import tags from "./recent.constants";
 const RecentPage = () => {
   const { colors, dimensions } = useTheme();
   const { push, pathname } = useRouter();
-  const [restaurantList, setRestaurantList] = useState<
-    Restaurant.SearchByCountryDTO[] | null
-  >(null);
+  const [restaurantList, setRestaurantList] =
+    useState<Restaurant.SearchByCountryDTO[]>();
   const setCurrentLocation = useCurrentLocationSetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
   const { mutate: fetchRestaurantNameByFilteringMutate } =
