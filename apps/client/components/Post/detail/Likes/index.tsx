@@ -4,7 +4,7 @@ import Image from "next/image";
 import { PercentBar } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useFetchLikePercent } from "~/queries/restaurant";
-import { countryToSvg } from "~/utils/country";
+import { countryToSvg } from "~/utils";
 
 interface Props {
   id: string;

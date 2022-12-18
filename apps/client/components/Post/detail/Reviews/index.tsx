@@ -4,7 +4,7 @@ import { Flex, padding, Spacing, Stack, width100 } from "@toss/emotion-utils";
 import Image from "next/image";
 import { Text } from "~/components/Common/Typo";
 import { useFetchReviews } from "~/queries/restaurant";
-import { countryToSvg } from "~/utils/country";
+import { countryToSvg } from "~/utils";
 
 interface Props {
   id: string;

@@ -3,11 +3,15 @@ import { CurrentPlace } from "@svgs/map";
 import { flex, position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { useCallback, useMemo } from "react";
-import { defaultLocation, defaultScaleChangeVariants } from "~/constants";
+import {
+  defaultLocation,
+  defaultScaleChangeVariants,
+  framerMocker
+} from "~/constants";
 import { useCurrentLocationSetter } from "~/recoil/atoms";
 
 const MyLocationButton = () => {
-  const { colors } = useTheme();
+  const { colors, zIndexs } = useTheme();
   const setCurrentLocation = useCurrentLocationSetter();
 
   const success: PositionCallback = useCallback(
@@ -41,8 +45,7 @@ const MyLocationButton = () => {
     <motion.button
       type="button"
       onClick={getCurrentMapPosition}
-      initial="initial"
-      animate="animate"
+      {...framerMocker}
       whileHover="whileHover"
       variants={defaultScaleChangeVariants}
       css={css`
@@ -54,7 +57,7 @@ const MyLocationButton = () => {
         padding: 8px;
         border-radius: 8px;
         background-color: ${colors.primary};
-        z-index: 10;
+        z-index: ${zIndexs.two};
       `}
     >
       <CurrentPlace />

@@ -14,13 +14,12 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
-import { useRegisterReset, useRegisterValue } from "~/recoil/atoms";
+import { useRegisterValue } from "~/recoil/atoms";
 
 const FilteringButton = () => {
   const { colors, zIndexs } = useTheme();
   const { push } = useRouter();
   const register = useRegisterValue();
-  const resetRegister = useRegisterReset();
 
   return (
     <Flex.Center
@@ -32,9 +31,10 @@ const FilteringButton = () => {
         })}
 
         ${gutter("horizontal", 8)}
-        z-index: 10;
+        z-index: ${zIndexs.two};
       `}
     >
+      {/* TODO: 분리하자 리코일 도메인별로 */}
       {register.country && (
         <div
           css={css`
@@ -51,21 +51,22 @@ const FilteringButton = () => {
           <Text _fontSize={17} _color={colors.white}>
             {register.country}
           </Text>
-          <Exit onClick={() => resetRegister()} />
+          <Exit onClick={() => console.log("hi")} />
         </div>
       )}
 
       <motion.button
         type="button"
-        onClick={() => push("/recent")}
         {...framerMocker}
+        whileHover="whileHover"
         variants={defaultScaleChangeVariants}
+        onClick={() => push("/recent")}
         css={css`
           ${flex("center")}
           padding: 8px;
           border-radius: 8px;
           background-color: ${colors.primary};
-          z-index: ${zIndexs.ten};
+          z-index: 10;
         `}
       >
         <Filtering />

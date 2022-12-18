@@ -7,6 +7,7 @@
 */
 const zIndexs = {
   one: 1,
+  two: 2,
   ten: 10
 } as const;
 
