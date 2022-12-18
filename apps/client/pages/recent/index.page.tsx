@@ -1,25 +1,36 @@
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
+import { useQueryClient } from "@tanstack/react-query";
 import { position, SafeArea } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import {
+  AlertModal,
   Badge,
-  RemoveAlertModal,
   RoundedTag,
   SSRSafeSuspense
 } from "~/components/Common";
 import { History } from "~/components/Recent";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useSetNavigation } from "~/hooks";
+import { useDeleteAllRecentHistory } from "~/mutations/recent";
+import Keys from "~/queries/recent/keys";
 import tags from "./recent.constants";
 
 const RecentPage = () => {
-  const theme = useTheme();
+  const { colors, dimensions, zIndexs } = useTheme();
   const { push, asPath } = useRouter();
   const overlay = useOverlay();
+  const queryClient = useQueryClient();
+  const { mutate: deleteAllMutate } = useDeleteAllRecentHistory({
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: Keys.recent()
+      });
+    }
+  });
 
   useSetNavigation({
     top: {
@@ -30,8 +41,16 @@ const RecentPage = () => {
   });
 
   const MemoizeRemoveAlertModal = useCallback(
-    (exit: VoidFunction) => <RemoveAlertModal exit={exit} />,
-    []
+    (exit: VoidFunction) => (
+      <AlertModal
+        exitFn={exit}
+        deleteFn={() => {
+          deleteAllMutate();
+          overlay.close();
+        }}
+      />
+    ),
+    [deleteAllMutate, overlay]
   );
 
   return (
@@ -50,6 +69,7 @@ const RecentPage = () => {
         {...framerMocker}
         css={css`
           ${position("absolute", { top: 114, right: 0 })}
+          z-index: ${zIndexs.one};
         `}
       >
         <RoundedTag
@@ -58,9 +78,9 @@ const RecentPage = () => {
             y: 6
           }}
           defaultProps={{
-            bgcolor: theme.colors.secondary.F1,
+            bgcolor: colors.secondary.F1,
             bordercolor: "transparent",
-            _color: theme.colors.secondary.A2
+            _color: colors.secondary.A2
           }}
           _fontSize={13}
           onClick={() => {
@@ -80,7 +100,7 @@ const RecentPage = () => {
       <div
         css={css`
           ${position("absolute", {
-            bottom: theme.dimensions.bottomNavigationHeight,
+            bottom: dimensions.bottomNavigationHeight,
             left: 0
           })}
         `}
@@ -111,8 +131,8 @@ const RecentPage = () => {
                 }}
                 _fontSize={17}
                 defaultProps={{
-                  bgcolor: theme.colors.white,
-                  bordercolor: theme.colors.secondary.D9
+                  bgcolor: colors.white,
+                  bordercolor: colors.secondary.D9
                 }}
                 onClick={() => push(`${asPath}/${ID}`)}
               >
