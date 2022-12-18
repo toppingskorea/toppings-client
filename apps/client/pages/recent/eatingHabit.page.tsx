@@ -18,8 +18,8 @@ const RecentPage = () => {
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const { mutate: recentHistoryMutate } = useUploadRecentHistory();
   const { mutate } = useFetchEatingHabitByFiltering({
-    onSuccess: async data => {
-      await setMapSearchByCountry(data);
+    onSuccess: data => {
+      setMapSearchByCountry(data);
 
       push("/map");
     }
