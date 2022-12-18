@@ -29,13 +29,15 @@ const History = () => {
         })}
       `}
     >
-      {data.map(({ id, keyword }) => (
+      {data.map(({ id, keyword, category }) => (
         <Flex key={id} justify="space-between" align="center">
           <Flex.Center
+            onClick={() => {
+              if (category === "Name") push(`/post/${id}`);
+            }}
             css={css`
               gap: 12px;
             `}
-            onClick={() => push(`/post/${id}`)}
           >
             <Timeline />
             {keyword}
