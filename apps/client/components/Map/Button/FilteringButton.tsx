@@ -14,12 +14,13 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
-import { useRegisterValue } from "~/recoil/atoms";
+import { useRegisterReset, useRegisterValue } from "~/recoil/atoms";
 
 const FilteringButton = () => {
-  const { colors } = useTheme();
+  const { colors, zIndexs } = useTheme();
   const { push } = useRouter();
   const register = useRegisterValue();
+  const resetRegister = useRegisterReset();
 
   return (
     <Flex.Center
@@ -34,7 +35,6 @@ const FilteringButton = () => {
         z-index: 10;
       `}
     >
-      {/* TODO: 분리하자 리코일 도메인별로 */}
       {register.country && (
         <div
           css={css`
@@ -51,7 +51,7 @@ const FilteringButton = () => {
           <Text _fontSize={17} _color={colors.white}>
             {register.country}
           </Text>
-          <Exit onClick={() => console.log("hi")} />
+          <Exit onClick={() => resetRegister()} />
         </div>
       )}
 
@@ -65,7 +65,7 @@ const FilteringButton = () => {
           padding: 8px;
           border-radius: 8px;
           background-color: ${colors.primary};
-          z-index: 10;
+          z-index: ${zIndexs.ten};
         `}
       >
         <Filtering />
