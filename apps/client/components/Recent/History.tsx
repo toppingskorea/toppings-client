@@ -3,7 +3,6 @@ import { RemoveHistory, Timeline } from "@svgs/recent";
 import { useQueryClient } from "@tanstack/react-query";
 import { Flex, flex, gutter, padding, touchable } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
-import { memo } from "react";
 import { useDeleteRecentHistory } from "~/mutations/recent";
 import { useFetchRecentHistory } from "~/queries/recent";
 import Keys from "~/queries/recent/keys";
@@ -54,4 +53,4 @@ const History = () => {
   );
 };
 
-export default memo(History);
+export default History;
