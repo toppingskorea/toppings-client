@@ -1,15 +1,15 @@
 const tags = [
   {
-    ID: "restaurant",
-    NAME: "Restaurant"
+    id: "restaurant",
+    name: "Restaurant"
   },
   {
-    ID: "nationality",
-    NAME: "Nationality"
+    id: "nationality",
+    name: "Nationality"
   },
   {
-    ID: "eatingHabit",
-    NAME: "Eating habit"
+    id: "eatingHabit",
+    name: "Eating habit"
   }
 ] as const;
 

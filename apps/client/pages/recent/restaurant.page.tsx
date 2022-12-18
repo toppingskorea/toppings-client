@@ -184,9 +184,9 @@ const RecentPage = () => {
               white-space: nowrap;
             `}
           >
-            {tags.map(({ ID, NAME }) => (
+            {tags.map(({ id, name }) => (
               <RoundedTag
-                key={ID}
+                key={id}
                 isTouchable
                 padding={{
                   x: 16,
@@ -194,15 +194,15 @@ const RecentPage = () => {
                 }}
                 _fontSize={17}
                 defaultProps={{
-                  bgcolor: pathname.includes(ID)
+                  bgcolor: pathname.includes(id)
                     ? colors.primary
                     : colors.white,
                   bordercolor: colors.secondary.D9,
-                  _color: pathname.includes(ID) ? colors.white : colors.black
+                  _color: pathname.includes(id) ? colors.white : colors.black
                 }}
-                onClick={() => push(`/recent/${ID}`)}
+                onClick={() => push(`/recent/${id}`)}
               >
-                {NAME}
+                {name}
               </RoundedTag>
             ))}
           </ul>

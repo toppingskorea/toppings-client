@@ -120,8 +120,8 @@ const RecentPage = () => {
               white-space: nowrap;
             `}
           >
-            {tags.map(({ ID, NAME }) => (
-              <div key={ID}>
+            {tags.map(({ id, name }) => (
+              <div key={id}>
                 <RoundedTag
                   padding={{
                     x: 16,
@@ -132,9 +132,9 @@ const RecentPage = () => {
                     bgcolor: colors.white,
                     bordercolor: colors.secondary.D9
                   }}
-                  onClick={() => push(`${asPath}/${ID}`)}
+                  onClick={() => push(`${asPath}/${id}`)}
                 >
-                  {NAME}
+                  {name}
                 </RoundedTag>
               </div>
             ))}
