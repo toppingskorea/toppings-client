@@ -40,17 +40,17 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
         const map = new kakao.maps.Map(mapRef.current, options);
 
         const imageSrc =
-          "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+          "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png";
+        const imageSize = new kakao.maps.Size(24, 35);
+        // 마커 이미지를 생성합니다
+        const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
         if (mapSearchByCountry && mapSearchByCountry.length) {
           const positions = mapSearchByCountry.map(item => ({
             title: item.name,
             latLng: new kakao.maps.LatLng(item.latitude, item.longitude)
           }));
-          const imageSize = new kakao.maps.Size(24, 35);
 
-          // 마커 이미지를 생성합니다
-          const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
           positions.forEach(item => {
             const marker = new kakao.maps.Marker({
               map,
@@ -65,7 +65,8 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
           map.panTo(positions[0].latLng);
         } else {
           const marker = new kakao.maps.Marker({
-            position: latLng
+            position: latLng,
+            image: markerImage
           });
 
           marker.setMap(map);

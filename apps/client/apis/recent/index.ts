@@ -46,7 +46,9 @@ export const getEatingHabitByFiltering = async ({
 }) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByCountryDTO[];
-  }>(`/v1/restaurant?type=Habit&habit=${habit}&habitTitle=${habitTitle}`);
+  }>(
+    `/v1/restaurant/filter?type=Habit&habit=${habit}&habitTitle=${habitTitle}`
+  );
 
   return data.data;
 };
@@ -55,7 +57,7 @@ export const getEatingHabitByFiltering = async ({
 export const getRestaurantNameByFiltering = async (name: string) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByCountryDTO[];
-  }>(`/v1/restaurant?type=Name&name=${name}`);
+  }>(`/v1/restaurant/filter?type=Name&name=${name}`);
 
   return data.data;
 };
