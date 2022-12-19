@@ -1,5 +1,4 @@
 import { css, useTheme } from "@emotion/react";
-import { EmptyHeart, OrangeHeart } from "@svgs/common";
 import {
   Flex,
   gutter,
@@ -11,7 +10,7 @@ import {
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { RoundedTag, SearchInput } from "~/components/Common";
+import { HeartWithNumber, RoundedTag, SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useInput, useSetNavigation } from "~/hooks";
 import {
@@ -198,14 +197,7 @@ const RecentPage = () => {
                 gap: 6px;
               `}
             >
-              {item.like ? (
-                <OrangeHeart width={13} height={12} />
-              ) : (
-                <EmptyHeart width={13} height={12} />
-              )}
-              <Text _fontSize={11.5} _color={colors.secondary["4B"]}>
-                {item.likeCount}
-              </Text>
+              <HeartWithNumber like={item.like} likeCount={item.likeCount} />
             </Flex>
           </Flex>
         ))}
