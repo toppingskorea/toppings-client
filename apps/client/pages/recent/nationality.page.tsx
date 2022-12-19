@@ -53,7 +53,6 @@ const RecentPage = () => {
           {...keyword}
         />
       </div>
-
       <div
         css={css`
           ${position("fixed", {
