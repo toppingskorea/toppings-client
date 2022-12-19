@@ -31,7 +31,7 @@ export const deleteRecentHistory = async (id: number) => {
 export const getRestaurantByCountry = async (country: string) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByCountryDTO[];
-  }>(`/v1/restaurant?type=Country&country=${country}`);
+  }>(`/v1/restaurant/filter?type=Country&country=${country}`);
 
   return data.data;
 };
