@@ -2,6 +2,7 @@ import { css, useTheme } from "@emotion/react";
 import { EmptyHeart, OrangeHeart } from "@svgs/common";
 import {
   Flex,
+  gutter,
   padding,
   position,
   SafeArea,
@@ -165,7 +166,11 @@ const RecentPage = () => {
                   gap: 7px;
                 `}
               >
-                <div>
+                <div
+                  css={css`
+                    ${gutter("vertical", 6)}
+                  `}
+                >
                   <Text _fontSize={13} _color={colors.secondary[52]}>
                     {item.type}
                   </Text>
