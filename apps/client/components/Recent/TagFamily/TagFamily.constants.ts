@@ -1,4 +1,4 @@
-const tags = [
+const tagList = [
   {
     id: "restaurant",
     name: "Restaurant"
@@ -13,4 +13,4 @@ const tags = [
   }
 ] as const;
 
-export default tags;
+export default tagList;

@@ -18,10 +18,10 @@ import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useSetNavigation } from "~/hooks";
 import { useDeleteAllRecentHistory } from "~/mutations/recent";
 import Keys from "~/queries/recent/keys";
-import tags from "./recent.constants";
+import tags from "../../components/Recent/TagFamily/TagFamily.constants";
 
 const RecentPage = () => {
-  const { colors, dimensions, zIndexs } = useTheme();
+  const { colors, zIndexs } = useTheme();
   const { push, asPath } = useRouter();
   const overlay = useOverlay();
   const queryClient = useQueryClient();

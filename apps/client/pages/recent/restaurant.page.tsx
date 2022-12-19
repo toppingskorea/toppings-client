@@ -10,8 +10,9 @@ import {
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { HeartWithNumber, RoundedTag, SearchInput } from "~/components/Common";
+import { HeartWithNumber, SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
+import { TagFamily } from "~/components/Recent";
 import { useInput, useSetNavigation } from "~/hooks";
 import {
   useFetchRestaurantNameByFiltering,
@@ -19,11 +20,10 @@ import {
 } from "~/mutations/recent";
 import { useCurrentLocationSetter } from "~/recoil/atoms";
 import weighs from "~/styles/emotionTheme/weighs";
-import tags from "./recent.constants";
 
 const RecentPage = () => {
   const { colors, dimensions } = useTheme();
-  const { push, pathname } = useRouter();
+  const { push } = useRouter();
   const [restaurantList, setRestaurantList] =
     useState<Restaurant.SearchByCountryDTO[]>();
   const setCurrentLocation = useCurrentLocationSetter();
@@ -63,54 +63,8 @@ const RecentPage = () => {
           {...keyword}
         />
       </div>
-      <div
-        css={css`
-          ${position("fixed", {
-            bottom: dimensions.bottomNavigationHeight
-          })}
-        `}
-      >
-        <div
-          css={css`
-            width: 100vw;
-            overflow-x: scroll;
-            &::-webkit-scrollbar {
-              display: none;
-            }
-            scrollbar-width: none;
-          `}
-        >
-          <ul
-            css={css`
-              display: flex;
-              gap: 20px;
-              white-space: nowrap;
-            `}
-          >
-            {tags.map(({ id, name }) => (
-              <RoundedTag
-                key={id}
-                isTouchable
-                padding={{
-                  x: 16,
-                  y: 7
-                }}
-                _fontSize={17}
-                defaultProps={{
-                  bgcolor: pathname.includes(id)
-                    ? colors.primary
-                    : colors.white,
-                  bordercolor: colors.secondary.D9,
-                  _color: pathname.includes(id) ? colors.white : colors.black
-                }}
-                onClick={() => push(`/recent/${id}`)}
-              >
-                {name}
-              </RoundedTag>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <TagFamily />
+
       {/* border는 임시로 넣어놨음 */}
       <div
         css={css`
