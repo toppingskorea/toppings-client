@@ -35,7 +35,7 @@ const TagFamily = ({ isBlur }: Props) => {
         <ul
           css={css`
             display: flex;
-            gap: 20px;
+            gap: 4px;
             white-space: nowrap;
           `}
         >
