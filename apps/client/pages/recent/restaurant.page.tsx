@@ -159,13 +159,7 @@ const RecentPage = () => {
                 `}
               />
 
-              <Flex
-                justify="space-between"
-                direction="column"
-                css={css`
-                  gap: 7px;
-                `}
-              >
+              <Flex justify="space-between" direction="column">
                 <div
                   css={css`
                     ${gutter("vertical", 6)}
