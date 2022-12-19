@@ -16,7 +16,7 @@ import { useCurrentLocationSetter } from "~/recoil/atoms";
 import weighs from "~/styles/emotionTheme/weighs";
 
 const RecentPage = () => {
-  const { colors, dimensions } = useTheme();
+  const { colors } = useTheme();
   const { push } = useRouter();
   const [restaurantList, setRestaurantList] =
     useState<Restaurant.SearchByCountryDTO[]>();

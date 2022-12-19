@@ -21,7 +21,7 @@ import Keys from "~/queries/recent/keys";
 
 const RecentPage = () => {
   const { colors, zIndex } = useTheme();
-  const { push, asPath } = useRouter();
+  const { push } = useRouter();
   const overlay = useOverlay();
   const queryClient = useQueryClient();
   const { mutate: deleteAllMutate } = useDeleteAllRecentHistory({

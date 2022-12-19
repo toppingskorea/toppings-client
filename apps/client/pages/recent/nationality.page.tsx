@@ -1,4 +1,3 @@
-import { useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { SafeArea } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
@@ -14,7 +13,6 @@ import {
 import { useMapSearchByCountrySetter, useRegisterState } from "~/recoil/atoms";
 
 const RecentPage = () => {
-  const { colors, dimensions } = useTheme();
   const { push } = useRouter();
   const [register, setRegister] = useRegisterState();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
