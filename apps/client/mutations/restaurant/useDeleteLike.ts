@@ -23,8 +23,12 @@ const useDeleteLike = (id: number) => {
       return { previous };
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(Keys.restaurant(id));
-      queryClient.invalidateQueries(Keys.likePercent(id));
+      queryClient.invalidateQueries({
+        queryKey: Keys.restaurant(id)
+      });
+      queryClient.invalidateQueries({
+        queryKey: Keys.likePercent(id)
+      });
     }
   });
 };
