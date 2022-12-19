@@ -37,8 +37,7 @@ const RecentPage = () => {
     top: {
       marginBottom: 85,
       right: <Exit onClick={() => push("/map")} />
-    },
-    page: "recent"
+    }
   });
 
   const removeAllHistoryHandler = useCallback(() => {

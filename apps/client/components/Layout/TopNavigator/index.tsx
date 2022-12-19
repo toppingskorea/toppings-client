@@ -9,7 +9,7 @@ import { useInternalRouter } from "~/hooks";
 
 const TopNavigator = () => {
   const { zIndexs } = useTheme();
-  const { back } = useInternalRouter();
+  const { back, pathname } = useInternalRouter();
   const state = useNavigationValue();
 
   return (
@@ -18,7 +18,7 @@ const TopNavigator = () => {
         css={css`
           ${position("sticky", { top: 0 })}
           z-index: ${zIndexs.one};
-          ${state.page !== "recent" && "backdrop-filter: blur(10px)"};
+          ${pathname !== "/recent" && "backdrop-filter: blur(10px)"};
         `}
       >
         <nav

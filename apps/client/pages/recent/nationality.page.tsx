@@ -29,7 +29,7 @@ const RecentPage = () => {
 
   useSetNavigation({
     top: {
-      marginBottom: 85,
+      marginBottom: 37,
       right: <Exit />
     }
   });
@@ -57,7 +57,10 @@ const RecentPage = () => {
       <div
         css={css`
           ${position("fixed", {
-            bottom: dimensions.bottomNavigationHeight
+            bottom: dimensions.bottomNavigationHeight - 20
+          })}
+          ${padding({
+            y: 10
           })}
           backdrop-filter: blur(10px);
         `}
@@ -103,7 +106,6 @@ const RecentPage = () => {
           </ul>
         </div>
       </div>
-
       <SearchNationality
         keyword={keyword.value}
         onCountryClick={name => {
