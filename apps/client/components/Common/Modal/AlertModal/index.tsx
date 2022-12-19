@@ -80,7 +80,7 @@ const NonClickable = ({ information }: Pick<Props, "information">) => {
 };
 
 const AlertModal = ({ exitFn, deleteFn, information }: Props) => {
-  const { colors, zIndexs } = useTheme();
+  const { colors, zIndex } = useTheme();
 
   return (
     <Flex.Center
@@ -90,7 +90,7 @@ const AlertModal = ({ exitFn, deleteFn, information }: Props) => {
         ${size.full}
         ${gutter({ direction: "vertical", space: 30 })}
         background-color: ${hexToRgba(colors.black, 0.3)};
-        z-index: ${zIndexs.ten};
+        z-index: ${zIndex.ten};
       `}
       onClick={() => {
         if (information) exitFn();

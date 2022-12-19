@@ -11,7 +11,7 @@ import {
 import { useCurrentLocationSetter } from "~/recoil/atoms";
 
 const MyLocationButton = () => {
-  const { colors, zIndexs } = useTheme();
+  const { colors, zIndex } = useTheme();
   const setCurrentLocation = useCurrentLocationSetter();
 
   const success: PositionCallback = useCallback(
@@ -57,7 +57,7 @@ const MyLocationButton = () => {
         padding: 8px;
         border-radius: 8px;
         background-color: ${colors.primary};
-        z-index: ${zIndexs.two};
+        z-index: ${zIndex.two};
       `}
     >
       <CurrentPlace />

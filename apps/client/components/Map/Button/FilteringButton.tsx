@@ -17,7 +17,7 @@ import { defaultScaleChangeVariants, framerMocker } from "~/constants";
 import { useRegisterValue } from "~/recoil/atoms";
 
 const FilteringButton = () => {
-  const { colors, zIndexs } = useTheme();
+  const { colors, zIndex } = useTheme();
   const { push } = useRouter();
   const register = useRegisterValue();
 
@@ -31,7 +31,7 @@ const FilteringButton = () => {
         })}
 
         ${gutter("horizontal", 8)}
-        z-index: ${zIndexs.two};
+        z-index: ${zIndex.two};
       `}
     >
       {/* TODO: 분리하자 리코일 도메인별로 */}

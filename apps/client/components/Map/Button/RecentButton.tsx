@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
 
 const RecentButton = () => {
-  const { colors, zIndexs } = useTheme();
+  const { colors, zIndex } = useTheme();
   const { push } = useRouter();
 
   return (
@@ -24,7 +24,7 @@ const RecentButton = () => {
         padding: 8px;
         border-radius: 8px;
         background-color: ${colors.primary};
-        z-index: ${zIndexs.two};
+        z-index: ${zIndex.two};
       `}
     >
       <Recent />

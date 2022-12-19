@@ -20,7 +20,7 @@ import { useDeleteAllRecentHistory } from "~/mutations/recent";
 import Keys from "~/queries/recent/keys";
 
 const RecentPage = () => {
-  const { colors, zIndexs } = useTheme();
+  const { colors, zIndex } = useTheme();
   const { push, asPath } = useRouter();
   const overlay = useOverlay();
   const queryClient = useQueryClient();
@@ -67,7 +67,7 @@ const RecentPage = () => {
         {...framerMocker}
         css={css`
           ${position("absolute", { top: 114, right: 0 })}
-          z-index: ${zIndexs.one};
+          z-index: ${zIndex.one};
         `}
       >
         <RoundedTag
