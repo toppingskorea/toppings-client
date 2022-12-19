@@ -1,7 +1,8 @@
-import { css, useTheme } from "@emotion/react";
-import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
+import { useTheme } from "@emotion/react";
+import { SafeArea } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import { SearchInput } from "~/components/Common";
+import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
 import { SelectEatingHabit } from "~/components/Section";
 import { useInput, useSetNavigation } from "~/hooks";
@@ -36,22 +37,14 @@ const RecentPage = () => {
 
   return (
     <SafeArea>
-      <div
-        css={css`
-          ${padding({ x: 16, y: 22 })};
-          ${position("fixed", { bottom: 0 })}
-          background-color: ${colors.white};
-          max-width: ${dimensions.viewWidth - 32}px;
-          ${width100}
-        `}
-      >
+      <SearchLayout>
         <SearchInput
           onSubmit={() => console.log("sad")}
           placeholder="enter nationality name"
           setValue={setValue}
           {...keyword}
         />
-      </div>
+      </SearchLayout>
 
       <TagFamily />
 

@@ -12,13 +12,12 @@ import {
   RoundedTag,
   SSRSafeSuspense
 } from "~/components/Common";
-import { History } from "~/components/Recent";
+import { History, TagFamily } from "~/components/Recent";
 import Skeleton from "~/components/Skeleton";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useSetNavigation } from "~/hooks";
 import { useDeleteAllRecentHistory } from "~/mutations/recent";
 import Keys from "~/queries/recent/keys";
-import tags from "../../components/Recent/TagFamily/TagFamily.constants";
 
 const RecentPage = () => {
   const { colors, zIndexs } = useTheme();
@@ -102,43 +101,7 @@ const RecentPage = () => {
           backdrop-filter: blur(10px);
         `}
       >
-        <div
-          css={css`
-            width: 100vw;
-            overflow-x: scroll;
-            &::-webkit-scrollbar {
-              display: none;
-            }
-            scrollbar-width: none;
-          `}
-        >
-          <ul
-            css={css`
-              display: flex;
-              gap: 4px;
-              white-space: nowrap;
-            `}
-          >
-            {tags.map(({ id, name }) => (
-              <div key={id}>
-                <RoundedTag
-                  padding={{
-                    x: 16,
-                    y: 7
-                  }}
-                  _fontSize={17}
-                  defaultProps={{
-                    bgcolor: colors.white,
-                    bordercolor: colors.secondary.D9
-                  }}
-                  onClick={() => push(`${asPath}/${id}`)}
-                >
-                  {name}
-                </RoundedTag>
-              </div>
-            ))}
-          </ul>
-        </div>
+        <TagFamily />
       </div>
     </SafeArea>
   );

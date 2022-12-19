@@ -1,17 +1,11 @@
 import { css, useTheme } from "@emotion/react";
-import {
-  Flex,
-  gutter,
-  padding,
-  position,
-  SafeArea,
-  width100
-} from "@toss/emotion-utils";
+import { Flex, gutter, SafeArea } from "@toss/emotion-utils";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { HeartWithNumber, SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
+import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
 import { useInput, useSetNavigation } from "~/hooks";
 import {
@@ -45,15 +39,7 @@ const RecentPage = () => {
 
   return (
     <SafeArea>
-      <div
-        css={css`
-          ${padding({ x: 16, y: 22 })};
-          ${position("fixed", { bottom: 0 })}
-          background-color: ${colors.white};
-          max-width: ${dimensions.viewWidth - 32}px;
-          ${width100}
-        `}
-      >
+      <SearchLayout>
         <SearchInput
           onSubmit={() => {
             fetchRestaurantNameByFilteringMutate(keyword.value);
@@ -62,7 +48,7 @@ const RecentPage = () => {
           setValue={setValue}
           {...keyword}
         />
-      </div>
+      </SearchLayout>
       <TagFamily />
 
       {/* border는 임시로 넣어놨음 */}
