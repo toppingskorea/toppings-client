@@ -8,7 +8,7 @@ import RecentButton from "./Button/RecentButton";
 import useMapEvent from "./Map.hooks";
 
 const Map = ({ children }: Util.PropsWithChild) => {
-  const theme = useTheme();
+  const { dimensions } = useTheme();
   const setMapBounds = useMapBoundsSetter();
   const { map, mapRef } = useMap();
 
@@ -26,7 +26,7 @@ const Map = ({ children }: Util.PropsWithChild) => {
       ref={mapRef}
       css={css`
         width: 100%;
-        height: calc(100% - ${theme.dimensions.bottomNavigationHeight}px);
+        height: calc(100% - ${dimensions.bottomNavigationHeight}px);
       `}
     >
       {children}

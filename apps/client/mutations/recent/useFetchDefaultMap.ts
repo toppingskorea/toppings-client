@@ -1,9 +1,13 @@
-import { useMutation, type UseQueryOptions } from "@tanstack/react-query";
+import { useMutation, type UseMutationOptions } from "@tanstack/react-query";
 import { getDefaultMap } from "~/apis/recent";
 
 const useFetchDefaultMap = (
   options: Pick<
-    UseQueryOptions<Awaited<ReturnType<typeof getDefaultMap>>>,
+    UseMutationOptions<
+      Awaited<ReturnType<typeof getDefaultMap>>,
+      unknown,
+      Parameters<typeof getDefaultMap>[0]
+    >,
     "onSuccess"
   >
 ) => {

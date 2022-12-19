@@ -3,7 +3,6 @@ import { RemoveHistory, Timeline } from "@svgs/recent";
 import { useQueryClient } from "@tanstack/react-query";
 import { Flex, flex, gutter, padding, touchable } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
-import { memo } from "react";
 import { useDeleteRecentHistory } from "~/mutations/recent";
 import { useFetchRecentHistory } from "~/queries/recent";
 import Keys from "~/queries/recent/keys";
@@ -26,18 +25,19 @@ const History = () => {
         ${flex({ direction: "column" })}
         ${gutter("vertical", 23)}
         ${padding({
-          x: 27,
-          y: 0
+          x: 27
         })}
       `}
     >
-      {data.map(({ id, keyword }) => (
+      {data.map(({ id, keyword, category }) => (
         <Flex key={id} justify="space-between" align="center">
           <Flex.Center
+            onClick={() => {
+              if (category === "Name") push(`/post/${id}`);
+            }}
             css={css`
               gap: 12px;
             `}
-            onClick={() => push(`/post/${id}`)}
           >
             <Timeline />
             {keyword}
@@ -54,4 +54,4 @@ const History = () => {
   );
 };
 
-export default memo(History);
+export default History;

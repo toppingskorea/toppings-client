@@ -12,11 +12,13 @@ const navigationAtom = atom<{
     marginBottom?: Common.CSSPixelValue;
   };
   bottom?: boolean;
+  page?: "recent";
 }>({
   key: "navigationAtom",
   default: {
     top: undefined,
-    bottom: false
+    bottom: false,
+    page: undefined
   }
 });
 

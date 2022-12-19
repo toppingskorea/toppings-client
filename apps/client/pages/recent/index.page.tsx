@@ -1,37 +1,57 @@
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
+import { useQueryClient } from "@tanstack/react-query";
 import { position, SafeArea } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import {
+  AlertModal,
   Badge,
-  RemoveAlertModal,
   RoundedTag,
   SSRSafeSuspense
 } from "~/components/Common";
 import { History } from "~/components/Recent";
+import Skeleton from "~/components/Skeleton";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useSetNavigation } from "~/hooks";
+import { useDeleteAllRecentHistory } from "~/mutations/recent";
+import Keys from "~/queries/recent/keys";
 import tags from "./recent.constants";
 
 const RecentPage = () => {
-  const theme = useTheme();
+  const { colors, dimensions, zIndexs } = useTheme();
   const { push, asPath } = useRouter();
   const overlay = useOverlay();
+  const queryClient = useQueryClient();
+  const { mutate: deleteAllMutate } = useDeleteAllRecentHistory({
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: Keys.recent()
+      });
+    }
+  });
 
   useSetNavigation({
     top: {
       marginBottom: 85,
       right: <Exit onClick={() => push("/map")} />
-    }
+    },
+    page: "recent"
   });
 
-  const MemoizeRemoveAlertModal = useCallback(
-    (exit: VoidFunction) => <RemoveAlertModal exit={exit} />,
-    []
-  );
+  const removeAllHistoryHandler = useCallback(() => {
+    overlay.open(({ exit, close }) => (
+      <AlertModal
+        exitFn={exit}
+        deleteFn={() => {
+          deleteAllMutate();
+          close();
+        }}
+      />
+    ));
+  }, [deleteAllMutate, overlay]);
 
   return (
     <SafeArea>
@@ -49,6 +69,7 @@ const RecentPage = () => {
         {...framerMocker}
         css={css`
           ${position("absolute", { top: 114, right: 0 })}
+          z-index: ${zIndexs.one};
         `}
       >
         <RoundedTag
@@ -57,31 +78,29 @@ const RecentPage = () => {
             y: 6
           }}
           defaultProps={{
-            bgcolor: theme.colors.secondary.F1,
+            bgcolor: colors.secondary.F1,
             bordercolor: "transparent",
-            _color: theme.colors.secondary.A2
+            _color: colors.secondary.A2
           }}
           _fontSize={13}
-          onClick={() => {
-            overlay.open(({ exit }) => MemoizeRemoveAlertModal(exit));
-          }}
+          onClick={removeAllHistoryHandler}
           isTouchable
         >
           remove all
         </RoundedTag>
       </motion.div>
 
-      {/* TODO: skelton */}
-      <SSRSafeSuspense fallback={<div>하이</div>}>
+      <SSRSafeSuspense fallback={<Skeleton.Paragraph />}>
         <History />
       </SSRSafeSuspense>
 
       <div
         css={css`
           ${position("absolute", {
-            bottom: theme.dimensions.bottomNavigationHeight,
+            bottom: dimensions.bottomNavigationHeight,
             left: 0
           })}
+          backdrop-filter: blur(10px);
         `}
       >
         <div
@@ -101,22 +120,23 @@ const RecentPage = () => {
               white-space: nowrap;
             `}
           >
-            {tags.map(({ ID, NAME }) => (
-              <RoundedTag
-                key={ID}
-                padding={{
-                  x: 16,
-                  y: 7
-                }}
-                _fontSize={17}
-                defaultProps={{
-                  bgcolor: theme.colors.white,
-                  bordercolor: theme.colors.secondary.D9
-                }}
-                onClick={() => push(`${asPath}/${ID}`)}
-              >
-                {NAME}
-              </RoundedTag>
+            {tags.map(({ id, name }) => (
+              <div key={id}>
+                <RoundedTag
+                  padding={{
+                    x: 16,
+                    y: 7
+                  }}
+                  _fontSize={17}
+                  defaultProps={{
+                    bgcolor: colors.white,
+                    bordercolor: colors.secondary.D9
+                  }}
+                  onClick={() => push(`${asPath}/${id}`)}
+                >
+                  {name}
+                </RoundedTag>
+              </div>
             ))}
           </ul>
         </div>

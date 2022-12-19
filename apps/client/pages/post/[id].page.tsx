@@ -13,8 +13,7 @@ import { env } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { Keys, useFetchRestaurant } from "~/queries/restaurant";
 import { usePostUploadSetter, useRestaurantSetter } from "~/recoil/atoms";
-import { pick } from "~/utils";
-import { countryToSvg } from "~/utils/country";
+import { countryToSvg, pick } from "~/utils";
 
 const PostDetail = ({
   id

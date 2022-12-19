@@ -3,6 +3,7 @@ import { css, useTheme } from "@emotion/react";
 import { Filtering } from "@svgs/map";
 import { Exit } from "@svgs/recent";
 import {
+  flex,
   Flex,
   gutter,
   padding,
@@ -12,19 +13,13 @@ import {
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
-import { defaultScaleChangeVariants } from "~/constants";
-import {
-  useMapSearchByCountrySetter,
-  useRegisterReset,
-  useRegisterValue
-} from "~/recoil/atoms";
+import { defaultScaleChangeVariants, framerMocker } from "~/constants";
+import { useRegisterValue } from "~/recoil/atoms";
 
 const FilteringButton = () => {
-  const { colors } = useTheme();
+  const { colors, zIndexs } = useTheme();
   const { push } = useRouter();
   const register = useRegisterValue();
-  const resetRegister = useRegisterReset();
-  const setMapSearchByCountry = useMapSearchByCountrySetter();
 
   return (
     <Flex.Center
@@ -36,7 +31,7 @@ const FilteringButton = () => {
         })}
 
         ${gutter("horizontal", 8)}
-        z-index: 10;
+        z-index: ${zIndexs.two};
       `}
     >
       {/* TODO: 분리하자 리코일 도메인별로 */}
@@ -62,12 +57,12 @@ const FilteringButton = () => {
 
       <motion.button
         type="button"
-        onClick={() => push("/recent")}
-        initial="initial"
-        animate="animate"
+        {...framerMocker}
         whileHover="whileHover"
         variants={defaultScaleChangeVariants}
+        onClick={() => push("/recent")}
         css={css`
+          ${flex("center")}
           padding: 8px;
           border-radius: 8px;
           background-color: ${colors.primary};
