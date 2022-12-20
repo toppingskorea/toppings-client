@@ -14,12 +14,16 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
-import { useRegisterValue } from "~/recoil/atoms";
+import {
+  useCurrentSelectCategoryValue,
+  useRegisterValue
+} from "~/recoil/atoms";
 
 const FilteringButton = () => {
   const { colors, zIndex } = useTheme();
   const { push } = useRouter();
   const register = useRegisterValue();
+  const currentSelectCategory = useCurrentSelectCategoryValue();
 
   return (
     <Flex.Center
@@ -34,8 +38,8 @@ const FilteringButton = () => {
         z-index: ${zIndex.two};
       `}
     >
-      {register.country && (
-        <div
+      {currentSelectCategory && (
+        <Flex.Center
           css={css`
             ${padding({
               x: 12,
@@ -48,10 +52,10 @@ const FilteringButton = () => {
           `}
         >
           <Text _fontSize={17} _color={colors.white}>
-            {register.country}
+            {currentSelectCategory}
           </Text>
           <Exit onClick={() => console.log("hi")} />
-        </div>
+        </Flex.Center>
       )}
 
       <motion.button

@@ -9,11 +9,14 @@ import {
   useFetchEatingHabitByFiltering,
   useUploadRecentHistory
 } from "~/mutations/recent";
-import { useMapSearchByCountrySetter, useRegisterState } from "~/recoil/atoms";
+import {
+  useCurrentSelectCategorySetter,
+  useMapSearchByCountrySetter
+} from "~/recoil/atoms";
 
 const RecentPage = () => {
   const { push } = useRouter();
-  const [register, setRegister] = useRegisterState();
+  const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
   const { mutate: fetchEatingHabitByFilteringMutate } =
@@ -49,15 +52,7 @@ const RecentPage = () => {
       <SelectEatingHabit
         isRecent
         onClick={(title, content) => {
-          setRegister({
-            ...register,
-            habit: [
-              {
-                title,
-                content
-              }
-            ]
-          });
+          setCurrentSelectCategory(content);
           uploadRecentHistoryMutate({
             type: "Filter",
             keyword: content,
@@ -68,7 +63,6 @@ const RecentPage = () => {
             habit: content
           });
         }}
-        habits={register.habit}
       />
     </SafeArea>
   );

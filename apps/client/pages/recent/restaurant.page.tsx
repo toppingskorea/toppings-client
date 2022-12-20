@@ -12,7 +12,10 @@ import {
   useFetchRestaurantNameByFiltering,
   useUploadRecentHistory
 } from "~/mutations/recent";
-import { useCurrentLocationSetter } from "~/recoil/atoms";
+import {
+  useCurrentLocationSetter,
+  useCurrentSelectCategorySetter
+} from "~/recoil/atoms";
 import weighs from "~/styles/emotionTheme/weighs";
 
 const RecentPage = () => {
@@ -21,6 +24,7 @@ const RecentPage = () => {
   const [restaurantList, setRestaurantList] =
     useState<Restaurant.SearchByCountryDTO[]>();
   const setCurrentLocation = useCurrentLocationSetter();
+  const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
   const { mutate: fetchRestaurantNameByFilteringMutate } =
     useFetchRestaurantNameByFiltering({
@@ -31,7 +35,7 @@ const RecentPage = () => {
 
   useSetNavigation({
     top: {
-      marginBottom: 85
+      marginBottom: 37
     }
   });
 
@@ -71,6 +75,7 @@ const RecentPage = () => {
                 content: item.address,
                 restaurantId: item.id
               });
+              setCurrentSelectCategory(item.name);
 
               push("/map");
             }}

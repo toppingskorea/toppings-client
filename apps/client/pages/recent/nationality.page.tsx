@@ -10,11 +10,14 @@ import {
   useFetchRestaurantByCountry,
   useUploadRecentHistory
 } from "~/mutations/recent";
-import { useMapSearchByCountrySetter, useRegisterState } from "~/recoil/atoms";
+import {
+  useCurrentSelectCategorySetter,
+  useMapSearchByCountrySetter
+} from "~/recoil/atoms";
 
 const RecentPage = () => {
   const { push } = useRouter();
-  const [register, setRegister] = useRegisterState();
+  const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
   const { mutate: fetchRestaurantByCountryMutate } =
@@ -48,7 +51,7 @@ const RecentPage = () => {
       <SearchNationality
         keyword={keyword.value}
         onCountryClick={name => {
-          setRegister({ ...register, country: name });
+          setCurrentSelectCategory(name);
           uploadRecentHistoryMutate({
             type: "Filter",
             keyword: name,
