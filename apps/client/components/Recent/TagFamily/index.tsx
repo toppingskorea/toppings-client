@@ -2,6 +2,7 @@ import { css, useTheme } from "@emotion/react";
 import { position } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import { RoundedTag } from "~/components/Common";
+import { hiddenScroll } from "~/styles/emotionUtils";
 import tagList from "./TagFamily.constants";
 
 interface Props {
@@ -26,10 +27,7 @@ const TagFamily = ({ isBlur }: Props) => {
         css={css`
           width: 90vw;
           overflow-x: scroll;
-          &::-webkit-scrollbar {
-            display: none;
-          }
-          scrollbar-width: none;
+          ${hiddenScroll}
         `}
       >
         <ul
