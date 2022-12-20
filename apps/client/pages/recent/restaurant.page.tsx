@@ -1,5 +1,5 @@
 import { css, useTheme } from "@emotion/react";
-import { Flex, gutter, SafeArea } from "@toss/emotion-utils";
+import { Flex, gutter, padding, SafeArea } from "@toss/emotion-utils";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -59,6 +59,9 @@ const RecentPage = () => {
       <div
         css={css`
           width: 100%;
+          ${padding({
+            x: 28
+          })}
         `}
       >
         {restaurantList?.map(item => (
