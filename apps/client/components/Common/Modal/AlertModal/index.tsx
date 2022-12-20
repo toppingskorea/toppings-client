@@ -43,7 +43,10 @@ const Clickable = ({
           {...framerMocker}
           variants={defaultScaleChangeVariants}
           type="button"
-          onClick={deleteFn}
+          onClick={() => {
+            deleteFn();
+            exitFn();
+          }}
         >
           <Text _fontSize={18} weight={weighs.bold} _color={colors.primary}>
             delete
