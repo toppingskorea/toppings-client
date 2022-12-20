@@ -2,12 +2,10 @@ import { css, useTheme } from "@emotion/react";
 import { Recent } from "@svgs/map";
 import { flex, position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
 
 const RecentButton = () => {
   const { colors, zIndex } = useTheme();
-  const { push } = useRouter();
 
   return (
     <motion.button

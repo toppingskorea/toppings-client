@@ -34,7 +34,6 @@ const FilteringButton = () => {
         z-index: ${zIndex.two};
       `}
     >
-      {/* TODO: 분리하자 리코일 도메인별로 */}
       {register.country && (
         <div
           css={css`
@@ -66,7 +65,7 @@ const FilteringButton = () => {
           padding: 8px;
           border-radius: 8px;
           background-color: ${colors.primary};
-          z-index: 10;
+          z-index: ${zIndex.two};
         `}
       >
         <Filtering />

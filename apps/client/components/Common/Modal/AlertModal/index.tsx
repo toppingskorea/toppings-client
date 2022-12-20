@@ -42,7 +42,7 @@ const Clickable = ({
           onClick={exitFn}
         >
           <Text _fontSize={18} weight={weighs.bold} _color={colors.primary}>
-            cancle
+            cancel
           </Text>
         </motion.button>
         <motion.button
