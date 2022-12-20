@@ -16,7 +16,8 @@ const PrimaryTag = ({
     <ClickableRoundedTag
       _fontSize={15}
       padding={{
-        x: 19
+        x: 19,
+        y: 7
       }}
       defaultProps={{
         _color: colors.secondary[69],
