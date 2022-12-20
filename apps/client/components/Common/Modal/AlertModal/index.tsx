@@ -1,4 +1,5 @@
 import { css, useTheme } from "@emotion/react";
+import styled from "@emotion/styled";
 import { Flex, gutter, position, size } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
@@ -27,14 +28,7 @@ const Clickable = ({
       <Text _fontSize={23} weight={weighs.heavy} _color={colors.white}>
         Are you sure?
       </Text>
-      <Flex.Center
-        css={css`
-          ${gutter("horizontal", 122)}
-          background-color: ${hexToRgba(colors.secondary.E2, 0.9)};
-          padding: 15px 74px;
-          border-radius: 49.5px;
-        `}
-      >
+      <EllipseFlex>
         <motion.button
           {...framerMocker}
           variants={defaultScaleChangeVariants}
@@ -55,7 +49,7 @@ const Clickable = ({
             delete
           </Text>
         </motion.button>
-      </Flex.Center>
+      </EllipseFlex>
     </Flex.Center>
   );
 };
@@ -64,18 +58,11 @@ const NonClickable = ({ information }: Pick<Props, "information">) => {
   const { colors, weighs } = useTheme();
 
   return (
-    <Flex.Center
-      css={css`
-        ${gutter("horizontal", 122)}
-        background-color: ${hexToRgba(colors.secondary.E2, 0.9)};
-        padding: 15px 74px;
-        border-radius: 49.5px;
-      `}
-    >
+    <EllipseFlex>
       <Text _fontSize={18} weight={weighs.bold} _color={colors.primary}>
         {information}
       </Text>
-    </Flex.Center>
+    </EllipseFlex>
   );
 };
 
@@ -120,3 +107,10 @@ const AlertModal = ({ exitFn, deleteFn, information }: Props) => {
 };
 
 export default AlertModal;
+
+const EllipseFlex = styled(Flex.Center)`
+  ${gutter("horizontal", 122)}
+  background-color: ${({ theme }) => hexToRgba(theme.colors.secondary.E2, 0.9)};
+  padding: 15px 74px;
+  border-radius: 49.5px;
+`;
