@@ -15,14 +15,14 @@ import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
 import {
-  useCurrentSelectCategoryValue,
-  useRegisterValue
+  useCurrentSelectCategoryReset,
+  useCurrentSelectCategoryValue
 } from "~/recoil/atoms";
 
 const FilteringButton = () => {
   const { colors, zIndex } = useTheme();
   const { push } = useRouter();
-  const register = useRegisterValue();
+  const currentSelectCategoryReset = useCurrentSelectCategoryReset();
   const currentSelectCategory = useCurrentSelectCategoryValue();
 
   return (
@@ -54,7 +54,7 @@ const FilteringButton = () => {
           <Text _fontSize={17} _color={colors.white}>
             {currentSelectCategory}
           </Text>
-          <Exit onClick={() => console.log("hi")} />
+          <Exit onClick={currentSelectCategoryReset} />
         </Flex.Center>
       )}
 

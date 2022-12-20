@@ -30,7 +30,7 @@ const RecentPage = () => {
 
   useSetNavigation({
     top: {
-      marginBottom: 85
+      marginBottom: 37
     }
   });
 
@@ -40,7 +40,6 @@ const RecentPage = () => {
     <SafeArea>
       <SearchLayout>
         <SearchInput
-          onSubmit={() => console.log("sad")}
           placeholder="enter nationality name"
           setValue={setValue}
           {...keyword}
