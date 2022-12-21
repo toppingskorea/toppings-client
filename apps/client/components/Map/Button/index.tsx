@@ -1,8 +1,13 @@
-import { useCurrentLocationSetter } from "@atoms/index";
+import { css, useTheme } from "@emotion/react";
+import { CurrentPlace } from "@svgs/map";
+import { position } from "@toss/emotion-utils";
+import { motion } from "framer-motion";
 import { useCallback, useMemo } from "react";
-import { defaultLocation } from "~/constants";
+import { defaultLocation, defaultScaleChangeVariants } from "~/constants";
+import { useCurrentLocationSetter } from "~/recoil/atoms";
 
 const MyLocationButton = () => {
+  const { colors } = useTheme();
   const setCurrentLocation = useCurrentLocationSetter();
 
   const success: PositionCallback = useCallback(
@@ -33,9 +38,26 @@ const MyLocationButton = () => {
   }, [error, options, success]);
 
   return (
-    <button type="button" onClick={getCurrentMapPosition}>
-      내 위치
-    </button>
+    <motion.button
+      type="button"
+      onClick={getCurrentMapPosition}
+      initial="initial"
+      animate="animate"
+      whileHover="whileHover"
+      variants={defaultScaleChangeVariants}
+      css={css`
+        ${position("absolute", {
+          bottom: 16,
+          left: 17
+        })}
+        padding: 8px;
+        border-radius: 8px;
+        background-color: ${colors.primary};
+        z-index: 10;
+      `}
+    >
+      <CurrentPlace />
+    </motion.button>
   );
 };
 

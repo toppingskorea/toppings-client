@@ -1,27 +1,34 @@
-import { css } from "@emotion/react";
-import { motion } from "framer-motion";
 import Map from "~/components/Map";
-import { defaultScaleChangeVariants } from "~/constants";
 import { MapProvider } from "~/contexts";
+import { useSetNavigation } from "~/hooks";
+import { useFetchDefaultMap } from "~/mutations/recent";
+import { useMapBoundsValue, useMapSearchByCountrySetter } from "~/recoil/atoms";
 
 const MapPage = () => {
+  useSetNavigation({
+    bottom: true
+  });
+  const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const mapBounds = useMapBoundsValue();
+  const { mutate: defaultMap } = useFetchDefaultMap({
+    onSuccess: data => {
+      setMapSearchByCountry(data);
+    }
+  });
+
+  // 이거 사용하면 깃발 다 찍히기는 하는데 무한 호출 이슈 있음
+  // useEffect(() => {
+  //   if (mapBounds) {
+  //     defaultMap(mapBounds);
+  //   }
+  // }, [defaultMap, mapBounds]);
+
   return (
     <MapProvider>
       <Map>
-        <motion.div
-          initial="initial"
-          animate="animate"
-          whileHover="whileHover"
-          variants={defaultScaleChangeVariants}
-          css={css`
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            z-index: 10;
-          `}
-        >
-          <Map.MyLocationButton />
-        </motion.div>
+        <Map.MyLocationButton />
+        <Map.RecentButton />
+        <Map.FilteringButton />
       </Map>
     </MapProvider>
   );

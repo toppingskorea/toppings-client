@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import type { NextMiddleware } from "next/server";
 import { NextResponse } from "next/server";
 import { env } from "~/constants";
-import verifyToken from "./utils/auth/verifyToken";
+import { verifyToken } from "./utils";
 
 // 로그인한 유저만 접근할 수 있는 라우트
 const PROTECTED_ROUTE = [
@@ -22,7 +22,7 @@ const LOGIN_PROTECTED_ROUTE = ["/login"];
 
 // 미들웨어를 발생시킬 라우트
 export const config = {
-  matcher: ["/profile/:path*", "/login", "/login/redirect","/post/add"]
+  matcher: ["/profile/:path*", "/login", "/login/redirect", "/post/add"]
 };
 
 const middleware: NextMiddleware = async request => {

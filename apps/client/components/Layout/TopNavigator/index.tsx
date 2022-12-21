@@ -8,8 +8,8 @@ import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter } from "~/hooks";
 
 const TopNavigator = () => {
-  const { zIndexs } = useTheme();
-  const { back } = useInternalRouter();
+  const { zIndex } = useTheme();
+  const { back, pathname } = useInternalRouter();
   const state = useNavigationValue();
 
   return (
@@ -17,8 +17,8 @@ const TopNavigator = () => {
       <header
         css={css`
           ${position("sticky", { top: 0 })}
-          z-index: ${zIndexs.one};
-          backdrop-filter: blur(10px);
+          z-index: ${zIndex.one};
+          ${pathname !== "/recent" && "backdrop-filter: blur(10px)"};
         `}
       >
         <nav

@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import { env } from "~/constants";
-import { isServer } from "..";
+import { isServer } from "../common";
 
 const getCookieToken = (initialValue = "") =>
   !isServer()

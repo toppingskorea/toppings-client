@@ -16,7 +16,9 @@ declare module Common {
 declare module Util {
   type SingleOrArray<T> = T | T[];
   type ValueOf<T> = T[keyof T];
-  type PropsWithChild<P = unknown> = P & { children: JSX.Element };
+  type PropsWithChild<P = unknown> = P & {
+    children: JSX.Element | JSX.Element[];
+  };
   type ElementType<T extends readonly unknown[]> = T[number];
 }
 
@@ -134,4 +136,32 @@ declare module Map {
     | "idle"
     | "tilesloaded"
     | "maptypeid_changed";
+}
+
+declare module Recent {
+  interface HistoryDTO {
+    id: number;
+    keyword: string;
+    type: string;
+    category: string;
+    content?: string;
+    restaurantId?: number;
+  }
+}
+
+declare module Restaurant {
+  interface SearchByCountryDTO {
+    address?: string;
+    description: string;
+    filterLikeCount?: number;
+    id: number;
+    latitude: number;
+    like: boolean;
+    likeCount: number;
+    longitude: number;
+    name: string;
+    thumbnail: string;
+    type: string;
+    writer: string;
+  }
 }

@@ -13,6 +13,7 @@ const hiddenScroll = css`
     width: 0;
     background-color: transparent;
   }
+  scrollbar-width: none;
 `;
 
 export default hiddenScroll;

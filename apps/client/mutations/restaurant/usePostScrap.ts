@@ -22,7 +22,9 @@ const usePostScrap = (id: number) => {
       return { previous };
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(Keys.restaurant(id));
+      queryClient.invalidateQueries({
+        queryKey: Keys.restaurant(id)
+      });
     },
     onError: () => {
       alert("로그인 이후 이용가능합니다!");

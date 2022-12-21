@@ -1,44 +1,60 @@
-info  - Loaded env from /Users/chanhyuk-tech/Desktop/project/toppings-client/apps/client/.env.local
-info  - Loaded env from /Users/chanhyuk-tech/Desktop/project/toppings-client/apps/client/.env.production
+info  - Loaded env from C:\dev\toppings-client\apps\client\.env.local
 info  - Linting and checking validity of types...
 error - ESLint must be installed in order to run during builds: yarn add --dev eslint
 info  - Creating an optimized production build...
-info  - Compiled successfully
+warn  - Compiled with warnings
+
+../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js
+A Node.js API is used (Buffer at line: 138) which is not supported in the Edge Runtime.
+Learn more: https://nextjs.org/docs/api-reference/edge-runtime
+
+Import trace for requested module:
+../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js
 info  - Collecting page data...
-info  - Generating static pages (0/16)
-info  - Generating static pages (4/16)
-info  - Generating static pages (8/16)
-info  - Generating static pages (12/16)
-info  - Generating static pages (16/16)
+../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/axios.js
+../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/index.js
+./constants/Api.ts
+./constants/index.ts
+
+info  - Generating static pages (0/19)
+info  - Generating static pages (4/19)
+info  - Generating static pages (9/19)
+info  - Generating static pages (14/19)
+info  - Generating static pages (19/19)
 info  - Finalizing page optimization...
 
 Route (pages)                              Size     First Load JS
-┌ ○ /                                      1.35 kB         319 kB
-├   /_app                                  0 B             314 kB
-├ ○ /404                                   182 B           315 kB
-├ ○ /login                                 458 B           315 kB
-├ ○ /login/redirect                        272 B           315 kB
-├ ○ /map                                   840 B           315 kB
-├ ○ /notice                                277 B           315 kB
-├ ○ /post/add                              269 B           315 kB
-├ λ /profile                               2.19 kB         324 kB
-├ λ /profile/edit                          3.65 kB         325 kB
-├ ○ /profile/edit/eatingHabits             705 B           319 kB
-├ ○ /profile/edit/nationality              710 B           319 kB
-├ ○ /profile/menu                          2.64 kB         317 kB
-├ ○ /profile/posts                         262 B           315 kB
-├ ○ /profile/reviews                       265 B           315 kB
-├ ○ /profile/saved                         263 B           315 kB
-├ ○ /register/eatingHabits                 2.88 kB         321 kB
-├ ○ /register/nationality                  682 B           319 kB
-└ λ /search/[type]                         777 B           315 kB
-+ First Load JS shared by all              314 kB
+┌ ○ /                                      2.3 kB          356 kB
+├   /_app                                  0 B             353 kB
+├ ○ /404                                   182 B           354 kB
+├ ○ /login                                 458 B           354 kB
+├ ○ /login/redirect                        272 B           354 kB
+├ ○ /map                                   4.02 kB         357 kB
+├ ○ /notice                                276 B           354 kB
+├ λ /post/[id]                             972 B           361 kB
+├ ○ /post/add                              975 B           361 kB
+├ λ /profile                               2.32 kB         356 kB
+├ λ /profile/edit                          3.75 kB         357 kB
+├ ○ /profile/edit/eatingHabits             2.38 kB         356 kB
+├ ○ /profile/edit/nationality              2.39 kB         356 kB
+├ ○ /profile/menu                          2.15 kB         355 kB
+├ λ /profile/posts                         1.79 kB         355 kB
+├ ○ /profile/reviews                       265 B           354 kB
+├ ○ /profile/saved                         263 B           354 kB
+├ ○ /recent                                8.45 kB         362 kB
+├ ○ /recent/eatingHabit                    3.93 kB         357 kB
+├ ○ /recent/nationality                    3.91 kB         357 kB
+├ ○ /recent/restaurant                     3.13 kB         356 kB
+├ ○ /register/eatingHabits                 4.02 kB         357 kB
+├ ○ /register/nationality                  2.37 kB         356 kB
+└ λ /search/[type]                         1.82 kB         355 kB
++ First Load JS shared by all              353 kB
   ├ chunks/framework-749f74b9b46c2a3f.js   45.4 kB
-  ├ chunks/main-c432f13bf52ed960.js        30.7 kB
-  ├ chunks/pages/_app-b33c9b2b3b16c9cc.js  237 kB
-  └ chunks/webpack-c7d671fbd3a7f0f1.js     1.14 kB
+  ├ chunks/main-e2980877f7152e6b.js        30.7 kB
+  ├ chunks/pages/_app-1ef4537f528612d2.js  276 kB
+  └ chunks/webpack-235955b20eb3ee85.js     1.15 kB
 
-ƒ Middleware                               58.5 kB
+ƒ Middleware                               62 kB
 
 λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
 ○  (Static)  automatically rendered as static HTML (uses no initial props)

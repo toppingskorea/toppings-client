@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 import { Input } from ".";
 
 interface Props extends ComponentProps<typeof Input> {
-  onSubmit: VoidFunction;
+  onSubmit?: VoidFunction;
   setValue: (value: string) => void;
 }
 
@@ -20,16 +20,9 @@ const SearchInput = (props: Props) => {
       `}
     >
       <Input
-        css={css`
-          border-radius: 100px;
-          background-color: ${colors.secondary.D9};
-          border: none;
-          font-size: 17px;
-          font-weight: ${weighs.medium};
-          &::placeholder {
-            color: ${colors.white};
-          }
-        `}
+        onKeyDown={e => {
+          if (e.key === "Enter" && onSubmit) onSubmit();
+        }}
         preAppend={
           <button type="button" onClick={onSubmit}>
             <Search />
@@ -50,6 +43,16 @@ const SearchInput = (props: Props) => {
         }
         value={value}
         {...rest}
+        css={css`
+          border-radius: 100px;
+          background-color: ${colors.secondary.D9};
+          border: none;
+          font-size: 17px;
+          font-weight: ${weighs.medium};
+          &::placeholder {
+            color: ${colors.white};
+          }
+        `}
       />
     </div>
   );

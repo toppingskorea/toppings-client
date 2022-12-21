@@ -2,8 +2,8 @@ import { css } from "@emotion/react";
 import { padding, touchable } from "@toss/emotion-utils";
 import type { ComponentProps } from "react";
 import { Text } from "../Typo";
-import type { CommonProps } from "./RoundedTag";
 import type RoundedTag from "./RoundedTag";
+import type { CommonProps } from "./RoundedTag";
 
 interface Props extends ComponentProps<typeof RoundedTag> {
   selectedProps: CommonProps;
@@ -16,7 +16,7 @@ const ClickableRoundedTag = ({
   defaultProps,
   selectedProps,
   selected,
-  paddingX,
+  padding: _padding,
   _fontSize,
   onClick
 }: Props) => {
@@ -25,7 +25,7 @@ const ClickableRoundedTag = ({
     <li
       css={css`
         display: inline-block;
-        ${padding({ y: 7, x: paddingX })}
+        ${padding(_padding)}
         ${touchable}
 
         background-color: ${selected

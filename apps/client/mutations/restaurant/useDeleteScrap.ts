@@ -22,7 +22,9 @@ const useDeleteScrap = (id: number) => {
       return { previous };
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(Keys.restaurant(id));
+      queryClient.invalidateQueries({
+        queryKey: Keys.restaurant(id)
+      });
     }
   });
 };
