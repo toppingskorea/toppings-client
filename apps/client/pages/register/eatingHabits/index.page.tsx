@@ -11,7 +11,7 @@ import { Text } from "~/components/Common/Typo";
 import { SelectEatingHabit } from "~/components/Section";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
-import { useRegister } from "~/mutations/register";
+import { useRegister } from "~/server/register";
 
 const EatingHabits = () => {
   const { push } = useInternalRouter();

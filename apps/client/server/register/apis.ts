@@ -1,6 +1,5 @@
 import { authRequest } from "~/constants";
 
-// eslint-disable-next-line import/prefer-default-export
 export const register = (payload: {
   country: string;
   habit?: { title: string; content: string }[];
