@@ -7,6 +7,7 @@ import {
   useEffect,
   useMemo,
   useRef,
+  useCallback,
   useState
 } from "react";
 import { hiddenScroll } from "~/styles/emotionUtils";
@@ -15,6 +16,7 @@ type Value = {
   scrollContainerRef: RefObject<HTMLDivElement>;
   scrollContainerHeight: number;
   scrollContainerWidth: number;
+  scrollToTop: VoidFunction;
 };
 
 const Context = createContext({} as Value);
@@ -28,6 +30,11 @@ const ScrollContainer = ({ children }: PropsWithChildren) => {
 
   const scrollContainerHeight = ref.current?.getClientRects()[0].height ?? 0;
   const scrollContainerWidth = ref.current?.getClientRects()[0].width ?? 0;
+
+  const scrollToTop = useCallback(
+    () => ref.current?.scrollTo({ top: 0, behavior: "smooth" }),
+    []
+  );
 
   useEffect(() => {
     const handleResize = () => setHeight(window.innerHeight);
@@ -44,9 +51,10 @@ const ScrollContainer = ({ children }: PropsWithChildren) => {
     () => ({
       scrollContainerRef: ref,
       scrollContainerHeight,
-      scrollContainerWidth
+      scrollContainerWidth,
+      scrollToTop
     }),
-    [scrollContainerHeight, scrollContainerWidth]
+    [scrollContainerHeight, scrollContainerWidth, scrollToTop]
   );
 
   return (
