@@ -1,8 +1,8 @@
 import { useTheme } from "@emotion/react";
+import { Edit } from "@svgs/common";
 import { Flex, Spacing } from "@toss/emotion-utils";
 import Image from "next/image";
 import { Text } from "~/components/Common/Typo";
-import { Edit } from "~/components/Post";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { usePostUploadSetter, useRestaurantSetter } from "~/recoil/atoms";
 import { useFetchRestaurant } from "~/server/restaurant";
