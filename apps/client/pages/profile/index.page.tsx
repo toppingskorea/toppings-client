@@ -60,7 +60,7 @@ const Profile = () => {
           ${padding({ x: 25 })}
         `}
       >
-        <Stack.Horizontal align="center" gutter={37}>
+        <Stack.Horizontal align="center" gutter={0} justify="space-between">
           <Image
             src={data.profile || avatar}
             alt={`${data.name}'s profile`}
@@ -91,7 +91,9 @@ const Profile = () => {
             </LabelWithEllipse>
           </motion.ul>
         </Stack.Horizontal>
+
         <Spacing size={58} />
+
         <ComponentWithLabel label="Nationality" gutter={11}>
           <RoundedTag
             padding={{
