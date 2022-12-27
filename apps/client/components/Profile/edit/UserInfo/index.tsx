@@ -4,7 +4,7 @@ import { Flex, position, Spacing, width100 } from "@toss/emotion-utils";
 import { ComponentWithLabel, Input } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter } from "~/hooks";
-import { useFetchUserInfo } from "~/queries/profile";
+import { useFetchUserInfo } from "~/server/profile";
 import ClickableInput from "./ClickableInput";
 import ProfileImage from "./ProfileImage";
 

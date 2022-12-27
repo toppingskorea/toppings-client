@@ -29,7 +29,7 @@ import {
   staggerOne
 } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
-import { Keys, useFetchUserInfo } from "~/queries/profile";
+import { Keys, useFetchUserInfo } from "~/server/profile";
 
 const Profile = () => {
   const { colors, weighs, dimensions } = useTheme();

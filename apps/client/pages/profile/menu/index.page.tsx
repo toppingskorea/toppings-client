@@ -1,7 +1,7 @@
 import { useOverlay } from "@toss/use-overlay";
 import { SuccessModal } from "~/components/Common";
 import { useInternalRouter, useSetNavigation, useTokenCookie } from "~/hooks";
-import { useLogout } from "~/mutations/profile";
+import { useLogout } from "~/server/profile";
 
 const ProfileMenu = () => {
   const cookie = useTokenCookie();
