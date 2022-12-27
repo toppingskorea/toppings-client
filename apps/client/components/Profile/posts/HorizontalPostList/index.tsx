@@ -10,6 +10,7 @@ interface Props {
 const HorizontalPostList = ({ query }: Props) => {
   const { push } = useRouter();
   const { data: restaurants } = query();
+
   return (
     <Stack.Vertical gutter={10}>
       {restaurants.map(restaurant => (
