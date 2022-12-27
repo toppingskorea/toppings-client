@@ -1,7 +1,13 @@
 import type { UseQueryOptions } from "@tanstack/react-query";
 import { useQuery } from "@tanstack/react-query";
-import { getUserInfo, getUserPosts } from "./apis";
 import type { BaseSuspendedUseQueryResult } from "~/hooks/useSuspendedQuery";
+import { useSuspendedQuery } from "~/hooks/useSuspendedQuery";
+import {
+  getUserInfo,
+  getUserPosts,
+  getUserReviewedRestaurant,
+  getUserScraps
+} from "./apis";
 import Keys from "./keys";
 
 export const useFetchUserInfo = (
@@ -32,3 +38,9 @@ export const useFetchUserPosts = (
     options
   ) as BaseSuspendedUseQueryResult<Profile.PostDTO[]>;
 };
+
+export const useFetchScrapedRestaurant = () =>
+  useSuspendedQuery(Keys.scraps(), getUserScraps);
+
+export const useFetchReviewedRestaurant = () =>
+  useSuspendedQuery(Keys.reviews(), getUserReviewedRestaurant);

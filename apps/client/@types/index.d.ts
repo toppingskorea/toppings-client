@@ -150,18 +150,34 @@ declare module Recent {
 }
 
 declare module Restaurant {
-  interface SearchByCountryDTO {
-    address?: string;
-    description: string;
-    filterLikeCount?: number;
+  interface BaseDTO {
     id: number;
-    latitude: number;
-    like: boolean;
-    likeCount: number;
-    longitude: number;
     name: string;
-    thumbnail: string;
+    address: string;
+    latitude: number;
+    longitude: number;
+    description: string;
     type: string;
+    thumbnail: string;
+    likeCount: number;
     writer: string;
+    like: boolean;
   }
+
+  interface SearchByCountryDTO extends BaseDTO {
+    address: string;
+    filterLikeCount?: number;
+  }
+
+  type CardDTO = Pick<
+    BaseDTO,
+    | "id"
+    | "thumbnail"
+    | "type"
+    | "writer"
+    | "name"
+    | "address"
+    | "like"
+    | "likeCount"
+  >;
 }

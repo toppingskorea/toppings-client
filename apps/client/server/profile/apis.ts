@@ -33,3 +33,21 @@ export const getUserPosts = async () => {
 
   return data.data;
 };
+
+// 유저 회원의 스크랩 게시물 조회
+export const getUserScraps = async () => {
+  const { data } = await authRequest.get<{ data: Restaurant.BaseDTO[] }>(
+    `/v1/user/scrap`
+  );
+
+  return data.data;
+};
+
+// 유저 회원의 댓글 게시물 조회
+export const getUserReviewedRestaurant = async () => {
+  const { data } = await authRequest.get<{ data: Restaurant.BaseDTO[] }>(
+    `/v1/user/review`
+  );
+
+  return data.data;
+};
