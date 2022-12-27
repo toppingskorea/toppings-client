@@ -11,7 +11,7 @@ import { FilledButton, SuccessModal } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { types } from "~/constants/data/common";
 import { useInternalRouter } from "~/hooks";
-import { useUploadPost } from "~/mutations/post";
+import { useUploadPost } from "~/server/post";
 
 const Register = () => {
   const { colors } = useTheme();

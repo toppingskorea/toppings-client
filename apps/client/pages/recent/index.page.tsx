@@ -16,8 +16,7 @@ import { History, TagFamily } from "~/components/Recent";
 import Skeleton from "~/components/Skeleton";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useSetNavigation } from "~/hooks";
-import { useDeleteAllRecentHistory } from "~/mutations/recent";
-import Keys from "~/queries/recent/keys";
+import { useDeleteAllRecentHistory, Keys } from "~/server/recent";
 
 const RecentPage = () => {
   const { colors, zIndex } = useTheme();

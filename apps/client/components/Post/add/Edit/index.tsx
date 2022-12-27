@@ -14,10 +14,10 @@ import { FilledButton, SuccessModal } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { types } from "~/constants/data/common";
 import { useInternalRouter } from "~/hooks";
-import { useDeletePost, useUpdatePost } from "~/mutations/post";
+import { useDeletePost, useUpdatePost } from "~/server/post";
 
 const Edit = () => {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   const overlay = useOverlay();
   const router = useInternalRouter();
   const restaurant = useRestaurantValue();

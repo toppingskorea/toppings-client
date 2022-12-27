@@ -8,7 +8,7 @@ import { useInput, useSetNavigation } from "~/hooks";
 import {
   useFetchEatingHabitByFiltering,
   useUploadRecentHistory
-} from "~/mutations/recent";
+} from "~/server/recent";
 import {
   useCurrentSelectCategorySetter,
   useMapSearchByCountrySetter

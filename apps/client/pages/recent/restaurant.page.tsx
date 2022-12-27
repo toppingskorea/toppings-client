@@ -11,7 +11,7 @@ import { useInput, useSetNavigation } from "~/hooks";
 import {
   useFetchRestaurantNameByFiltering,
   useUploadRecentHistory
-} from "~/mutations/recent";
+} from "~/server/recent";
 import {
   useCurrentLocationSetter,
   useCurrentSelectCategorySetter

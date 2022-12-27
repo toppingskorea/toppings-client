@@ -1,7 +1,7 @@
 import Map from "~/components/Map";
 import { MapProvider } from "~/contexts";
 import { useSetNavigation } from "~/hooks";
-import { useFetchDefaultMap } from "~/mutations/recent";
+import { useFetchDefaultMap } from "~/server/recent";
 import { useMapBoundsValue, useMapSearchByCountrySetter } from "~/recoil/atoms";
 
 const MapPage = () => {

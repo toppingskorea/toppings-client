@@ -13,7 +13,7 @@ import {
 import {
   useFetchRestaurantByCountry,
   useUploadRecentHistory
-} from "~/mutations/recent";
+} from "~/server/recent";
 import {
   useCurrentSelectCategorySetter,
   useMapSearchByCountrySetter
