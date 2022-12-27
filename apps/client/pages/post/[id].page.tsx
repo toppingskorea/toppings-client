@@ -52,7 +52,12 @@ const PostDetail = ({
         Likes
       </Badge>
       <Spacing size={20} />
-      <Likes id={id} />
+      {!app.likePercent.countryPercent.length &&
+      !app.likePercent.habitPercent.length ? (
+        "아직없네요!! 좋아요 눌러요!!"
+      ) : (
+        <Likes id={id} />
+      )}
 
       <Spacing size={30} />
 
@@ -66,7 +71,7 @@ const PostDetail = ({
         Reviews
       </Badge>
       <Spacing size={20} />
-      <Reviews id={id} />
+      {app.reviews.length ? <Reviews id={id} /> : "첫리뷰를 남겨봐요!!"}
     </section>
   );
 };

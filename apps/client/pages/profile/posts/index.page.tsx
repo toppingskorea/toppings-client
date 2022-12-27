@@ -49,6 +49,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
         }
       }
     );
+
     return data.data;
   });
 

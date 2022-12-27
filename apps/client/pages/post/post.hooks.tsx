@@ -5,13 +5,19 @@ import Image from "next/image";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { usePostUploadSetter, useRestaurantSetter } from "~/recoil/atoms";
-import { useFetchRestaurant } from "~/server/restaurant";
+import {
+  useFetchLikePercent,
+  useFetchRestaurant,
+  useFetchReviews
+} from "~/server/restaurant";
 import { countryToSvg } from "~/utils";
 
 const usePost = (id: string) => {
   const { colors, weighs } = useTheme();
   const { push } = useInternalRouter();
   const { data: restaurantDetail } = useFetchRestaurant(+id);
+  const { data: likePercent } = useFetchLikePercent(+id);
+  const { data: reviews } = useFetchReviews(+id);
 
   const setRestaurant = useRestaurantSetter();
   const setPostUpload = usePostUploadSetter();
@@ -64,7 +70,9 @@ const usePost = (id: string) => {
   });
 
   return {
-    restaurantDetail
+    restaurantDetail,
+    likePercent,
+    reviews
   };
 };
 
