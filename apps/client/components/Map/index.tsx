@@ -1,4 +1,5 @@
 import { css, useTheme } from "@emotion/react";
+import { FullHeight, height100, width100 } from "@toss/emotion-utils";
 import { useCallback } from "react";
 import { useMap } from "~/contexts";
 import { useMapBoundsSetter, type Direction } from "~/recoil/atoms";
@@ -26,8 +27,8 @@ const Map = ({ children }: Util.PropsWithChild) => {
     <div
       ref={mapRef}
       css={css`
-        width: 100%;
-        height: calc(100% - ${dimensions.bottomNavigationHeight}px);
+        ${width100}
+        ${height100}
         z-index: ${zIndex.zero};
       `}
     >
