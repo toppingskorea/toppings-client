@@ -2,7 +2,7 @@ import { useEditValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { Flex, flex, padding, size, Stack } from "@toss/emotion-utils";
+import { Flex, flex, padding, size, Spacing, Stack } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import axios from "axios";
 import type { GetServerSideProps } from "next";
@@ -77,6 +77,7 @@ const ProfileEdit = () => {
         `}
       >
         <UserInfo />
+        <Spacing size={24} />
         <Flex
           justify="center"
           css={css`
