@@ -4,7 +4,12 @@ import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { SearchInput } from "~/components/Common";
 import { Result } from "~/components/Search";
-import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
+import {
+  useInput,
+  useInternalRouter,
+  useScrollToTopByKeywordChange,
+  useSetNavigation
+} from "~/hooks";
 
 export type SearchType = "restaurant" | "local";
 
@@ -33,6 +38,8 @@ const Search = ({
     useDebounce: true,
     debounceTimeout: 300
   });
+
+  useScrollToTopByKeywordChange(keyword.value);
 
   return (
     <SafeArea>

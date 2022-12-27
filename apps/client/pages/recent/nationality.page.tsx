@@ -1,11 +1,15 @@
 import { Exit } from "@svgs/common";
 import { SafeArea } from "@toss/emotion-utils";
-import { useEffect } from "react";
-import { SearchInput, useScrollContainer } from "~/components/Common";
+import { SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
 import { SearchNationality } from "~/components/Section";
-import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
+import {
+  useInput,
+  useInternalRouter,
+  useScrollToTopByKeywordChange,
+  useSetNavigation
+} from "~/hooks";
 import {
   useFetchRestaurantByCountry,
   useUploadRecentHistory
@@ -17,7 +21,7 @@ import {
 
 const RecentPage = () => {
   const { push } = useInternalRouter();
-  const { scrollToTop } = useScrollContainer();
+
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
@@ -41,11 +45,7 @@ const RecentPage = () => {
 
   const { props: keyword, setValue } = useInput({});
 
-  useEffect(() => {
-    if (keyword.value) {
-      scrollToTop();
-    }
-  }, [keyword.value, scrollToTop]);
+  useScrollToTopByKeywordChange(keyword.value);
 
   return (
     <SafeArea>

@@ -2,15 +2,18 @@ import { useEditState } from "@atoms/edit";
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { padding, position, width100 } from "@toss/emotion-utils";
-import { useEffect } from "react";
-import { SearchInput, useScrollContainer } from "~/components/Common";
+import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SearchNationality } from "~/components/Section";
-import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
+import {
+  useInput,
+  useInternalRouter,
+  useScrollToTopByKeywordChange,
+  useSetNavigation
+} from "~/hooks";
 
 const ProfileEditNationality = () => {
   const { push, back } = useInternalRouter();
-  const { scrollToTop } = useScrollContainer();
   const { colors, weighs, dimensions } = useTheme();
   const [edit, setEdit] = useEditState();
 
@@ -31,11 +34,7 @@ const ProfileEditNationality = () => {
 
   const { props: keyword, setValue } = useInput({});
 
-  useEffect(() => {
-    if (keyword.value) {
-      scrollToTop();
-    }
-  }, [keyword.value, scrollToTop]);
+  useScrollToTopByKeywordChange(keyword.value);
 
   return (
     <section>
