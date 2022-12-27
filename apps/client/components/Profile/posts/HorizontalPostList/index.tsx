@@ -15,6 +15,7 @@ const HorizontalPostList = ({ query }: Props) => {
     <Stack.Vertical gutter={10}>
       {restaurants.map(restaurant => (
         <RestaurantCard
+          key={restaurant.id}
           onClick={() => push(`/post/${restaurant.id}`)}
           item={restaurant}
         />
