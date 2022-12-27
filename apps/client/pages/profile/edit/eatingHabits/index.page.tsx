@@ -10,7 +10,7 @@ import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 
 const ProfileEditEatingHabits = () => {
-  const router = useInternalRouter();
+  const { push, back } = useInternalRouter();
   const { colors, weighs, dimensions } = useTheme();
   const [edit, setEdit] = useEditState();
   useSetNavigation({
@@ -20,7 +20,10 @@ const ProfileEditEatingHabits = () => {
           Select a Eating Habit
         </Text>
       ),
-      right: <Exit />
+      right: {
+        element: <Exit />,
+        onClick: () => push("/map")
+      }
     },
     bottom: true
   });
@@ -60,7 +63,7 @@ const ProfileEditEatingHabits = () => {
             height: 37
           }}
           bgcolor={colors.primary}
-          onClick={router.back}
+          onClick={back}
         >
           <Text _fontSize={17} _color={colors.white} weight={weighs.semiBold}>
             Save

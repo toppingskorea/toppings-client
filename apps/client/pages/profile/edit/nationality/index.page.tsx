@@ -8,7 +8,7 @@ import { SearchNationality } from "~/components/Section";
 import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
 
 const ProfileEditNationality = () => {
-  const router = useInternalRouter();
+  const { push, back } = useInternalRouter();
   const { colors, weighs, dimensions } = useTheme();
   const [edit, setEdit] = useEditState();
 
@@ -20,7 +20,10 @@ const ProfileEditNationality = () => {
           Select a Nationality
         </Text>
       ),
-      right: <Exit />
+      right: {
+        element: <Exit />,
+        onClick: () => push("/map")
+      }
     },
     bottom: true
   });
@@ -33,7 +36,7 @@ const ProfileEditNationality = () => {
         keyword={keyword.value}
         onCountryClick={name => {
           setEdit({ ...edit, country: name });
-          router.back();
+          back();
         }}
       />
 

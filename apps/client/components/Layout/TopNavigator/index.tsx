@@ -50,7 +50,9 @@ const TopNavigator = () => {
           )}
 
           {state.top?.right ? (
-            <MotionButton>{state.top?.right}</MotionButton>
+            <MotionButton onClick={state.top.right.onClick}>
+              {state.top?.right.element}
+            </MotionButton>
           ) : (
             <Spacing size={0} />
           )}

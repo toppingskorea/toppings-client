@@ -23,7 +23,10 @@ const ProfileEdit = () => {
   useSetNavigation({
     top: {
       title: undefined,
-      right: <Exit />,
+      right: {
+        element: <Exit />,
+        onClick: () => push("/map")
+      },
       marginBottom: 24
     },
     bottom: true

@@ -1,11 +1,10 @@
 import { Exit } from "@svgs/common";
 import { SafeArea } from "@toss/emotion-utils";
-import { useRouter } from "next/router";
 import { SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
 import { SearchNationality } from "~/components/Section";
-import { useInput, useSetNavigation } from "~/hooks";
+import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
 import {
   useFetchRestaurantByCountry,
   useUploadRecentHistory
@@ -16,7 +15,7 @@ import {
 } from "~/recoil/atoms";
 
 const RecentPage = () => {
-  const { push } = useRouter();
+  const { push } = useInternalRouter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
@@ -24,7 +23,6 @@ const RecentPage = () => {
     useFetchRestaurantByCountry({
       onSuccess: data => {
         setMapSearchByCountry(data);
-
         push("/map");
       }
     });
@@ -32,7 +30,10 @@ const RecentPage = () => {
   useSetNavigation({
     top: {
       marginBottom: 37,
-      right: <Exit />
+      right: {
+        element: <Exit />,
+        onClick: () => push("/map")
+      }
     }
   });
 

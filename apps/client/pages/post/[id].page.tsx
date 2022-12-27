@@ -45,33 +45,29 @@ const PostDetail = ({
           </Text>
         </Flex>
       ),
-      right: (
-        <button
-          type="button"
-          onClick={() => {
-            setRestaurant({
-              address_name: data.address,
-              id,
-              category_group_name: "",
-              place_name: data.name,
-              road_address_name: data.address,
-              x: String(data.longitude),
-              y: String(data.latitude)
-            });
+      right: {
+        element: <Edit />,
+        onClick: () => {
+          setRestaurant({
+            address_name: data.address,
+            id,
+            category_group_name: "",
+            place_name: data.name,
+            road_address_name: data.address,
+            x: String(data.longitude),
+            y: String(data.latitude)
+          });
 
-            setPostUpload({
-              description: data.description,
-              images: data.images,
-              type: data.type,
-              id: data.id
-            });
+          setPostUpload({
+            description: data.description,
+            images: data.images,
+            type: data.type,
+            id: data.id
+          });
 
-            push("/post/add");
-          }}
-        >
-          <Edit />
-        </button>
-      )
+          push("/post/add");
+        }
+      }
     },
     bottom: true
   });

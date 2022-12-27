@@ -15,7 +15,7 @@ import { useRegister } from "~/mutations/register";
 
 const EatingHabits = () => {
   const { push } = useInternalRouter();
-  const {colors,weighs} = useTheme();
+  const { colors, weighs } = useTheme();
   const [register, setRegister] = useRegisterState();
   const overlay = useOverlay();
 
@@ -38,23 +38,18 @@ const EatingHabits = () => {
     top: {
       marginBottom: 35,
       title: (
-        <Text
-          _fontSize={23}
-          weight={weighs.bold}
-          _color={colors.secondary[47]}
-        >
+        <Text _fontSize={23} weight={weighs.bold} _color={colors.secondary[47]}>
           Select a Eating Habit
         </Text>
       ),
-      right: (
-        <Text
-          _fontSize={15}
-          _color={colors.secondary[69]}
-          onClick={onSubmitRegister}
-        >
-          Skip
-        </Text>
-      )
+      right: {
+        element: (
+          <Text _fontSize={15} _color={colors.secondary[69]}>
+            Skip
+          </Text>
+        ),
+        onClick: onSubmitRegister
+      }
     }
   });
 

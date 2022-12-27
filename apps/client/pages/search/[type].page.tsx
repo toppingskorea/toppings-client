@@ -4,20 +4,25 @@ import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { SearchInput } from "~/components/Common";
 import { Result } from "~/components/Search";
-import { useInput, useSetNavigation } from "~/hooks";
+import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
 
 export type SearchType = "restaurant" | "local";
 
 const Search = ({
   type
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const { colors, dimensions } = useTheme();
+  const { push } = useInternalRouter();
+
   useSetNavigation({
     top: {
       marginBottom: 35,
-      right: <Exit />
+      right: {
+        element: <Exit />,
+        onClick: () => push("/map")
+      }
     }
   });
-  const { colors, dimensions } = useTheme();
 
   const {
     props: keyword,

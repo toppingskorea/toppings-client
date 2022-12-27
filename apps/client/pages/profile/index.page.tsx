@@ -34,20 +34,15 @@ import { Keys, useFetchUserInfo } from "~/queries/profile";
 const Profile = () => {
   const { colors, weighs, dimensions } = useTheme();
   const { data } = useFetchUserInfo();
-  console.log(data);
 
   const { push } = useInternalRouter();
 
   useSetNavigation({
     top: {
-      right: (
-        <motion.button
-          onClick={() => push("/profile/menu")}
-          title="메뉴 바로가기"
-        >
-          <Hamburger />
-        </motion.button>
-      ),
+      right: {
+        element: <Hamburger />,
+        onClick: () => push("/profile/menu")
+      },
       title: (
         <Text _fontSize={24} _color={colors.secondary[47]}>
           {data?.name ?? ""}

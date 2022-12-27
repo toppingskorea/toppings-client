@@ -1,3 +1,4 @@
+import type { MouseEventHandler } from "react";
 import {
   atom,
   useRecoilState,
@@ -8,7 +9,10 @@ import {
 const navigationAtom = atom<{
   top?: {
     title?: JSX.Element;
-    right?: JSX.Element;
+    right?: {
+      element: JSX.Element;
+      onClick: MouseEventHandler<HTMLButtonElement>;
+    };
     marginBottom?: Common.CSSPixelValue;
   };
   bottom?: boolean;

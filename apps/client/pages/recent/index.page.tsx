@@ -35,7 +35,10 @@ const RecentPage = () => {
   useSetNavigation({
     top: {
       marginBottom: 85,
-      right: <Exit onClick={() => push("/map")} />
+      right: {
+        element: <Exit />,
+        onClick: () => push("/map")
+      }
     }
   });
 
