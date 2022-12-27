@@ -1,4 +1,5 @@
 import { css, Global } from "@emotion/react";
+import { height100, position } from "@toss/emotion-utils";
 
 const GlobalCSS = () => {
   return (
@@ -10,6 +11,14 @@ const GlobalCSS = () => {
           box-sizing: border-box;
           margin: 0;
           padding: 0;
+        }
+
+        // 화면을 꽉 채우기 위해서
+        body {
+          ${position("fixed", { bottom: 0, top: 0, right: 0, left: 0 })};
+        }
+        #__next {
+          ${height100};
         }
 
         /* iOS 15이하 대응 */
