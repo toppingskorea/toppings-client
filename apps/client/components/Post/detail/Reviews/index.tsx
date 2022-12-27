@@ -3,7 +3,7 @@ import { avatar } from "@images/profile";
 import { Flex, padding, Spacing, Stack, width100 } from "@toss/emotion-utils";
 import Image from "next/image";
 import { Text } from "~/components/Common/Typo";
-import { useFetchReviews } from "~/queries/restaurant";
+import { useFetchReviews } from "~/server/restaurant";
 import { countryToSvg } from "~/utils";
 
 interface Props {

@@ -19,8 +19,8 @@ Route (pages)                              Size     First Load JS
 ├ ○ /login/redirect                        272 B           357 kB
 ├ ○ /map                                   3.98 kB         361 kB
 ├ ○ /notice                                276 B           357 kB
-├ λ /post/[id]                             956 B           364 kB
-├ ○ /post/add                              973 B           364 kB
+├ λ /post/[id]                             955 B           364 kB
+├ ○ /post/add                              974 B           364 kB
 ├ λ /profile                               3.04 kB         360 kB
 ├ λ /profile/edit                          3.57 kB         360 kB
 ├ ○ /profile/edit/eatingHabits             2.38 kB         359 kB

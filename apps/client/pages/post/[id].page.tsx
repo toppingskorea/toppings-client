@@ -5,13 +5,17 @@ import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
 import axios from "axios";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Image from "next/image";
-import { getLikePercent, getReviews } from "~/apis/restaurant";
 import { Badge } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { ImageCarousel, Info, Likes, Reviews } from "~/components/Post";
 import { env } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
-import { Keys, useFetchRestaurant } from "~/queries/restaurant";
+import {
+  Keys,
+  useFetchRestaurant,
+  getLikePercent,
+  getReviews
+} from "~/server/restaurant";
 import { usePostUploadSetter, useRestaurantSetter } from "~/recoil/atoms";
 import { countryToSvg, pick } from "~/utils";
 
