@@ -1,80 +1,19 @@
-import { css, useTheme } from "@emotion/react";
-import { Edit } from "@svgs/common";
+import { css } from "@emotion/react";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
+import { size, Spacing, Stack } from "@toss/emotion-utils";
 import axios from "axios";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Image from "next/image";
 import { Badge } from "~/components/Common";
-import { Text } from "~/components/Common/Typo";
 import { ImageCarousel, Info, Likes, Reviews } from "~/components/Post";
 import { env } from "~/constants";
-import { useInternalRouter, useSetNavigation } from "~/hooks";
-import {
-  Keys,
-  useFetchRestaurant,
-  getLikePercent,
-  getReviews
-} from "~/server/restaurant";
-import { usePostUploadSetter, useRestaurantSetter } from "~/recoil/atoms";
-import { countryToSvg, pick } from "~/utils";
+import { getLikePercent, getReviews, Keys } from "~/server/restaurant";
+import { pick } from "~/utils";
+import usePost from "./post.hooks";
 
 const PostDetail = ({
   id
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { colors, weighs } = useTheme();
-  const { data } = useFetchRestaurant(+id);
-
-  const setRestaurant = useRestaurantSetter();
-  const setPostUpload = usePostUploadSetter();
-  const { push } = useInternalRouter();
-
-  useSetNavigation({
-    top: {
-      title: (
-        <Flex align="center">
-          <Image
-            src={countryToSvg(data.country)}
-            width={24}
-            height={24}
-            alt={`${data.writer}'s country flag`}
-          />
-          <Spacing direction="horizontal" size={14} />
-          <Text
-            _fontSize={20}
-            _color={colors.secondary[69]}
-            weight={weighs.medium}
-          >
-            {data.writer}
-          </Text>
-        </Flex>
-      ),
-      right: {
-        element: <Edit />,
-        onClick: () => {
-          setRestaurant({
-            address_name: data.address,
-            id,
-            category_group_name: "",
-            place_name: data.name,
-            road_address_name: data.address,
-            x: String(data.longitude),
-            y: String(data.latitude)
-          });
-
-          setPostUpload({
-            description: data.description,
-            images: data.images,
-            type: data.type,
-            id: data.id
-          });
-
-          push("/post/add");
-        }
-      }
-    },
-    bottom: true
-  });
+  const app = usePost(id);
 
   return (
     <section>
@@ -86,10 +25,10 @@ const PostDetail = ({
           margin:0 auto;
         `}
       >
-        <ImageCarousel images={data.images} />
+        <ImageCarousel images={app.restaurantDetail.images} />
         <Spacing size={18} />
         <Info
-          {...pick({ ...data }, [
+          {...pick({ ...app.restaurantDetail }, [
             "id",
             "name",
             "address",
