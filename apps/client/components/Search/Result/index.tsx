@@ -95,6 +95,7 @@ const Result = ({ value, type }: Props) => {
     <ul>
       {result.map(item => (
         <li
+          key={item.id}
           css={css`
             ${padding({ x: 8, y: 10 })}
             border-bottom: 1px solid ${colors.secondary.D9};
