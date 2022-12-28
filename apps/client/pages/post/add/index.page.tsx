@@ -24,7 +24,7 @@ const PostAdd = () => {
         onClick: () => push("/map")
       }
     },
-    bottom: true
+    bottom: false
   });
 
   return (
