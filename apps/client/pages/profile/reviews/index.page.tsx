@@ -9,6 +9,7 @@ import { generateComponent } from "~/utils";
 
 const ProfileReviews = () => {
   useSetNavigation({
+    top: {},
     bottom: true
   });
 
