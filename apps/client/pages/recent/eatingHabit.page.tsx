@@ -1,11 +1,11 @@
+import {
+  useCurrentSelectCategorySetter,
+  useMapSearchByCountrySetter
+} from "@atoms/index";
 import { useRouter } from "next/router";
 import { TagFamily } from "~/components/Recent";
 import { SelectEatingHabit } from "~/components/Section";
 import { useSetNavigation } from "~/hooks";
-import {
-  useCurrentSelectCategorySetter,
-  useMapSearchByCountrySetter
-} from "~/recoil/atoms";
 import {
   useFetchEatingHabitByFiltering,
   useUploadRecentHistory

@@ -1,3 +1,7 @@
+import {
+  useCurrentSelectCategorySetter,
+  useMapSearchByCountrySetter
+} from "@atoms/index";
 import { Exit } from "@svgs/common";
 import { SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
@@ -9,10 +13,6 @@ import {
   useScrollToTopByKeywordChange,
   useSetNavigation
 } from "~/hooks";
-import {
-  useCurrentSelectCategorySetter,
-  useMapSearchByCountrySetter
-} from "~/recoil/atoms";
 import {
   useFetchRestaurantByCountry,
   useUploadRecentHistory

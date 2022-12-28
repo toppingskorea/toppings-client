@@ -1,5 +1,5 @@
+import type { Direction } from "@atoms/index";
 import { authRequest } from "~/constants";
-import type { Direction } from "~/recoil/atoms";
 
 // 최근검색 / 최근 검색 목록 조회
 export const getRecentHistory = async () => {

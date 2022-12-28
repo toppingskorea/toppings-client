@@ -1,9 +1,9 @@
+import { usePostUploadReset, useRestaurantReset } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { flex, padding, width100 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { InternalLink } from "~/components/Common";
 import { useInternalRouter } from "~/hooks";
-import { usePostUploadReset, useRestaurantReset } from "~/recoil/atoms";
 import navList from "./BottomNavigator.constants";
 
 const BottomNavigator = () => {

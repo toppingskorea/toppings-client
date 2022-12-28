@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { useReviewUploadValue } from "@atoms/review";
 import { css, useTheme } from "@emotion/react";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { Flex, padding, Spacing, Stack } from "@toss/emotion-utils";
@@ -17,7 +18,6 @@ import {
 import { Text } from "~/components/Common/Typo";
 import { env } from "~/constants";
 import { useSetNavigation } from "~/hooks";
-import { useReviewUploadValue } from "~/recoil/atoms/review";
 import { Keys, useFetchRestaurant } from "~/server/restaurant";
 import { useUpdateReview, useUploadReview } from "~/server/review";
 

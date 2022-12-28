@@ -1,3 +1,7 @@
+import {
+  useCurrentLocationSetter,
+  useCurrentSelectCategorySetter
+} from "@atoms/index";
 import { css } from "@emotion/react";
 import { padding } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
@@ -6,10 +10,6 @@ import { RestaurantCard, SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
 import { useInput, useSetNavigation } from "~/hooks";
-import {
-  useCurrentLocationSetter,
-  useCurrentSelectCategorySetter
-} from "~/recoil/atoms";
 import {
   useFetchRestaurantNameByFiltering,
   useUploadRecentHistory

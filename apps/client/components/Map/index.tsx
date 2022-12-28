@@ -1,8 +1,8 @@
+import { useMapBoundsSetter, type Direction } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
-import { FullHeight, height100, width100 } from "@toss/emotion-utils";
+import { height100, width100 } from "@toss/emotion-utils";
 import { useCallback } from "react";
 import { useMap } from "~/contexts";
-import { useMapBoundsSetter, type Direction } from "~/recoil/atoms";
 import FilteringButton from "./Button/FilteringButton";
 import MyLocationButton from "./Button/MyLocationButton";
 import RecentButton from "./Button/RecentButton";

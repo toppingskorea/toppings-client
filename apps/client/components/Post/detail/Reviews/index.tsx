@@ -1,12 +1,12 @@
+import { useReviewUploadSetter } from "@atoms/review";
 import { css, useTheme } from "@emotion/react";
 import { avatar } from "@images/profile";
+import { CircleThreeDot } from "@svgs/common";
 import { Flex, padding, Spacing, Stack, width100 } from "@toss/emotion-utils";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { CircleThreeDot } from "~/assets/svgs/common";
 import { MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import { useReviewUploadSetter } from "~/recoil/atoms/review";
 import { useFetchReviews } from "~/server/review";
 import { countryToSvg } from "~/utils";
 

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useCallback } from "react";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
-import { usePostUploadSetter, useRestaurantSetter } from "~/recoil/atoms";
+import { usePostUploadSetter, useRestaurantSetter } from "@atoms/index";
 import { useFetchLikePercent, useFetchRestaurant } from "~/server/restaurant";
 import { useFetchReviews } from "~/server/review";
 import { countryToSvg } from "~/utils";
