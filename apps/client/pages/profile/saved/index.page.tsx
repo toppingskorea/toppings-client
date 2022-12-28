@@ -5,6 +5,7 @@ import { HorizontalPostList } from "~/components/Profile/posts";
 import Skeleton from "~/components/Skeleton";
 import { useSetNavigation } from "~/hooks";
 import { useFetchScrapedRestaurant } from "~/server/profile";
+import { generateComponent } from "~/utils";
 
 const ProfileSaved = () => {
   useSetNavigation({
@@ -20,31 +21,16 @@ const ProfileSaved = () => {
     >
       <SSRSafeSuspense
         fallback={
-          <Stack.Vertical gutter={10}>
-            <Skeleton.Box
-              size={{
-                width: "100%",
-                height: 100
-              }}
-            />
-            <Skeleton.Box
-              size={{
-                width: "100%",
-                height: 100
-              }}
-            />
-            <Skeleton.Box
-              size={{
-                width: "100%",
-                height: 100
-              }}
-            />
-            <Skeleton.Box
-              size={{
-                width: "100%",
-                height: 100
-              }}
-            />
+          <Stack.Vertical>
+            {generateComponent(
+              <Skeleton.Box
+                size={{
+                  width: "100%",
+                  height: 100
+                }}
+              />,
+              4
+            )}
           </Stack.Vertical>
         }
       >

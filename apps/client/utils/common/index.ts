@@ -11,3 +11,4 @@ export { default as resizeBase64Img } from "./resizeBase64Img";
 export { default as hexToRgba } from "./hexToRgba";
 export { default as pick } from "./pick";
 export { default as clipboard } from "./clipboard";
+export { default as generateComponent } from "./generateComponent";
