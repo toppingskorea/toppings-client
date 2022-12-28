@@ -80,7 +80,7 @@ const AlertModal = ({ exitFn, deleteFn, information }: Props) => {
         ${size.full}
         ${gutter({ direction: "vertical", space: 30 })}
         background-color: ${hexToRgba(colors.black, 0.3)};
-        z-index: ${zIndex.ten};
+        z-index: ${zIndex.four};
       `}
       onClick={() => {
         if (information) exitFn();

@@ -19,7 +19,7 @@ const SuccessModal = ({ description }: Props) => {
         ${size.full};
         ${gutter({ direction: "vertical", space: 30 })};
         background-color: ${colors.white};
-        z-index: ${zIndex.ten};
+        z-index: ${zIndex.four};
       `}
     >
       <Lottie
