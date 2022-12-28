@@ -1,9 +1,7 @@
 import { useRouter } from "next/router";
-import { SearchInput } from "~/components/Common";
-import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
 import { SelectEatingHabit } from "~/components/Section";
-import { useInput, useSetNavigation } from "~/hooks";
+import { useSetNavigation } from "~/hooks";
 import {
   useCurrentSelectCategorySetter,
   useMapSearchByCountrySetter
@@ -33,18 +31,8 @@ const RecentPage = () => {
     }
   });
 
-  const { props: keyword, setValue } = useInput({});
-
   return (
     <>
-      <SearchLayout>
-        <SearchInput
-          placeholder="enter nationality name"
-          setValue={setValue}
-          {...keyword}
-        />
-      </SearchLayout>
-
       <TagFamily />
 
       <SelectEatingHabit
