@@ -1,5 +1,5 @@
 import { css, useTheme } from "@emotion/react";
-import { position, SafeArea } from "@toss/emotion-utils";
+import { position } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { motion } from "framer-motion";
 
@@ -58,7 +58,7 @@ const EatingHabits = () => {
   };
 
   return (
-    <SafeArea>
+    <>
       <SelectEatingHabit
         onClick={(title, content) => {
           setRegister({
@@ -84,7 +84,7 @@ const EatingHabits = () => {
       >
         <Badge attach="right">Next</Badge>
       </motion.div>
-    </SafeArea>
+    </>
   );
 };
 

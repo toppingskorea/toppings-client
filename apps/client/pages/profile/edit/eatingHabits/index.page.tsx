@@ -1,7 +1,7 @@
 import { useEditState } from "@atoms/edit";
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
-import { flex, position, SafeArea } from "@toss/emotion-utils";
+import { flex, position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { FilledButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
@@ -29,7 +29,7 @@ const ProfileEditEatingHabits = () => {
   });
 
   return (
-    <SafeArea>
+    <>
       <SelectEatingHabit
         habits={edit.habits}
         onClick={(title, content) => {
@@ -70,7 +70,7 @@ const ProfileEditEatingHabits = () => {
           </Text>
         </FilledButton>
       </motion.div>
-    </SafeArea>
+    </>
   );
 };
 

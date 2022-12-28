@@ -1,4 +1,3 @@
-import { SafeArea } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import { SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
@@ -6,13 +5,13 @@ import { TagFamily } from "~/components/Recent";
 import { SelectEatingHabit } from "~/components/Section";
 import { useInput, useSetNavigation } from "~/hooks";
 import {
-  useFetchEatingHabitByFiltering,
-  useUploadRecentHistory
-} from "~/server/recent";
-import {
   useCurrentSelectCategorySetter,
   useMapSearchByCountrySetter
 } from "~/recoil/atoms";
+import {
+  useFetchEatingHabitByFiltering,
+  useUploadRecentHistory
+} from "~/server/recent";
 
 const RecentPage = () => {
   const { push } = useRouter();
@@ -37,7 +36,7 @@ const RecentPage = () => {
   const { props: keyword, setValue } = useInput({});
 
   return (
-    <SafeArea>
+    <>
       <SearchLayout>
         <SearchInput
           placeholder="enter nationality name"
@@ -63,7 +62,7 @@ const RecentPage = () => {
           });
         }}
       />
-    </SafeArea>
+    </>
   );
 };
 

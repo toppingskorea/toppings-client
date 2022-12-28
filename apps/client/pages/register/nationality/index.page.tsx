@@ -1,6 +1,6 @@
 import { useRegisterState } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
-import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
+import { padding, position, width100 } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SearchNationality } from "~/components/Section";
@@ -8,7 +8,7 @@ import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
 
 const RegisterNationality = () => {
   const { push } = useInternalRouter();
-  const {colors,weighs,dimensions} = useTheme();
+  const { colors, weighs, dimensions } = useTheme();
   const [register, setRegister] = useRegisterState();
 
   useSetNavigation({
@@ -25,7 +25,7 @@ const RegisterNationality = () => {
   const { props: keyword, setValue } = useInput({});
 
   return (
-    <SafeArea>
+    <>
       <SearchNationality
         keyword={keyword.value}
         onCountryClick={name => {
@@ -50,7 +50,7 @@ const RegisterNationality = () => {
           {...keyword}
         />
       </div>
-    </SafeArea>
+    </>
   );
 };
 

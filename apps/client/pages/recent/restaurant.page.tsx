@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { padding, SafeArea } from "@toss/emotion-utils";
+import { padding } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { RestaurantCard, SearchInput } from "~/components/Common";
@@ -39,7 +39,7 @@ const RecentPage = () => {
   const { props: keyword, setValue } = useInput({});
 
   return (
-    <SafeArea>
+    <>
       <SearchLayout>
         <SearchInput
           onSubmit={() => {
@@ -95,7 +95,7 @@ const RecentPage = () => {
           />
         ))}
       </div>
-    </SafeArea>
+    </>
   );
 };
 

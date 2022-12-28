@@ -1,5 +1,4 @@
 import { Exit } from "@svgs/common";
-import { SafeArea } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
@@ -11,13 +10,13 @@ import {
   useSetNavigation
 } from "~/hooks";
 import {
-  useFetchRestaurantByCountry,
-  useUploadRecentHistory
-} from "~/server/recent";
-import {
   useCurrentSelectCategorySetter,
   useMapSearchByCountrySetter
 } from "~/recoil/atoms";
+import {
+  useFetchRestaurantByCountry,
+  useUploadRecentHistory
+} from "~/server/recent";
 
 const RecentPage = () => {
   const { push } = useInternalRouter();
@@ -48,7 +47,7 @@ const RecentPage = () => {
   useScrollToTopByKeywordChange(keyword.value);
 
   return (
-    <SafeArea>
+    <>
       <SearchLayout>
         <SearchInput
           placeholder="Enter nationality name"
@@ -69,7 +68,7 @@ const RecentPage = () => {
           fetchRestaurantByCountryMutate(name);
         }}
       />
-    </SafeArea>
+    </>
   );
 };
 

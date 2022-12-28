@@ -1,6 +1,6 @@
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
-import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
+import { padding, position, width100 } from "@toss/emotion-utils";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { SearchInput } from "~/components/Common";
 import { Result } from "~/components/Search";
@@ -42,7 +42,7 @@ const Search = ({
   useScrollToTopByKeywordChange(keyword.value);
 
   return (
-    <SafeArea>
+    <>
       <section
         css={css`
           ${padding({ x: 16 })}
@@ -66,7 +66,7 @@ const Search = ({
           {...keyword}
         />
       </div>
-    </SafeArea>
+    </>
   );
 };
 
