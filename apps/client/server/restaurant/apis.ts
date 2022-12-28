@@ -37,17 +37,3 @@ export const getLikePercent = async ({
 
   return data.data;
 };
-
-export const getReviews = async ({
-  id,
-  ssr
-}: {
-  id: number;
-  ssr?: boolean;
-}) => {
-  const { data } = await authRequest.get<{ data: Restaurant.ReviewDTO[] }>(
-    `${ssr ? `${env.TOPPINGS_SERVER_URL}/api` : ""}/v1/restaurant/${id}/review`
-  );
-
-  return data.data;
-};

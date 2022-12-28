@@ -5,4 +5,5 @@ declare module Util {
     children: JSX.Element | JSX.Element[];
   };
   type ElementType<T extends readonly unknown[]> = T[number];
+  type OptionalProperty<T, K extends keyof T> = Omit<T, K> & Partial<T>;
 }

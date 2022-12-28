@@ -35,9 +35,6 @@ export const defaultScaleChangeVariants: Variants = {
   },
   animate: {
     scale: 1
-  },
-  whileHover: {
-    scale: 1.2
   }
 };
 

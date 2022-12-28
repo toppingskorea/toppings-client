@@ -6,7 +6,8 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { Badge } from "~/components/Common";
 import { ImageCarousel, Info, Likes, Reviews } from "~/components/Post";
 import { env } from "~/constants";
-import { getLikePercent, getReviews, Keys } from "~/server/restaurant";
+import { getLikePercent, Keys as RestaurantKeys } from "~/server/restaurant";
+import { Keys as ReviewKeys } from "~/server/review";
 import { pick } from "~/utils";
 import usePost from "./post.hooks";
 
@@ -84,7 +85,7 @@ export const getServerSideProps: GetServerSideProps<{
   // 사용자의 좋아요 & 스크랩을 확인해야하므로 쿠키를 통한 데이터 패칭
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(Keys.restaurant(+id), async () => {
+  await queryClient.prefetchQuery(RestaurantKeys.restaurant(+id), async () => {
     const { data } = await axios.get<{ data: Restaurant.DetailDTO }>(
       `${env.TOPPINGS_SERVER_URL}/api/v1/restaurant/${id}`,
       {
@@ -97,13 +98,22 @@ export const getServerSideProps: GetServerSideProps<{
     return data.data;
   });
 
-  await queryClient.prefetchQuery(Keys.likePercent(+id), () =>
+  await queryClient.prefetchQuery(RestaurantKeys.likePercent(+id), () =>
     getLikePercent({ id: +id, ssr: true })
   );
 
-  await queryClient.prefetchQuery(Keys.reviews(+id), () =>
-    getReviews({ id: +id, ssr: true })
-  );
+  await queryClient.prefetchQuery(ReviewKeys.reviews(+id), async () => {
+    const { data } = await axios.get<{ data: Restaurant.ReviewDTO[] }>(
+      `${env.TOPPINGS_SERVER_URL}/api/v1/restaurant/${id}/review`,
+      {
+        headers: {
+          Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`
+        }
+      }
+    );
+
+    return data.data;
+  });
 
   return {
     props: {

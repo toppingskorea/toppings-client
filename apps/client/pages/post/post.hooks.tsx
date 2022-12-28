@@ -2,14 +2,12 @@ import { useTheme } from "@emotion/react";
 import { Edit } from "@svgs/common";
 import { Flex, Spacing } from "@toss/emotion-utils";
 import Image from "next/image";
+import { useCallback } from "react";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { usePostUploadSetter, useRestaurantSetter } from "~/recoil/atoms";
-import {
-  useFetchLikePercent,
-  useFetchRestaurant,
-  useFetchReviews
-} from "~/server/restaurant";
+import { useFetchLikePercent, useFetchRestaurant } from "~/server/restaurant";
+import { useFetchReviews } from "~/server/review";
 import { countryToSvg } from "~/utils";
 
 const usePost = (id: string) => {
@@ -21,6 +19,40 @@ const usePost = (id: string) => {
 
   const setRestaurant = useRestaurantSetter();
   const setPostUpload = usePostUploadSetter();
+
+  const goEditPostHandler = useCallback(() => {
+    setRestaurant({
+      address_name: restaurantDetail.address,
+      id,
+      category_group_name: "",
+      place_name: restaurantDetail.name,
+      road_address_name: restaurantDetail.address,
+      x: String(restaurantDetail.longitude),
+      y: String(restaurantDetail.latitude)
+    });
+
+    setPostUpload({
+      description: restaurantDetail.description,
+      images: restaurantDetail.images,
+      type: restaurantDetail.type,
+      id: restaurantDetail.id
+    });
+
+    push("/post/add");
+  }, [
+    id,
+    push,
+    restaurantDetail.address,
+    restaurantDetail.description,
+    restaurantDetail.id,
+    restaurantDetail.images,
+    restaurantDetail.latitude,
+    restaurantDetail.longitude,
+    restaurantDetail.name,
+    restaurantDetail.type,
+    setPostUpload,
+    setRestaurant
+  ]);
 
   useSetNavigation({
     top: {
@@ -44,26 +76,7 @@ const usePost = (id: string) => {
       ),
       right: {
         element: <Edit />,
-        onClick: () => {
-          setRestaurant({
-            address_name: restaurantDetail.address,
-            id,
-            category_group_name: "",
-            place_name: restaurantDetail.name,
-            road_address_name: restaurantDetail.address,
-            x: String(restaurantDetail.longitude),
-            y: String(restaurantDetail.latitude)
-          });
-
-          setPostUpload({
-            description: restaurantDetail.description,
-            images: restaurantDetail.images,
-            type: restaurantDetail.type,
-            id: restaurantDetail.id
-          });
-
-          push("/post/add");
-        }
+        onClick: goEditPostHandler
       }
     },
     bottom: true
