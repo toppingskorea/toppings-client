@@ -6,8 +6,7 @@
       "@svgs/*": ["./assets/svgs/*"],
       "@images/*": ["./assets/images/*"],
       "@stores/*": ["./stores/ducks/*"],
-      "@atoms/*": ["./recoil/atoms/*"],
-      "@selectors/*": ["./recoil/selectors/*"]
+      "@atoms/*": ["./recoil/atoms/*"]
     },
     // css props를 사용하기 위함
     "jsxImportSource": "@emotion/react",

@@ -1,23 +1,33 @@
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
-import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
+import { padding, position, width100 } from "@toss/emotion-utils";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { SearchInput } from "~/components/Common";
 import { Result } from "~/components/Search";
-import { useInput, useSetNavigation } from "~/hooks";
+import {
+  useInput,
+  useInternalRouter,
+  useScrollToTopByKeywordChange,
+  useSetNavigation
+} from "~/hooks";
 
 export type SearchType = "restaurant" | "local";
 
 const Search = ({
   type
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const { colors, dimensions } = useTheme();
+  const { push } = useInternalRouter();
+
   useSetNavigation({
     top: {
       marginBottom: 35,
-      right: <Exit />
+      right: {
+        element: <Exit />,
+        onClick: () => push("/map")
+      }
     }
   });
-  const { colors, dimensions } = useTheme();
 
   const {
     props: keyword,
@@ -29,8 +39,10 @@ const Search = ({
     debounceTimeout: 300
   });
 
+  useScrollToTopByKeywordChange(keyword.value);
+
   return (
-    <SafeArea>
+    <>
       <section
         css={css`
           ${padding({ x: 16 })}
@@ -54,7 +66,7 @@ const Search = ({
           {...keyword}
         />
       </div>
-    </SafeArea>
+    </>
   );
 };
 

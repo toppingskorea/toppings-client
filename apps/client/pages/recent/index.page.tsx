@@ -1,7 +1,7 @@
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { useQueryClient } from "@tanstack/react-query";
-import { position, SafeArea } from "@toss/emotion-utils";
+import { position } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
@@ -16,8 +16,7 @@ import { History, TagFamily } from "~/components/Recent";
 import Skeleton from "~/components/Skeleton";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useSetNavigation } from "~/hooks";
-import { useDeleteAllRecentHistory } from "~/mutations/recent";
-import Keys from "~/queries/recent/keys";
+import { Keys, useDeleteAllRecentHistory } from "~/server/recent";
 
 const RecentPage = () => {
   const { colors, zIndex } = useTheme();
@@ -35,7 +34,10 @@ const RecentPage = () => {
   useSetNavigation({
     top: {
       marginBottom: 85,
-      right: <Exit onClick={() => push("/map")} />
+      right: {
+        element: <Exit />,
+        onClick: () => push("/map")
+      }
     }
   });
 
@@ -52,7 +54,7 @@ const RecentPage = () => {
   }, [deleteAllMutate, overlay]);
 
   return (
-    <SafeArea>
+    <>
       <motion.div
         variants={defaultSlideFadeInVariants("right")}
         {...framerMocker}
@@ -103,7 +105,7 @@ const RecentPage = () => {
       >
         <TagFamily />
       </div>
-    </SafeArea>
+    </>
   );
 };
 

@@ -1,22 +1,26 @@
+import {
+  useCurrentSelectCategorySetter,
+  useMapSearchByCountrySetter
+} from "@atoms/index";
 import { Exit } from "@svgs/common";
-import { SafeArea } from "@toss/emotion-utils";
-import { useRouter } from "next/router";
 import { SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
 import { SearchNationality } from "~/components/Section";
-import { useInput, useSetNavigation } from "~/hooks";
+import {
+  useInput,
+  useInternalRouter,
+  useScrollToTopByKeywordChange,
+  useSetNavigation
+} from "~/hooks";
 import {
   useFetchRestaurantByCountry,
   useUploadRecentHistory
-} from "~/mutations/recent";
-import {
-  useCurrentSelectCategorySetter,
-  useMapSearchByCountrySetter
-} from "~/recoil/atoms";
+} from "~/server/recent";
 
 const RecentPage = () => {
-  const { push } = useRouter();
+  const { push } = useInternalRouter();
+
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
@@ -24,7 +28,6 @@ const RecentPage = () => {
     useFetchRestaurantByCountry({
       onSuccess: data => {
         setMapSearchByCountry(data);
-
         push("/map");
       }
     });
@@ -32,14 +35,19 @@ const RecentPage = () => {
   useSetNavigation({
     top: {
       marginBottom: 37,
-      right: <Exit />
+      right: {
+        element: <Exit />,
+        onClick: () => push("/map")
+      }
     }
   });
 
   const { props: keyword, setValue } = useInput({});
 
+  useScrollToTopByKeywordChange(keyword.value);
+
   return (
-    <SafeArea>
+    <>
       <SearchLayout>
         <SearchInput
           placeholder="Enter nationality name"
@@ -60,7 +68,7 @@ const RecentPage = () => {
           fetchRestaurantByCountryMutate(name);
         }}
       />
-    </SafeArea>
+    </>
   );
 };
 

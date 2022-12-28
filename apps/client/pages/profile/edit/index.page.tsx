@@ -2,7 +2,7 @@ import { useEditValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { Flex, flex, padding, size, Stack } from "@toss/emotion-utils";
+import { Flex, flex, padding, size, Spacing, Stack } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import axios from "axios";
 import type { GetServerSideProps } from "next";
@@ -12,8 +12,7 @@ import { Text } from "~/components/Common/Typo";
 import { UserInfo } from "~/components/Profile/edit";
 import { env } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
-import { useUpdateUserInfo } from "~/mutations/profile";
-import { Keys, useFetchUserInfo } from "~/queries/profile";
+import { Keys, useFetchUserInfo, useUpdateUserInfo } from "~/server/profile";
 
 const ProfileEdit = () => {
   const { push } = useInternalRouter();
@@ -23,7 +22,10 @@ const ProfileEdit = () => {
   useSetNavigation({
     top: {
       title: undefined,
-      right: <Exit />,
+      right: {
+        element: <Exit />,
+        onClick: () => push("/map")
+      },
       marginBottom: 24
     },
     bottom: true
@@ -32,7 +34,7 @@ const ProfileEdit = () => {
   const { data } = useFetchUserInfo();
   const edit = useEditValue();
 
-  const { mutate } = useUpdateUserInfo({
+  const { mutate: updateUserInfoMutate } = useUpdateUserInfo({
     onSuccess: () => {
       overlay.open(() => <SuccessModal />);
 
@@ -43,7 +45,7 @@ const ProfileEdit = () => {
   });
 
   const onClickRegisterHandler = useCallback(() => {
-    mutate({
+    updateUserInfoMutate({
       name: edit.name ?? data.name,
       country: edit.country ?? data.country,
       habits: edit.habits ?? data.habits,
@@ -58,7 +60,7 @@ const ProfileEdit = () => {
     edit.habits,
     edit.name,
     edit.profile,
-    mutate
+    updateUserInfoMutate
   ]);
 
   return (
@@ -74,6 +76,7 @@ const ProfileEdit = () => {
         `}
       >
         <UserInfo />
+        <Spacing size={24} />
         <Flex
           justify="center"
           css={css`

@@ -3,9 +3,11 @@ import { RemoveHistory, Timeline } from "@svgs/recent";
 import { useQueryClient } from "@tanstack/react-query";
 import { Flex, flex, gutter, padding, touchable } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
-import { useDeleteRecentHistory } from "~/mutations/recent";
-import { useFetchRecentHistory } from "~/queries/recent";
-import Keys from "~/queries/recent/keys";
+import {
+  useDeleteRecentHistory,
+  useFetchRecentHistory,
+  Keys
+} from "~/server/recent";
 
 const History = () => {
   const { push } = useRouter();

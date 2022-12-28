@@ -29,7 +29,7 @@ import { checkDeeplyEqual } from "~/utils";
  * https://slash.page/libraries/react/react/src/hooks/usepreservedreference.ts.tossdocs/
  */
 
-const usePreservedReference = <T extends Common.NotNullishValue>(
+const usePreservedReference = <T extends Util.NotNullishValue>(
   value: T,
   checkValuesEqual: (a: T, b: T) => boolean = checkDeeplyEqual
 ) => {

@@ -15,7 +15,7 @@ import {
   useDeleteScrap,
   usePostLike,
   usePostScrap
-} from "~/mutations/restaurant";
+} from "~/server/restaurant";
 import { clipboard } from "~/utils";
 
 type Props = Pick<

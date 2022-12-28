@@ -1,10 +1,10 @@
+import { useCurrentLocationSetter } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { CurrentPlace } from "@svgs/map";
 import { position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { useCallback, useMemo } from "react";
 import { defaultLocation, defaultScaleChangeVariants } from "~/constants";
-import { useCurrentLocationSetter } from "~/recoil/atoms";
 
 const MyLocationButton = () => {
   const { colors } = useTheme();

@@ -5,7 +5,7 @@ import type { GetServerSideProps } from "next";
 import { PostList, UserBadge } from "~/components/Profile/posts";
 import { env } from "~/constants";
 import { useSetNavigation } from "~/hooks";
-import { Keys } from "~/queries/profile";
+import { Keys } from "~/server/profile";
 
 const ProfilePosts = () => {
   useSetNavigation({
@@ -49,6 +49,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
         }
       }
     );
+
     return data.data;
   });
 

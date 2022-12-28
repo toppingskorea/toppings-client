@@ -9,16 +9,17 @@ interface Props {
 }
 
 const SuccessModal = ({ description }: Props) => {
-  const { colors, weighs } = useTheme();
+  const { colors, weighs, zIndex } = useTheme();
 
   return (
     <Flex.Center
       direction="column"
       css={css`
         ${position("fixed", { top: 0, right: 0, bottom: 0, left: 0 })}
-        ${size.full}
-          ${gutter({ direction: "vertical", space: 30 })}
-          background-color: ${colors.white};
+        ${size.full};
+        ${gutter({ direction: "vertical", space: 30 })};
+        background-color: ${colors.white};
+        z-index: ${zIndex.four};
       `}
     >
       <Lottie

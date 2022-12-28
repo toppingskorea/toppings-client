@@ -1,8 +1,8 @@
+import { useMapBoundsValue, useMapSearchByCountrySetter } from "@atoms/index";
 import Map from "~/components/Map";
 import { MapProvider } from "~/contexts";
 import { useSetNavigation } from "~/hooks";
-import { useFetchDefaultMap } from "~/mutations/recent";
-import { useMapBoundsValue, useMapSearchByCountrySetter } from "~/recoil/atoms";
+import { useFetchDefaultMap } from "~/server/recent";
 
 const MapPage = () => {
   useSetNavigation({

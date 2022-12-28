@@ -1,5 +1,8 @@
 import { css, useTheme } from "@emotion/react";
-
+import {
+  useCurrentSelectCategoryReset,
+  useCurrentSelectCategoryValue
+} from "@atoms/index";
 import { Filtering } from "@svgs/map";
 import { Exit } from "@svgs/recent";
 import {
@@ -14,10 +17,6 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
-import {
-  useCurrentSelectCategoryReset,
-  useCurrentSelectCategoryValue
-} from "~/recoil/atoms";
 
 const FilteringButton = () => {
   const { colors, zIndex } = useTheme();

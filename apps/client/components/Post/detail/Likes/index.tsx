@@ -3,7 +3,7 @@ import { Flex, padding, Stack } from "@toss/emotion-utils";
 import Image from "next/image";
 import { PercentBar } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import { useFetchLikePercent } from "~/queries/restaurant";
+import { useFetchLikePercent } from "~/server/restaurant";
 import { countryToSvg } from "~/utils";
 
 interface Props {

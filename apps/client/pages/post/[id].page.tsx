@@ -1,80 +1,20 @@
-import { css, useTheme } from "@emotion/react";
-import { Edit } from "@svgs/common";
+import { css } from "@emotion/react";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
+import { size, Spacing, Stack } from "@toss/emotion-utils";
 import axios from "axios";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Image from "next/image";
-import { getLikePercent, getReviews } from "~/apis/restaurant";
 import { Badge } from "~/components/Common";
-import { Text } from "~/components/Common/Typo";
 import { ImageCarousel, Info, Likes, Reviews } from "~/components/Post";
 import { env } from "~/constants";
-import { useInternalRouter, useSetNavigation } from "~/hooks";
-import { Keys, useFetchRestaurant } from "~/queries/restaurant";
-import { usePostUploadSetter, useRestaurantSetter } from "~/recoil/atoms";
-import { countryToSvg, pick } from "~/utils";
+import { getLikePercent, Keys as RestaurantKeys } from "~/server/restaurant";
+import { Keys as ReviewKeys } from "~/server/review";
+import { pick } from "~/utils";
+import usePost from "./post.hooks";
 
 const PostDetail = ({
   id
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { colors, weighs } = useTheme();
-  const { data } = useFetchRestaurant(+id);
-
-  const setRestaurant = useRestaurantSetter();
-  const setPostUpload = usePostUploadSetter();
-  const { push } = useInternalRouter();
-
-  useSetNavigation({
-    top: {
-      title: (
-        <Flex align="center">
-          <Image
-            src={countryToSvg(data.country)}
-            width={24}
-            height={24}
-            alt={`${data.writer}'s country flag`}
-          />
-          <Spacing direction="horizontal" size={14} />
-          <Text
-            _fontSize={20}
-            _color={colors.secondary[69]}
-            weight={weighs.medium}
-          >
-            {data.writer}
-          </Text>
-        </Flex>
-      ),
-      right: (
-        <button
-          type="button"
-          onClick={() => {
-            setRestaurant({
-              address_name: data.address,
-              id,
-              category_group_name: "",
-              place_name: data.name,
-              road_address_name: data.address,
-              x: String(data.longitude),
-              y: String(data.latitude)
-            });
-
-            setPostUpload({
-              description: data.description,
-              images: data.images,
-              type: data.type,
-              id: data.id
-            });
-
-            push("/post/add");
-          }}
-        >
-          <Edit />
-        </button>
-      )
-    },
-    bottom: true
-  });
+  const app = usePost(id);
 
   return (
     <section>
@@ -86,10 +26,10 @@ const PostDetail = ({
           margin:0 auto;
         `}
       >
-        <ImageCarousel images={data.images} />
+        <ImageCarousel images={app.restaurantDetail.images} />
         <Spacing size={18} />
         <Info
-          {...pick({ ...data }, [
+          {...pick({ ...app.restaurantDetail }, [
             "id",
             "name",
             "address",
@@ -113,7 +53,12 @@ const PostDetail = ({
         Likes
       </Badge>
       <Spacing size={20} />
-      <Likes id={id} />
+      {!app.likePercent.countryPercent.length &&
+      !app.likePercent.habitPercent.length ? (
+        "아직없네요!! 좋아요 눌러요!!"
+      ) : (
+        <Likes id={id} />
+      )}
 
       <Spacing size={30} />
 
@@ -127,7 +72,7 @@ const PostDetail = ({
         Reviews
       </Badge>
       <Spacing size={20} />
-      <Reviews id={id} />
+      {app.reviews.length ? <Reviews id={id} /> : "첫리뷰를 남겨봐요!!"}
     </section>
   );
 };
@@ -140,7 +85,7 @@ export const getServerSideProps: GetServerSideProps<{
   // 사용자의 좋아요 & 스크랩을 확인해야하므로 쿠키를 통한 데이터 패칭
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(Keys.restaurant(+id), async () => {
+  await queryClient.prefetchQuery(RestaurantKeys.restaurant(+id), async () => {
     const { data } = await axios.get<{ data: Restaurant.DetailDTO }>(
       `${env.TOPPINGS_SERVER_URL}/api/v1/restaurant/${id}`,
       {
@@ -153,13 +98,22 @@ export const getServerSideProps: GetServerSideProps<{
     return data.data;
   });
 
-  await queryClient.prefetchQuery(Keys.likePercent(+id), () =>
+  await queryClient.prefetchQuery(RestaurantKeys.likePercent(+id), () =>
     getLikePercent({ id: +id, ssr: true })
   );
 
-  await queryClient.prefetchQuery(Keys.reviews(+id), () =>
-    getReviews({ id: +id, ssr: true })
-  );
+  await queryClient.prefetchQuery(ReviewKeys.reviews(+id), async () => {
+    const { data } = await axios.get<{ data: Restaurant.ReviewDTO[] }>(
+      `${env.TOPPINGS_SERVER_URL}/api/v1/restaurant/${id}/review`,
+      {
+        headers: {
+          Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`
+        }
+      }
+    );
+
+    return data.data;
+  });
 
   return {
     props: {

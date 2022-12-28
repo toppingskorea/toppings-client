@@ -1,14 +1,19 @@
 import { useEditState } from "@atoms/edit";
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
-import { padding, position, SafeArea, width100 } from "@toss/emotion-utils";
+import { padding, position, width100 } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SearchNationality } from "~/components/Section";
-import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
+import {
+  useInput,
+  useInternalRouter,
+  useScrollToTopByKeywordChange,
+  useSetNavigation
+} from "~/hooks";
 
 const ProfileEditNationality = () => {
-  const router = useInternalRouter();
+  const { push, back } = useInternalRouter();
   const { colors, weighs, dimensions } = useTheme();
   const [edit, setEdit] = useEditState();
 
@@ -20,20 +25,24 @@ const ProfileEditNationality = () => {
           Select a Nationality
         </Text>
       ),
-      right: <Exit />
-    },
-    bottom: true
+      right: {
+        element: <Exit />,
+        onClick: () => push("/map")
+      }
+    }
   });
 
   const { props: keyword, setValue } = useInput({});
 
+  useScrollToTopByKeywordChange(keyword.value);
+
   return (
-    <SafeArea>
+    <section>
       <SearchNationality
         keyword={keyword.value}
         onCountryClick={name => {
           setEdit({ ...edit, country: name });
-          router.back();
+          back();
         }}
       />
 
@@ -41,7 +50,7 @@ const ProfileEditNationality = () => {
         css={css`
           ${padding({ x: 16, y: 22 })};
           ${position("fixed", {
-            bottom: dimensions.bottomNavigationHeight
+            bottom: 0
           })}
           background-color: ${colors.white};
           max-width: ${dimensions.viewWidth - 32}px;
@@ -55,7 +64,7 @@ const ProfileEditNationality = () => {
           {...keyword}
         />
       </div>
-    </SafeArea>
+    </section>
   );
 };
 

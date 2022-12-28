@@ -1,5 +1,5 @@
 import { css, useTheme } from "@emotion/react";
-import { position, SafeArea } from "@toss/emotion-utils";
+import { position } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { motion } from "framer-motion";
 
@@ -11,11 +11,11 @@ import { Text } from "~/components/Common/Typo";
 import { SelectEatingHabit } from "~/components/Section";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
-import { useRegister } from "~/mutations/register";
+import { useRegister } from "~/server/register";
 
 const EatingHabits = () => {
   const { push } = useInternalRouter();
-  const {colors,weighs} = useTheme();
+  const { colors, weighs } = useTheme();
   const [register, setRegister] = useRegisterState();
   const overlay = useOverlay();
 
@@ -38,23 +38,18 @@ const EatingHabits = () => {
     top: {
       marginBottom: 35,
       title: (
-        <Text
-          _fontSize={23}
-          weight={weighs.bold}
-          _color={colors.secondary[47]}
-        >
+        <Text _fontSize={23} weight={weighs.bold} _color={colors.secondary[47]}>
           Select a Eating Habit
         </Text>
       ),
-      right: (
-        <Text
-          _fontSize={15}
-          _color={colors.secondary[69]}
-          onClick={onSubmitRegister}
-        >
-          Skip
-        </Text>
-      )
+      right: {
+        element: (
+          <Text _fontSize={15} _color={colors.secondary[69]}>
+            Skip
+          </Text>
+        ),
+        onClick: onSubmitRegister
+      }
     }
   });
 
@@ -63,7 +58,7 @@ const EatingHabits = () => {
   };
 
   return (
-    <SafeArea>
+    <>
       <SelectEatingHabit
         onClick={(title, content) => {
           setRegister({
@@ -89,7 +84,7 @@ const EatingHabits = () => {
       >
         <Badge attach="right">Next</Badge>
       </motion.div>
-    </SafeArea>
+    </>
   );
 };
 

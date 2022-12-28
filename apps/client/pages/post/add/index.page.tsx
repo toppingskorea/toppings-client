@@ -19,9 +19,12 @@ const PostAdd = () => {
   useSetNavigation({
     top: {
       marginBottom: 35,
-      right: <Exit />
+      right: {
+        element: <Exit />,
+        onClick: () => push("/map")
+      }
     },
-    bottom: true
+    bottom: false
   });
 
   return (

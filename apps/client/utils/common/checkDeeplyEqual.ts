@@ -1,4 +1,4 @@
-const checkDeeplyEqual = <T extends Common.NotNullishValue>(x: T, y: T) => {
+const checkDeeplyEqual = <T extends Util.NotNullishValue>(x: T, y: T) => {
   return JSON.stringify(x) === JSON.stringify(y);
 };
 export default checkDeeplyEqual;

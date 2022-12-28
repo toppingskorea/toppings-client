@@ -25,7 +25,10 @@ const nextConfig = {
   },
   pageExtensions: ["page.tsx", "page.ts"],
   images: {
-    domains: ["cdnjs.cloudflare.com"],
+    domains: [
+      "cdnjs.cloudflare.com",
+      "toppings-storage.s3.ap-northeast-2.amazonaws.com"
+    ],
     formats: ["image/webp"]
   },
   compiler: {

@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { padding } from "@toss/emotion-utils";
-import useFetchUserPosts from "~/queries/profile/useFetchUserPosts";
+import { useFetchUserPosts } from "~/server/profile";
 import Item from "./Item";
 
 const PostList = () => {
