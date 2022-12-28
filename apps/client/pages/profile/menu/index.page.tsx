@@ -1,6 +1,6 @@
 import { css, useTheme } from "@emotion/react";
 import { Logout } from "@svgs/profile";
-import { flex, Flex, gutter, padding, position } from "@toss/emotion-utils";
+import { flex, gutter, padding, position } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { MotionButton, SuccessModal } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
