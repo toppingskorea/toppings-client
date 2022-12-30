@@ -31,8 +31,7 @@ const MyLocationButton = () => {
   const options: PositionOptions = useMemo(
     () => ({
       enableHighAccuracy: true,
-      maximumAge: 30000,
-      timeout: 27000
+      maximumAge: 0
     }),
     []
   );

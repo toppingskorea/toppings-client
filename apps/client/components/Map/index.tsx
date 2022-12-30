@@ -10,7 +10,6 @@ import useMapEvent from "./Map.hooks";
 
 const Map = ({ children }: Util.PropsWithChild) => {
   const { zIndex } = useTheme();
-  const { dimensions } = useTheme();
   const setMapBounds = useMapBoundsSetter();
   const { map, mapRef } = useMap();
 

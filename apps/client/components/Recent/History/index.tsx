@@ -4,9 +4,9 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Flex, flex, gutter, padding, touchable } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import {
+  Keys,
   useDeleteRecentHistory,
-  useFetchRecentHistory,
-  Keys
+  useFetchRecentHistory
 } from "~/server/recent";
 
 const History = () => {
@@ -21,6 +21,8 @@ const History = () => {
     }
   });
 
+  console.log(data);
+
   return (
     <div
       css={css`
@@ -31,11 +33,14 @@ const History = () => {
         })}
       `}
     >
-      {data.map(({ id, keyword, category }) => (
+      {data.map(({ id, keyword, category, restaurantId }) => (
         <Flex key={id} justify="space-between" align="center">
           <Flex.Center
             onClick={() => {
-              if (category === "Name") push(`/post/${id}`);
+              if (category === "Name") push(`/post/${restaurantId}`);
+              if (category === "Habit") {
+                console.log(category);
+              }
             }}
             css={css`
               gap: 12px;

@@ -59,6 +59,7 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
               image: markerImage
             });
 
+            map.setCenter(latLng);
             marker.setMap(map);
           });
 
@@ -69,7 +70,8 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
             image: markerImage
           });
 
-          marker.setMap(map);
+          map.setCenter(latLng);
+          // marker.setMap(map);
         }
 
         setKakaoMap(map);
