@@ -3,9 +3,11 @@ import { RemoveHistory, Timeline } from "@svgs/recent";
 import { useQueryClient } from "@tanstack/react-query";
 import { Flex, flex, gutter, padding, touchable } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
+import { useMapBoundsValue, useMapSearchByCountrySetter } from "~/recoil/atoms";
 import {
   Keys,
   useDeleteRecentHistory,
+  useFetchDefaultMap,
   useFetchRecentHistory
 } from "~/server/recent";
 
@@ -21,7 +23,24 @@ const History = () => {
     }
   });
 
-  console.log(data);
+  const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const mapBounds = useMapBoundsValue();
+  const { mutate: defaultMap } = useFetchDefaultMap({
+    onSuccess: data => {
+      setMapSearchByCountry(data);
+    }
+  });
+
+  const clickHandler = (
+    category: Recent.HistoryDTO["category"],
+    restaurantId: Recent.HistoryDTO["restaurantId"]
+  ) => {
+    if (category === "Name") push(`/post/${restaurantId}`);
+    if (category === "Habit") {
+      defaultMap(mapBounds!);
+      push("/map");
+    }
+  };
 
   return (
     <div
@@ -36,12 +55,7 @@ const History = () => {
       {data.map(({ id, keyword, category, restaurantId }) => (
         <Flex key={id} justify="space-between" align="center">
           <Flex.Center
-            onClick={() => {
-              if (category === "Name") push(`/post/${restaurantId}`);
-              if (category === "Habit") {
-                console.log(category);
-              }
-            }}
+            onClick={() => clickHandler(category, restaurantId)}
             css={css`
               gap: 12px;
             `}
@@ -49,6 +63,7 @@ const History = () => {
             <Timeline />
             {keyword}
           </Flex.Center>
+
           <RemoveHistory
             onClick={() => mutate(id)}
             css={css`

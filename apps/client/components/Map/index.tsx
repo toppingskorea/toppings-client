@@ -21,6 +21,7 @@ const Map = ({ children }: Util.PropsWithChild) => {
 
   useMapEvent(map, "dragend", mapEventHandler);
   useMapEvent(map, "zoom_changed", mapEventHandler);
+  useMapEvent(map, "tilesloaded", mapEventHandler);
 
   return (
     <div

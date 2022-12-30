@@ -59,19 +59,17 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
               image: markerImage
             });
 
-            map.setCenter(latLng);
             marker.setMap(map);
           });
-
-          map.panTo(positions[0].latLng);
         } else {
           const marker = new kakao.maps.Marker({
             position: latLng,
             image: markerImage
           });
 
+          marker.setMap(map);
+          map.panTo(latLng);
           map.setCenter(latLng);
-          // marker.setMap(map);
         }
 
         setKakaoMap(map);
