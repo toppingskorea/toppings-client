@@ -1,0 +1,50 @@
+info  - Loaded env from /Users/donggyukim/Desktop/dev/toppings-client/apps/client/.env.local
+info  - Linting and checking validity of types...
+error - ESLint must be installed in order to run during builds: yarn add --dev eslint
+info  - Creating an optimized production build...
+info  - Compiled successfully
+info  - Collecting page data...
+info  - Generating static pages (0/19)
+info  - Generating static pages (4/19)
+info  - Generating static pages (9/19)
+info  - Generating static pages (14/19)
+info  - Generating static pages (19/19)
+info  - Finalizing page optimization...
+
+Route (pages)                              Size     First Load JS
+┌ ○ /                                      1.99 kB         359 kB
+├   /_app                                  0 B             357 kB
+├ ○ /404                                   182 B           358 kB
+├ ○ /login                                 458 B           358 kB
+├ ○ /login/redirect                        272 B           358 kB
+├ ○ /map                                   2.85 kB         360 kB
+├ ○ /notice                                276 B           358 kB
+├ λ /post/[id]                             1.2 kB          365 kB
+├ ○ /post/add                              972 B           365 kB
+├ λ /profile                               2.8 kB          360 kB
+├ λ /profile/edit                          3.65 kB         361 kB
+├ ○ /profile/edit/eatingHabits             2.08 kB         359 kB
+├ ○ /profile/edit/nationality              2.1 kB          359 kB
+├ ○ /profile/menu                          2.92 kB         360 kB
+├ λ /profile/posts                         2.72 kB         360 kB
+├ ○ /profile/reviews                       3.47 kB         361 kB
+├ ○ /profile/saved                         3.46 kB         361 kB
+├ ○ /recent                                4.81 kB         362 kB
+├ ○ /recent/eatingHabit                    4.58 kB         362 kB
+├ ○ /recent/nationality                    4.68 kB         362 kB
+├ ○ /recent/restaurant                     3.59 kB         361 kB
+├ ○ /register/eatingHabits                 3.57 kB         361 kB
+├ ○ /register/nationality                  2.05 kB         359 kB
+├ λ /review/add/[restaurantId]             3.13 kB         360 kB
+└ λ /search/[type]                         1.55 kB         359 kB
++ First Load JS shared by all              357 kB
+  ├ chunks/framework-749f74b9b46c2a3f.js   45.4 kB
+  ├ chunks/main-e2980877f7152e6b.js        30.7 kB
+  ├ chunks/pages/_app-559f3e06b6d42db9.js  280 kB
+  └ chunks/webpack-235955b20eb3ee85.js     1.15 kB
+
+ƒ Middleware                               64.5 kB
+
+λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+

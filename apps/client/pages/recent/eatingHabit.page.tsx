@@ -1,5 +1,6 @@
 import {
   useCurrentSelectCategorySetter,
+  useMapBoundsValue,
   useMapSearchByCountrySetter
 } from "@atoms/index";
 import { useRouter } from "next/router";
@@ -13,6 +14,7 @@ import {
 
 const RecentPage = () => {
   const { push } = useRouter();
+  const mapBounds = useMapBoundsValue();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
@@ -44,9 +46,11 @@ const RecentPage = () => {
             keyword: content,
             category: "Habit"
           });
+
           fetchEatingHabitByFilteringMutate({
             habitTitle: title,
-            habit: content
+            habit: content,
+            direction: mapBounds!
           });
         }}
       />

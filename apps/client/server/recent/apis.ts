@@ -28,10 +28,18 @@ export const deleteRecentHistory = async (id: number) => {
 };
 
 // 음식점 / 음식점 검색 (필터)
-export const getRestaurantByCountry = async (country: string) => {
+export const getRestaurantByCountry = async ({
+  country,
+  direction
+}: {
+  country: string;
+  direction: (kakao.maps.LatLngBounds & Direction) | Direction;
+}) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByCountryDTO[];
-  }>(`/v1/restaurant/filter?type=Country&country=${country}`);
+  }>(
+    `/v1/restaurant/filter?type=Country&country=${country}&y1=${direction.ha}&y2=${direction.oa}&x1=${direction.qa}&x2=${direction.pa}`
+  );
 
   return data.data;
 };
@@ -39,15 +47,17 @@ export const getRestaurantByCountry = async (country: string) => {
 // 음식점 / 음식점 검색 (필터)
 export const getEatingHabitByFiltering = async ({
   habit,
-  habitTitle
+  habitTitle,
+  direction
 }: {
   habit: string;
   habitTitle: string;
+  direction: (kakao.maps.LatLngBounds & Direction) | Direction;
 }) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByCountryDTO[];
   }>(
-    `/v1/restaurant/filter?type=Habit&habit=${habit}&habitTitle=${habitTitle}`
+    `/v1/restaurant/filter?type=Habit&habit=${habit}&habitTitle=${habitTitle}&y1=${direction.ha}&y2=${direction.oa}&x1=${direction.qa}&x2=${direction.pa}`
   );
 
   return data.data;
@@ -64,7 +74,7 @@ export const getRestaurantNameByFiltering = async (name: string) => {
 
 // 음식점 / 음식점 검색 (지도)
 export const getDefaultMap = async (
-  direction: kakao.maps.LatLngBounds & Direction
+  direction: (kakao.maps.LatLngBounds & Direction) | Direction
 ) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByCountryDTO[];

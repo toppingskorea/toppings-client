@@ -1,5 +1,6 @@
 import {
   useCurrentSelectCategorySetter,
+  useMapBoundsValue,
   useMapSearchByCountrySetter
 } from "@atoms/index";
 import { Exit } from "@svgs/common";
@@ -20,7 +21,7 @@ import {
 
 const RecentPage = () => {
   const { push } = useInternalRouter();
-
+  const mapBounds = useMapBoundsValue();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
@@ -65,7 +66,10 @@ const RecentPage = () => {
             keyword: name,
             category: "Country"
           });
-          fetchRestaurantByCountryMutate(name);
+          fetchRestaurantByCountryMutate({
+            country: name,
+            direction: mapBounds!
+          });
         }}
       />
     </>

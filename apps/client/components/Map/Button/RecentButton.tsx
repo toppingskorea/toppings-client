@@ -3,22 +3,10 @@ import { Recent } from "@svgs/map";
 import { flex, position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
-import { useMapBoundsValue, useMapSearchByCountrySetter } from "~/recoil/atoms";
-import { useFetchDefaultMap } from "~/server/recent";
 
 const RecentButton = () => {
   const { colors, zIndex } = useTheme();
-  const setMapSearchByCountry = useMapSearchByCountrySetter();
-  const mapBounds = useMapBoundsValue();
-  const { mutate: defaultMap } = useFetchDefaultMap({
-    onSuccess: data => {
-      setMapSearchByCountry(data);
-    }
-  });
-
-  const clickHandler = () => {
-    if (mapBounds) defaultMap(mapBounds);
-  };
+  // const setMapSearchByCountry = useMapSearchByCountrySetter();
 
   return (
     <motion.button
@@ -26,7 +14,6 @@ const RecentButton = () => {
       {...framerMocker}
       whileHover="whileHover"
       variants={defaultScaleChangeVariants}
-      onClick={clickHandler}
       css={css`
         ${position("absolute", {
           top: 52,

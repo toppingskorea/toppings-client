@@ -20,7 +20,7 @@ declare module Restaurant {
   }
 
   type CardDTO = Pick<
-    BaseDTO,
+    SearchByCountryDTO,
     | "id"
     | "thumbnail"
     | "type"
@@ -29,6 +29,7 @@ declare module Restaurant {
     | "address"
     | "like"
     | "likeCount"
+    | "filterLikeCount"
   >;
 
   interface DetailDTO extends BaseDTO {

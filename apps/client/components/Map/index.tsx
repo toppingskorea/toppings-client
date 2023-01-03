@@ -4,6 +4,7 @@ import { height100, width100 } from "@toss/emotion-utils";
 import { useCallback } from "react";
 import { useMap } from "~/contexts";
 import FilteringButton from "./Button/FilteringButton";
+import ListButton from "./Button/ListButton";
 import MyLocationButton from "./Button/MyLocationButton";
 import RecentButton from "./Button/RecentButton";
 import useMapEvent from "./Map.hooks";
@@ -40,5 +41,6 @@ const Map = ({ children }: Util.PropsWithChild) => {
 Map.MyLocationButton = MyLocationButton;
 Map.RecentButton = RecentButton;
 Map.FilteringButton = FilteringButton;
+Map.ListButton = ListButton;
 
 export default Map;
