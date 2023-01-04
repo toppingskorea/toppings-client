@@ -1,14 +1,17 @@
-import { css } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
-import { padding, position } from "@toss/emotion-utils";
+import { SmallExit } from "@svgs/recent";
+import { Flex, padding, position, width100 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Badge, RestaurantCard } from "~/components/Common";
+import { Text } from "~/components/Common/Typo";
+import Map from "~/components/Map";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useSetNavigation } from "~/hooks";
 import {
   useCurrentLocationSetter,
-  useCurrentSelectCategorySetter,
+  useCurrentSelectCategory,
   useMapSearchByCountryReset,
   useMapSearchByCountryValue
 } from "~/recoil/atoms";
@@ -16,12 +19,14 @@ import { useUploadRecentHistory } from "~/server/recent";
 import { pick } from "~/utils";
 
 const ViewListPage = () => {
+  const { colors } = useTheme();
   const { push } = useRouter();
   const mapSearchValue = useMapSearchByCountryValue();
   const mapSearchReset = useMapSearchByCountryReset();
   const setCurrentLocation = useCurrentLocationSetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
-  const setCurrentSelectCategory = useCurrentSelectCategorySetter();
+  const [currentSelectCategory, setCurrentSelectCategory] =
+    useCurrentSelectCategory();
 
   useSetNavigation({
     top: {
@@ -30,7 +35,8 @@ const ViewListPage = () => {
         element: <Exit />,
         onClick: () => push("/map")
       }
-    }
+    },
+    bottom: true
   });
   return (
     <>
@@ -43,10 +49,40 @@ const ViewListPage = () => {
       >
         <Badge attach="left">Eating habit</Badge>
       </motion.div>
-
-      <div
+      <motion.div
+        variants={defaultSlideFadeInVariants("right")}
+        {...framerMocker}
         css={css`
-          width: 100%;
+          ${position("absolute", { top: 118, left: 147 })}
+        `}
+      >
+        {/*  Question ? 이 버튼을 누르면 지금 내 좌표 안에 들어와 있는 모든 식당을 리스트로 보여줘야 하는건지?  */}
+        <Flex
+          align="center"
+          justify="space-between"
+          css={css`
+            width: 92px;
+            height: 27px;
+            border-radius: 20px;
+            border: 0.9px solid ${colors.secondary.B0};
+            ${padding({
+              x: 10,
+              y: 6
+            })};
+          `}
+        >
+          <Text _fontSize={12}>{currentSelectCategory}</Text>
+          <SmallExit />
+        </Flex>
+      </motion.div>
+
+      <Flex
+        direction="column"
+        css={css`
+          ${width100}
+          height: 500px;
+          overflow-y: scroll;
+          gap: 10px;
           ${padding({
             x: 28
           })}
@@ -88,7 +124,8 @@ const ViewListPage = () => {
             }}
           />
         ))}
-      </div>
+      </Flex>
+      <Map.ListButton isViewList />
     </>
   );
 };

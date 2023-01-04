@@ -6,9 +6,13 @@ import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
 
-const ListButton = () => {
+interface Props {
+  isViewList?: true;
+}
+
+const ListButton = ({ isViewList }: Props) => {
   const { colors, zIndex, weighs } = useTheme();
-  const { push } = useRouter();
+  const { back, push } = useRouter();
 
   return (
     <motion.button
@@ -16,7 +20,10 @@ const ListButton = () => {
       {...framerMocker}
       whileHover="whileHover"
       variants={defaultScaleChangeVariants}
-      onClick={() => push("/map/viewList")}
+      onClick={() => {
+        if (isViewList) back();
+        else push("/map/viewList");
+      }}
       css={css`
         ${position("absolute", {
           bottom: 16
@@ -38,7 +45,7 @@ const ListButton = () => {
           margin-left: 19px;
         `}
       >
-        View lists
+        {isViewList ? "View map" : "View lists"}
       </Text>
     </motion.button>
   );
