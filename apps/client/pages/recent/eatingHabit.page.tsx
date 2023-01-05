@@ -40,16 +40,18 @@ const RecentPage = () => {
       <SelectEatingHabit
         isRecent
         onClick={(title, content) => {
-          setCurrentSelectCategory(content);
+          const removeSpaceContent = content.replaceAll(" ", "");
+
+          setCurrentSelectCategory(removeSpaceContent);
           uploadRecentHistoryMutate({
             type: "Filter",
-            keyword: content,
+            keyword: removeSpaceContent,
             category: "Habit"
           });
 
           fetchEatingHabitByFilteringMutate({
             habitTitle: title,
-            habit: content,
+            habit: removeSpaceContent,
             direction: mapBounds!
           });
         }}
