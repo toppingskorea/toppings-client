@@ -82,10 +82,10 @@ const RestaurantCard = ({ onClick, item, whoLikes }: Props) => {
           {whoLikes && (
             <Flex
               direction="column"
+              justify="flex-end"
               css={css`
                 ${height100}
                 align-self: flex-start;
-                justify-content: flex-end;
               `}
             >
               <Text
