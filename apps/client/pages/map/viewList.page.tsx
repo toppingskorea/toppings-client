@@ -1,7 +1,7 @@
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { SmallExit } from "@svgs/recent";
-import { Flex, padding, position, width100 } from "@toss/emotion-utils";
+import { Flex, padding, position, size, width100 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Badge, RestaurantCard } from "~/components/Common";
@@ -61,8 +61,10 @@ const ViewListPage = () => {
           align="center"
           justify="space-between"
           css={css`
-            width: 92px;
-            height: 27px;
+            ${size({
+              width: 92,
+              height: 27
+            })}
             border-radius: 20px;
             border: 0.9px solid ${colors.secondary.B0};
             ${padding({
