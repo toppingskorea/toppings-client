@@ -2,17 +2,16 @@ import { css, useTheme } from "@emotion/react";
 import { List } from "@svgs/map";
 import { flex, position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
 
 interface Props {
-  isViewList?: true;
+  text: string;
+  onClick: VoidFunction;
 }
 
-const ViewStatusButton = ({ isViewList }: Props) => {
+const ViewStatusButton = ({ text, onClick }: Props) => {
   const { colors, zIndex, weighs } = useTheme();
-  const { back, push } = useRouter();
 
   return (
     <motion.button
@@ -20,10 +19,7 @@ const ViewStatusButton = ({ isViewList }: Props) => {
       {...framerMocker}
       whileHover="whileHover"
       variants={defaultScaleChangeVariants}
-      onClick={() => {
-        if (isViewList) back();
-        else push("/map/viewList");
-      }}
+      onClick={onClick}
       css={css`
         ${position("absolute", {
           bottom: 16
@@ -45,7 +41,7 @@ const ViewStatusButton = ({ isViewList }: Props) => {
           margin-left: 19px;
         `}
       >
-        {isViewList ? "View map" : "View lists"}
+        {text}
       </Text>
     </motion.button>
   );

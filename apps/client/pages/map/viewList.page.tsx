@@ -21,7 +21,7 @@ import { pick } from "~/utils";
 
 const ViewListPage = () => {
   const { colors } = useTheme();
-  const { push } = useRouter();
+  const { push, back } = useRouter();
   const mapSearchValue = useMapSearchByCountryValue();
   const mapSearchReset = useMapSearchByCountryReset();
   const setCurrentLocation = useCurrentLocationSetter();
@@ -140,7 +140,7 @@ const ViewListPage = () => {
           />
         ))}
       </Flex>
-      <Map.ViewStatusButton isViewList />
+      <Map.ViewStatusButton text="View map" onClick={back} />
     </>
   );
 };

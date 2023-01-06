@@ -1,9 +1,11 @@
+import { useRouter } from "next/router";
 import Map from "~/components/Map";
 import { MapProvider } from "~/contexts";
 import { useSetNavigation } from "~/hooks";
 import { useCurrentSelectCategoryValue } from "~/recoil/atoms";
 
 const MapPage = () => {
+  const { push } = useRouter();
   const currentSelectCategory = useCurrentSelectCategoryValue();
 
   useSetNavigation({
@@ -16,7 +18,14 @@ const MapPage = () => {
         <Map.MyLocationButton />
         <Map.RecentButton />
         <Map.FilteringButton />
-        {currentSelectCategory.length ? <Map.ViewStatusButton /> : <div />}
+        {currentSelectCategory.length ? (
+          <Map.ViewStatusButton
+            text="View lists"
+            onClick={() => push("/map/viewList")}
+          />
+        ) : (
+          <div />
+        )}
       </Map>
     </MapProvider>
   );
