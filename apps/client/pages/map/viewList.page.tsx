@@ -4,6 +4,7 @@ import { SmallExit } from "@svgs/recent";
 import { Flex, padding, position, size, width100 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { useCallback } from "react";
 import { Badge, RestaurantCard } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import Map from "~/components/Map";
@@ -38,6 +39,34 @@ const ViewListPage = () => {
     },
     bottom: true
   });
+
+  const restaurantCardClickHandler = useCallback(
+    (item: Restaurant.SearchByCountryDTO) => {
+      setCurrentLocation({
+        latitude: item.latitude,
+        longitude: item.longitude
+      });
+      uploadRecentHistoryMutate({
+        type: "Filter",
+        keyword: item.name,
+        category: "Name",
+        content: item.address,
+        restaurantId: item.id
+      });
+      setCurrentSelectCategory(item.name);
+      mapSearchReset();
+
+      push("/map");
+    },
+    [
+      mapSearchReset,
+      push,
+      setCurrentLocation,
+      setCurrentSelectCategory,
+      uploadRecentHistoryMutate
+    ]
+  );
+
   return (
     <>
       <motion.div
@@ -94,23 +123,7 @@ const ViewListPage = () => {
           <RestaurantCard
             key={item.id}
             whoLikes
-            onClick={() => {
-              setCurrentLocation({
-                latitude: item.latitude,
-                longitude: item.longitude
-              });
-              uploadRecentHistoryMutate({
-                type: "Filter",
-                keyword: item.name,
-                category: "Name",
-                content: item.address,
-                restaurantId: item.id
-              });
-              setCurrentSelectCategory(item.name);
-              mapSearchReset();
-
-              push("/map");
-            }}
+            onClick={() => restaurantCardClickHandler(item)}
             item={{
               ...pick({ ...item }, [
                 "id",
