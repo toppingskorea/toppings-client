@@ -9,7 +9,7 @@ import { useState } from "react";
 import { RestaurantCard, SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
-import { useInput, useSetNavigation } from "~/hooks";
+import { useDebounce, useInput, useSetNavigation } from "~/hooks";
 import {
   useFetchRestaurantNameByFiltering,
   useUploadRecentHistory
@@ -36,7 +36,15 @@ const RecentPage = () => {
     }
   });
 
-  const { props: keyword, setValue } = useInput({});
+  const { props: keyword, setValue } = useInput({
+    useDebounce: true,
+    debounceTimeout: 300
+  });
+
+  const fetchRestaurantNameByFilteringMutateDebounce = useDebounce(
+    (value: string) => fetchRestaurantNameByFilteringMutate(value),
+    300
+  );
 
   return (
     <>
@@ -47,7 +55,14 @@ const RecentPage = () => {
           }}
           placeholder="enter the restaurant name"
           setValue={setValue}
-          {...keyword}
+          value={keyword.value}
+          onChange={e => {
+            if (!e.target.value.length) setRestaurantList(undefined);
+
+            keyword.onChange(e);
+
+            fetchRestaurantNameByFilteringMutateDebounce(e.target.value);
+          }}
         />
       </SearchLayout>
       <TagFamily />
