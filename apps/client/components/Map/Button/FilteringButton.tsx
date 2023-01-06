@@ -70,7 +70,6 @@ const FilteringButton = () => {
       <motion.button
         type="button"
         {...framerMocker}
-        whileHover="whileHover"
         variants={defaultScaleChangeVariants}
         onClick={() => push("/recent")}
         css={css`

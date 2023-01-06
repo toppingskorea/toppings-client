@@ -17,7 +17,6 @@ const ViewStatusButton = ({ text, onClick }: Props) => {
     <motion.button
       type="button"
       {...framerMocker}
-      whileHover="whileHover"
       variants={defaultScaleChangeVariants}
       onClick={onClick}
       css={css`

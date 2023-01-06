@@ -14,7 +14,6 @@ const MyLocationButton = () => {
       type="button"
       onClick={getCurrentMapPosition}
       {...framerMocker}
-      whileHover="whileHover"
       variants={defaultScaleChangeVariants}
       css={css`
         ${flex("center")}

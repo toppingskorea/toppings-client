@@ -12,7 +12,6 @@ const RecentButton = () => {
     <motion.button
       type="button"
       {...framerMocker}
-      whileHover="whileHover"
       variants={defaultScaleChangeVariants}
       css={css`
         ${position("absolute", {
