@@ -140,7 +140,7 @@ const ViewListPage = () => {
           />
         ))}
       </Flex>
-      <Map.ListButton isViewList />
+      <Map.ViewStatusButton isViewList />
     </>
   );
 };

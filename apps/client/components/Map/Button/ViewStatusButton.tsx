@@ -10,7 +10,7 @@ interface Props {
   isViewList?: true;
 }
 
-const ListButton = ({ isViewList }: Props) => {
+const ViewStatusButton = ({ isViewList }: Props) => {
   const { colors, zIndex, weighs } = useTheme();
   const { back, push } = useRouter();
 
@@ -51,4 +51,4 @@ const ListButton = ({ isViewList }: Props) => {
   );
 };
 
-export default ListButton;
+export default ViewStatusButton;

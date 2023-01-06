@@ -16,7 +16,7 @@ const MapPage = () => {
         <Map.MyLocationButton />
         <Map.RecentButton />
         <Map.FilteringButton />
-        {currentSelectCategory.length ? <Map.ListButton /> : <div />}
+        {currentSelectCategory.length ? <Map.ViewStatusButton /> : <div />}
       </Map>
     </MapProvider>
   );
