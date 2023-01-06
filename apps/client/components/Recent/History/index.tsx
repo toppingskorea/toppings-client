@@ -37,7 +37,7 @@ const History = () => {
       }
     });
 
-  const clickHandler = (
+  const historyClickHandler = (
     category: Recent.HistoryDTO["category"],
     keyword: Recent.HistoryDTO["keyword"],
     restaurantId: Recent.HistoryDTO["restaurantId"]
@@ -70,7 +70,7 @@ const History = () => {
         <Flex key={id} justify="space-between" align="center">
           <Flex.Center
             onClick={() => {
-              clickHandler(category, keyword, restaurantId);
+              historyClickHandler(category, keyword, restaurantId);
             }}
             css={css`
               gap: 12px;
