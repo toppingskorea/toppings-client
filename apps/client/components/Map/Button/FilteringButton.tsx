@@ -1,8 +1,9 @@
-import { css, useTheme } from "@emotion/react";
 import {
   useCurrentSelectCategoryReset,
-  useCurrentSelectCategoryValue
+  useCurrentSelectCategoryValue,
+  useMapSearchByCountryReset
 } from "@atoms/index";
+import { css, useTheme } from "@emotion/react";
 import { Filtering } from "@svgs/map";
 import { Exit } from "@svgs/recent";
 import {
@@ -17,12 +18,15 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
+import { useCurrentLocation } from "~/hooks";
 
 const FilteringButton = () => {
   const { colors, zIndex } = useTheme();
   const { push } = useRouter();
   const currentSelectCategoryReset = useCurrentSelectCategoryReset();
   const currentSelectCategory = useCurrentSelectCategoryValue();
+  const resetMapSearchByCountry = useMapSearchByCountryReset();
+  const { getCurrentMapPosition } = useCurrentLocation();
 
   return (
     <Flex.Center
@@ -53,14 +57,19 @@ const FilteringButton = () => {
           <Text _fontSize={17} _color={colors.white}>
             {currentSelectCategory}
           </Text>
-          <Exit onClick={currentSelectCategoryReset} />
+          <Exit
+            onClick={() => {
+              currentSelectCategoryReset();
+              getCurrentMapPosition();
+              resetMapSearchByCountry();
+            }}
+          />
         </Flex.Center>
       )}
 
       <motion.button
         type="button"
         {...framerMocker}
-        whileHover="whileHover"
         variants={defaultScaleChangeVariants}
         onClick={() => push("/recent")}
         css={css`

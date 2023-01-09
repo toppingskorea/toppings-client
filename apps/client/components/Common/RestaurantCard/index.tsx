@@ -1,16 +1,20 @@
 import { css, useTheme } from "@emotion/react";
-import { Flex, gutter, width100 } from "@toss/emotion-utils";
+import { Flex, gutter, height100, width100 } from "@toss/emotion-utils";
 import Image from "next/image";
+import { useCurrentSelectCategoryValue } from "~/recoil/atoms";
 import HeartWithNumber from "../HeartWithNumber";
 import { Text } from "../Typo";
 
 interface Props {
   onClick: VoidFunction;
   item: Restaurant.CardDTO;
+  whoLikes?: true;
 }
 
-const RestaurantCard = ({ onClick, item }: Props) => {
+const RestaurantCard = ({ onClick, item, whoLikes }: Props) => {
   const { colors, weighs } = useTheme();
+
+  const currentSelectCategory = useCurrentSelectCategoryValue();
 
   return (
     <Flex
@@ -34,12 +38,16 @@ const RestaurantCard = ({ onClick, item }: Props) => {
           height={80}
           alt=""
           css={css`
-            border: 1px solid black;
             border-radius: 7px;
           `}
         />
-
-        <Flex justify="space-between" direction="column">
+        <Flex
+          justify={whoLikes ? "flex-start" : "space-between"}
+          direction="column"
+          css={css`
+            ${whoLikes && "gap: 4px;"}
+          `}
+        >
           <Flex
             direction="column"
             css={css`
@@ -71,6 +79,24 @@ const RestaurantCard = ({ onClick, item }: Props) => {
           <Text _fontSize={10} _color={colors.secondary["46"]}>
             {item.address}
           </Text>
+          {whoLikes && (
+            <Flex
+              direction="column"
+              justify="flex-end"
+              css={css`
+                ${height100}
+                align-self: flex-start;
+              `}
+            >
+              <Text
+                _fontSize={10}
+                weight={weighs.semiBold}
+                _color={colors.primary}
+              >
+                {`${currentSelectCategory} likes ${item.filterLikeCount}`}
+              </Text>
+            </Flex>
+          )}
         </Flex>
       </Flex>
 

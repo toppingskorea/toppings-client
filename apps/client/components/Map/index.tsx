@@ -4,13 +4,13 @@ import { height100, width100 } from "@toss/emotion-utils";
 import { useCallback } from "react";
 import { useMap } from "~/contexts";
 import FilteringButton from "./Button/FilteringButton";
+import ViewStatusButton from "./Button/ViewStatusButton";
 import MyLocationButton from "./Button/MyLocationButton";
 import RecentButton from "./Button/RecentButton";
 import useMapEvent from "./Map.hooks";
 
 const Map = ({ children }: Util.PropsWithChild) => {
   const { zIndex } = useTheme();
-  const { dimensions } = useTheme();
   const setMapBounds = useMapBoundsSetter();
   const { map, mapRef } = useMap();
 
@@ -22,6 +22,7 @@ const Map = ({ children }: Util.PropsWithChild) => {
 
   useMapEvent(map, "dragend", mapEventHandler);
   useMapEvent(map, "zoom_changed", mapEventHandler);
+  useMapEvent(map, "tilesloaded", mapEventHandler);
 
   return (
     <div
@@ -40,5 +41,6 @@ const Map = ({ children }: Util.PropsWithChild) => {
 Map.MyLocationButton = MyLocationButton;
 Map.RecentButton = RecentButton;
 Map.FilteringButton = FilteringButton;
+Map.ViewStatusButton = ViewStatusButton;
 
 export default Map;

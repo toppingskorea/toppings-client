@@ -5,7 +5,7 @@ import {
 import { css } from "@emotion/react";
 import { padding } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RestaurantCard, SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
@@ -36,7 +36,23 @@ const RecentPage = () => {
     }
   });
 
-  const { props: keyword, setValue } = useInput({});
+  const {
+    props: keyword,
+    debouncedValue,
+    setValue
+  } = useInput({
+    useDebounce: true,
+    debounceTimeout: 300
+  });
+
+  useEffect(() => {
+    if (!debouncedValue.length) {
+      setRestaurantList(undefined);
+      return;
+    }
+
+    fetchRestaurantNameByFilteringMutate(debouncedValue);
+  }, [debouncedValue, fetchRestaurantNameByFilteringMutate]);
 
   return (
     <>

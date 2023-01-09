@@ -6,12 +6,12 @@ import { defaultScaleChangeVariants, framerMocker } from "~/constants";
 
 const RecentButton = () => {
   const { colors, zIndex } = useTheme();
+  // const setMapSearchByCountry = useMapSearchByCountrySetter();
 
   return (
     <motion.button
       type="button"
       {...framerMocker}
-      whileHover="whileHover"
       variants={defaultScaleChangeVariants}
       css={css`
         ${position("absolute", {

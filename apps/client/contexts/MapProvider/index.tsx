@@ -1,5 +1,6 @@
 import { useCurrentLocationValue } from "@atoms/index";
 import { useMapSearchByCountryValue } from "@atoms/map";
+import { useRouter } from "next/router";
 import {
   createContext,
   useContext,
@@ -21,6 +22,7 @@ const Context = createContext({
 export const useMap = () => useContext(Context);
 
 export const MapProvider = ({ children }: Util.PropsWithChild) => {
+  const { replace } = useRouter();
   const mapSearchByCountry = useMapSearchByCountryValue();
   const currentLocation = useCurrentLocationValue();
   const mapRef = useRef<HTMLDivElement>(null);
@@ -47,6 +49,7 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
 
         if (mapSearchByCountry && mapSearchByCountry.length) {
           const positions = mapSearchByCountry.map(item => ({
+            id: item.id,
             title: item.name,
             latLng: new kakao.maps.LatLng(item.latitude, item.longitude)
           }));
@@ -60,22 +63,32 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
             });
 
             marker.setMap(map);
-          });
 
-          map.panTo(positions[0].latLng);
+            kakao.maps.event.addListener(marker, "click", () => {
+              replace(`/post/${item.id}`);
+            });
+          });
         } else {
           const marker = new kakao.maps.Marker({
             position: latLng,
-            image: markerImage
+            image: markerImage,
+            clickable: true
           });
 
           marker.setMap(map);
+          map.panTo(latLng);
+          map.setCenter(latLng);
         }
 
         setKakaoMap(map);
       }
     });
-  }, [currentLocation.latitude, currentLocation.longitude, mapSearchByCountry]);
+  }, [
+    currentLocation.latitude,
+    currentLocation.longitude,
+    mapSearchByCountry,
+    replace
+  ]);
 
   const providerValue = useMemo(() => ({ map: kakaoMap, mapRef }), [kakaoMap]);
 
