@@ -1,5 +1,6 @@
 import {
   useCurrentSelectCategorySetter,
+  useCurrentSelectKeywordSetter,
   useMapBoundsValue,
   useMapSearchByCountrySetter
 } from "@atoms/index";
@@ -16,6 +17,7 @@ import { replaceSpace } from "~/utils";
 const EatingHabitPage = () => {
   const { push } = useRouter();
   const mapBounds = useMapBoundsValue();
+  const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
@@ -23,6 +25,7 @@ const EatingHabitPage = () => {
     useFetchEatingHabitByFiltering({
       onSuccess: data => {
         setMapSearchByCountry(data);
+        setCurrentSelectCategory("Habit");
 
         push("/map");
       }
@@ -43,7 +46,7 @@ const EatingHabitPage = () => {
         onClick={(title, content) => {
           const removeSpaceContent = replaceSpace(content);
 
-          setCurrentSelectCategory(removeSpaceContent);
+          setCurrentSelectKeyword(removeSpaceContent);
           uploadRecentHistoryMutate({
             type: "Filter",
             keyword: removeSpaceContent,

@@ -1,6 +1,6 @@
 import {
   useCurrentLocationSetter,
-  useCurrentSelectCategorySetter
+  useCurrentSelectKeywordSetter
 } from "@atoms/index";
 import { css } from "@emotion/react";
 import { padding } from "@toss/emotion-utils";
@@ -21,7 +21,7 @@ const RecentPage = () => {
   const [restaurantList, setRestaurantList] =
     useState<Restaurant.SearchByCountryDTO[]>();
   const setCurrentLocation = useCurrentLocationSetter();
-  const setCurrentSelectCategory = useCurrentSelectCategorySetter();
+  const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
   const { mutate: fetchRestaurantNameByFilteringMutate } =
     useFetchRestaurantNameByFiltering({
@@ -92,7 +92,7 @@ const RecentPage = () => {
                 content: item.address,
                 restaurantId: item.id
               });
-              setCurrentSelectCategory(item.name);
+              setCurrentSelectKeyword(item.name);
 
               push("/map");
             }}

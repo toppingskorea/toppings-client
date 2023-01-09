@@ -1,5 +1,6 @@
 import {
   useCurrentSelectCategorySetter,
+  useCurrentSelectKeywordSetter,
   useMapBoundsValue,
   useMapSearchByCountrySetter
 } from "@atoms/index";
@@ -21,6 +22,7 @@ import {
 const NationalityPage = () => {
   const { push } = useInternalRouter();
   const mapBounds = useMapBoundsValue();
+  const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
@@ -28,7 +30,7 @@ const NationalityPage = () => {
     useFetchRestaurantByCountry({
       onSuccess: data => {
         setMapSearchByCountry(data);
-
+        setCurrentSelectCategory("Country");
         push("/map");
       }
     });
@@ -56,7 +58,7 @@ const NationalityPage = () => {
       <SearchNationality
         keyword={keyword.value}
         onCountryClick={name => {
-          setCurrentSelectCategory(name);
+          setCurrentSelectKeyword(name);
           uploadRecentHistoryMutate({
             type: "Filter",
             keyword: name,
