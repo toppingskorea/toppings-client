@@ -1,7 +1,6 @@
 import {
   atom,
-  useRecoilState,
-  useRecoilValue,
+  useRecoilState, useRecoilValue,
   useResetRecoilState,
   useSetRecoilState
 } from "recoil";
@@ -23,8 +22,11 @@ export const useCurrentSelectKeywordReset = () =>
 const currentSelectCategoryAtom = atom<string>({
   key: "currentSelectCategory",
   default: ""
+  default: ""
 });
 
+export const useCurrentSelectCategory = () =>
+  useRecoilState(currentSelectCategoryAtom);
 export const useCurrentSelectCategoryValue = () =>
   useRecoilValue(currentSelectCategoryAtom);
 export const useCurrentSelectCategorySetter = () =>

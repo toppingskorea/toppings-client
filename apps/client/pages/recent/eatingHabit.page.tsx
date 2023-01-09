@@ -50,11 +50,15 @@ const EatingHabitPage = () => {
           uploadRecentHistoryMutate({
             type: "Filter",
             keyword: removeSpaceContent,
+            keyword: removeSpaceContent,
             category: "Habit"
           });
 
+
           fetchEatingHabitByFilteringMutate({
             habitTitle: title,
+            habit: removeSpaceContent,
+            direction: mapBounds!
             habit: removeSpaceContent,
             direction: mapBounds!
           });

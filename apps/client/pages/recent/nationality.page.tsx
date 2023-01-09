@@ -68,6 +68,10 @@ const NationalityPage = () => {
             country: name,
             direction: mapBounds!
           });
+          fetchRestaurantByCountryMutate({
+            country: name,
+            direction: mapBounds!
+          });
         }}
       />
     </>
