@@ -1,16 +1,17 @@
 import { css, useTheme } from "@emotion/react";
-import { List } from "@svgs/map";
 import { flex, padding, position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
+import type { FC, SVGProps } from "react";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
 
 interface Props {
   text: string;
   onClick: VoidFunction;
+  Icon: FC<SVGProps<SVGSVGElement>>;
 }
 
-const ViewStatusButton = ({ text, onClick }: Props) => {
+const ViewStatusButton = ({ text, onClick, Icon }: Props) => {
   const { colors, zIndex, weighs } = useTheme();
 
   return (
@@ -35,7 +36,7 @@ const ViewStatusButton = ({ text, onClick }: Props) => {
         z-index: ${zIndex.two};
       `}
     >
-      <List />
+      <Icon />
       <Text
         _fontSize={15}
         weight={weighs.medium}

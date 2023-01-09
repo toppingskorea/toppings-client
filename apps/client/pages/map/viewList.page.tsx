@@ -1,5 +1,6 @@
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
+import { SmallMarker } from "@svgs/map";
 import { SmallExit } from "@svgs/recent";
 import { Flex, padding, position, size, width100 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
@@ -139,7 +140,7 @@ const ViewListPage = () => {
           />
         ))}
       </Flex>
-      <Map.ViewStatusButton text="View map" onClick={back} />
+      <Map.ViewStatusButton Icon={SmallMarker} text="View map" onClick={back} />
     </>
   );
 };

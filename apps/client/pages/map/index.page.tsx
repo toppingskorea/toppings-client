@@ -1,3 +1,4 @@
+import { List } from "@svgs/map";
 import { useRouter } from "next/router";
 import Map from "~/components/Map";
 import { MapProvider } from "~/contexts";
@@ -20,6 +21,7 @@ const MapPage = () => {
         <Map.FilteringButton />
         {currentSelectCategory.length ? (
           <Map.ViewStatusButton
+            Icon={List}
             text="View lists"
             onClick={() => push("/map/viewList")}
           />
