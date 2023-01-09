@@ -12,6 +12,6 @@
     "jsxImportSource": "@emotion/react",
     "types": ["kakao.maps.d.ts"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["./@types/images.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

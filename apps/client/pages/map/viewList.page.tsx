@@ -85,7 +85,6 @@ const ViewListPage = () => {
           ${position("absolute", { top: 118, left: 147 })}
         `}
       >
-        {/*  Question ? 이 버튼을 누르면 지금 내 좌표 안에 들어와 있는 모든 식당을 리스트로 보여줘야 하는건지?  */}
         <Flex
           align="center"
           justify="space-between"
