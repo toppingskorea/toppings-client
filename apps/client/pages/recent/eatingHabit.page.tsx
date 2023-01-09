@@ -11,6 +11,7 @@ import {
   useFetchEatingHabitByFiltering,
   useUploadRecentHistory
 } from "~/server/recent";
+import { replaceSpace } from "~/utils";
 
 const RecentPage = () => {
   const { push } = useRouter();
@@ -40,7 +41,7 @@ const RecentPage = () => {
       <SelectEatingHabit
         isRecent
         onClick={(title, content) => {
-          const removeSpaceContent = content.replaceAll(" ", "");
+          const removeSpaceContent = replaceSpace(content);
 
           setCurrentSelectCategory(removeSpaceContent);
           uploadRecentHistoryMutate({
