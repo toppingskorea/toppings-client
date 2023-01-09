@@ -13,7 +13,7 @@ import {
 } from "~/server/recent";
 import { replaceSpace } from "~/utils";
 
-const RecentPage = () => {
+const EatingHabitPage = () => {
   const { push } = useRouter();
   const mapBounds = useMapBoundsValue();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
@@ -61,4 +61,4 @@ const RecentPage = () => {
   );
 };
 
-export default RecentPage;
+export default EatingHabitPage;

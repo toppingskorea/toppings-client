@@ -3,7 +3,6 @@ import {
   useMapBoundsValue,
   useMapSearchByCountrySetter
 } from "@atoms/index";
-import { Exit } from "@svgs/common";
 import { SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
@@ -19,7 +18,7 @@ import {
   useUploadRecentHistory
 } from "~/server/recent";
 
-const RecentPage = () => {
+const NationalityPage = () => {
   const { push } = useInternalRouter();
   const mapBounds = useMapBoundsValue();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
@@ -29,17 +28,14 @@ const RecentPage = () => {
     useFetchRestaurantByCountry({
       onSuccess: data => {
         setMapSearchByCountry(data);
+
         push("/map");
       }
     });
 
   useSetNavigation({
     top: {
-      marginBottom: 37,
-      right: {
-        element: <Exit />,
-        onClick: () => push("/map")
-      }
+      marginBottom: 37
     }
   });
 
@@ -76,4 +72,4 @@ const RecentPage = () => {
   );
 };
 
-export default RecentPage;
+export default NationalityPage;
