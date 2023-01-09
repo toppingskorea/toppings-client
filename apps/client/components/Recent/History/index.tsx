@@ -74,6 +74,7 @@ const History = () => {
             }}
             css={css`
               gap: 12px;
+              ${touchable}
             `}
           >
             <Timeline />
