@@ -21,7 +21,6 @@ const useCurrentLocation = () => {
 
   const options: PositionOptions = useMemo(
     () => ({
-      enableHighAccuracy: true,
       maximumAge: 0
     }),
     []
