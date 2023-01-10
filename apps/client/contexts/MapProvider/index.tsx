@@ -2,7 +2,10 @@ import {
   useCurrentLocationValue,
   useSearchRestaurantIdValue
 } from "@atoms/index";
-import { useMapSearchByCountryValue } from "@atoms/map";
+import {
+  useMapSearchByBoundsValue,
+  useMapSearchByCountryValue
+} from "@atoms/map";
 import { useRouter } from "next/router";
 import {
   createContext,
@@ -29,6 +32,8 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
   const mapSearchByCountry = useMapSearchByCountryValue();
   const currentLocation = useCurrentLocationValue();
   const searchRestaurantId = useSearchRestaurantIdValue();
+  const mapSearchByBounds = useMapSearchByBoundsValue();
+
   const mapRef = useRef<HTMLDivElement>(null);
   const [kakaoMap, setKakaoMap] = useState<kakao.maps.Map | null>(null);
 
@@ -44,7 +49,7 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
           level: 2
         };
         const map = new kakao.maps.Map(mapRef.current, options);
-
+        console.log(mapSearchByBounds);
         const imageSrc =
           "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png";
         const imageSize = new kakao.maps.Size(24, 35);
@@ -96,6 +101,7 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
   }, [
     currentLocation.latitude,
     currentLocation.longitude,
+    mapSearchByBounds,
     mapSearchByCountry,
     replace,
     searchRestaurantId

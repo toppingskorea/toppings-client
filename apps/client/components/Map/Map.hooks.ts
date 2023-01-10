@@ -12,7 +12,8 @@ const useMapEvent = (
     return () => {
       if (target) kakao.maps.event.removeListener(target, type, handler);
     };
-  }, [handler, target, type]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handler, type]);
 };
 
 export default useMapEvent;

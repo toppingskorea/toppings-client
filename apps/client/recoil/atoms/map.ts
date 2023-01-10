@@ -36,9 +36,21 @@ const mapSearchByCountryAtom = atom<Restaurant.SearchByCountryDTO[] | null>({
   default: null
 });
 
+export const useMapSearchByCountryState = () =>
+  useRecoilState(mapSearchByCountryAtom);
 export const useMapSearchByCountryValue = () =>
   useRecoilValue(mapSearchByCountryAtom);
 export const useMapSearchByCountrySetter = () =>
   useSetRecoilState(mapSearchByCountryAtom);
 export const useMapSearchByCountryReset = () =>
   useResetRecoilState(mapSearchByCountryAtom);
+
+const mapSearchByBoundsAtom = atom<Restaurant.SearchByCountryDTO[] | null>({
+  key: "mapSearchByBounds",
+  default: null
+});
+
+export const useMapSearchByBoundsValue = () =>
+  useRecoilValue(mapSearchByBoundsAtom);
+export const useMapSearchByBoundsSetter = () =>
+  useSetRecoilState(mapSearchByBoundsAtom);
