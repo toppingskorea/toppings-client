@@ -8,14 +8,15 @@ import {
 
 const registerAtom = atom<{
   country: string;
-  habit?: {
+  habit: {
     title: Common.EatingHabit;
     content: string;
   }[];
 }>({
   key: "registerAtom",
   default: {
-    country: ""
+    country: "",
+    habit: []
   }
 });
 
