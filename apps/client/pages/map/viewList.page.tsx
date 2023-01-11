@@ -22,7 +22,7 @@ import { useUploadRecentHistory } from "~/server/recent";
 import { pick } from "~/utils";
 
 const ViewListPage = () => {
-  const { colors } = useTheme();
+  const { colors, zIndex } = useTheme();
   const { push, back } = useRouter();
   const mapSearchValue = useMapSearchByCountryValue();
   const mapSearchReset = useMapSearchByCountryReset();
@@ -45,6 +45,7 @@ const ViewListPage = () => {
 
   const restaurantCardClickHandler = useCallback(
     (item: Restaurant.SearchByCountryDTO) => {
+      console.log("asd");
       setCurrentLocation({
         latitude: item.latitude,
         longitude: item.longitude
@@ -84,10 +85,12 @@ const ViewListPage = () => {
         </Badge>
       </motion.div>
       <motion.div
+        onClick={() => console.log("안녕")}
         variants={defaultSlideFadeInVariants("right")}
         {...framerMocker}
         css={css`
           ${position("absolute", { top: 118, left: 147 })}
+          z-index: ${zIndex.four};
         `}
       >
         <Flex

@@ -1,10 +1,13 @@
 import {
   useCurrentLocationValue,
+  useCurrentSelectKeywordValue,
   useSearchRestaurantIdValue
 } from "@atoms/index";
 import {
-  useMapSearchByBoundsValue,
-  useMapSearchByCountryValue
+  useMapBoundsSetter,
+  useMapSearchByCountrySetter,
+  useMapSearchByCountryValue,
+  type Direction
 } from "@atoms/map";
 import { useRouter } from "next/router";
 import {
@@ -16,6 +19,7 @@ import {
   useState,
   type RefObject
 } from "react";
+import { useFetchDefaultMap } from "~/server/recent";
 
 const Context = createContext({
   map: null,
@@ -32,7 +36,14 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
   const mapSearchByCountry = useMapSearchByCountryValue();
   const currentLocation = useCurrentLocationValue();
   const searchRestaurantId = useSearchRestaurantIdValue();
-  const mapSearchByBounds = useMapSearchByBoundsValue();
+  const setMapBounds = useMapBoundsSetter();
+  const currentSelectKeyword = useCurrentSelectKeywordValue();
+  const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const { mutate: defaultMapMutate } = useFetchDefaultMap({
+    onSuccess: data => {
+      if (!mapSearchByCountry) setMapSearchByCountry(data);
+    }
+  });
 
   const mapRef = useRef<HTMLDivElement>(null);
   const [kakaoMap, setKakaoMap] = useState<kakao.maps.Map | null>(null);
@@ -49,7 +60,14 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
           level: 2
         };
         const map = new kakao.maps.Map(mapRef.current, options);
-        console.log(mapSearchByBounds);
+
+        if (!currentSelectKeyword && map) {
+          defaultMapMutate(
+            map.getBounds() as kakao.maps.LatLngBounds & Direction
+          );
+          setMapBounds(map.getBounds() as kakao.maps.LatLngBounds & Direction);
+        }
+
         const imageSrc =
           "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png";
         const imageSize = new kakao.maps.Size(24, 35);
@@ -101,10 +119,12 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
   }, [
     currentLocation.latitude,
     currentLocation.longitude,
-    mapSearchByBounds,
+    currentSelectKeyword,
+    defaultMapMutate,
     mapSearchByCountry,
     replace,
-    searchRestaurantId
+    searchRestaurantId,
+    setMapBounds
   ]);
 
   const providerValue = useMemo(() => ({ map: kakaoMap, mapRef }), [kakaoMap]);
