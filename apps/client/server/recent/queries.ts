@@ -1,7 +1,8 @@
-import { getRecentHistory } from "./apis";
 import { useSuspendedQuery } from "~/hooks";
+import { getRecentHistories } from "./apis";
 import Keys from "./keys";
 
-export const useFetchRecentHistory = () => {
-  return useSuspendedQuery(Keys.recent(), getRecentHistory);
+// eslint-disable-next-line import/prefer-default-export
+export const useFetchRecentHistories = () => {
+  return useSuspendedQuery(Keys.recent(), getRecentHistories);
 };

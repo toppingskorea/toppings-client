@@ -1,7 +1,7 @@
 import { css, useTheme } from "@emotion/react";
 import { Flex, gutter, height100, width100 } from "@toss/emotion-utils";
 import Image from "next/image";
-import { useCurrentSelectCategoryValue } from "~/recoil/atoms";
+import { useCurrentSelectKeywordValue } from "~/recoil/atoms";
 import HeartWithNumber from "../HeartWithNumber";
 import { Text } from "../Typo";
 
@@ -14,7 +14,7 @@ interface Props {
 const RestaurantCard = ({ onClick, item, whoLikes }: Props) => {
   const { colors, weighs } = useTheme();
 
-  const currentSelectCategory = useCurrentSelectCategoryValue();
+  const currentSelectKeyword = useCurrentSelectKeywordValue();
 
   return (
     <Flex
@@ -93,7 +93,7 @@ const RestaurantCard = ({ onClick, item, whoLikes }: Props) => {
                 weight={weighs.semiBold}
                 _color={colors.primary}
               >
-                {`${currentSelectCategory} likes ${item.filterLikeCount}`}
+                {`${currentSelectKeyword} likes ${item.filterLikeCount}`}
               </Text>
             </Flex>
           )}

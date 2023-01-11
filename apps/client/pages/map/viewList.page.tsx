@@ -13,7 +13,8 @@ import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useSetNavigation } from "~/hooks";
 import {
   useCurrentLocationSetter,
-  useCurrentSelectCategory,
+  useCurrentSelectCategoryValue,
+  useCurrentSelectKeyword,
   useMapSearchByCountryReset,
   useMapSearchByCountryValue
 } from "~/recoil/atoms";
@@ -25,10 +26,11 @@ const ViewListPage = () => {
   const { push, back } = useRouter();
   const mapSearchValue = useMapSearchByCountryValue();
   const mapSearchReset = useMapSearchByCountryReset();
+  const currentSelectCategory = useCurrentSelectCategoryValue();
   const setCurrentLocation = useCurrentLocationSetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
-  const [currentSelectCategory, setCurrentSelectCategory] =
-    useCurrentSelectCategory();
+  const [currentSelectKeyword, setCurrentSelectKeyword] =
+    useCurrentSelectKeyword();
 
   useSetNavigation({
     top: {
@@ -54,7 +56,7 @@ const ViewListPage = () => {
         content: item.address,
         restaurantId: item.id
       });
-      setCurrentSelectCategory(item.name);
+      setCurrentSelectKeyword(item.name);
       mapSearchReset();
 
       push("/map");
@@ -63,7 +65,7 @@ const ViewListPage = () => {
       mapSearchReset,
       push,
       setCurrentLocation,
-      setCurrentSelectCategory,
+      setCurrentSelectKeyword,
       uploadRecentHistoryMutate
     ]
   );
@@ -77,7 +79,9 @@ const ViewListPage = () => {
           ${position("absolute", { top: 114, left: 0 })}
         `}
       >
-        <Badge attach="left">Eating habit</Badge>
+        <Badge attach="left">
+          {currentSelectCategory === "Habit" ? "Eating habit" : "Nationality"}
+        </Badge>
       </motion.div>
       <motion.div
         variants={defaultSlideFadeInVariants("right")}
@@ -102,7 +106,7 @@ const ViewListPage = () => {
             })};
           `}
         >
-          <Text _fontSize={12}>{currentSelectCategory}</Text>
+          <Text _fontSize={12}>{currentSelectKeyword}</Text>
           <SmallExit />
         </Flex>
       </motion.div>
