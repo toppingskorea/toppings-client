@@ -11,7 +11,7 @@ import {
   Keys,
   useDeleteRecentHistory,
   useFetchEatingHabitByFiltering,
-  useFetchRecentHistory,
+  useFetchRecentHistories,
   useFetchRestaurantByCountry
 } from "~/server/recent";
 
@@ -20,7 +20,7 @@ const useHistory = () => {
   const queryClient = useQueryClient();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
-  const { data: recentHistories } = useFetchRecentHistory();
+  const { data: recentHistories } = useFetchRecentHistories();
   const { mutate: deleteRecentHistoryMutate } = useDeleteRecentHistory({
     onSuccess: () => {
       queryClient.invalidateQueries({
