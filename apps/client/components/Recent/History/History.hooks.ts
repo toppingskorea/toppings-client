@@ -48,11 +48,12 @@ const useHistory = () => {
     keyword: Recent.HistoryDTO["keyword"],
     restaurantId: Recent.HistoryDTO["restaurantId"]
   ) => {
-    if (category === "Name") push(`/post/${restaurantId}`);
-    else {
-      setCurrentSelectKeyword(keyword);
-
-      if (category === "Habit") {
+    switch (category) {
+      case "Name":
+        push(`/post/${restaurantId}`);
+        break;
+      case "Habit":
+        setCurrentSelectKeyword(keyword);
         fetchEatingHabitByFilteringMutate({
           habit: keyword,
           habitTitle: diets.includes(keyword as Util.ElementType<typeof diets>)
@@ -60,14 +61,17 @@ const useHistory = () => {
             : "Religion",
           direction: mapBounds!
         });
-      } else {
+        setCurrentSelectCategory(category);
+        push("/map");
+        break;
+      default:
+        setCurrentSelectKeyword(keyword);
         fetchRestaurantByCountryMutate({
           country: keyword,
           direction: mapBounds!
         });
-      }
-      setCurrentSelectCategory(category);
-      push("/map");
+        setCurrentSelectCategory(category);
+        push("/map");
     }
   };
 
