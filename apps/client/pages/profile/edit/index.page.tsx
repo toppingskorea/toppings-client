@@ -47,7 +47,7 @@ const ProfileEdit = () => {
 
   const isProfileEatingHabitChanged = useProfileEatingHabitChangedValue();
 
-  const newHabit = useMemo(() => {
+  const newHabits = useMemo(() => {
     if (isProfileEatingHabitChanged) {
       if (edit.habits?.length === 0) return [];
 
@@ -66,7 +66,7 @@ const ProfileEdit = () => {
     updateUserInfoMutate({
       name: edit.name ?? userInfo.name,
       country: edit.country ?? userInfo.country,
-      habits: newHabit,
+      habits: newHabits,
       profile: edit.profile ?? userInfo.profile
     });
   }, [
@@ -77,7 +77,7 @@ const ProfileEdit = () => {
     userInfo.name,
     userInfo.country,
     userInfo.profile,
-    newHabit
+    newHabits
   ]);
 
   return (
