@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@emotion/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import {
   Hydrate,
   QueryClient,
@@ -29,14 +30,16 @@ function MyApp({
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <RecoilRoot>
-          <ThemeProvider theme={emotionTheme}>
-            <GlobalCSS />
-            <OverlayProvider>
-              <AppLayout>
-                <Component {...pageProps} />
-              </AppLayout>
-            </OverlayProvider>
-          </ThemeProvider>
+          <ChakraProvider>
+            <ThemeProvider theme={emotionTheme}>
+              <GlobalCSS />
+              <OverlayProvider>
+                <AppLayout>
+                  <Component {...pageProps} />
+                </AppLayout>
+              </OverlayProvider>
+            </ThemeProvider>
+          </ChakraProvider>
         </RecoilRoot>
       </Hydrate>
       <ReactQueryDevtools initialIsOpen={false} />

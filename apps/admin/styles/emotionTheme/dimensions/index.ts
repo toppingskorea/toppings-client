@@ -5,6 +5,8 @@
 
  <Dummy height={dimensions.bottomNavigationHeight}/>
 */
-const dimensions = {} as const;
+const dimensions = {
+  sidebarWidth: 500
+} as const;
 
 export default dimensions;
