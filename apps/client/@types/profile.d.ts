@@ -4,7 +4,7 @@ declare module Profile {
     name: string;
     country: string;
     profile?: string;
-    habits: {
+    habits?: {
       title: Common.EatingHabit;
       content: string;
     }[];

@@ -1,6 +1,7 @@
-import { useEditState } from "@atoms/index";
+import { useEditState, useProfileEatingHabitChangedValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { Flex, position, Spacing, width100 } from "@toss/emotion-utils";
+import { useMemo } from "react";
 import { ComponentWithLabel, Input } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter } from "~/hooks";
@@ -13,8 +14,19 @@ const UserInfo = () => {
   const { colors, weighs } = useTheme();
   const { push } = useInternalRouter();
 
-  const { data } = useFetchUserInfo();
+  const { data: userInfo } = useFetchUserInfo();
   const [edit, setEdit] = useEditState();
+
+  const isProfileEatingHabitChanged = useProfileEatingHabitChangedValue();
+
+  const eatingHabitPlaceholder = useMemo(() => {
+    if (isProfileEatingHabitChanged) {
+      if (edit.habits?.length === 0) return "Not Selected";
+
+      return edit.habits && edit.habits[0].content;
+    }
+    return userInfo.habits && userInfo.habits[0].content;
+  }, [isProfileEatingHabitChanged, userInfo.habits, edit.habits]);
 
   return (
     <>
@@ -31,7 +43,7 @@ const UserInfo = () => {
           <Spacing size={3} direction="horizontal" />
           <Input
             height={39}
-            value={edit.name === undefined ? data.name : edit.name}
+            value={edit.name === undefined ? userInfo.name : edit.name}
             onChange={e => setEdit({ ...edit, name: e.target.value })}
             absoluteNode={
               <Text
@@ -60,7 +72,7 @@ const UserInfo = () => {
         label="Nationality"
         inputProps={{
           onClick: () => push("/profile/edit/nationality"),
-          placeholder: edit.country || data.country
+          placeholder: edit.country || userInfo.country
         }}
       />
 
@@ -68,8 +80,7 @@ const UserInfo = () => {
         label="Eating habit"
         inputProps={{
           onClick: () => push("/profile/edit/eatingHabits"),
-          placeholder:
-            (edit.habits && edit.habits[0].content) || data.habits[0].content
+          placeholder: eatingHabitPlaceholder
         }}
       />
     </>
