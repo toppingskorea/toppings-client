@@ -11,7 +11,7 @@ import {
   Keys,
   useDeleteRecentHistory,
   useFetchEatingHabitByFiltering,
-  useFetchRecentHistory,
+  useFetchRecentHistories,
   useFetchRestaurantByCountry
 } from "~/server/recent";
 
@@ -20,7 +20,7 @@ const useHistory = () => {
   const queryClient = useQueryClient();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
-  const { data: recentHistories } = useFetchRecentHistory();
+  const { data: recentHistories } = useFetchRecentHistories();
   const { mutate: deleteRecentHistoryMutate } = useDeleteRecentHistory({
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -48,11 +48,12 @@ const useHistory = () => {
     keyword: Recent.HistoryDTO["keyword"],
     restaurantId: Recent.HistoryDTO["restaurantId"]
   ) => {
-    if (category === "Name") push(`/post/${restaurantId}`);
-    else {
-      setCurrentSelectKeyword(keyword);
-
-      if (category === "Habit") {
+    switch (category) {
+      case "Name":
+        push(`/post/${restaurantId}`);
+        break;
+      case "Habit":
+        setCurrentSelectKeyword(keyword);
         fetchEatingHabitByFilteringMutate({
           habit: keyword,
           habitTitle: diets.includes(keyword as Util.ElementType<typeof diets>)
@@ -60,14 +61,17 @@ const useHistory = () => {
             : "Religion",
           direction: mapBounds!
         });
-      } else {
+        setCurrentSelectCategory(category);
+        push("/map");
+        break;
+      default:
+        setCurrentSelectKeyword(keyword);
         fetchRestaurantByCountryMutate({
           country: keyword,
           direction: mapBounds!
         });
-      }
-      setCurrentSelectCategory(category);
-      push("/map");
+        setCurrentSelectCategory(category);
+        push("/map");
     }
   };
 

@@ -1,7 +1,8 @@
 import {
   useCurrentLocationSetter,
   useCurrentSelectKeywordSetter,
-  useMapSearchByCountryReset
+  useMapSearchByCountryReset,
+  useSearchRestaurantIdSetter
 } from "@atoms/index";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -18,6 +19,7 @@ const useRestaurant = () => {
   const setCurrentLocation = useCurrentLocationSetter();
   const resetMapSearchByCountry = useMapSearchByCountryReset();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
+  const setSearchRestaurantId = useSearchRestaurantIdSetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
   const { mutate: fetchRestaurantNameByFilteringMutate } =
     useFetchRestaurantNameByFiltering({
@@ -63,6 +65,7 @@ const useRestaurant = () => {
       restaurantId: item.id
     });
     setCurrentSelectKeyword(item.name);
+    setSearchRestaurantId(item.id);
     resetMapSearchByCountry();
 
     push("/map");

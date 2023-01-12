@@ -31,3 +31,13 @@ export const useCurrentSelectCategoryValue = () =>
   useRecoilValue(currentSelectCategoryAtom);
 export const useCurrentSelectCategorySetter = () =>
   useSetRecoilState(currentSelectCategoryAtom);
+
+const searchRestaurantIdAtom = atom<number>({
+  key: "searchRestaurantId",
+  default: -1
+});
+
+export const useSearchRestaurantIdValue = () =>
+  useRecoilValue(searchRestaurantIdAtom);
+export const useSearchRestaurantIdSetter = () =>
+  useSetRecoilState(searchRestaurantIdAtom);
