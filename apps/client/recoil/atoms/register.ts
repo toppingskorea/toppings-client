@@ -1,14 +1,8 @@
-import {
-  atom,
-  useRecoilState,
-  useRecoilValue,
-  useResetRecoilState,
-  useSetRecoilState
-} from "recoil";
+import { atom, useRecoilState } from "recoil";
 
 const registerAtom = atom<{
   country: string;
-  habit: {
+  habits: {
     title: Common.EatingHabit;
     content: string;
   }[];
@@ -16,11 +10,8 @@ const registerAtom = atom<{
   key: "registerAtom",
   default: {
     country: "",
-    habit: []
+    habits: []
   }
 });
 
 export const useRegisterState = () => useRecoilState(registerAtom);
-export const useRegisterValue = () => useRecoilValue(registerAtom);
-export const useRegisterSetter = () => useSetRecoilState(registerAtom);
-export const useRegisterReset = () => useResetRecoilState(registerAtom);

@@ -59,16 +59,19 @@ const EatingHabits = () => {
 
   const onTagClickHandler = useCallback(
     (title: Common.EatingHabit, content: string) => {
-      if (register.habit.length > 0 && register.habit[0].content === content) {
+      if (
+        register.habits.length > 0 &&
+        register.habits[0].content === content
+      ) {
         setRegister({
           ...register,
-          habit: []
+          habits: []
         });
         return;
       }
       setRegister({
         ...register,
-        habit: [
+        habits: [
           {
             title,
             content
@@ -81,7 +84,7 @@ const EatingHabits = () => {
 
   return (
     <>
-      <SelectEatingHabit onClick={onTagClickHandler} habits={register.habit} />
+      <SelectEatingHabit onClick={onTagClickHandler} habits={register.habits} />
 
       <motion.div
         variants={defaultSlideFadeInVariants("right")}
