@@ -19,7 +19,7 @@ const UserInfo = () => {
 
   const isProfileEatingHabitChanged = useProfileEatingHabitChangedValue();
 
-  const eatingHabitPlaceHolder = useMemo(() => {
+  const eatingHabitPlaceholder = useMemo(() => {
     if (isProfileEatingHabitChanged) {
       if (edit.habits?.length === 0) return "Not Selected";
 
@@ -80,7 +80,7 @@ const UserInfo = () => {
         label="Eating habit"
         inputProps={{
           onClick: () => push("/profile/edit/eatingHabits"),
-          placeholder: eatingHabitPlaceHolder
+          placeholder: eatingHabitPlaceholder
         }}
       />
     </>
