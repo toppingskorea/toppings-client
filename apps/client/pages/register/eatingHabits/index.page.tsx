@@ -57,22 +57,34 @@ const EatingHabits = () => {
     overlay.open(() => <SuccessModal />);
   };
 
+  const onTagClickHandler = useCallback(
+    (title: Common.EatingHabit, content: string) => {
+      if (
+        register.habits.length > 0 &&
+        register.habits[0].content === content
+      ) {
+        setRegister({
+          ...register,
+          habits: []
+        });
+        return;
+      }
+      setRegister({
+        ...register,
+        habits: [
+          {
+            title,
+            content
+          }
+        ]
+      });
+    },
+    [register, setRegister]
+  );
+
   return (
     <>
-      <SelectEatingHabit
-        onClick={(title, content) => {
-          setRegister({
-            ...register,
-            habit: [
-              {
-                title,
-                content
-              }
-            ]
-          });
-        }}
-        habits={register.habit}
-      />
+      <SelectEatingHabit onClick={onTagClickHandler} habits={register.habits} />
 
       <motion.div
         variants={defaultSlideFadeInVariants("right")}
