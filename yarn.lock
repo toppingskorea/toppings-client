@@ -1726,15 +1726,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/icons@npm:^2.0.13":
-  version: 2.0.16
-  resolution: "@chakra-ui/icons@npm:2.0.16"
+"@chakra-ui/icon@npm:3.0.16":
+  version: 3.0.16
+  resolution: "@chakra-ui/icon@npm:3.0.16"
   dependencies:
-    "@chakra-ui/icon": 3.0.15
+    "@chakra-ui/shared-utils": 2.0.5
   peerDependencies:
     "@chakra-ui/system": ">=2.0.0"
     react: ">=18"
-  checksum: b4d08898485300fe5f08eaba2cc64dea22ed05149adfc2d27c397718877b343f8a136f0cf9fcc3b2d616c5cc08a5334731fc0e5d92b3a147a49dbac7a292497c
+  checksum: c0ac66946fe8950e7daaa2462f00f2f7d4ce41878b9f26451c0c94c75887f4ae49f86883c4d7c2728243e5c182b9530e752ec9817c7672e0f852bde8353b2039
+  languageName: node
+  linkType: hard
+
+"@chakra-ui/icons@npm:^2.0.16":
+  version: 2.0.17
+  resolution: "@chakra-ui/icons@npm:2.0.17"
+  dependencies:
+    "@chakra-ui/icon": 3.0.16
+  peerDependencies:
+    "@chakra-ui/system": ">=2.0.0"
+    react: ">=18"
+  checksum: cb0d6f431d162f7d8d50ee33b887bb64f490109cc077bf176bea17ddca32c926b0caaab1013f05186be52ee42f261ff9d4e7af50744a03d51de356b4470e0ee2
   languageName: node
   linkType: hard
 
@@ -2323,6 +2335,13 @@ __metadata:
   version: 2.0.4
   resolution: "@chakra-ui/shared-utils@npm:2.0.4"
   checksum: 8de5e224e01c8cd109321796524ddbbfe92d48fe9de4781dcecac90d4b7e9838dfd5ef9164e7e1ed87b2031988392d3b2d5f55bda3dd2347f92e91d292700d2b
+  languageName: node
+  linkType: hard
+
+"@chakra-ui/shared-utils@npm:2.0.5":
+  version: 2.0.5
+  resolution: "@chakra-ui/shared-utils@npm:2.0.5"
+  checksum: 7274b168bf188d1dc098d1f73a60676c6702454bd4dd9919f9b8447205bc1053b4faab6e38702f33cc25694f18bb598c39777f70b44dba221c078c839f42f2bd
   languageName: node
   linkType: hard
 
@@ -3854,7 +3873,7 @@ __metadata:
   resolution: "@toppings/admin@workspace:apps/admin"
   dependencies:
     "@babel/runtime": ^7.19.0
-    "@chakra-ui/icons": ^2.0.13
+    "@chakra-ui/icons": ^2.0.16
     "@chakra-ui/react": ^2.4.2
     "@chakra-ui/system": ^2.3.4
     "@emotion/react": ^11.10.5
