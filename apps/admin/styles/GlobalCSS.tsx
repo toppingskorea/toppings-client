@@ -7,7 +7,6 @@ const GlobalCSS = () => {
       styles={css`
         /* 앱처럼 user-select 제거 */
         * {
-          user-select: none;
           box-sizing: border-box;
           margin: 0;
           padding: 0;
