@@ -1,11 +1,11 @@
 /*
  사용하는 부분에선 다음과 같이 사용해주세요.
  import { useTheme } from "@emotion/react"
- const {weighs} = useTheme()
+ const {weigh} = useTheme()
 
- <Dummy height={weighs.light}/>
+ <Dummy height={weigh.light}/>
 */
-const weighs = {
+const weigh = {
   light: 300,
   normal: 400,
   medium: 500,
@@ -15,4 +15,4 @@ const weighs = {
   heavy: 900
 } as const;
 
-export default weighs;
+export default weigh;

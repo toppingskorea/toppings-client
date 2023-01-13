@@ -1,5 +1,4 @@
-import type { AxiosInstance, AxiosRequestConfig } from "axios";
-import axios from "axios";
+import axios, { type AxiosInstance, type AxiosRequestConfig } from "axios";
 
 const authRequest: AxiosInstance = axios.create({});
 const formDataRequest: AxiosInstance = axios.create({});

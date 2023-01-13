@@ -9,7 +9,7 @@ const zIndex = {
   zero: 0,
   one: 1,
   two: 2,
-  four: 4
+  three: 3
 } as const;
 
 export default zIndex;

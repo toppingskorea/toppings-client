@@ -1,5 +1,4 @@
-import type { ChangeEvent } from "react";
-import { useCallback, useState } from "react";
+import { useCallback, useState, type ChangeEvent } from "react";
 import { useDebounce as useDebounceHook } from ".";
 
 interface Props {
