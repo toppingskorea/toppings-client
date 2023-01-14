@@ -55,7 +55,7 @@ const ProfileEdit = () => {
         return [
           {
             title: edit.habits[0].title,
-            content: replaceSpace(edit.habits[0].content)
+            content: replaceSpace<string>(edit.habits[0].content)
           }
         ];
     }

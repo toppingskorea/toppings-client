@@ -1,7 +1,7 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { diets } from "~/constants/data/common";
 import {
+  useCurrentHabitTitleValue,
   useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter,
   useMapBoundsValue,
@@ -14,12 +14,14 @@ import {
   useFetchRestaurantByCountry,
   useFetchRestaurantByEatingHabit
 } from "~/server/recent";
+import { habitTitleChecker } from "~/utils";
 
 const useHistory = () => {
   const { push } = useRouter();
   const queryClient = useQueryClient();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
+  const currentHabitTitle = useCurrentHabitTitleValue();
   const { data: recentHistories } = useFetchRecentHistories();
   const { mutate: deleteRecentHistoryMutate } = useDeleteRecentHistory({
     onSuccess: () => {
@@ -56,9 +58,7 @@ const useHistory = () => {
         setCurrentSelectKeyword(keyword);
         fetchRestaurantByEatingHabit({
           habit: keyword,
-          habitTitle: diets.includes(keyword as Util.ElementType<typeof diets>)
-            ? "Diet"
-            : "Religion",
+          habitTitle: habitTitleChecker(keyword), // 기본 타이틀이 atom에 Diet로 되어 있으므로 TitleChecker를 사용합니다
           direction: mapBounds!
         });
         setCurrentSelectCategory(category);

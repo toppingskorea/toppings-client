@@ -51,7 +51,7 @@ export const getRestaurantByEatingHabit = async ({
   direction
 }: {
   habit: string;
-  habitTitle: string;
+  habitTitle: Common.EatingHabit;
   direction: (kakao.maps.LatLngBounds & Direction) | Direction;
 }) => {
   const { data } = await authRequest.get<{

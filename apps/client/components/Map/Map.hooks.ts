@@ -1,4 +1,5 @@
 import {
+  useCurrentHabitTitleValue,
   useCurrentLocationSetter,
   useCurrentSelectCategoryValue,
   useCurrentSelectKeywordValue,
@@ -8,7 +9,6 @@ import {
 } from "@atoms/index";
 import { useTheme } from "@emotion/react";
 import { useCallback, useEffect } from "react";
-import { diets } from "~/constants/data/common";
 import { useMap } from "~/contexts";
 import {
   useFetchDefaultMap,
@@ -38,6 +38,7 @@ const useMapHook = () => {
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const currentSelectCategory = useCurrentSelectCategoryValue();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
+  const currentHabitTitle = useCurrentHabitTitleValue();
 
   const mutateOnSuccess = useCallback(
     (data: Restaurant.SearchByCountryDTO[]) => {
@@ -87,11 +88,7 @@ const useMapHook = () => {
       if (currentSelectCategory === "Habit") {
         fetchRestaurantByEatingHabitMutate({
           habit: currentSelectKeyword,
-          habitTitle: diets.includes(
-            currentSelectKeyword as Util.ElementType<typeof diets>
-          )
-            ? "Diet"
-            : "Religion",
+          habitTitle: currentHabitTitle,
           direction: map.getBounds() as kakao.maps.LatLngBounds & Direction
         });
       } else if (currentSelectCategory === "Country") {

@@ -1,4 +1,5 @@
 import {
+  useCurrentHabitTitleSetter,
   useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter,
   useMapBoundsValue,
@@ -7,6 +8,7 @@ import {
 import { useRouter } from "next/router";
 import { TagFamily } from "~/components/Recent";
 import { SelectEatingHabit } from "~/components/Section";
+import type { diets } from "~/constants/data/common";
 import { useSetNavigation } from "~/hooks";
 import {
   useFetchRestaurantByEatingHabit,
@@ -20,6 +22,7 @@ const EatingHabitPage = () => {
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const setCurrentHabitTitle = useCurrentHabitTitleSetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
   const { mutate: fetchRestaurantByEatingHabit } =
     useFetchRestaurantByEatingHabit({
@@ -44,9 +47,12 @@ const EatingHabitPage = () => {
       <SelectEatingHabit
         isRecent
         onClick={(title, content) => {
-          const removeSpaceContent = replaceSpace(content);
+          const removeSpaceContent =
+            replaceSpace<Util.ElementType<typeof diets>>(content);
 
+          setCurrentHabitTitle(title);
           setCurrentSelectKeyword(removeSpaceContent);
+
           uploadRecentHistoryMutate({
             type: "Filter",
             keyword: removeSpaceContent,
