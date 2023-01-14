@@ -57,7 +57,7 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
         );
         const options = {
           center: latLng,
-          level: 6
+          level: 4
         };
         const map = new kakao.maps.Map(mapRef.current, options);
 
