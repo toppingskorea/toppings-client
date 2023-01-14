@@ -45,7 +45,7 @@ export const getRestaurantByCountry = async ({
 };
 
 // 음식점 / 음식점 검색 (필터)
-export const getEatingHabitByFiltering = async ({
+export const getRestaurantByEatingHabit = async ({
   habit,
   habitTitle,
   direction
@@ -64,7 +64,7 @@ export const getEatingHabitByFiltering = async ({
 };
 
 // 음식점 / 음식점 검색 (필터)
-export const getRestaurantNameByFiltering = async (name: string) => {
+export const getRestaurantByName = async (name: string) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByCountryDTO[];
   }>(`/v1/restaurant/filter?type=Name&name=${name}`);
@@ -73,7 +73,7 @@ export const getRestaurantNameByFiltering = async (name: string) => {
 };
 
 // 음식점 / 음식점 검색 (지도)
-export const getDefaultMap = async (
+export const getDefaultRestaurant = async (
   direction: (kakao.maps.LatLngBounds & Direction) | Direction
 ) => {
   const { data } = await authRequest.get<{
