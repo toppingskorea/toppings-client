@@ -7,7 +7,7 @@ import {
   type Direction
 } from "@atoms/index";
 import { useTheme } from "@emotion/react";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { diets } from "~/constants/data/common";
 import { useMap } from "~/contexts";
 import {
@@ -38,21 +38,29 @@ const useMapHook = () => {
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const currentSelectCategory = useCurrentSelectCategoryValue();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
+
+  const mutateOnSuccess = useCallback(
+    (data: Restaurant.SearchByCountryDTO[]) => {
+      setMapSearchByCountry(data);
+    },
+    [setMapSearchByCountry]
+  );
+
   const { mutate: defaultMapMutate } = useFetchDefaultMap({
     onSuccess: data => {
-      setMapSearchByCountry(data);
+      mutateOnSuccess(data);
     }
   });
   const { mutate: fetchRestaurantByEatingHabitMutate } =
     useFetchRestaurantByEatingHabit({
       onSuccess: data => {
-        setMapSearchByCountry(data);
+        mutateOnSuccess(data);
       }
     });
   const { mutate: fetchRestaurantByCountryMutate } =
     useFetchRestaurantByCountry({
       onSuccess: data => {
-        setMapSearchByCountry(data);
+        mutateOnSuccess(data);
       }
     });
 
