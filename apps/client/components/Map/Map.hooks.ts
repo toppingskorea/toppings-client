@@ -16,7 +16,7 @@ import {
   useFetchRestaurantByCountry
 } from "~/server/recent";
 
-const useMapEvent = (type: Map.EventsType, handler: () => void) => {
+const useMapEvent = (type: Map.EventsType, handler: VoidFunction) => {
   const { map } = useMapHook();
 
   // eslint-disable-next-line consistent-return
