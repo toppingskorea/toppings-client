@@ -27,8 +27,6 @@ const FilteringButton = () => {
   const { push } = useRouter();
   const currentSelectKeywordReset = useCurrentSelectKeywordReset();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
-  const currentSelectKeywordReset = useCurrentSelectKeywordReset();
-  const currentSelectKeyword = useCurrentSelectKeywordValue();
   const resetMapSearchByCountry = useMapSearchByCountryReset();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const mapBounds = useMapBoundsValue();
@@ -52,7 +50,6 @@ const FilteringButton = () => {
       `}
     >
       {currentSelectKeyword && (
-      {currentSelectKeyword && (
         <Flex.Center
           css={css`
             ${padding({
@@ -66,7 +63,6 @@ const FilteringButton = () => {
           `}
         >
           <Text _fontSize={17} _color={colors.white}>
-            {currentSelectKeyword}
             {currentSelectKeyword}
           </Text>
           <Exit
