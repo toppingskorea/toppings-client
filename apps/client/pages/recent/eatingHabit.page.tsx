@@ -1,15 +1,17 @@
 import {
+  useCurrentHabitTitleSetter,
   useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter,
   useMapBoundsValue,
-  useMapSearchByCountrySetter
+  useMapSearchByFilteringSetter
 } from "@atoms/index";
 import { useRouter } from "next/router";
 import { TagFamily } from "~/components/Recent";
 import { SelectEatingHabit } from "~/components/Section";
+import type { diets } from "~/constants/data/common";
 import { useSetNavigation } from "~/hooks";
 import {
-  useFetchEatingHabitByFiltering,
+  useFetchRestaurantByEatingHabit,
   useUploadRecentHistory
 } from "~/server/recent";
 import { replaceSpace } from "~/utils";
@@ -19,10 +21,11 @@ const EatingHabitPage = () => {
   const mapBounds = useMapBoundsValue();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
-  const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const setMapSearchByCountry = useMapSearchByFilteringSetter();
+  const setCurrentHabitTitle = useCurrentHabitTitleSetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
-  const { mutate: fetchEatingHabitByFilteringMutate } =
-    useFetchEatingHabitByFiltering({
+  const { mutate: fetchRestaurantByEatingHabit } =
+    useFetchRestaurantByEatingHabit({
       onSuccess: data => {
         setMapSearchByCountry(data);
         setCurrentSelectCategory("Habit");
@@ -44,16 +47,19 @@ const EatingHabitPage = () => {
       <SelectEatingHabit
         isRecent
         onClick={(title, content) => {
-          const removeSpaceContent = replaceSpace(content);
+          const removeSpaceContent =
+            replaceSpace<Util.ElementType<typeof diets>>(content);
 
+          setCurrentHabitTitle(title);
           setCurrentSelectKeyword(removeSpaceContent);
+
           uploadRecentHistoryMutate({
             type: "Filter",
             keyword: removeSpaceContent,
             category: "Habit"
           });
 
-          fetchEatingHabitByFilteringMutate({
+          fetchRestaurantByEatingHabit({
             habitTitle: title,
             habit: removeSpaceContent,
             direction: mapBounds!

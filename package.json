@@ -9,7 +9,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "dev:web": "turbo run dev --filter client",
+    "dev:client": "turbo run dev --filter client",
     "dev:admin": "turbo run dev --filter admin",
     "lint": "turbo run lint",
     "start": "next start",

@@ -4,10 +4,10 @@ import {
   addRecentHistory,
   deleteAllRecentHistory,
   deleteRecentHistory,
-  getDefaultMap,
-  getEatingHabitByFiltering,
+  getDefaultRestaurant,
   getRestaurantByCountry,
-  getRestaurantNameByFiltering
+  getRestaurantByEatingHabit,
+  getRestaurantByName
 } from "./apis";
 
 export const useDeleteAllRecentHistory = (
@@ -35,27 +35,27 @@ export const useDeleteRecentHistory = (
 export const useFetchDefaultMap = (
   options: Pick<
     UseMutationOptions<
-      Awaited<ReturnType<typeof getDefaultMap>>,
+      Awaited<ReturnType<typeof getDefaultRestaurant>>,
       unknown,
-      Parameters<typeof getDefaultMap>[0]
+      Parameters<typeof getDefaultRestaurant>[0]
     >,
     "onSuccess"
   >
 ) => {
-  return useMutation(getDefaultMap, options);
+  return useMutation(getDefaultRestaurant, options);
 };
 
-export const useFetchEatingHabitByFiltering = (
+export const useFetchRestaurantByEatingHabit = (
   options: Pick<
     UseMutationOptions<
-      Awaited<ReturnType<typeof getEatingHabitByFiltering>>,
+      Awaited<ReturnType<typeof getRestaurantByEatingHabit>>,
       unknown,
-      Parameters<typeof getEatingHabitByFiltering>[0]
+      Parameters<typeof getRestaurantByEatingHabit>[0]
     >,
     "onSuccess"
   >
 ) => {
-  return useMutation(getEatingHabitByFiltering, options);
+  return useMutation(getRestaurantByEatingHabit, options);
 };
 
 export const useFetchRestaurantByCountry = (
@@ -71,17 +71,17 @@ export const useFetchRestaurantByCountry = (
   return useMutation(getRestaurantByCountry, options);
 };
 
-export const useFetchRestaurantNameByFiltering = (
+export const useFetchRestaurantByName = (
   options: Pick<
     UseMutationOptions<
-      Awaited<ReturnType<typeof getRestaurantNameByFiltering>>,
+      Awaited<ReturnType<typeof getRestaurantByName>>,
       unknown,
-      Parameters<typeof getRestaurantNameByFiltering>[0]
+      Parameters<typeof getRestaurantByName>[0]
     >,
     "onSuccess"
   >
 ) => {
-  return useMutation(getRestaurantNameByFiltering, options);
+  return useMutation(getRestaurantByName, options);
 };
 
 export const useUploadRecentHistory = () => useMutation(addRecentHistory);

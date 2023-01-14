@@ -20,6 +20,16 @@ export const useCurrentSelectKeywordSetter = () =>
 export const useCurrentSelectKeywordReset = () =>
   useResetRecoilState(currentSelectKeywordAtom);
 
+const currentHabitTitleAtom = atom<"Diet" | "Religion">({
+  key: "currentHabitTitleAtom",
+  default: "Diet"
+});
+
+export const useCurrentHabitTitleValue = () =>
+  useRecoilValue(currentHabitTitleAtom);
+export const useCurrentHabitTitleSetter = () =>
+  useSetRecoilState(currentHabitTitleAtom);
+
 const currentSelectCategoryAtom = atom<string>({
   key: "currentSelectCategory",
   default: ""
