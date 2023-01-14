@@ -8,8 +8,8 @@ import { useMapEvent, useMapHook } from "./Map.hooks";
 const Map = ({ children }: Util.PropsWithChild) => {
   const app = useMapHook();
 
-  useMapEvent("dragend", app.mapEventHandler);
-  useMapEvent("zoom_changed", app.mapEventHandler);
+  useMapEvent("dragend");
+  useMapEvent("zoom_changed");
 
   return (
     <div
