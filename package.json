@@ -9,7 +9,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "dev:web": "turbo run dev --filter client",
+    "dev:client": "turbo run dev --filter client",
     "lint": "turbo run lint",
     "start": "next start",
     "test": "jest --watch",
