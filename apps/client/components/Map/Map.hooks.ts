@@ -16,17 +16,18 @@ import {
   useFetchRestaurantByEatingHabit
 } from "~/server/recent";
 
-const useMapEvent = (type: Map.EventsType) => {
-  const { map, mapEventHandler } = useMapHook();
+const useMapEvent = (type: Map.EventsType, handler: VoidFunction) => {
+  const { map } = useMapHook();
 
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
-    if (map) kakao.maps.event.addListener(map, type, mapEventHandler);
+    if (map) kakao.maps.event.addListener(map, type, handler);
 
     return () => {
-      if (map) kakao.maps.event.removeListener(map, type, mapEventHandler);
+      if (map) kakao.maps.event.removeListener(map, type, handler);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [type]);
+  }, [handler, type]);
 };
 
 const useMapHook = () => {
