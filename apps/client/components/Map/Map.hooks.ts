@@ -47,15 +47,11 @@ const useMapHook = () => {
   );
 
   const { mutate: defaultMapMutate } = useFetchDefaultMap({
-    onSuccess: data => {
-      mutateOnSuccess(data);
-    }
+    onSuccess: mutateOnSuccess
   });
   const { mutate: fetchRestaurantByEatingHabitMutate } =
     useFetchRestaurantByEatingHabit({
-      onSuccess: data => {
-        mutateOnSuccess(data);
-      }
+      onSuccess: mutateOnSuccess
     });
   const { mutate: fetchRestaurantByCountryMutate } =
     useFetchRestaurantByCountry({
