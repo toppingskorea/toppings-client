@@ -1,69 +1,24 @@
-import {
-  useCurrentLocationSetter,
-  useCurrentSelectCategorySetter
-} from "@atoms/index";
 import { css } from "@emotion/react";
 import { padding } from "@toss/emotion-utils";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { RestaurantCard, SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
-import { useInput, useSetNavigation } from "~/hooks";
-import {
-  useFetchRestaurantNameByFiltering,
-  useUploadRecentHistory
-} from "~/server/recent";
 import { pick } from "~/utils";
+import useRestaurant from "./restaurant.hooks";
 
 const RecentPage = () => {
-  const { push } = useRouter();
-  const [restaurantList, setRestaurantList] =
-    useState<Restaurant.SearchByCountryDTO[]>();
-  const setCurrentLocation = useCurrentLocationSetter();
-  const setCurrentSelectCategory = useCurrentSelectCategorySetter();
-  const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
-  const { mutate: fetchRestaurantNameByFilteringMutate } =
-    useFetchRestaurantNameByFiltering({
-      onSuccess: data => {
-        setRestaurantList(data);
-      }
-    });
-
-  useSetNavigation({
-    top: {
-      marginBottom: 37
-    }
-  });
-
-  const {
-    props: keyword,
-    debouncedValue,
-    setValue
-  } = useInput({
-    useDebounce: true,
-    debounceTimeout: 300
-  });
-
-  useEffect(() => {
-    if (!debouncedValue.length) {
-      setRestaurantList(undefined);
-      return;
-    }
-
-    fetchRestaurantNameByFilteringMutate(debouncedValue);
-  }, [debouncedValue, fetchRestaurantNameByFilteringMutate]);
+  const app = useRestaurant();
 
   return (
     <>
       <SearchLayout>
         <SearchInput
           onSubmit={() => {
-            fetchRestaurantNameByFilteringMutate(keyword.value);
+            app.fetchRestaurantNameByFilteringMutate(app.keyword.value);
           }}
           placeholder="enter the restaurant name"
-          setValue={setValue}
-          {...keyword}
+          setValue={app.setValue}
+          {...app.keyword}
         />
       </SearchLayout>
       <TagFamily />
@@ -77,25 +32,10 @@ const RecentPage = () => {
           })}
         `}
       >
-        {restaurantList?.map(item => (
+        {app.restaurantList?.map(item => (
           <RestaurantCard
             key={item.id}
-            onClick={() => {
-              setCurrentLocation({
-                latitude: item.latitude,
-                longitude: item.longitude
-              });
-              uploadRecentHistoryMutate({
-                type: "Filter",
-                keyword: item.name,
-                category: "Name",
-                content: item.address,
-                restaurantId: item.id
-              });
-              setCurrentSelectCategory(item.name);
-
-              push("/map");
-            }}
+            onClick={() => app.restaurantCardClickHandler(item)}
             item={{
               ...pick({ ...item }, [
                 "id",

@@ -32,7 +32,7 @@ import { Keys, useFetchUserInfo } from "~/server/profile";
 
 const Profile = () => {
   const { colors, weighs, dimensions } = useTheme();
-  const { data } = useFetchUserInfo();
+  const { data: userInfo } = useFetchUserInfo();
 
   const { push } = useInternalRouter();
 
@@ -44,7 +44,7 @@ const Profile = () => {
       },
       title: (
         <Text _fontSize={24} _color={colors.secondary[47]}>
-          {data?.name ?? ""}
+          {userInfo?.name ?? ""}
         </Text>
       ),
       marginBottom: 33
@@ -60,8 +60,8 @@ const Profile = () => {
     >
       <Stack.Horizontal align="center" gutter={0} justify="space-between">
         <Image
-          src={data.profile || avatar}
-          alt={`${data.name}'s profile`}
+          src={userInfo.profile || avatar}
+          alt={`${userInfo.name}'s profile`}
           width={88}
           height={88}
           css={css`
@@ -79,13 +79,13 @@ const Profile = () => {
           `}
         >
           <LabelWithEllipse label="Posts" route="/profile/posts">
-            {data.postCount}
+            {userInfo.postCount}
           </LabelWithEllipse>
           <LabelWithEllipse label="Saved" route="/profile/saved">
-            {data.scrapCount}
+            {userInfo.scrapCount}
           </LabelWithEllipse>
           <LabelWithEllipse label="Reviews" route="/profile/reviews">
-            {data.reviewCount}
+            {userInfo.reviewCount}
           </LabelWithEllipse>
         </motion.ul>
       </Stack.Horizontal>
@@ -105,26 +105,28 @@ const Profile = () => {
           }}
           _fontSize={15}
         >
-          {data.country}
+          {userInfo.country}
         </RoundedTag>
       </ComponentWithLabel>
       <Spacing size={26} />
-      <ComponentWithLabel label="Eating habit" gutter={11}>
-        <RoundedTag
-          padding={{
-            x: 20,
-            y: 7
-          }}
-          defaultProps={{
-            bgcolor: colors.primary,
-            bordercolor: "transparent",
-            _color: colors.white
-          }}
-          _fontSize={15}
-        >
-          {data.habits[0].content}
-        </RoundedTag>
-      </ComponentWithLabel>
+      {userInfo.habits && userInfo.habits?.length > 0 && (
+        <ComponentWithLabel label="Eating habit" gutter={11}>
+          <RoundedTag
+            padding={{
+              x: 20,
+              y: 7
+            }}
+            defaultProps={{
+              bgcolor: colors.primary,
+              bordercolor: "transparent",
+              _color: colors.white
+            }}
+            _fontSize={15}
+          >
+            {userInfo.habits?.[0].content}
+          </RoundedTag>
+        </ComponentWithLabel>
+      )}
       <motion.div
         variants={defaultSlideFadeInVariants("bottom")}
         {...framerMocker}

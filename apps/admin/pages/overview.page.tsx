@@ -1,6 +1,6 @@
+import { Suspense } from "@suspensive/react";
 import { CountCards } from "~/components/Overview";
 import Skeleton from "~/components/Skeleton";
-import { SSRSafeSuspense } from "~/components/Util";
 import { useSetHeader } from "~/hooks";
 
 const Overview = () => {
@@ -8,7 +8,7 @@ const Overview = () => {
 
   return (
     <div>
-      <SSRSafeSuspense
+      <Suspense.CSROnly
         fallback={
           <Skeleton.Box
             size={{
@@ -19,7 +19,7 @@ const Overview = () => {
         }
       >
         <CountCards />
-      </SSRSafeSuspense>
+      </Suspense.CSROnly>
     </div>
   );
 };

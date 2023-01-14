@@ -1,9 +1,9 @@
 import {
   useCurrentSelectCategorySetter,
+  useCurrentSelectKeywordSetter,
   useMapBoundsValue,
   useMapSearchByCountrySetter
 } from "@atoms/index";
-import { Exit } from "@svgs/common";
 import { SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
@@ -19,9 +19,10 @@ import {
   useUploadRecentHistory
 } from "~/server/recent";
 
-const RecentPage = () => {
+const NationalityPage = () => {
   const { push } = useInternalRouter();
   const mapBounds = useMapBoundsValue();
+  const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
@@ -29,17 +30,14 @@ const RecentPage = () => {
     useFetchRestaurantByCountry({
       onSuccess: data => {
         setMapSearchByCountry(data);
+        setCurrentSelectCategory("Country");
         push("/map");
       }
     });
 
   useSetNavigation({
     top: {
-      marginBottom: 37,
-      right: {
-        element: <Exit />,
-        onClick: () => push("/map")
-      }
+      marginBottom: 37
     }
   });
 
@@ -60,11 +58,15 @@ const RecentPage = () => {
       <SearchNationality
         keyword={keyword.value}
         onCountryClick={name => {
-          setCurrentSelectCategory(name);
+          setCurrentSelectKeyword(name);
           uploadRecentHistoryMutate({
             type: "Filter",
             keyword: name,
             category: "Country"
+          });
+          fetchRestaurantByCountryMutate({
+            country: name,
+            direction: mapBounds!
           });
           fetchRestaurantByCountryMutate({
             country: name,
@@ -76,4 +78,4 @@ const RecentPage = () => {
   );
 };
 
-export default RecentPage;
+export default NationalityPage;

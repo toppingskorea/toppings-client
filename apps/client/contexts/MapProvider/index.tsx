@@ -1,4 +1,7 @@
-import { useCurrentLocationValue } from "@atoms/index";
+import {
+  useCurrentLocationValue,
+  useSearchRestaurantIdValue
+} from "@atoms/index";
 import { useMapSearchByCountryValue } from "@atoms/map";
 import { useRouter } from "next/router";
 import {
@@ -25,6 +28,7 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
   const { replace } = useRouter();
   const mapSearchByCountry = useMapSearchByCountryValue();
   const currentLocation = useCurrentLocationValue();
+  const searchRestaurantId = useSearchRestaurantIdValue();
   const mapRef = useRef<HTMLDivElement>(null);
   const [kakaoMap, setKakaoMap] = useState<kakao.maps.Map | null>(null);
 
@@ -78,6 +82,12 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
           marker.setMap(map);
           map.panTo(latLng);
           map.setCenter(latLng);
+
+          if (searchRestaurantId >= 0) {
+            kakao.maps.event.addListener(marker, "click", () => {
+              replace(`/post/${searchRestaurantId}`);
+            });
+          }
         }
 
         setKakaoMap(map);
@@ -87,7 +97,8 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
     currentLocation.latitude,
     currentLocation.longitude,
     mapSearchByCountry,
-    replace
+    replace,
+    searchRestaurantId
   ]);
 
   const providerValue = useMemo(() => ({ map: kakaoMap, mapRef }), [kakaoMap]);

@@ -1,7 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import Script from "next/script";
 import type { ReactElement } from "react";
-import { env } from "~/constants";
 
 type DocumentPropTypes = {
   // using `interface` is also ok

@@ -1,6 +1,6 @@
 import {
-  useCurrentSelectCategoryReset,
-  useCurrentSelectCategoryValue,
+  useCurrentSelectKeywordReset,
+  useCurrentSelectKeywordValue,
   useMapSearchByCountryReset
 } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
@@ -23,8 +23,8 @@ import { useCurrentLocation } from "~/hooks";
 const FilteringButton = () => {
   const { colors, zIndex } = useTheme();
   const { push } = useRouter();
-  const currentSelectCategoryReset = useCurrentSelectCategoryReset();
-  const currentSelectCategory = useCurrentSelectCategoryValue();
+  const currentSelectKeywordReset = useCurrentSelectKeywordReset();
+  const currentSelectKeyword = useCurrentSelectKeywordValue();
   const resetMapSearchByCountry = useMapSearchByCountryReset();
   const { getCurrentMapPosition } = useCurrentLocation();
 
@@ -41,7 +41,7 @@ const FilteringButton = () => {
         z-index: ${zIndex.two};
       `}
     >
-      {currentSelectCategory && (
+      {currentSelectKeyword && (
         <Flex.Center
           css={css`
             ${padding({
@@ -55,11 +55,11 @@ const FilteringButton = () => {
           `}
         >
           <Text _fontSize={17} _color={colors.white}>
-            {currentSelectCategory}
+            {currentSelectKeyword}
           </Text>
           <Exit
             onClick={() => {
-              currentSelectCategoryReset();
+              currentSelectKeywordReset();
               getCurrentMapPosition();
               resetMapSearchByCountry();
             }}

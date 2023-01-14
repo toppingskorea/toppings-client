@@ -1,10 +1,23 @@
 import { useHeaderValue } from "@atoms/header";
-import { Box, Divider, Heading, HStack, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Divider,
+  Heading,
+  HStack,
+  VStack
+} from "@chakra-ui/react";
+import { css } from "@emotion/react";
+import { QueryErrorBoundary } from "@suspensive/react-query";
+import { padding } from "@toss/emotion-utils";
 import type { PropsWithChildren } from "react";
 import { Sidebar } from "~/components/Common";
+import { useInternalRouter } from "~/hooks";
 
 const AppLayout = ({ children }: PropsWithChildren) => {
   const header = useHeaderValue();
+  const { replace } = useInternalRouter();
 
   return (
     <Box>
@@ -15,7 +28,30 @@ const AppLayout = ({ children }: PropsWithChildren) => {
             {header}
           </Heading>
           <Divider />
-          {children}
+          <Box
+            css={css`
+              ${padding(20)}
+            `}
+          >
+            <QueryErrorBoundary
+              fallback={queryError => {
+                return (
+                  <Center>
+                    <Button
+                      onClick={() => {
+                        replace("/login");
+                        queryError.reset();
+                      }}
+                    >
+                      로그인 하러 가기
+                    </Button>
+                  </Center>
+                );
+              }}
+            >
+              {children}
+            </QueryErrorBoundary>
+          </Box>
         </VStack>
       </HStack>
     </Box>
