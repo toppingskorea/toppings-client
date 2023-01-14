@@ -1,3 +1,4 @@
+info  - Loaded env from /Users/chanhyuk/Desktop/personal/toppings-client/apps/client/.env.local
 info  - Linting and checking validity of types...
 error - ESLint must be installed in order to run during builds: yarn add --dev eslint
 info  - Creating an optimized production build...
@@ -26,36 +27,36 @@ Route (pages)                              Size     First Load JS
 ┌ ○ /                                      1.99 kB         360 kB
 ├   /_app                                  0 B             358 kB
 ├ ○ /404                                   182 B           358 kB
-├ ○ /login                                 458 B           358 kB
-├ ○ /login/redirect                        272 B           358 kB
-├ ○ /map                                   3.21 kB         361 kB
-├ ○ /map/viewList                          5.02 kB         363 kB
+├ ○ /login                                 456 B           358 kB
+├ ○ /login/redirect                        271 B           358 kB
+├ ○ /map                                   3.22 kB         361 kB
+├ ○ /map/viewList                          5.04 kB         363 kB
 ├ ○ /notice                                276 B           358 kB
 ├ λ /post/[id]                             1.2 kB          365 kB
 ├ ○ /post/add                              973 B           365 kB
-├ λ /profile                               2.8 kB          360 kB
-├ λ /profile/edit                          3.65 kB         361 kB
-├ ○ /profile/edit/eatingHabits             2.08 kB         360 kB
-├ ○ /profile/edit/nationality              2.1 kB          360 kB
+├ λ /profile                               2.83 kB         361 kB
+├ λ /profile/edit                          3.76 kB         362 kB
+├ ○ /profile/edit/eatingHabits             2.13 kB         360 kB
+├ ○ /profile/edit/nationality              2.09 kB         360 kB
 ├ ○ /profile/menu                          2.92 kB         361 kB
-├ λ /profile/posts                         2.73 kB         360 kB
+├ λ /profile/posts                         2.72 kB         361 kB
 ├ ○ /profile/reviews                       3.47 kB         361 kB
-├ ○ /profile/saved                         3.46 kB         361 kB
-├ ○ /recent                                5 kB            363 kB
-├ ○ /recent/eatingHabit                    4.76 kB         362 kB
-├ ○ /recent/nationality                    4.84 kB         363 kB
-├ ○ /recent/restaurant                     3.85 kB         362 kB
-├ ○ /register/eatingHabits                 3.57 kB         361 kB
+├ ○ /profile/saved                         3.47 kB         361 kB
+├ ○ /recent                                2.13 kB         363 kB
+├ ○ /recent/eatingHabit                    1.96 kB         363 kB
+├ ○ /recent/nationality                    2.01 kB         363 kB
+├ ○ /recent/restaurant                     932 B           362 kB
+├ ○ /register/eatingHabits                 3.6 kB          362 kB
 ├ ○ /register/nationality                  2.05 kB         360 kB
 ├ λ /review/add/[restaurantId]             3.13 kB         361 kB
-└ λ /search/[type]                         1.55 kB         359 kB
+└ λ /search/[type]                         1.54 kB         359 kB
 + First Load JS shared by all              358 kB
-  ├ chunks/framework-749f74b9b46c2a3f.js   45.4 kB
-  ├ chunks/main-e2980877f7152e6b.js        30.7 kB
-  ├ chunks/pages/_app-b51c3a159ff9e05c.js  280 kB
+  ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
+  ├ chunks/main-141fb857c76356ad.js        30.7 kB
+  ├ chunks/pages/_app-18fa2187aa10b503.js  281 kB
   └ chunks/webpack-235955b20eb3ee85.js     1.15 kB
 
-ƒ Middleware                               64.4 kB
+ƒ Middleware                               64.5 kB
 
 λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
 ○  (Static)  automatically rendered as static HTML (uses no initial props)

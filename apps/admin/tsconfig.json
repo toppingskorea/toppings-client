@@ -1,0 +1,16 @@
+{
+  "extends": "@toppings/ts-config/base.json",
+  "compilerOptions": {
+    "paths": {
+      "~/*": ["./*"],
+      "@svgs/*": ["./assets/svgs/*"],
+      "@images/*": ["./assets/images/*"],
+      "@stores/*": ["./stores/ducks/*"],
+      "@atoms/*": ["./recoil/atoms/*"]
+    },
+    // css props를 사용하기 위함
+    "jsxImportSource": "@emotion/react"
+  },
+  "include": ["./@types/images.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

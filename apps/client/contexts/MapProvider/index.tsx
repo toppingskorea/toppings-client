@@ -111,6 +111,12 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
               replace(`/post/${searchRestaurantId}`);
             });
           }
+
+          if (searchRestaurantId >= 0) {
+            kakao.maps.event.addListener(marker, "click", () => {
+              replace(`/post/${searchRestaurantId}`);
+            });
+          }
         }
 
         setKakaoMap(map);
