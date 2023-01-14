@@ -1,4 +1,5 @@
 import { css, useTheme } from "@emotion/react";
+import { Suspense } from "@suspensive/react";
 import { Exit } from "@svgs/common";
 import { useQueryClient } from "@tanstack/react-query";
 import { position } from "@toss/emotion-utils";
@@ -6,12 +7,7 @@ import { useOverlay } from "@toss/use-overlay";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
-import {
-  AlertModal,
-  Badge,
-  RoundedTag,
-  SSRSafeSuspense
-} from "~/components/Common";
+import { AlertModal, Badge, RoundedTag } from "~/components/Common";
 import { History, TagFamily } from "~/components/Recent";
 import Skeleton from "~/components/Skeleton";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
@@ -90,9 +86,9 @@ const RecentPage = () => {
         </RoundedTag>
       </motion.div>
 
-      <SSRSafeSuspense fallback={<Skeleton.Paragraph />}>
+      <Suspense.CSROnly fallback={<Skeleton.Paragraph />}>
         <History />
-      </SSRSafeSuspense>
+      </Suspense.CSROnly>
 
       <div
         css={css`
