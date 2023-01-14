@@ -3,7 +3,7 @@ import {
   useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter,
   useMapBoundsValue,
-  useMapSearchByCountrySetter
+  useMapSearchByFilteringSetter
 } from "@atoms/index";
 import { useRouter } from "next/router";
 import { TagFamily } from "~/components/Recent";
@@ -21,7 +21,7 @@ const EatingHabitPage = () => {
   const mapBounds = useMapBoundsValue();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
-  const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const setMapSearchByCountry = useMapSearchByFilteringSetter();
   const setCurrentHabitTitle = useCurrentHabitTitleSetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
   const { mutate: fetchRestaurantByEatingHabit } =

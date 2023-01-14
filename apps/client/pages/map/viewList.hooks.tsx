@@ -9,16 +9,17 @@ import {
   useCurrentSelectKeyword,
   useCurrentSelectKeywordReset,
   useMapBoundsValue,
-  useMapSearchByCountryReset,
-  useMapSearchByCountryState
+  useMapSearchByFilteringReset,
+  useMapSearchByFilteringState
 } from "~/recoil/atoms";
 import { useFetchDefaultMap, useUploadRecentHistory } from "~/server/recent";
 
 const useViewList = () => {
   const { colors, zIndex } = useTheme();
   const { push, back, replace } = useRouter();
-  const [mapSearchValue, setMapSearchByCountry] = useMapSearchByCountryState();
-  const resetMapSearchByCountry = useMapSearchByCountryReset();
+  const [mapSearchValue, setMapSearchByCountry] =
+    useMapSearchByFilteringState();
+  const resetMapSearchByCountry = useMapSearchByFilteringReset();
   const currentSelectKeywordReset = useCurrentSelectKeywordReset();
   const currentSelectCategory = useCurrentSelectCategoryValue();
   const setCurrentLocation = useCurrentLocationSetter();
@@ -44,7 +45,7 @@ const useViewList = () => {
   });
 
   const restaurantCardClickHandler = useCallback(
-    (item: Restaurant.SearchByCountryDTO) => {
+    (item: Restaurant.SearchByFilteringDTO) => {
       setCurrentLocation({
         latitude: item.latitude,
         longitude: item.longitude

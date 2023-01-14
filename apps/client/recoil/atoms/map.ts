@@ -30,16 +30,18 @@ export const useMapBounds = () => useRecoilState(mapBoundsAtom);
 export const useMapBoundsValue = () => useRecoilValue(mapBoundsAtom);
 export const useMapBoundsSetter = () => useSetRecoilState(mapBoundsAtom);
 
-const mapSearchByCountryAtom = atom<Restaurant.SearchByCountryDTO[] | null>({
-  key: "mapSearchByCountry",
-  default: null
-});
+const mapSearchByFilteringAtom = atom<Restaurant.SearchByFilteringDTO[] | null>(
+  {
+    key: "mapSearchByFilteringAtom",
+    default: null
+  }
+);
 
-export const useMapSearchByCountryState = () =>
-  useRecoilState(mapSearchByCountryAtom);
-export const useMapSearchByCountryValue = () =>
-  useRecoilValue(mapSearchByCountryAtom);
-export const useMapSearchByCountrySetter = () =>
-  useSetRecoilState(mapSearchByCountryAtom);
-export const useMapSearchByCountryReset = () =>
-  useResetRecoilState(mapSearchByCountryAtom);
+export const useMapSearchByFilteringState = () =>
+  useRecoilState(mapSearchByFilteringAtom);
+export const useMapSearchByFilteringValue = () =>
+  useRecoilValue(mapSearchByFilteringAtom);
+export const useMapSearchByFilteringSetter = () =>
+  useSetRecoilState(mapSearchByFilteringAtom);
+export const useMapSearchByFilteringReset = () =>
+  useResetRecoilState(mapSearchByFilteringAtom);

@@ -4,7 +4,7 @@ import {
   useCurrentSelectCategoryValue,
   useCurrentSelectKeywordValue,
   useMapBoundsSetter,
-  useMapSearchByCountrySetter,
+  useMapSearchByFilteringSetter,
   type Direction
 } from "@atoms/index";
 import { useTheme } from "@emotion/react";
@@ -35,13 +35,13 @@ const useMapHook = () => {
   const { map, mapRef } = useMap();
   const setMapBounds = useMapBoundsSetter();
   const setCurrentLocation = useCurrentLocationSetter();
-  const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const setMapSearchByCountry = useMapSearchByFilteringSetter();
   const currentSelectCategory = useCurrentSelectCategoryValue();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
   const currentHabitTitle = useCurrentHabitTitleValue();
 
   const mutateOnSuccess = useCallback(
-    (data: Restaurant.SearchByCountryDTO[]) => {
+    (data: Restaurant.SearchByFilteringDTO[]) => {
       setMapSearchByCountry(data);
     },
     [setMapSearchByCountry]

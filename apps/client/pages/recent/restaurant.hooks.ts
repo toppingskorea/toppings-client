@@ -2,7 +2,7 @@ import {
   useCurrentLocationSetter,
   useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter,
-  useMapSearchByCountryReset,
+  useMapSearchByFilteringReset,
   useSearchRestaurantIdSetter
 } from "@atoms/index";
 import { useRouter } from "next/router";
@@ -16,10 +16,10 @@ import {
 const useRestaurant = () => {
   const { push } = useRouter();
   const [restaurantList, setRestaurantList] =
-    useState<Restaurant.SearchByCountryDTO[]>();
+    useState<Restaurant.SearchByFilteringDTO[]>();
   const setCurrentLocation = useCurrentLocationSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
-  const resetMapSearchByCountry = useMapSearchByCountryReset();
+  const resetMapSearchByCountry = useMapSearchByFilteringReset();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setSearchRestaurantId = useSearchRestaurantIdSetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
@@ -54,7 +54,9 @@ const useRestaurant = () => {
     fetchRestaurantByNameMutate(debouncedValue);
   }, [debouncedValue, fetchRestaurantByNameMutate]);
 
-  const restaurantCardClickHandler = (item: Restaurant.SearchByCountryDTO) => {
+  const restaurantCardClickHandler = (
+    item: Restaurant.SearchByFilteringDTO
+  ) => {
     setCurrentLocation({
       latitude: item.latitude,
       longitude: item.longitude

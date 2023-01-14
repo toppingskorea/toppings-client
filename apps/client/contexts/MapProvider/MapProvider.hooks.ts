@@ -5,8 +5,8 @@ import {
 } from "@atoms/index";
 import {
   useMapBoundsSetter,
-  useMapSearchByCountrySetter,
-  useMapSearchByCountryValue,
+  useMapSearchByFilteringSetter,
+  useMapSearchByFilteringValue,
   type Direction
 } from "@atoms/map";
 import { useRouter } from "next/router";
@@ -15,12 +15,12 @@ import { useFetchDefaultMap } from "~/server/recent";
 
 const useMapProvider = () => {
   const { push } = useRouter();
-  const mapSearchByCountry = useMapSearchByCountryValue();
+  const mapSearchByCountry = useMapSearchByFilteringValue();
   const currentLocation = useCurrentLocationValue();
   const searchRestaurantId = useSearchRestaurantIdValue();
   const setMapBounds = useMapBoundsSetter();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
-  const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const setMapSearchByCountry = useMapSearchByFilteringSetter();
   const { mutate: defaultMapMutate } = useFetchDefaultMap({
     onSuccess: data => {
       setMapSearchByCountry(data);

@@ -2,8 +2,8 @@ import {
   useCurrentSelectKeywordReset,
   useCurrentSelectKeywordValue,
   useMapBoundsValue,
-  useMapSearchByCountryReset,
-  useMapSearchByCountrySetter
+  useMapSearchByFilteringReset,
+  useMapSearchByFilteringSetter
 } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { Filtering } from "@svgs/map";
@@ -27,8 +27,8 @@ const FilteringButton = () => {
   const { push } = useRouter();
   const currentSelectKeywordReset = useCurrentSelectKeywordReset();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
-  const resetMapSearchByCountry = useMapSearchByCountryReset();
-  const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const resetMapSearchByCountry = useMapSearchByFilteringReset();
+  const setMapSearchByCountry = useMapSearchByFilteringSetter();
   const mapBounds = useMapBoundsValue();
   const { mutate: defaultMapMutate } = useFetchDefaultMap({
     onSuccess: data => {

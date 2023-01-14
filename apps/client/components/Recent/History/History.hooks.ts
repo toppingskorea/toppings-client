@@ -5,7 +5,7 @@ import {
   useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter,
   useMapBoundsValue,
-  useMapSearchByCountrySetter
+  useMapSearchByFilteringSetter
 } from "~/recoil/atoms";
 import {
   Keys,
@@ -30,7 +30,7 @@ const useHistory = () => {
       });
     }
   });
-  const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const setMapSearchByCountry = useMapSearchByFilteringSetter();
   const mapBounds = useMapBoundsValue();
   const { mutate: fetchRestaurantByEatingHabit } =
     useFetchRestaurantByEatingHabit({

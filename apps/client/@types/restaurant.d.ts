@@ -14,13 +14,13 @@ declare module Restaurant {
     like: boolean;
   }
 
-  interface SearchByCountryDTO extends BaseDTO {
+  interface SearchByFilteringDTO extends BaseDTO {
     address: string;
     filterLikeCount?: number;
   }
 
   type CardDTO = Pick<
-    SearchByCountryDTO,
+    SearchByFilteringDTO,
     | "id"
     | "thumbnail"
     | "type"
