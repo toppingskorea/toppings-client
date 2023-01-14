@@ -57,7 +57,7 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
         );
         const options = {
           center: latLng,
-          level: 2
+          level: 6
         };
         const map = new kakao.maps.Map(mapRef.current, options);
 
@@ -90,33 +90,27 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
             });
 
             marker.setMap(map);
+            map.panTo(latLng);
+            map.setCenter(latLng);
 
             kakao.maps.event.addListener(marker, "click", () => {
               replace(`/post/${item.id}`);
             });
           });
-        } else {
+        } else if (searchRestaurantId >= 0) {
           const marker = new kakao.maps.Marker({
             position: latLng,
             image: markerImage,
             clickable: true
           });
+
           marker.setMap(map);
           map.panTo(latLng);
           map.setCenter(latLng);
-          console.log(map.getBounds());
 
-          if (searchRestaurantId >= 0) {
-            kakao.maps.event.addListener(marker, "click", () => {
-              replace(`/post/${searchRestaurantId}`);
-            });
-          }
-
-          if (searchRestaurantId >= 0) {
-            kakao.maps.event.addListener(marker, "click", () => {
-              replace(`/post/${searchRestaurantId}`);
-            });
-          }
+          kakao.maps.event.addListener(marker, "click", () => {
+            replace(`/post/${searchRestaurantId}`);
+          });
         }
 
         setKakaoMap(map);
