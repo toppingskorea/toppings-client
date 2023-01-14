@@ -97,20 +97,21 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
               replace(`/post/${item.id}`);
             });
           });
-        } else if (searchRestaurantId >= 0) {
+        } else {
           const marker = new kakao.maps.Marker({
             position: latLng,
             image: markerImage,
             clickable: true
           });
-
           marker.setMap(map);
           map.panTo(latLng);
           map.setCenter(latLng);
 
-          kakao.maps.event.addListener(marker, "click", () => {
-            replace(`/post/${searchRestaurantId}`);
-          });
+          if (searchRestaurantId >= 0) {
+            kakao.maps.event.addListener(marker, "click", () => {
+              replace(`/post/${searchRestaurantId}`);
+            });
+          }
         }
 
         setKakaoMap(map);

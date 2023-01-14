@@ -1,5 +1,6 @@
 import {
   useCurrentLocationSetter,
+  useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter,
   useMapSearchByCountryReset,
   useSearchRestaurantIdSetter
@@ -17,6 +18,7 @@ const useRestaurant = () => {
   const [restaurantList, setRestaurantList] =
     useState<Restaurant.SearchByCountryDTO[]>();
   const setCurrentLocation = useCurrentLocationSetter();
+  const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const resetMapSearchByCountry = useMapSearchByCountryReset();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setSearchRestaurantId = useSearchRestaurantIdSetter();
@@ -24,6 +26,7 @@ const useRestaurant = () => {
   const { mutate: fetchRestaurantNameByFilteringMutate } =
     useFetchRestaurantNameByFiltering({
       onSuccess: data => {
+        setCurrentSelectCategory("Name");
         setRestaurantList(data);
       }
     });

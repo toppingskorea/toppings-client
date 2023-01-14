@@ -63,10 +63,12 @@ const useMapHook = () => {
       setMapBounds(map.getBounds() as kakao.maps.LatLngBounds & Direction);
       const position = map.getCenter();
 
-      setCurrentLocation({
-        latitude: position.getLat(),
-        longitude: position.getLng()
-      });
+      // 식당 하나 검색시에는 맵 이벤트가 필요 없다
+      if (currentSelectCategory !== "Name")
+        setCurrentLocation({
+          latitude: position.getLat(),
+          longitude: position.getLng()
+        });
 
       if (!currentSelectKeyword) {
         defaultMapMutate(
@@ -86,7 +88,7 @@ const useMapHook = () => {
             : "Religion",
           direction: map.getBounds() as kakao.maps.LatLngBounds & Direction
         });
-      } else {
+      } else if (currentSelectCategory === "Country") {
         fetchRestaurantByCountryMutate({
           country: currentSelectKeyword,
           direction: map.getBounds() as kakao.maps.LatLngBounds & Direction
