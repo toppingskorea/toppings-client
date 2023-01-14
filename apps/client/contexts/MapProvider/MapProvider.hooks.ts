@@ -23,7 +23,7 @@ const useMapProvider = () => {
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const { mutate: defaultMapMutate } = useFetchDefaultMap({
     onSuccess: data => {
-      if (!mapSearchByCountry) setMapSearchByCountry(data);
+      setMapSearchByCountry(data);
     }
   });
 
@@ -43,7 +43,7 @@ const useMapProvider = () => {
         };
         const map = new kakao.maps.Map(mapRef.current, options);
 
-        if (!currentSelectKeyword && map) {
+        if (!currentSelectKeyword && map && !mapSearchByCountry) {
           defaultMapMutate(
             map.getBounds() as kakao.maps.LatLngBounds & Direction
           );
