@@ -13,17 +13,16 @@ export interface Direction {
   pa: number;
   ha: number;
 }
-
 // default 좌표 설정(현재 내 위치 버튼을 클릭하지 않을수도 있음)
 const mapBoundsAtom = atom<
   (kakao.maps.LatLngBounds & Direction) | Direction | null
 >({
   key: "mapBounds",
   default: {
-    qa: 37.56439694990648,
-    oa: 126.98781499543738,
-    pa: 37.56706877281314,
-    ha: 126.98464619755325
+    qa: 37.499245767879145,
+    oa: 127.03850255530531,
+    pa: 37.502326218170865,
+    ha: 127.03533449621763
   }
 });
 

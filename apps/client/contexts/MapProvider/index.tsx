@@ -104,6 +104,7 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
           marker.setMap(map);
           map.panTo(latLng);
           map.setCenter(latLng);
+          console.log(map.getBounds());
 
           if (searchRestaurantId >= 0) {
             kakao.maps.event.addListener(marker, "click", () => {
