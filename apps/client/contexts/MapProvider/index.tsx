@@ -101,7 +101,6 @@ export const MapProvider = ({ children }: Util.PropsWithChild) => {
             image: markerImage,
             clickable: true
           });
-
           marker.setMap(map);
           map.panTo(latLng);
           map.setCenter(latLng);
