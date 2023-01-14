@@ -16,17 +16,15 @@ import {
   useFetchRestaurantByCountry
 } from "~/server/recent";
 
-const useMapEvent = (
-  target: kakao.maps.event.EventTarget | null,
-  type: Map.EventsType,
-  handler: () => void
-) => {
+const useMapEvent = (type: Map.EventsType, handler: () => void) => {
+  const { map } = useMapHook();
+
   // eslint-disable-next-line consistent-return
   useEffect(() => {
-    if (target) kakao.maps.event.addListener(target, type, handler);
+    if (map) kakao.maps.event.addListener(map, type, handler);
 
     return () => {
-      if (target) kakao.maps.event.removeListener(target, type, handler);
+      if (map) kakao.maps.event.removeListener(map, type, handler);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [handler, type]);
