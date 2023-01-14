@@ -37,7 +37,7 @@ const Result = ({ value, type }: Props) => {
               break;
             case kakao.maps.services.Status.ERROR:
             case null:
-              console.log("오류발생");
+              console.error("오류발생");
               break;
             default:
               neverChecker(status);

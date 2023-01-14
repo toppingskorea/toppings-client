@@ -1,74 +1,24 @@
-import { css, useTheme } from "@emotion/react";
-import { Exit } from "@svgs/common";
+import { css } from "@emotion/react";
 import { SmallMarker } from "@svgs/map";
 import { SmallExit } from "@svgs/recent";
-import { Flex, padding, position, size, width100 } from "@toss/emotion-utils";
+import {
+  Flex,
+  padding,
+  position,
+  size,
+  touchable,
+  width100
+} from "@toss/emotion-utils";
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
-import { useCallback } from "react";
 import { Badge, RestaurantCard } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import Map from "~/components/Map";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
-import { useSetNavigation } from "~/hooks";
-import {
-  useCurrentLocationSetter,
-  useCurrentSelectCategoryValue,
-  useCurrentSelectKeyword,
-  useMapSearchByCountryReset,
-  useMapSearchByCountryValue
-} from "~/recoil/atoms";
-import { useUploadRecentHistory } from "~/server/recent";
 import { pick } from "~/utils";
+import useViewList from "./viewList.hooks";
 
 const ViewListPage = () => {
-  const { colors } = useTheme();
-  const { push, back } = useRouter();
-  const mapSearchValue = useMapSearchByCountryValue();
-  const mapSearchReset = useMapSearchByCountryReset();
-  const currentSelectCategory = useCurrentSelectCategoryValue();
-  const setCurrentLocation = useCurrentLocationSetter();
-  const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
-  const [currentSelectKeyword, setCurrentSelectKeyword] =
-    useCurrentSelectKeyword();
-
-  useSetNavigation({
-    top: {
-      marginBottom: 85,
-      right: {
-        element: <Exit />,
-        onClick: () => push("/map")
-      }
-    },
-    bottom: true
-  });
-
-  const restaurantCardClickHandler = useCallback(
-    (item: Restaurant.SearchByCountryDTO) => {
-      setCurrentLocation({
-        latitude: item.latitude,
-        longitude: item.longitude
-      });
-      uploadRecentHistoryMutate({
-        type: "Filter",
-        keyword: item.name,
-        category: "Name",
-        content: item.address,
-        restaurantId: item.id
-      });
-      setCurrentSelectKeyword(item.name);
-      mapSearchReset();
-
-      push("/map");
-    },
-    [
-      mapSearchReset,
-      push,
-      setCurrentLocation,
-      setCurrentSelectKeyword,
-      uploadRecentHistoryMutate
-    ]
-  );
+  const app = useViewList();
 
   return (
     <>
@@ -80,14 +30,19 @@ const ViewListPage = () => {
         `}
       >
         <Badge attach="left">
-          {currentSelectCategory === "Habit" ? "Eating habit" : "Nationality"}
+          {app.currentSelectCategory === "Habit"
+            ? "Eating habit"
+            : "Nationality"}
         </Badge>
       </motion.div>
       <motion.div
+        onClick={app.ExitClickHandler}
         variants={defaultSlideFadeInVariants("right")}
         {...framerMocker}
         css={css`
           ${position("absolute", { top: 118, left: 147 })}
+          ${touchable}
+          z-index: ${app.zIndex.four};
         `}
       >
         <Flex
@@ -99,14 +54,14 @@ const ViewListPage = () => {
               height: 27
             })}
             border-radius: 20px;
-            border: 0.9px solid ${colors.secondary.B0};
+            border: 0.9px solid ${app.colors.secondary.B0};
             ${padding({
               x: 10,
               y: 6
             })};
           `}
         >
-          <Text _fontSize={12}>{currentSelectKeyword}</Text>
+          <Text _fontSize={12}>{app.currentSelectKeyword}</Text>
           <SmallExit />
         </Flex>
       </motion.div>
@@ -123,11 +78,11 @@ const ViewListPage = () => {
           })}
         `}
       >
-        {mapSearchValue?.map(item => (
+        {app.mapSearchValue?.map(item => (
           <RestaurantCard
             key={item.id}
             whoLikes
-            onClick={() => restaurantCardClickHandler(item)}
+            onClick={() => app.restaurantCardClickHandler(item)}
             item={{
               ...pick({ ...item }, [
                 "id",
@@ -144,7 +99,11 @@ const ViewListPage = () => {
           />
         ))}
       </Flex>
-      <Map.ViewStatusButton Icon={SmallMarker} text="View map" onClick={back} />
+      <Map.ViewStatusButton
+        Icon={SmallMarker}
+        text="View map"
+        onClick={app.back}
+      />
     </>
   );
 };

@@ -1,7 +1,7 @@
-// 초기값 유안타증권 을지본사
+// 초기값 역삼역
 const defaultLocation = {
-  DEFAULT_LATITUDE: 37.565718,
-  DEFAULT_LONGITUDE: 126.986226
+  DEFAULT_LATITUDE: 37.500787,
+  DEFAULT_LONGITUDE: 127.036923
 };
 
 export default defaultLocation;

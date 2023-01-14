@@ -17,7 +17,6 @@ const MapPage = () => {
     <MapProvider>
       <Map>
         <Map.MyLocationButton />
-        <Map.RecentButton />
         <Map.FilteringButton />
         {currentSelectKeyword.length ? (
           <Map.ViewStatusButton

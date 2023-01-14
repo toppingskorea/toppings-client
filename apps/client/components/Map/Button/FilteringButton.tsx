@@ -1,7 +1,9 @@
 import {
   useCurrentSelectKeywordReset,
   useCurrentSelectKeywordValue,
-  useMapSearchByCountryReset
+  useMapBoundsValue,
+  useMapSearchByFilteringReset,
+  useMapSearchByFilteringSetter
 } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { Filtering } from "@svgs/map";
@@ -18,15 +20,21 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
-import { useCurrentLocation } from "~/hooks";
+import { useFetchDefaultMap } from "~/server/recent";
 
 const FilteringButton = () => {
   const { colors, zIndex } = useTheme();
   const { push } = useRouter();
   const currentSelectKeywordReset = useCurrentSelectKeywordReset();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
-  const resetMapSearchByCountry = useMapSearchByCountryReset();
-  const { getCurrentMapPosition } = useCurrentLocation();
+  const resetMapSearchByCountry = useMapSearchByFilteringReset();
+  const setMapSearchByCountry = useMapSearchByFilteringSetter();
+  const mapBounds = useMapBoundsValue();
+  const { mutate: defaultMapMutate } = useFetchDefaultMap({
+    onSuccess: data => {
+      setMapSearchByCountry(data);
+    }
+  });
 
   return (
     <Flex.Center
@@ -60,7 +68,7 @@ const FilteringButton = () => {
           <Exit
             onClick={() => {
               currentSelectKeywordReset();
-              getCurrentMapPosition();
+              defaultMapMutate(mapBounds!);
               resetMapSearchByCountry();
             }}
           />

@@ -2,7 +2,7 @@ import {
   useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter,
   useMapBoundsValue,
-  useMapSearchByCountrySetter
+  useMapSearchByFilteringSetter
 } from "@atoms/index";
 import { SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
@@ -24,7 +24,7 @@ const NationalityPage = () => {
   const mapBounds = useMapBoundsValue();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
-  const setMapSearchByCountry = useMapSearchByCountrySetter();
+  const setMapSearchByCountry = useMapSearchByFilteringSetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
   const { mutate: fetchRestaurantByCountryMutate } =
     useFetchRestaurantByCountry({

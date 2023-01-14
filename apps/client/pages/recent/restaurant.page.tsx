@@ -14,7 +14,7 @@ const RecentPage = () => {
       <SearchLayout>
         <SearchInput
           onSubmit={() => {
-            app.fetchRestaurantNameByFilteringMutate(app.keyword.value);
+            app.fetchRestaurantByNameMutate(app.keyword.value);
           }}
           placeholder="enter the restaurant name"
           setValue={app.setValue}

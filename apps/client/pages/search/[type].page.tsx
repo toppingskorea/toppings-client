@@ -60,7 +60,6 @@ const Search = ({
         `}
       >
         <SearchInput
-          onSubmit={() => console.log("sad")}
           placeholder="Search for a nationality"
           setValue={setValue}
           {...keyword}
