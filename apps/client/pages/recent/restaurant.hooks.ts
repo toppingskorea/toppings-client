@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useInput, useSetNavigation } from "~/hooks";
 import {
-  useFetchRestaurantNameByFiltering,
+  useFetchRestaurantByName,
   useUploadRecentHistory
 } from "~/server/recent";
 
@@ -23,13 +23,12 @@ const useRestaurant = () => {
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setSearchRestaurantId = useSearchRestaurantIdSetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
-  const { mutate: fetchRestaurantNameByFilteringMutate } =
-    useFetchRestaurantNameByFiltering({
-      onSuccess: data => {
-        setCurrentSelectCategory("Name");
-        setRestaurantList(data);
-      }
-    });
+  const { mutate: fetchRestaurantByNameMutate } = useFetchRestaurantByName({
+    onSuccess: data => {
+      setCurrentSelectCategory("Name");
+      setRestaurantList(data);
+    }
+  });
 
   useSetNavigation({
     top: {
@@ -52,8 +51,8 @@ const useRestaurant = () => {
       return;
     }
 
-    fetchRestaurantNameByFilteringMutate(debouncedValue);
-  }, [debouncedValue, fetchRestaurantNameByFilteringMutate]);
+    fetchRestaurantByNameMutate(debouncedValue);
+  }, [debouncedValue, fetchRestaurantByNameMutate]);
 
   const restaurantCardClickHandler = (item: Restaurant.SearchByCountryDTO) => {
     setCurrentLocation({
@@ -78,7 +77,7 @@ const useRestaurant = () => {
     keyword,
     setValue,
     restaurantList,
-    fetchRestaurantNameByFilteringMutate,
+    fetchRestaurantByNameMutate,
     restaurantCardClickHandler
   };
 };

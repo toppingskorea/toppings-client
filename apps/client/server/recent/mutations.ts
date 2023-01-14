@@ -45,7 +45,7 @@ export const useFetchDefaultMap = (
   return useMutation(getDefaultRestaurant, options);
 };
 
-export const useFetchEatingHabitByFiltering = (
+export const useFetchRestaurantByEatingHabit = (
   options: Pick<
     UseMutationOptions<
       Awaited<ReturnType<typeof getRestaurantByEatingHabit>>,
@@ -71,7 +71,7 @@ export const useFetchRestaurantByCountry = (
   return useMutation(getRestaurantByCountry, options);
 };
 
-export const useFetchRestaurantNameByFiltering = (
+export const useFetchRestaurantByName = (
   options: Pick<
     UseMutationOptions<
       Awaited<ReturnType<typeof getRestaurantByName>>,

@@ -12,8 +12,8 @@ import { diets } from "~/constants/data/common";
 import { useMap } from "~/contexts";
 import {
   useFetchDefaultMap,
-  useFetchEatingHabitByFiltering,
-  useFetchRestaurantByCountry
+  useFetchRestaurantByCountry,
+  useFetchRestaurantByEatingHabit
 } from "~/server/recent";
 
 const useMapEvent = (type: Map.EventsType, handler: VoidFunction) => {
@@ -43,8 +43,8 @@ const useMapHook = () => {
       setMapSearchByCountry(data);
     }
   });
-  const { mutate: fetchEatingHabitByFilteringMutate } =
-    useFetchEatingHabitByFiltering({
+  const { mutate: fetchRestaurantByEatingHabitMutate } =
+    useFetchRestaurantByEatingHabit({
       onSuccess: data => {
         setMapSearchByCountry(data);
       }
@@ -77,7 +77,7 @@ const useMapHook = () => {
       }
 
       if (currentSelectCategory === "Habit") {
-        fetchEatingHabitByFilteringMutate({
+        fetchRestaurantByEatingHabitMutate({
           habit: currentSelectKeyword,
           habitTitle: diets.includes(
             currentSelectKeyword as Util.ElementType<typeof diets>

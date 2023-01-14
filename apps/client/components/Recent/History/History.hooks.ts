@@ -10,9 +10,9 @@ import {
 import {
   Keys,
   useDeleteRecentHistory,
-  useFetchEatingHabitByFiltering,
   useFetchRecentHistories,
-  useFetchRestaurantByCountry
+  useFetchRestaurantByCountry,
+  useFetchRestaurantByEatingHabit
 } from "~/server/recent";
 
 const useHistory = () => {
@@ -30,8 +30,8 @@ const useHistory = () => {
   });
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const mapBounds = useMapBoundsValue();
-  const { mutate: fetchEatingHabitByFilteringMutate } =
-    useFetchEatingHabitByFiltering({
+  const { mutate: fetchRestaurantByEatingHabit } =
+    useFetchRestaurantByEatingHabit({
       onSuccess: data => {
         setMapSearchByCountry(data);
       }
@@ -54,7 +54,7 @@ const useHistory = () => {
         break;
       case "Habit":
         setCurrentSelectKeyword(keyword);
-        fetchEatingHabitByFilteringMutate({
+        fetchRestaurantByEatingHabit({
           habit: keyword,
           habitTitle: diets.includes(keyword as Util.ElementType<typeof diets>)
             ? "Diet"

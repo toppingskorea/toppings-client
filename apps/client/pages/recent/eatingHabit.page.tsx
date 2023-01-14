@@ -9,7 +9,7 @@ import { TagFamily } from "~/components/Recent";
 import { SelectEatingHabit } from "~/components/Section";
 import { useSetNavigation } from "~/hooks";
 import {
-  useFetchEatingHabitByFiltering,
+  useFetchRestaurantByEatingHabit,
   useUploadRecentHistory
 } from "~/server/recent";
 import { replaceSpace } from "~/utils";
@@ -21,8 +21,8 @@ const EatingHabitPage = () => {
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setMapSearchByCountry = useMapSearchByCountrySetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
-  const { mutate: fetchEatingHabitByFilteringMutate } =
-    useFetchEatingHabitByFiltering({
+  const { mutate: fetchRestaurantByEatingHabit } =
+    useFetchRestaurantByEatingHabit({
       onSuccess: data => {
         setMapSearchByCountry(data);
         setCurrentSelectCategory("Habit");
@@ -53,7 +53,7 @@ const EatingHabitPage = () => {
             category: "Habit"
           });
 
-          fetchEatingHabitByFilteringMutate({
+          fetchRestaurantByEatingHabit({
             habitTitle: title,
             habit: removeSpaceContent,
             direction: mapBounds!
