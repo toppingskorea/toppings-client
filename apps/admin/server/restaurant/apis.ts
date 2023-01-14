@@ -11,7 +11,9 @@ export const getRestaurants = async (page: number) => {
 
 // 음식점 상세조회
 export const getRestaurant = async (id: number) => {
-  const { data } = await axios.get(`/v1/admin/restaurant/${id}`);
+  const { data } = await axios.get<{
+    data: Restaurant.DetailDTO;
+  }>(`/v1/admin/restaurant/${id}`);
 
   return data.data;
 };
@@ -24,9 +26,9 @@ export const updatePublication = async ({
 }: {
   id: number;
   isPub: boolean;
-  cause: string;
+  cause?: string;
 }) => {
-  await axios.put(`/v1/admin/restaurant${id}`, {
+  await axios.put(`/v1/admin/restaurant/${id}`, {
     isPub,
     cause
   });

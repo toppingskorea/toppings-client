@@ -10,12 +10,16 @@ import {
   Tr,
   VStack
 } from "@chakra-ui/react";
+import { css, useTheme } from "@emotion/react";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { Pagination } from "~/components/Common";
 import { SwitchCase } from "~/components/Util";
 import { useFetchRestaurants } from "~/server/restaurant";
 
 const RestaurantTable = () => {
+  const { colors } = useTheme();
+  const { push } = useRouter();
   const [currentPage, setCurrentPage] = useState<number>(0);
 
   const { data: paginatedRestaurants } = useFetchRestaurants(currentPage);
@@ -40,12 +44,25 @@ const RestaurantTable = () => {
         </Thead>
         <Tbody>
           {paginatedRestaurants.items.map(restaurant => (
-            <Tr key={restaurant.id}>
+            <Tr
+              key={restaurant.id}
+              onClick={() => push(`/restaurant/${restaurant.id}`)}
+              css={css`
+                cursor: pointer;
+              `}
+            >
               <Td>{restaurant.name}</Td>
               <Td>
                 <VStack>
                   <strong>{restaurant.writer}</strong>
-                  <span>{restaurant.writer}</span>
+                  <span
+                    css={css`
+                      font-size: 14px;
+                      color: ${colors.secondary[69]};
+                    `}
+                  >
+                    {restaurant.country}
+                  </span>
                 </VStack>
               </Td>
               <Td isNumeric>{restaurant.createDate}</Td>
