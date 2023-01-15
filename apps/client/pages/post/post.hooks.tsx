@@ -1,3 +1,4 @@
+import { usePostUploadSetter, useRestaurantSetter } from "@atoms/index";
 import { useTheme } from "@emotion/react";
 import { Edit } from "@svgs/common";
 import { Flex, Spacing } from "@toss/emotion-utils";
@@ -5,7 +6,6 @@ import Image from "next/image";
 import { useCallback } from "react";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
-import { usePostUploadSetter, useRestaurantSetter } from "@atoms/index";
 import { useFetchLikePercent, useFetchRestaurant } from "~/server/restaurant";
 import { useFetchReviews } from "~/server/review";
 import { countryToSvg } from "~/utils";

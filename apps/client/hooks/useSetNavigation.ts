@@ -12,6 +12,13 @@ const useSetNavigation = (
 
   useEffect(() => {
     setter(props);
+
+    return () => {
+      setter({
+        top: undefined,
+        bottom: false
+      });
+    };
   }, [props, setter]);
 };
 

@@ -5,10 +5,8 @@ import { FilledButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { OrangeSection } from "~/components/Section";
 import { env } from "~/constants";
-import { useSetNavigation } from "~/hooks";
 
 const Onboarding = () => {
-  useSetNavigation();
   const { colors, weighs } = useTheme();
   const router = useRouter();
 
@@ -26,18 +24,10 @@ const Onboarding = () => {
             ${gutter({ space: 6, direction: "horizontal" })}
           `}
         >
-          <Text
-            _fontSize={25}
-            _color={colors.white}
-            weight={weighs.medium}
-          >
+          <Text _fontSize={25} _color={colors.white} weight={weighs.medium}>
             Do you want to
           </Text>
-          <Text
-            _fontSize={25}
-            _color={colors.white}
-            weight={weighs.extraBold}
-          >
+          <Text _fontSize={25} _color={colors.white} weight={weighs.extraBold}>
             JOIN
           </Text>
         </Flex>
