@@ -7,7 +7,7 @@ import { useInternalRouter } from "~/hooks";
 import navList from "./BottomNavigator.constants";
 
 const BottomNavigator = () => {
-  const { colors, dimensions } = useTheme();
+  const { colors, dimensions, zIndex } = useTheme();
   const { asPath } = useInternalRouter();
   const restaurantReset = useRestaurantReset();
   const postUploadReset = usePostUploadReset();
@@ -20,6 +20,7 @@ const BottomNavigator = () => {
         max-width: inherit;
         height: ${dimensions.bottomNavigationHeight}px;
         ${padding({ x: 45, top: 20 })}
+        z-index: ${zIndex.two};
       `}
     >
       <ul
