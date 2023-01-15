@@ -1,7 +1,5 @@
+import { useSuspenseQuery } from "@suspensive/react-query";
 import type { UseQueryOptions } from "@tanstack/react-query";
-import { useQuery } from "@tanstack/react-query";
-import type { BaseSuspendedUseQueryResult } from "~/hooks/useSuspendedQuery";
-import { useSuspendedQuery } from "~/hooks/useSuspendedQuery";
 import {
   getUserInfo,
   getUserPosts,
@@ -16,13 +14,7 @@ export const useFetchUserInfo = (
     "onSuccess"
   >
 ) => {
-  // Suspense 로 감싸주지 못하므로, 단언을 해줍니다.
-
-  return useQuery(
-    Keys.user(),
-    getUserInfo,
-    options
-  ) as BaseSuspendedUseQueryResult<Profile.UserDTO>;
+  return useSuspenseQuery(Keys.user(), getUserInfo, options);
 };
 
 export const useFetchUserPosts = (
@@ -31,16 +23,11 @@ export const useFetchUserPosts = (
     "onSuccess"
   >
 ) => {
-  // Suspense 로 감싸주지 못하므로, 단언을 해줍니다.
-  return useQuery(
-    Keys.posts(),
-    getUserPosts,
-    options
-  ) as BaseSuspendedUseQueryResult<Profile.PostDTO[]>;
+  return useSuspenseQuery(Keys.posts(), getUserPosts, options);
 };
 
 export const useFetchScrapedRestaurant = () =>
-  useSuspendedQuery(Keys.scraps(), getUserScraps);
+  useSuspenseQuery(Keys.scraps(), getUserScraps);
 
 export const useFetchReviewedRestaurant = () =>
-  useSuspendedQuery(Keys.reviews(), getUserReviewedRestaurant);
+  useSuspenseQuery(Keys.reviews(), getUserReviewedRestaurant);

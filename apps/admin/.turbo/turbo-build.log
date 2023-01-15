@@ -1,3 +1,4 @@
+info  - Loaded env from /Users/chanhyuk/Desktop/personal/toppings-client/apps/admin/.env.local
 info  - Linting and checking validity of types...
 error - ESLint must be installed in order to run during builds: yarn add --dev eslint
 info  - Creating an optimized production build...
@@ -20,7 +21,7 @@ Route (pages)                              Size     First Load JS
 + First Load JS shared by all              200 kB
   ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
   ├ chunks/main-383f5b188f3e53c1.js        30.6 kB
-  ├ chunks/pages/_app-9aec193656c1f7b3.js  123 kB
+  ├ chunks/pages/_app-578acf81a9e86314.js  127 kB
   └ chunks/webpack-2d6c20b89449f43d.js     1.04 kB
 
 ○  (Static)  automatically rendered as static HTML (uses no initial props)

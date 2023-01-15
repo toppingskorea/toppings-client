@@ -3599,6 +3599,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@suspensive/react-query@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "@suspensive/react-query@npm:1.4.0"
+  dependencies:
+    "@suspensive/react": ^1.4.0
+  peerDependencies:
+    "@tanstack/react-query": "*"
+    react: ^16.8 || ^17 || ^18
+  checksum: 434394aaf9f39b5765e9e09b25c70a3f09bb56442bf721e808d23e82ab397df5544aa9d52bc34eebec7dc8c52d812c75f058205d0459ff99f99e91d79f9c0bbd
+  languageName: node
+  linkType: hard
+
+"@suspensive/react@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "@suspensive/react@npm:1.4.0"
+  peerDependencies:
+    react: ^16.8 || ^17 || ^18
+    react-dom: "*"
+  checksum: 4221f6178f1616ece6795f77741e1d9d85ec233693084df2336a3c67b6b97ca59a94ac9202e898b18d1f67d5420f708ec0bd59a8552f0b4ad6d1ffb715abf57f
+  languageName: node
+  linkType: hard
+
 "@svgr/babel-plugin-add-jsx-attribute@npm:^6.5.1":
   version: 6.5.1
   resolution: "@svgr/babel-plugin-add-jsx-attribute@npm:6.5.1"
@@ -3879,6 +3901,8 @@ __metadata:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     "@sentry/nextjs": ^7.18.0
+    "@suspensive/react": ^1.4.0
+    "@suspensive/react-query": ^1.4.0
     "@svgr/webpack": ^6.5.1
     "@tanstack/react-query": ^4.13.4
     "@tanstack/react-query-devtools": ^4.13.4
@@ -3922,6 +3946,8 @@ __metadata:
     "@emotion/styled": ^11.10.5
     "@sentry/nextjs": ^7.18.0
     "@stomp/stompjs": ^6.1.2
+    "@suspensive/react": ^1.4.0
+    "@suspensive/react-query": ^1.4.0
     "@svgr/webpack": ^6.5.1
     "@tanstack/react-query": ^4.13.4
     "@tanstack/react-query-devtools": ^4.13.4

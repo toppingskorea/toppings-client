@@ -1,1 +1,1 @@
-export { default as SSRSafeSuspense } from "./SSRSafeSuspense";
+export { default as SwitchCase } from "./SwitchCase";

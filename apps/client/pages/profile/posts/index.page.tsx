@@ -1,11 +1,10 @@
-import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { Spacing } from "@toss/emotion-utils";
-import axios from "axios";
-import type { GetServerSideProps } from "next";
+import { css } from "@emotion/react";
+import { Suspense } from "@suspensive/react";
+import { Flex, Spacing, Stack } from "@toss/emotion-utils";
 import { PostList, UserBadge } from "~/components/Profile/posts";
-import { env } from "~/constants";
+import Skeleton from "~/components/Skeleton";
 import { useSetNavigation } from "~/hooks";
-import { Keys } from "~/server/profile";
+import { generateComponent } from "~/utils";
 
 const ProfilePosts = () => {
   useSetNavigation({
@@ -14,48 +13,47 @@ const ProfilePosts = () => {
 
   return (
     <section>
-      <UserBadge />
+      <Suspense.CSROnly
+        fallback={
+          <Flex.Center
+            css={css`
+              padding-top: 60px;
+            `}
+          >
+            <Skeleton.Box
+              size={{
+                width: 140,
+                height: 50
+              }}
+            />
+          </Flex.Center>
+        }
+      >
+        <UserBadge />
+      </Suspense.CSROnly>
       <Spacing size={30} />
-      <PostList />
+
+      <Suspense.CSROnly
+        fallback={
+          <Flex.Center>
+            <Stack.Vertical>
+              {generateComponent(
+                <Skeleton.Box
+                  size={{
+                    width: 344,
+                    height: 174
+                  }}
+                />,
+                2
+              )}
+            </Stack.Vertical>
+          </Flex.Center>
+        }
+      >
+        <PostList />
+      </Suspense.CSROnly>
     </section>
   );
 };
 
 export default ProfilePosts;
-
-export const getServerSideProps: GetServerSideProps = async context => {
-  const queryClient = new QueryClient();
-
-  // 유저 정보
-  await queryClient.prefetchQuery(Keys.user(), async () => {
-    const { data } = await axios.get<{ data: Profile.UserDTO }>(
-      `${env.TOPPINGS_SERVER_URL}/api/v1/user`,
-      {
-        headers: {
-          Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`
-        }
-      }
-    );
-    return data.data;
-  });
-
-  // 해당 유저 Posts
-  await queryClient.prefetchQuery(Keys.posts(), async () => {
-    const { data } = await axios.get<{ data: Profile.PostDTO[] }>(
-      `${env.TOPPINGS_SERVER_URL}/api/v1/user/restaurant`,
-      {
-        headers: {
-          Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`
-        }
-      }
-    );
-
-    return data.data;
-  });
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient)
-    }
-  };
-};

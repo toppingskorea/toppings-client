@@ -31,6 +31,7 @@
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
     "unused-imports/no-unused-imports": "error",
+    "react/no-unstable-nested-components": 0,
     "unused-imports/no-unused-vars": [
       "warn",
       {

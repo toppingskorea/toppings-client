@@ -8,6 +8,5 @@ export { default as usePreservedReference } from "./usePreservedReference";
 export { default as useScrollToTopByKeywordChange } from "./useScrollToTopByKeywordChange";
 export { default as useSentry } from "./useSentry";
 export { default as useSetNavigation } from "./useSetNavigation";
-export * from "./useSuspendedQuery";
 export { default as useTokenCookie } from "./useTokenCookie";
 export { default as useWebSocket } from "./useWebSocket";
