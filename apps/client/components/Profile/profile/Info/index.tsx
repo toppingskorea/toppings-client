@@ -1,9 +1,9 @@
-import { Hamburger } from "@svgs/common";
 import { css, useTheme } from "@emotion/react";
+import { avatar } from "@images/profile";
+import { Hamburger } from "@svgs/common";
 import { flex, gutter, Spacing, Stack } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { avatar } from "~/assets/images/profile";
 import { ComponentWithLabel, RoundedTag } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { framerMocker, staggerOne } from "~/constants";
