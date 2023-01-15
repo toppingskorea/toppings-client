@@ -1,10 +1,10 @@
+import type { UseSuspenseQueryResultOnSuccess } from "@suspensive/react-query";
 import { Stack } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import { RestaurantCard } from "~/components/Common";
-import type { SuspendedUseQueryResultOnSuccess } from "~/hooks";
 
 interface Props {
-  query: () => SuspendedUseQueryResultOnSuccess<Restaurant.BaseDTO[]>;
+  query: () => UseSuspenseQueryResultOnSuccess<Restaurant.BaseDTO[]>;
 }
 
 const HorizontalPostList = ({ query }: Props) => {
