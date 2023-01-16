@@ -19,7 +19,11 @@ import { Text } from "~/components/Common/Typo";
 import { env } from "~/constants";
 import { useSetNavigation } from "~/hooks";
 import { Keys, useFetchRestaurant } from "~/server/restaurant";
-import { useUpdateReview, useUploadReview } from "~/server/review";
+import {
+  useFetchReview,
+  useUpdateReview,
+  useUploadReview
+} from "~/server/review";
 
 /*
   리뷰를 수정하로 올때 images나 description을 세팅해줄 수 있지만,
@@ -36,8 +40,10 @@ const ReviewAdd = ({
   const { data: restaurantDetail } = useFetchRestaurant(+restaurantId);
   const reviewUploadValue = useReviewUploadValue();
 
-  // 수정이라면 이 값으로 세팅해줘야한다.
-  // const { data: reviewDetail } = useFetchReview(reviewUploadValue.id);
+  useFetchReview(reviewUploadValue.id, reviewDetail => {
+    setImages(reviewDetail.images);
+    setDescription(reviewDetail.description);
+  });
 
   const isModifyMode = useMemo(
     () => !!reviewUploadValue.id,
