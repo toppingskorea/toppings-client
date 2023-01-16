@@ -1,14 +1,19 @@
 import { useReviewUploadSetter } from "@atoms/review";
 import { css, useTheme } from "@emotion/react";
-import { avatar } from "@images/profile";
 import { CircleThreeDot } from "@svgs/common";
-import { Flex, padding, Spacing, Stack, width100 } from "@toss/emotion-utils";
+import {
+  Flex,
+  padding,
+  size,
+  Spacing,
+  Stack,
+  width100
+} from "@toss/emotion-utils";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { MotionButton } from "~/components/Common";
+import { CircleCountry, MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useFetchReviews } from "~/server/review";
-import { countryToSvg } from "~/utils";
 
 interface Props {
   id: string;
@@ -23,21 +28,20 @@ const Reviews = ({ id }: Props) => {
     <Stack.Vertical
       as="ul"
       css={css`
-        ${padding({ x: 24 })}
+        ${padding({ x: 17 })}
       `}
     >
       {reviews.map(review => (
         <li key={review.id}>
           <Flex>
             <Image
-              src={
-                review.thumbnail.includes("data") ? review.thumbnail : avatar
-              }
+              src={review.thumbnail}
               alt=""
-              width={64}
-              height={64}
+              width={81}
+              height={81}
               css={css`
                 border-radius: 8px;
+                min-width: 81px;
               `}
             />
 
@@ -48,7 +52,13 @@ const Reviews = ({ id }: Props) => {
                 ${width100}
               `}
             >
-              <Flex justify="space-between" align="center">
+              <Flex
+                justify="space-between"
+                align="center"
+                css={css`
+                  ${width100}
+                `}
+              >
                 <Flex
                   align="center"
                   justify="space-between"
@@ -57,21 +67,38 @@ const Reviews = ({ id }: Props) => {
                   `}
                 >
                   <Flex align="center">
-                    <Image
-                      src={countryToSvg(review.country)}
-                      alt=""
-                      width={16}
-                      height={24}
-                      css={css`
-                        border-radius: 8px;
-                      `}
+                    <CircleCountry
+                      country={review.country}
+                      size={12}
+                      padding={4}
                     />
-                    <Spacing direction="horizontal" size={4} />
+
+                    <Spacing direction="horizontal" size={7} />
+
                     <Text _fontSize={13} weight={weighs.semiBold}>
                       {review.name}
                     </Text>
 
-                    <Spacing direction="horizontal" size={6} />
+                    <Spacing direction="horizontal" size={2} />
+
+                    <div
+                      css={css`
+                        ${size({
+                          width: 2,
+                          height: 2
+                        })}
+                        background-color: ${colors.black};
+                        border-radius: 50%;
+                      `}
+                    />
+
+                    <Spacing direction="horizontal" size={2} />
+
+                    <Text _fontSize={13} weight={weighs.semiBold}>
+                      {review.habits[0]}
+                    </Text>
+
+                    <Spacing direction="horizontal" size={16} />
 
                     <Text _fontSize={10} _color={colors.secondary.B8}>
                       {review.modifiedAt}
@@ -89,6 +116,8 @@ const Reviews = ({ id }: Props) => {
                   )}
                 </Flex>
               </Flex>
+
+              <Spacing size={4} />
 
               <Text _fontSize={10} _color={colors.secondary[34]}>
                 {review.description}
