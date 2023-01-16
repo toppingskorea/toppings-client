@@ -52,7 +52,6 @@ const usePost = (id: string) => {
     setPostUpload,
     setRestaurant
   ]);
-  console.log(restaurantDetail);
 
   useSetNavigation({
     top: {
