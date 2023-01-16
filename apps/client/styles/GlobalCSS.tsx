@@ -13,6 +13,15 @@ const GlobalCSS = () => {
           padding: 0;
         }
 
+        body,
+        input,
+        textarea,
+        button {
+          font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
+            Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+            Helvetica Neue, sans-serif;
+        }
+
         // 화면을 꽉 채우기 위해서
         body {
           ${position("fixed", { bottom: 0, top: 0, right: 0, left: 0 })};
