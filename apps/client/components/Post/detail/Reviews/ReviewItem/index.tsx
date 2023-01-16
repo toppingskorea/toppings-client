@@ -1,9 +1,15 @@
 import { css, useTheme } from "@emotion/react";
 import { CircleThreeDot } from "@svgs/common";
 import { Flex, size, Spacing, width100 } from "@toss/emotion-utils";
+import { useOverlay } from "@toss/use-overlay";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { CircleCountry, MotionButton } from "~/components/Common";
+import { useCallback } from "react";
+import {
+  BottomSelectModal,
+  CircleCountry,
+  MotionButton
+} from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useReviewUploadSetter } from "~/recoil/atoms/review";
 
@@ -12,9 +18,32 @@ interface Props {
 }
 
 const ReviewItem = ({ review }: Props) => {
+  const { query } = useRouter();
   const { push } = useRouter();
   const { colors, weighs } = useTheme();
   const reviewUploadSetter = useReviewUploadSetter();
+  const overlay = useOverlay();
+
+  const onThreeDotClickHandler = useCallback(() => {
+    overlay.open(({ exit }) => (
+      <BottomSelectModal
+        itemList={[
+          {
+            text: "modify",
+            onClickHandler: () => {
+              reviewUploadSetter({ id: review.id });
+              push(`/review/add/${query.id}`);
+            }
+          },
+          {
+            text: "delete",
+            onClickHandler: () => console.log("delete")
+          }
+        ]}
+        exit={exit}
+      />
+    ));
+  }, [overlay, push, query.id, review.id, reviewUploadSetter]);
 
   return (
     <li key={review.id}>
@@ -86,12 +115,7 @@ const ReviewItem = ({ review }: Props) => {
                 </Text>
               </Flex>
               {review.isMine && (
-                <MotionButton
-                  onClick={() => {
-                    reviewUploadSetter({ id: review.id });
-                    push(`/review/add/${review.id}`);
-                  }}
-                >
+                <MotionButton onClick={onThreeDotClickHandler}>
                   <CircleThreeDot />
                 </MotionButton>
               )}
