@@ -143,7 +143,13 @@ const ReviewItem = ({ review }: Props) => {
 
           <Spacing size={4} />
 
-          <Text _fontSize={10} _color={colors.secondary[34]}>
+          <Text
+            _fontSize={10}
+            _color={colors.secondary[34]}
+            css={css`
+              word-break: break-all;
+            `}
+          >
             {review.description}
           </Text>
           <Spacing size={4} />
