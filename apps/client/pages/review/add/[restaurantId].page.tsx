@@ -114,17 +114,17 @@ const ReviewAdd = ({
   return (
     <Stack.Vertical
       css={css`
-        ${padding({ x: 25 })}
+        ${padding({ x: 28 })}
       `}
     >
       <ComponentWithLabel label="Picture" gutter={6}>
         <Gallery images={images} setImages={images => setImages(images)} />
       </ComponentWithLabel>
 
-      <ComponentWithLabel label="Picture" gutter={6}>
+      <ComponentWithLabel label="Description" gutter={6}>
         <Input
           as="textarea"
-          height={156}
+          height={168}
           placeholder={`Please write a detailed description\nof the food`}
           padding={padding({ x: 12, y: 12 })}
           value={description}
@@ -147,7 +147,7 @@ const ReviewAdd = ({
           bgcolor={colors.primary}
           onClick={onClickRegisterHandler}
         >
-          <Text _fontSize={17} _color={colors.white} weight={weighs.semiBold}>
+          <Text _fontSize={17} _color={colors.white}>
             Register
           </Text>
         </FilledButton>
