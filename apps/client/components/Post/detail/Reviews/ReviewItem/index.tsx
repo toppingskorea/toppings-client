@@ -6,12 +6,14 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import {
+  AlertModal,
   BottomSelectModal,
   CircleCountry,
   MotionButton
 } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useReviewUploadSetter } from "~/recoil/atoms/review";
+import { useDeleteReview } from "~/server/review";
 
 interface Props {
   review: Restaurant.ReviewDTO;
@@ -22,6 +24,7 @@ const ReviewItem = ({ review }: Props) => {
   const { push } = useRouter();
   const { colors, weighs } = useTheme();
   const reviewUploadSetter = useReviewUploadSetter();
+  const { mutate: deleteReviewMutate } = useDeleteReview(Number(query.id));
   const overlay = useOverlay();
 
   const onThreeDotClickHandler = useCallback(() => {
@@ -37,13 +40,29 @@ const ReviewItem = ({ review }: Props) => {
           },
           {
             text: "delete",
-            onClickHandler: () => console.log("delete")
+            onClickHandler: () =>
+              overlay.open(({ exit, close }) => (
+                <AlertModal
+                  exitFn={exit}
+                  deleteFn={() => {
+                    deleteReviewMutate(review.id);
+                    close();
+                  }}
+                />
+              ))
           }
         ]}
         exit={exit}
       />
     ));
-  }, [overlay, push, query.id, review.id, reviewUploadSetter]);
+  }, [
+    deleteReviewMutate,
+    overlay,
+    push,
+    query.id,
+    review.id,
+    reviewUploadSetter
+  ]);
 
   return (
     <li key={review.id}>
