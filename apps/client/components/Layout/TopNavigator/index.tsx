@@ -31,7 +31,7 @@ const TopNavigator = () => {
             ${flex({ justify: "space-between", align: "center" })}
             ${padding({
               x: 28,
-              top: 56,
+              top: 31,
               bottom: state.top?.marginBottom ?? 24
             })}
           `}

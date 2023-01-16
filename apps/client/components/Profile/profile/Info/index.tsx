@@ -9,6 +9,7 @@ import { Text } from "~/components/Common/Typo";
 import { framerMocker, staggerOne } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useFetchUserInfo } from "~/server/profile";
+import { hexToRgba } from "~/utils";
 import LabelWithEllipse from "../../LabelWithEllipse";
 
 const Info = () => {
@@ -32,16 +33,29 @@ const Info = () => {
     bottom: true
   });
 
+  const defaultRoundedTagCommonStyle = {
+    padding: {
+      x: 20,
+      y: 3
+    },
+    defaultProps: {
+      bgcolor: hexToRgba(colors.primary, 0.6),
+      bordercolor: colors.primary,
+      _color: colors.white
+    },
+    _fontSize: 15
+  };
+
   return (
     <>
       <Stack.Horizontal align="center" gutter={0} justify="space-between">
         <Image
           src={userInfo.profile || avatar}
           alt={`${userInfo.name}'s profile`}
-          width={88}
-          height={88}
+          width={78}
+          height={78}
           css={css`
-            min-width: 88px;
+            min-width: 78px;
             border-radius: 50%;
           `}
         />
@@ -51,7 +65,7 @@ const Info = () => {
           {...framerMocker}
           css={css`
             ${flex({ direction: "row" })}
-            ${gutter({ direction: "horizontal", space: 24 })}
+            ${gutter({ direction: "horizontal" })}
           `}
         >
           <LabelWithEllipse label="Posts" route="/profile/posts">
@@ -69,36 +83,16 @@ const Info = () => {
       <Spacing size={58} />
 
       <ComponentWithLabel label="Nationality" gutter={11}>
-        <RoundedTag
-          padding={{
-            x: 20,
-            y: 7
-          }}
-          defaultProps={{
-            bgcolor: colors.primary,
-            bordercolor: "transparent",
-            _color: colors.white
-          }}
-          _fontSize={15}
-        >
+        <RoundedTag {...defaultRoundedTagCommonStyle}>
           {userInfo.country}
         </RoundedTag>
       </ComponentWithLabel>
+
       <Spacing size={26} />
+
       {userInfo.habits && userInfo.habits?.length > 0 && (
         <ComponentWithLabel label="Eating habit" gutter={11}>
-          <RoundedTag
-            padding={{
-              x: 20,
-              y: 7
-            }}
-            defaultProps={{
-              bgcolor: colors.primary,
-              bordercolor: "transparent",
-              _color: colors.white
-            }}
-            _fontSize={15}
-          >
+          <RoundedTag {...defaultRoundedTagCommonStyle}>
             {userInfo.habits?.[0].content}
           </RoundedTag>
         </ComponentWithLabel>

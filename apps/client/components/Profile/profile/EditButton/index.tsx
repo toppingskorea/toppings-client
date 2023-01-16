@@ -7,7 +7,7 @@ import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter } from "~/hooks";
 
 const EditButton = () => {
-  const { dimensions, colors, weighs } = useTheme();
+  const { dimensions, colors } = useTheme();
   const { push } = useInternalRouter();
 
   return (
@@ -31,7 +31,7 @@ const EditButton = () => {
         bgcolor={colors.primary}
         onClick={() => push("/profile/edit")}
       >
-        <Text _fontSize={17} _color={colors.white} weight={weighs.semiBold}>
+        <Text _fontSize={17} _color={colors.white}>
           Edit profile
         </Text>
       </FilledButton>

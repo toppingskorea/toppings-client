@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Ellipse = ({ children }: Props) => {
-  const { colors } = useTheme();
+  const { colors, weighs } = useTheme();
   return (
     <Flex.Center
       css={css`
@@ -16,7 +16,7 @@ const Ellipse = ({ children }: Props) => {
         border-radius: 100px;
       `}
     >
-      <Text _fontSize={13} _color={colors.primary}>
+      <Text _fontSize={13} _color={colors.primary} weight={weighs.bold}>
         {children}
       </Text>
     </Flex.Center>
