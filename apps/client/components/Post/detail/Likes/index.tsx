@@ -1,10 +1,8 @@
 import { css, useTheme } from "@emotion/react";
 import { Flex, padding, Stack } from "@toss/emotion-utils";
-import Image from "next/image";
 import { CircleCountry, PercentBar } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useFetchLikePercent } from "~/server/restaurant";
-import { countryToSvg } from "~/utils";
 
 interface Props {
   id: string;
