@@ -1,7 +1,7 @@
 import { css, useTheme } from "@emotion/react";
 import { Flex, padding, Stack } from "@toss/emotion-utils";
 import Image from "next/image";
-import { PercentBar } from "~/components/Common";
+import { CircleCountry, PercentBar } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useFetchLikePercent } from "~/server/restaurant";
 import { countryToSvg } from "~/utils";
@@ -29,10 +29,10 @@ const Likes = ({ id }: Props) => {
             <PercentBar
               key={country.country}
               prepend={
-                <Image
-                  src={countryToSvg(country.country)}
-                  width={20}
-                  height={20}
+                <CircleCountry
+                  country={country.country}
+                  size={14}
+                  padding={4}
                   alt={`${country.country}'s country flag`}
                 />
               }

@@ -2,6 +2,7 @@ import type { PropsWithChildren, Ref } from "react";
 import { forwardRef } from "react";
 import { css } from "@emotion/react";
 import { hiddenScroll } from "~/styles/emotionUtils";
+import { Flex, width100 } from "@toss/emotion-utils";
 
 const SnapCarouselWrapper = forwardRef(function SnapCarouselWrapper(
   { children }: PropsWithChildren,
@@ -25,15 +26,17 @@ const SnapCarouselWrapper = forwardRef(function SnapCarouselWrapper(
 
 const SnapCarouselItem = ({ children }: PropsWithChildren) => {
   return (
-    <article
+    <Flex
+      as="article"
+      justify="center"
       css={css`
         scroll-snap-align: center;
         flex-shrink: 0;
-        width: 100%;
+        ${width100}
       `}
     >
       {children}
-    </article>
+    </Flex>
   );
 };
 

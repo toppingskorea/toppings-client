@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { size, Spacing, Stack } from "@toss/emotion-utils";
+import { Spacing, Stack } from "@toss/emotion-utils";
 import axios from "axios";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { Badge } from "~/components/Common";
@@ -22,8 +22,7 @@ const PostDetail = ({
         align="center"
         gutter={0}
         css={css`
-          ${size({ width: 364 })}
-          margin:0 auto;
+          margin: 0 13px;
         `}
       >
         <ImageCarousel images={app.restaurantDetail.images} />
