@@ -52,6 +52,7 @@ const usePost = (id: string) => {
     setPostUpload,
     setRestaurant
   ]);
+  console.log(restaurantDetail);
 
   useSetNavigation({
     top: {
@@ -73,10 +74,12 @@ const usePost = (id: string) => {
           </Text>
         </Flex>
       ),
-      right: {
-        element: <Edit />,
-        onClick: goEditPostHandler
-      }
+      right: restaurantDetail.mine
+        ? {
+            element: <Edit />,
+            onClick: goEditPostHandler
+          }
+        : undefined
     },
     bottom: true
   });

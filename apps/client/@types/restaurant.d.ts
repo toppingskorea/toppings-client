@@ -37,6 +37,7 @@ declare module Restaurant {
     code: string;
     country: string;
     scrap: boolean;
+    mine: boolean;
   }
 
   interface LikePercentDTO {
