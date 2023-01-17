@@ -9,6 +9,7 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/router";
 import { useCallback, useMemo, useState } from "react";
 import {
+  AlertModal,
   ComponentWithLabel,
   FilledButton,
   Gallery,
@@ -19,7 +20,11 @@ import { Text } from "~/components/Common/Typo";
 import { env } from "~/constants";
 import { useSetNavigation } from "~/hooks";
 import { Keys, useFetchRestaurant } from "~/server/restaurant";
-import { useUpdateReview, useUploadReview } from "~/server/review";
+import {
+  useFetchReview,
+  useUpdateReview,
+  useUploadReview
+} from "~/server/review";
 
 /*
   리뷰를 수정하로 올때 images나 description을 세팅해줄 수 있지만,
@@ -36,8 +41,10 @@ const ReviewAdd = ({
   const { data: restaurantDetail } = useFetchRestaurant(+restaurantId);
   const reviewUploadValue = useReviewUploadValue();
 
-  // 수정이라면 이 값으로 세팅해줘야한다.
-  // const { data: reviewDetail } = useFetchReview(reviewUploadValue.id);
+  useFetchReview(reviewUploadValue.id, reviewDetail => {
+    setImages(reviewDetail.images);
+    setDescription(reviewDetail.description);
+  });
 
   const isModifyMode = useMemo(
     () => !!reviewUploadValue.id,
@@ -78,6 +85,16 @@ const ReviewAdd = ({
   });
 
   const onClickRegisterHandler = useCallback(() => {
+    if (images.length === 0) {
+      overlay.open(({ exit }) => (
+        <AlertModal
+          information={`It can't be uploaded\nwithout pictures`}
+          exitFn={exit}
+        />
+      ));
+      return;
+    }
+
     if (isModifyMode) {
       updateReviewMutate({
         id: reviewUploadValue.id!,
@@ -99,6 +116,7 @@ const ReviewAdd = ({
     description,
     images,
     isModifyMode,
+    overlay,
     restaurantId,
     reviewUploadValue.id,
     updateReviewMutate,
@@ -108,17 +126,17 @@ const ReviewAdd = ({
   return (
     <Stack.Vertical
       css={css`
-        ${padding({ x: 25 })}
+        ${padding({ x: 28 })}
       `}
     >
       <ComponentWithLabel label="Picture" gutter={6}>
         <Gallery images={images} setImages={images => setImages(images)} />
       </ComponentWithLabel>
 
-      <ComponentWithLabel label="Picture" gutter={6}>
+      <ComponentWithLabel label="Description" gutter={6}>
         <Input
           as="textarea"
-          height={156}
+          height={168}
           placeholder={`Please write a detailed description\nof the food`}
           padding={padding({ x: 12, y: 12 })}
           value={description}
@@ -141,7 +159,7 @@ const ReviewAdd = ({
           bgcolor={colors.primary}
           onClick={onClickRegisterHandler}
         >
-          <Text _fontSize={17} _color={colors.white} weight={weighs.semiBold}>
+          <Text _fontSize={17} _color={colors.white}>
             Register
           </Text>
         </FilledButton>

@@ -19,7 +19,7 @@ const Profile = () => (
           `}
         >
           <Stack.Horizontal align="center">
-            <Skeleton.Circle size={100} />
+            <Skeleton.Circle size={78} />
 
             <Stack.Horizontal>
               {generateComponent(

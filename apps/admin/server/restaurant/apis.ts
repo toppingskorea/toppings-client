@@ -3,7 +3,7 @@ import axios from "axios";
 // 음식점 목록 조회
 export const getRestaurants = async (page: number) => {
   const { data } = await axios.get<{
-    data: Common.PagiNationResponse<Restaurant.DTO>;
+    data: Common.PaginationResponse<Restaurant.DTO>;
   }>(`/v1/admin/restaurant?page=${page}`);
 
   return data.data;

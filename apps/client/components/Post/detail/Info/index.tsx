@@ -59,10 +59,11 @@ const Info = ({
           ${size.width100}
         `}
       >
-        <Stack.Vertical gutter={4}>
+        <Flex direction="column">
           <Text _fontSize={24} _color={colors.primary} weight={weighs.semiBold}>
             {name}
           </Text>
+          <Spacing size={8} />
           <Text
             _fontSize={15}
             _color={colors.secondary[47]}
@@ -70,15 +71,17 @@ const Info = ({
           >
             {type}
           </Text>
+          <Spacing size={3} />
           <Flex align="center">
             <Text _fontSize={14} _color={colors.secondary[47]}>
               {address}
             </Text>
+            <Spacing direction="horizontal" size={8} />
             <MotionButton onClick={() => clipboard(address)}>
               <Copy />
             </MotionButton>
           </Flex>
-        </Stack.Vertical>
+        </Flex>
 
         <Stack.Horizontal gutter={20} align="flex-start">
           {/* TODO: device share 기능 배포후 확인 필요 */}

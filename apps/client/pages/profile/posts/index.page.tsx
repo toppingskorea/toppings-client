@@ -1,6 +1,5 @@
-import { css } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
-import { Flex, Spacing, Stack } from "@toss/emotion-utils";
+import { Flex, Stack } from "@toss/emotion-utils";
 import { PostList, UserBadge } from "~/components/Profile/posts";
 import Skeleton from "~/components/Skeleton";
 import { useSetNavigation } from "~/hooks";
@@ -8,31 +7,29 @@ import { generateComponent } from "~/utils";
 
 const ProfilePosts = () => {
   useSetNavigation({
+    top: {
+      title: (
+        <Suspense.CSROnly
+          fallback={
+            <Flex.Center>
+              <Skeleton.Box
+                size={{
+                  width: 150,
+                  height: 40
+                }}
+              />
+            </Flex.Center>
+          }
+        >
+          <UserBadge />
+        </Suspense.CSROnly>
+      )
+    },
     bottom: true
   });
 
   return (
     <section>
-      <Suspense.CSROnly
-        fallback={
-          <Flex.Center
-            css={css`
-              padding-top: 60px;
-            `}
-          >
-            <Skeleton.Box
-              size={{
-                width: 140,
-                height: 50
-              }}
-            />
-          </Flex.Center>
-        }
-      >
-        <UserBadge />
-      </Suspense.CSROnly>
-      <Spacing size={30} />
-
       <Suspense.CSROnly
         fallback={
           <Flex.Center>

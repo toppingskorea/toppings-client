@@ -1,10 +1,15 @@
 import { css, useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
-import { Flex, gutter, position, size } from "@toss/emotion-utils";
+import { Flex, gutter } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
-import { defaultScaleChangeVariants, framerMocker } from "~/constants";
+import {
+  defaultScaleChangeVariants,
+  defaultSlideFadeInVariants,
+  framerMocker
+} from "~/constants";
 import { hexToRgba } from "~/utils";
 import { Text } from "../../Typo";
+import commonLayoutCss from "../Modal.constants";
 
 interface Props {
   exitFn: VoidFunction;
@@ -61,26 +66,29 @@ const NonClickable = ({ information }: Pick<Props, "information">) => {
   const { colors, weighs } = useTheme();
 
   return (
-    <EllipseFlex>
-      <Text _fontSize={18} weight={weighs.bold} _color={colors.primary}>
-        {information}
-      </Text>
-    </EllipseFlex>
+    <motion.div
+      {...framerMocker}
+      variants={defaultSlideFadeInVariants("bottom")}
+    >
+      <EllipseFlex>
+        <Text _fontSize={18} weight={weighs.bold} _color={colors.primary}>
+          {information}
+        </Text>
+      </EllipseFlex>
+    </motion.div>
   );
 };
 
 const AlertModal = ({ exitFn, deleteFn, information }: Props) => {
-  const { colors, zIndex } = useTheme();
+  const theme = useTheme();
+  const { colors } = theme;
 
   return (
     <Flex.Center
       direction="column"
       css={css`
-        ${position("fixed", { top: 0, right: 0, bottom: 0, left: 0 })}
-        ${size.full}
+        ${commonLayoutCss(theme)}
         ${gutter({ direction: "vertical", space: 30 })}
-        background-color: ${hexToRgba(colors.black, 0.3)};
-        z-index: ${zIndex.four};
       `}
       onClick={() => {
         if (information) exitFn();

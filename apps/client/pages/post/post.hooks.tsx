@@ -2,13 +2,12 @@ import { usePostUploadSetter, useRestaurantSetter } from "@atoms/index";
 import { useTheme } from "@emotion/react";
 import { Edit } from "@svgs/common";
 import { Flex, Spacing } from "@toss/emotion-utils";
-import Image from "next/image";
 import { useCallback } from "react";
+import { CircleCountry } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useFetchLikePercent, useFetchRestaurant } from "~/server/restaurant";
 import { useFetchReviews } from "~/server/review";
-import { countryToSvg } from "~/utils";
 
 const usePost = (id: string) => {
   const { colors, weighs } = useTheme();
@@ -58,11 +57,11 @@ const usePost = (id: string) => {
     top: {
       title: (
         <Flex align="center">
-          <Image
-            src={countryToSvg(restaurantDetail.country)}
-            width={24}
-            height={24}
-            alt={`${restaurantDetail.writer}'s country flag`}
+          <CircleCountry
+            padding={7}
+            size={18}
+            country={restaurantDetail.country}
+            isShadow
           />
           <Spacing direction="horizontal" size={14} />
           <Text
@@ -74,10 +73,12 @@ const usePost = (id: string) => {
           </Text>
         </Flex>
       ),
-      right: {
-        element: <Edit />,
-        onClick: goEditPostHandler
-      }
+      right: restaurantDetail.mine
+        ? {
+            element: <Edit />,
+            onClick: goEditPostHandler
+          }
+        : undefined
     },
     bottom: true
   });

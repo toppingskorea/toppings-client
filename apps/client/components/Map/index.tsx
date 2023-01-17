@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { height100, width100 } from "@toss/emotion-utils";
+import { size } from "@toss/emotion-utils";
 import FilteringButton from "./Button/FilteringButton";
 import MyLocationButton from "./Button/MyLocationButton";
 import ViewStatusButton from "./Button/ViewStatusButton";
@@ -15,8 +15,7 @@ const Map = ({ children }: Util.PropsWithChild) => {
     <div
       ref={app.mapRef}
       css={css`
-        ${width100}
-        ${height100}
+        ${size.full}
         z-index: ${app.zIndex.zero};
       `}
     >

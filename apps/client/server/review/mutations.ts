@@ -1,5 +1,9 @@
-import type { UseMutationOptions } from "@tanstack/react-query";
-import { useMutation } from "@tanstack/react-query";
+import {
+  useQueryClient,
+  useMutation,
+  type UseMutationOptions
+} from "@tanstack/react-query";
+import { Keys } from ".";
 import { deleteReview, updateReview, uploadReview } from "./apis";
 
 export const useUpdateReview = (
@@ -26,4 +30,14 @@ export const useUploadReview = (
   return useMutation(uploadReview, options);
 };
 
-export const useDeleteReview = () => useMutation(deleteReview);
+export const useDeleteReview = (restaurantId: number) => {
+  const queryClient = useQueryClient();
+
+  return useMutation(deleteReview, {
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: Keys.reviews(restaurantId)
+      });
+    }
+  });
+};

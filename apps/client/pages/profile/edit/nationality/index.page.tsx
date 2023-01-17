@@ -48,7 +48,7 @@ const ProfileEditNationality = () => {
 
       <div
         css={css`
-          ${padding({ x: 16, y: 22 })};
+          ${padding({ x: 17, y: 22 })};
           ${position("fixed", {
             bottom: 0
           })}

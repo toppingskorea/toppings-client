@@ -12,7 +12,7 @@ const PostList = () => {
         ${padding({ x: 16 })}
       `}
     >
-      {posts.map(post => (
+      {posts.items.map(post => (
         <Item key={post.id} post={post} />
       ))}
     </ul>

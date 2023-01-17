@@ -18,7 +18,7 @@ const UserBadge = () => {
           height: 40
         })}
         ${padding({ x: 18 })};
-        ${margin({ top: 60, x: "auto" })};
+        ${margin({ x: "auto" })};
         ${gutter({ direction: "horizontal", space: 12 })};
         border-radius: 40px;
         box-shadow: 0 4px 4px ${hexToRgba(colors.black, 0.25)};

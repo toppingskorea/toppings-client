@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
-import { Spacing } from "@toss/emotion-utils";
-import Image from "next/image";
+import { Spacing, width100 } from "@toss/emotion-utils";
 import { useState } from "react";
 import { Indicator, SnapCarousel } from "~/components/Common";
 
@@ -17,13 +16,14 @@ const ImageCarousel = ({ images }: Props) => {
         {images.map((image, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <SnapCarousel.Item key={index}>
-            <Image
+            <img
               src={image}
               alt=""
-              width={364}
-              height={364}
               css={css`
                 border-radius: 25px;
+                ${width100}
+                max-width: 364px;
+                aspect-ratio: 1;
               `}
             />
           </SnapCarousel.Item>

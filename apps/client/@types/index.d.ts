@@ -12,4 +12,25 @@ declare module Common {
     latitude: number;
     longitude: number;
   }
+
+  interface PaginationRequest {
+    page: number;
+  }
+
+  interface PaginationConfig {
+    totalPage: number;
+    prev: boolean;
+    next: boolean;
+    pageList: number[];
+  }
+
+  interface PaginationResponse<T> extends PaginationConfig {
+    page: number;
+    size: number;
+    start: number;
+    end: number;
+    items: T[];
+  }
+
+  type PageDirection = "prev" | "next";
 }

@@ -84,7 +84,7 @@ const ProfileEditEatingHabits = () => {
           bgcolor={colors.primary}
           onClick={back}
         >
-          <Text _fontSize={17} _color={colors.white} weight={weighs.semiBold}>
+          <Text _fontSize={17} _color={colors.white}>
             Save
           </Text>
         </FilledButton>

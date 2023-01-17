@@ -1,9 +1,10 @@
-import { css } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { size, Spacing, Stack } from "@toss/emotion-utils";
+import { Spacing, Stack } from "@toss/emotion-utils";
 import axios from "axios";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { Badge } from "~/components/Common";
+import { Text } from "~/components/Common/Typo";
 import { ImageCarousel, Info, Likes, Reviews } from "~/components/Post";
 import { env } from "~/constants";
 import { getLikePercent, Keys as RestaurantKeys } from "~/server/restaurant";
@@ -22,8 +23,7 @@ const PostDetail = ({
         align="center"
         gutter={0}
         css={css`
-          ${size({ width: 364 })}
-          margin:0 auto;
+          margin: 0 13px;
         `}
       >
         <ImageCarousel images={app.restaurantDetail.images} />
@@ -55,7 +55,7 @@ const PostDetail = ({
       <Spacing size={20} />
       {!app.likePercent.countryPercent.length &&
       !app.likePercent.habitPercent.length ? (
-        "아직없네요!! 좋아요 눌러요!!"
+        <EmptyText type="likes" />
       ) : (
         <Likes id={id} />
       )}
@@ -72,7 +72,11 @@ const PostDetail = ({
         Reviews
       </Badge>
       <Spacing size={20} />
-      {app.reviews.length ? <Reviews id={id} /> : "첫리뷰를 남겨봐요!!"}
+      {app.reviews.items.length ? (
+        <Reviews id={id} />
+      ) : (
+        <EmptyText type="reviews" />
+      )}
     </section>
   );
 };
@@ -124,3 +128,22 @@ export const getServerSideProps: GetServerSideProps<{
 };
 
 export default PostDetail;
+
+const EmptyText = ({ type }: { type: "likes" | "reviews" }) => {
+  const { colors, weighs } = useTheme();
+  return (
+    <Text
+      _fontSize={13}
+      lineHeight={16}
+      _color={colors.secondary.A3}
+      weight={weighs.bold}
+      whiteSpace="pre"
+      textAlign="center"
+      css={css`
+        display: block;
+      `}
+    >
+      Here&apos;s no {type}.{"\n"}you can make {type}!
+    </Text>
+  );
+};

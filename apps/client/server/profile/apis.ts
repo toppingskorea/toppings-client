@@ -27,27 +27,27 @@ export const logout = async () => {
 
 // 유저 Posts
 export const getUserPosts = async () => {
-  const { data } = await authRequest.get<{ data: Profile.PostDTO[] }>(
-    `/v1/user/restaurant`
-  );
+  const { data } = await authRequest.get<{
+    data: Common.PaginationResponse<Profile.PostDTO>;
+  }>(`/v1/user/restaurant`);
 
   return data.data;
 };
 
 // 유저 회원의 스크랩 게시물 조회
 export const getUserScraps = async () => {
-  const { data } = await authRequest.get<{ data: Restaurant.BaseDTO[] }>(
-    `/v1/user/scrap`
-  );
+  const { data } = await authRequest.get<{
+    data: Common.PaginationResponse<Restaurant.BaseDTO>;
+  }>(`/v1/user/scrap`);
 
   return data.data;
 };
 
 // 유저 회원의 댓글 게시물 조회
 export const getUserReviewedRestaurant = async () => {
-  const { data } = await authRequest.get<{ data: Restaurant.BaseDTO[] }>(
-    `/v1/user/review`
-  );
+  const { data } = await authRequest.get<{
+    data: Common.PaginationResponse<Restaurant.BaseDTO>;
+  }>(`/v1/user/review`);
 
   return data.data;
 };

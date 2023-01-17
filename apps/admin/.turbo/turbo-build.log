@@ -4,24 +4,25 @@ error - ESLint must be installed in order to run during builds: yarn add --dev e
 info  - Creating an optimized production build...
 info  - Compiled successfully
 info  - Collecting page data...
-info  - Generating static pages (0/6)
-info  - Generating static pages (1/6)
-info  - Generating static pages (2/6)
-info  - Generating static pages (4/6)
-info  - Generating static pages (6/6)
+info  - Generating static pages (0/7)
+info  - Generating static pages (1/7)
+info  - Generating static pages (3/7)
+info  - Generating static pages (5/7)
+info  - Generating static pages (7/7)
 info  - Finalizing page optimization...
 
 Route (pages)                              Size     First Load JS
-┌ ○ /                                      2.24 kB         207 kB
-├   /_app                                  0 B             200 kB
-├ ○ /404                                   182 B           200 kB
-├ ○ /login                                 6.2 kB          228 kB
-├ ○ /overview (868 ms)                     2.54 kB         224 kB
-└ ○ /posts                                 981 B           206 kB
-+ First Load JS shared by all              200 kB
+┌ ○ / (921 ms)                             340 B           205 kB
+├   /_app                                  0 B             205 kB
+├ ○ /404                                   182 B           205 kB
+├ ○ /login (975 ms)                        4.73 kB         227 kB
+├ ○ /overview                              1.88 kB         229 kB
+├ ○ /posts                                 2.6 kB          233 kB
+└ ○ /restaurant/[id]                       2.58 kB         233 kB
++ First Load JS shared by all              205 kB
   ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
   ├ chunks/main-383f5b188f3e53c1.js        30.6 kB
-  ├ chunks/pages/_app-578acf81a9e86314.js  127 kB
+  ├ chunks/pages/_app-c3ec54fe52f9de55.js  128 kB
   └ chunks/webpack-2d6c20b89449f43d.js     1.04 kB
 
 ○  (Static)  automatically rendered as static HTML (uses no initial props)

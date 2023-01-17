@@ -4,7 +4,9 @@ import { useRouter } from "next/router";
 import { RestaurantCard } from "~/components/Common";
 
 interface Props {
-  query: () => UseSuspenseQueryResultOnSuccess<Restaurant.BaseDTO[]>;
+  query: () => UseSuspenseQueryResultOnSuccess<
+    Common.PaginationResponse<Restaurant.BaseDTO>
+  >;
 }
 
 const HorizontalPostList = ({ query }: Props) => {
@@ -13,7 +15,7 @@ const HorizontalPostList = ({ query }: Props) => {
 
   return (
     <Stack.Vertical gutter={10}>
-      {restaurants.map(restaurant => (
+      {restaurants.items.map(restaurant => (
         <RestaurantCard
           key={restaurant.id}
           onClick={() => push(`/post/${restaurant.id}`)}
