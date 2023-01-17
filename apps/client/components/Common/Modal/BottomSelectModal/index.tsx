@@ -16,7 +16,7 @@ interface Props {
   exit: VoidFunction;
 }
 
-const BottomSelectModal = ({ itemList, exit }: Props) => {
+const BottomSelectModal = ({ itemList, exit: close }: Props) => {
   const { colors, zIndex } = useTheme();
 
   return (
@@ -42,7 +42,7 @@ const BottomSelectModal = ({ itemList, exit }: Props) => {
         ))}
 
         <Spacing size={9} />
-        <Button text="close" onClickHandler={exit} />
+        <Button text="close" onClickHandler={close} />
       </motion.ul>
     </div>
   );
