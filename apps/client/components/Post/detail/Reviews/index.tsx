@@ -16,7 +16,7 @@ const Reviews = ({ id }: Props) => {
         ${padding({ x: 17 })}
       `}
     >
-      {reviews.map(review => (
+      {reviews.items.map(review => (
         <ReviewItem key={review.id} review={review} />
       ))}
     </Stack.Vertical>

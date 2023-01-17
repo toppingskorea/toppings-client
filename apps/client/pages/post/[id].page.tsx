@@ -72,7 +72,11 @@ const PostDetail = ({
         Reviews
       </Badge>
       <Spacing size={20} />
-      {app.reviews.length ? <Reviews id={id} /> : <EmptyText type="reviews" />}
+      {app.reviews.items.length ? (
+        <Reviews id={id} />
+      ) : (
+        <EmptyText type="reviews" />
+      )}
     </section>
   );
 };
