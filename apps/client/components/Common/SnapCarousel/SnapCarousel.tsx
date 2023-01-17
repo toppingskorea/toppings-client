@@ -1,8 +1,8 @@
+import { css } from "@emotion/react";
+import { Flex, width100 } from "@toss/emotion-utils";
 import type { PropsWithChildren, Ref } from "react";
 import { forwardRef } from "react";
-import { css } from "@emotion/react";
 import { hiddenScroll } from "~/styles/emotionUtils";
-import { Flex, width100 } from "@toss/emotion-utils";
 
 const SnapCarouselWrapper = forwardRef(function SnapCarouselWrapper(
   { children }: PropsWithChildren,
