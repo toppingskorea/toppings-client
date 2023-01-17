@@ -7,18 +7,18 @@ declare module Common {
     longitude: number;
   }
 
-  interface PagiNationRequest {
+  interface PaginationRequest {
     page: number;
   }
 
-  interface PagiNationConfig {
+  interface PaginationConfig {
     totalPage: number;
     prev: boolean;
     next: boolean;
     pageList: number[];
   }
 
-  interface PagiNationResponse<T> extends PagiNationConfig {
+  interface PaginationResponse<T> extends PaginationConfig {
     page: number;
     size: number;
     start: number;

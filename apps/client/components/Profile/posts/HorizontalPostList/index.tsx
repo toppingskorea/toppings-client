@@ -5,7 +5,7 @@ import { RestaurantCard } from "~/components/Common";
 
 interface Props {
   query: () => UseSuspenseQueryResultOnSuccess<
-    Common.PagiNationResponse<Restaurant.BaseDTO>
+    Common.PaginationResponse<Restaurant.BaseDTO>
   >;
 }
 
