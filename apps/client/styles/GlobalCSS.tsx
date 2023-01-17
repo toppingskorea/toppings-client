@@ -17,8 +17,8 @@ const GlobalCSS = () => {
         input,
         textarea,
         button {
-          font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI,
-            Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+          font-family: Inter, Pretendard, -apple-system, BlinkMacSystemFont,
+            Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
             Helvetica Neue, sans-serif;
         }
 
