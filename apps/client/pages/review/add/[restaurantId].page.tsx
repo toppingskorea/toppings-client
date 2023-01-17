@@ -9,6 +9,7 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/router";
 import { useCallback, useMemo, useState } from "react";
 import {
+  AlertModal,
   ComponentWithLabel,
   FilledButton,
   Gallery,
@@ -84,6 +85,16 @@ const ReviewAdd = ({
   });
 
   const onClickRegisterHandler = useCallback(() => {
+    if (images.length === 0) {
+      overlay.open(({ exit }) => (
+        <AlertModal
+          information={`It can't be uploaded\nwithout pictures`}
+          exitFn={exit}
+        />
+      ));
+      return;
+    }
+
     if (isModifyMode) {
       updateReviewMutate({
         id: reviewUploadValue.id!,
@@ -105,6 +116,7 @@ const ReviewAdd = ({
     description,
     images,
     isModifyMode,
+    overlay,
     restaurantId,
     reviewUploadValue.id,
     updateReviewMutate,

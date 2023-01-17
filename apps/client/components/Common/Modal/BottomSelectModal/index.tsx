@@ -3,7 +3,7 @@ import { position, Spacing } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { Fragment } from "react";
 import { framerMocker, staggerOne } from "~/constants";
-import { hexToRgba } from "~/utils";
+import commonLayoutCss from "../Modal.constants";
 import Button from "./Button";
 
 export interface Item {
@@ -17,16 +17,10 @@ interface Props {
 }
 
 const BottomSelectModal = ({ itemList, exit: close }: Props) => {
-  const { colors, zIndex } = useTheme();
+  const theme = useTheme();
 
   return (
-    <div
-      css={css`
-        ${position("fixed", { top: 0, right: 0, bottom: 0, left: 0 })}
-        z-index: ${zIndex.four};
-        background-color: ${hexToRgba(colors.black, 0.3)};
-      `}
-    >
+    <div css={commonLayoutCss(theme)}>
       <motion.ul
         variants={staggerOne}
         {...framerMocker}
