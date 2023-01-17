@@ -20,8 +20,7 @@ interface Props {
 }
 
 const ReviewItem = ({ review }: Props) => {
-  const { query } = useRouter();
-  const { push } = useRouter();
+  const { query, push } = useRouter();
   const { colors, weighs } = useTheme();
   const reviewUploadSetter = useReviewUploadSetter();
   const { mutate: deleteReviewMutate } = useDeleteReview(Number(query.id));
