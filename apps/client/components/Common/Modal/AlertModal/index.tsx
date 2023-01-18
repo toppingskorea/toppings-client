@@ -13,13 +13,15 @@ import commonLayoutCss from "../Modal.constants";
 
 interface Props {
   exitFn: VoidFunction;
-  deleteFn?: VoidFunction;
+  rightClickFn?: VoidFunction;
   information?: string;
+  rightText?: string;
 }
 
 const Clickable = ({
   exitFn,
-  deleteFn
+  rightClickFn,
+  rightText
 }: Required<Omit<Props, "information">>) => {
   const { colors, weighs } = useTheme();
 
@@ -49,12 +51,12 @@ const Clickable = ({
           variants={defaultScaleChangeVariants}
           type="button"
           onClick={() => {
-            deleteFn();
+            rightClickFn();
             exitFn();
           }}
         >
           <Text _fontSize={18} weight={weighs.bold} _color={colors.primary}>
-            delete
+            {rightText}
           </Text>
         </motion.button>
       </EllipseFlex>
@@ -79,7 +81,12 @@ const NonClickable = ({ information }: Pick<Props, "information">) => {
   );
 };
 
-const AlertModal = ({ exitFn, deleteFn, information }: Props) => {
+const AlertModal = ({
+  exitFn,
+  rightClickFn,
+  information,
+  rightText
+}: Props) => {
   const theme = useTheme();
   const { colors } = theme;
 
@@ -108,8 +115,12 @@ const AlertModal = ({ exitFn, deleteFn, information }: Props) => {
         </Text>
       </Flex.Center>
 
-      {deleteFn ? (
-        <Clickable deleteFn={deleteFn} exitFn={exitFn} />
+      {rightClickFn ? (
+        <Clickable
+          rightText={rightText ?? ""}
+          rightClickFn={rightClickFn}
+          exitFn={exitFn}
+        />
       ) : (
         <NonClickable information={information} />
       )}

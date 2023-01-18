@@ -22,7 +22,8 @@ const PostAdd = () => {
       right: {
         element: <Exit />,
         onClick: () => push("/map")
-      }
+      },
+      backButtonCaution: true
     },
     bottom: false
   });

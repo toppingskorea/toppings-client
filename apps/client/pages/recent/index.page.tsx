@@ -41,7 +41,7 @@ const RecentPage = () => {
     overlay.open(({ exit, close }) => (
       <AlertModal
         exitFn={exit}
-        deleteFn={() => {
+        rightClickFn={() => {
           deleteAllMutate();
           close();
         }}

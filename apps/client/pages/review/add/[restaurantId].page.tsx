@@ -64,7 +64,8 @@ const ReviewAdd = ({
         >
           {restaurantDetail.name}
         </Text>
-      )
+      ),
+      backButtonCaution: true
     }
   });
 

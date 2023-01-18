@@ -2,9 +2,10 @@ import { useNavigationValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { LeftArrow } from "@svgs/common";
 import { flex, padding, position, Spacing } from "@toss/emotion-utils";
+import { useOverlay } from "@toss/use-overlay";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMemo } from "react";
-import { MotionButton } from "~/components/Common";
+import { AlertModal, MotionButton } from "~/components/Common";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter } from "~/hooks";
 
@@ -12,11 +13,25 @@ const TopNavigator = () => {
   const { zIndex } = useTheme();
   const { back, pathname } = useInternalRouter();
   const state = useNavigationValue();
+  const overlay = useOverlay();
 
   const noBlurPath = useMemo(
     () => pathname === "/recent" || pathname === "/map/viewList",
     [pathname]
   );
+
+  const onClickBackButton = () => {
+    if (state.top?.backButtonCaution) {
+      overlay.open(({ exit }) => (
+        <AlertModal exitFn={exit} rightClickFn={back} rightText="sure" />
+      ));
+
+      return;
+    }
+
+    back();
+  };
+
   return (
     <AnimatePresence>
       <header
@@ -36,7 +51,7 @@ const TopNavigator = () => {
             })}
           `}
         >
-          <MotionButton onClick={back}>
+          <MotionButton onClick={onClickBackButton}>
             <LeftArrow />
           </MotionButton>
 
