@@ -12,36 +12,37 @@ info  - Generating static pages (23/23)
 info  - Finalizing page optimization...
 
 Route (pages)                              Size     First Load JS
-┌ ○ /                                      1.98 kB         362 kB
-├   /_app                                  0 B             360 kB
-├ ○ /404                                   182 B           360 kB
-├ ○ /login                                 456 B           360 kB
-├ ○ /login/redirect                        271 B           360 kB
-├ ○ /map                                   3.23 kB         363 kB
-├ ○ /map/viewList                          3.92 kB         364 kB
-├ ○ /notice                                276 B           360 kB
-├ λ /post/[id]                             1.19 kB         366 kB
-├ ○ /post/add                              972 B           366 kB
-├ ○ /profile                               3.75 kB         363 kB
-├ ○ /profile/edit                          4.54 kB         364 kB
-├ ○ /profile/edit/eatingHabits             2.13 kB         362 kB
-├ ○ /profile/edit/nationality              2.07 kB         362 kB
-├ ○ /profile/menu                          2.04 kB         362 kB
-├ ○ /profile/posts                         438 B           363 kB
-├ ○ /profile/reviews                       449 B           363 kB
-├ ○ /profile/saved                         449 B           363 kB
-├ ○ /recent                                4.83 kB         365 kB
-├ ○ /recent/eatingHabit                    3.67 kB         363 kB
-├ ○ /recent/nationality                    3.73 kB         363 kB
+┌ ○ /                                      1.98 kB         363 kB
+├   /_app                                  0 B             361 kB
+├ ○ /404                                   182 B           361 kB
+├ ○ /login                                 456 B           361 kB
+├ ○ /login/redirect                        271 B           361 kB
+├ ○ /map                                   3.23 kB         364 kB
+├ ○ /map/viewList                          3.92 kB         365 kB
+├ ○ /notice                                276 B           361 kB
+├ λ /post/[id]                             1.19 kB         367 kB
+├ ○ /post/add                              985 B           366 kB
+├ ○ /profile                               3.75 kB         364 kB
+├ ○ /profile/edit                          4.07 kB         365 kB
+├ ○ /profile/edit/eatingHabits             2.13 kB         363 kB
+├ ○ /profile/edit/nationality              2.07 kB         363 kB
+├ ○ /profile/menu                          1.5 kB          362 kB
+├ ○ /profile/posts                         438 B           364 kB
+├ ○ /profile/reviews                       449 B           364 kB
+├ ○ /profile/saved                         449 B           364 kB
+├ ○ /recent                                4.36 kB         365 kB
+├ ○ /recent/eatingHabit                    3.67 kB         364 kB
+├ ○ /recent/nationality                    3.73 kB         364 kB
 ├ ○ /recent/restaurant                     2.82 kB         363 kB
-├ ○ /register/eatingHabits                 2.74 kB         362 kB
-├ ○ /register/nationality                  2.03 kB         362 kB
-├ λ /review/add/[restaurantId]             2.45 kB         362 kB
-└ λ /search/[type]                         1.53 kB         361 kB
-+ First Load JS shared by all              360 kB
+├ ○ /register/eatingHabits                 2.23 kB         363 kB
+├ ○ /register/nationality                  2.03 kB         363 kB
+├ λ /review/[id]                           3.07 kB         364 kB
+├ λ /review/add/[restaurantId]             1.96 kB         363 kB
+└ λ /search/[type]                         1.53 kB         362 kB
++ First Load JS shared by all              361 kB
   ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
   ├ chunks/main-141fb857c76356ad.js        30.7 kB
-  ├ chunks/pages/_app-8e73358be6ad13eb.js  282 kB
+  ├ chunks/pages/_app-2acf9f4a81440e4a.js  283 kB
   └ chunks/webpack-235955b20eb3ee85.js     1.15 kB
 
 ƒ Middleware                               64.6 kB
