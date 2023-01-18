@@ -22,6 +22,16 @@ export default class MyDocument extends Document<DocumentPropTypes> {
             content="The best restaurant for me"
           />
           <link rel="icon" href="/favicon.ico" />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/inter.min.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+          />
           <script
             type="text/javascript"
             src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${env.KAKAO_JAVASCRIPT_KEY}&libraries=services`}
