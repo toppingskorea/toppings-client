@@ -1,8 +1,6 @@
 import { css, useTheme } from "@emotion/react";
 import { margin, padding } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
-import React from "react";
-import { Text } from "~/components/Common/Typo";
 import { useFetchReview } from "~/server/review";
 
 const DescriptionBox = () => {

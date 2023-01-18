@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { css, useTheme } from "@emotion/react";
 import { CircleThreeDot } from "@svgs/common";
-import { Flex, size, Spacing, width100 } from "@toss/emotion-utils";
+import { Flex, size, Spacing, touchable, width100 } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useCallback } from "react";
+import { useCallback, type MouseEvent } from "react";
 import {
   AlertModal,
   BottomSelectModal,
@@ -26,45 +27,51 @@ const ReviewItem = ({ review }: Props) => {
   const { mutate: deleteReviewMutate } = useDeleteReview(Number(query.id));
   const overlay = useOverlay();
 
-  const onThreeDotClickHandler = useCallback(() => {
-    overlay.open(({ exit }) => (
-      <BottomSelectModal
-        itemList={[
-          {
-            text: "modify",
-            onClickHandler: () => {
-              reviewUploadSetter({ id: review.id });
-              push(`/review/add/${query.id}`);
+  const onThreeDotClickHandler = useCallback(
+    (e: MouseEvent) => {
+      e.stopPropagation();
+
+      overlay.open(({ exit }) => (
+        <BottomSelectModal
+          itemList={[
+            {
+              text: "modify",
+              onClickHandler: () => {
+                reviewUploadSetter({ id: review.id });
+                push(`/review/add/${query.id}`);
+              }
+            },
+            {
+              text: "delete",
+              onClickHandler: () =>
+                overlay.open(({ exit, close }) => (
+                  <AlertModal
+                    exitFn={exit}
+                    deleteFn={() => {
+                      deleteReviewMutate(review.id);
+                      close();
+                    }}
+                  />
+                ))
             }
-          },
-          {
-            text: "delete",
-            onClickHandler: () =>
-              overlay.open(({ exit, close }) => (
-                <AlertModal
-                  exitFn={exit}
-                  deleteFn={() => {
-                    deleteReviewMutate(review.id);
-                    close();
-                  }}
-                />
-              ))
-          }
-        ]}
-        exit={exit}
-      />
-    ));
-  }, [
-    deleteReviewMutate,
-    overlay,
-    push,
-    query.id,
-    review.id,
-    reviewUploadSetter
-  ]);
+          ]}
+          exit={exit}
+        />
+      ));
+    },
+    [deleteReviewMutate, overlay, push, query.id, review.id, reviewUploadSetter]
+  );
 
   return (
-    <li key={review.id}>
+    <li
+      key={review.id}
+      onClick={() => {
+        push(`/review/${review.id}`);
+      }}
+      css={css`
+        ${touchable}
+      `}
+    >
       <Flex>
         <Image
           src={review.thumbnail}
@@ -142,14 +149,9 @@ const ReviewItem = ({ review }: Props) => {
 
           <Spacing size={4} />
 
-          <Text
-            _fontSize={10}
-            _color={colors.secondary[34]}
-            css={css`
-              word-break: break-all;
-            `}
-          >
-            {review.description}
+          <Text _fontSize={10} lineHeight={12} _color={colors.secondary[34]}>
+            {review.description.slice(0, 100)}
+            {review.description.length > 100 && "..."}
           </Text>
           <Spacing size={4} />
         </Flex>
