@@ -15,7 +15,7 @@ import { AnalyticsProvider } from "~/contexts";
 import { useSentry } from "~/hooks";
 import AppLayout from "~/layouts/AppLayout";
 import { emotionTheme, GlobalCSS } from "~/styles";
-import "../styles/font-face.css";
+// import "../styles/font-face.css";
 
 const queryClient = new QueryClient({
   defaultOptions: {
