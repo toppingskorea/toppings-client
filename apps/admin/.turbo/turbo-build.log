@@ -12,13 +12,13 @@ info  - Generating static pages (7/7)
 info  - Finalizing page optimization...
 
 Route (pages)                              Size     First Load JS
-┌ ○ / (921 ms)                             340 B           205 kB
+┌ ○ / (909 ms)                             340 B           205 kB
 ├   /_app                                  0 B             205 kB
 ├ ○ /404                                   182 B           205 kB
-├ ○ /login (975 ms)                        4.73 kB         227 kB
+├ ○ /login                                 4.73 kB         227 kB
 ├ ○ /overview                              1.88 kB         229 kB
 ├ ○ /posts                                 2.6 kB          233 kB
-└ ○ /restaurant/[id]                       2.58 kB         233 kB
+└ ○ /restaurant/[id] (949 ms)              2.58 kB         233 kB
 + First Load JS shared by all              205 kB
   ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
   ├ chunks/main-383f5b188f3e53c1.js        30.6 kB
