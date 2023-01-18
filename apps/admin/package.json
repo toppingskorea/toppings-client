@@ -21,7 +21,7 @@
     "@tanstack/react-query-devtools": "^4.13.4",
     "@toss/emotion-utils": "^1.0.5",
     "@toss/use-overlay": "^1.2.1",
-    "axios": "^1.0.0",
+    "axios": "1.2.0",
     "framer-motion": "^7.6.2",
     "lodash": "^4.17.21",
     "next": "^13.0.2",

@@ -20,10 +20,10 @@ Route (pages)                              Size     First Load JS
 ├ ○ /map                                   3.23 kB         363 kB
 ├ ○ /map/viewList                          3.92 kB         364 kB
 ├ ○ /notice                                276 B           360 kB
-├ λ /post/[id]                             1.2 kB          366 kB
-├ ○ /post/add                              974 B           366 kB
+├ λ /post/[id]                             1.19 kB         366 kB
+├ ○ /post/add                              972 B           366 kB
 ├ ○ /profile                               3.75 kB         363 kB
-├ ○ /profile/edit                          4.55 kB         364 kB
+├ ○ /profile/edit                          4.54 kB         364 kB
 ├ ○ /profile/edit/eatingHabits             2.13 kB         362 kB
 ├ ○ /profile/edit/nationality              2.07 kB         362 kB
 ├ ○ /profile/menu                          2.04 kB         362 kB
@@ -36,14 +36,13 @@ Route (pages)                              Size     First Load JS
 ├ ○ /recent/restaurant                     2.82 kB         363 kB
 ├ ○ /register/eatingHabits                 2.74 kB         362 kB
 ├ ○ /register/nationality                  2.03 kB         362 kB
-├ λ /review/add/[restaurantId]             2.38 kB         362 kB
-└ λ /search/[type]                         1.54 kB         361 kB
+├ λ /review/add/[restaurantId]             2.45 kB         362 kB
+└ λ /search/[type]                         1.53 kB         361 kB
 + First Load JS shared by all              360 kB
   ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
   ├ chunks/main-141fb857c76356ad.js        30.7 kB
-  ├ chunks/pages/_app-2855a7587057eb42.js  282 kB
-  ├ chunks/webpack-235955b20eb3ee85.js     1.15 kB
-  └ css/2569481c52583b4e.css               344 B
+  ├ chunks/pages/_app-8e73358be6ad13eb.js  282 kB
+  └ chunks/webpack-235955b20eb3ee85.js     1.15 kB
 
 ƒ Middleware                               64.6 kB
 
