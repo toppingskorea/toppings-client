@@ -72,15 +72,9 @@ const PostDetail = ({
         Reviews
       </Badge>
       <Spacing size={20} />
-      {app.reviews.items.length ? (
-        <>
-          <ReviewLeadingSection />
-          <Spacing size={40} />
-          <Reviews id={id} />
-        </>
-      ) : (
-        <EmptyText type="reviews" />
-      )}
+      <ReviewLeadingSection />
+      <Spacing size={40} />
+      <Reviews id={id} />
     </section>
   );
 };
@@ -133,7 +127,7 @@ export const getServerSideProps: GetServerSideProps<{
 
 export default PostDetail;
 
-const EmptyText = ({ type }: { type: "likes" | "reviews" }) => {
+const EmptyText = ({ type }: { type: "likes" }) => {
   const { colors, weighs } = useTheme();
   return (
     <Text
