@@ -51,6 +51,7 @@ const ReviewItem = ({ review }: Props) => {
                       deleteReviewMutate(review.id);
                       close();
                     }}
+                    rightText="delete"
                   />
                 ))
             }
