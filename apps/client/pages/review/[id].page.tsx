@@ -1,43 +1,29 @@
-import { css, useTheme } from "@emotion/react";
+import { css } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { padding, Stack } from "@toss/emotion-utils";
 import axios from "axios";
 import type { GetServerSideProps } from "next";
-import { Text } from "~/components/Common/Typo";
 import {
   DescriptionBox,
   ImageCarouselWrapper,
+  NavigationSetter,
   UserInfoRow
 } from "~/components/Review/detail";
 import Skeleton from "~/components/Skeleton";
 import { env } from "~/constants";
-import { useSetNavigation } from "~/hooks";
 import { Keys } from "~/server/review";
 
 const ReviewDetail = () => {
-  const { weighs, colors } = useTheme();
-  useSetNavigation({
-    top: {
-      title: (
-        <Text
-          _fontSize={18}
-          weight={weighs.semiBold}
-          _color={colors.secondary[47]}
-        >
-          호호식당
-        </Text>
-      )
-    },
-    bottom: true
-  });
-
   return (
     <Stack.Vertical
       css={css`
         ${padding({ x: 13 })}
       `}
     >
+      <Suspense.CSROnly>
+        <NavigationSetter />
+      </Suspense.CSROnly>
       <Suspense.CSROnly
         fallback={
           <Skeleton.Box
