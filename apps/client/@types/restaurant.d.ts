@@ -62,7 +62,9 @@ declare module Restaurant {
     country: string;
     isMine: boolean;
     description: string;
+    restaurantName: string;
     images: string[];
     habits: string[];
+    userProfile?: string;
   }
 }

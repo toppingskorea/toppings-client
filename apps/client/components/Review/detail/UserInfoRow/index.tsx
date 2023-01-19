@@ -1,5 +1,6 @@
 import { css, useTheme } from "@emotion/react";
 import { Flex, padding, Spacing } from "@toss/emotion-utils";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { OrangePersonIcon } from "~/assets/svgs/common";
 import { Text } from "~/components/Common/Typo";
@@ -21,8 +22,19 @@ const UserInfoRow = () => {
       `}
     >
       <Flex align="center">
-        {/* TODO: 서버에서 사진 주면 프로필 사진 보여줄 수 있도록 */}
-        <OrangePersonIcon />
+        {reviewDetail.userProfile ? (
+          <Image
+            src={reviewDetail.userProfile}
+            alt={`${reviewDetail.name} 님의 프로필`}
+            width={32}
+            height={32}
+            css={css`
+              border-radius: 50%;
+            `}
+          />
+        ) : (
+          <OrangePersonIcon />
+        )}
         <Spacing direction="horizontal" size={12} />
 
         <Flex direction="column">
