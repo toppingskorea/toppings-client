@@ -5,10 +5,12 @@ import {
   EmptyScrap,
   FilledScrap,
   OrangeHeart,
+  OrangeStar,
   Share
 } from "@svgs/common";
 import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
-import { MotionButton } from "~/components/Common";
+import { useOverlay } from "@toss/use-overlay";
+import { IconWithTextModal, MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import {
   useDeleteLike,
@@ -16,7 +18,7 @@ import {
   usePostLike,
   usePostScrap
 } from "~/server/restaurant";
-import { clipboard } from "~/utils";
+import { clipboard, hexToRgba } from "~/utils";
 
 type Props = Pick<
   Restaurant.DetailDTO,
@@ -41,11 +43,36 @@ const Info = ({
   likeCount
 }: Props) => {
   const { colors, weighs } = useTheme();
+  const overlay = useOverlay();
 
   const { mutate: postScrapMutate } = usePostScrap(id);
   const { mutate: deleteScrapMutate } = useDeleteScrap(id);
   const { mutate: postLikeMutate } = usePostLike(id);
   const { mutate: deleteLikeMutate } = useDeleteLike(id);
+
+  const onClipboardClickHandler = () => {
+    clipboard(address);
+    overlay.open(({ exit }) => (
+      <IconWithTextModal
+        text="clip the URL successful"
+        exitFn={exit}
+        icon={
+          <Flex.Center
+            css={css`
+              ${size({
+                width: 50,
+                height: 50
+              })}
+              background-color: ${hexToRgba(colors.secondary.E2, 0.9)};
+              border-radius: 50%;
+            `}
+          >
+            <OrangeStar />
+          </Flex.Center>
+        }
+      />
+    ));
+  };
 
   return (
     <Stack.Vertical
@@ -77,7 +104,7 @@ const Info = ({
               {address}
             </Text>
             <Spacing direction="horizontal" size={8} />
-            <MotionButton onClick={() => clipboard(address)}>
+            <MotionButton onClick={onClipboardClickHandler}>
               <Copy />
             </MotionButton>
           </Flex>

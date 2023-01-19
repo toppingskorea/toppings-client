@@ -5,7 +5,7 @@ import axios from "axios";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { Badge, ImageCarousel } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import { Info, Likes, Reviews } from "~/components/Post";
+import { Info, Likes, ReviewLeadingSection, Reviews } from "~/components/Post";
 import { env } from "~/constants";
 import { getLikePercent, Keys as RestaurantKeys } from "~/server/restaurant";
 import { Keys as ReviewKeys } from "~/server/review";
@@ -73,7 +73,11 @@ const PostDetail = ({
       </Badge>
       <Spacing size={20} />
       {app.reviews.items.length ? (
-        <Reviews id={id} />
+        <>
+          <ReviewLeadingSection />
+          <Spacing size={40} />
+          <Reviews id={id} />
+        </>
       ) : (
         <EmptyText type="reviews" />
       )}
