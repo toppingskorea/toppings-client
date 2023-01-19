@@ -15,6 +15,7 @@ import {
 import { Text } from "~/components/Common/Typo";
 import { useReviewUploadSetter } from "~/recoil/atoms/review";
 import { useDeleteReview } from "~/server/review";
+import { ellipsisTextByLength } from "~/utils";
 
 interface Props {
   review: Restaurant.ReviewDTO;
@@ -151,8 +152,7 @@ const ReviewItem = ({ review }: Props) => {
           <Spacing size={4} />
 
           <Text _fontSize={10} lineHeight={12} _color={colors.secondary[34]}>
-            {review.description.slice(0, 100)}
-            {review.description.length > 100 && "..."}
+            {ellipsisTextByLength(review.description, 100)}
           </Text>
           <Spacing size={4} />
         </Flex>
