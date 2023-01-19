@@ -34,6 +34,7 @@ const colors = {
     "46": "#464646",
     DF: "#DFDFDF",
     A3: "#A3A3A3",
+    F5: "#F5F5F5",
     FF: "#FF9950"
   },
 

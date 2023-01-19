@@ -13,3 +13,4 @@ export { default as pick } from "./pick";
 export { default as queryChunk } from "./queryChunk";
 export { default as replaceSpace } from "./replaceSpace";
 export { default as resizeBase64Img } from "./resizeBase64Img";
+export { default as ellipsisTextByLength } from "./ellipsisTextByLength";

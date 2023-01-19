@@ -100,6 +100,10 @@ const Input = ({
               border: 1px solid ${colors.secondary.B8};
               border-radius: 10px;
               font-family: inherit;
+
+              &:disabled {
+                background-color: ${colors.white};
+              }
             `,
             ref: inputRef,
             ...rest

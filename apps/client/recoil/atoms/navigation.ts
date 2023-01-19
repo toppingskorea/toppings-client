@@ -14,6 +14,7 @@ const navigationAtom = atom<{
       onClick: MouseEventHandler<HTMLButtonElement>;
     };
     marginBottom?: Common.CSSPixelValue;
+    backButtonCaution?: boolean;
   };
   bottom?: boolean;
 }>({

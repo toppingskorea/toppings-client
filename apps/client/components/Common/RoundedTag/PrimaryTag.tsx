@@ -10,14 +10,14 @@ const PrimaryTag = ({
   ComponentProps<typeof ClickableRoundedTag>,
   "children" | "selected" | "onClick"
 >) => {
-  const { colors } = useTheme();
+  const { colors, weighs } = useTheme();
 
   return (
     <ClickableRoundedTag
       _fontSize={15}
       padding={{
-        x: 19,
-        y: 7
+        x: 20,
+        y: 9
       }}
       defaultProps={{
         _color: colors.secondary[69],
@@ -27,7 +27,8 @@ const PrimaryTag = ({
       selectedProps={{
         _color: colors.white,
         bgcolor: colors.dim.orange,
-        bordercolor: "transparent"
+        bordercolor: "transparent",
+        weight: weighs.semiBold
       }}
       selected={selected}
       onClick={onClick}

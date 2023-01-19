@@ -11,6 +11,7 @@ export { default as HeartWithNumber } from "./HeartWithNumber";
 export { default as PercentBar } from "./PercentBar";
 export { default as RestaurantCard } from "./RestaurantCard";
 export { default as CircleCountry } from "./CircleCountry";
+export { default as ImageCarousel } from "./ImageCarousel";
 export * from "./RoundedTag";
 export * from "./Button";
 export * from "./TextField";

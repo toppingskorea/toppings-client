@@ -41,11 +41,6 @@ const ReviewAdd = ({
   const { data: restaurantDetail } = useFetchRestaurant(+restaurantId);
   const reviewUploadValue = useReviewUploadValue();
 
-  useFetchReview(reviewUploadValue.id, reviewDetail => {
-    setImages(reviewDetail.images);
-    setDescription(reviewDetail.description);
-  });
-
   const isModifyMode = useMemo(
     () => !!reviewUploadValue.id,
     [reviewUploadValue.id]
@@ -53,6 +48,11 @@ const ReviewAdd = ({
 
   const [images, setImages] = useState<string[]>([]);
   const [description, setDescription] = useState("");
+
+  useFetchReview(reviewUploadValue.id, reviewDetail => {
+    setImages(reviewDetail.images);
+    setDescription(reviewDetail.description);
+  });
 
   useSetNavigation({
     top: {
@@ -64,7 +64,8 @@ const ReviewAdd = ({
         >
           {restaurantDetail.name}
         </Text>
-      )
+      ),
+      backButtonCaution: true
     }
   });
 

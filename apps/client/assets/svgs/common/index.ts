@@ -19,3 +19,4 @@ export { default as FilledScrap } from "./filledScrap.svg";
 export { default as EmptyScrap } from "./emptyScrap.svg";
 export { default as Copy } from "./copy.svg";
 export { default as CircleThreeDot } from "./circleThreeDot.svg";
+export { default as OrangePersonIcon } from "./orangePersonIcon.svg";
