@@ -13,14 +13,14 @@ const GlobalCSS = () => {
           padding: 0;
         }
 
-        body,
-        input,
-        textarea,
-        button {
-          font-family: Inter, Pretendard, -apple-system, BlinkMacSystemFont,
-            Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-            Helvetica Neue, sans-serif;
-        }
+//         body,
+//         input,
+//         textarea,
+//         button {
+//           font-family: Inter, Pretendard, -apple-system, BlinkMacSystemFont,
+//             Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+//             Helvetica Neue, sans-serif;
+//         }
 
         // 화면을 꽉 채우기 위해서
         body {
