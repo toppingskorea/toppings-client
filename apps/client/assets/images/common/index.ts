@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
 export { default as logo } from "./logo.png";
+export { default as grayLogo } from "./grayLogo.png";
