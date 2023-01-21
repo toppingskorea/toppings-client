@@ -1,120 +1,36 @@
 import { css } from "@emotion/react";
 import { List } from "@svgs/map";
+import { size } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { pin } from "~/assets/json";
 import { MapMarker } from "~/components/Kakao";
 import KakaoMap from "~/components/Kakao/KakaoMap";
-import { useSetNavigation } from "~/hooks";
-import {
-  useCurrentHabitTitleValue,
-  useCurrentLocationReset,
-  useCurrentLocationState,
-  useCurrentSelectCategoryValue,
-  useCurrentSelectKeywordValue,
-  type Direction
-} from "~/recoil/atoms";
-import {
-  useFetchDefaultMap,
-  useFetchRestaurantByCountry,
-  useFetchRestaurantByEatingHabit
-} from "~/server/recent";
+import useMapHooks from "../login/map.hooks";
 
 const MapPage = () => {
-  const [_bounds, setBounds] = useState<kakao.maps.LatLngBounds & Direction>();
-  const [currentLocation, setCurrentLocation] = useCurrentLocationState();
-  const currentLocationReset = useCurrentLocationReset();
-  const { push } = useRouter();
-  const [searchByFilteringList, setSearchByFilteringList] =
-    useState<Restaurant.SearchByFilteringDTO[]>();
-  const currentSelectKeyword = useCurrentSelectKeywordValue();
-  const currentSelectCategory = useCurrentSelectCategoryValue();
-  const currentHabitTitle = useCurrentHabitTitleValue();
-  const { mutate: defaultMapMutate } = useFetchDefaultMap({
-    onSuccess: data => {
-      setSearchByFilteringList(data);
-    }
-  });
-
-  // 필터링버튼 키워드를 exit 했을 경우 맵 bounds 안의 식당들을 불러옵니다
-  useEffect(() => {
-    if (!currentSelectKeyword) {
-      defaultMapMutate(_bounds!);
-    }
-  }, [_bounds, currentLocationReset, currentSelectKeyword, defaultMapMutate]);
-
-  useSetNavigation({
-    bottom: true
-  });
-
-  const { mutate: fetchRestaurantByEatingHabitMutate } =
-    useFetchRestaurantByEatingHabit({
-      onSuccess: data => {
-        setSearchByFilteringList(data);
-      }
-    });
-
-  const { mutate: fetchRestaurantByCountryMutate } =
-    useFetchRestaurantByCountry({
-      onSuccess: data => {
-        setSearchByFilteringList(data);
-      }
-    });
-
-  const mapEventHandler = (map: kakao.maps.Map) => {
-    const bounds = map.getBounds() as kakao.maps.LatLngBounds & Direction;
-    const getCenter = map.getCenter();
-
-    setCurrentLocation({
-      latitude: getCenter.getLat(),
-      longitude: getCenter.getLng()
-    });
-
-    setBounds(bounds);
-
-    // useEffect에서 해당 기능을 처리해줍니다.
-    if (!currentSelectKeyword) {
-      return;
-    }
-
-    if (currentSelectCategory === "Habit") {
-      fetchRestaurantByEatingHabitMutate({
-        habit: currentSelectKeyword,
-        habitTitle: currentHabitTitle,
-        direction: bounds
-      });
-    } else if (currentSelectCategory === "Country") {
-      fetchRestaurantByCountryMutate({
-        country: currentSelectKeyword,
-        direction: bounds
-      });
-    }
-  };
+  const app = useMapHooks();
 
   return (
     <KakaoMap
-      center={currentLocation}
+      center={app.currentLocation}
       level={5}
       maxLevel={8}
-      onDragEnd={mapEventHandler}
-      onLoaded={mapEventHandler}
-      onZoomChanged={mapEventHandler}
+      onDragEnd={app.mapEventHandler}
+      onLoaded={app.mapEventHandler}
+      onZoomChanged={app.mapEventHandler}
     >
       <KakaoMap.CurrentLocationButton />
       <KakaoMap.FilteringButton />
-      {currentSelectKeyword.length ? (
+      {app.currentSelectCategory !== "Name" && (
         <KakaoMap.ViewStatusButton
           Icon={List}
           text="View lists"
-          onClick={() => push("/map/viewList")}
+          onClick={() => app.push("/map/viewList")}
         />
-      ) : (
-        <div />
       )}
 
-      {searchByFilteringList?.map(item => (
+      {app.searchByFilteringList?.map(item => (
         <MapMarker
           key={item.id}
           position={{
@@ -130,11 +46,13 @@ const MapPage = () => {
             animate={{ scale: 1, y: 0 }}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
-            onTap={() => push(`post/${item.id}`)}
+            onTap={() => app.push(`post/${item.id}`)}
             style={{
-              width: 100,
-              height: 115,
+              width: "50px",
+              height: "50px",
               position: "relative",
+              top: "-7px",
+              left: "25px",
               borderRadius: 25,
               cursor: "pointer"
             }}
@@ -144,8 +62,13 @@ const MapPage = () => {
               autoplay
               animationData={pin}
               css={css`
+                ${size({
+                  width: 100,
+                  height: 115
+                })}
                 position: absolute;
-                bottom: -8;
+                top: -38px;
+                right: -25px;
                 pointer-events: none;
                 user-select: none;
               `}

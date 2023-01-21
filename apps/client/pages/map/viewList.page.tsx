@@ -29,7 +29,13 @@ const ViewListPage = () => {
           ${position("absolute", { top: 114, left: 0 })}
         `}
       >
-        <Badge attach="left">
+        <Badge
+          attach="left"
+          size={{
+            width: 158,
+            height: 35
+          }}
+        >
           {app.currentSelectCategory === "Habit"
             ? "Eating habit"
             : "Nationality"}
@@ -40,7 +46,7 @@ const ViewListPage = () => {
         variants={defaultSlideFadeInVariants("right")}
         {...framerMocker}
         css={css`
-          ${position("absolute", { top: 118, left: 147 })}
+          ${position("absolute", { top: 118, left: 177 })}
           ${touchable}
           z-index: ${app.zIndex.four};
         `}
@@ -74,11 +80,12 @@ const ViewListPage = () => {
           overflow-y: scroll;
           gap: 10px;
           ${padding({
-            x: 28
+            x: 27,
+            y: 16
           })}
         `}
       >
-        {app.mapSearchValue?.map(item => (
+        {app.searchByFiltering?.map(item => (
           <RestaurantCard
             key={item.id}
             whoLikes

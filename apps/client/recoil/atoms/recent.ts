@@ -29,6 +29,8 @@ export const useCurrentHabitTitleValue = () =>
   useRecoilValue(currentHabitTitleAtom);
 export const useCurrentHabitTitleSetter = () =>
   useSetRecoilState(currentHabitTitleAtom);
+export const useCurrentHabitTitleReset = () =>
+  useResetRecoilState(currentHabitTitleAtom);
 
 const currentSelectCategoryAtom = atom<string>({
   key: "currentSelectCategory",
@@ -41,13 +43,19 @@ export const useCurrentSelectCategoryValue = () =>
   useRecoilValue(currentSelectCategoryAtom);
 export const useCurrentSelectCategorySetter = () =>
   useSetRecoilState(currentSelectCategoryAtom);
+export const useCurrentSelectCategoryReset = () =>
+  useResetRecoilState(currentSelectCategoryAtom);
 
-const searchRestaurantIdAtom = atom<number>({
-  key: "searchRestaurantId",
-  default: -1
+const searchByFilteringAtom = atom<Restaurant.SearchByFilteringDTO[]>({
+  key: "searchByFilteringAtom",
+  default: undefined
 });
 
-export const useSearchRestaurantIdValue = () =>
-  useRecoilValue(searchRestaurantIdAtom);
-export const useSearchRestaurantIdSetter = () =>
-  useSetRecoilState(searchRestaurantIdAtom);
+export const useSearchByFilteringState = () =>
+  useRecoilState(searchByFilteringAtom);
+export const useSearchByFilteringValue = () =>
+  useRecoilValue(searchByFilteringAtom);
+export const useSearchByFilteringSetter = () =>
+  useSetRecoilState(searchByFilteringAtom);
+export const useSearchByFilteringReset = () =>
+  useResetRecoilState(searchByFilteringAtom);
