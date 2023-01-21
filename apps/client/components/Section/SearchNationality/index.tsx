@@ -71,11 +71,11 @@ const SearchNationality = ({ keyword, onCountryClick }: Props) => {
             {value && value?.length > 0 && (
               <>
                 <OrangeTypo>{key}</OrangeTypo>
-                <Spacing size={10} />
+                <Spacing size={12} />
                 <Flex
                   direction="column"
                   css={css`
-                    ${gutter({ space: 15, direction: "vertical" })}
+                    ${gutter({ space: 12, direction: "vertical" })}
                   `}
                   as="ul"
                 >

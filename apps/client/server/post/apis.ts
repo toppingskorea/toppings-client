@@ -1,6 +1,6 @@
 import { authRequest } from "~/constants";
 
-interface DefaultPayload {
+export interface DefaultPayload {
   name: string;
   description: string;
   address: string;

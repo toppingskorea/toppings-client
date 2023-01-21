@@ -127,7 +127,7 @@ const ReviewAdd = ({
   return (
     <Stack.Vertical
       css={css`
-        ${padding({ x: 28 })}
+        ${padding({ x: 24 })}
       `}
     >
       <ComponentWithLabel label="Picture" gutter={6}>

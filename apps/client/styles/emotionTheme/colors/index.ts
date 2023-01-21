@@ -35,6 +35,7 @@ const colors = {
     DF: "#DFDFDF",
     A3: "#A3A3A3",
     F5: "#F5F5F5",
+    93: "#939393",
     FF: "#FF9950"
   },
 

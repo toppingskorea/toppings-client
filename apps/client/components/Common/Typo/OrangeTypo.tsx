@@ -13,7 +13,7 @@ const OrangeTypo = (
   return (
     <Text
       weight={weighs.bold}
-      _fontSize={23}
+      _fontSize={20}
       lineHeight={28}
       _color={colors.primary}
       {...props}

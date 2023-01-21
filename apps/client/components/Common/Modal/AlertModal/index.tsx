@@ -73,7 +73,13 @@ const NonClickable = ({ information }: Pick<Props, "information">) => {
       variants={defaultSlideFadeInVariants("bottom")}
     >
       <EllipseFlex>
-        <Text _fontSize={18} weight={weighs.bold} _color={colors.primary}>
+        <Text
+          _fontSize={18}
+          weight={weighs.medium}
+          _color={colors.primary}
+          textAlign="center"
+          whiteSpace="pre-wrap"
+        >
           {information}
         </Text>
       </EllipseFlex>

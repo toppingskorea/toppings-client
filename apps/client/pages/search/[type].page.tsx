@@ -3,6 +3,7 @@ import { Exit } from "@svgs/common";
 import { padding, position, width100 } from "@toss/emotion-utils";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { SearchInput } from "~/components/Common";
+import { Text } from "~/components/Common/Typo";
 import { Result } from "~/components/Search";
 import {
   useInput,
@@ -16,11 +17,16 @@ export type SearchType = "restaurant" | "local";
 const Search = ({
   type
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { colors, dimensions } = useTheme();
+  const { colors, dimensions, weighs } = useTheme();
   const { push } = useInternalRouter();
 
   useSetNavigation({
     top: {
+      title: (
+        <Text _fontSize={19} _color={colors.secondary[47]} weight={weighs.bold}>
+          Restaurant Name
+        </Text>
+      ),
       marginBottom: 35,
       right: {
         element: <Exit />,
@@ -60,7 +66,7 @@ const Search = ({
         `}
       >
         <SearchInput
-          placeholder="Search for a nationality"
+          placeholder="Enter the restaurant name"
           setValue={setValue}
           {...keyword}
         />

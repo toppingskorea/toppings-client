@@ -13,7 +13,7 @@ import { hexToRgba } from "~/utils";
 import LabelWithEllipse from "../../LabelWithEllipse";
 
 const Info = () => {
-  const { colors } = useTheme();
+  const { colors, weighs } = useTheme();
   const { data: userInfo } = useFetchUserInfo();
   const { push } = useInternalRouter();
 
@@ -24,7 +24,7 @@ const Info = () => {
         onClick: () => push("/profile/menu")
       },
       title: (
-        <Text _fontSize={24} _color={colors.secondary[47]}>
+        <Text _fontSize={19} _color={colors.secondary[47]} weight={weighs.bold}>
           {userInfo?.name ?? ""}
         </Text>
       ),

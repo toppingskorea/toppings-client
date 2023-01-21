@@ -4,12 +4,13 @@ import { Exit } from "@svgs/common";
 import { padding, size, Spacing, Stack, touchable } from "@toss/emotion-utils";
 import { useMemo } from "react";
 import { ComponentWithLabel, Gallery, Input } from "~/components/Common";
+import { Text } from "~/components/Common/Typo";
 import { Edit, HorizontalCategories, Register } from "~/components/Post";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { hiddenScroll } from "~/styles/emotionUtils";
 
 const PostAdd = () => {
-  const { colors } = useTheme();
+  const { colors, weighs } = useTheme();
   const { push } = useInternalRouter();
   const restaurant = useRestaurantValue();
   const [postUpload, setPostUpload] = usePostUploadState();
@@ -19,6 +20,11 @@ const PostAdd = () => {
   useSetNavigation({
     top: {
       marginBottom: 35,
+      title: (
+        <Text _fontSize={19} _color={colors.secondary[47]} weight={weighs.bold}>
+          {isModifyMode ? "Edit Post" : "New Post"}
+        </Text>
+      ),
       right: {
         element: <Exit />,
         onClick: () => push("/map")
@@ -50,6 +56,9 @@ const PostAdd = () => {
             height={39}
             onClick={() => push("/search/restaurant")}
             value={restaurant?.place_name}
+            padding={padding({
+              x: 11
+            })}
             css={css`
               ${touchable}
               overflow-y: hidden;
@@ -63,7 +72,14 @@ const PostAdd = () => {
         </ComponentWithLabel>
 
         <ComponentWithLabel label="Location" gutter={6}>
-          <Input height={40} disabled value={restaurant?.road_address_name} />
+          <Input
+            height={40}
+            disabled
+            value={restaurant?.road_address_name}
+            padding={padding({
+              x: 11
+            })}
+          />
         </ComponentWithLabel>
 
         <ComponentWithLabel label="Description" gutter={6}>
@@ -71,7 +87,7 @@ const PostAdd = () => {
             as="textarea"
             height={156}
             placeholder={`Please write a detailed description\nof the food`}
-            padding={padding({ x: 12, y: 12 })}
+            padding={padding({ x: 11, y: 12 })}
             value={postUpload.description}
             onChange={e =>
               setPostUpload({ ...postUpload, description: e.target.value })
@@ -92,7 +108,7 @@ const PostAdd = () => {
           ${padding({ left: 25 })}
         `}
       >
-        <ComponentWithLabel label="Category">
+        <ComponentWithLabel label="Category" gutter={9}>
           <div
             css={css`
               ${size.width100};

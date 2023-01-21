@@ -25,7 +25,7 @@ const SelectEatingHabit = ({ onClick, habits, isRecent }: Props) => {
       {habitTitleList.map(habit => (
         <Flex direction="column" key={habit}>
           <OrangeTypo>{habit}</OrangeTypo>
-          <Spacing size={13} />
+          <Spacing size={8} />
           <ul
             css={css`
               display: flex;

@@ -11,7 +11,7 @@ interface Props extends ComponentProps<typeof Input> {
 
 const SearchInput = (props: Props) => {
   const { onSubmit, setValue, value, ...rest } = props;
-  const { colors, weighs } = useTheme();
+  const { colors } = useTheme();
 
   return (
     <div
@@ -48,7 +48,6 @@ const SearchInput = (props: Props) => {
           background-color: ${colors.secondary.D9};
           border: none;
           font-size: 17px;
-          font-weight: ${weighs.medium};
           &::placeholder {
             color: ${colors.white};
           }
