@@ -1,4 +1,4 @@
-import { css } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
 import { Exit } from "@svgs/common";
 import {
@@ -9,6 +9,7 @@ import {
   Stack,
   width100
 } from "@toss/emotion-utils";
+import { Text } from "~/components/Common/Typo";
 import { RegisterButton, UserInfo } from "~/components/Profile/edit";
 import Skeleton from "~/components/Skeleton";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
@@ -16,10 +17,15 @@ import { generateComponent } from "~/utils";
 
 const ProfileEdit = () => {
   const { push } = useInternalRouter();
+  const { colors, weighs } = useTheme();
 
   useSetNavigation({
     top: {
-      title: undefined,
+      title: (
+        <Text _fontSize={19} _color={colors.secondary[47]} weight={weighs.bold}>
+          Edit Profile
+        </Text>
+      ),
       right: {
         element: <Exit />,
         onClick: () => push("/map")

@@ -47,7 +47,7 @@ const UserInfo = () => {
             onChange={e => setEdit({ ...edit, name: e.target.value })}
             absoluteNode={
               <Text
-                _fontSize={11}
+                _fontSize={12}
                 weight={weighs.light}
                 _color={colors.secondary[66]}
                 css={css`

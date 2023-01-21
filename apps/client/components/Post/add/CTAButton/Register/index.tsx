@@ -12,6 +12,7 @@ import { Text } from "~/components/Common/Typo";
 import { types } from "~/constants/data/common";
 import { useInternalRouter } from "~/hooks";
 import { useUploadPost } from "~/server/post";
+import useSubmitVerification from "../CTAButton.hooks";
 
 const Register = () => {
   const { colors } = useTheme();
@@ -34,10 +35,16 @@ const Register = () => {
     }, 3000);
   });
 
+  const { verificationSubmitInClient } = useSubmitVerification({
+    images: postUpload.images,
+    name: restaurant?.place_name,
+    description: postUpload.description,
+    type: postUpload.type
+  });
+
   const onRegisterHandler = useCallback(() => {
+    if (verificationSubmitInClient()) return;
     if (!restaurant) {
-      // TODO: 시연님 토스트 만들어주면 하기
-      console.log("식당선택 부탁");
       return;
     }
 
@@ -57,7 +64,8 @@ const Register = () => {
     postUpload.images,
     postUpload.type,
     restaurant,
-    uploadPostMutate
+    uploadPostMutate,
+    verificationSubmitInClient
   ]);
 
   return (

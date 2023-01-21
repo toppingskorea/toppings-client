@@ -18,7 +18,7 @@ const ProfileEditEatingHabits = () => {
   useSetNavigation({
     top: {
       title: (
-        <Text _fontSize={23} weight={weighs.bold} _color={colors.secondary[47]}>
+        <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
           Select a Eating Habit
         </Text>
       ),

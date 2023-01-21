@@ -24,7 +24,7 @@ const ReviewLeadingSection = () => {
         `}
       >
         <Text _fontSize={12} weight={weighs.bold} _color={colors.secondary[69]}>
-          Go write a review
+          Write a Review
         </Text>
       </MotionButton>
     </Flex.Center>

@@ -44,7 +44,7 @@ const EatingHabits = () => {
       ),
       right: {
         element: (
-          <Text _fontSize={15} _color={colors.secondary[69]}>
+          <Text _fontSize={15} _color={colors.secondary[93]}>
             Skip
           </Text>
         ),

@@ -15,6 +15,7 @@ import { Text } from "~/components/Common/Typo";
 import { types } from "~/constants/data/common";
 import { useInternalRouter } from "~/hooks";
 import { useDeletePost, useUpdatePost } from "~/server/post";
+import useSubmitVerification from "../CTAButton.hooks";
 
 const Edit = () => {
   const { colors } = useTheme();
@@ -46,10 +47,16 @@ const Edit = () => {
     commonOnSuccess("The Deletion is complete.");
   });
 
+  const { verificationSubmitInClient } = useSubmitVerification({
+    images: postUpload.images,
+    name: restaurant?.place_name,
+    description: postUpload.description,
+    type: postUpload.type
+  });
+
   const onEditHandler = useCallback(() => {
+    if (verificationSubmitInClient()) return;
     if (!restaurant) {
-      // TODO: 시연님 토스트 만들어주면 하기
-      console.log("식당선택 부탁");
       return;
     }
 
@@ -73,7 +80,8 @@ const Edit = () => {
     postUpload.images,
     postUpload.type,
     restaurant,
-    updatePostMutate
+    updatePostMutate,
+    verificationSubmitInClient
   ]);
 
   const onDeleteHandler = useCallback(() => {

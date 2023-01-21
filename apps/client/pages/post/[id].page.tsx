@@ -141,7 +141,7 @@ const EmptyText = ({ type }: { type: "likes" }) => {
         display: block;
       `}
     >
-      Here&apos;s no {type}.{"\n"}you can make {type}!
+      No one {type} this post.{"\n"}you can make {type}!
     </Text>
   );
 };
