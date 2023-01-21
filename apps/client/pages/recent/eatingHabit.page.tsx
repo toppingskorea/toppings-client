@@ -59,11 +59,15 @@ const EatingHabitPage = () => {
             category: "Habit"
           });
 
-          fetchRestaurantByEatingHabit({
-            habitTitle: title,
-            habit: removeSpaceContent,
-            direction: mapBounds!
-          });
+          setCurrentSelectCategory("Habit");
+
+          push("/map");
+
+          // fetchRestaurantByEatingHabit({
+          //   habitTitle: title,
+          //   habit: removeSpaceContent,
+          //   direction: mapBounds!
+          // });
         }}
       />
     </>

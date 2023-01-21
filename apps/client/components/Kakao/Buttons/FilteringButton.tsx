@@ -28,11 +28,11 @@ const FilteringButton = () => {
   const currentSelectKeywordReset = useCurrentSelectKeywordReset();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
   const resetMapSearchByCountry = useMapSearchByFilteringReset();
-  const setMapSearchByCountry = useMapSearchByFilteringSetter();
+  const setMapSearchByFiltering = useMapSearchByFilteringSetter();
   const mapBounds = useMapBoundsValue();
   const { mutate: defaultMapMutate } = useFetchDefaultMap({
     onSuccess: data => {
-      setMapSearchByCountry(data);
+      setMapSearchByFiltering(data);
     }
   });
 

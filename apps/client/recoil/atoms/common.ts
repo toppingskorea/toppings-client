@@ -1,5 +1,6 @@
 import {
   atom,
+  useRecoilState,
   useRecoilValue,
   useResetRecoilState,
   useSetRecoilState
@@ -15,6 +16,8 @@ const currentLocationAtom = atom({
   }
 });
 
+export const useCurrentLocationState = () =>
+  useRecoilState(currentLocationAtom);
 export const useCurrentLocationSetter = () =>
   useSetRecoilState(currentLocationAtom);
 export const useCurrentLocationValue = () =>

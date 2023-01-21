@@ -8,6 +8,7 @@ import {
   framerMocker
 } from "~/constants";
 import { useMap } from "~/contexts";
+import { useCurrentLocationSetter } from "~/recoil/atoms";
 
 const getCurrentLocation = (callback: (coord: [number, number]) => void) => {
   const successCallback: PositionCallback = ({
@@ -33,10 +34,15 @@ const getCurrentLocation = (callback: (coord: [number, number]) => void) => {
 const CurrentLocationButton = () => {
   const { map, render } = useMap();
   const { colors, zIndex } = useTheme();
+  const setCurrentLocation = useCurrentLocationSetter();
 
   const handleClick = () => {
     getCurrentLocation(([latitude, longitude]) => {
       map?.panTo(new kakao.maps.LatLng(latitude, longitude));
+      setCurrentLocation({
+        latitude,
+        longitude
+      });
 
       setTimeout(() => {
         render();

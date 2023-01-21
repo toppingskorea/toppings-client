@@ -12,7 +12,7 @@ export const getRecentHistories = async () => {
 
 // 최근검색 / 최근 검색 등록
 export const addRecentHistory = async (
-  history: Omit<Recent.HistoryDTO, "id">
+  history: Omit<Recent.HistoryItem, "id">
 ) => {
   await authRequest.post("/v1/recent", history);
 };

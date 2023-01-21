@@ -12,7 +12,7 @@ import {
 import { motion } from "framer-motion";
 import { Badge, RestaurantCard } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import Map from "~/components/Map";
+import { KakaoMap } from "~/components/Kakao";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { pick } from "~/utils";
 import useViewList from "./viewList.hooks";
@@ -99,7 +99,7 @@ const ViewListPage = () => {
           />
         ))}
       </Flex>
-      <Map.ViewStatusButton
+      <KakaoMap.ViewStatusButton
         Icon={SmallMarker}
         text="View map"
         onClick={app.back}
