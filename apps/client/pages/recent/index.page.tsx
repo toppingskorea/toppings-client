@@ -55,7 +55,7 @@ const RecentPage = () => {
         variants={defaultSlideFadeInVariants("right")}
         {...framerMocker}
         css={css`
-          ${position("absolute", { top: 114, left: 0 })}
+          ${position("absolute", { top: 109, left: 0 })}
         `}
       >
         <Badge attach="left">Recent</Badge>
@@ -64,7 +64,7 @@ const RecentPage = () => {
         variants={defaultSlideFadeInVariants("left")}
         {...framerMocker}
         css={css`
-          ${position("absolute", { top: 114, right: 0 })}
+          ${position("absolute", { top: 117, right: 0 })}
           z-index: ${zIndex.one};
         `}
       >

@@ -1,7 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import {
-  useCurrentHabitTitleValue,
   useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter,
   useMapBoundsValue,
@@ -21,7 +20,6 @@ const useHistory = () => {
   const queryClient = useQueryClient();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
-  const currentHabitTitle = useCurrentHabitTitleValue();
   const { data: recentHistories } = useFetchRecentHistories();
   const { mutate: deleteRecentHistoryMutate } = useDeleteRecentHistory({
     onSuccess: () => {
@@ -46,9 +44,9 @@ const useHistory = () => {
     });
 
   const historyClickHandler = (
-    category: Recent.HistoryDTO["category"],
-    keyword: Recent.HistoryDTO["keyword"],
-    restaurantId: Recent.HistoryDTO["restaurantId"]
+    category: string,
+    keyword: string,
+    restaurantId?: number
   ) => {
     switch (category) {
       case "Name":

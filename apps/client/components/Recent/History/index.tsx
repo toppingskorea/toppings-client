@@ -12,33 +12,36 @@ const History = () => {
         ${flex({ direction: "column" })}
         ${gutter("vertical", 23)}
         ${padding({
-          x: 27
+          x: 27,
+          y: 16
         })}
       `}
     >
-      {app.recentHistories.map(({ id, keyword, category, restaurantId }) => (
-        <Flex key={id} justify="space-between" align="center">
-          <Flex.Center
-            onClick={() => {
-              app.historyClickHandler(category, keyword, restaurantId);
-            }}
-            css={css`
-              gap: 12px;
-              ${touchable}
-            `}
-          >
-            <Timeline />
-            {keyword}
-          </Flex.Center>
+      {app.recentHistories.items.map(
+        ({ id, keyword, category, restaurantId }) => (
+          <Flex key={id} justify="space-between" align="center">
+            <Flex.Center
+              onClick={() => {
+                app.historyClickHandler(category, keyword, restaurantId);
+              }}
+              css={css`
+                gap: 12px;
+                ${touchable}
+              `}
+            >
+              <Timeline />
+              {keyword}
+            </Flex.Center>
 
-          <RemoveHistory
-            onClick={() => app.deleteRecentHistoryMutate(id)}
-            css={css`
-              ${touchable}
-            `}
-          />
-        </Flex>
-      ))}
+            <RemoveHistory
+              onClick={() => app.deleteRecentHistoryMutate(id)}
+              css={css`
+                ${touchable}
+              `}
+            />
+          </Flex>
+        )
+      )}
     </div>
   );
 };
