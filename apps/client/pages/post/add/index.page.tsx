@@ -22,7 +22,7 @@ const PostAdd = () => {
       marginBottom: 35,
       title: (
         <Text _fontSize={19} _color={colors.secondary[47]} weight={weighs.bold}>
-          {isModifyMode ? " Edit Post" : "New Post"}
+          {isModifyMode ? "Edit Post" : "New Post"}
         </Text>
       ),
       right: {
