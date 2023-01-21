@@ -28,7 +28,7 @@ const Error = () => {
           })}
         `}
       >
-        Can&apos;t find Page
+        Page not found.
       </Text>
     </Flex.Center>
   );

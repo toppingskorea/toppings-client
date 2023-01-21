@@ -1,6 +1,7 @@
-import { css } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
 import { padding, Stack } from "@toss/emotion-utils";
+import { Text } from "~/components/Common/Typo";
 import { HorizontalPostList } from "~/components/Profile/posts";
 import Skeleton from "~/components/Skeleton";
 import { useSetNavigation } from "~/hooks";
@@ -8,8 +9,16 @@ import { useFetchScrapedRestaurant } from "~/server/profile";
 import { generateComponent } from "~/utils";
 
 const ProfileSaved = () => {
+  const { colors, weighs } = useTheme();
+
   useSetNavigation({
-    top: {},
+    top: {
+      title: (
+        <Text _fontSize={19} _color={colors.secondary[47]} weight={weighs.bold}>
+          All Saved
+        </Text>
+      )
+    },
     bottom: true
   });
 
