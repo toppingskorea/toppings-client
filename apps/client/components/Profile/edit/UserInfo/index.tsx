@@ -34,7 +34,7 @@ const UserInfo = () => {
 
       <Spacing size={22} />
 
-      <ComponentWithLabel label="User name" gutter={9}>
+      <ComponentWithLabel label="Username" gutter={9}>
         <Flex
           css={css`
             ${width100}
