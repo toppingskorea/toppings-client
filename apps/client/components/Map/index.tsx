@@ -1,15 +1,12 @@
 import { css } from "@emotion/react";
 import { size } from "@toss/emotion-utils";
-import FilteringButton from "./Button/FilteringButton";
-import MyLocationButton from "./Button/MyLocationButton";
-import ViewStatusButton from "./Button/ViewStatusButton";
-import { useMapEvent, useMapHook } from "./Map.hooks";
+import { useMapHook } from "./Map.hooks";
 
 const Map = ({ children }: Util.PropsWithChild) => {
   const app = useMapHook();
 
-  useMapEvent("dragend");
-  useMapEvent("zoom_changed");
+  // useMapEvent("dragend");
+  // useMapEvent("zoom_changed");
 
   return (
     <div
@@ -23,9 +20,5 @@ const Map = ({ children }: Util.PropsWithChild) => {
     </div>
   );
 };
-
-Map.MyLocationButton = MyLocationButton;
-Map.FilteringButton = FilteringButton;
-Map.ViewStatusButton = ViewStatusButton;
 
 export default Map;
