@@ -1,8 +1,9 @@
 import { usePostUploadReset, useRestaurantReset } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
+import type { EmotionJSX } from "@emotion/react/types/jsx-namespace";
 import { flex, padding, width100 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { InternalLink } from "~/components/Common";
 import { useInternalRouter } from "~/hooks";
 import { useNoticeActivateValue } from "~/recoil/atoms/noticeActivate";
@@ -16,7 +17,7 @@ const BottomNavigator = () => {
   const postUploadReset = usePostUploadReset();
 
   const renderIcon = (
-    icon: ReactNode,
+    icon: EmotionJSX.Element,
     activatedIcon: ReactNode,
     href: string
   ) => {
