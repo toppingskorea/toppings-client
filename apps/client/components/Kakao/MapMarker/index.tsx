@@ -20,9 +20,10 @@ const MapMarker = forwardRef<kakao.maps.CustomOverlay, Props>(
 
     const container = useRef(document.createElement("div"));
 
-    const overlayPosition = useMemo(() => {
-      return new kakao.maps.LatLng(position.latitude, position.longitude);
-    }, [position.latitude, position.longitude]);
+    const overlayPosition = useMemo(
+      () => new kakao.maps.LatLng(position.latitude, position.longitude),
+      [position.latitude, position.longitude]
+    );
 
     const overlay = useMemo(() => {
       const kakaoCustomOverlay = new kakao.maps.CustomOverlay({
