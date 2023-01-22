@@ -10,8 +10,6 @@ const noticeActivateAtom = atom<boolean>({
   default: false
 });
 
-export default noticeActivateAtom;
-
 export const useNoticeActivateState = () => useRecoilState(noticeActivateAtom);
 export const useNoticeActivateValue = () => useRecoilValue(noticeActivateAtom);
 export const useNoticeActivateSetter = () =>
