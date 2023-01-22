@@ -12,7 +12,7 @@ export const Context = createContext({
 } as {
   map: kakao.maps.Map | null;
   mapRef: RefObject<HTMLDivElement>;
-  render: () => void;
+  render: VoidFunction;
 });
 
 export const useMap = () => useContext(Context);
