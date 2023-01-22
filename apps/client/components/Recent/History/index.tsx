@@ -1,16 +1,16 @@
 import { css } from "@emotion/react";
 import { RemoveHistory, Timeline } from "@svgs/recent";
-import { Flex, flex, gutter, padding, touchable } from "@toss/emotion-utils";
+import { Flex, padding, Stack, touchable } from "@toss/emotion-utils";
 import useHistory from "./History.hooks";
 
 const History = () => {
   const app = useHistory();
 
   return (
-    <div
+    <Stack.Vertical
+      as="ul"
+      gutter={23}
       css={css`
-        ${flex({ direction: "column" })}
-        ${gutter("vertical", 23)}
         ${padding({
           x: 27,
           y: 16
@@ -19,7 +19,7 @@ const History = () => {
     >
       {app.recentHistories.items.map(
         ({ id, keyword, category, restaurantId }) => (
-          <Flex key={id} justify="space-between" align="center">
+          <Flex key={id} justify="space-between" align="center" as="li">
             <Flex.Center
               onClick={() => {
                 app.historyClickHandler(category, keyword, restaurantId);
@@ -42,7 +42,7 @@ const History = () => {
           </Flex>
         )
       )}
-    </div>
+    </Stack.Vertical>
   );
 };
 
