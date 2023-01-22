@@ -12,7 +12,7 @@ import { imageUploader } from "~/utils";
 const ProfileImage = () => {
   const id = useId();
 
-  const { data } = useFetchUserInfo();
+  const { data: userInfo } = useFetchUserInfo();
   const [edit, setEdit] = useEditState();
 
   return (
@@ -31,7 +31,7 @@ const ProfileImage = () => {
         `}
       >
         <Image
-          src={edit.profile || data.profile || avatar}
+          src={edit.profile || userInfo?.profile || avatar}
           alt="dummy"
           width={88}
           height={88}

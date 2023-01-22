@@ -50,8 +50,8 @@ const Info = () => {
     <>
       <Stack.Horizontal align="center" gutter={0} justify="space-between">
         <Image
-          src={userInfo.profile || avatar}
-          alt={`${userInfo.name}'s profile`}
+          src={userInfo?.profile || avatar}
+          alt={`${userInfo?.name}'s profile`}
           width={78}
           height={78}
           css={css`
@@ -69,13 +69,13 @@ const Info = () => {
           `}
         >
           <LabelWithEllipse label="Posts" route="/profile/posts">
-            {userInfo.postCount}
+            {userInfo?.postCount ?? 0}
           </LabelWithEllipse>
           <LabelWithEllipse label="Saved" route="/profile/saved">
-            {userInfo.scrapCount}
+            {userInfo?.scrapCount ?? 0}
           </LabelWithEllipse>
           <LabelWithEllipse label="Reviews" route="/profile/reviews">
-            {userInfo.reviewCount}
+            {userInfo?.reviewCount ?? 0}
           </LabelWithEllipse>
         </motion.ul>
       </Stack.Horizontal>
@@ -84,16 +84,16 @@ const Info = () => {
 
       <ComponentWithLabel label="Nationality" gutter={11}>
         <RoundedTag {...defaultRoundedTagCommonStyle}>
-          {userInfo.country}
+          {userInfo?.country ?? ""}
         </RoundedTag>
       </ComponentWithLabel>
 
       <Spacing size={26} />
 
-      {userInfo.habits && userInfo.habits?.length > 0 && (
+      {userInfo?.habits && userInfo?.habits?.length > 0 && (
         <ComponentWithLabel label="Eating habit" gutter={11}>
           <RoundedTag {...defaultRoundedTagCommonStyle}>
-            {userInfo.habits?.[0].content}
+            {userInfo?.habits?.[0].content}
           </RoundedTag>
         </ComponentWithLabel>
       )}

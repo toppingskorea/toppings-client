@@ -8,7 +8,7 @@ import { hexToRgba } from "~/utils";
 
 const UserBadge = () => {
   const { colors, weighs } = useTheme();
-  const { data: user } = useFetchUserInfo();
+  const { data: userInfo } = useFetchUserInfo();
 
   return (
     <Flex.Center
@@ -25,8 +25,8 @@ const UserBadge = () => {
       `}
     >
       <Image
-        src={user.profile || avatar}
-        alt={`${user.name}'s profile`}
+        src={userInfo?.profile || avatar}
+        alt={`${userInfo?.name}'s profile`}
         width={28}
         height={28}
         css={css`
@@ -38,7 +38,7 @@ const UserBadge = () => {
         weight={weighs.semiBold}
         _color={colors.secondary[47]}
       >
-        {user.name}
+        {userInfo?.name}
       </Text>
     </Flex.Center>
   );

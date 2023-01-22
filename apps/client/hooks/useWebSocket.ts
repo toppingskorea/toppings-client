@@ -48,11 +48,13 @@ const useWebSocket = (
     if (!isMounted) return;
 
     if (!requireAuth || (requireAuth && !!cookie.get())) {
-      const sock = new SockJS(`${env.TOPPINGS_SERVER_URL}/stomp/subscribe`);
-      const client = Stomp.over(sock);
+      // const sock = ;
+      const client = Stomp.over(
+        () => new SockJS(`${env.TOPPINGS_SERVER_URL}/stomp/subscribe`)
+      );
 
-      client.debug = () => {
-        return null;
+      client.debug = data => {
+        return data;
       };
 
       client.connect({}, () => {

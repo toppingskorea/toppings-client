@@ -44,10 +44,12 @@ const RegisterButton = () => {
           }
         ];
     }
-    return userInfo.habits;
-  }, [isProfileEatingHabitChanged, userInfo.habits, edit.habits]);
+    return userInfo?.habits;
+  }, [isProfileEatingHabitChanged, userInfo?.habits, edit.habits]);
 
   const onClickRegisterHandler = useCallback(() => {
+    if (!userInfo) return;
+
     updateUserInfoMutate({
       name: edit.name ?? userInfo.name,
       country: edit.country ?? userInfo.country,
@@ -55,13 +57,11 @@ const RegisterButton = () => {
       profile: edit.profile ?? userInfo.profile
     });
   }, [
+    userInfo,
     updateUserInfoMutate,
     edit.name,
     edit.country,
     edit.profile,
-    userInfo.name,
-    userInfo.country,
-    userInfo.profile,
     newHabits
   ]);
   return (
