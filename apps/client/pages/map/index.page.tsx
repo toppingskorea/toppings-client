@@ -6,10 +6,10 @@ import Lottie from "lottie-react";
 import { pin } from "~/assets/json";
 import { MapMarker } from "~/components/Kakao";
 import KakaoMap from "~/components/Kakao/KakaoMap";
-import useMapHooks from "../login/map.hooks";
+import useMap from "./map.hooks";
 
 const MapPage = () => {
-  const app = useMapHooks();
+  const app = useMap();
 
   return (
     <KakaoMap

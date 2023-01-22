@@ -7,7 +7,7 @@ import {
   defaultScaleChangeVariants,
   framerMocker
 } from "~/constants";
-import { useMap } from "~/contexts";
+import { useKakaoMap } from "~/contexts";
 import { useCurrentLocationSetter } from "~/recoil/atoms";
 
 const getCurrentLocation = (callback: (coord: [number, number]) => void) => {
@@ -32,7 +32,7 @@ const getCurrentLocation = (callback: (coord: [number, number]) => void) => {
 };
 
 const CurrentLocationButton = () => {
-  const { map, render } = useMap();
+  const { map, render } = useKakaoMap();
   const { colors, zIndex } = useTheme();
   const setCurrentLocation = useCurrentLocationSetter();
 

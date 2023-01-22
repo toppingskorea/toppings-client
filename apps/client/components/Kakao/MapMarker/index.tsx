@@ -7,7 +7,7 @@ import {
   useRef
 } from "react";
 import { createPortal } from "react-dom";
-import { useMap } from "~/contexts";
+import { useKakaoMap } from "~/contexts";
 
 interface Props {
   position: Common.Coordinate;
@@ -16,7 +16,7 @@ interface Props {
 
 const MapMarker = forwardRef<kakao.maps.CustomOverlay, Props>(
   ({ position, children }, ref) => {
-    const { map } = useMap();
+    const { map } = useKakaoMap();
 
     const container = useRef(document.createElement("div"));
 

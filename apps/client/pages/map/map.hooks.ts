@@ -15,7 +15,7 @@ import {
   useFetchRestaurantByEatingHabit
 } from "~/server/recent";
 
-const useMapHooks = () => {
+const useMap = () => {
   const [_bounds, setBounds] = useState<Map.KakaoBounds>();
   const { push } = useRouter();
 
@@ -106,4 +106,4 @@ const useMapHooks = () => {
   };
 };
 
-export default useMapHooks;
+export default useMap;

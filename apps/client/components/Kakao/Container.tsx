@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { size } from "@toss/emotion-utils";
 import type { CSSProperties, ReactNode } from "react";
-import { useMap } from "~/contexts";
+import { useKakaoMap } from "~/contexts";
 import useMapEvent from "./Kakao.hooks";
 
 type Props = {
@@ -21,7 +21,7 @@ const Container = ({
   style,
   children
 }: Props) => {
-  const { map, mapRef } = useMap();
+  const { map, mapRef } = useKakaoMap();
 
   useMapEvent(map, "click", onClick);
   useMapEvent(map, "dragstart", onDragStart);
