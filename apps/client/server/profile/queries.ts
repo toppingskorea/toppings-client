@@ -2,7 +2,7 @@ import {
   useSuspenseInfiniteQuery,
   useSuspenseQuery
 } from "@suspensive/react-query";
-import type { UseQueryOptions } from "@tanstack/react-query";
+import { useTokenCookie } from "~/hooks";
 import {
   getUserInfo,
   getUserPosts,
@@ -11,13 +11,12 @@ import {
 } from "./apis";
 import Keys from "./keys";
 
-export const useFetchUserInfo = (
-  options?: Pick<
-    UseQueryOptions<Awaited<ReturnType<typeof getUserInfo>>>,
-    "onSuccess"
-  >
-) => {
-  return useSuspenseQuery(Keys.user(), getUserInfo, options);
+export const useFetchUserInfo = () => {
+  const cookie = useTokenCookie();
+
+  return useSuspenseQuery(Keys.user(), getUserInfo, {
+    enabled: !!cookie.get()
+  });
 };
 
 export const useFetchUserPosts = () => {

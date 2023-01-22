@@ -1,9 +1,16 @@
 import { useTheme } from "@emotion/react";
+import { useEffect } from "react";
 import { Text } from "~/components/Common/Typo";
 import { useSetNavigation } from "~/hooks";
+import { useNoticeActivateSetter } from "~/recoil/atoms/noticeActivate";
 
 const Notice = () => {
   const { colors, weighs } = useTheme();
+  const setNoticeActivate = useNoticeActivateSetter();
+
+  useEffect(() => {
+    setNoticeActivate(false);
+  }, [setNoticeActivate]);
 
   useSetNavigation({
     top: {
