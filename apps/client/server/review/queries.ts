@@ -1,10 +1,19 @@
-import { useSuspenseQuery } from "@suspensive/react-query";
+import {
+  useSuspenseInfiniteQuery,
+  useSuspenseQuery
+} from "@suspensive/react-query";
 import { type UseQueryOptions } from "@tanstack/react-query";
 import { getReview, getReviews } from "./apis";
 import Keys from "./keys";
 
 export const useFetchReviews = (id: number) =>
-  useSuspenseQuery(Keys.reviews(id), () => getReviews(id));
+  useSuspenseInfiniteQuery(
+    Keys.reviews(id),
+    ({ pageParam = 0 }) => getReviews(id, pageParam),
+    {
+      getNextPageParam: lastPages => lastPages.page
+    }
+  );
 
 export const useFetchReview = (
   id?: number,

@@ -7,14 +7,12 @@ import { CircleCountry } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useFetchLikePercent, useFetchRestaurant } from "~/server/restaurant";
-import { useFetchReviews } from "~/server/review";
 
 const usePost = (id: string) => {
   const { colors, weighs } = useTheme();
   const { push } = useInternalRouter();
   const { data: restaurantDetail } = useFetchRestaurant(+id);
   const { data: likePercent } = useFetchLikePercent(+id);
-  const { data: reviews } = useFetchReviews(+id);
 
   const setRestaurant = useRestaurantSetter();
   const setPostUpload = usePostUploadSetter();
@@ -85,8 +83,7 @@ const usePost = (id: string) => {
 
   return {
     restaurantDetail,
-    likePercent,
-    reviews
+    likePercent
   };
 };
 
