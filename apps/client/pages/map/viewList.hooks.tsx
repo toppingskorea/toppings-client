@@ -15,7 +15,7 @@ const useViewList = () => {
   const { push, back, replace } = useRouter();
   const searchByFiltering = useSearchByFilteringValue();
   const currentSelectCategory = useCurrentSelectCategoryValue();
-  const { executeReset } = useResetRecentRecoilState();
+  const { executeResetAll } = useResetRecentRecoilState();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
 
@@ -42,7 +42,7 @@ const useViewList = () => {
   );
 
   const ExitClickHandler = () => {
-    executeReset();
+    executeResetAll();
 
     replace("/map");
   };

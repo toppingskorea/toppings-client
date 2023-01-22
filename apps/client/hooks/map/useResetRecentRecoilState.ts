@@ -11,7 +11,7 @@ const useResetRecentRecoilState = () => {
   const currentSelectKeywordReset = useCurrentSelectKeywordReset();
   const searchByFilteringReset = useSearchByFilteringReset();
 
-  const executeReset = () => {
+  const executeResetAll = () => {
     currentSelectCategoryReset();
     currentHabitTitleReset();
     currentSelectKeywordReset();
@@ -19,7 +19,7 @@ const useResetRecentRecoilState = () => {
   };
 
   return {
-    executeReset
+    executeResetAll
   };
 };
 

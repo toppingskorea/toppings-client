@@ -20,7 +20,7 @@ const FilteringButton = () => {
   const { colors, zIndex } = useTheme();
   const { push } = useRouter();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
-  const { executeReset } = useResetRecentRecoilState();
+  const { executeResetAll } = useResetRecentRecoilState();
 
   return (
     <Flex.Center
@@ -51,7 +51,7 @@ const FilteringButton = () => {
           <Text _fontSize={17} _color={colors.white}>
             {currentSelectKeyword}
           </Text>
-          <Exit onClick={executeReset} />
+          <Exit onClick={executeResetAll} />
         </Flex.Center>
       )}
 
