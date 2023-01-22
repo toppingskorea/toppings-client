@@ -25,8 +25,8 @@ const UserInfo = () => {
 
       return edit.habits && edit.habits[0].content;
     }
-    return userInfo.habits && userInfo.habits[0].content;
-  }, [isProfileEatingHabitChanged, userInfo.habits, edit.habits]);
+    return userInfo?.habits && userInfo?.habits[0].content;
+  }, [isProfileEatingHabitChanged, userInfo?.habits, edit.habits]);
 
   return (
     <>
@@ -43,7 +43,7 @@ const UserInfo = () => {
           <Spacing size={3} direction="horizontal" />
           <Input
             height={39}
-            value={edit.name === undefined ? userInfo.name : edit.name}
+            value={edit.name === undefined ? userInfo?.name : edit.name}
             onChange={e => setEdit({ ...edit, name: e.target.value })}
             absoluteNode={
               <Text
@@ -72,7 +72,7 @@ const UserInfo = () => {
         label="Nationality"
         inputProps={{
           onClick: () => push("/profile/edit/nationality"),
-          placeholder: edit.country || userInfo.country
+          placeholder: edit.country || userInfo?.country
         }}
       />
 

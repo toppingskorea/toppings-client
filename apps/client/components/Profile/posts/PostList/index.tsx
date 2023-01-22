@@ -7,7 +7,7 @@ import { lastItem } from "~/utils/common/lastItem";
 import Item from "./Item";
 
 const PostList = () => {
-  const { data: posts, fetchNextPage: userPostsFetchNextPage } =
+  const { data: posts, fetchNextPage: fetchUserPostsNextPage } =
     useFetchUserPosts();
 
   return (
@@ -23,7 +23,7 @@ const PostList = () => {
       {lastItem(posts.pages)?.page !== lastItem(posts.pages)?.totalPage && (
         <InfiniteScrollSensor
           onIntersected={() => {
-            userPostsFetchNextPage();
+            fetchUserPostsNextPage();
           }}
           render={ref => (
             <Skeleton.Box

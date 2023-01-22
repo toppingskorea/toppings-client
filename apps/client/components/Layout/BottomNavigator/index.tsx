@@ -1,16 +1,31 @@
 import { usePostUploadReset, useRestaurantReset } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
+import type { EmotionJSX } from "@emotion/react/types/jsx-namespace";
 import { flex, padding, width100 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 import { InternalLink } from "~/components/Common";
 import { useInternalRouter } from "~/hooks";
+import { useNoticeActivateValue } from "~/recoil/atoms/noticeActivate";
 import navList from "./BottomNavigator.constants";
 
 const BottomNavigator = () => {
   const { colors, dimensions, zIndex } = useTheme();
   const { asPath } = useInternalRouter();
+  const noticeActivate = useNoticeActivateValue();
   const restaurantReset = useRestaurantReset();
   const postUploadReset = usePostUploadReset();
+
+  const renderIcon = (
+    icon: EmotionJSX.Element,
+    activatedIcon: ReactNode,
+    href: string
+  ) => {
+    if (href !== "/notice") return icon;
+
+    if (noticeActivate) return activatedIcon;
+    return icon;
+  };
 
   return (
     <nav
@@ -28,7 +43,7 @@ const BottomNavigator = () => {
           ${flex({ justify: "space-between", align: "center" })};
         `}
       >
-        {navList.map(({ icon, href }) => (
+        {navList.map(({ icon, href, activatedIcon }) => (
           <motion.li key={href} whileTap={{ scale: 0.9 }}>
             <InternalLink
               href={href}
@@ -44,7 +59,7 @@ const BottomNavigator = () => {
                 }
               }}
             >
-              {icon}
+              {renderIcon(icon, activatedIcon, href)}
             </InternalLink>
           </motion.li>
         ))}
