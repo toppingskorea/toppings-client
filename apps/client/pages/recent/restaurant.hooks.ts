@@ -13,6 +13,12 @@ import {
 } from "~/server/recent";
 
 const useRestaurant = () => {
+  useSetNavigation({
+    top: {
+      marginBottom: 37
+    }
+  });
+
   const { push } = useRouter();
   const [restaurantList, setRestaurantList] =
     useState<Restaurant.SearchByFilteringDTO[]>();
@@ -24,12 +30,6 @@ const useRestaurant = () => {
   const { mutate: fetchRestaurantByNameMutate } = useFetchRestaurantByName({
     onSuccess: data => {
       setRestaurantList(data);
-    }
-  });
-
-  useSetNavigation({
-    top: {
-      marginBottom: 37
     }
   });
 

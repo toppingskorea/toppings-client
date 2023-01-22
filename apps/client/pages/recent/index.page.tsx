@@ -15,17 +15,7 @@ import { useSetNavigation } from "~/hooks";
 import { Keys, useDeleteAllRecentHistory } from "~/server/recent";
 
 const RecentPage = () => {
-  const { colors, zIndex } = useTheme();
   const { push } = useRouter();
-  const overlay = useOverlay();
-  const queryClient = useQueryClient();
-  const { mutate: deleteAllMutate } = useDeleteAllRecentHistory({
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: Keys.recent()
-      });
-    }
-  });
 
   useSetNavigation({
     top: {
@@ -34,6 +24,17 @@ const RecentPage = () => {
         element: <Exit />,
         onClick: () => push("/map")
       }
+    }
+  });
+
+  const { colors, zIndex } = useTheme();
+  const overlay = useOverlay();
+  const queryClient = useQueryClient();
+  const { mutate: deleteAllMutate } = useDeleteAllRecentHistory({
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: Keys.recent()
+      });
     }
   });
 

@@ -16,6 +16,10 @@ import {
 } from "~/server/recent";
 
 const useMap = () => {
+  useSetNavigation({
+    bottom: true
+  });
+
   const [_bounds, setBounds] = useState<Map.KakaoBounds>();
   const { push } = useRouter();
 
@@ -47,10 +51,6 @@ const useMap = () => {
       defaultMapMutate(_bounds!);
     }
   }, [_bounds, currentLocationReset, currentSelectKeyword, defaultMapMutate]);
-
-  useSetNavigation({
-    bottom: true
-  });
 
   const { mutate: fetchRestaurantByEatingHabitMutate } =
     useFetchRestaurantByEatingHabit({

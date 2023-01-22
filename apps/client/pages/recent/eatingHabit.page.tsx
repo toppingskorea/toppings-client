@@ -12,17 +12,17 @@ import { useUploadRecentHistory } from "~/server/recent";
 import { replaceSpace } from "~/utils";
 
 const EatingHabitPage = () => {
-  const { push } = useRouter();
-  const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
-  const setCurrentSelectCategory = useCurrentSelectCategorySetter();
-  const setCurrentHabitTitle = useCurrentHabitTitleSetter();
-  const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
-
   useSetNavigation({
     top: {
       marginBottom: 37
     }
   });
+
+  const { push } = useRouter();
+  const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
+  const setCurrentSelectCategory = useCurrentSelectCategorySetter();
+  const setCurrentHabitTitle = useCurrentHabitTitleSetter();
+  const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
 
   return (
     <>
