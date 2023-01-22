@@ -26,22 +26,23 @@ const Reviews = ({ id }: Props) => {
         ))
       )}
 
-      {lastItem(reviews.pages)?.page !== lastItem(reviews.pages)?.totalPage && (
-        <InfiniteScrollSensor
-          onIntersected={() => {
-            reviewsFetchNextPage();
-          }}
-          render={ref => (
-            <Skeleton.Box
-              ref={ref}
-              size={{
-                width: "100%",
-                height: 80
-              }}
-            />
-          )}
-        />
-      )}
+      {lastItem(reviews.pages)?.page !== lastItem(reviews.pages)?.totalPage &&
+        lastItem(reviews.pages)?.items.length !== 0 && (
+          <InfiniteScrollSensor
+            onIntersected={() => {
+              reviewsFetchNextPage();
+            }}
+            render={ref => (
+              <Skeleton.Box
+                ref={ref}
+                size={{
+                  width: "100%",
+                  height: 80
+                }}
+              />
+            )}
+          />
+        )}
     </Stack.Vertical>
   );
 };
