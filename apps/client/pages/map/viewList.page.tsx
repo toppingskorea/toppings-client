@@ -20,6 +20,8 @@ import useViewList from "./viewList.hooks";
 const ViewListPage = () => {
   const app = useViewList();
 
+  console.log(app.searchByFiltering);
+
   return (
     <>
       <motion.div
@@ -88,7 +90,7 @@ const ViewListPage = () => {
         {app.searchByFiltering?.map(item => (
           <RestaurantCard
             key={item.id}
-            whoLikes
+            whoLikes={item.filterLikeCount !== undefined}
             onClick={() => app.restaurantCardClickHandler(item)}
             item={{
               ...pick({ ...item }, [
