@@ -8,7 +8,7 @@ const History = () => {
 
   return (
     <Stack.Vertical
-      as="ul"
+      as="ol"
       gutter={23}
       css={css`
         ${padding({
