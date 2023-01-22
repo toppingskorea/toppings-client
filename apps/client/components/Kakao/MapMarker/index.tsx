@@ -10,7 +10,7 @@ import { createPortal } from "react-dom";
 import { useMap } from "~/contexts";
 
 interface Props {
-  position: { latitude: number; longitude: number };
+  position: Common.Coordinate;
   children: ReactNode;
 }
 
