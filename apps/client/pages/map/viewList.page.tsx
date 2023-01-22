@@ -21,7 +21,7 @@ const ViewListPage = () => {
   const app = useViewList();
 
   return (
-    <>
+    <div>
       <motion.div
         variants={defaultSlideFadeInVariants("right")}
         {...framerMocker}
@@ -76,7 +76,6 @@ const ViewListPage = () => {
         direction="column"
         css={css`
           ${width100}
-          height: 500px;
           overflow-y: scroll;
           gap: 10px;
           ${padding({
@@ -111,7 +110,7 @@ const ViewListPage = () => {
         text="View map"
         onClick={app.back}
       />
-    </>
+    </div>
   );
 };
 

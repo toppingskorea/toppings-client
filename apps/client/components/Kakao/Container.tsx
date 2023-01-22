@@ -9,6 +9,7 @@ type Props = {
   onDragStart?: (map: kakao.maps.Map, e: kakao.maps.event.MouseEvent) => void;
   onDragEnd?: (map: kakao.maps.Map, e: kakao.maps.event.MouseEvent) => void;
   onZoomChanged?: (map: kakao.maps.Map) => void;
+  onTilesloaded?: (map: kakao.maps.Map) => void;
   style?: CSSProperties;
   children?: ReactNode;
 };
@@ -18,6 +19,7 @@ const Container = ({
   onDragStart,
   onDragEnd,
   onZoomChanged,
+  onTilesloaded,
   style,
   children
 }: Props) => {
@@ -27,6 +29,7 @@ const Container = ({
   useMapEvent(map, "dragstart", onDragStart);
   useMapEvent(map, "dragend", onDragEnd);
   useMapEvent(map, "zoom_changed", onZoomChanged);
+  useMapEvent(map, "tilesloaded", onTilesloaded);
 
   return (
     <div

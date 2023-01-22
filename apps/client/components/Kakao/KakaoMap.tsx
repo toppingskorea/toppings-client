@@ -22,6 +22,7 @@ interface Props {
   onDragStart?: (map: kakao.maps.Map, e: kakao.maps.event.MouseEvent) => void;
   onDragEnd?: (map: kakao.maps.Map, e: kakao.maps.event.MouseEvent) => void;
   onZoomChanged?: (map: kakao.maps.Map) => void;
+  onTilesloaded?: (map: kakao.maps.Map) => void;
   onLoaded?: (map: kakao.maps.Map) => void;
   onBoundChange?: (map: kakao.maps.Map) => void;
   style?: CSSProperties;
@@ -39,6 +40,7 @@ const KakaoMap = ({
   onDragStart,
   onDragEnd,
   onZoomChanged,
+  onTilesloaded,
   style,
   onLoaded,
   onBoundChange,
@@ -60,6 +62,7 @@ const KakaoMap = ({
         onDragStart={onDragStart}
         onDragEnd={onDragEnd}
         onZoomChanged={onZoomChanged}
+        onTilesloaded={onTilesloaded}
         style={style}
       >
         {children}

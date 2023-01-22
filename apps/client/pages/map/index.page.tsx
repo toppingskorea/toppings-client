@@ -20,6 +20,7 @@ const MapPage = () => {
       onDragEnd={app.mapEventHandler}
       onLoaded={app.mapEventHandler}
       onZoomChanged={app.mapEventHandler}
+      onTilesloaded={app.mapEventHandler}
     >
       <KakaoMap.CurrentLocationButton />
       <KakaoMap.FilteringButton />
