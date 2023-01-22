@@ -8,16 +8,7 @@ declare module Recent {
     restaurantId?: number;
   }
 
-  interface HistoryDTO {
-    items: HistoryItem[];
-    totalPage: number;
-    page: number;
-    size: number;
-    start: number;
-    end: number;
-    prev: boolean;
-    next: boolean;
+  interface HistoryDTO extends Common.PaginationResponse<HistoryItem> {
     totalElements: number;
-    pageList: number[];
   }
 }
