@@ -1,10 +1,10 @@
 import { authRequest } from "~/constants";
 
 // 댓글 목록 조회하기
-export const getReviews = async (id: number) => {
+export const getReviews = async (id: number, pageParam: number) => {
   const { data } = await authRequest.get<{
     data: Common.PaginationResponse<Restaurant.ReviewDTO>;
-  }>(`/v1/restaurant/${id}/review`);
+  }>(`/v1/restaurant/${id}/review?page=${pageParam}`);
 
   return data.data;
 };

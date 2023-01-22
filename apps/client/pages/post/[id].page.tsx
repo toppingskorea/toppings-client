@@ -1,4 +1,5 @@
 import { css, useTheme } from "@emotion/react";
+import { Suspense } from "@suspensive/react";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { Spacing, Stack } from "@toss/emotion-utils";
 import axios from "axios";
@@ -8,7 +9,6 @@ import { Text } from "~/components/Common/Typo";
 import { Info, Likes, ReviewLeadingSection, Reviews } from "~/components/Post";
 import { env } from "~/constants";
 import { getLikePercent, Keys as RestaurantKeys } from "~/server/restaurant";
-import { Keys as ReviewKeys } from "~/server/review";
 import { pick } from "~/utils";
 import usePost from "./post.hooks";
 
@@ -74,7 +74,9 @@ const PostDetail = ({
       <Spacing size={20} />
       <ReviewLeadingSection />
       <Spacing size={40} />
-      <Reviews id={id} />
+      <Suspense.CSROnly>
+        <Reviews id={id} />
+      </Suspense.CSROnly>
     </section>
   );
 };
@@ -104,18 +106,19 @@ export const getServerSideProps: GetServerSideProps<{
     getLikePercent({ id: +id, ssr: true })
   );
 
-  await queryClient.prefetchQuery(ReviewKeys.reviews(+id), async () => {
-    const { data } = await axios.get<{ data: Restaurant.ReviewDTO[] }>(
-      `${env.TOPPINGS_SERVER_URL}/api/v1/restaurant/${id}/review`,
-      {
-        headers: {
-          Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`
-        }
-      }
-    );
+  // 추후 SEO를 위해 남겨둠, SSR & Pagination
+  // await queryClient.prefetchQuery(ReviewKeys.reviews(+id), async () => {
+  //   const { data } = await axios.get<{ data: Restaurant.ReviewDTO[] }>(
+  //     `${env.TOPPINGS_SERVER_URL}/api/v1/restaurant/${id}/review`,
+  //     {
+  //       headers: {
+  //         Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`
+  //       }
+  //     }
+  //   );
 
-    return data.data;
-  });
+  //   return data.data;
+  // });
 
   return {
     props: {

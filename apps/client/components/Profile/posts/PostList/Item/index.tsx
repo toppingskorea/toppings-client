@@ -4,9 +4,9 @@ import {
   flex,
   gutter,
   padding,
-  Spacing,
   Stack,
-  touchable
+  touchable,
+  width100
 } from "@toss/emotion-utils";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -47,25 +47,44 @@ const Item = ({ post }: Props) => {
         `}
       />
 
-      <Stack.Vertical gutter={4}>
-        <Flex align="flex-end">
-          <Text _fontSize={15} weight={weighs.semiBold}>
+      <Flex
+        direction="column"
+        justify="space-between"
+        align="flex-end"
+        css={css`
+          ${width100}
+          height: 164px;
+        `}
+      >
+        <Text _fontSize={11} _color={colors.secondary["83"]}>
+          {post.type}
+        </Text>
+
+        <Stack.Vertical
+          gutter={4}
+          css={css`
+            ${width100}
+          `}
+        >
+          <Text
+            _fontSize={15}
+            weight={weighs.semiBold}
+            _color={colors.secondary[34]}
+            css={css`
+              max-width: 128px;
+            `}
+          >
             {post.name}
           </Text>
-          <Spacing size={6} direction="horizontal" />
-          <Text _fontSize={11} _color={colors.secondary["83"]}>
-            {post.type}
-          </Text>
-        </Flex>
 
-        <Flex justify="space-between" align="center">
-          <Text _fontSize={11} _color={colors.secondary["83"]}>
-            {post.address}
-          </Text>
-          <Spacing direction="horizontal" size={6} />
-          <HeartWithNumber like={post.like} likeCount={post.likeCount} />
-        </Flex>
-      </Stack.Vertical>
+          <Stack.Horizontal justify="space-between">
+            <Text _fontSize={11} _color={colors.secondary["83"]}>
+              {post.address}
+            </Text>
+            <HeartWithNumber like={post.like} likeCount={post.likeCount} />
+          </Stack.Horizontal>
+        </Stack.Vertical>
+      </Flex>
     </li>
   );
 };

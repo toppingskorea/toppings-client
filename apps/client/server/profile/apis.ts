@@ -26,28 +26,28 @@ export const logout = async () => {
 };
 
 // 유저 Posts
-export const getUserPosts = async () => {
+export const getUserPosts = async (pageParam: number) => {
   const { data } = await authRequest.get<{
     data: Common.PaginationResponse<Profile.PostDTO>;
-  }>(`/v1/user/restaurant`);
+  }>(`/v1/user/restaurant?page=${pageParam}`);
 
   return data.data;
 };
 
 // 유저 회원의 스크랩 게시물 조회
-export const getUserScraps = async () => {
+export const getUserScraps = async (pageParam: number) => {
   const { data } = await authRequest.get<{
     data: Common.PaginationResponse<Restaurant.BaseDTO>;
-  }>(`/v1/user/scrap`);
+  }>(`/v1/user/scrap?page=${pageParam}`);
 
   return data.data;
 };
 
 // 유저 회원의 댓글 게시물 조회
-export const getUserReviewedRestaurant = async () => {
+export const getUserReviewedRestaurant = async (pageParam: number) => {
   const { data } = await authRequest.get<{
     data: Common.PaginationResponse<Restaurant.BaseDTO>;
-  }>(`/v1/user/review`);
+  }>(`/v1/user/review?page=${pageParam}`);
 
   return data.data;
 };

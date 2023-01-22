@@ -151,7 +151,14 @@ const ReviewItem = ({ review }: Props) => {
 
           <Spacing size={4} />
 
-          <Text _fontSize={10} lineHeight={12} _color={colors.secondary[34]}>
+          <Text
+            _fontSize={10}
+            lineHeight={12}
+            _color={colors.secondary[34]}
+            css={css`
+              word-break: break-all;
+            `}
+          >
             {ellipsisTextByLength(review.description, 100)}
           </Text>
           <Spacing size={4} />
