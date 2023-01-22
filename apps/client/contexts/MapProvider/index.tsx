@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Context, useKakaoDebounce } from "./MapProvider.hooks";
 
 type Props = {
-  center: { latitude: number; longitude: number };
+  center: Common.Coordinate;
   level: number;
   draggable: boolean;
   zoomable: boolean;

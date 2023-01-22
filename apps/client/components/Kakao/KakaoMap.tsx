@@ -12,7 +12,7 @@ export const DEFAULT_INITIAL_CENTER = {
 };
 
 type Props = {
-  center?: { latitude: number; longitude: number };
+  center?: Common.Coordinate;
   level?: number;
   minLevel?: number;
   maxLevel?: number;
