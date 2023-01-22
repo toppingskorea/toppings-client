@@ -8,4 +8,5 @@ declare module Util {
   type ElementType<T extends readonly unknown[]> = T[number];
   type OptionalProperty<T, K extends keyof T> = Omit<T, K> & Partial<T>;
   type NotNullishValue = {};
+  type NonEmptyArray<T> = [T, ...T[]];
 }

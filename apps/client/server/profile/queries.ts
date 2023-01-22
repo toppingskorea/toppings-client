@@ -1,4 +1,7 @@
-import { useSuspenseQuery } from "@suspensive/react-query";
+import {
+  useSuspenseInfiniteQuery,
+  useSuspenseQuery
+} from "@suspensive/react-query";
 import type { UseQueryOptions } from "@tanstack/react-query";
 import {
   getUserInfo,
@@ -17,17 +20,30 @@ export const useFetchUserInfo = (
   return useSuspenseQuery(Keys.user(), getUserInfo, options);
 };
 
-export const useFetchUserPosts = (
-  options?: Pick<
-    UseQueryOptions<Awaited<ReturnType<typeof getUserPosts>>>,
-    "onSuccess"
-  >
-) => {
-  return useSuspenseQuery(Keys.posts(), getUserPosts, options);
+export const useFetchUserPosts = () => {
+  return useSuspenseInfiniteQuery(
+    Keys.posts(),
+    ({ pageParam = 0 }) => getUserPosts(pageParam),
+    {
+      getNextPageParam: lastPages => lastPages.page
+    }
+  );
 };
 
 export const useFetchScrapedRestaurant = () =>
-  useSuspenseQuery(Keys.scraps(), getUserScraps);
+  useSuspenseInfiniteQuery(
+    Keys.scraps(),
+    ({ pageParam = 0 }) => getUserScraps(pageParam),
+    {
+      getNextPageParam: lastPages => lastPages.page
+    }
+  );
 
 export const useFetchReviewedRestaurant = () =>
-  useSuspenseQuery(Keys.reviews(), getUserReviewedRestaurant);
+  useSuspenseInfiniteQuery(
+    Keys.reviews(),
+    ({ pageParam = 0 }) => getUserReviewedRestaurant(pageParam),
+    {
+      getNextPageParam: lastPages => lastPages.page
+    }
+  );

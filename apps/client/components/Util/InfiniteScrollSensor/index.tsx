@@ -9,7 +9,7 @@ const InfiniteScrollSensor = ({
   render: (ref: RefObject<HTMLDivElement>) => ReactElement;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const entry = useIntersectionObserver(ref, { threshold: 0.1 });
+  const entry = useIntersectionObserver(ref, { threshold: 0.9 });
 
   useEffect(() => {
     if (entry?.isIntersecting) {

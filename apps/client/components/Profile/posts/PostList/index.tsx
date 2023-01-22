@@ -1,10 +1,14 @@
 import { css } from "@emotion/react";
 import { padding } from "@toss/emotion-utils";
+import Skeleton from "~/components/Skeleton";
+import { InfiniteScrollSensor } from "~/components/Util";
 import { useFetchUserPosts } from "~/server/profile";
+import { lastItem } from "~/utils/common/lastItem";
 import Item from "./Item";
 
 const PostList = () => {
-  const { data: posts } = useFetchUserPosts();
+  const { data: posts, fetchNextPage: userPostsFetchNextPage } =
+    useFetchUserPosts();
 
   return (
     <ul
@@ -12,9 +16,26 @@ const PostList = () => {
         ${padding({ x: 16 })}
       `}
     >
-      {posts.items.map(post => (
-        <Item key={post.id} post={post} />
-      ))}
+      {posts.pages.map(post =>
+        post.items.map(post => <Item key={post.id} post={post} />)
+      )}
+
+      {lastItem(posts.pages)?.page !== lastItem(posts.pages)?.totalPage && (
+        <InfiniteScrollSensor
+          onIntersected={() => {
+            userPostsFetchNextPage();
+          }}
+          render={ref => (
+            <Skeleton.Box
+              ref={ref}
+              size={{
+                width: "100%",
+                height: 150
+              }}
+            />
+          )}
+        />
+      )}
     </ul>
   );
 };
