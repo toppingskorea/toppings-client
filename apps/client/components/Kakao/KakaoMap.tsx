@@ -11,7 +11,7 @@ export const DEFAULT_INITIAL_CENTER = {
   longitude: defaultLocation.DEFAULT_LONGITUDE
 };
 
-type Props = {
+interface Props {
   center?: Common.Coordinate;
   level?: number;
   minLevel?: number;
@@ -26,7 +26,7 @@ type Props = {
   onBoundChange?: (map: kakao.maps.Map) => void;
   style?: CSSProperties;
   children?: ReactNode;
-};
+}
 
 const KakaoMap = ({
   center = DEFAULT_INITIAL_CENTER,
