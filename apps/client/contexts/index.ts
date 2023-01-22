@@ -1,2 +1,3 @@
 export { default as AnalyticsProvider } from "./AnalyticsProvider";
-export { MapProvider, useMap } from "./MapProvider";
+export { default as MapProvider } from "./MapProvider";
+export { useKakaoMap } from "./MapProvider/MapProvider.hooks";

@@ -1,55 +1,33 @@
 import { useTheme } from "@emotion/react";
-import { Exit } from "@svgs/common";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import { useSetNavigation } from "~/hooks";
+import { useResetRecentRecoilState } from "~/hooks/map";
 import {
-  useCurrentLocationSetter,
   useCurrentSelectCategoryValue,
-  useCurrentSelectKeyword,
-  useCurrentSelectKeywordReset,
-  useMapBoundsValue,
-  useMapSearchByFilteringReset,
-  useMapSearchByFilteringState
+  useCurrentSelectKeywordValue,
+  useSearchByFilteringValue
 } from "~/recoil/atoms";
-import { useFetchDefaultMap, useUploadRecentHistory } from "~/server/recent";
+import { useUploadRecentHistory } from "~/server/recent";
 
 const useViewList = () => {
-  const { colors, zIndex } = useTheme();
-  const { push, back, replace } = useRouter();
-  const [mapSearchValue, setMapSearchByCountry] =
-    useMapSearchByFilteringState();
-  const resetMapSearchByCountry = useMapSearchByFilteringReset();
-  const currentSelectKeywordReset = useCurrentSelectKeywordReset();
-  const currentSelectCategory = useCurrentSelectCategoryValue();
-  const setCurrentLocation = useCurrentLocationSetter();
-  const mapBounds = useMapBoundsValue();
-  const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
-  const { mutate: defaultMapMutate } = useFetchDefaultMap({
-    onSuccess: data => {
-      setMapSearchByCountry(data);
-    }
-  });
-  const [currentSelectKeyword, setCurrentSelectKeyword] =
-    useCurrentSelectKeyword();
-
   useSetNavigation({
     top: {
-      marginBottom: 85,
-      right: {
-        element: <Exit />,
-        onClick: () => push("/map")
-      }
+      marginBottom: 85
     },
     bottom: true
   });
 
+  const { colors, zIndex } = useTheme();
+  const { push, back, replace } = useRouter();
+  const searchByFiltering = useSearchByFilteringValue();
+  const currentSelectCategory = useCurrentSelectCategoryValue();
+  const { executeResetAll } = useResetRecentRecoilState();
+  const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
+  const currentSelectKeyword = useCurrentSelectKeywordValue();
+
   const restaurantCardClickHandler = useCallback(
     (item: Restaurant.SearchByFilteringDTO) => {
-      setCurrentLocation({
-        latitude: item.latitude,
-        longitude: item.longitude
-      });
       uploadRecentHistoryMutate({
         type: "Filter",
         keyword: item.name,
@@ -57,35 +35,25 @@ const useViewList = () => {
         content: item.address,
         restaurantId: item.id
       });
-      setCurrentSelectKeyword(item.name);
-      resetMapSearchByCountry();
 
-      push("/map");
+      push(`/post/${item.id}`);
     },
-    [
-      push,
-      resetMapSearchByCountry,
-      setCurrentLocation,
-      setCurrentSelectKeyword,
-      uploadRecentHistoryMutate
-    ]
+    [push, uploadRecentHistoryMutate]
   );
 
-  const ExitClickHandler = () => {
-    currentSelectKeywordReset();
-    defaultMapMutate(mapBounds!);
-    resetMapSearchByCountry();
+  const exitClickHandler = () => {
+    executeResetAll();
 
     replace("/map");
   };
 
   return {
     currentSelectCategory,
-    ExitClickHandler,
+    exitClickHandler,
     zIndex,
     colors,
     currentSelectKeyword,
-    mapSearchValue,
+    searchByFiltering,
     restaurantCardClickHandler,
     back
   };

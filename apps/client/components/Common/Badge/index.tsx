@@ -6,6 +6,7 @@ import { Text } from "../Typo";
 interface Props {
   size?: Parameters<typeof size>[0];
   paddingLeft?: number;
+  paddingRight?: number;
   _fontSize?: number;
   children: string;
   attach: "left" | "right";
@@ -15,8 +16,9 @@ interface Props {
 
 const Badge = ({
   children,
-  size: _size = { width: 128, height: 37 },
+  size: _size = { width: 128, height: 35 },
   paddingLeft = 22,
+  paddingRight,
   _fontSize = 18,
   attach
 }: Props) => {
@@ -29,7 +31,7 @@ const Badge = ({
       align="center"
       css={css`
         ${size(_size)}
-        ${padding({ left: paddingLeft })}
+        ${padding({ left: paddingLeft, right: paddingRight })}
         ${touchable}
         border-radius: ${isLeft ? `0 10px 10px  0` : `10px 0 0  10px`};
         background-color: ${colors.primary};

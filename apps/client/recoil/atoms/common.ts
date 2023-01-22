@@ -1,13 +1,13 @@
 import {
   atom,
+  useRecoilState,
   useRecoilValue,
   useResetRecoilState,
   useSetRecoilState
 } from "recoil";
 import { defaultLocation } from "~/constants";
 
-// eslint-disable-next-line import/prefer-default-export
-const currentLocationAtom = atom({
+const currentLocationAtom = atom<Common.Coordinate>({
   key: "currentLocationAtom",
   default: {
     latitude: defaultLocation.DEFAULT_LATITUDE,
@@ -15,9 +15,23 @@ const currentLocationAtom = atom({
   }
 });
 
+export const useCurrentLocationState = () =>
+  useRecoilState(currentLocationAtom);
 export const useCurrentLocationSetter = () =>
   useSetRecoilState(currentLocationAtom);
 export const useCurrentLocationValue = () =>
   useRecoilValue(currentLocationAtom);
 export const useCurrentLocationReset = () =>
   useResetRecoilState(currentLocationAtom);
+
+const clickedCurrentPositionAtom = atom<Partial<Common.Coordinate>>({
+  key: "clickedCurrentPositionAtom",
+  default: {}
+});
+
+export const useClickedCurrentPositionState = () =>
+  useRecoilState(clickedCurrentPositionAtom);
+export const useClickedCurrentPositionSetter = () =>
+  useSetRecoilState(clickedCurrentPositionAtom);
+export const useClickedCurrentPositionValue = () =>
+  useRecoilValue(clickedCurrentPositionAtom);

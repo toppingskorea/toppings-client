@@ -14,4 +14,13 @@ declare module Map {
     | "idle"
     | "tilesloaded"
     | "maptypeid_changed";
+
+  interface Direction {
+    qa: number;
+    oa: number;
+    pa: number;
+    ha: number;
+  }
+
+  type KakaoBounds = kakao.maps.LatLngBounds & Map.Direction;
 }

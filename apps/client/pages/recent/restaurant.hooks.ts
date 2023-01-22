@@ -2,8 +2,7 @@ import {
   useCurrentLocationSetter,
   useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter,
-  useMapSearchByFilteringReset,
-  useSearchRestaurantIdSetter
+  useSearchByFilteringSetter
 } from "@atoms/index";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -14,25 +13,23 @@ import {
 } from "~/server/recent";
 
 const useRestaurant = () => {
+  useSetNavigation({
+    top: {
+      marginBottom: 37
+    }
+  });
+
   const { push } = useRouter();
   const [restaurantList, setRestaurantList] =
     useState<Restaurant.SearchByFilteringDTO[]>();
   const setCurrentLocation = useCurrentLocationSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
-  const resetMapSearchByCountry = useMapSearchByFilteringReset();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
-  const setSearchRestaurantId = useSearchRestaurantIdSetter();
+  const mapSearchByFiltering = useSearchByFilteringSetter();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
   const { mutate: fetchRestaurantByNameMutate } = useFetchRestaurantByName({
     onSuccess: data => {
-      setCurrentSelectCategory("Name");
       setRestaurantList(data);
-    }
-  });
-
-  useSetNavigation({
-    top: {
-      marginBottom: 37
     }
   });
 
@@ -57,10 +54,6 @@ const useRestaurant = () => {
   const restaurantCardClickHandler = (
     item: Restaurant.SearchByFilteringDTO
   ) => {
-    setCurrentLocation({
-      latitude: item.latitude,
-      longitude: item.longitude
-    });
     uploadRecentHistoryMutate({
       type: "Filter",
       keyword: item.name,
@@ -68,9 +61,15 @@ const useRestaurant = () => {
       content: item.address,
       restaurantId: item.id
     });
+
+    setCurrentLocation({
+      latitude: item.latitude,
+      longitude: item.longitude
+    });
+
+    mapSearchByFiltering([item]);
     setCurrentSelectKeyword(item.name);
-    setSearchRestaurantId(item.id);
-    resetMapSearchByCountry();
+    setCurrentSelectCategory("Name");
 
     push("/map");
   };

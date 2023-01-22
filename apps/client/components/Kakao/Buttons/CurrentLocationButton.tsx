@@ -3,9 +3,9 @@ import { CurrentPlace } from "@svgs/map";
 import { flex, position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
-import { useCurrentLocation } from "~/hooks";
+import useCurrentLocation from "./Buttons.hooks";
 
-const MyLocationButton = () => {
+const CurrentLocationButton = () => {
   const { colors, zIndex } = useTheme();
   const { getCurrentMapPosition } = useCurrentLocation();
 
@@ -32,4 +32,4 @@ const MyLocationButton = () => {
   );
 };
 
-export default MyLocationButton;
+export default CurrentLocationButton;

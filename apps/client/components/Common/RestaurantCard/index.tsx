@@ -8,7 +8,7 @@ import { Text } from "../Typo";
 interface Props {
   onClick: VoidFunction;
   item: Restaurant.CardDTO;
-  whoLikes?: true;
+  whoLikes?: boolean;
 }
 
 const RestaurantCard = ({ onClick, item, whoLikes }: Props) => {

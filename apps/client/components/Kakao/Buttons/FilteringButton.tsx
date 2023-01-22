@@ -1,10 +1,4 @@
-import {
-  useCurrentSelectKeywordReset,
-  useCurrentSelectKeywordValue,
-  useMapBoundsValue,
-  useMapSearchByFilteringReset,
-  useMapSearchByFilteringSetter
-} from "@atoms/index";
+import { useCurrentSelectKeywordValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { Filtering } from "@svgs/map";
 import { Exit } from "@svgs/recent";
@@ -20,21 +14,13 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
-import { useFetchDefaultMap } from "~/server/recent";
+import { useResetRecentRecoilState } from "~/hooks/map";
 
 const FilteringButton = () => {
   const { colors, zIndex } = useTheme();
   const { push } = useRouter();
-  const currentSelectKeywordReset = useCurrentSelectKeywordReset();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
-  const resetMapSearchByCountry = useMapSearchByFilteringReset();
-  const setMapSearchByCountry = useMapSearchByFilteringSetter();
-  const mapBounds = useMapBoundsValue();
-  const { mutate: defaultMapMutate } = useFetchDefaultMap({
-    onSuccess: data => {
-      setMapSearchByCountry(data);
-    }
-  });
+  const { executeResetAll } = useResetRecentRecoilState();
 
   return (
     <Flex.Center
@@ -65,13 +51,7 @@ const FilteringButton = () => {
           <Text _fontSize={17} _color={colors.white}>
             {currentSelectKeyword}
           </Text>
-          <Exit
-            onClick={() => {
-              currentSelectKeywordReset();
-              defaultMapMutate(mapBounds!);
-              resetMapSearchByCountry();
-            }}
-          />
+          <Exit onClick={executeResetAll} />
         </Flex.Center>
       )}
 

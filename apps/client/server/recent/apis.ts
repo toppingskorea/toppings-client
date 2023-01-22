@@ -1,9 +1,8 @@
-import type { Direction } from "@atoms/index";
 import { authRequest } from "~/constants";
 
 // 최근검색 / 최근 검색 목록 조회
 export const getRecentHistories = async () => {
-  const { data } = await authRequest.get<{ data: Recent.HistoryDTO[] }>(
+  const { data } = await authRequest.get<{ data: Recent.HistoryDTO }>(
     "/v1/recent?type=Filter"
   );
 
@@ -12,7 +11,7 @@ export const getRecentHistories = async () => {
 
 // 최근검색 / 최근 검색 등록
 export const addRecentHistory = async (
-  history: Omit<Recent.HistoryDTO, "id">
+  history: Omit<Recent.HistoryItem, "id">
 ) => {
   await authRequest.post("/v1/recent", history);
 };
@@ -33,7 +32,7 @@ export const getRestaurantByCountry = async ({
   direction
 }: {
   country: string;
-  direction: (kakao.maps.LatLngBounds & Direction) | Direction;
+  direction: Map.KakaoBounds;
 }) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByFilteringDTO[];
@@ -52,7 +51,7 @@ export const getRestaurantByEatingHabit = async ({
 }: {
   habit: string;
   habitTitle: Common.EatingHabit;
-  direction: (kakao.maps.LatLngBounds & Direction) | Direction;
+  direction: Map.KakaoBounds;
 }) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByFilteringDTO[];
@@ -73,9 +72,7 @@ export const getRestaurantByName = async (name: string) => {
 };
 
 // 음식점 / 음식점 검색 (지도)
-export const getDefaultRestaurant = async (
-  direction: (kakao.maps.LatLngBounds & Direction) | Direction
-) => {
+export const getDefaultRestaurant = async (direction: Map.KakaoBounds) => {
   const { data } = await authRequest.get<{
     data: Restaurant.SearchByFilteringDTO[];
   }>(
