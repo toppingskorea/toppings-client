@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Context, useKakaoDebounce } from "./MapProvider.hooks";
@@ -31,7 +33,6 @@ const MapProvider = ({
   const [map, setMap] = useState<kakao.maps.Map | null>(null);
   const mapRef = useRef<HTMLDivElement>(null);
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   const render = () => setRender(() => {});
 
   useEffect(() => {
@@ -124,7 +125,6 @@ const MapProvider = ({
   ]);
 
   return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <Context.Provider value={{ map, mapRef, render }}>
       {children}
     </Context.Provider>
