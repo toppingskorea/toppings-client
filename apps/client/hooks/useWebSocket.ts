@@ -48,7 +48,6 @@ const useWebSocket = (
     if (!isMounted) return;
 
     if (!requireAuth || (requireAuth && !!cookie.get())) {
-      // const sock = ;
       const client = Stomp.over(
         () => new SockJS(`${env.TOPPINGS_SERVER_URL}/stomp/subscribe`)
       );
