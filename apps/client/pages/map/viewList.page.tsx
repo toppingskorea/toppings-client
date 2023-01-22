@@ -41,36 +41,39 @@ const ViewListPage = () => {
             : "Nationality"}
         </Badge>
       </motion.div>
-      <motion.div
-        onClick={app.exitClickHandler}
-        variants={defaultSlideFadeInVariants("right")}
-        {...framerMocker}
-        css={css`
-          ${position("absolute", { top: 118, left: 177 })}
-          ${touchable}
-          z-index: ${app.zIndex.four};
-        `}
-      >
-        <Flex
-          align="center"
-          justify="space-between"
+      {app.currentSelectKeyword && (
+        <motion.div
+          onClick={app.exitClickHandler}
+          variants={defaultSlideFadeInVariants("right")}
+          {...framerMocker}
           css={css`
-            ${size({
-              width: 92,
-              height: 27
-            })}
-            border-radius: 20px;
-            border: 0.9px solid ${app.colors.secondary.B0};
-            ${padding({
-              x: 10,
-              y: 6
-            })};
+            ${position("absolute", { top: 118, left: 177 })}
+            ${touchable}
+          z-index: ${app.zIndex.four};
           `}
         >
-          <Text _fontSize={12}>{app.currentSelectKeyword}</Text>
-          <SmallExit />
-        </Flex>
-      </motion.div>
+          <Flex
+            align="center"
+            justify="space-between"
+            css={css`
+              ${size({
+                width: 92,
+                height: 27
+              })}
+              border-radius: 20px;
+              border: 0.9px solid ${app.colors.secondary.B0};
+              ${padding({
+                x: 10,
+                y: 6
+              })};
+            `}
+          >
+            <Text _fontSize={12}>{app.currentSelectKeyword}</Text>
+
+            <SmallExit />
+          </Flex>
+        </motion.div>
+      )}
 
       <Flex
         direction="column"
