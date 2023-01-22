@@ -42,7 +42,7 @@ const ViewListPage = () => {
         </Badge>
       </motion.div>
       <motion.div
-        onClick={app.ExitClickHandler}
+        onClick={app.exitClickHandler}
         variants={defaultSlideFadeInVariants("right")}
         {...framerMocker}
         css={css`

@@ -41,7 +41,7 @@ const useViewList = () => {
     [push, uploadRecentHistoryMutate]
   );
 
-  const ExitClickHandler = () => {
+  const exitClickHandler = () => {
     executeResetAll();
 
     replace("/map");
@@ -49,7 +49,7 @@ const useViewList = () => {
 
   return {
     currentSelectCategory,
-    ExitClickHandler,
+    exitClickHandler,
     zIndex,
     colors,
     currentSelectKeyword,
