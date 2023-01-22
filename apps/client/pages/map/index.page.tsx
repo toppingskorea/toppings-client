@@ -1,11 +1,12 @@
 import { css } from "@emotion/react";
 import { List } from "@svgs/map";
-import { size } from "@toss/emotion-utils";
+import { Flex, position, size } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
-import { pin } from "~/assets/json";
+import { pin, rocket } from "~/assets/json";
 import { MapMarker } from "~/components/Kakao";
 import KakaoMap from "~/components/Kakao/KakaoMap";
+import { hexToRgba } from "~/utils";
 import useMap from "./map.hooks";
 
 const MapPage = () => {
@@ -76,6 +77,30 @@ const MapPage = () => {
           </motion.div>
         </MapMarker>
       ))}
+      {app.currentPositionLoading && (
+        <Flex.Center
+          css={css`
+            ${position("absolute", {
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0
+            })}
+            ${size.full}
+              background-color: ${hexToRgba(app.colors.black, 0.6)};
+            z-index: ${app.zIndex.four};
+          `}
+        >
+          <Lottie
+            loop
+            autoplay
+            animationData={rocket}
+            css={css`
+              ${size({ width: 300, height: 300 })}
+            `}
+          />
+        </Flex.Center>
+      )}
     </KakaoMap>
   );
 };

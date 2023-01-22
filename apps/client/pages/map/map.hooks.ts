@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useSetNavigation } from "~/hooks";
@@ -6,6 +7,7 @@ import {
   useCurrentHabitTitleValue,
   useCurrentLocationReset,
   useCurrentLocationState,
+  useCurrentPositionLoadingValue,
   useCurrentSelectCategoryValue,
   useCurrentSelectKeywordValue,
   useSearchByFilteringState
@@ -21,6 +23,8 @@ const useMap = () => {
     bottom: true
   });
 
+  const { colors, zIndex } = useTheme();
+
   const [_bounds, setBounds] = useState<Map.KakaoBounds>();
   const { push } = useRouter();
 
@@ -33,6 +37,7 @@ const useMap = () => {
   const [mapSearchByFiltering, setMapSearchByFiltering] =
     useSearchByFilteringState();
   const currentHabitTitle = useCurrentHabitTitleValue();
+  const currentPositionLoading = useCurrentPositionLoadingValue();
 
   const mapMutateOnSuccess = useCallback(
     (data: Restaurant.SearchByFilteringDTO[]) => {
@@ -103,7 +108,10 @@ const useMap = () => {
     mapEventHandler,
     currentSelectCategory,
     searchByFilteringList,
-    push
+    push,
+    currentPositionLoading,
+    colors,
+    zIndex
   };
 };
 

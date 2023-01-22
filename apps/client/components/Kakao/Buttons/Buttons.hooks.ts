@@ -2,22 +2,26 @@ import { useCallback, useMemo } from "react";
 import { defaultLocation } from "~/constants";
 import {
   useClickedCurrentPositionState,
-  useCurrentLocationSetter
+  useCurrentLocationSetter,
+  useCurrentPositionLoadingSetter
 } from "~/recoil/atoms";
 
 const useCurrentLocation = () => {
   const setCurrentLocation = useCurrentLocationSetter();
   const [clickedCurrentPosition, setClickedCurrentPosition] =
     useClickedCurrentPositionState();
+  const setCurrentPositionLoading = useCurrentPositionLoadingSetter();
 
   const success: PositionCallback = useCallback(
     ({ coords: { latitude, longitude } }: GeolocationPosition) => {
-      if (latitude && longitude)
+      if (latitude && longitude) {
         setClickedCurrentPosition({ latitude, longitude });
+        setCurrentPositionLoading(false);
+      }
 
       setCurrentLocation({ latitude, longitude });
     },
-    [setCurrentLocation, setClickedCurrentPosition]
+    [setCurrentLocation, setClickedCurrentPosition, setCurrentPositionLoading]
   );
 
   const error: PositionErrorCallback = useCallback(() => {
@@ -44,6 +48,8 @@ const useCurrentLocation = () => {
       return;
     }
 
+    setCurrentPositionLoading(true);
+
     navigator.geolocation.watchPosition(success, error, options);
   }, [
     clickedCurrentPosition.latitude,
@@ -51,6 +57,7 @@ const useCurrentLocation = () => {
     error,
     options,
     setCurrentLocation,
+    setCurrentPositionLoading,
     success
   ]);
 
