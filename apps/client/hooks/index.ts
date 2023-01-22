@@ -5,7 +5,6 @@ export { default as useInternalRouter } from "./useInternalRouter";
 export { default as useMounted } from "./useMounted";
 export { default as usePreservedCallback } from "./usePreservedCallback";
 export { default as usePreservedReference } from "./usePreservedReference";
-export { default as useResetRecentRecoilState } from "./useResetRecentRecoilState";
 export { default as useScrollToTopByKeywordChange } from "./useScrollToTopByKeywordChange";
 export { default as useSentry } from "./useSentry";
 export { default as useSetNavigation } from "./useSetNavigation";

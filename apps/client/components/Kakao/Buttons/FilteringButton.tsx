@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
-import { useResetRecentRecoilState } from "~/hooks";
+import { useResetRecentRecoilState } from "~/hooks/map";
 
 const FilteringButton = () => {
   const { colors, zIndex } = useTheme();

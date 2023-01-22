@@ -1,7 +1,8 @@
 import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
-import { useResetRecentRecoilState, useSetNavigation } from "~/hooks";
+import { useSetNavigation } from "~/hooks";
+import { useResetRecentRecoilState } from "~/hooks/map";
 import {
   useCurrentSelectCategoryValue,
   useCurrentSelectKeywordValue,

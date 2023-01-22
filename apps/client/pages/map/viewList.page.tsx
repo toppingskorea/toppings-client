@@ -20,8 +20,6 @@ import useViewList from "./viewList.hooks";
 const ViewListPage = () => {
   const app = useViewList();
 
-  console.log(app.searchByFiltering);
-
   return (
     <>
       <motion.div
