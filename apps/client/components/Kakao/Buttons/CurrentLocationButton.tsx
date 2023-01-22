@@ -2,58 +2,17 @@ import { css, useTheme } from "@emotion/react";
 import { CurrentPlace } from "@svgs/map";
 import { flex, position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
-import {
-  defaultLocation,
-  defaultScaleChangeVariants,
-  framerMocker
-} from "~/constants";
-import { useKakaoMap } from "~/contexts";
-import { useCurrentLocationSetter } from "~/recoil/atoms";
-
-const getCurrentLocation = (callback: (coord: [number, number]) => void) => {
-  const successCallback: PositionCallback = ({
-    coords: { latitude, longitude }
-  }: GeolocationPosition) => {
-    callback([latitude, longitude]);
-  };
-
-  const failCallback: PositionErrorCallback = () => {
-    callback([
-      defaultLocation.DEFAULT_LATITUDE,
-      defaultLocation.DEFAULT_LONGITUDE
-    ]);
-  };
-
-  const options: PositionOptions = {
-    maximumAge: 0
-  };
-
-  navigator.geolocation.watchPosition(successCallback, failCallback, options);
-};
+import { defaultScaleChangeVariants, framerMocker } from "~/constants";
+import useCurrentLocation from "./Buttons.hooks";
 
 const CurrentLocationButton = () => {
-  const { map, render } = useKakaoMap();
   const { colors, zIndex } = useTheme();
-  const setCurrentLocation = useCurrentLocationSetter();
-
-  const handleClick = () => {
-    getCurrentLocation(([latitude, longitude]) => {
-      map?.panTo(new kakao.maps.LatLng(latitude, longitude));
-      setCurrentLocation({
-        latitude,
-        longitude
-      });
-
-      setTimeout(() => {
-        render();
-      }, 100);
-    });
-  };
+  const { getCurrentMapPosition } = useCurrentLocation();
 
   return (
     <motion.button
       type="button"
-      onClick={handleClick}
+      onClick={getCurrentMapPosition}
       {...framerMocker}
       variants={defaultScaleChangeVariants}
       css={css`
