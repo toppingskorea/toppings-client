@@ -17,7 +17,7 @@ export const Context = createContext({
 
 export const useMap = () => useContext(Context);
 
-export const useKakaoDebounce = <T,>(value: T, delay?: number): T => {
+export const useKakaoDebounce = <T>(value: T, delay?: number): T => {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
   useEffect(() => {
