@@ -1,8 +1,13 @@
 import { useTheme } from "@emotion/react";
+import { Suspense } from "@suspensive/react";
+import { Stack } from "@toss/emotion-utils";
 import { useEffect } from "react";
 import { Text } from "~/components/Common/Typo";
+import { NotificationList } from "~/components/Notice";
+import Skeleton from "~/components/Skeleton";
 import { useSetNavigation } from "~/hooks";
 import { useNoticeActivateSetter } from "~/recoil/atoms/noticeActivate";
+import { generateComponent } from "~/utils";
 
 const Notice = () => {
   const { colors, weighs } = useTheme();
@@ -10,6 +15,7 @@ const Notice = () => {
 
   useEffect(() => {
     setNoticeActivate(false);
+    return () => setNoticeActivate(false);
   }, [setNoticeActivate]);
 
   useSetNavigation({
@@ -22,7 +28,27 @@ const Notice = () => {
     },
     bottom: true
   });
-  return <div>notice</div>;
+  return (
+    <div>
+      <Suspense.CSROnly
+        fallback={
+          <Stack.Vertical>
+            {generateComponent(
+              <Skeleton.Box
+                size={{
+                  width: "100%",
+                  height: 40
+                }}
+              />,
+              6
+            )}
+          </Stack.Vertical>
+        }
+      >
+        <NotificationList />
+      </Suspense.CSROnly>
+    </div>
+  );
 };
 
 export default Notice;
