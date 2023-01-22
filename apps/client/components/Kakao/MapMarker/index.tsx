@@ -1,14 +1,12 @@
-import type { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 import { useEffect, useMemo, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useKakaoMap } from "~/contexts";
 
-interface Props {
-  position: Common.Coordinate;
-  children: ReactNode;
-}
-
-const MapMarker = ({ position, children }: Props) => {
+const MapMarker = ({
+  position,
+  children
+}: PropsWithChildren<{ position: Common.Coordinate }>) => {
   const { map } = useKakaoMap();
   const container = useRef(document.createElement("div"));
 
