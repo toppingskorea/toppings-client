@@ -16,7 +16,7 @@ const RecentPage = () => {
           onSubmit={() => {
             app.fetchRestaurantByNameMutate(app.keyword.value);
           }}
-          placeholder="enter the restaurant name"
+          placeholder="Search restaurant"
           setValue={app.setValue}
           {...app.keyword}
         />

@@ -34,7 +34,7 @@ const NationalityPage = () => {
     <>
       <SearchLayout>
         <SearchInput
-          placeholder="Enter nationality name"
+          placeholder="Search nationality"
           setValue={setValue}
           {...keyword}
         />
