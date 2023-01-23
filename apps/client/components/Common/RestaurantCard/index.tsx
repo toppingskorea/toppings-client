@@ -58,23 +58,17 @@ const RestaurantCard = ({ onClick, item, whoLikes }: Props) => {
               {item.type}
             </Text>
 
-            <Flex
-              align="center"
-              css={css`
-                gap: 6px;
-              `}
+            <Text
+              _fontSize={16}
+              _color={colors.secondary["4B"]}
+              weight={weighs.semiBold}
             >
-              <Text
-                _fontSize={16}
-                _color={colors.secondary["4B"]}
-                weight={weighs.semiBold}
-              >
-                {item.name}
-              </Text>
+              {item.name}
+              {"   "}
               <Text _fontSize={10} _color={colors.secondary["4B"]}>
                 by {item.writer}
               </Text>
-            </Flex>
+            </Text>
           </Flex>
           <Text _fontSize={10} _color={colors.secondary["46"]}>
             {item.address}

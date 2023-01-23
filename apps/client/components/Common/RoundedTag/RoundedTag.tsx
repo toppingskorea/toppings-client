@@ -40,7 +40,11 @@ const RoundedTag = ({
       `}
       onClick={onClick}
     >
-      <Text _fontSize={_fontSize} _color={defaultProps._color}>
+      <Text
+        _fontSize={_fontSize}
+        lineHeight={_fontSize}
+        _color={defaultProps._color}
+      >
         {children}
       </Text>
     </li>

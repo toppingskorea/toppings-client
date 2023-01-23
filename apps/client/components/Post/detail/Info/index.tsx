@@ -54,7 +54,7 @@ const Info = ({
     clipboard(address);
     overlay.open(({ exit }) => (
       <IconWithTextModal
-        text="clip the URL successful"
+        text="Link copied"
         exitFn={exit}
         icon={
           <Flex.Center
