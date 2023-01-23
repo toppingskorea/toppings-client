@@ -4,21 +4,15 @@ import { LeftArrow } from "@svgs/common";
 import { flex, padding, position, Spacing } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { AnimatePresence, motion } from "framer-motion";
-import { useMemo } from "react";
 import { AlertModal, MotionButton } from "~/components/Common";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter } from "~/hooks";
 
 const TopNavigator = () => {
   const { zIndex } = useTheme();
-  const { back, pathname } = useInternalRouter();
+  const { back } = useInternalRouter();
   const state = useNavigationValue();
   const overlay = useOverlay();
-
-  const noBlurPath = useMemo(
-    () => pathname === "/recent" || pathname === "/map/viewList",
-    [pathname]
-  );
 
   const onClickBackButton = () => {
     if (state.top?.backButtonCaution) {
@@ -38,7 +32,6 @@ const TopNavigator = () => {
         css={css`
           ${position("sticky", { top: 0 })}
           z-index: ${zIndex.one};
-          ${!noBlurPath && "backdrop-filter: blur(10px)"};
         `}
       >
         <nav
