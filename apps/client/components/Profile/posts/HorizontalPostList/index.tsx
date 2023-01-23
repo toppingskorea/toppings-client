@@ -5,6 +5,7 @@ import { RestaurantCard } from "~/components/Common";
 import Skeleton from "~/components/Skeleton";
 import { InfiniteScrollSensor } from "~/components/Util";
 import { lastItem } from "~/utils/common/lastItem";
+import EmptyView from "../../EmptyView";
 
 interface Props {
   query: () => UseSuspenseInfiniteQueryResultOnSuccess<
@@ -13,9 +14,19 @@ interface Props {
 }
 
 const HorizontalPostList = ({ query }: Props) => {
-  const { push } = useRouter();
+  const { push, pathname } = useRouter();
+
   const { data: restaurants, fetchNextPage: restaurantsFetchNextPage } =
     query();
+
+  if (restaurants.pages.length === 0) {
+    // savedPage가 아니라면 review 페이지입니다.
+    const isSavedPage = lastItem(pathname.split("/")) === "saved";
+
+    return (
+      <EmptyView content={isSavedPage ? "No saved posts" : "No reviews"} />
+    );
+  }
 
   return (
     <Stack.Vertical gutter={10}>
