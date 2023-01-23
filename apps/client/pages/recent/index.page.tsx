@@ -16,6 +16,7 @@ import { Keys, useDeleteAllRecentHistory } from "~/server/recent";
 
 const RecentPage = () => {
   const { push } = useRouter();
+  const { weighs } = useTheme();
 
   useSetNavigation({
     top: {
@@ -72,7 +73,7 @@ const RecentPage = () => {
         <RoundedTag
           padding={{
             x: 10,
-            y: 6
+            bottom: 3
           }}
           defaultProps={{
             bgcolor: colors.secondary.F1,
@@ -82,6 +83,7 @@ const RecentPage = () => {
           _fontSize={13}
           onClick={removeAllHistoryHandler}
           isTouchable
+          fontWeight={weighs.semiBold}
         >
           remove all
         </RoundedTag>

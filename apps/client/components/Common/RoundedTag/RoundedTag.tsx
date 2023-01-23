@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import { padding, touchable } from "@toss/emotion-utils";
 import type { ComponentProps } from "react";
+import weighs from "~/styles/emotionTheme/weighs";
 import { Text } from "../Typo";
 
 export type CommonProps = Omit<ComponentProps<typeof Text>, "_fontSize"> & {
@@ -11,6 +12,7 @@ export type CommonProps = Omit<ComponentProps<typeof Text>, "_fontSize"> & {
 interface Props {
   children: string;
   _fontSize: number;
+  fontWeight?: Util.ValueOf<typeof weighs>;
   padding: Parameters<typeof padding>[0];
   defaultProps: CommonProps;
   onClick?: VoidFunction;
@@ -23,7 +25,8 @@ const RoundedTag = ({
   padding: _padding,
   _fontSize,
   onClick,
-  isTouchable
+  isTouchable,
+  fontWeight = weighs.normal
 }: Props) => {
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
@@ -44,6 +47,7 @@ const RoundedTag = ({
         _fontSize={_fontSize}
         lineHeight={_fontSize}
         _color={defaultProps._color}
+        weight={fontWeight}
       >
         {children}
       </Text>
