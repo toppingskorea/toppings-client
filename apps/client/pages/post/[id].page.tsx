@@ -55,7 +55,7 @@ const PostDetail = ({
       <Spacing size={20} />
       {!app.likePercent.countryPercent.length &&
       !app.likePercent.habitPercent.length ? (
-        <EmptyText type="likes" />
+        <EmptyText />
       ) : (
         <Likes id={id} />
       )}
@@ -130,8 +130,9 @@ export const getServerSideProps: GetServerSideProps<{
 
 export default PostDetail;
 
-const EmptyText = ({ type }: { type: "likes" }) => {
+const EmptyText = () => {
   const { colors, weighs } = useTheme();
+
   return (
     <Text
       _fontSize={13}
@@ -144,7 +145,7 @@ const EmptyText = ({ type }: { type: "likes" }) => {
         display: block;
       `}
     >
-      No one {type} this post.{"\n"}you can make {type}!
+      Click the first like!
     </Text>
   );
 };

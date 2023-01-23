@@ -1,5 +1,5 @@
 import { css, useTheme } from "@emotion/react";
-import { Flex, padding, Spacing } from "@toss/emotion-utils";
+import { Flex, padding } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import { MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
@@ -9,12 +9,7 @@ const ReviewLeadingSection = () => {
   const { push, query } = useRouter();
 
   return (
-    <Flex.Center direction="column">
-      <Text _fontSize={15} weight={weighs.bold} _color={colors.primary}>
-        you can make reviews!
-      </Text>
-      <Spacing size={7} />
-
+    <Flex.Center>
       <MotionButton
         onClick={() => push(`/review/add/${query.id}`)}
         css={css`

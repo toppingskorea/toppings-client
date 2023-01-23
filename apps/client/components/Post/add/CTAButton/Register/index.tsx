@@ -26,9 +26,7 @@ const Register = () => {
   const { mutate: uploadPostMutate } = useUploadPost(() => {
     restaurantReset();
     postUploadReset();
-    overlay.open(() => (
-      <SuccessModal description="It will be uploaded after approval from the manager." />
-    ));
+    overlay.open(() => <SuccessModal />);
     setTimeout(() => {
       overlay.close();
       router.replace("/map");
