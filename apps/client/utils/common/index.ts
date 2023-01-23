@@ -10,6 +10,7 @@ export { default as objectEntries } from "./objectEntries";
 export { default as objectKeys } from "./objectKeys";
 export { default as objectValues } from "./objectValues";
 export { default as pick } from "./pick";
+export { default as omit } from "./omit";
 export { default as queryChunk } from "./queryChunk";
 export { default as replaceSpace } from "./replaceSpace";
 export { default as resizeBase64Img } from "./resizeBase64Img";
