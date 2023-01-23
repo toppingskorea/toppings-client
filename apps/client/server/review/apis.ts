@@ -31,7 +31,12 @@ export const uploadReview = async ({
   restaurantId: number;
   payload: DefaultPayload;
 }) => {
-  await authRequest.post(`/v1/restaurant/${restaurantId}/review`, payload);
+  const { data } = await authRequest.post<Common.Response<string>>(
+    `/v1/restaurant/${restaurantId}/review`,
+    payload
+  );
+
+  return data;
 };
 
 // 리뷰 수정하기
