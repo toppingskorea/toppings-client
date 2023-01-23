@@ -11,6 +11,7 @@ declare module Review {
   }
 
   interface DTO extends BaseDTO {
+    restaurantName: string;
     thumbnail: string;
   }
 

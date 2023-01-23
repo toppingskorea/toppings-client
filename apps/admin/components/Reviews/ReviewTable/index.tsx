@@ -51,7 +51,7 @@ const ReviewTable = () => {
                 cursor: pointer;
               `}
             >
-              <Td>{review.name}</Td>
+              <Td>{review.restaurantName}</Td>
               <Td>
                 <VStack>
                   <strong>{review.name}</strong>
