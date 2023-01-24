@@ -7,6 +7,7 @@ import { useCallback } from "react";
 import { FilledButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SelectEatingHabit } from "~/components/Section";
+import { OpenGraph } from "~/components/Util";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 
@@ -62,6 +63,8 @@ const ProfileEditEatingHabits = () => {
 
   return (
     <>
+      <OpenGraph title="Edit Eating Habits" />
+
       <SelectEatingHabit habits={edit.habits} onClick={onTagClickHandler} />
 
       <motion.div

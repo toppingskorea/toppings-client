@@ -12,6 +12,7 @@ import {
 import { Text } from "~/components/Common/Typo";
 import { RegisterButton, UserInfo } from "~/components/Profile/edit";
 import Skeleton from "~/components/Skeleton";
+import { OpenGraph } from "~/components/Util";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { generateComponent } from "~/utils";
 
@@ -42,6 +43,7 @@ const ProfileEdit = () => {
         ${padding({ left: 25, right: 28 })}
       `}
     >
+      <OpenGraph title="Edit Profile" />
       <Stack.Vertical
         css={css`
           ${size({ width: 340 })}

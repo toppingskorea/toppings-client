@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { ImageCarousel } from "~/components/Common";
+import { OpenGraph } from "~/components/Util";
 import { useFetchReview } from "~/server/review";
 
 const ImageCarouselWrapper = () => {
@@ -11,6 +12,11 @@ const ImageCarouselWrapper = () => {
 
   return (
     <div>
+      <OpenGraph
+        title={reviewDetail.restaurantName}
+        description={reviewDetail.description}
+        imageUrl={reviewDetail.images[0]}
+      />
       <ImageCarousel images={reviewDetail.images} />
     </div>
   );

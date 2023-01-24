@@ -4,6 +4,7 @@ import { padding, Stack } from "@toss/emotion-utils";
 import { Text } from "~/components/Common/Typo";
 import { HorizontalPostList } from "~/components/Profile/posts";
 import Skeleton from "~/components/Skeleton";
+import { OpenGraph } from "~/components/Util";
 import { useSetNavigation } from "~/hooks";
 import { useFetchReviewedRestaurant } from "~/server/profile";
 import { generateComponent } from "~/utils";
@@ -27,6 +28,7 @@ const ProfileReviews = () => {
         ${padding({ x: 16 })}
       `}
     >
+      <OpenGraph title="Reviews" />
       <Suspense.CSROnly
         fallback={
           <Stack.Vertical>

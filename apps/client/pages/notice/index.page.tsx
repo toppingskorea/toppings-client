@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { Text } from "~/components/Common/Typo";
 import { NotificationList } from "~/components/Notice";
 import Skeleton from "~/components/Skeleton";
+import { OpenGraph } from "~/components/Util";
 import { useSetNavigation } from "~/hooks";
 import { useNoticeActivateSetter } from "~/recoil/atoms/noticeActivate";
 import { generateComponent } from "~/utils";
@@ -30,6 +31,7 @@ const Notice = () => {
   });
   return (
     <div>
+      <OpenGraph title="Notice" />
       <Suspense.CSROnly
         fallback={
           <Stack.Vertical>

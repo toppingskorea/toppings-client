@@ -6,6 +6,7 @@ import {
 import { useRouter } from "next/router";
 import { TagFamily } from "~/components/Recent";
 import { SelectEatingHabit } from "~/components/Section";
+import { OpenGraph } from "~/components/Util";
 import type { diets } from "~/constants/data/common";
 import { useSetNavigation } from "~/hooks";
 import { useUploadRecentHistory } from "~/server/recent";
@@ -26,6 +27,7 @@ const EatingHabitPage = () => {
 
   return (
     <>
+      <OpenGraph title="Search Eating Habits" />
       <TagFamily />
 
       <SelectEatingHabit
