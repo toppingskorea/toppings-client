@@ -1,7 +1,7 @@
 import { css, useTheme } from "@emotion/react";
+import { OrangeStar } from "@svgs/common";
 import { Flex, size } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
-import { OrangeStar } from "~/assets/svgs/common";
 import { IconWithTextModal } from "~/components/Common";
 import { useSendNotification } from "~/server/notice";
 import {
