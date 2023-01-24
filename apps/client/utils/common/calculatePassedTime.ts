@@ -1,7 +1,7 @@
 const calculatePassedTime = (createdAt: string) => {
   const now = new Date();
-  const writeDay = new Date(createdAt);
-
+  // chrome에서는 일반적으로 잘 동작하지만, 사파리 및 IOS에서 파싱에러가 발생해서 정규화해줌.
+  const writeDay = new Date(createdAt.replace(/\./g, "-").replace(" ", "T"));
   const difference = now.getTime() - writeDay.getTime();
 
   const seconds = difference / 1000;
