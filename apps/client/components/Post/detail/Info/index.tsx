@@ -23,7 +23,7 @@ export type Props = Pick<
   | "scrap"
   | "like"
   | "likeCount"
-  | "thumbnail"
+  | "images"
 >;
 
 const Info = ({
@@ -35,7 +35,7 @@ const Info = ({
   scrap,
   type,
   likeCount,
-  thumbnail
+  images
 }: Props) => {
   const { colors, weighs } = useTheme();
 
@@ -59,7 +59,7 @@ const Info = ({
         ${size.width100}
       `}
     >
-      <OpenGraph title={name} description={description} imageUrl={thumbnail} />
+      <OpenGraph title={name} description={description} imageUrl={images[0]} />
       <Flex
         justify="space-between"
         css={css`
