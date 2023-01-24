@@ -4,7 +4,7 @@ import { RejectPalm } from "@svgs/notice";
 import { Flex, margin, padding, Spacing } from "@toss/emotion-utils";
 import Image from "next/image";
 import { Text } from "~/components/Common/Typo";
-import { countryToSvg, omit } from "~/utils";
+import { calculatePassedTime, countryToSvg, omit, pick } from "~/utils";
 
 type Props = Notice.DTO;
 
@@ -14,7 +14,8 @@ const NormalItem = ({
   restaurantName,
   thumbnail,
   userName,
-  profile
+  profile,
+  createDate
 }: Omit<Props, "content">) => {
   const { colors, weighs } = useTheme();
 
@@ -82,7 +83,7 @@ const NormalItem = ({
           </Text>
           <Spacing direction="horizontal" size={7} />
           <Text _fontSize={11} _color={colors.secondary[93]}>
-            2h
+            {calculatePassedTime(createDate)}
           </Text>
         </Flex>
       </Flex>
@@ -99,7 +100,10 @@ const NormalItem = ({
   );
 };
 
-const RejectedItem = ({ content }: Pick<Props, "content">) => {
+const RejectedItem = ({
+  content,
+  createDate
+}: Pick<Props, "content" | "createDate">) => {
   const { colors, weighs } = useTheme();
 
   return (
@@ -120,7 +124,7 @@ const RejectedItem = ({ content }: Pick<Props, "content">) => {
           </Text>
           <Spacing direction="horizontal" size={14} />
           <Text _fontSize={11} _color={colors.secondary[93]}>
-            2h
+            {calculatePassedTime(createDate)}
           </Text>
         </Flex>
       </Flex>
@@ -150,7 +154,7 @@ const NotificationItem = (props: Props) => {
       `}
     >
       {isRejectedNotification ? (
-        <RejectedItem />
+        <RejectedItem {...pick({ ...props }, ["createDate", "content"])} />
       ) : (
         <NormalItem {...omit({ ...props }, ["content"])} />
       )}
