@@ -16,8 +16,7 @@ const AppLayout = ({ children }: Util.PropsWithChild) => {
   useWebSocket(
     {
       destination: `/sub/${profile?.id}`,
-      callback: data => {
-        console.log(JSON.parse(data.body));
+      callback: () => {
         setNoticeActivate(true);
       }
     },

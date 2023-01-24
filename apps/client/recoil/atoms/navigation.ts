@@ -15,6 +15,7 @@ const navigationAtom = atom<{
     };
     marginBottom?: Common.CSSPixelValue;
     backButtonCaution?: boolean;
+    backDirectlyURL?: Route.Path;
   };
   bottom?: boolean;
 }>({
