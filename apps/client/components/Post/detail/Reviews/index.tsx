@@ -20,10 +20,8 @@ const Reviews = ({ id }: Props) => {
         ${padding({ x: 17 })}
       `}
     >
-      {reviews.pages.map(review =>
-        review.items.map(review => (
-          <ReviewItem key={review.id} review={review} />
-        ))
+      {reviews.pages.map(page =>
+        page.items.map(review => <ReviewItem key={review.id} review={review} />)
       )}
 
       {lastItem(reviews.pages)?.page !== lastItem(reviews.pages)?.totalPage &&

@@ -51,8 +51,8 @@ const PostList = () => {
         ${padding({ x: 16 })}
       `}
     >
-      {posts.pages.map(post =>
-        post.items.map(post => <Item key={post.id} post={post} />)
+      {posts.pages.map(page =>
+        page.items.map(post => <Item key={post.id} post={post} />)
       )}
 
       {lastItem(posts.pages)?.page !== lastItem(posts.pages)?.totalPage && (

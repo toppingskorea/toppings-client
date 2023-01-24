@@ -30,8 +30,8 @@ const HorizontalPostList = ({ query }: Props) => {
 
   return (
     <Stack.Vertical gutter={10}>
-      {restaurants.pages.map(restaurant =>
-        restaurant.items.map(restaurant => (
+      {restaurants.pages.map(page =>
+        page.items.map(restaurant => (
           <RestaurantCard
             key={restaurant.id}
             onClick={() => push(`/post/${restaurant.id}`)}
