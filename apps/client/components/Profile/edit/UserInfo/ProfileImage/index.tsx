@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useEditState } from "@atoms/index";
 import { css } from "@emotion/react";
-import { avatar } from "@images/profile";
+import { grayAvatar } from "@images/common";
 import { OrangePlus } from "@svgs/common";
 import { flex, gutter, touchable } from "@toss/emotion-utils";
 import Image from "next/image";
@@ -31,7 +31,7 @@ const ProfileImage = () => {
         `}
       >
         <Image
-          src={edit.profile || userInfo?.profile || avatar}
+          src={edit.profile ?? userInfo?.profile ?? grayAvatar}
           alt="dummy"
           width={88}
           height={88}

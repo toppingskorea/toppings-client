@@ -32,5 +32,12 @@ declare module Common {
     items: T[];
   }
 
+  interface Response<T = unknown> {
+    code: number;
+    message: string;
+    success: boolean;
+    data: T;
+  }
+
   type PageDirection = "prev" | "next";
 }

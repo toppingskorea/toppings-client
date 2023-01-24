@@ -42,6 +42,7 @@ const TopNavigator = () => {
               top: 31,
               bottom: state.top?.marginBottom ?? 24
             })}
+            background-color: white;
           `}
         >
           <MotionButton onClick={onClickBackButton}>

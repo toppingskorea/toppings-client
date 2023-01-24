@@ -1,5 +1,5 @@
 import { css, useTheme } from "@emotion/react";
-import { avatar } from "@images/profile";
+import { grayAvatar } from "@images/common";
 import { Flex, gutter, margin, padding, size } from "@toss/emotion-utils";
 import Image from "next/image";
 import { Text } from "~/components/Common/Typo";
@@ -25,7 +25,7 @@ const UserBadge = () => {
       `}
     >
       <Image
-        src={userInfo?.profile || avatar}
+        src={userInfo?.profile ?? grayAvatar}
         alt={`${userInfo?.name}'s profile`}
         width={28}
         height={28}

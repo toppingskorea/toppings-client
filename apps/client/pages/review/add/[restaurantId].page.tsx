@@ -19,6 +19,7 @@ import {
 import { Text } from "~/components/Common/Typo";
 import { env } from "~/constants";
 import { useSetNavigation } from "~/hooks";
+import { useSendNotification } from "~/server/notice";
 import { Keys, useFetchRestaurant } from "~/server/restaurant";
 import {
   useFetchReview,
@@ -78,14 +79,15 @@ const ReviewAdd = ({
     }, 3000);
   }, [overlay, replace, restaurantId]);
 
-  const { mutate: uploadReviewMutate } = useUploadReview({
+  const { mutateAsync: uploadReviewMutateAsync } = useUploadReview({
     onSuccess: commonOnSuccessCallback
   });
   const { mutate: updateReviewMutate } = useUpdateReview({
     onSuccess: commonOnSuccessCallback
   });
+  const { mutate: sendNotificationMutate } = useSendNotification();
 
-  const onClickRegisterHandler = useCallback(() => {
+  const onClickRegisterHandler = useCallback(async () => {
     if (images.length === 0) {
       overlay.open(({ exit }) => (
         <AlertModal
@@ -105,13 +107,19 @@ const ReviewAdd = ({
         }
       });
     } else {
-      uploadReviewMutate({
+      const result = await uploadReviewMutateAsync({
         restaurantId: +restaurantId,
         payload: {
           description,
           images
         }
       });
+
+      if (result.success)
+        sendNotificationMutate({
+          id: Number(restaurantId),
+          type: "Review"
+        });
     }
   }, [
     description,
@@ -120,8 +128,9 @@ const ReviewAdd = ({
     overlay,
     restaurantId,
     reviewUploadValue.id,
+    sendNotificationMutate,
     updateReviewMutate,
-    uploadReviewMutate
+    uploadReviewMutateAsync
   ]);
 
   return (

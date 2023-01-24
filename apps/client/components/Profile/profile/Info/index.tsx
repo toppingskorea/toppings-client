@@ -1,5 +1,5 @@
 import { css, useTheme } from "@emotion/react";
-import { avatar } from "@images/profile";
+import { grayAvatar } from "@images/common";
 import { Hamburger } from "@svgs/common";
 import { flex, gutter, Spacing, Stack } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
@@ -50,7 +50,7 @@ const Info = () => {
     <>
       <Stack.Horizontal align="center" gutter={0} justify="space-between">
         <Image
-          src={userInfo?.profile || avatar}
+          src={userInfo?.profile ?? grayAvatar}
           alt={`${userInfo?.name}'s profile`}
           width={78}
           height={78}
