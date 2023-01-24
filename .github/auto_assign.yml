@@ -1,4 +1,10 @@
-# Set to author to set pr creator as assignee
-addAssignees: author
+# Set to true to add reviewers to pull requests
+addReviewers: true
 
-addReviewers: false
+# Set to true to add assignees to pull requests
+addAssignees: true
+
+# A list of reviewers to be added to pull requests (GitHub user name)
+reviewers:
+  - po4tion
+  - ChanhyukPark-Tech
