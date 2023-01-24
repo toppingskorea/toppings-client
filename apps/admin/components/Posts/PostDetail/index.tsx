@@ -1,32 +1,20 @@
 import { Button, Flex, HStack, Select, Text, VStack } from "@chakra-ui/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { useToast } from "~/hooks";
-import { useFetchRestaurant, useUpdatePublication } from "~/server/restaurant";
+import { useFetchRestaurant } from "~/server/restaurant";
+import useOnEventHandler from "./PostDetail.hooks";
 
 const PostDetail = () => {
   const { query } = useRouter();
-  const toast = useToast();
 
   const { data: restaurant } = useFetchRestaurant(Number(query.id));
 
-  const { mutate: updatePublicationMutate } = useUpdatePublication({
-    onSuccess: () =>
-      toast({
-        title: "변경 성공",
-        description: "실제 반영되었습니다.",
-        status: "success"
-      }),
-    onError: () =>
-      toast({
-        title: "변경 실패",
-        description: "개발자들에게 문의해봅시다",
-        status: "error"
-      })
-  });
-
-  const [rejectCause, setRejectCause] = useState("");
+  const {
+    onApproveButtonClickHandler,
+    onRejectButtonClickHandler,
+    onChangeRejectCauseHandler,
+    rejectCause
+  } = useOnEventHandler(Number(query.id));
 
   return (
     <VStack>
@@ -44,15 +32,7 @@ const PostDetail = () => {
       <Text fontSize="1xl">{restaurant.description}</Text>
 
       <HStack gap={10}>
-        <Button
-          colorScheme="teal"
-          onClick={() =>
-            updatePublicationMutate({
-              id: Number(query.id),
-              isPub: true
-            })
-          }
-        >
+        <Button colorScheme="teal" onClick={onApproveButtonClickHandler}>
           승인하기
         </Button>
 
@@ -60,7 +40,7 @@ const PostDetail = () => {
           <Select
             placeholder="리젝 사유"
             value={rejectCause}
-            onChange={event => setRejectCause(event.currentTarget.value)}
+            onChange={onChangeRejectCauseHandler}
           >
             <option value="Inappropriate photo">부적절한 사진</option>
             <option value="Inappropriate description">부적절한 설명</option>
@@ -69,16 +49,7 @@ const PostDetail = () => {
             </option>
             <option value="Inappropriate location">부적절한 위치</option>
           </Select>
-          <Button
-            colorScheme="red"
-            onClick={() =>
-              updatePublicationMutate({
-                id: Number(query.id),
-                cause: rejectCause,
-                isPub: false
-              })
-            }
-          >
+          <Button colorScheme="red" onClick={onRejectButtonClickHandler}>
             거절하기
           </Button>
         </Flex>
