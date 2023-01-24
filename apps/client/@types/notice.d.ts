@@ -11,5 +11,7 @@ declare module Notice {
       | "RejectRestaurant";
     restaurantName: string;
     thumbnail: string;
+    profile: string;
+    createDate: string;
   }
 }

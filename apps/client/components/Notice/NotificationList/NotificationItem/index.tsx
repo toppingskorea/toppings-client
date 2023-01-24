@@ -13,7 +13,8 @@ const NormalItem = ({
   country,
   restaurantName,
   thumbnail,
-  userName
+  userName,
+  profile
 }: Omit<Props, "content">) => {
   const { colors, weighs } = useTheme();
 
@@ -33,7 +34,7 @@ const NormalItem = ({
   return (
     <Flex justify="space-between" align="center">
       <Image
-        src={whiteAvatar}
+        src={profile || whiteAvatar}
         alt={`${userName}'s profile image`}
         width={34}
         height={34}
