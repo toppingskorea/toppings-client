@@ -1,6 +1,6 @@
 const Keys = {
   reviews: (page: number) => ["reviews", page],
-  review: (id: number) => ["reviews", id]
+  review: (id: number) => ["review", id]
 };
 
 export default Keys;
