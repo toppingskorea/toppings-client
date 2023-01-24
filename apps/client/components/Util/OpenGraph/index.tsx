@@ -17,7 +17,6 @@ interface Props {
  *    imageUrl="https://your_image_url.png"
  * />
  */
-// eslint-disable-next-line import/prefer-default-export
 const OpenGraph = ({
   title,
   description = "Make your own topping",
