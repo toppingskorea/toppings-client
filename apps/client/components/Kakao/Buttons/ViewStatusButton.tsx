@@ -3,7 +3,7 @@ import { flex, padding, position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import type { FC, SVGProps } from "react";
 import { Text } from "~/components/Common/Typo";
-import { defaultScaleChangeVariants, framerMocker } from "~/constants";
+import { defaultFixedScaleChangeVariants, framerMocker } from "~/constants";
 
 interface Props {
   text: string;
@@ -12,19 +12,19 @@ interface Props {
 }
 
 const ViewStatusButton = ({ text, onClick, Icon }: Props) => {
-  const { colors, zIndex, weighs } = useTheme();
+  const { colors, zIndex, weighs, dimensions } = useTheme();
 
   return (
     <motion.button
       type="button"
       {...framerMocker}
-      variants={defaultScaleChangeVariants}
+      variants={defaultFixedScaleChangeVariants}
       onClick={onClick}
       css={css`
         ${position("fixed", {
-          bottom: 16
+          bottom: dimensions.bottomNavigationHeight + 16
         })}
-        left: 40%;
+        left: 50%;
         ${flex("center")}
         ${padding({
           x: 21,
