@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import { Stack } from "@toss/emotion-utils";
+import { EmptyView } from "~/components/Layout";
 import Skeleton from "~/components/Skeleton";
 import { InfiniteScrollSensor } from "~/components/Util";
 import { useWebSocket } from "~/hooks";
@@ -26,6 +27,10 @@ const NotificationList = () => {
     },
     true
   );
+
+  if (notificationList.pages[0].items.length === 0) {
+    return <EmptyView content="No notice" />;
+  }
 
   return (
     <Stack.Vertical as="ul" gutter={12}>

@@ -1,13 +1,13 @@
 import { css, useTheme } from "@emotion/react";
 import { padding } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
+import { EmptyView } from "~/components/Layout";
 import Skeleton from "~/components/Skeleton";
 import { InfiniteScrollSensor } from "~/components/Util";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter } from "~/hooks";
 import { useFetchUserPosts } from "~/server/profile";
 import { lastItem } from "~/utils/common/lastItem";
-import EmptyView from "../../EmptyView";
 import Item from "./Item";
 
 const PostList = () => {
