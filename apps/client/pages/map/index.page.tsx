@@ -15,8 +15,8 @@ const MapPage = () => {
   return (
     <KakaoMap
       center={app.currentLocation}
-      level={5}
-      maxLevel={8}
+      level={6}
+      maxLevel={14}
       onDragEnd={app.mapEventHandler}
       onLoaded={app.mapEventHandler}
       onZoomChanged={app.mapEventHandler}
