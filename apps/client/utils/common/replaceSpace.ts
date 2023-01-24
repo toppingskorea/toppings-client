@@ -1,4 +1,4 @@
-const replaceSpace = <T>(text: string) => {
+const replaceSpace = <T extends string>(text: string) => {
   return text.replaceAll(" ", "") as T;
 };
 
