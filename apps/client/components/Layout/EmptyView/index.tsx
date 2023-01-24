@@ -1,13 +1,13 @@
 import { css, useTheme } from "@emotion/react";
+import type { EmotionJSX } from "@emotion/react/types/jsx-namespace";
 import { grayLogo } from "@images/common";
 import { Flex, position } from "@toss/emotion-utils";
 import Image from "next/image";
-import type { ReactNode } from "react";
 import { Text } from "~/components/Common/Typo";
 
 interface Props {
   content: string;
-  CTAButton?: ReactNode;
+  CTAButton?: EmotionJSX.Element;
 }
 
 const EmptyView = ({ content, CTAButton }: Props) => {
