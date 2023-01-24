@@ -2,6 +2,7 @@ import { Suspense } from "@suspensive/react";
 import { Flex, Stack } from "@toss/emotion-utils";
 import { PostList, UserBadge } from "~/components/Profile/posts";
 import Skeleton from "~/components/Skeleton";
+import { OpenGraph } from "~/components/Util";
 import { useSetNavigation } from "~/hooks";
 import { generateComponent } from "~/utils";
 
@@ -30,6 +31,7 @@ const ProfilePosts = () => {
 
   return (
     <section>
+      <OpenGraph title="Posts" />
       <Suspense.CSROnly
         fallback={
           <Flex.Center>

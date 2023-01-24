@@ -6,6 +6,7 @@ import { SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
 import { SearchNationality } from "~/components/Section";
+import { OpenGraph } from "~/components/Util";
 import {
   useInput,
   useInternalRouter,
@@ -32,6 +33,7 @@ const NationalityPage = () => {
 
   return (
     <>
+      <OpenGraph title="Search Nationality" />
       <SearchLayout>
         <SearchInput
           placeholder="Search nationality"

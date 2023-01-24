@@ -5,6 +5,7 @@ import { padding, position, width100 } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SearchNationality } from "~/components/Section";
+import { OpenGraph } from "~/components/Util";
 import {
   useInput,
   useInternalRouter,
@@ -45,6 +46,8 @@ const ProfileEditNationality = () => {
           back();
         }}
       />
+
+      <OpenGraph title="Edit Nationality" />
 
       <div
         css={css`

@@ -17,6 +17,7 @@ import {
   SuccessModal
 } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
+import { OpenGraph } from "~/components/Util";
 import { env } from "~/constants";
 import { useSetNavigation } from "~/hooks";
 import { useSendNotification } from "~/server/notice";
@@ -139,10 +140,10 @@ const ReviewAdd = ({
         ${padding({ x: 24 })}
       `}
     >
+      <OpenGraph title="Add Review" />
       <ComponentWithLabel label="Picture" gutter={6}>
         <Gallery images={images} setImages={images => setImages(images)} />
       </ComponentWithLabel>
-
       <ComponentWithLabel label="Description" gutter={6}>
         <Input
           as="textarea"

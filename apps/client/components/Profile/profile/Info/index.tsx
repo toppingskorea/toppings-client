@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ComponentWithLabel, RoundedTag } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
+import { OpenGraph } from "~/components/Util";
 import { framerMocker, staggerOne } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useFetchUserInfo } from "~/server/profile";
@@ -48,6 +49,7 @@ const Info = () => {
 
   return (
     <>
+      <OpenGraph title={userInfo?.name ?? "profile"} />
       <Stack.Horizontal align="center" gutter={0} justify="space-between">
         <Image
           src={userInfo?.profile ?? grayAvatar}

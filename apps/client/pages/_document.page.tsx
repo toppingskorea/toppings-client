@@ -14,13 +14,6 @@ export default class MyDocument extends Document<DocumentPropTypes> {
     return (
       <Html lang="ko">
         <Head>
-          <meta property="og:image" content="/link_image.png" />
-          <meta property="og:title" content="toppings" />
-          <meta name="description" content="The best restaurant for me" />
-          <meta
-            property="og:description"
-            content="The best restaurant for me"
-          />
           <link rel="icon" href="/favicon.ico" />
           <link
             rel="stylesheet"
