@@ -6,6 +6,7 @@ declare module Review {
     name: string;
     country: string;
     habitContents: string;
+    // Pending, Approved, Rejected
     publicYn: "P" | "Y" | "N";
   }
 

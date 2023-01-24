@@ -8,6 +8,7 @@ declare module Restaurant {
     thumbnail: string;
     likeCount: number;
     createDate: string;
+    // Pending, Approved, Rejected
     publicYn: "P" | "Y" | "N";
     like: boolean;
   }
