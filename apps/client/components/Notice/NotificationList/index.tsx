@@ -1,12 +1,13 @@
 /* eslint-disable react/no-array-index-key */
-import { css } from "@emotion/react";
 import { Stack } from "@toss/emotion-utils";
+import { EmptyView } from "~/components/Layout";
 import Skeleton from "~/components/Skeleton";
 import { InfiniteScrollSensor } from "~/components/Util";
 import { useWebSocket } from "~/hooks";
 import { useFetchNotificationList } from "~/server/notice";
 import { useFetchUserInfo } from "~/server/profile";
 import { lastItem } from "~/utils/common/lastItem";
+import NotificationItem from "./NotificationItem";
 
 const NotificationList = () => {
   const {
@@ -27,19 +28,15 @@ const NotificationList = () => {
     true
   );
 
+  if (notificationList.pages[0].items.length === 0) {
+    return <EmptyView content="No notice" />;
+  }
+
   return (
-    <Stack.Vertical>
-      {notificationList.pages.map(notification =>
-        notification.items.map((notification, index) => (
-          <div
-            key={index}
-            css={css`
-              // 임시 높이 (디자인이 안나옴)
-              height: 100px;
-            `}
-          >
-            {notification.content}
-          </div>
+    <Stack.Vertical as="ul" gutter={12}>
+      {notificationList.pages.map(page =>
+        page.items.map((notification, index) => (
+          <NotificationItem key={index} {...notification} />
         ))
       )}
       {lastItem(notificationList.pages)?.page !==
