@@ -58,6 +58,7 @@ const RecentPage = () => {
         {...framerMocker}
         css={css`
           ${position("absolute", { top: 109, left: 0 })}
+          z-index: ${zIndex.one};
         `}
       >
         <Badge attach="left">Recent</Badge>

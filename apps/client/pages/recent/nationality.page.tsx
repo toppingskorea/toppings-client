@@ -22,7 +22,8 @@ const NationalityPage = () => {
 
   useSetNavigation({
     top: {
-      marginBottom: 37
+      marginBottom: 37,
+      backDirectlyURL: "/recent"
     }
   });
 
