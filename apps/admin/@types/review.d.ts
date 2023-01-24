@@ -2,7 +2,6 @@ declare module Review {
   interface BaseDTO {
     id: number;
     description: string;
-
     modifiedAt: string;
     name: string;
     country: string;
