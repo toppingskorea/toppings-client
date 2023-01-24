@@ -140,7 +140,6 @@ const ReviewAdd = ({
         ${padding({ x: 24 })}
       `}
     >
-      {" "}
       <OpenGraph title="Add Review" />
       <ComponentWithLabel label="Picture" gutter={6}>
         <Gallery images={images} setImages={images => setImages(images)} />
