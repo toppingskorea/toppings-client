@@ -6,6 +6,10 @@ const routes = [
   {
     label: "Posts",
     href: "/posts"
+  },
+  {
+    label: "Reviews",
+    href: "/reviews"
   }
 ] as const;
 

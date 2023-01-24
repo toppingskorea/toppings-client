@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/consistent-type-imports */
 declare module Restaurant {
   interface BaseDTO extends Common.Coordinate {
     id: number;
@@ -9,9 +8,11 @@ declare module Restaurant {
     thumbnail: string;
     likeCount: number;
     createDate: string;
+    // Pending, Approved, Rejected
     publicYn: "P" | "Y" | "N";
     like: boolean;
   }
+
   interface DTO extends BaseDTO {
     likeCount: number;
     country: string;
