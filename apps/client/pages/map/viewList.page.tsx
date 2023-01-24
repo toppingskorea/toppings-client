@@ -10,7 +10,7 @@ import {
   width100
 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
-import { Badge, RestaurantCard } from "~/components/Common";
+import { RestaurantCard } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { KakaoMap } from "~/components/Kakao";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
@@ -22,25 +22,6 @@ const ViewListPage = () => {
 
   return (
     <div>
-      <motion.div
-        variants={defaultSlideFadeInVariants("right")}
-        {...framerMocker}
-        css={css`
-          ${position("absolute", { top: 114, left: 0 })}
-        `}
-      >
-        <Badge
-          attach="left"
-          size={{
-            width: 158,
-            height: 35
-          }}
-        >
-          {app.currentSelectCategory === "Habit"
-            ? "Eating habit"
-            : "Nationality"}
-        </Badge>
-      </motion.div>
       {app.currentSelectKeyword && (
         <motion.div
           onClick={app.exitClickHandler}

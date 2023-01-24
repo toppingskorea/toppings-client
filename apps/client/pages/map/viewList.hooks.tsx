@@ -13,7 +13,7 @@ import { useUploadRecentHistory } from "~/server/recent";
 const useViewList = () => {
   useSetNavigation({
     top: {
-      marginBottom: 85
+      marginBottom: 45
     },
     bottom: true
   });
