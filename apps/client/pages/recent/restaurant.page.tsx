@@ -3,6 +3,7 @@ import { padding } from "@toss/emotion-utils";
 import { RestaurantCard, SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
+import { OpenGraph } from "~/components/Util";
 import { pick } from "~/utils";
 import useRestaurant from "./restaurant.hooks";
 
@@ -11,6 +12,7 @@ const RecentPage = () => {
 
   return (
     <>
+      <OpenGraph title="Search Restaurant" />
       <SearchLayout>
         <SearchInput
           onSubmit={() => {

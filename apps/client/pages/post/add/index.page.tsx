@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { ComponentWithLabel, Gallery, Input } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { Edit, HorizontalCategories, Register } from "~/components/Post";
+import { OpenGraph } from "~/components/Util";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { hiddenScroll } from "~/styles/emotionUtils";
 
@@ -36,6 +37,7 @@ const PostAdd = () => {
 
   return (
     <Stack.Vertical gutter={22}>
+      <OpenGraph title="Add Post" />
       <Stack.Vertical
         gutter={22}
         css={css`

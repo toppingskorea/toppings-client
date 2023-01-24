@@ -5,6 +5,7 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { Result } from "~/components/Search";
+import { OpenGraph } from "~/components/Util";
 import {
   useInput,
   useInternalRouter,
@@ -49,6 +50,7 @@ const Search = ({
 
   return (
     <>
+      <OpenGraph title={type} />
       <section
         css={css`
           ${padding({ x: 16 })}

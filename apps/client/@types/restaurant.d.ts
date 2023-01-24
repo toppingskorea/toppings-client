@@ -32,7 +32,7 @@ declare module Restaurant {
     | "filterLikeCount"
   >;
 
-  interface DetailDTO extends BaseDTO {
+  interface DetailDTO extends Omit<BaseDTO, "thumbnail"> {
     images: string[];
     code: string;
     country: string;

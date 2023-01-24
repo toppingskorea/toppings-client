@@ -3,9 +3,7 @@ import { Stack } from "@toss/emotion-utils";
 import { EmptyView } from "~/components/Layout";
 import Skeleton from "~/components/Skeleton";
 import { InfiniteScrollSensor } from "~/components/Util";
-import { useWebSocket } from "~/hooks";
 import { useFetchNotificationList } from "~/server/notice";
-import { useFetchUserInfo } from "~/server/profile";
 import { lastItem } from "~/utils/common/lastItem";
 import NotificationItem from "./NotificationItem";
 
@@ -16,8 +14,9 @@ const NotificationList = () => {
     refetch
   } = useFetchNotificationList();
 
-  const { data: profile } = useFetchUserInfo();
+  // const { data: profile } = useFetchUserInfo();
 
+<<<<<<< HEAD
   useWebSocket(
     {
       destination: `/sub/${profile?.id}`,
@@ -29,6 +28,21 @@ const NotificationList = () => {
   );
 <<<<<<< HEAD
 =======
+=======
+  // useWebSocket(
+  //   {
+  //     destination: `/sub/${profile?.id}`,
+  //     callback: () => {
+  //       refetch();
+  //     }
+  //   },
+  //   true
+  // );
+
+  if (notificationList.pages[0].items.length === 0) {
+    return <EmptyView content="No notice" />;
+  }
+>>>>>>> main
 
   if (notificationList.pages[0].items.length === 0) {
     return <EmptyView content="No notice" />;

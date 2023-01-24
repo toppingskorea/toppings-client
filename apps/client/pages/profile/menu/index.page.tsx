@@ -4,6 +4,7 @@ import { flex, gutter, padding, position } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { MotionButton, SuccessModal } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
+import { OpenGraph } from "~/components/Util";
 import { useInternalRouter, useSetNavigation, useTokenCookie } from "~/hooks";
 import { useLogout } from "~/server/profile";
 
@@ -37,6 +38,7 @@ const ProfileMenu = () => {
         ${padding({ x: 22 })}
       `}
     >
+      <OpenGraph title="Menu" />
       <Text _fontSize={22} _color={colors.secondary[62]} weight={weighs.bold}>
         Menu
       </Text>

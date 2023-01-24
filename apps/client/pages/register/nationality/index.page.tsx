@@ -4,6 +4,7 @@ import { padding, position, width100 } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SearchNationality } from "~/components/Section";
+import { OpenGraph } from "~/components/Util";
 import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
 
 const RegisterNationality = () => {
@@ -26,6 +27,7 @@ const RegisterNationality = () => {
 
   return (
     <>
+      <OpenGraph title="Register Nationality" />
       <SearchNationality
         keyword={keyword.value}
         onCountryClick={name => {

@@ -10,6 +10,10 @@ import {
 import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
 import { MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
+<<<<<<< HEAD
+=======
+import { OpenGraph } from "~/components/Util";
+>>>>>>> main
 import useClickHandler from "./Info.hooks";
 
 export type Props = Pick<
@@ -22,6 +26,7 @@ export type Props = Pick<
   | "scrap"
   | "like"
   | "likeCount"
+  | "images"
 >;
 
 const Info = ({
@@ -32,7 +37,8 @@ const Info = ({
   name,
   scrap,
   type,
-  likeCount
+  likeCount,
+  images
 }: Props) => {
   const { colors, weighs } = useTheme();
 
@@ -56,6 +62,7 @@ const Info = ({
         ${size.width100}
       `}
     >
+      <OpenGraph title={name} description={description} imageUrl={images[0]} />
       <Flex
         justify="space-between"
         css={css`

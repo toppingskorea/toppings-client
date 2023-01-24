@@ -12,6 +12,7 @@ import { SelectEatingHabit } from "~/components/Section";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useRegister } from "~/server/register";
+import { OpenGraph } from "~/components/Util";
 
 const EatingHabits = () => {
   const { push } = useInternalRouter();
@@ -84,6 +85,7 @@ const EatingHabits = () => {
 
   return (
     <>
+      <OpenGraph title="Register Eating Habits" />
       <SelectEatingHabit onClick={onTagClickHandler} habits={register.habits} />
 
       <motion.div

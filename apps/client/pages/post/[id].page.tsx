@@ -37,7 +37,8 @@ const PostDetail = ({
             "type",
             "scrap",
             "like",
-            "likeCount"
+            "likeCount",
+            "images"
           ])}
         />
       </Stack.Vertical>
