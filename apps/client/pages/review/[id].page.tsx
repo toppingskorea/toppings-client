@@ -24,18 +24,8 @@ const ReviewDetail = () => {
       <Suspense.CSROnly>
         <NavigationSetter />
       </Suspense.CSROnly>
-      <Suspense.CSROnly
-        fallback={
-          <Skeleton.Box
-            size={{
-              width: 340,
-              height: 340
-            }}
-          />
-        }
-      >
-        <ImageCarouselWrapper />
-      </Suspense.CSROnly>
+
+      <ImageCarouselWrapper />
       <Suspense.CSROnly
         fallback={
           <Skeleton.Box
