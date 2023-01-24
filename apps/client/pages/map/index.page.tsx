@@ -27,7 +27,7 @@ const MapPage = () => {
       {app.currentSelectCategory !== "Name" && (
         <KakaoMap.ViewStatusButton
           Icon={List}
-          text="View lists"
+          text="View list"
           onClick={() => app.push("/map/viewList")}
         />
       )}
