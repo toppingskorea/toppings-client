@@ -40,11 +40,20 @@ const RegisterButton = () => {
         return [
           {
             title: edit.habits[0].title,
-            content: replaceSpace<string>(edit.habits[0].content)
+            content: replaceSpace(edit.habits[0].content)
           }
         ];
     }
-    return userInfo?.habits;
+
+    if (userInfo?.habits)
+      return [
+        {
+          title: userInfo.habits[0].title,
+          content: replaceSpace(userInfo.habits[0].content)
+        }
+      ];
+
+    return undefined;
   }, [isProfileEatingHabitChanged, userInfo?.habits, edit.habits]);
 
   const onClickRegisterHandler = useCallback(() => {

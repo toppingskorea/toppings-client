@@ -5,22 +5,14 @@ import {
   EmptyScrap,
   FilledScrap,
   OrangeHeart,
-  OrangeStar,
   Share
 } from "@svgs/common";
 import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
-import { useOverlay } from "@toss/use-overlay";
-import { IconWithTextModal, MotionButton } from "~/components/Common";
+import { MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import {
-  useDeleteLike,
-  useDeleteScrap,
-  usePostLike,
-  usePostScrap
-} from "~/server/restaurant";
-import { clipboard, hexToRgba } from "~/utils";
+import useClickHandler from "./Info.hooks";
 
-type Props = Pick<
+export type Props = Pick<
   Restaurant.DetailDTO,
   | "id"
   | "name"
@@ -43,36 +35,20 @@ const Info = ({
   likeCount
 }: Props) => {
   const { colors, weighs } = useTheme();
-  const overlay = useOverlay();
 
-  const { mutate: postScrapMutate } = usePostScrap(id);
-  const { mutate: deleteScrapMutate } = useDeleteScrap(id);
-  const { mutate: postLikeMutate } = usePostLike(id);
-  const { mutate: deleteLikeMutate } = useDeleteLike(id);
-
-  const onClipboardClickHandler = () => {
-    clipboard(address);
-    overlay.open(({ exit }) => (
-      <IconWithTextModal
-        text="Link copied"
-        exitFn={exit}
-        icon={
-          <Flex.Center
-            css={css`
-              ${size({
-                width: 50,
-                height: 50
-              })}
-              background-color: ${hexToRgba(colors.secondary.E2, 0.9)};
-              border-radius: 50%;
-            `}
-          >
-            <OrangeStar />
-          </Flex.Center>
-        }
-      />
-    ));
-  };
+  const {
+    onClipboardClickHandler,
+    onLikeButtonClickHandler,
+    onScrapButtonClickHandler,
+    onShareButtonClickHandler
+  } = useClickHandler({
+    address,
+    description,
+    id,
+    like,
+    name,
+    scrap
+  });
 
   return (
     <Stack.Vertical
@@ -111,39 +87,14 @@ const Info = ({
         </Flex>
 
         <Stack.Horizontal gutter={20} align="flex-start">
-          {/* TODO: device share 기능 배포후 확인 필요 */}
-          <button
-            type="button"
-            onClick={() => {
-              const shareData = {
-                title: document.title,
-                text: "Hello World",
-                url: "https://developer.mozilla.org"
-              };
-
-              if (navigator.canShare && navigator.canShare(shareData))
-                navigator.share(shareData);
-            }}
-          >
+          <button type="button" onClick={onShareButtonClickHandler}>
             <Share />
           </button>
-          <button
-            type="button"
-            onClick={() => {
-              if (scrap) deleteScrapMutate(id);
-              else postScrapMutate(id);
-            }}
-          >
+          <button type="button" onClick={onScrapButtonClickHandler}>
             {scrap ? <FilledScrap /> : <EmptyScrap />}
           </button>
           <Flex direction="column" align="center">
-            <button
-              type="button"
-              onClick={() => {
-                if (like) deleteLikeMutate(id);
-                else postLikeMutate(id);
-              }}
-            >
+            <button type="button" onClick={onLikeButtonClickHandler}>
               {like ? (
                 <OrangeHeart width={20} height={17} />
               ) : (

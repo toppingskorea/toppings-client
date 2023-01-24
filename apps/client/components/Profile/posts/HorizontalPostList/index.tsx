@@ -2,6 +2,7 @@ import type { UseSuspenseInfiniteQueryResultOnSuccess } from "@suspensive/react-
 import { Stack } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import { RestaurantCard } from "~/components/Common";
+import { EmptyView } from "~/components/Layout";
 import Skeleton from "~/components/Skeleton";
 import { InfiniteScrollSensor } from "~/components/Util";
 import { lastItem } from "~/utils/common/lastItem";
@@ -13,14 +14,24 @@ interface Props {
 }
 
 const HorizontalPostList = ({ query }: Props) => {
-  const { push } = useRouter();
+  const { push, pathname } = useRouter();
+
   const { data: restaurants, fetchNextPage: restaurantsFetchNextPage } =
     query();
 
+  if (restaurants.pages[0].items.length === 0) {
+    // savedPage가 아니라면 review 페이지입니다.
+    const isSavedPage = lastItem(pathname.split("/")) === "saved";
+
+    return (
+      <EmptyView content={isSavedPage ? "No saved posts" : "No reviews"} />
+    );
+  }
+
   return (
     <Stack.Vertical gutter={10}>
-      {restaurants.pages.map(restaurant =>
-        restaurant.items.map(restaurant => (
+      {restaurants.pages.map(page =>
+        page.items.map(restaurant => (
           <RestaurantCard
             key={restaurant.id}
             onClick={() => push(`/post/${restaurant.id}`)}
