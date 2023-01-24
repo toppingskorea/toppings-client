@@ -10,10 +10,7 @@ import {
 import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
 import { MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-<<<<<<< HEAD
-=======
 import { OpenGraph } from "~/components/Util";
->>>>>>> main
 import useClickHandler from "./Info.hooks";
 
 export type Props = Pick<

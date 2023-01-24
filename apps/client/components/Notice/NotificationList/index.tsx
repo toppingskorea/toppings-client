@@ -16,39 +16,10 @@ const NotificationList = () => {
 
   // const { data: profile } = useFetchUserInfo();
 
-<<<<<<< HEAD
-  useWebSocket(
-    {
-      destination: `/sub/${profile?.id}`,
-      callback: () => {
-        refetch();
-      }
-    },
-    true
-  );
-<<<<<<< HEAD
-=======
-=======
-  // useWebSocket(
-  //   {
-  //     destination: `/sub/${profile?.id}`,
-  //     callback: () => {
-  //       refetch();
-  //     }
-  //   },
-  //   true
-  // );
-
-  if (notificationList.pages[0].items.length === 0) {
-    return <EmptyView content="No notice" />;
-  }
->>>>>>> main
-
   if (notificationList.pages[0].items.length === 0) {
     return <EmptyView content="No notice" />;
   }
 
->>>>>>> main
   return (
     <Stack.Vertical as="ul" gutter={12}>
       {notificationList.pages.map(page =>

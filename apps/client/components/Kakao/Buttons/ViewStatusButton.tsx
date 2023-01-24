@@ -21,7 +21,7 @@ const ViewStatusButton = ({ text, onClick, Icon }: Props) => {
       variants={defaultScaleChangeVariants}
       onClick={onClick}
       css={css`
-        ${position("absolute", {
+        ${position("fixed", {
           bottom: 16
         })}
         left: 40%;

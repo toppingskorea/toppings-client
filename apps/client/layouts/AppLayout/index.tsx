@@ -7,21 +7,6 @@ import BottomNavigator from "~/components/Layout/BottomNavigator";
 
 const AppLayout = ({ children }: Util.PropsWithChild) => {
   const state = useNavigationValue();
-<<<<<<< HEAD
-  const setNoticeActivate = useNoticeActivateSetter();
-  const { data: profile } = useFetchUserInfo();
-
-  useWebSocket(
-    {
-      destination: `/sub/${profile?.id}`,
-      callback: () => {
-        setNoticeActivate(true);
-      }
-    },
-    true
-  );
-=======
->>>>>>> main
 
   return (
     <Stack.Vertical

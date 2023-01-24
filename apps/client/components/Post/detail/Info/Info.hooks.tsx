@@ -64,11 +64,7 @@ const useClickHandler = ({
     const shareData = {
       title: name,
       text: description,
-<<<<<<< HEAD
-      url: `${originURL}/${id}`
-=======
       url: `${originURL}`
->>>>>>> main
     };
 
     if (navigator.canShare && navigator.canShare(shareData))

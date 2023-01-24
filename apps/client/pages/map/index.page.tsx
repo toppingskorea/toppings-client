@@ -14,26 +14,6 @@ const MapPage = () => {
   const app = useMap();
 
   return (
-<<<<<<< HEAD
-    <KakaoMap
-      center={app.currentLocation}
-      level={6}
-      maxLevel={14}
-      onDragEnd={app.mapEventHandler}
-      onLoaded={app.mapEventHandler}
-      onZoomChanged={app.mapEventHandler}
-      onTilesloaded={app.mapEventHandler}
-    >
-      <KakaoMap.CurrentLocationButton />
-      <KakaoMap.FilteringButton />
-      {app.currentSelectCategory !== "Name" && (
-        <KakaoMap.ViewStatusButton
-          Icon={List}
-          text="View list"
-          onClick={() => app.push("/map/viewList")}
-        />
-      )}
-=======
     <>
       <OpenGraph title="Map" />
       <KakaoMap
@@ -54,7 +34,6 @@ const MapPage = () => {
             onClick={() => app.push("/map/viewList")}
           />
         )}
->>>>>>> main
 
         {app.searchByFilteringList?.map(item => (
           <MapMarker

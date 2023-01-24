@@ -25,9 +25,6 @@ documentation:
   - "**/*.md"
 dependencies:
   - "**/yarn.lock"
-<<<<<<< HEAD
-=======
 workflows:
   - .github/*
   - .github/**/*
->>>>>>> main
