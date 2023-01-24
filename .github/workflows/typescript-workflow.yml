@@ -12,13 +12,6 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: ".nvmrc"
-
-      - name: Install Yarn
-        run: npm install -g yarn
-
       - run: |
           git config http.postBuffer 1048576000
           git fetch --no-tags --depth=1000 origin +refs/heads/${{ github.base_ref }}
