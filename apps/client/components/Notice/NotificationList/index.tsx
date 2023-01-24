@@ -26,7 +26,6 @@ const NotificationList = () => {
     },
     true
   );
-
   return (
     <Stack.Vertical>
       {notificationList.pages.map(notification =>
