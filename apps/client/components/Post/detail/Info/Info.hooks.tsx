@@ -3,6 +3,7 @@ import { OrangeStar } from "@svgs/common";
 import { Flex, size } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { IconWithTextModal } from "~/components/Common";
+import useOriginURL from "~/hooks/useOriginURL";
 import { useSendNotification } from "~/server/notice";
 import {
   useDeleteLike,
@@ -57,11 +58,13 @@ const useClickHandler = ({
     ));
   };
 
+  const { originURL } = useOriginURL();
+
   const onShareButtonClickHandler = () => {
     const shareData = {
       title: name,
       text: description,
-      url: `https://dev.toppings.co.kr/post/${id}`
+      url: `${originURL}/${id}`
     };
 
     if (navigator.canShare && navigator.canShare(shareData))
