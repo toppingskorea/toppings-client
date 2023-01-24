@@ -1,3 +1,4 @@
+import { useTheme } from "@emotion/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import {
@@ -13,12 +14,16 @@ import {
 import { habitTitleChecker } from "~/utils";
 
 const useHistory = () => {
+  const { dimensions, colors } = useTheme();
   const { push } = useRouter();
   const queryClient = useQueryClient();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setCurrentHabitTitle = useCurrentHabitTitleSetter();
-  const { data: recentHistories } = useFetchRecentHistories();
+
+  const { data: recentHistories, fetchNextPage: recentHistoriesFetchNextPage } =
+    useFetchRecentHistories();
+
   const { mutate: deleteRecentHistoryMutate } = useDeleteRecentHistory({
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -51,8 +56,13 @@ const useHistory = () => {
 
   return {
     recentHistories,
+    recentHistoriesFetchNextPage,
     deleteRecentHistoryMutate,
-    historyClickHandler
+    historyClickHandler,
+    dimensions,
+    colors,
+    nextPageButtonHidden:
+      recentHistories.pages[0].totalPage === recentHistories.pages.length
   };
 };
 

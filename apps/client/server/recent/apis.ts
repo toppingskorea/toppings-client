@@ -1,9 +1,9 @@
 import { authRequest } from "~/constants";
 
 // 최근검색 / 최근 검색 목록 조회
-export const getRecentHistories = async () => {
+export const getRecentHistories = async (page: number) => {
   const { data } = await authRequest.get<{ data: Recent.HistoryDTO }>(
-    "/v1/recent?type=Filter"
+    `/v1/recent?type=Filter&page=${page}`
   );
 
   return data.data;

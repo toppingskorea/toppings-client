@@ -97,7 +97,7 @@ const RecentPage = () => {
       <div
         css={css`
           ${position("absolute", {
-            bottom: 10,
+            bottom: -20,
             left: 0
           })}
           backdrop-filter: blur(10px);
