@@ -16,7 +16,7 @@ const PostList = () => {
   const { data: posts, fetchNextPage: fetchUserPostsNextPage } =
     useFetchUserPosts();
 
-  if (posts.pages.length === 0)
+  if (posts.pages[0].items.length === 0)
     return (
       <EmptyView
         content="No posts"

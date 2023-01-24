@@ -19,7 +19,7 @@ const HorizontalPostList = ({ query }: Props) => {
   const { data: restaurants, fetchNextPage: restaurantsFetchNextPage } =
     query();
 
-  if (restaurants.pages.length === 0) {
+  if (restaurants.pages[0].items.length === 0) {
     // savedPage가 아니라면 review 페이지입니다.
     const isSavedPage = lastItem(pathname.split("/")) === "saved";
 
