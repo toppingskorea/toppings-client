@@ -1,0 +1,27 @@
+app-client:
+  - apps/client/*
+  - apps/client/**/*
+app-admin:
+  - apps/admin/*
+  - apps/admin/**/*
+app-corp:
+  - apps/corp/*
+  - apps/corp/**/*
+next-config:
+  - packages/next-config/*
+  - packages/next-config/**/*
+ts-config:
+  - packages/ts-config/*
+  - packages/ts-config/**/*
+configuration:
+  - next.config.js
+  - package*.json
+  - "**/.*"
+  - "**/jest*.ts"
+  - "**/jest*.js"
+  - "**/tsconfig*.json"
+  - .*/**
+documentation:
+  - "**/*.md"
+dependencies:
+  - "**/yarn.lock"
