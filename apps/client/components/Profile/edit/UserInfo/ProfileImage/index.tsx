@@ -31,7 +31,7 @@ const ProfileImage = () => {
         `}
       >
         <Image
-          src={edit.profile || userInfo?.profile || grayAvatar}
+          src={edit.profile ?? userInfo?.profile ?? grayAvatar}
           alt="dummy"
           width={88}
           height={88}

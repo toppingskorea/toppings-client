@@ -25,7 +25,7 @@ const UserBadge = () => {
       `}
     >
       <Image
-        src={userInfo?.profile || grayAvatar}
+        src={userInfo?.profile ?? grayAvatar}
         alt={`${userInfo?.name}'s profile`}
         width={28}
         height={28}

@@ -50,7 +50,7 @@ const Info = () => {
     <>
       <Stack.Horizontal align="center" gutter={0} justify="space-between">
         <Image
-          src={userInfo?.profile || grayAvatar}
+          src={userInfo?.profile ?? grayAvatar}
           alt={`${userInfo?.name}'s profile`}
           width={78}
           height={78}
