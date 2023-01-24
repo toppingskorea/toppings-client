@@ -2,16 +2,19 @@ import { Button, Flex, HStack, Select, Text, VStack } from "@chakra-ui/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useFetchRestaurant } from "~/server/restaurant";
-import { useRejectCause, useOnClickButtonHandler } from "./PostDetail.hooks";
+import useOnEventHandler from "./PostDetail.hooks";
 
 const PostDetail = () => {
   const { query } = useRouter();
 
   const { data: restaurant } = useFetchRestaurant(Number(query.id));
 
-  const { onApproveButtonClickHandler, onRejectButtonClickHandler } =
-    useOnClickButtonHandler(Number(query.id));
-  const { rejectCause, setRejectCause } = useRejectCause();
+  const {
+    onApproveButtonClickHandler,
+    onRejectButtonClickHandler,
+    onChangeRejectCauseHandler,
+    rejectCause
+  } = useOnEventHandler(Number(query.id));
 
   return (
     <VStack>
@@ -37,7 +40,7 @@ const PostDetail = () => {
           <Select
             placeholder="리젝 사유"
             value={rejectCause}
-            onChange={event => setRejectCause(event.currentTarget.value)}
+            onChange={onChangeRejectCauseHandler}
           >
             <option value="Inappropriate photo">부적절한 사진</option>
             <option value="Inappropriate description">부적절한 설명</option>

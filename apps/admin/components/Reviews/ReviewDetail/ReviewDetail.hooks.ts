@@ -5,7 +5,7 @@ import {
   useState
 } from "react";
 import { useToast } from "~/hooks";
-import { useUpdatePublication } from "~/server/restaurant";
+import { useUpdatePublication } from "~/server/review";
 
 const useOnEventHandler = (id: number) => {
   const toast = useToast();
