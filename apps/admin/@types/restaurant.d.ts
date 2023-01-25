@@ -21,5 +21,6 @@ declare module Restaurant {
 
   interface DetailDTO extends BaseDTO {
     images: string[];
+    cause?: string;
   }
 }
