@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import {
   type ChangeEvent,
   type Dispatch,
@@ -5,11 +6,13 @@ import {
   useState
 } from "react";
 import { useToast } from "~/hooks";
-import { useUpdatePublication } from "~/server/review";
+import { useFetchReview, useUpdatePublication } from "~/server/review";
 
 const useOnEventHandler = (id: number) => {
   const toast = useToast();
-  const [rejectCause, setRejectCause] = useState("");
+  const { query } = useRouter();
+  const { data: review } = useFetchReview(Number(query.id));
+  const [rejectCause, setRejectCause] = useState(review.cause ?? "");
 
   const { verifyRejectCause, onChangeRejectCauseHandler } = useRejectCause({
     rejectCause,
