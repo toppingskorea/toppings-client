@@ -11,9 +11,11 @@ import {
 import { useUploadRecentHistory } from "~/server/recent";
 
 const useViewList = () => {
+  const currentSelectKeyword = useCurrentSelectKeywordValue();
+
   useSetNavigation({
     top: {
-      marginBottom: 85
+      marginBottom: currentSelectKeyword ? 45 : 0
     },
     bottom: true
   });
@@ -24,7 +26,6 @@ const useViewList = () => {
   const currentSelectCategory = useCurrentSelectCategoryValue();
   const { executeResetAll } = useResetRecentRecoilState();
   const { mutate: uploadRecentHistoryMutate } = useUploadRecentHistory();
-  const currentSelectKeyword = useCurrentSelectKeywordValue();
 
   const restaurantCardClickHandler = useCallback(
     (item: Restaurant.SearchByFilteringDTO) => {

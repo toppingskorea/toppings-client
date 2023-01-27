@@ -1,4 +1,4 @@
-info  - Loaded env from /Users/chanhyuk/Desktop/personal/toppings-client/apps/client/.env.local
+info  - Loaded env from /Users/donggyukim/Desktop/dev/toppings-client/apps/client/.env.local
 info  - Linting and checking validity of types...
 error - ESLint must be installed in order to run during builds: yarn add --dev eslint
 info  - Creating an optimized production build...
@@ -12,40 +12,40 @@ info  - Generating static pages (23/23)
 info  - Finalizing page optimization...
 
 Route (pages)                              Size     First Load JS
-┌ ○ /                                      1.78 kB         375 kB
-├   /_app                                  0 B             373 kB
-├ ○ /404                                   513 B           373 kB
-├ ○ /login                                 456 B           373 kB
-├ ○ /login/redirect                        271 B           373 kB
-├ ○ /map                                   1.46 kB         378 kB
-├ ○ /map/viewList                          1.27 kB         378 kB
-├ ○ /notice                                4.05 kB         377 kB
-├ λ /post/[id]                             2.19 kB         381 kB
-├ ○ /post/add                              1.06 kB         380 kB
-├ ○ /profile                               3.27 kB         376 kB
-├ ○ /profile/edit                          3.59 kB         376 kB
-├ ○ /profile/edit/eatingHabits             1.92 kB         375 kB
-├ ○ /profile/edit/nationality              1.87 kB         375 kB
-├ ○ /profile/menu                          1.23 kB         374 kB
-├ ○ /profile/posts                         438 B           377 kB
-├ ○ /profile/reviews                       533 B           377 kB
-├ ○ /profile/saved                         533 B           377 kB
-├ ○ /recent                                4.73 kB         377 kB
-├ ○ /recent/eatingHabit                    3.8 kB          377 kB
-├ ○ /recent/nationality                    3.85 kB         377 kB
-├ ○ /recent/restaurant                     3.16 kB         376 kB
-├ ○ /register/eatingHabits                 2.03 kB         375 kB
-├ ○ /register/nationality                  1.82 kB         375 kB
-├ λ /review/[id]                           3.23 kB         376 kB
-├ λ /review/add/[restaurantId]             2.22 kB         375 kB
-└ λ /search/[type]                         1.56 kB         374 kB
-+ First Load JS shared by all              373 kB
+┌ ○ /                                      2.13 kB         365 kB
+├   /_app                                  0 B             362 kB
+├ ○ /404                                   896 B           363 kB
+├ ○ /login                                 456 B           363 kB
+├ ○ /login/redirect                        271 B           363 kB
+├ ○ /map                                   1.84 kB         373 kB
+├ ○ /map/viewList                          1.2 kB          373 kB
+├ ○ /notice                                4.2 kB          372 kB
+├ λ /post/[id]                             2.2 kB          376 kB
+├ ○ /post/add                              1.08 kB         375 kB
+├ ○ /profile                               4.05 kB         372 kB
+├ ○ /profile/edit                          4.37 kB         372 kB
+├ ○ /profile/edit/eatingHabits             2.27 kB         365 kB
+├ ○ /profile/edit/nationality              2.21 kB         365 kB
+├ ○ /profile/menu                          2.07 kB         370 kB
+├ ○ /profile/posts                         468 B           372 kB
+├ ○ /profile/reviews                       563 B           372 kB
+├ ○ /profile/saved                         563 B           372 kB
+├ ○ /recent                                4.92 kB         372 kB
+├ ○ /recent/eatingHabit                    4.35 kB         372 kB
+├ ○ /recent/nationality                    4.4 kB          372 kB
+├ ○ /recent/restaurant                     3.73 kB         371 kB
+├ ○ /register/eatingHabits                 3.75 kB         366 kB
+├ ○ /register/nationality                  2.17 kB         365 kB
+├ λ /review/[id]                           3.68 kB         371 kB
+├ λ /review/add/[restaurantId]             2.65 kB         370 kB
+└ λ /search/[type]                         1.93 kB         364 kB
++ First Load JS shared by all              362 kB
   ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
   ├ chunks/main-02cafb80b503f99e.js        30.7 kB
-  ├ chunks/pages/_app-5905ef2dac3f02dd.js  295 kB
+  ├ chunks/pages/_app-36ffd97fd5b30aef.js  285 kB
   └ chunks/webpack-235955b20eb3ee85.js     1.15 kB
 
-ƒ Middleware                               64.7 kB
+ƒ Middleware                               64.8 kB
 
 λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
 ○  (Static)  automatically rendered as static HTML (uses no initial props)

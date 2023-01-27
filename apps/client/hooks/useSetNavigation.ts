@@ -1,5 +1,4 @@
-import type { useNavigationValue } from "@atoms/index";
-import { useNavigationSetter } from "@atoms/index";
+import { useNavigationSetter, type useNavigationValue } from "@atoms/index";
 import { useEffect } from "react";
 
 const useSetNavigation = (

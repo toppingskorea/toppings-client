@@ -58,6 +58,7 @@ const RecentPage = () => {
         {...framerMocker}
         css={css`
           ${position("absolute", { top: 109, left: 0 })}
+          z-index: ${zIndex.one};
         `}
       >
         <Badge attach="left">Recent</Badge>
@@ -96,7 +97,7 @@ const RecentPage = () => {
       <div
         css={css`
           ${position("absolute", {
-            bottom: 10,
+            bottom: -20,
             left: 0
           })}
           backdrop-filter: blur(10px);

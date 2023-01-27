@@ -19,5 +19,6 @@ declare module Route {
     | "/notice"
     | "/register/nationality"
     | "/register/eatingHabits"
-    | "/about";
+    | "/about"
+    | "/recent";
 }

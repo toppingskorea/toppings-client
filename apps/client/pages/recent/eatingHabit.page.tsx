@@ -15,7 +15,8 @@ import { replaceSpace } from "~/utils";
 const EatingHabitPage = () => {
   useSetNavigation({
     top: {
-      marginBottom: 37
+      marginBottom: 37,
+      backDirectlyURL: "/recent"
     }
   });
 

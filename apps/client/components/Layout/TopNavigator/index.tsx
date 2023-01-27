@@ -10,7 +10,7 @@ import { useInternalRouter } from "~/hooks";
 
 const TopNavigator = () => {
   const { zIndex } = useTheme();
-  const { back } = useInternalRouter();
+  const { back, push } = useInternalRouter();
   const state = useNavigationValue();
   const overlay = useOverlay();
 
@@ -20,6 +20,11 @@ const TopNavigator = () => {
         <AlertModal exitFn={exit} rightClickFn={back} rightText="sure" />
       ));
 
+      return;
+    }
+
+    if (state.top?.backDirectlyURL) {
+      push(state.top.backDirectlyURL);
       return;
     }
 

@@ -16,16 +16,6 @@ const NotificationList = () => {
 
   // const { data: profile } = useFetchUserInfo();
 
-  // useWebSocket(
-  //   {
-  //     destination: `/sub/${profile?.id}`,
-  //     callback: () => {
-  //       refetch();
-  //     }
-  //   },
-  //   true
-  // );
-
   if (notificationList.pages[0].items.length === 0) {
     return <EmptyView content="No notice" />;
   }

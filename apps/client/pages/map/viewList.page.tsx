@@ -3,6 +3,8 @@ import { SmallMarker } from "@svgs/map";
 import { SmallExit } from "@svgs/recent";
 import {
   Flex,
+  gutter,
+  margin,
   padding,
   position,
   size,
@@ -22,57 +24,63 @@ const ViewListPage = () => {
 
   return (
     <div>
-      <motion.div
-        variants={defaultSlideFadeInVariants("right")}
-        {...framerMocker}
-        css={css`
-          ${position("absolute", { top: 114, left: 0 })}
-        `}
-      >
-        <Badge
-          attach="left"
-          size={{
-            width: 158,
-            height: 35
-          }}
-        >
-          {app.currentSelectCategory === "Habit"
-            ? "Eating habit"
-            : "Nationality"}
-        </Badge>
-      </motion.div>
       {app.currentSelectKeyword && (
-        <motion.div
-          onClick={app.exitClickHandler}
-          variants={defaultSlideFadeInVariants("right")}
-          {...framerMocker}
-          css={css`
-            ${position("absolute", { top: 118, left: 177 })}
-            ${touchable}
-          z-index: ${app.zIndex.four};
-          `}
-        >
-          <Flex
-            align="center"
-            justify="space-between"
+        <>
+          <motion.div
+            variants={defaultSlideFadeInVariants("right")}
+            {...framerMocker}
             css={css`
-              ${size({
-                width: 92,
-                height: 27
-              })}
-              border-radius: 20px;
-              border: 0.9px solid ${app.colors.secondary.B0};
-              ${padding({
-                x: 10,
-                y: 6
-              })};
+              ${position("absolute", { top: 108, left: 0 })}
             `}
           >
-            <Text _fontSize={12}>{app.currentSelectKeyword}</Text>
+            <Badge
+              paddingLeft={25}
+              attach="left"
+              _fontSize={20}
+              size={{
+                width: 172,
+                height: 35
+              }}
+            >
+              {app.currentSelectCategory === "Habit"
+                ? "Eating habit"
+                : "Nationality"}
+            </Badge>
+          </motion.div>
 
-            <SmallExit />
-          </Flex>
-        </motion.div>
+          <motion.div
+            onClick={app.exitClickHandler}
+            variants={defaultSlideFadeInVariants("right")}
+            {...framerMocker}
+            css={css`
+              ${position("absolute", { top: 112, left: 179 })}
+              ${touchable}
+          z-index: ${app.zIndex.four};
+            `}
+          >
+            <Flex
+              align="center"
+              justify="space-between"
+              css={css`
+                ${size({
+                  height: 27
+                })}
+                border-radius: 20px;
+                border: 0.9px solid ${app.colors.secondary.B0};
+                ${gutter("horizontal", 13)}
+                ${padding({
+                  x: 10,
+                  y: 6
+                })};
+              `}
+            >
+              <Text _fontSize={12} _color={app.colors.secondary[69]}>
+                {app.currentSelectKeyword}
+              </Text>
+              <SmallExit />
+            </Flex>
+          </motion.div>
+        </>
       )}
 
       <Flex
@@ -82,8 +90,10 @@ const ViewListPage = () => {
           overflow-y: scroll;
           gap: 10px;
           ${padding({
-            x: 27,
-            y: 16
+            x: 27
+          })}
+          ${margin({
+            y: 67
           })}
         `}
       >

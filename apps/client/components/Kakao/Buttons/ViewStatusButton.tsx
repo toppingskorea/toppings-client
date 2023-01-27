@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import type { FC, SVGProps } from "react";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
+import { hexToRgba } from "~/utils";
 
 interface Props {
   text: string;
@@ -12,7 +13,7 @@ interface Props {
 }
 
 const ViewStatusButton = ({ text, onClick, Icon }: Props) => {
-  const { colors, zIndex, weighs } = useTheme();
+  const { colors, zIndex, weighs, dimensions } = useTheme();
 
   return (
     <motion.button
@@ -21,10 +22,11 @@ const ViewStatusButton = ({ text, onClick, Icon }: Props) => {
       variants={defaultScaleChangeVariants}
       onClick={onClick}
       css={css`
-        ${position("absolute", {
-          bottom: 16
+        ${position("fixed", {
+          bottom: dimensions.bottomNavigationHeight + 16,
+          left: "50%"
         })}
-        left: 40%;
+
         ${flex("center")}
         ${padding({
           x: 21,
@@ -32,7 +34,8 @@ const ViewStatusButton = ({ text, onClick, Icon }: Props) => {
         })}
         border-radius: 20px;
         background-color: ${colors.white};
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        transform: translateX(-50%) !important;
+        box-shadow: 0px 4px 4px ${hexToRgba(colors.black, 0.25)};
         z-index: ${zIndex.two};
       `}
     >
@@ -40,6 +43,7 @@ const ViewStatusButton = ({ text, onClick, Icon }: Props) => {
       <Text
         _fontSize={15}
         weight={weighs.medium}
+        _color={colors.secondary["6D"]}
         css={css`
           margin-left: 19px;
         `}
