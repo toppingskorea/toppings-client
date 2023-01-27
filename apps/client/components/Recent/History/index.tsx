@@ -49,7 +49,7 @@ const History = () => {
         ))
       )}
       {!app.nextPageButtonHidden && (
-        <MotionButton onClick={() => app.recentHistoriesFetchNextPage()}>
+        <MotionButton onClick={app.onMoreRecentHistoryClickHandler}>
           <Text _color={app.colors.primary} _fontSize={15}>
             More from recent history
           </Text>

@@ -54,9 +54,13 @@ const useHistory = () => {
     }
   };
 
+  const onMoreRecentHistoryClickHandler = () => {
+    recentHistoriesFetchNextPage();
+  };
+
   return {
     recentHistories,
-    recentHistoriesFetchNextPage,
+    onMoreRecentHistoryClickHandler,
     deleteRecentHistoryMutate,
     historyClickHandler,
     dimensions,
