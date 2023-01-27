@@ -38,16 +38,6 @@ export const defaultScaleChangeVariants: Variants = {
   }
 };
 
-export const defaultFixedScaleChangeVariants: Variants = {
-  initial: {
-    scale: 0,
-    translateX: "-50%"
-  },
-  animate: {
-    scale: 1
-  }
-};
-
 const generateVariantFromTransformOrigin = (origin: Common.TransformOrigin) => {
   switch (origin) {
     case "top":
