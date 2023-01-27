@@ -18,5 +18,6 @@ declare module Review {
   interface DetailDTO extends BaseDTO {
     images: string[];
     userProfile: string;
+    cause?: string;
   }
 }
