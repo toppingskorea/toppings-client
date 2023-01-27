@@ -22,9 +22,10 @@ const ViewStatusButton = ({ text, onClick, Icon }: Props) => {
       onClick={onClick}
       css={css`
         ${position("fixed", {
-          bottom: dimensions.bottomNavigationHeight + 16
+          bottom: dimensions.bottomNavigationHeight + 16,
+          left: "50%"
         })}
-        left: 50%;
+
         ${flex("center")}
         ${padding({
           x: 21,
