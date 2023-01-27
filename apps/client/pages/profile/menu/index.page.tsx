@@ -11,7 +11,7 @@ import { useLogout } from "~/server/profile";
 const ProfileMenu = () => {
   const { colors, weighs, dimensions } = useTheme();
   const cookie = useTokenCookie();
-  const router = useInternalRouter();
+  const { push, replace } = useInternalRouter();
   useSetNavigation({
     top: {
       marginBottom: 34
@@ -27,7 +27,7 @@ const ProfileMenu = () => {
       setTimeout(() => {
         overlay.close();
         cookie.remove();
-        router.replace("/");
+        replace("/");
       }, 3000);
     }
   });
@@ -42,6 +42,11 @@ const ProfileMenu = () => {
       <Text _fontSize={22} _color={colors.secondary[62]} weight={weighs.bold}>
         Menu
       </Text>
+      <div>
+        <button type="button" onClick={() => push("/about")}>
+          go About
+        </button>
+      </div>
 
       <MotionButton
         onClick={() => logoutMutate()}
