@@ -43,6 +43,7 @@ const ViewStatusButton = ({ text, onClick, Icon }: Props) => {
       <Text
         _fontSize={15}
         weight={weighs.medium}
+        _color={colors.secondary["6D"]}
         css={css`
           margin-left: 19px;
         `}
