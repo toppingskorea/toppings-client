@@ -24,7 +24,7 @@ const TopNavigator = () => {
     }
 
     if (state.top?.backDirectlyURL) {
-      push(state.top?.backDirectlyURL);
+      push(state.top.backDirectlyURL);
       return;
     }
 
