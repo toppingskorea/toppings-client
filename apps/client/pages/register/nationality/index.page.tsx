@@ -16,10 +16,11 @@ const RegisterNationality = () => {
     top: {
       marginBottom: 35,
       title: (
-        <Text _fontSize={23} weight={weighs.bold}>
+        <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
           Select a Nationality
         </Text>
-      )
+      ),
+      hideBackButton: true
     }
   });
 

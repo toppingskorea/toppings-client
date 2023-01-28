@@ -14,6 +14,7 @@ const navigationAtom = atom<{
       onClick: MouseEventHandler<HTMLButtonElement>;
     };
     marginBottom?: Common.CSSPixelValue;
+    hideBackButton?: true;
     backButtonCaution?: boolean;
     backDirectlyURL?: Route.Path;
   };
