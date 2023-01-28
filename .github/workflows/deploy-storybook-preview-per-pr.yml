@@ -34,7 +34,7 @@ jobs:
       - name: Build Storybook
         if: ${{ github.event.action != 'closed' }}
         run: |
-          yarn workspace client build-storybook
+          yarn workspace @toppings/client build-storybook
       - name: Deploy preview
         uses: ./.github/workflows/preview-deploy-action
         with:
