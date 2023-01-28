@@ -1,0 +1,42 @@
+name: Deploy Storybook
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_storybook:
+    name: "Deploy Storybook"
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.actor }}:${{ secrets.GH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: |
+            .yarn
+            node_modules
+            */**/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install Dependencies
+        if: ${{ steps.yarn-cache.outputs.cache-hit != 'true' }}
+        run: YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn
+
+      - name: Build Storybook
+        run: yarn build:storybook:ci
+
+      - name: Deploy Storybook
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: ./.out
+          target-folder: main
+          commit-message: Deploy main branch 🛫
+          force: false

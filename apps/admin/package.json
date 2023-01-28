@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc -p tsconfig.json --noEmit"
+    "type-check": "tsc -p tsconfig.json --noEmit",
+    "build-storybook": "echo 'No storybook'"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.16",
