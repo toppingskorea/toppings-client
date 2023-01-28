@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { RemoveHistory, Timeline } from "@svgs/recent";
-import { Flex, padding, Stack, touchable } from "@toss/emotion-utils";
+import { Flex, margin, padding, Stack, touchable } from "@toss/emotion-utils";
 import { MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { hiddenScroll } from "~/styles/emotionUtils";
@@ -8,6 +8,25 @@ import useHistory from "./History.hooks";
 
 const History = () => {
   const app = useHistory();
+
+  if (app.recentHistories.pages[0].items.length === 0)
+    return (
+      <Flex.Center
+        css={css`
+          ${margin({
+            top: 38
+          })}
+        `}
+      >
+        <Text
+          _color={app.colors.secondary.A3}
+          _fontSize={15}
+          weight={app.weighs.bold}
+        >
+          No search history found
+        </Text>
+      </Flex.Center>
+    );
 
   return (
     <Stack.Vertical
