@@ -1,0 +1,105 @@
+name: Deploy PR Preview
+author: toppings
+description: >
+  PR의 빌드된 파일을 Github Pages에 배포합니다.
+
+branding:
+  icon: git-pull-request
+  color: yellow
+
+inputs:
+  type:
+    description: 배포하고 싶은 미리보기의 형태
+    required: true
+  source-dir:
+    description: 배포하고싶은 폴더
+    required: true
+  github-event-action:
+    required: true
+  workspace:
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Store environment variables
+      env:
+        github-event-action: ${{ inputs.github-event-action }}
+        pr: ${{ github.event.number }}
+      run: |
+        echo "targetdir=pr-preview/pr-$pr/${{ inputs.workspace }}" >> $GITHUB_ENV
+        echo "pr=$pr" >> $GITHUB_ENV
+
+        org=$(echo "$GITHUB_REPOSITORY" | cut -d "/" -f 1)
+        thirdleveldomain=$(echo "$GITHUB_REPOSITORY" | cut -d "/" -f 2 | cut -d "." -f 1)
+
+        if [ "$org" == "$thirdleveldomain" ]; then
+          pagesurl="${org}.github.io"
+        else
+          pagesurl=$(echo "$GITHUB_REPOSITORY" | sed 's/\//.github.io\//')
+        fi
+
+        echo "pagesurl=$pagesurl" >> $GITHUB_ENV
+
+        echo "emptydir=$(mktemp -d)" >> $GITHUB_ENV
+        echo "datetime=$(date '+%Y-%m-%d %H:%M %Z')" >> $GITHUB_ENV
+
+      shell: bash
+
+    - name: Deploy preview directory
+      if: ${{ inputs.github-event-action == 'synchronize' || inputs.github-event-action == 'opened' || inputs.github-event-action == 'reopened' }}
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages
+        folder: ${{ inputs.source-dir }}
+        target-folder: ${{ env.targetdir }}
+        commit-message: Deploy ${{ inputs.workspace }} ${{ inputs.type }} preview for PR ${{ env.pr }} 🛫
+        force: false
+
+    - name: Expose deployment URL
+      id: url
+      run: echo "::set-output name=url::https://${{ env.pagesurl }}/${{ env.targetdir }}"
+      shell: bash
+
+    - name: Leave a comment after deployment
+      if: ${{ (inputs.github-event-action == 'synchronize' || inputs.github-event-action == 'opened' || inputs.github-event-action == 'reopened') && env.deployment_status == 'success' }}
+      uses: marocchino/sticky-pull-request-comment@v2
+      with:
+        header: ${{ inputs.workspace }}
+        message: "\
+          ${{ inputs.workspace }} ${{ inputs.type }}
+
+          :---:
+
+          :rocket: https://${{ env.pagesurl }}/${{ env.targetdir }}
+
+          on branch [gh-pages](\
+          ${{ github.server_url }}/${{ github.repository }}\
+          /tree/gh-pages)
+          at ${{ env.datetime }}
+          "
+
+    - name: Remove preview directory
+      if: ${{ inputs.github-event-action == 'closed' }}
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages
+        folder: ${{ env.emptydir }}
+        target-folder: ${{ env.targetdir }}
+        commit-message: Remove preview for PR ${{ env.pr }} 🛬
+        force: false
+
+    - name: Leave a comment after removal
+      if: ${{ inputs.github-event-action == 'closed' && env.deployment_status == 'success' }}
+      uses: marocchino/sticky-pull-request-comment@v2
+      with:
+        header: ${{ inputs.workspace }}
+        message: "\
+          ${{ inputs.workspace }} ${{ inputs.type }}
+
+          :---:
+
+          Pull Request가 닫히며 미리보기 배포가 삭제되었습니다.
+
+          ${{ env.datetime }}
+          "

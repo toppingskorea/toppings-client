@@ -17,9 +17,11 @@
     "test:coverage": "jest --coverage --coverageDirectory=output/coverage/jest",
     "test:ci": "jest --ci",
     "type-check:ci": "yarn workspaces since run type-check",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "build:storybook:ci": "yarn workspace @toppings/monorepo-storybook-builder build && yarn storybook-to-ghpages --out=.out --packages=apps"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.12",
     "@babel/runtime": "^7.19.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
