@@ -4,8 +4,8 @@ import { flex, Flex, padding, Spacing, touchable } from "@toss/emotion-utils";
 import { useCallback, useEffect, useState } from "react";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter } from "~/hooks";
-import type { SearchType } from "~/pages/search/[type].page";
 import { neverChecker, queryChunk } from "~/utils";
+import type { SearchType } from "../SearchPage";
 
 interface Props {
   value: string;
