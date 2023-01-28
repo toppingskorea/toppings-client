@@ -1,86 +1,9 @@
-import { css, useTheme } from "@emotion/react";
-import { Suspense } from "@suspensive/react";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { Spacing, Stack } from "@toss/emotion-utils";
 import axios from "axios";
-import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { Badge, ImageCarousel } from "~/components/Common";
-import { Text } from "~/components/Common/Typo";
-import { Info, Likes, ReviewLeadingSection, Reviews } from "~/components/Post";
+import type { GetServerSideProps } from "next";
+import { PostDetailPage } from "~/components/Post";
 import { env } from "~/constants";
 import { getLikePercent, Keys as RestaurantKeys } from "~/server/restaurant";
-import { pick } from "~/utils";
-import usePost from "./post.hooks";
-
-const PostDetail = ({
-  id
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const app = usePost(id);
-
-  return (
-    <section>
-      <Stack.Vertical
-        align="center"
-        gutter={0}
-        css={css`
-          margin: 0 13px;
-        `}
-      >
-        <ImageCarousel images={app.restaurantDetail.images} />
-        <Spacing size={18} />
-        <Info
-          {...pick({ ...app.restaurantDetail }, [
-            "id",
-            "name",
-            "address",
-            "description",
-            "type",
-            "scrap",
-            "like",
-            "likeCount",
-            "images"
-          ])}
-        />
-      </Stack.Vertical>
-      <Spacing size={20} />
-
-      <Badge
-        attach="left"
-        size={{
-          width: 160,
-          height: 34
-        }}
-      >
-        Likes
-      </Badge>
-      <Spacing size={20} />
-      {!app.likePercent.countryPercent.length &&
-      !app.likePercent.habitPercent.length ? (
-        <EmptyText />
-      ) : (
-        <Likes id={id} />
-      )}
-
-      <Spacing size={30} />
-
-      <Badge
-        attach="left"
-        size={{
-          width: 160,
-          height: 34
-        }}
-      >
-        Reviews
-      </Badge>
-      <Spacing size={20} />
-      <ReviewLeadingSection />
-      <Spacing size={40} />
-      <Suspense.CSROnly>
-        <Reviews id={id} />
-      </Suspense.CSROnly>
-    </section>
-  );
-};
 
 export const getServerSideProps: GetServerSideProps<{
   id: string;
@@ -129,24 +52,4 @@ export const getServerSideProps: GetServerSideProps<{
   };
 };
 
-export default PostDetail;
-
-const EmptyText = () => {
-  const { colors, weighs } = useTheme();
-
-  return (
-    <Text
-      _fontSize={13}
-      lineHeight={16}
-      _color={colors.secondary.A3}
-      weight={weighs.bold}
-      whiteSpace="pre"
-      textAlign="center"
-      css={css`
-        display: block;
-      `}
-    >
-      Click the first like!
-    </Text>
-  );
-};
+export default PostDetailPage;

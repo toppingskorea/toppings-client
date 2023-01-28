@@ -8,7 +8,7 @@ import { Text } from "~/components/Common/Typo";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useFetchLikePercent, useFetchRestaurant } from "~/server/restaurant";
 
-const usePost = (id: string) => {
+const usePostDetail = (id: string) => {
   const { colors, weighs } = useTheme();
   const { push } = useInternalRouter();
   const { data: restaurantDetail } = useFetchRestaurant(+id);
@@ -87,4 +87,4 @@ const usePost = (id: string) => {
   };
 };
 
-export default usePost;
+export default usePostDetail;
