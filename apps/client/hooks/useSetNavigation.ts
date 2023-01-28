@@ -4,7 +4,8 @@ import { useEffect } from "react";
 const useSetNavigation = (
   props: ReturnType<typeof useNavigationValue> = {
     top: undefined,
-    bottom: false
+    bottom: false,
+    tagFamily: false
   }
 ) => {
   const setter = useNavigationSetter();
@@ -15,7 +16,8 @@ const useSetNavigation = (
     return () => {
       setter({
         top: undefined,
-        bottom: false
+        bottom: false,
+        tagFamily: false
       });
     };
   }, [props, setter]);

@@ -1,5 +1,5 @@
 import { css, useTheme } from "@emotion/react";
-import { position } from "@toss/emotion-utils";
+import { padding, position } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import { RoundedTag } from "~/components/Common";
 import { hiddenScroll } from "~/styles/emotionUtils";
@@ -16,11 +16,15 @@ const TagFamily = ({ isBlur }: Props) => {
   return (
     <div
       css={css`
+        width: 560px;
         ${position("fixed", {
-          bottom: dimensions.bottomNavigationHeight - 20
+          bottom: isBlur ? dimensions.bottomNavigationHeight - 20 : 0
         })}
-        padding-left: 27px;
-        ${isBlur && "backdrop-filter: blur(10px);"}
+        ${padding({
+          y: 20,
+          left: 27
+        })}
+        backdrop-filter: blur(10px);
       `}
     >
       <div

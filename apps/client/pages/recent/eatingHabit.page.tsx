@@ -25,7 +25,8 @@ const EatingHabitPage = () => {
           Select a Eating Habit
         </Text>
       )
-    }
+    },
+    tagFamily: false
   });
 
   const { push } = useRouter();
@@ -37,7 +38,7 @@ const EatingHabitPage = () => {
   return (
     <>
       <OpenGraph title="Search Eating Habits" />
-      <TagFamily />
+      <TagFamily isBlur />
 
       <SelectEatingHabit
         isRecent

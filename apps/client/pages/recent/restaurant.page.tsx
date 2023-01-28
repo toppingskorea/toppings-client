@@ -23,7 +23,7 @@ const RecentPage = () => {
           {...app.keyword}
         />
       </SearchLayout>
-      <TagFamily />
+      <TagFamily isBlur />
 
       {/* border는 임시로 넣어놨음 */}
       <div
