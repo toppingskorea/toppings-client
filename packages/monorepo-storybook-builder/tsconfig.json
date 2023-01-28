@@ -1,0 +1,11 @@
+{
+  "extends": "@toppings/ts-config/base.json",
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "noEmit": false,
+    "inlineSources": false,
+    "sourceMap": false
+  }
+}
