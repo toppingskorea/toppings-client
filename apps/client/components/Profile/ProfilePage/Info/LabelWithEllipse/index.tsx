@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 import { Text } from "~/components/Common/Typo";
 import { defaultSlideFadeInVariants } from "~/constants";
 import { useInternalRouter } from "~/hooks";
-import Ellipse from "../Ellipse";
+import Ellipse from "./Ellipse";
 
 interface Props extends ComponentProps<typeof Ellipse> {
   label: string;

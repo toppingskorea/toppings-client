@@ -11,7 +11,7 @@ import { framerMocker, staggerOne } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useFetchUserInfo } from "~/server/profile";
 import { hexToRgba } from "~/utils";
-import LabelWithEllipse from "../../LabelWithEllipse";
+import LabelWithEllipse from "./LabelWithEllipse";
 
 const Info = () => {
   const { colors, weighs } = useTheme();
