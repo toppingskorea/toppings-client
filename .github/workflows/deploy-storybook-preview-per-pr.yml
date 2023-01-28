@@ -11,20 +11,14 @@ on:
 concurrency: preview-${{ github.ref }}
 
 jobs:
-  deploy_preview_order:
-    name: "Deploy Storybook per PR [Order]"
-    if: "contains(github.event.pull_request.title, 'order')"
+  deploy_preview_client:
+    name: "Deploy Storybook per PR"
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.actor }}:${{ secrets.GH_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: ".nvmrc"
-      - name: Install Yarn
-        run: npm install -g yarn
 
       - uses: actions/cache@v2
         id: yarn-cache
@@ -40,49 +34,11 @@ jobs:
       - name: Build Storybook
         if: ${{ github.event.action != 'closed' }}
         run: |
-          yarn workspace order build-storybook
+          yarn workspace client build-storybook
       - name: Deploy preview
         uses: ./.github/workflows/preview-deploy-action
         with:
           type: 스토리북
-          source-dir: ./apps/order/storybook-static
+          source-dir: ./apps/client/storybook-static
           github-event-action: ${{ github.event.action }}
-          workspace: order
-
-  deploy_preview_product:
-    name: "Deploy Storybook per PR [Product]"
-    if: "contains(github.event.pull_request.title, 'product')"
-    runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ github.actor }}:${{ secrets.GH_TOKEN }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: ".nvmrc"
-      - name: Install Yarn
-        run: npm install -g yarn
-
-      - uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: .yarn
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: Validate a project when using Zero-Installs
-        if: ${{ steps.yarn-cache.outputs.cache-hit != 'true' }}
-        run: YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn
-
-      - name: Build Storybook
-        if: ${{ github.event.action != 'closed' }}
-        run: |
-          yarn workspace product build-storybook
-      - name: Deploy preview
-        uses: ./.github/workflows/preview-deploy-action
-        with:
-          type: 스토리북
-          source-dir: ./apps/product/storybook-static
-          github-event-action: ${{ github.event.action }}
-          workspace: product
+          workspace: client
