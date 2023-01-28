@@ -57,7 +57,12 @@ export const getServerSideProps: GetServerSideProps<{
 
   await queryClient.prefetchQuery(Keys.review(+id), async () => {
     const { data } = await axios.get<{ data: Restaurant.ReviewDTO }>(
-      `${env.TOPPINGS_SERVER_URL}/api/v1/review/${id}`
+      `${env.TOPPINGS_SERVER_URL}/api/v1/review/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`
+        }
+      }
     );
 
     return data.data;

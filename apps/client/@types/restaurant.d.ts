@@ -66,5 +66,6 @@ declare module Restaurant {
     images: string[];
     habits: string[];
     userProfile?: string;
+    restaurantId: number;
   }
 }
