@@ -18,7 +18,7 @@
     "test:ci": "jest --ci",
     "type-check:ci": "yarn workspaces since run type-check",
     "postinstall": "husky install",
-    "build:storybook:ci": "yarn workspace @toppings/monorepo-storybook-builder build && yarn storybook-to-ghpages --out=.out --packages=apps"
+    "build:storybook:ci": "yarn workspace @toppings/monorepo-storybook-builder build && yarn workspace @toppings/monorepo-storybook-builder storybook-to-ghpages --out=.out --packages=apps"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
