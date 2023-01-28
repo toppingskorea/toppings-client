@@ -4,8 +4,10 @@ import {
   useCurrentSelectKeywordSetter,
   useSearchByFilteringSetter
 } from "@atoms/index";
+import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { Text } from "~/components/Common/Typo";
 import { useInput, useSetNavigation } from "~/hooks";
 import {
   useFetchRestaurantByName,
@@ -13,16 +15,24 @@ import {
 } from "~/server/recent";
 
 const useRestaurant = () => {
+  const { colors, weighs } = useTheme();
+  const [restaurantList, setRestaurantList] =
+    useState<Restaurant.SearchByFilteringDTO[]>();
+
   useSetNavigation({
     top: {
       marginBottom: 37,
-      backDirectlyURL: "/recent"
+      backDirectlyURL: "/recent",
+      title: (
+        <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
+          {restaurantList?.length ?? "0"} Restaurants
+        </Text>
+      )
     }
   });
 
   const { push } = useRouter();
-  const [restaurantList, setRestaurantList] =
-    useState<Restaurant.SearchByFilteringDTO[]>();
+
   const setCurrentLocation = useCurrentLocationSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();

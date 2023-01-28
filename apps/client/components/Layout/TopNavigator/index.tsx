@@ -50,9 +50,13 @@ const TopNavigator = () => {
             background-color: white;
           `}
         >
-          <MotionButton onClick={onClickBackButton}>
-            <LeftArrow />
-          </MotionButton>
+          {state.top?.hideBackButton ? (
+            <div id="dummy-element" />
+          ) : (
+            <MotionButton onClick={onClickBackButton}>
+              <LeftArrow />
+            </MotionButton>
+          )}
 
           {state.top?.title ? (
             <motion.div

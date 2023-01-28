@@ -20,7 +20,7 @@ const EatingHabits = () => {
   const [register, setRegister] = useRegisterState();
   const overlay = useOverlay();
 
-  const { mutate } = useRegister({
+  const { mutate: registerMutate } = useRegister({
     onSuccess: () => {
       openSuccessModal();
       setTimeout(() => {
@@ -30,16 +30,16 @@ const EatingHabits = () => {
   });
 
   const onSubmitRegister = useCallback(() => {
-    mutate({
+    registerMutate({
       ...register
     });
-  }, [mutate, register]);
+  }, [registerMutate, register]);
 
   useSetNavigation({
     top: {
       marginBottom: 35,
       title: (
-        <Text _fontSize={23} weight={weighs.bold} _color={colors.secondary[47]}>
+        <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
           Select a Eating Habit
         </Text>
       ),

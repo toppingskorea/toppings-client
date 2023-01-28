@@ -2,7 +2,9 @@ import {
   useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter
 } from "@atoms/index";
+import { useTheme } from "@emotion/react";
 import { SearchInput } from "~/components/Common";
+import { Text } from "~/components/Common/Typo";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
 import { SearchNationality } from "~/components/Section";
@@ -16,6 +18,7 @@ import {
 import { useUploadRecentHistory } from "~/server/recent";
 
 const NationalityPage = () => {
+  const { colors, weighs } = useTheme();
   const { push } = useInternalRouter();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
@@ -24,7 +27,12 @@ const NationalityPage = () => {
   useSetNavigation({
     top: {
       marginBottom: 37,
-      backDirectlyURL: "/recent"
+      backDirectlyURL: "/recent",
+      title: (
+        <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
+          Select a Nationality
+        </Text>
+      )
     }
   });
 

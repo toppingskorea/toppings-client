@@ -24,7 +24,8 @@ const RecentPage = () => {
       right: {
         element: <Exit />,
         onClick: () => push("/map")
-      }
+      },
+      hideBackButton: true
     }
   });
 
