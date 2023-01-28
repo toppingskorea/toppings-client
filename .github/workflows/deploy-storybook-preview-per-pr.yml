@@ -41,4 +41,4 @@ jobs:
           type: 스토리북
           source-dir: ./apps/client/storybook-static
           github-event-action: ${{ github.event.action }}
-          workspace: client
+          workspace: @toppings/client
