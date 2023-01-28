@@ -43,3 +43,4 @@ package-lock.json
 .out
 
 apps/client/node_modules/.cache/storybook
+node_modules
