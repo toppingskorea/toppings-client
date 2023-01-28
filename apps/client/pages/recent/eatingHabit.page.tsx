@@ -25,8 +25,7 @@ const EatingHabitPage = () => {
           Select a Eating Habit
         </Text>
       )
-    },
-    tagFamily: false
+    }
   });
 
   const { push } = useRouter();
