@@ -1,6 +1,5 @@
 import { css, useTheme } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
-import { Exit } from "@svgs/common";
 import {
   flex,
   padding,
@@ -13,11 +12,10 @@ import { Text } from "~/components/Common/Typo";
 import { RegisterButton, UserInfo } from "~/components/Profile/edit";
 import Skeleton from "~/components/Skeleton";
 import { OpenGraph } from "~/components/Util";
-import { useInternalRouter, useSetNavigation } from "~/hooks";
+import { useSetNavigation } from "~/hooks";
 import { generateComponent } from "~/utils";
 
 const ProfileEdit = () => {
-  const { push } = useInternalRouter();
   const { colors, weighs } = useTheme();
 
   useSetNavigation({
@@ -26,12 +24,7 @@ const ProfileEdit = () => {
         <Text _fontSize={19} _color={colors.secondary[47]} weight={weighs.bold}>
           Edit Profile
         </Text>
-      ),
-      right: {
-        element: <Exit />,
-        onClick: () => push("/map")
-      },
-      marginBottom: 24
+      )
     },
     bottom: true
   });

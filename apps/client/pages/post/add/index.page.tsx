@@ -2,8 +2,14 @@ import { usePostUploadState, useRestaurantValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { padding, size, Spacing, Stack, touchable } from "@toss/emotion-utils";
+import { useOverlay } from "@toss/use-overlay";
 import { useMemo } from "react";
-import { ComponentWithLabel, Gallery, Input } from "~/components/Common";
+import {
+  AlertModal,
+  ComponentWithLabel,
+  Gallery,
+  Input
+} from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { Edit, HorizontalCategories, Register } from "~/components/Post";
 import { OpenGraph } from "~/components/Util";
@@ -17,6 +23,7 @@ const PostAdd = () => {
   const [postUpload, setPostUpload] = usePostUploadState();
 
   const isModifyMode = useMemo(() => !!postUpload.id, [postUpload.id]);
+  const overlay = useOverlay();
 
   useSetNavigation({
     top: {
@@ -26,11 +33,19 @@ const PostAdd = () => {
           {isModifyMode ? "Edit Post" : "New Post"}
         </Text>
       ),
+      backButtonCaution: true,
+      hideBackButton: isModifyMode ? undefined : true,
       right: {
         element: <Exit />,
-        onClick: () => push("/map")
-      },
-      backButtonCaution: true
+        onClick: () =>
+          overlay.open(({ exit }) => (
+            <AlertModal
+              exitFn={exit}
+              rightClickFn={() => push("/map")}
+              rightText="sure"
+            />
+          ))
+      }
     },
     bottom: false
   });
