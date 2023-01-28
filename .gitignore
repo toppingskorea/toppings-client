@@ -39,3 +39,5 @@ package-lock.json
 !.yarn/versions
 # Sentry
 .sentryclirc
+
+.out

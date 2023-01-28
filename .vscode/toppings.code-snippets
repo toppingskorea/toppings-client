@@ -1,0 +1,39 @@
+{
+  "Create background color": {
+    "prefix": "background-color",
+     "body": [
+			 "background-color: ${({ theme }) => theme.colors.$1};",
+     ],
+     "description": "background-color output"
+   },
+   "Create font color": {
+    "prefix": "color",
+     "body": [
+			 "color: ${({ theme }) => theme.colors.$1};",
+     ],
+     "description": "color output"
+   },
+   "Create Story": {
+    "prefix": "story",
+     "body": [
+			 "import type { Meta, Story } from '@storybook/react'",
+       "import type { ComponentProps } from 'react';",
+       "import $1 from '.';",
+       "",
+       "type Props = ComponentProps<typeof $1>;",
+       "",
+       "const Template: Story<Props> = args => <$1 {...args}/>;",
+       "",
+       "export const Default = Template.bind({});",
+       "",
+       "Default.args = {",
+       "}",
+       "",
+       "export default {",
+          "title: '$1',",
+          "component: $1,",
+       "} as Meta;",
+     ],
+     "description": "theme color output"
+   },
+}
