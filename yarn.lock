@@ -6114,7 +6114,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@toppings/monorepo-storybook-builder@workspace:packages/monorepo-storybook-builder":
+"@toppings/monorepo-storybook-builder@*, @toppings/monorepo-storybook-builder@workspace:packages/monorepo-storybook-builder":
   version: 0.0.0-use.local
   resolution: "@toppings/monorepo-storybook-builder@workspace:packages/monorepo-storybook-builder"
   dependencies:
@@ -19601,6 +19601,7 @@ __metadata:
     "@babel/runtime": ^7.19.0
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.4.0
+    "@toppings/monorepo-storybook-builder": "*"
     "@types/axios": ^0.14.0
     "@types/jest": ^29.1.1
     "@types/node": 18.8.2

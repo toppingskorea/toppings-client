@@ -8,7 +8,8 @@
     "start": "next start",
     "type-check": "tsc -p tsconfig.json --noEmit",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "STORYBOOK_ENV=development build-storybook -s public"
+    "build:storybook": "STORYBOOK_ENV=development build-storybook -s public",
+    "build-storybook": "STORYBOOK_ENV=development yarn run build:storybook"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

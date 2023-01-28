@@ -37,6 +37,6 @@ jobs:
         with:
           branch: gh-pages
           folder: ./.out
-          target-folder: master
-          commit-message: Deploy master branch 🛫
+          target-folder: main
+          commit-message: Deploy main branch 🛫
           force: false
