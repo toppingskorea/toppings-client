@@ -1,4 +1,4 @@
-import type { Meta, Story } from "@storybook/react";
+import type { ComponentMeta, Story } from "@storybook/react";
 import type { ComponentProps } from "react";
 import Box from ".";
 
@@ -18,4 +18,4 @@ Default.args = {
 export default {
   title: "Box",
   component: Box
-} as Meta;
+} as ComponentMeta<typeof Box>;
