@@ -1,6 +1,6 @@
 import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
-import { Edit } from "~/assets/svgs/common";
+import { Edit } from "@svgs/common";
 import { Text } from "~/components/Common/Typo";
 import { useSetNavigation } from "~/hooks";
 import { useReviewUploadSetter } from "~/recoil/atoms/review";

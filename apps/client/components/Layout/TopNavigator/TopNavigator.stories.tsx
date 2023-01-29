@@ -1,6 +1,6 @@
 import type { ComponentMeta, Story } from "@storybook/react";
 import type { MouseEventHandler } from "react";
-import { Edit } from "~/assets/svgs/common";
+import { Edit } from "@svgs/common";
 import { useNavigationSetter } from "~/recoil/atoms";
 import TopNavigator from ".";
 
