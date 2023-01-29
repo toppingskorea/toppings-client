@@ -14,7 +14,7 @@ import { useSetNavigation } from "~/hooks";
 import { useUploadRecentHistory } from "~/server/recent";
 import { replaceSpace } from "~/utils";
 
-const RecentEatingHabitPage = () => {
+const FilterEatingHabitPage = () => {
   const { colors, weighs } = useTheme();
   useSetNavigation({
     top: {
@@ -62,4 +62,4 @@ const RecentEatingHabitPage = () => {
   );
 };
 
-export default RecentEatingHabitPage;
+export default FilterEatingHabitPage;
