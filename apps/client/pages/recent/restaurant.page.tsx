@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { padding } from "@toss/emotion-utils";
+import { padding, Spacing } from "@toss/emotion-utils";
 import { RestaurantCard, SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
@@ -53,6 +53,7 @@ const RecentPage = () => {
           />
         ))}
       </div>
+      <Spacing size={150} />
     </>
   );
 };

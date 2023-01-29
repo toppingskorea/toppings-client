@@ -20,7 +20,7 @@ const RecentPage = () => {
 
   useSetNavigation({
     top: {
-      marginBottom: 85,
+      marginBottom: 38,
       right: {
         element: <Exit />,
         onClick: () => push("/map")
@@ -55,13 +55,19 @@ const RecentPage = () => {
   }, [deleteAllMutate, overlay]);
 
   return (
-    <>
+    <div
+      css={css`
+        position: relative;
+      `}
+    >
       <motion.div
         variants={defaultSlideFadeInVariants("right")}
         {...framerMocker}
         css={css`
-          ${position("absolute", { top: 109, left: 0 })}
-          z-index: ${zIndex.one};
+          ${position("absolute", {
+            top: 0,
+            left: 0
+          })}/* z-index: ${zIndex.one}; */
         `}
       >
         <Badge attach="left">Recent</Badge>
@@ -70,8 +76,10 @@ const RecentPage = () => {
         variants={defaultSlideFadeInVariants("left")}
         {...framerMocker}
         css={css`
-          ${position("absolute", { top: 117, right: 0 })}
-          z-index: ${zIndex.one};
+          ${position("absolute", {
+            top: 0,
+            right: 0
+          })}/* z-index: ${zIndex.one}; */
         `}
       >
         <RoundedTag
@@ -96,7 +104,7 @@ const RecentPage = () => {
       <Suspense.CSROnly fallback={<Skeleton.Paragraph />}>
         <History />
       </Suspense.CSROnly>
-    </>
+    </div>
   );
 };
 
