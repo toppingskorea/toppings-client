@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { useReviewUploadSetter } from "@atoms/review";
 import { css, useTheme } from "@emotion/react";
 import { CircleThreeDot } from "@svgs/common";
 import { Flex, size, Spacing, touchable, width100 } from "@toss/emotion-utils";
@@ -13,7 +14,6 @@ import {
   MotionButton
 } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import { useReviewUploadSetter } from "~/recoil/atoms/review";
 import { useDeleteReview } from "~/server/review";
 import { ellipsisTextByLength } from "~/utils";
 

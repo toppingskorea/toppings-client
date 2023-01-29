@@ -1,8 +1,8 @@
 import { css, useTheme } from "@emotion/react";
+import { OrangePersonIcon } from "@svgs/common";
 import { Flex, padding, Spacing } from "@toss/emotion-utils";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { OrangePersonIcon } from "~/assets/svgs/common";
 import { Text } from "~/components/Common/Typo";
 import { useFetchReview } from "~/server/review";
 

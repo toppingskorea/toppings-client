@@ -37,7 +37,7 @@ const RecentEatingHabitPage = () => {
   return (
     <>
       <OpenGraph title="Search Eating Habits" />
-      <TagFamily />
+      <TagFamily isBlur />
 
       <SelectEatingHabit
         isRecent

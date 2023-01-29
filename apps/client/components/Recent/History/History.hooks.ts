@@ -1,11 +1,11 @@
-import { useTheme } from "@emotion/react";
-import { useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/router";
 import {
   useCurrentHabitTitleSetter,
   useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter
-} from "~/recoil/atoms";
+} from "@atoms/index";
+import { useTheme } from "@emotion/react";
+import { useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/router";
 import {
   Keys,
   useDeleteRecentHistory,
@@ -14,7 +14,7 @@ import {
 import { habitTitleChecker } from "~/utils";
 
 const useHistory = () => {
-  const { dimensions, colors } = useTheme();
+  const { dimensions, colors, weighs } = useTheme();
   const { push } = useRouter();
   const queryClient = useQueryClient();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
@@ -65,6 +65,7 @@ const useHistory = () => {
     historyClickHandler,
     dimensions,
     colors,
+    weighs,
     nextPageButtonHidden:
       recentHistories.pages[0].totalPage === recentHistories.pages.length
   };

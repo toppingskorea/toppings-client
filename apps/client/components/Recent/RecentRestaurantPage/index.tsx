@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { padding } from "@toss/emotion-utils";
+import { padding, Spacing } from "@toss/emotion-utils";
 import { RestaurantCard, SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
@@ -7,7 +7,7 @@ import { OpenGraph } from "~/components/Util";
 import { pick } from "~/utils";
 import useRestaurant from "./RecentRestaurantPage.hooks";
 
-const RecentPage = () => {
+const RecentRestaurantPage = () => {
   const app = useRestaurant();
 
   return (
@@ -23,7 +23,7 @@ const RecentPage = () => {
           {...app.keyword}
         />
       </SearchLayout>
-      <TagFamily />
+      <TagFamily isBlur />
 
       {/* border는 임시로 넣어놨음 */}
       <div
@@ -53,8 +53,9 @@ const RecentPage = () => {
           />
         ))}
       </div>
+      <Spacing size={150} />
     </>
   );
 };
 
-export default RecentPage;
+export default RecentRestaurantPage;

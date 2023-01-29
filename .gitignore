@@ -41,4 +41,6 @@ package-lock.json
 .sentryclirc
 
 .out
+
+apps/client/node_modules/.cache/storybook
 node_modules
