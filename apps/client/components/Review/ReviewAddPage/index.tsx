@@ -1,28 +1,16 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { useReviewUploadValue } from "@atoms/review";
 import { css, useTheme } from "@emotion/react";
 import { Flex, padding, Spacing, Stack } from "@toss/emotion-utils";
-import { useOverlay } from "@toss/use-overlay";
-import { useRouter } from "next/router";
-import { useCallback, useMemo, useState } from "react";
 import {
-  AlertModal,
   ComponentWithLabel,
   FilledButton,
   Gallery,
-  Input,
-  SuccessModal
+  Input
 } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { OpenGraph } from "~/components/Util";
-import { useSetNavigation } from "~/hooks";
-import { useSendNotification } from "~/server/notice";
-import { useFetchRestaurant } from "~/server/restaurant";
-import {
-  useFetchReview,
-  useUpdateReview,
-  useUploadReview
-} from "~/server/review";
+
+import { useAddReview, useSetNavigation } from "./ReviewAddPage.hooks";
 
 /*
   리뷰를 수정하로 올때 images나 description을 세팅해줄 수 있지만,
@@ -32,101 +20,17 @@ import {
   ref:https://www.youtube.com/watch?v=HYgKBvLr49c&
 */
 const ReviewAddPage = ({ restaurantId }: { restaurantId: string }) => {
-  const { replace } = useRouter();
-  const { colors, weighs } = useTheme();
-  const { data: restaurantDetail } = useFetchRestaurant(+restaurantId);
-  const reviewUploadValue = useReviewUploadValue();
+  const { colors } = useTheme();
 
-  const isModifyMode = useMemo(
-    () => !!reviewUploadValue.id,
-    [reviewUploadValue.id]
-  );
+  useSetNavigation({ restaurantId });
 
-  const [images, setImages] = useState<string[]>([]);
-  const [description, setDescription] = useState("");
-
-  useFetchReview(reviewUploadValue.id, reviewDetail => {
-    setImages(reviewDetail.images);
-    setDescription(reviewDetail.description);
-  });
-
-  useSetNavigation({
-    top: {
-      title: (
-        <Text
-          _fontSize={20}
-          _color={colors.secondary[69]}
-          weight={weighs.semiBold}
-        >
-          {restaurantDetail.name}
-        </Text>
-      ),
-      backButtonCaution: true
-    }
-  });
-
-  const overlay = useOverlay();
-  const commonOnSuccessCallback = useCallback(() => {
-    overlay.open(() => <SuccessModal />);
-    setTimeout(() => {
-      overlay.close();
-      replace(`/post/${restaurantId}`);
-    }, 3000);
-  }, [overlay, replace, restaurantId]);
-
-  const { mutateAsync: uploadReviewMutateAsync } = useUploadReview({
-    onSuccess: commonOnSuccessCallback
-  });
-  const { mutate: updateReviewMutate } = useUpdateReview({
-    onSuccess: commonOnSuccessCallback
-  });
-  const { mutate: sendNotificationMutate } = useSendNotification();
-
-  const onClickRegisterHandler = useCallback(async () => {
-    if (images.length === 0) {
-      overlay.open(({ exit }) => (
-        <AlertModal
-          information={`It can't be uploaded\nwithout pictures`}
-          exitFn={exit}
-        />
-      ));
-      return;
-    }
-
-    if (isModifyMode) {
-      updateReviewMutate({
-        id: reviewUploadValue.id!,
-        payload: {
-          description,
-          images
-        }
-      });
-    } else {
-      const result = await uploadReviewMutateAsync({
-        restaurantId: +restaurantId,
-        payload: {
-          description,
-          images
-        }
-      });
-
-      if (result.success)
-        sendNotificationMutate({
-          id: Number(restaurantId),
-          type: "Review"
-        });
-    }
-  }, [
-    description,
+  const {
     images,
-    isModifyMode,
-    overlay,
-    restaurantId,
-    reviewUploadValue.id,
-    sendNotificationMutate,
-    updateReviewMutate,
-    uploadReviewMutateAsync
-  ]);
+    description,
+    onClickRegisterHandler,
+    onChangeImagesHandler,
+    onChangeDescriptionHandler
+  } = useAddReview({ restaurantId });
 
   return (
     <Stack.Vertical
@@ -136,7 +40,7 @@ const ReviewAddPage = ({ restaurantId }: { restaurantId: string }) => {
     >
       <OpenGraph title="Add Review" />
       <ComponentWithLabel label="Picture" gutter={6}>
-        <Gallery images={images} setImages={images => setImages(images)} />
+        <Gallery images={images} setImages={onChangeImagesHandler} />
       </ComponentWithLabel>
       <ComponentWithLabel label="Description" gutter={6}>
         <Input
@@ -145,7 +49,7 @@ const ReviewAddPage = ({ restaurantId }: { restaurantId: string }) => {
           placeholder={`Please write a detailed description\nof the food`}
           padding={padding({ x: 12, y: 12 })}
           value={description}
-          onChange={e => setDescription(e.currentTarget.value)}
+          onChange={onChangeDescriptionHandler}
           css={css`
             font-size: 16px;
             &::placeholder {
