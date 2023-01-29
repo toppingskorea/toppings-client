@@ -12,15 +12,16 @@ import * as Styled from "./AlertModal.styles";
 
 interface Props {
   exitFn: VoidFunction;
-  rightClickFn?: VoidFunction;
+  rightClick?: {
+    fn: VoidFunction;
+    text: string;
+  };
   information?: string;
-  rightText?: string;
 }
 
 const Clickable = ({
   exitFn,
-  rightClickFn,
-  rightText
+  rightClick
 }: Required<Omit<Props, "information">>) => {
   const { colors, weighs } = useTheme();
 
@@ -56,12 +57,12 @@ const Clickable = ({
           variants={defaultScaleChangeVariants}
           type="button"
           onClick={() => {
-            rightClickFn();
+            rightClick.fn();
             exitFn();
           }}
         >
           <Text _fontSize={18} weight={weighs.bold} _color={colors.primary}>
-            {rightText}
+            {rightClick.text}
           </Text>
         </motion.button>
       </Styled.EllipseFlex>
@@ -92,12 +93,7 @@ const NonClickable = ({ information }: Pick<Props, "information">) => {
   );
 };
 
-const AlertModal = ({
-  exitFn,
-  rightClickFn,
-  information,
-  rightText
-}: Props) => {
+const AlertModal = ({ exitFn, rightClick, information }: Props) => {
   const theme = useTheme();
   const { colors } = theme;
 
@@ -126,12 +122,8 @@ const AlertModal = ({
         </Text>
       </Flex.Center>
 
-      {rightClickFn ? (
-        <Clickable
-          rightText={rightText ?? ""}
-          rightClickFn={rightClickFn}
-          exitFn={exitFn}
-        />
+      {rightClick ? (
+        <Clickable rightClick={rightClick} exitFn={exitFn} />
       ) : (
         <NonClickable information={information} />
       )}

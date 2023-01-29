@@ -11,8 +11,10 @@ export const OneOption = Template.bind({});
 
 TwoOptions.args = {
   exitFn: () => console.log("exit button clicked"),
-  rightClickFn: () => console.log("right button clicked"),
-  rightText: "sure"
+  rightClick: {
+    fn: () => console.log("right button clicked"),
+    text: "sure"
+  }
 };
 
 OneOption.args = {

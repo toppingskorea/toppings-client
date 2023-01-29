@@ -17,7 +17,7 @@ const TopNavigator = () => {
   const onClickBackButton = () => {
     if (state.top?.backButtonCaution) {
       overlay.open(({ exit }) => (
-        <AlertModal exitFn={exit} rightClickFn={back} rightText="sure" />
+        <AlertModal exitFn={exit} rightClick={{ fn: back, text: "sure" }} />
       ));
 
       return;
