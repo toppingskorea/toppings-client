@@ -4,7 +4,6 @@ import { flex, height100, Stack } from "@toss/emotion-utils";
 import { PageLoader, ScrollContainer } from "~/components/Common";
 import { TopNavigator } from "~/components/Layout";
 import BottomNavigator from "~/components/Layout/BottomNavigator";
-import { TagFamily } from "~/components/Recent";
 
 const AppLayout = ({ children }: Util.PropsWithChild) => {
   const state = useNavigationValue();
@@ -32,7 +31,6 @@ const AppLayout = ({ children }: Util.PropsWithChild) => {
         <PageLoader />
       </ScrollContainer>
       {!!state.bottom && <BottomNavigator />}
-      {state.tagFamily && <TagFamily />}
     </Stack.Vertical>
   );
 };
