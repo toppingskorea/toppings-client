@@ -14,7 +14,7 @@ import {
 import { habitTitleChecker } from "~/utils";
 
 const useHistory = () => {
-  const { dimensions, colors } = useTheme();
+  const { dimensions, colors, weighs } = useTheme();
   const { push } = useRouter();
   const queryClient = useQueryClient();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
@@ -65,6 +65,7 @@ const useHistory = () => {
     historyClickHandler,
     dimensions,
     colors,
+    weighs,
     nextPageButtonHidden:
       recentHistories.pages[0].totalPage === recentHistories.pages.length
   };
