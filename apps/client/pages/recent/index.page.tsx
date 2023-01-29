@@ -20,7 +20,7 @@ const RecentPage = () => {
 
   useSetNavigation({
     top: {
-      marginBottom: 85,
+      marginBottom: 38,
       right: {
         element: <Exit />,
         onClick: () => push("/map")
@@ -44,6 +44,7 @@ const RecentPage = () => {
     overlay.open(({ exit, close }) => (
       <AlertModal
         exitFn={exit}
+        rightText="delete"
         rightClickFn={() => {
           deleteAllMutate();
           close();
@@ -53,13 +54,19 @@ const RecentPage = () => {
   }, [deleteAllMutate, overlay]);
 
   return (
-    <>
+    <div
+      css={css`
+        position: relative;
+      `}
+    >
       <motion.div
         variants={defaultSlideFadeInVariants("right")}
         {...framerMocker}
         css={css`
-          ${position("absolute", { top: 109, left: 0 })}
-          z-index: ${zIndex.one};
+          ${position("absolute", {
+            top: 0,
+            left: 0
+          })}
         `}
       >
         <Badge attach="left">Recent</Badge>
@@ -68,8 +75,10 @@ const RecentPage = () => {
         variants={defaultSlideFadeInVariants("left")}
         {...framerMocker}
         css={css`
-          ${position("absolute", { top: 117, right: 0 })}
-          z-index: ${zIndex.one};
+          ${position("absolute", {
+            top: 0,
+            right: 0
+          })}
         `}
       >
         <RoundedTag
@@ -95,18 +104,8 @@ const RecentPage = () => {
         <History />
       </Suspense.CSROnly>
 
-      <div
-        css={css`
-          ${position("absolute", {
-            bottom: -20,
-            left: 0
-          })}
-          backdrop-filter: blur(10px);
-        `}
-      >
-        <TagFamily />
-      </div>
-    </>
+      <TagFamily />
+    </div>
   );
 };
 

@@ -49,7 +49,9 @@ const withApp = Story => {
           <ThemeProvider theme={emotionTheme}>
             <GlobalCSS />
             <OverlayProvider>
-              <Story />
+              <div style={{ maxWidth: "560px" }}>
+                <Story />
+              </div>
             </OverlayProvider>
           </ThemeProvider>
         </RecoilRoot>

@@ -3,6 +3,7 @@ import {
   useCurrentSelectKeywordSetter
 } from "@atoms/index";
 import { useTheme } from "@emotion/react";
+import { Spacing } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SearchLayout } from "~/components/Layout";
@@ -66,6 +67,7 @@ const NationalityPage = () => {
           push("/map");
         }}
       />
+      <Spacing size={150} />
     </>
   );
 };

@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { useReviewUploadValue } from "@atoms/review";
+import { useReviewUploadReset, useReviewUploadValue } from "@atoms/review";
 import { css, useTheme } from "@emotion/react";
+import { Suspense } from "@suspensive/react";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { Flex, padding, Spacing, Stack } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import axios from "axios";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/router";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   AlertModal,
   ComponentWithLabel,
@@ -17,11 +18,11 @@ import {
   SuccessModal
 } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
+import { NavigationSetter } from "~/components/Review/add";
 import { OpenGraph } from "~/components/Util";
 import { env } from "~/constants";
-import { useSetNavigation } from "~/hooks";
 import { useSendNotification } from "~/server/notice";
-import { Keys, useFetchRestaurant } from "~/server/restaurant";
+import { Keys } from "~/server/restaurant";
 import {
   useFetchReview,
   useUpdateReview,
@@ -39,9 +40,9 @@ const ReviewAdd = ({
   restaurantId
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { replace } = useRouter();
-  const { colors, weighs } = useTheme();
-  const { data: restaurantDetail } = useFetchRestaurant(+restaurantId);
+  const { colors } = useTheme();
   const reviewUploadValue = useReviewUploadValue();
+  const resetReviewUploadValue = useReviewUploadReset();
 
   const isModifyMode = useMemo(
     () => !!reviewUploadValue.id,
@@ -56,20 +57,11 @@ const ReviewAdd = ({
     setDescription(reviewDetail.description);
   });
 
-  useSetNavigation({
-    top: {
-      title: (
-        <Text
-          _fontSize={20}
-          _color={colors.secondary[69]}
-          weight={weighs.semiBold}
-        >
-          {restaurantDetail.name}
-        </Text>
-      ),
-      backButtonCaution: true
-    }
-  });
+  useEffect(() => {
+    return () => {
+      resetReviewUploadValue();
+    };
+  }, [resetReviewUploadValue]);
 
   const overlay = useOverlay();
   const commonOnSuccessCallback = useCallback(() => {
@@ -141,6 +133,9 @@ const ReviewAdd = ({
       `}
     >
       <OpenGraph title="Add Review" />
+      <Suspense.CSROnly>
+        <NavigationSetter />
+      </Suspense.CSROnly>
       <ComponentWithLabel label="Picture" gutter={6}>
         <Gallery images={images} setImages={images => setImages(images)} />
       </ComponentWithLabel>

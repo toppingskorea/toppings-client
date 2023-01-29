@@ -1,6 +1,5 @@
 import { useEditState } from "@atoms/edit";
 import { css, useTheme } from "@emotion/react";
-import { Exit } from "@svgs/common";
 import { padding, position, width100 } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
@@ -14,7 +13,7 @@ import {
 } from "~/hooks";
 
 const ProfileEditNationality = () => {
-  const { push, back } = useInternalRouter();
+  const { back } = useInternalRouter();
   const { colors, weighs, dimensions } = useTheme();
   const [edit, setEdit] = useEditState();
 
@@ -22,14 +21,10 @@ const ProfileEditNationality = () => {
     top: {
       marginBottom: 35,
       title: (
-        <Text _fontSize={23} weight={weighs.bold}>
+        <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
           Select a Nationality
         </Text>
-      ),
-      right: {
-        element: <Exit />,
-        onClick: () => push("/map")
-      }
+      )
     }
   });
 
