@@ -1,4 +1,4 @@
-import type { Meta, Story } from "@storybook/react";
+import type { ComponentMeta, Story } from "@storybook/react";
 import type { MouseEventHandler } from "react";
 import { Edit } from "~/assets/svgs/common";
 import { useNavigationSetter } from "~/recoil/atoms";
@@ -50,4 +50,4 @@ Default.args = {
 export default {
   title: "TopNavigator",
   component: TopNavigator
-} as Meta;
+} as ComponentMeta<typeof TopNavigator>;

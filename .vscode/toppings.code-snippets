@@ -16,7 +16,7 @@
    "Create Story": {
     "prefix": "story",
      "body": [
-			 "import type { Meta, Story } from '@storybook/react'",
+			 "import type { ComponentMeta, Story } from '@storybook/react'",
        "import type { ComponentProps } from 'react';",
        "import $1 from '.';",
        "",
@@ -32,7 +32,7 @@
        "export default {",
           "title: '$1',",
           "component: $1,",
-       "} as Meta;",
+       "} as ComponentMeta<typeof $1>;",
      ],
      "description": "theme color output"
    },
