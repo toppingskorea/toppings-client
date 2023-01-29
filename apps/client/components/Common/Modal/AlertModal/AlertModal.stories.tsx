@@ -23,6 +23,6 @@ OneOption.args = {
 };
 
 export default {
-  title: "AlertModal",
+  title: "Common/Modal/AlertModal",
   component: AlertModal
 } as ComponentMeta<typeof AlertModal>;

@@ -48,6 +48,6 @@ Default.args = {
 };
 
 export default {
-  title: "TopNavigator",
+  title: "Layout/TopNavigator",
   component: TopNavigator
 } as ComponentMeta<typeof TopNavigator>;

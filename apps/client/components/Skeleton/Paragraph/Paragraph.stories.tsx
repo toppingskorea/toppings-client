@@ -11,6 +11,6 @@ export const Default = Template.bind({});
 Default.args = {};
 
 export default {
-  title: "Paragraph",
+  title: "Skeleton/Paragraph",
   component: Paragraph
 } as ComponentMeta<typeof Paragraph>;
