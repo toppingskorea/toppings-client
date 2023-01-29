@@ -3,7 +3,7 @@ import { RemoveHistory, Timeline } from "@svgs/recent";
 import { Flex, margin, Spacing, Stack, touchable } from "@toss/emotion-utils";
 import { MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import dimensions from "~/styles/emotionTheme/dimensions";
+
 import useHistory from "./History.hooks";
 
 const History = () => {
@@ -73,7 +73,8 @@ const History = () => {
           </MotionButton>
         )}
       </Stack.Vertical>
-      <Spacing size={dimensions.bottomNavigationHeight} />
+
+      <Spacing size={app.dimensions.bottomNavigationHeight} />
     </>
   );
 };
