@@ -1,4 +1,6 @@
+import { useReviewUploadSetter } from "@atoms/review";
 import { useTheme } from "@emotion/react";
+import { Edit } from "@svgs/common";
 import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { useSetNavigation } from "~/hooks";
@@ -6,7 +8,8 @@ import { useFetchReview } from "~/server/review";
 
 const NavigationSetter = () => {
   const { weighs, colors } = useTheme();
-  const { query } = useRouter();
+  const { query, push } = useRouter();
+  const reviewUploadSetter = useReviewUploadSetter();
 
   const { data: reviewDetail } = useFetchReview(Number(query.id));
 
@@ -20,7 +23,16 @@ const NavigationSetter = () => {
         >
           {reviewDetail?.restaurantName}
         </Text>
-      )
+      ),
+      right: reviewDetail?.isMine
+        ? {
+            element: <Edit />,
+            onClick: () => {
+              reviewUploadSetter({ id: reviewDetail.id });
+              push(`/review/add/${reviewDetail.restaurantId}`);
+            }
+          }
+        : undefined
     },
     bottom: true
   });

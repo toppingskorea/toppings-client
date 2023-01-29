@@ -5,7 +5,6 @@
       "~/*": ["./*"],
       "@svgs/*": ["./assets/svgs/*"],
       "@images/*": ["./assets/images/*"],
-      "@stores/*": ["./stores/ducks/*"],
       "@atoms/*": ["./recoil/atoms/*"]
     },
     // css props를 사용하기 위함

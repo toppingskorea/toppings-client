@@ -1,4 +1,9 @@
-import { atom, useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  atom,
+  useRecoilValue,
+  useResetRecoilState,
+  useSetRecoilState
+} from "recoil";
 
 interface ReviewUploadAtomTypes {
   id?: Exclude<Restaurant.ReviewDTO, "id">["id"]; // id가 있다면 수정입니다.
@@ -11,3 +16,4 @@ const reviewUploadAtom = atom<ReviewUploadAtomTypes>({
 
 export const useReviewUploadValue = () => useRecoilValue(reviewUploadAtom);
 export const useReviewUploadSetter = () => useSetRecoilState(reviewUploadAtom);
+export const useReviewUploadReset = () => useResetRecoilState(reviewUploadAtom);

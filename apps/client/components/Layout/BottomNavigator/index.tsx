@@ -1,4 +1,5 @@
 import { usePostUploadReset, useRestaurantReset } from "@atoms/index";
+import { useNoticeActivateValue } from "@atoms/noticeActivate";
 import { css, useTheme } from "@emotion/react";
 import type { EmotionJSX } from "@emotion/react/types/jsx-namespace";
 import { flex, padding, width100 } from "@toss/emotion-utils";
@@ -6,7 +7,6 @@ import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import { InternalLink } from "~/components/Common";
 import { useInternalRouter } from "~/hooks";
-import { useNoticeActivateValue } from "~/recoil/atoms/noticeActivate";
 import navList from "./BottomNavigator.constants";
 
 const BottomNavigator = () => {

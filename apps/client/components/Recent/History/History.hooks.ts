@@ -1,11 +1,11 @@
-import { useTheme } from "@emotion/react";
-import { useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/router";
 import {
   useCurrentHabitTitleSetter,
   useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter
-} from "~/recoil/atoms";
+} from "@atoms/index";
+import { useTheme } from "@emotion/react";
+import { useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/router";
 import {
   Keys,
   useDeleteRecentHistory,

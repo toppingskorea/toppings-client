@@ -1,8 +1,4 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { useTheme } from "@emotion/react";
-import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react";
-import { useSetNavigation } from "~/hooks";
 import {
   useCurrentHabitTitleValue,
   useCurrentLocationReset,
@@ -11,7 +7,11 @@ import {
   useCurrentSelectCategoryValue,
   useCurrentSelectKeywordValue,
   useSearchByFilteringState
-} from "~/recoil/atoms";
+} from "@atoms/index";
+import { useTheme } from "@emotion/react";
+import { useRouter } from "next/router";
+import { useCallback, useEffect, useState } from "react";
+import { useSetNavigation } from "~/hooks";
 import {
   useFetchDefaultMap,
   useFetchRestaurantByCountry,

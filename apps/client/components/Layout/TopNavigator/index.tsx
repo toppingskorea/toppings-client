@@ -1,7 +1,7 @@
 import { useNavigationValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { LeftArrow } from "@svgs/common";
-import { flex, padding, position, Spacing } from "@toss/emotion-utils";
+import { Flex, flex, padding, position, Spacing } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { AnimatePresence, motion } from "framer-motion";
 import { AlertModal, MotionButton } from "~/components/Common";
@@ -41,7 +41,7 @@ const TopNavigator = () => {
       >
         <nav
           css={css`
-            ${flex({ justify: "space-between", align: "center" })}
+            ${flex({ direction: "column" })}
             ${padding({
               x: 28,
               top: 31,
@@ -50,34 +50,42 @@ const TopNavigator = () => {
             background-color: white;
           `}
         >
-          {state.top?.hideBackButton ? (
-            <div id="dummy-element" />
+          {state.top?.hideBackButton && !state.top.right ? (
+            <Spacing size={28} />
           ) : (
-            <MotionButton onClick={onClickBackButton}>
-              <LeftArrow />
-            </MotionButton>
+            <Flex justify="space-between">
+              {state.top?.hideBackButton ? (
+                <div id="dummy-element" />
+              ) : (
+                <MotionButton onClick={onClickBackButton}>
+                  <LeftArrow />
+                </MotionButton>
+              )}
+
+              {state.top?.right ? (
+                <MotionButton onClick={state.top.right.onClick}>
+                  {state.top?.right.element}
+                </MotionButton>
+              ) : (
+                <Spacing size={0} />
+              )}
+            </Flex>
           )}
 
-          {state.top?.title ? (
+          {state.top?.title && (
             <motion.div
               variants={defaultSlideFadeInVariants("bottom")}
               {...framerMocker}
               css={css`
-                ${padding({ top: 20 })}
+                ${flex({
+                  justify: "center",
+                  align: "center"
+                })}
+                margin-top: -10px;
               `}
             >
               {state.top?.title}
             </motion.div>
-          ) : (
-            <Spacing size={0} />
-          )}
-
-          {state.top?.right ? (
-            <MotionButton onClick={state.top.right.onClick}>
-              {state.top?.right.element}
-            </MotionButton>
-          ) : (
-            <Spacing size={0} />
           )}
         </nav>
       </header>
