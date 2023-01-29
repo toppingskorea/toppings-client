@@ -42,7 +42,7 @@ export const useAddReview = ({ restaurantId }: { restaurantId: string }) => {
   const reviewUploadValue = useReviewUploadValue();
 
   const [images, setImages] = useState<string[]>([]);
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState<string>("");
 
   useFetchReview(reviewUploadValue.id, reviewDetail => {
     setImages(reviewDetail.images);
