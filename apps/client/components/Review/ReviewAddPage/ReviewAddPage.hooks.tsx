@@ -1,3 +1,4 @@
+import { useReviewUploadValue } from "@atoms/review";
 import { useTheme } from "@emotion/react";
 import { useOverlay } from "@toss/use-overlay";
 import { useRouter } from "next/router";
@@ -5,7 +6,6 @@ import { useCallback, useMemo, useState, type ChangeEvent } from "react";
 import { AlertModal, SuccessModal } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useSetNavigation as useSetNavigationHook } from "~/hooks";
-import { useReviewUploadValue } from "~/recoil/atoms/review";
 import { useSendNotification } from "~/server/notice";
 import { useFetchRestaurant } from "~/server/restaurant";
 import {
