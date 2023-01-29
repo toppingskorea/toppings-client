@@ -10,19 +10,24 @@ import { Text } from "../../Typo";
 import commonLayoutCss from "../Modal.constants";
 import * as Styled from "./AlertModal.styles";
 
-interface Props {
+interface PropsWithoutInformation {
   exitFn: VoidFunction;
-  rightClick?: {
+  rightClick: {
     fn: VoidFunction;
     text: string;
   };
-  information?: string;
+  information?: never;
+}
+interface PropsWithoutRightClick {
+  exitFn: VoidFunction;
+  rightClick?: never;
+  information: string;
 }
 
 const Clickable = ({
   exitFn,
   rightClick
-}: Required<Omit<Props, "information">>) => {
+}: Required<Omit<PropsWithoutInformation, "information">>) => {
   const { colors, weighs } = useTheme();
 
   return (
@@ -70,7 +75,9 @@ const Clickable = ({
   );
 };
 
-const NonClickable = ({ information }: Pick<Props, "information">) => {
+const NonClickable = ({
+  information
+}: Pick<PropsWithoutRightClick, "information">) => {
   const { colors, weighs } = useTheme();
 
   return (
@@ -93,7 +100,11 @@ const NonClickable = ({ information }: Pick<Props, "information">) => {
   );
 };
 
-const AlertModal = ({ exitFn, rightClick, information }: Props) => {
+const AlertModal = ({
+  exitFn,
+  rightClick,
+  information
+}: PropsWithoutInformation | PropsWithoutRightClick) => {
   const theme = useTheme();
   const { colors } = theme;
 
