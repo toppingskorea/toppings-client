@@ -42,7 +42,7 @@ function MyApp({
 }: AppProps<{ dehydratedState: DehydratedState }>) {
   useSentry({
     dsn: env.SENTRY_DSN,
-    allowUrls: ["http://dev.toppings.co.kr/", "https://dev.toppings.co.kr/"]
+    allowUrls: ["https://toppings.co.kr/"]
   });
   return (
     <QueryClientProvider client={queryClient}>
