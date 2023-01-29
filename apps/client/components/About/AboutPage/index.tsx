@@ -30,7 +30,7 @@ const AboutPage = () => {
     <div>
       <ul>
         {EXTERNAL_LINK_LIST.map(item => (
-          <li>
+          <li key={item.label}>
             <a href={item.href} target="_blank" rel="noopener noreferrer">
               {item.label}
             </a>
