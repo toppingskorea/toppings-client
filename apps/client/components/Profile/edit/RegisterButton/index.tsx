@@ -1,3 +1,4 @@
+import { useEditValue, useProfileEatingHabitChangedValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { Flex, padding } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
@@ -5,10 +6,6 @@ import { useCallback, useMemo } from "react";
 import { FilledButton, SuccessModal } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter } from "~/hooks";
-import {
-  useEditValue,
-  useProfileEatingHabitChangedValue
-} from "~/recoil/atoms";
 import { useFetchUserInfo, useUpdateUserInfo } from "~/server/profile";
 import { replaceSpace } from "~/utils";
 

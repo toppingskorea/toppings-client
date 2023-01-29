@@ -1,10 +1,10 @@
-import { useCallback, useMemo } from "react";
-import { defaultLocation } from "~/constants";
 import {
   useClickedCurrentPositionState,
   useCurrentLocationSetter,
   useCurrentPositionLoadingSetter
-} from "~/recoil/atoms";
+} from "@atoms/index";
+import { useCallback, useMemo } from "react";
+import { defaultLocation } from "~/constants";
 
 const useCurrentLocation = () => {
   const setCurrentLocation = useCurrentLocationSetter();

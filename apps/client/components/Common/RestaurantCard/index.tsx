@@ -1,7 +1,7 @@
+import { useCurrentSelectKeywordValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { Flex, gutter, height100, width100 } from "@toss/emotion-utils";
 import Image from "next/image";
-import { useCurrentSelectKeywordValue } from "~/recoil/atoms";
 import HeartWithNumber from "../HeartWithNumber";
 import { Text } from "../Typo";
 

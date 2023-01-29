@@ -1,7 +1,7 @@
+import { useNavigationSetter } from "@atoms/index";
 import type { ComponentMeta, Story } from "@storybook/react";
-import type { MouseEventHandler } from "react";
 import { Edit } from "@svgs/common";
-import { useNavigationSetter } from "~/recoil/atoms";
+import type { MouseEventHandler } from "react";
 import TopNavigator from ".";
 
 const Template: Story = ({

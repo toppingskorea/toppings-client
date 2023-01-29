@@ -1,9 +1,9 @@
+import { useReviewUploadSetter } from "@atoms/review";
 import { useTheme } from "@emotion/react";
-import { useRouter } from "next/router";
 import { Edit } from "@svgs/common";
+import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { useSetNavigation } from "~/hooks";
-import { useReviewUploadSetter } from "~/recoil/atoms/review";
 import { useFetchReview } from "~/server/review";
 
 const NavigationSetter = () => {

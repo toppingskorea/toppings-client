@@ -3,7 +3,7 @@ import {
   useCurrentSelectCategoryReset,
   useCurrentSelectKeywordReset,
   useSearchByFilteringReset
-} from "~/recoil/atoms";
+} from "@atoms/index";
 
 const useResetRecentRecoilState = () => {
   const currentSelectCategoryReset = useCurrentSelectCategoryReset();
