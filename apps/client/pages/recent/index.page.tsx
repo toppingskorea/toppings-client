@@ -66,7 +66,7 @@ const RecentPage = () => {
           ${position("absolute", {
             top: 0,
             left: 0
-          })}/* z-index: ${zIndex.one}; */
+          })}
         `}
       >
         <Badge attach="left">Recent</Badge>
@@ -78,7 +78,7 @@ const RecentPage = () => {
           ${position("absolute", {
             top: 0,
             right: 0
-          })}/* z-index: ${zIndex.one}; */
+          })}
         `}
       >
         <RoundedTag
