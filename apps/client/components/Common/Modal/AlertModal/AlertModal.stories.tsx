@@ -1,4 +1,4 @@
-import type { Meta, Story } from "@storybook/react";
+import type { ComponentMeta, Story } from "@storybook/react";
 import type { ComponentProps } from "react";
 import AlertModal from ".";
 
@@ -23,4 +23,4 @@ OneOption.args = {
 export default {
   title: "AlertModal",
   component: AlertModal
-} as Meta;
+} as ComponentMeta<typeof AlertModal>;

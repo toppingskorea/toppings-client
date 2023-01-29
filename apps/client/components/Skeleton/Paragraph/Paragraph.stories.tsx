@@ -1,4 +1,4 @@
-import type { Meta, Story } from "@storybook/react";
+import type { ComponentMeta, Story } from "@storybook/react";
 import type { ComponentProps } from "react";
 import Paragraph from ".";
 
@@ -13,4 +13,4 @@ Default.args = {};
 export default {
   title: "Paragraph",
   component: Paragraph
-} as Meta;
+} as ComponentMeta<typeof Paragraph>;

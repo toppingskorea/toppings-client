@@ -1,4 +1,4 @@
-import type { Meta, Story } from "@storybook/react";
+import type { ComponentMeta, Story } from "@storybook/react";
 import type { ComponentProps } from "react";
 import Circle from ".";
 
@@ -15,4 +15,4 @@ Default.args = {
 export default {
   title: "Circle",
   component: Circle
-} as Meta;
+} as ComponentMeta<typeof Circle>;
