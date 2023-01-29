@@ -1,3 +1,4 @@
+import { orangeLogo } from "@images/common";
 import Head from "next/head";
 
 interface Props {
@@ -23,6 +24,7 @@ const OpenGraph = ({
   imageUrl
 }: Props) => {
   const computedTitle = `TOPPINGS | ${title}`;
+  const computedImageUrl = imageUrl ?? orangeLogo.src;
 
   return (
     <Head>
@@ -31,17 +33,11 @@ const OpenGraph = ({
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={computedTitle} />
 
-      {imageUrl !== undefined && (
-        <meta property="og:image" content={imageUrl} />
-      )}
+      <meta property="og:image" content={computedImageUrl} />
 
       {/* 트위터 공유 */}
-      {imageUrl && (
-        <>
-          <meta name="twitter:image" content={imageUrl} />
-          <meta name="twitter:card" content="summary_large_image" />
-        </>
-      )}
+      <meta name="twitter:image" content={computedImageUrl} />
+      <meta name="twitter:card" content="summary_large_image" />
     </Head>
   );
 };

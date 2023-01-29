@@ -1,6 +1,6 @@
 import { useTheme } from "@emotion/react";
-import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
+import { OpenGraph } from "~/components/Util";
 import { useSetNavigation } from "~/hooks";
 
 const EXTERNAL_LINK_LIST = [
@@ -29,6 +29,7 @@ const About = () => {
 
   return (
     <div>
+      <OpenGraph title="About" />
       <ul>
         {EXTERNAL_LINK_LIST.map(item => (
           <li>
