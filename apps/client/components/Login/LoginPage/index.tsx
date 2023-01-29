@@ -3,13 +3,12 @@ import { Text } from "~/components/Common/Typo";
 import { env } from "~/constants";
 
 const LoginPage = () => {
-  const router = useRouter();
+  const { replace } = useRouter();
 
   const kakaoUrl = `${env.TOPPINGS_SERVER_URL}/oauth2/authorization/kakao?redirect_uri=${env.REDIRECT_URI}`;
 
-  const handleClickLogin = () => {
-    router.replace(kakaoUrl);
-  };
+  const handleClickLogin = () => replace(kakaoUrl);
+
   return (
     <div>
       <button type="button" onClick={handleClickLogin}>
