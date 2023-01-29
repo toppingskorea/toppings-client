@@ -16,8 +16,8 @@ Route (pages)                              Size     First Load JS
 ├ ○ /404                                   182 B           205 kB
 ├ ○ /login                                 4.73 kB         227 kB
 ├ ○ /overview                              1.87 kB         229 kB
-├ ○ /posts                                 2.8 kB          234 kB
-├ ○ /restaurant/[id]                       2.78 kB         234 kB
+├ ○ /posts                                 2.83 kB         234 kB
+├ ○ /restaurant/[id]                       2.81 kB         234 kB
 ├ ○ /review/[id]                           2.57 kB         233 kB
 └ ○ /reviews                               2.58 kB         233 kB
 + First Load JS shared by all              205 kB
