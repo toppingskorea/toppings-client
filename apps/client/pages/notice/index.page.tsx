@@ -29,7 +29,7 @@ const Notice = () => {
       hideBackButton: true,
       right: {
         element: <Exit />,
-        onClick: () => back()
+        onClick: back
       }
     },
     bottom: true
