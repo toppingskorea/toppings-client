@@ -30,9 +30,7 @@ const EatingHabitsPage = () => {
   });
 
   const onSubmitRegister = useCallback(() => {
-    registerMutate({
-      ...register
-    });
+    registerMutate(register);
   }, [registerMutate, register]);
 
   useSetNavigation({

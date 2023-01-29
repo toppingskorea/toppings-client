@@ -14,9 +14,9 @@ import {
 
 export type SearchType = "restaurant" | "local";
 
-interface Props {
+type Props = {
   type: SearchType;
-}
+};
 
 const SearchPage = ({ type }: Props) => {
   const { colors, dimensions, weighs } = useTheme();
