@@ -14,7 +14,11 @@ import {
 
 export type SearchType = "restaurant" | "local";
 
-const SearchPage = ({ type }: { type: SearchType }) => {
+interface Props {
+  type: SearchType;
+}
+
+const SearchPage = ({ type }: Props) => {
   const { colors, dimensions, weighs } = useTheme();
   const { push } = useInternalRouter();
 
