@@ -19,7 +19,6 @@ const navigationAtom = atom<{
     backDirectlyURL?: Route.Path;
   };
   bottom?: boolean;
-  tagFamily?: boolean;
 }>({
   key: "navigationAtom",
   default: {

@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import { AlertModal, Badge, RoundedTag } from "~/components/Common";
-import { History } from "~/components/Recent";
+import { History, TagFamily } from "~/components/Recent";
 import Skeleton from "~/components/Skeleton";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useSetNavigation } from "~/hooks";
@@ -26,8 +26,7 @@ const RecentPage = () => {
         onClick: () => push("/map")
       },
       hideBackButton: true
-    },
-    tagFamily: true
+    }
   });
 
   const { colors, zIndex } = useTheme();
@@ -104,6 +103,8 @@ const RecentPage = () => {
       <Suspense.CSROnly fallback={<Skeleton.Paragraph />}>
         <History />
       </Suspense.CSROnly>
+
+      <TagFamily />
     </div>
   );
 };
