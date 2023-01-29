@@ -57,7 +57,7 @@ export const useAddReview = ({ restaurantId }: { restaurantId: string }) => {
 
   const onChangeImagesHandler = (images: string[]) => setImages(images);
   const onChangeDescriptionHandler = (
-    event: ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLInputElement>
+    event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => setDescription(event.currentTarget.value);
 
   return {
