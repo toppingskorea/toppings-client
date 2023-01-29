@@ -10,18 +10,24 @@ import { Text } from "../../Typo";
 import commonLayoutCss from "../Modal.constants";
 import * as Styled from "./AlertModal.styles";
 
-interface Props {
+interface PropsWithoutInformation {
   exitFn: VoidFunction;
-  rightClickFn?: VoidFunction;
-  information?: string;
-  rightText?: string;
+  rightClick: {
+    fn: VoidFunction;
+    text: string;
+  };
+  information?: never;
+}
+interface PropsWithoutRightClick {
+  exitFn: VoidFunction;
+  rightClick?: never;
+  information: string;
 }
 
 const Clickable = ({
   exitFn,
-  rightClickFn,
-  rightText
-}: Required<Omit<Props, "information">>) => {
+  rightClick
+}: Required<Omit<PropsWithoutInformation, "information">>) => {
   const { colors, weighs } = useTheme();
 
   return (
@@ -56,12 +62,12 @@ const Clickable = ({
           variants={defaultScaleChangeVariants}
           type="button"
           onClick={() => {
-            rightClickFn();
+            rightClick.fn();
             exitFn();
           }}
         >
           <Text _fontSize={18} weight={weighs.bold} _color={colors.primary}>
-            {rightText}
+            {rightClick.text}
           </Text>
         </motion.button>
       </Styled.EllipseFlex>
@@ -69,7 +75,9 @@ const Clickable = ({
   );
 };
 
-const NonClickable = ({ information }: Pick<Props, "information">) => {
+const NonClickable = ({
+  information
+}: Pick<PropsWithoutRightClick, "information">) => {
   const { colors, weighs } = useTheme();
 
   return (
@@ -94,10 +102,9 @@ const NonClickable = ({ information }: Pick<Props, "information">) => {
 
 const AlertModal = ({
   exitFn,
-  rightClickFn,
-  information,
-  rightText
-}: Props) => {
+  rightClick,
+  information
+}: PropsWithoutInformation | PropsWithoutRightClick) => {
   const theme = useTheme();
   const { colors } = theme;
 
@@ -126,12 +133,8 @@ const AlertModal = ({
         </Text>
       </Flex.Center>
 
-      {rightClickFn ? (
-        <Clickable
-          rightText={rightText ?? ""}
-          rightClickFn={rightClickFn}
-          exitFn={exitFn}
-        />
+      {rightClick ? (
+        <Clickable rightClick={rightClick} exitFn={exitFn} />
       ) : (
         <NonClickable information={information} />
       )}

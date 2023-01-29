@@ -48,11 +48,13 @@ const ReviewItem = ({ review }: Props) => {
                 overlay.open(({ exit, close }) => (
                   <AlertModal
                     exitFn={exit}
-                    rightClickFn={() => {
-                      deleteReviewMutate(review.id);
-                      close();
+                    rightClick={{
+                      fn: () => {
+                        deleteReviewMutate(review.id);
+                        close();
+                      },
+                      text: "delete"
                     }}
-                    rightText="delete"
                   />
                 ))
             }
