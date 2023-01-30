@@ -33,7 +33,7 @@ const AboutPage = () => {
         variants={staggerOne}
         {...framerMocker}
         css={css`
-          ${gutter({ direction: "vertical", space: 12 })}
+          ${gutter("vertical", 12)}
         `}
       >
         {EXTERNAL_LINK_LIST.map(item => (
