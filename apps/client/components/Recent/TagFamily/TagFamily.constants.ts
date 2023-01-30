@@ -1,18 +1,15 @@
 const tagList = [
   {
     id: "restaurant",
-    name: "Restaurant",
-    path: "/filter/restaurant"
+    name: "Restaurant"
   },
   {
     id: "nationality",
-    name: "Nationality",
-    path: "/filter/nationality"
+    name: "Nationality"
   },
   {
     id: "eatingHabit",
-    name: "Eating habit",
-    path: "/filter/eatingHabit"
+    name: "Eating habit"
   }
 ] as const;
 
