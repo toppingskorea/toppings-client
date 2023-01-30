@@ -29,7 +29,8 @@ const ReviewAddPage = ({ restaurantId }: { restaurantId: string }) => {
     description,
     onClickRegisterHandler,
     onChangeImagesHandler,
-    onChangeDescriptionHandler
+    onChangeDescriptionHandler,
+    isServerLoading
   } = useAddReview({ restaurantId });
 
   return (
