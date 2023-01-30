@@ -63,8 +63,7 @@ const RestaurantCard = ({ onClick, item, whoLikes }: Props) => {
               _color={colors.secondary["4B"]}
               weight={weighs.semiBold}
             >
-              {item.name}
-              {"   "}
+              {item.name}&nbsp;
               <Text _fontSize={10} _color={colors.secondary["4B"]}>
                 by {item.writer}
               </Text>
@@ -94,14 +93,7 @@ const RestaurantCard = ({ onClick, item, whoLikes }: Props) => {
         </Flex>
       </Flex>
 
-      <Flex
-        align="flex-end"
-        css={css`
-          gap: 6px;
-        `}
-      >
-        <HeartWithNumber like={item.like} likeCount={item.likeCount} />
-      </Flex>
+      <HeartWithNumber like={item.like} likeCount={item.likeCount} />
     </Flex>
   );
 };

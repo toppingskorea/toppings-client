@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { padding, Spacing } from "@toss/emotion-utils";
+import { padding, Spacing, Stack } from "@toss/emotion-utils";
 import { RestaurantCard, SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
@@ -25,8 +25,8 @@ const FilterRestaurantPage = () => {
       </SearchLayout>
       <TagFamily isBlur />
 
-      {/* border는 임시로 넣어놨음 */}
-      <div
+      <Stack.Vertical
+        gutter={12}
         css={css`
           width: 100%;
           ${padding({
@@ -52,7 +52,8 @@ const FilterRestaurantPage = () => {
             }}
           />
         ))}
-      </div>
+      </Stack.Vertical>
+
       <Spacing size={150} />
     </>
   );
