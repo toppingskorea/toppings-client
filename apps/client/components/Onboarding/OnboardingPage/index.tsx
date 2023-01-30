@@ -10,6 +10,7 @@ import { env } from "~/constants";
 const Onboarding = () => {
   const { colors, weighs } = useTheme();
   const router = useRouter();
+  console.log(env.TOPPINGS_SERVER_URL);
 
   const kakaoUrl = `${env.TOPPINGS_SERVER_URL}/oauth2/authorization/kakao?redirect_uri=${env.REDIRECT_URI}`;
 
