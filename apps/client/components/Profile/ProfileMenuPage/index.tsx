@@ -10,16 +10,16 @@ import {
   Spacing,
   touchable
 } from "@toss/emotion-utils";
+import { motion } from "framer-motion";
 import { MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { OpenGraph } from "~/components/Util";
+import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import {
   useAboutAction,
   useLogoutAction,
   useSetNavigation
 } from "./ProfileMenuPage.hooks";
-import { motion } from "framer-motion";
-import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 
 const ProfileMenuPage = () => {
   const { colors, weighs, dimensions } = useTheme();
