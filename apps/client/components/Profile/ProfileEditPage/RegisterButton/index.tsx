@@ -3,7 +3,7 @@ import { css, useTheme } from "@emotion/react";
 import { Flex, padding } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { useCallback, useMemo } from "react";
-import { FilledButton, SuccessModal } from "~/components/Common";
+import { FilledButton, Seek, SuccessModal } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter } from "~/hooks";
 import { useFetchUserInfo, useUpdateUserInfo } from "~/server/profile";
@@ -17,15 +17,16 @@ const RegisterButton = () => {
   const edit = useEditValue();
   const overlay = useOverlay();
 
-  const { mutate: updateUserInfoMutate } = useUpdateUserInfo({
-    onSuccess: () => {
-      overlay.open(() => <SuccessModal />);
+  const { mutate: updateUserInfoMutate, isLoading: updateUserInfoIsLoading } =
+    useUpdateUserInfo({
+      onSuccess: () => {
+        overlay.open(() => <SuccessModal />);
 
-      setTimeout(() => {
-        push("/profile");
-      }, 2000);
-    }
-  });
+        setTimeout(() => {
+          push("/profile");
+        }, 2000);
+      }
+    });
 
   const isProfileEatingHabitChanged = useProfileEatingHabitChangedValue();
 
@@ -83,11 +84,16 @@ const RegisterButton = () => {
           height: 37
         }}
         bgcolor={colors.primary}
+        disabled={updateUserInfoIsLoading}
         onClick={onClickRegisterHandler}
       >
-        <Text _fontSize={17} _color={colors.white} weight={weighs.semiBold}>
-          Register
-        </Text>
+        {updateUserInfoIsLoading ? (
+          <Seek />
+        ) : (
+          <Text _fontSize={17} _color={colors.white} weight={weighs.semiBold}>
+            Register
+          </Text>
+        )}
       </FilledButton>
     </Flex>
   );

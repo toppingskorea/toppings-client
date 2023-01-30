@@ -5,7 +5,8 @@ import {
   ComponentWithLabel,
   FilledButton,
   Gallery,
-  Input
+  Input,
+  Seek
 } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { OpenGraph } from "~/components/Util";
@@ -68,10 +69,15 @@ const ReviewAddPage = ({ restaurantId }: { restaurantId: string }) => {
           }}
           bgcolor={colors.primary}
           onClick={onClickRegisterHandler}
+          disabled={isServerLoading}
         >
-          <Text _fontSize={17} _color={colors.white}>
-            Register
-          </Text>
+          {isServerLoading ? (
+            <Seek />
+          ) : (
+            <Text _fontSize={17} _color={colors.white}>
+              Register
+            </Text>
+          )}
         </FilledButton>
       </Flex.Center>
     </Stack.Vertical>
