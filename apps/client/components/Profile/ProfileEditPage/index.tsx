@@ -32,7 +32,8 @@ const ProfileEditPage = () => {
         element: <Exit />,
         onClick: () => push("/map")
       },
-      marginBottom: 24
+      marginBottom: 24,
+      backButtonCaution: true
     },
     bottom: true
   });
