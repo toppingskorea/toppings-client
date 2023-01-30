@@ -55,7 +55,7 @@ const TagFamily = ({ isBlur }: Props) => {
                 bordercolor: colors.secondary.D9,
                 _color: pathname.includes(id) ? colors.white : colors.black
               }}
-              onClick={() => push(`/recent/${id}`)}
+              onClick={() => push(`/recent/filter/${id}`)}
             >
               {name}
             </RoundedTag>

@@ -14,7 +14,7 @@ import {
   useUploadRecentHistory
 } from "~/server/recent";
 
-const useRestaurant = () => {
+const useFilterRestaurant = () => {
   const { colors, weighs } = useTheme();
   const [restaurantList, setRestaurantList] =
     useState<Restaurant.SearchByFilteringDTO[]>();
@@ -94,4 +94,4 @@ const useRestaurant = () => {
   };
 };
 
-export default useRestaurant;
+export default useFilterRestaurant;

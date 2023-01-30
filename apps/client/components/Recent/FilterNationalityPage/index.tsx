@@ -18,7 +18,7 @@ import {
 } from "~/hooks";
 import { useUploadRecentHistory } from "~/server/recent";
 
-const RecentNationalityPage = () => {
+const FilterNationalityPage = () => {
   const { colors, weighs } = useTheme();
   const { push } = useInternalRouter();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
@@ -72,4 +72,4 @@ const RecentNationalityPage = () => {
   );
 };
 
-export default RecentNationalityPage;
+export default FilterNationalityPage;

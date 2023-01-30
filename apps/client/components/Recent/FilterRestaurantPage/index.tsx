@@ -5,10 +5,10 @@ import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
 import { OpenGraph } from "~/components/Util";
 import { pick } from "~/utils";
-import useRestaurant from "./RecentRestaurantPage.hooks";
+import useFilterRestaurant from "./FilterRestaurantPage.hooks";
 
-const RecentRestaurantPage = () => {
-  const app = useRestaurant();
+const FilterRestaurantPage = () => {
+  const app = useFilterRestaurant();
 
   return (
     <>
@@ -59,4 +59,4 @@ const RecentRestaurantPage = () => {
   );
 };
 
-export default RecentRestaurantPage;
+export default FilterRestaurantPage;
