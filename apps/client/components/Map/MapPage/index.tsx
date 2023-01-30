@@ -1,9 +1,10 @@
 import { css } from "@emotion/react";
 import { List } from "@svgs/map";
-import { Flex, position, size } from "@toss/emotion-utils";
+import { Flex, padding, position, size } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import { pin, rocket } from "~/assets/json";
+import { Text } from "~/components/Common/Typo";
 import { MapMarker } from "~/components/Kakao";
 import KakaoMap from "~/components/Kakao/KakaoMap";
 import { OpenGraph } from "~/components/Util";
@@ -19,7 +20,7 @@ const MapPage = () => {
       <KakaoMap
         center={app.currentLocation}
         level={5}
-        maxLevel={8}
+        maxLevel={13}
         onDragEnd={app.mapEventHandler}
         onLoaded={app.mapEventHandler}
         onZoomChanged={app.mapEventHandler}
@@ -78,6 +79,31 @@ const MapPage = () => {
                   user-select: none;
                 `}
               />
+              <Flex.Center
+                css={css`
+                  ${padding({
+                    top: 43
+                  })}
+                `}
+              >
+                <Text
+                  _color={app.colors.white}
+                  _fontSize={13}
+                  css={css`
+                    ${padding({
+                      x: 11,
+                      y: 4
+                    })}
+                    border-radius: 100px;
+                    background-color: ${hexToRgba(
+                      app.colors.secondary[69],
+                      0.7
+                    )};
+                  `}
+                >
+                  {item.name}
+                </Text>
+              </Flex.Center>
             </motion.div>
           </MapMarker>
         ))}
