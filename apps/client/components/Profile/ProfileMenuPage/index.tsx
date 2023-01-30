@@ -18,6 +18,8 @@ import {
   useLogoutAction,
   useSetNavigation
 } from "./ProfileMenuPage.hooks";
+import { motion } from "framer-motion";
+import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 
 const ProfileMenuPage = () => {
   const { colors, weighs, dimensions } = useTheme();
@@ -35,11 +37,14 @@ const ProfileMenuPage = () => {
     >
       <OpenGraph title="Menu" />
 
-      <Flex
-        as="button"
-        align="center"
+      <motion.button
         onClick={onClickAboutButtonHandler}
+        {...framerMocker}
+        variants={defaultSlideFadeInVariants("right")}
         css={css`
+          ${flex({
+            align: "center"
+          })}
           ${touchable}
         `}
       >
@@ -64,7 +69,7 @@ const ProfileMenuPage = () => {
         >
           About
         </Text>
-      </Flex>
+      </motion.button>
 
       <MotionButton
         onClick={onClickSignOutButtonHandler}
