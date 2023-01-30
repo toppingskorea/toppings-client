@@ -46,8 +46,8 @@ const TagFamily = ({ isBlur }: Props) => {
               key={id}
               isTouchable
               padding={{
-                x: 16,
-                y: 7
+                x: 21,
+                y: 11
               }}
               _fontSize={17}
               defaultProps={{
