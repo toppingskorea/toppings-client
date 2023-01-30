@@ -7,7 +7,7 @@ import {
 import { css, useTheme } from "@emotion/react";
 import { useOverlay } from "@toss/use-overlay";
 import { useCallback } from "react";
-import { FilledButton, SuccessModal } from "~/components/Common";
+import { FilledButton, Seek, SuccessModal } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { types } from "~/constants/data/common";
 import { useInternalRouter } from "~/hooks";
@@ -23,15 +23,16 @@ const Register = () => {
   const postUploadReset = usePostUploadReset();
   const postUpload = usePostUploadValue();
 
-  const { mutate: uploadPostMutate } = useUploadPost(() => {
-    restaurantReset();
-    postUploadReset();
-    overlay.open(() => <SuccessModal />);
-    setTimeout(() => {
-      overlay.close();
-      router.replace("/map");
-    }, 3000);
-  });
+  const { mutate: uploadPostMutate, isLoading: uploadPostIsLoading } =
+    useUploadPost(() => {
+      restaurantReset();
+      postUploadReset();
+      overlay.open(() => <SuccessModal />);
+      setTimeout(() => {
+        overlay.close();
+        router.replace("/map");
+      }, 3000);
+    });
 
   const { verificationSubmitInClient } = useSubmitVerification({
     images: postUpload.images,
@@ -74,13 +75,18 @@ const Register = () => {
       }}
       bgcolor={colors.primary}
       onClick={onRegisterHandler}
+      disabled={uploadPostIsLoading}
       css={css`
         margin: 0 auto;
       `}
     >
-      <Text _fontSize={17} _color={colors.white}>
-        Register
-      </Text>
+      {uploadPostIsLoading ? (
+        <Seek />
+      ) : (
+        <Text _fontSize={17} _color={colors.white}>
+          Register
+        </Text>
+      )}
     </FilledButton>
   );
 };

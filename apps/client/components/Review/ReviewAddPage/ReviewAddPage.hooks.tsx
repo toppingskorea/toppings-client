@@ -50,7 +50,7 @@ export const useAddReview = ({ restaurantId }: { restaurantId: string }) => {
     setDescription(reviewDetail.description);
   });
 
-  const { onClickRegisterHandler } = useClickRegisterHandler({
+  const { onClickRegisterHandler, isServerLoading } = useClickRegisterHandler({
     images,
     description,
     restaurantId
@@ -66,7 +66,8 @@ export const useAddReview = ({ restaurantId }: { restaurantId: string }) => {
     description,
     onClickRegisterHandler,
     onChangeImagesHandler,
-    onChangeDescriptionHandler
+    onChangeDescriptionHandler,
+    isServerLoading
   };
 };
 
@@ -96,12 +97,16 @@ const useClickRegisterHandler = ({
     }, 3000);
   }, [overlay, replace, restaurantId]);
 
-  const { mutateAsync: uploadReviewMutateAsync } = useUploadReview({
+  const {
+    mutateAsync: uploadReviewMutateAsync,
+    isLoading: uploadReviewIsLoading
+  } = useUploadReview({
     onSuccess: commonOnSuccessCallback
   });
-  const { mutate: updateReviewMutate } = useUpdateReview({
-    onSuccess: commonOnSuccessCallback
-  });
+  const { mutate: updateReviewMutate, isLoading: updateReviewIsLoading } =
+    useUpdateReview({
+      onSuccess: commonOnSuccessCallback
+    });
   const { mutate: sendNotificationMutate } = useSendNotification();
 
   const onClickRegisterHandler = useCallback(async () => {
@@ -151,6 +156,7 @@ const useClickRegisterHandler = ({
   ]);
 
   return {
-    onClickRegisterHandler
+    onClickRegisterHandler,
+    isServerLoading: uploadReviewIsLoading || updateReviewIsLoading
   };
 };

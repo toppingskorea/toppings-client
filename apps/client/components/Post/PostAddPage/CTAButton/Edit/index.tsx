@@ -10,7 +10,7 @@ import { useTheme } from "@emotion/react";
 import { Stack } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { useCallback } from "react";
-import { FilledButton, SuccessModal } from "~/components/Common";
+import { FilledButton, Seek, SuccessModal } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { types } from "~/constants/data/common";
 import { useInternalRouter } from "~/hooks";
@@ -37,12 +37,14 @@ const Edit = () => {
     }, 3000);
   }, [overlay, postUploadReset, restaurantReset, router]);
 
-  const { mutate: updatePostMutate } = useUpdatePost(() => {
-    commonOnSuccess();
-  });
-  const { mutate: deletePostMutate } = useDeletePost(() => {
-    commonOnSuccess();
-  });
+  const { mutate: updatePostMutate, isLoading: updatePostIsLoading } =
+    useUpdatePost(() => {
+      commonOnSuccess();
+    });
+  const { mutate: deletePostMutate, isLoading: deletePostIsLoading } =
+    useDeletePost(() => {
+      commonOnSuccess();
+    });
 
   const { verificationSubmitInClient } = useSubmitVerification({
     images: postUpload.images,
@@ -94,23 +96,32 @@ const Edit = () => {
         }}
         bgcolor={colors.primary}
         onClick={onEditHandler}
+        disabled={updatePostIsLoading}
       >
-        <Text _fontSize={17} _color={colors.white}>
-          Edit
-        </Text>
+        {updatePostIsLoading ? (
+          <Seek />
+        ) : (
+          <Text _fontSize={17} _color={colors.white}>
+            Edit
+          </Text>
+        )}
       </FilledButton>
       <FilledButton
         size={{
           width: 278,
           height: 38
         }}
+        disabled={deletePostIsLoading}
         bgcolor={colors.secondary.D9}
-        // TODO: 동규님 모달 받으면 모달에서 핸들러 하기
         onClick={onDeleteHandler}
       >
-        <Text _fontSize={17} _color={colors.white}>
-          Delete
-        </Text>
+        {deletePostIsLoading ? (
+          <Seek />
+        ) : (
+          <Text _fontSize={17} _color={colors.white}>
+            Delete
+          </Text>
+        )}
       </FilledButton>
     </Stack.Vertical>
   );
