@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { flex } from "@toss/emotion-utils";
 
 interface Props {
   color?: string;
@@ -7,15 +8,11 @@ interface Props {
 
 const Seek = ({ color = "white", size = 9 }: Props) => {
   return (
-    <Container
-      className="rli-d-i-b seek-bounding-box"
-      color={color}
-      size={size}
-    >
-      <span className="rli-d-i-b seek-loader">
-        <span className="rli-d-i-b seek-bounce seek-bounce1" />
-        <span className="rli-d-i-b seek-bounce seek-bounce2" />
-        <span className="rli-d-i-b seek-bounce seek-bounce3" />
+    <Container className="seek-bounding-box" color={color} size={size}>
+      <span className="seek-loader">
+        <span className="seek-bounce seek-bounce1" />
+        <span className="seek-bounce seek-bounce2" />
+        <span className="seek-bounce seek-bounce3" />
       </span>
     </Container>
   );
@@ -36,9 +33,10 @@ const Container = styled.span<{ size: number; color: string }>`
     position: relative;
     z-index: 0;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    ${flex({
+      justify: "center",
+      align: "center"
+    })}
 
     .seek-bounce {
       width: 1.12em;
