@@ -1,17 +1,14 @@
-import { useTheme } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
+import { gutter, padding, touchable } from "@toss/emotion-utils";
+import { motion } from "framer-motion";
 import { Text } from "~/components/Common/Typo";
+import {
+  defaultSlideFadeInVariants,
+  framerMocker,
+  staggerOne
+} from "~/constants";
 import { useSetNavigation } from "~/hooks";
-
-const EXTERNAL_LINK_LIST = [
-  {
-    label: "Privacy Policy",
-    href: "https://plip.kr/html/95264de9-5e3f-4f0c-9211-b862b6babac2.html"
-  },
-  {
-    label: "Terms of Use",
-    href: "https://abaft-pie-111.notion.site/82a3453aee2d493596b3f7f7f60b16e9"
-  }
-];
+import EXTERNAL_LINK_LIST from "./AboutPage.constants";
 
 const AboutPage = () => {
   const { colors, weighs } = useTheme();
@@ -27,17 +24,42 @@ const AboutPage = () => {
   });
 
   return (
-    <div>
-      <ul>
+    <section
+      css={css`
+        ${padding({ x: 27 })}
+      `}
+    >
+      <motion.ul
+        variants={staggerOne}
+        {...framerMocker}
+        css={css`
+          ${gutter("vertical", 12)}
+        `}
+      >
         {EXTERNAL_LINK_LIST.map(item => (
-          <li key={item.label}>
-            <a href={item.href} target="_blank" rel="noopener noreferrer">
+          <motion.li
+            key={item.label}
+            variants={defaultSlideFadeInVariants("right")}
+            css={css`
+              ${touchable}
+            `}
+          >
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              css={css`
+                font-size: 17px;
+                font-weight: ${weighs.semiBold};
+                color: ${colors.secondary[62]};
+              `}
+            >
               {item.label}
             </a>
-          </li>
+          </motion.li>
         ))}
-      </ul>
-    </div>
+      </motion.ul>
+    </section>
   );
 };
 

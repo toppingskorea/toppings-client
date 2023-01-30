@@ -1,36 +1,33 @@
 import { css, useTheme } from "@emotion/react";
 import { Logout } from "@svgs/profile";
-import { flex, gutter, padding, position } from "@toss/emotion-utils";
-import { useOverlay } from "@toss/use-overlay";
-import { MotionButton, SuccessModal } from "~/components/Common";
+import {
+  Flex,
+  flex,
+  gutter,
+  padding,
+  position,
+  size,
+  Spacing,
+  touchable
+} from "@toss/emotion-utils";
+import { motion } from "framer-motion";
+import { MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { OpenGraph } from "~/components/Util";
-import { useInternalRouter, useSetNavigation, useTokenCookie } from "~/hooks";
-import { useLogout } from "~/server/profile";
+import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
+import {
+  useAboutAction,
+  useLogoutAction,
+  useSetNavigation
+} from "./ProfileMenuPage.hooks";
 
 const ProfileMenuPage = () => {
   const { colors, weighs, dimensions } = useTheme();
-  const cookie = useTokenCookie();
-  const { push, replace } = useInternalRouter();
-  useSetNavigation({
-    top: {
-      marginBottom: 34
-    },
-    bottom: true
-  });
 
-  const overlay = useOverlay();
+  useSetNavigation();
 
-  const { mutate: logoutMutate } = useLogout({
-    onSuccess: () => {
-      overlay.open(() => <SuccessModal />);
-      setTimeout(() => {
-        overlay.close();
-        cookie.remove();
-        replace("/");
-      }, 3000);
-    }
-  });
+  const { onClickSignOutButtonHandler } = useLogoutAction();
+  const { onClickAboutButtonHandler } = useAboutAction();
 
   return (
     <section
@@ -39,17 +36,43 @@ const ProfileMenuPage = () => {
       `}
     >
       <OpenGraph title="Menu" />
-      <Text _fontSize={22} _color={colors.secondary[62]} weight={weighs.bold}>
-        Menu
-      </Text>
-      <div>
-        <button type="button" onClick={() => push("/about")}>
-          go About
-        </button>
-      </div>
+
+      <motion.button
+        onClick={onClickAboutButtonHandler}
+        {...framerMocker}
+        variants={defaultSlideFadeInVariants("right")}
+        css={css`
+          ${flex({
+            align: "center"
+          })}
+          ${touchable}
+        `}
+      >
+        <Flex.Center
+          css={css`
+            border-radius: 50%;
+            background-color: ${colors.secondary.D9};
+            ${size({
+              width: 21,
+              height: 21
+            })}
+            color: ${colors.white};
+          `}
+        >
+          !
+        </Flex.Center>
+        <Spacing size={7} direction="horizontal" />
+        <Text
+          _fontSize={17}
+          weight={weighs.semiBold}
+          _color={colors.secondary[62]}
+        >
+          About
+        </Text>
+      </motion.button>
 
       <MotionButton
-        onClick={() => logoutMutate()}
+        onClick={onClickSignOutButtonHandler}
         css={css`
           ${position("fixed", {
             bottom: dimensions.bottomNavigationHeight,
