@@ -16,6 +16,6 @@ Default.args = {
 };
 
 export default {
-  title: "Box",
+  title: "Skeleton/Box",
   component: Box
 } as ComponentMeta<typeof Box>;

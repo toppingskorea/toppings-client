@@ -21,6 +21,8 @@ configuration:
   - "**/jest*.js"
   - "**/tsconfig*.json"
   - .*/**
+storybook:
+  - "**/*.stories.tsx"
 documentation:
   - "**/*.md"
 dependencies:

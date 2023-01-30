@@ -13,6 +13,6 @@ Default.args = {
 };
 
 export default {
-  title: "Circle",
+  title: "Skeleton/Circle",
   component: Circle
 } as ComponentMeta<typeof Circle>;
