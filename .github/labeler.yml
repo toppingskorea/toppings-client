@@ -22,7 +22,7 @@ configuration:
   - "**/tsconfig*.json"
   - .*/**
 storybook:
-  - apps/client/**/*.stories.tsx
+  - "**/*.stories.tsx"
 documentation:
   - "**/*.md"
 dependencies:
