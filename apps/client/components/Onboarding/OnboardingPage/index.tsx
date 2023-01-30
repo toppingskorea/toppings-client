@@ -27,11 +27,11 @@ const Onboarding = () => {
               ${gutter({ space: 6, direction: "horizontal" })}
             `}
           >
-            <Text _fontSize={25} _color={colors.white} weight={weighs.medium}>
+            <Text _fontSize={21} _color={colors.white} weight={weighs.medium}>
               Do you want to
             </Text>
             <Text
-              _fontSize={25}
+              _fontSize={21}
               _color={colors.white}
               weight={weighs.extraBold}
             >
