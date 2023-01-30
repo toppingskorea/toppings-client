@@ -78,8 +78,8 @@ const RecentPage = () => {
         {...framerMocker}
         css={css`
           ${position("absolute", {
-            top: 0,
-            right: 0
+            top: 5,
+            right: 18
           })}
         `}
       >
