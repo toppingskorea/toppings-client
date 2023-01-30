@@ -24,7 +24,7 @@ const LOGIN_PROTECTED_ROUTE = ["/login"];
 // 미들웨어를 발생시킬 라우트
 export const config = {
   matcher: [
-    // "/profile/:path*",
+    "/profile/:path*",
     "/login",
     "/login/redirect",
     "/post/add",
