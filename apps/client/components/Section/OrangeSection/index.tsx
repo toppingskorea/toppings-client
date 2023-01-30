@@ -1,13 +1,6 @@
 import { css, useTheme } from "@emotion/react";
 import { logo } from "@images/common";
-import {
-  Flex,
-  flex,
-  gutter,
-  position,
-  size,
-  Spacing
-} from "@toss/emotion-utils";
+import { Flex, flex, gutter, position, size } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -21,15 +14,22 @@ const OrangeSection = ({ description, button }: Props) => {
   return (
     <section
       css={css`
+        background-color: ${colors.primary};
         ${position("fixed", 0, 0, 0, 0)}
         ${flex({ direction: "column", align: "center" })}
-          ${size.full}
-          background-color: ${colors.primary};
+        ${size.full}
       `}
     >
-      <Spacing size={170} />
-
-      <Image src={logo} alt="TOPPINGS" />
+      <div
+        css={css`
+          ${position("absolute", {
+            top: "50%"
+          })}
+          transform: translateY(-75%); // 326 / 434 비율로 맞췄습니다.
+        `}
+      >
+        <Image src={logo} alt="TOPPINGS" />
+      </div>
 
       <Flex
         direction="column"
