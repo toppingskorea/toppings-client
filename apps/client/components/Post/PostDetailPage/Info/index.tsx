@@ -7,7 +7,7 @@ import {
   OrangeHeart,
   Share
 } from "@svgs/common";
-import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
+import { Flex, padding, size, Spacing, Stack } from "@toss/emotion-utils";
 import { MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { OpenGraph } from "~/components/Util";
@@ -64,6 +64,7 @@ const Info = ({
         justify="space-between"
         css={css`
           ${size.width100}
+          ${padding({ x: 12 })}
         `}
       >
         <Flex direction="column">
@@ -113,9 +114,27 @@ const Info = ({
         </Stack.Horizontal>
       </Flex>
 
-      <Text _fontSize={12} _color={colors.secondary[69]}>
-        {description}
-      </Text>
+      <article
+        css={css`
+          ${padding({
+            x: 15,
+            y: 9
+          })}
+          border-radius: 10px;
+          background-color: ${colors.secondary.F2};
+        `}
+      >
+        <Text
+          _fontSize={15}
+          _color={colors.secondary[69]}
+          weight={weighs.medium}
+          css={css`
+            word-wrap: break-word;
+          `}
+        >
+          {description}
+        </Text>
+      </article>
     </Stack.Vertical>
   );
 };
