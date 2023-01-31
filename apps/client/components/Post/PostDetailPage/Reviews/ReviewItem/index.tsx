@@ -112,7 +112,7 @@ const ReviewItem = ({ review }: Props) => {
               <Flex align="center">
                 <CircleCountry country={review.country} size={12} padding={4} />
 
-                <Spacing direction="horizontal" size={7} />
+                <Spacing direction="horizontal" size={6} />
 
                 <Text _fontSize={13} weight={weighs.semiBold}>
                   {review.name}
