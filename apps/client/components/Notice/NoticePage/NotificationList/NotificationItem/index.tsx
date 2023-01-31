@@ -3,8 +3,9 @@ import { whiteAvatar } from "@images/common";
 import { RejectPalm } from "@svgs/notice";
 import { Flex, margin, padding, Spacing } from "@toss/emotion-utils";
 import Image from "next/image";
+import { CircleCountry } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import { calculatePassedTime, countryToSvg, omit, pick } from "~/utils";
+import { calculatePassedTime, omit, pick } from "~/utils";
 
 type Props = Notice.DTO;
 
@@ -59,11 +60,11 @@ const NormalItem = ({
         </Text>
         <Spacing size={4} />
         <Flex align="center">
-          <Image
-            src={countryToSvg(country)}
+          <CircleCountry
+            country={country}
             alt={country}
-            width={15}
-            height={15}
+            size={14}
+            padding={4}
           />
           <Spacing direction="horizontal" size={4} />
           <Text
@@ -90,8 +91,8 @@ const NormalItem = ({
       <Image
         src={thumbnail}
         alt="thumbnail of your restaurant"
-        width={40}
-        height={40}
+        width={44}
+        height={44}
         css={css`
           border-radius: 5px;
         `}
@@ -147,7 +148,7 @@ const NotificationItem = (props: Props) => {
         })}
         ${padding({
           x: 4,
-          bottom: 8
+          bottom: 9
         })}
 
         border-bottom: 0.7px solid ${colors.secondary.DF};
