@@ -7,8 +7,16 @@ import {
   OrangeHeart,
   Share
 } from "@svgs/common";
-import { Flex, padding, size, Spacing, Stack } from "@toss/emotion-utils";
-import { MotionButton } from "~/components/Common";
+import {
+  flex,
+  Flex,
+  padding,
+  size,
+  Spacing,
+  Stack,
+  touchable
+} from "@toss/emotion-utils";
+import { motion } from "framer-motion";
 import { Text } from "~/components/Common/Typo";
 import { OpenGraph } from "~/components/Util";
 import useClickHandler from "./Info.hooks";
@@ -84,10 +92,19 @@ const Info = ({
             <Text _fontSize={14} _color={colors.secondary[47]}>
               {address}
             </Text>
-            <Spacing direction="horizontal" size={8} />
-            <MotionButton onClick={onClipboardClickHandler}>
+            <Spacing direction="horizontal" size={3} />
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              css={css`
+                ${touchable}
+                ${flex({
+                  justify: "center"
+                })}
+              `}
+              onClick={onClipboardClickHandler}
+            >
               <Copy />
-            </MotionButton>
+            </motion.button>
           </Flex>
         </Flex>
 
