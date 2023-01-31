@@ -20,7 +20,8 @@ const AboutPage = () => {
           About
         </Text>
       )
-    }
+    },
+    bottom: true
   });
 
   return (
