@@ -1,21 +1,23 @@
 import { useTheme } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
 import { Stack } from "@toss/emotion-utils";
+import { useEffect } from "react";
 import { Text } from "~/components/Common/Typo";
 import Skeleton from "~/components/Skeleton";
 import { OpenGraph } from "~/components/Util";
 import { useSetNavigation } from "~/hooks";
+import { useNoticeActivateSetter } from "~/recoil/atoms/noticeActivate";
 import { generateComponent } from "~/utils";
 import NotificationList from "./NotificationList";
 
 const Notice = () => {
   const { colors, weighs } = useTheme();
-  // const setNoticeActivate = useNoticeActivateSetter();
+  const setNoticeActivate = useNoticeActivateSetter();
 
-  // useEffect(() => {
-  //   setNoticeActivate(false);
-  //   return () => setNoticeActivate(false);
-  // }, [setNoticeActivate]);
+  useEffect(() => {
+    setNoticeActivate(false);
+    return () => setNoticeActivate(false);
+  }, [setNoticeActivate]);
 
   useSetNavigation({
     top: {
