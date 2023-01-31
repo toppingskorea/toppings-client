@@ -103,6 +103,7 @@ const Input = ({
 
               &:disabled {
                 background-color: ${colors.white};
+                border: 1px solid ${colors.secondary.B8};
               }
             `,
             ref: inputRef,
