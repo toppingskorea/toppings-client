@@ -28,7 +28,7 @@ const Item = ({ post }: Props) => {
       key={post.id}
       css={css`
         ${flex({ align: "flex-end" })}
-        ${gutter({ direction: "horizontal", space: 18 })}
+        ${gutter({ direction: "horizontal", space: 17 })}
         ${padding({ top: 14, bottom: 14, x: 4 })}
         ${touchable}
         border-bottom: 1px solid ${colors.secondary.D9};
@@ -61,7 +61,7 @@ const Item = ({ post }: Props) => {
         </Text>
 
         <Stack.Vertical
-          gutter={4}
+          gutter={6}
           css={css`
             ${width100}
           `}
