@@ -14,11 +14,15 @@ const ReviewLeadingSection = () => {
         onClick={() => push(`/review/add/${query.id}`)}
         css={css`
           ${padding({ x: 21, y: 4 })}
-          background-color: ${colors.secondary.D9};
+          background-color: ${colors.secondary.E6};
           border-radius: 100px;
         `}
       >
-        <Text _fontSize={12} weight={weighs.bold} _color={colors.secondary[69]}>
+        <Text
+          _fontSize={13}
+          weight={weighs.medium}
+          _color={colors.secondary[69]}
+        >
           Write a Review
         </Text>
       </MotionButton>

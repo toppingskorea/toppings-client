@@ -68,7 +68,7 @@ const PostDetailPage = ({ id }: { id: string }) => {
       >
         Reviews
       </Badge>
-      <Spacing size={20} />
+      <Spacing size={36} />
       <ReviewLeadingSection />
       <Spacing size={40} />
       <Suspense.CSROnly>
