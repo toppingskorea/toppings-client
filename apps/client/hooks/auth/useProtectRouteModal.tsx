@@ -18,7 +18,8 @@ const useProtectRouteModal = () => {
 
   const onLoginHandler = () => {
     setCookie(KAKAO_LOGIN_REDIRECT_URI, window.location.href, {
-      expires: dayjs().add(3, "minutes").toDate()
+      expires: dayjs().add(3, "minutes").toDate(),
+      path: "/"
     });
     replace(kakaoUrl);
   };
