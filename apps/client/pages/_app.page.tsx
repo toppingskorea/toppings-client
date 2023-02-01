@@ -8,10 +8,11 @@ import {
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { OverlayProvider } from "@toss/use-overlay";
-import type { AppProps } from "next/app";
+import type { AppContext, AppProps } from "next/app";
+import NextAppBase from "next/app";
 import { RecoilRoot } from "recoil";
 import { env } from "~/constants";
-import { AnalyticsProvider } from "~/contexts";
+import { AnalyticsProvider, DeviceInfoProvider } from "~/contexts";
 import { useSentry } from "~/hooks";
 import AppLayout from "~/layouts/AppLayout";
 import { emotionTheme, GlobalCSS } from "~/styles";
@@ -36,33 +37,66 @@ const queryClient = new QueryClient({
   }
 });
 
-function MyApp({
-  Component,
-  pageProps
-}: AppProps<{ dehydratedState: DehydratedState }>) {
+interface PageProps {
+  $ua: {
+    userAgent?: string;
+    hints?: {
+      isMobile: boolean;
+    };
+  };
+  dehydratedState: DehydratedState;
+}
+
+function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   useSentry({
     dsn: env.SENTRY_DSN,
     allowUrls: ["https://toppings.co.kr/"]
   });
+
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <RecoilRoot>
-          <ThemeProvider theme={emotionTheme}>
-            <GlobalCSS />
-            <AnalyticsProvider>
-              <OverlayProvider>
-                <AppLayout>
-                  <Component {...pageProps} />
-                </AppLayout>
-              </OverlayProvider>
-            </AnalyticsProvider>
-          </ThemeProvider>
-        </RecoilRoot>
+        <DeviceInfoProvider
+          hints={pageProps.$ua.hints}
+          userAgent={pageProps.$ua.userAgent}
+        >
+          <RecoilRoot>
+            <ThemeProvider theme={emotionTheme}>
+              <GlobalCSS />
+              <AnalyticsProvider>
+                <OverlayProvider>
+                  <AppLayout>
+                    <Component {...pageProps} />
+                  </AppLayout>
+                </OverlayProvider>
+              </AnalyticsProvider>
+            </ThemeProvider>
+          </RecoilRoot>
+        </DeviceInfoProvider>
       </Hydrate>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
+
+MyApp.getInitialProps = async (appContext: AppContext) => {
+  const appProps = await NextAppBase.getInitialProps(appContext);
+  const headers = appContext.ctx.req?.headers;
+  const prevPageProps = (appProps.pageProps as PageProps) ?? {};
+  const nextPageProps = {
+    ...prevPageProps,
+    $ua: {
+      userAgent: headers?.["user-agent"],
+      hints: {
+        isMobile: headers?.["sec-ch-ua-mobile"]?.includes("1")
+      }
+    }
+  };
+
+  return {
+    ...appProps,
+    pageProps: nextPageProps
+  };
+};
 
 export default MyApp;

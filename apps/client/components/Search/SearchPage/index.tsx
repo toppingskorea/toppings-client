@@ -5,12 +5,9 @@ import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { Result } from "~/components/Search";
 import { OpenGraph } from "~/components/Util";
-import {
-  useInput,
-  useInternalRouter,
-  useScrollToTopByKeywordChange,
-  useSetNavigation
-} from "~/hooks";
+import { useDeviceInfo } from "~/contexts";
+import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
+import { useBlurController } from "./SearchPage.hooks";
 
 export type SearchType = "restaurant" | "local";
 
@@ -21,21 +18,7 @@ type Props = {
 const SearchPage = ({ type }: Props) => {
   const { colors, dimensions, weighs } = useTheme();
   const { push } = useInternalRouter();
-
-  useSetNavigation({
-    top: {
-      title: (
-        <Text _fontSize={19} _color={colors.secondary[47]} weight={weighs.bold}>
-          Restaurant Name
-        </Text>
-      ),
-      marginBottom: 35,
-      right: {
-        element: <Exit />,
-        onClick: () => push("/map")
-      }
-    }
-  });
+  const { isMobile } = useDeviceInfo();
 
   const {
     props: keyword,
@@ -47,7 +30,30 @@ const SearchPage = ({ type }: Props) => {
     debounceTimeout: 300
   });
 
-  useScrollToTopByKeywordChange(keyword.value);
+  const { focusController, isFocused } = useBlurController();
+
+  const isMobileFocused = isMobile && isFocused;
+
+  useSetNavigation({
+    top: isMobileFocused
+      ? undefined
+      : {
+          title: (
+            <Text
+              _fontSize={19}
+              _color={colors.secondary[47]}
+              weight={weighs.bold}
+            >
+              Restaurant Name
+            </Text>
+          ),
+          marginBottom: 35,
+          right: {
+            element: <Exit />,
+            onClick: () => push("/map")
+          }
+        }
+  });
 
   return (
     <>
@@ -55,6 +61,10 @@ const SearchPage = ({ type }: Props) => {
       <section
         css={css`
           ${padding({ x: 16, bottom: 75 })}
+          ${isMobileFocused &&
+          position("fixed", {
+            top: 0
+          })}
         `}
       >
         <Result value={debouncedValue} type={type} />
@@ -72,6 +82,7 @@ const SearchPage = ({ type }: Props) => {
           placeholder="Enter the restaurant name"
           setValue={setValue}
           {...keyword}
+          {...focusController}
         />
       </div>
     </>
