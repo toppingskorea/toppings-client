@@ -27,7 +27,8 @@ const SearchPage = ({ type }: Props) => {
 
   useSetNavigation(
     isKeyboardOpen
-      ? {
+      ? undefined
+      : {
           top: {
             title: (
               <Text
@@ -45,7 +46,6 @@ const SearchPage = ({ type }: Props) => {
             }
           }
         }
-      : undefined
   );
 
   const {
