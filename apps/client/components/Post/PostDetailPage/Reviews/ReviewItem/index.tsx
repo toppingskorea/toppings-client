@@ -80,11 +80,11 @@ const ReviewItem = ({ review }: Props) => {
         <Image
           src={review.thumbnail}
           alt=""
-          width={81}
-          height={81}
+          width={87}
+          height={87}
           css={css`
             border-radius: 8px;
-            min-width: 81px;
+            min-width: 87px;
           `}
         />
 
@@ -112,7 +112,7 @@ const ReviewItem = ({ review }: Props) => {
               <Flex align="center">
                 <CircleCountry country={review.country} size={12} padding={4} />
 
-                <Spacing direction="horizontal" size={7} />
+                <Spacing direction="horizontal" size={6} />
 
                 <Text _fontSize={13} weight={weighs.semiBold}>
                   {review.name}
@@ -151,7 +151,7 @@ const ReviewItem = ({ review }: Props) => {
             </Flex>
           </Flex>
 
-          <Spacing size={4} />
+          <Spacing size={6} />
 
           <Text
             _fontSize={10}

@@ -7,8 +7,16 @@ import {
   OrangeHeart,
   Share
 } from "@svgs/common";
-import { Flex, size, Spacing, Stack } from "@toss/emotion-utils";
-import { MotionButton } from "~/components/Common";
+import {
+  flex,
+  Flex,
+  padding,
+  size,
+  Spacing,
+  Stack,
+  touchable
+} from "@toss/emotion-utils";
+import { motion } from "framer-motion";
 import { Text } from "~/components/Common/Typo";
 import { OpenGraph } from "~/components/Util";
 import useClickHandler from "./Info.hooks";
@@ -64,6 +72,7 @@ const Info = ({
         justify="space-between"
         css={css`
           ${size.width100}
+          ${padding({ x: 12 })}
         `}
       >
         <Flex direction="column">
@@ -83,10 +92,19 @@ const Info = ({
             <Text _fontSize={14} _color={colors.secondary[47]}>
               {address}
             </Text>
-            <Spacing direction="horizontal" size={8} />
-            <MotionButton onClick={onClipboardClickHandler}>
+            <Spacing direction="horizontal" size={3} />
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              css={css`
+                ${touchable}
+                ${flex({
+                  justify: "center"
+                })}
+              `}
+              onClick={onClipboardClickHandler}
+            >
               <Copy />
-            </MotionButton>
+            </motion.button>
           </Flex>
         </Flex>
 
@@ -113,9 +131,27 @@ const Info = ({
         </Stack.Horizontal>
       </Flex>
 
-      <Text _fontSize={12} _color={colors.secondary[69]}>
-        {description}
-      </Text>
+      <article
+        css={css`
+          ${padding({
+            x: 15,
+            y: 9
+          })}
+          border-radius: 10px;
+          background-color: ${colors.secondary.F2};
+        `}
+      >
+        <Text
+          _fontSize={15}
+          _color={colors.secondary[69]}
+          weight={weighs.medium}
+          css={css`
+            word-wrap: break-word;
+          `}
+        >
+          {description}
+        </Text>
+      </article>
     </Stack.Vertical>
   );
 };

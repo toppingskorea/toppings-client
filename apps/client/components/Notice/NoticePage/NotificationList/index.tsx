@@ -33,7 +33,7 @@ const NotificationList = () => {
   }
 
   return (
-    <Stack.Vertical as="ul" gutter={12}>
+    <Stack.Vertical as="ul" gutter={9}>
       {notificationList.pages.map(page =>
         page.items.map((notification, index) => (
           <NotificationItem key={index} {...notification} />
