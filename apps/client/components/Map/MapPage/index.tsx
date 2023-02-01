@@ -65,9 +65,10 @@ const MapPage = () => {
             >
               <Pin
                 css={css`
-                  position: absolute;
-                  top: 0;
-                  left: 50%;
+                  ${position("absolute", {
+                    top: 0,
+                    left: "50%"
+                  })}
                   transform: translateX(-50%);
                   pointer-events: none;
                   user-select: none;
