@@ -14,6 +14,7 @@ import {
   MotionButton
 } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
+import { useProtectRouteModal } from "~/hooks";
 import { useDeleteReview } from "~/server/review";
 import { ellipsisTextByLength } from "~/utils";
 
@@ -24,6 +25,7 @@ interface Props {
 const ReviewItem = ({ review }: Props) => {
   const { query, push } = useRouter();
   const { colors, weighs } = useTheme();
+  const { onClickProtectedButtonHandler } = useProtectRouteModal();
   const reviewUploadSetter = useReviewUploadSetter();
   const { mutate: deleteReviewMutate } = useDeleteReview(Number(query.id));
   const overlay = useOverlay();
@@ -69,9 +71,11 @@ const ReviewItem = ({ review }: Props) => {
   return (
     <li
       key={review.id}
-      onClick={() => {
-        push(`/review/${review.id}`);
-      }}
+      onClick={() =>
+        onClickProtectedButtonHandler(() => {
+          push(`/review/${review.id}`);
+        })
+      }
       css={css`
         ${touchable}
       `}

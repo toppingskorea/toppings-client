@@ -3,15 +3,19 @@ import { Flex, padding } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import { MotionButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
+import { useProtectRouteModal } from "~/hooks";
 
 const ReviewLeadingSection = () => {
   const { weighs, colors } = useTheme();
   const { push, query } = useRouter();
+  const { onClickProtectedButtonHandler } = useProtectRouteModal();
 
   return (
     <Flex.Center>
       <MotionButton
-        onClick={() => push(`/review/add/${query.id}`)}
+        onClick={() =>
+          onClickProtectedButtonHandler(() => push(`/review/add/${query.id}`))
+        }
         css={css`
           ${padding({ x: 21, y: 4 })}
           background-color: ${colors.secondary.E6};

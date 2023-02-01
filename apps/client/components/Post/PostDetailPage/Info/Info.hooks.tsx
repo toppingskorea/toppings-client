@@ -3,6 +3,7 @@ import { OrangeStar } from "@svgs/common";
 import { Flex, size } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { IconWithTextModal } from "~/components/Common";
+import { useProtectRouteModal } from "~/hooks";
 import useOriginURL from "~/hooks/useOriginURL";
 import { useSendNotification } from "~/server/notice";
 import {
@@ -27,6 +28,7 @@ const useClickHandler = ({
 >) => {
   const { colors } = useTheme();
   const overlay = useOverlay();
+  const { onClickProtectedButtonHandler } = useProtectRouteModal();
 
   const { mutateAsync: postScrapMutateAsync } = usePostScrap(id);
   const { mutate: deleteScrapMutate } = useDeleteScrap(id);
@@ -100,8 +102,10 @@ const useClickHandler = ({
   return {
     onClipboardClickHandler,
     onShareButtonClickHandler,
-    onLikeButtonClickHandler,
-    onScrapButtonClickHandler
+    onLikeButtonClickHandler: () =>
+      onClickProtectedButtonHandler(onLikeButtonClickHandler),
+    onScrapButtonClickHandler: () =>
+      onClickProtectedButtonHandler(onScrapButtonClickHandler)
   };
 };
 
