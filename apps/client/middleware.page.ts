@@ -16,7 +16,11 @@ const PROTECTED_ROUTE = [
   "/profile/edit/nationality",
   "/profile/edit/eatingHabits",
   "/post/add",
-  "/notice"
+  "/notice",
+  "/recent",
+  "/recent/filter/restaurant",
+  "/recent/filter/nationality",
+  "/recent/filter/eatingHabit"
 ];
 
 // 로그인한 유저는 접근할 수 없는 라우트
@@ -29,7 +33,8 @@ export const config = {
     "/login",
     "/login/redirect",
     "/post/add",
-    "/notice"
+    "/notice",
+    "/recent/:path*"
   ]
 };
 
@@ -39,7 +44,7 @@ const middleware: NextMiddleware = async request => {
   // 로그인 안한사람 방지
   if (PROTECTED_ROUTE.includes(request.nextUrl.pathname))
     if (!toppingsToken || !verifyToken(toppingsToken))
-      return NextResponse.redirect(new URL("/login", request.url));
+      return NextResponse.redirect(new URL("/", request.url));
   // 로그인 한 사람 접근 불가
   if (LOGIN_PROTECTED_ROUTE.includes(request.nextUrl.pathname))
     if (toppingsToken && verifyToken(toppingsToken))
