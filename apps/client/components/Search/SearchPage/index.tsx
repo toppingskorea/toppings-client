@@ -25,20 +25,28 @@ const SearchPage = ({ type }: Props) => {
 
   const isKeyboardOpen = useDetectKeyboard();
 
-  useSetNavigation({
-    top: {
-      title: (
-        <Text _fontSize={19} _color={colors.secondary[47]} weight={weighs.bold}>
-          Restaurant Name
-        </Text>
-      ),
-      marginBottom: 35,
-      right: {
-        element: <Exit />,
-        onClick: () => push("/map")
-      }
-    }
-  });
+  useSetNavigation(
+    isKeyboardOpen
+      ? {
+          top: {
+            title: (
+              <Text
+                _fontSize={19}
+                _color={colors.secondary[47]}
+                weight={weighs.bold}
+              >
+                Restaurant Name
+              </Text>
+            ),
+            marginBottom: 35,
+            right: {
+              element: <Exit />,
+              onClick: () => push("/map")
+            }
+          }
+        }
+      : undefined
+  );
 
   const {
     props: keyword,
@@ -62,18 +70,7 @@ const SearchPage = ({ type }: Props) => {
       >
         <Result value={debouncedValue} type={type} />
       </section>
-      <div
-        css={css`
-          position: fixed;
-          top: 300px;
-          left: 0;
-          font-size: 36px;
-          color: red;
-          z-index: 50;
-        `}
-      >
-        {isKeyboardOpen ? "open" : "close"}
-      </div>
+
       <div
         css={css`
           ${position("fixed", { bottom: 0 })}
