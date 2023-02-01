@@ -10,5 +10,6 @@ export { default as useSetNavigation } from "./useSetNavigation";
 export { default as useTokenCookie } from "./useTokenCookie";
 export { default as useWebSocket } from "./useWebSocket";
 export { default as useIntersectionObserver } from "./useIntersectionObserver";
+export { default as useBooleanState } from "./useBooleanState";
 export * from "./auth";
 export * from "./mobile";

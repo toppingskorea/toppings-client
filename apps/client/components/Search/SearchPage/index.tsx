@@ -11,6 +11,7 @@ import {
   useScrollToTopByKeywordChange,
   useSetNavigation
 } from "~/hooks";
+import { useBlurController } from "./SearchPage.hooks";
 
 export type SearchType = "restaurant" | "local";
 
@@ -22,21 +23,6 @@ const SearchPage = ({ type }: Props) => {
   const { colors, dimensions, weighs } = useTheme();
   const { push } = useInternalRouter();
 
-  useSetNavigation({
-    top: {
-      title: (
-        <Text _fontSize={19} _color={colors.secondary[47]} weight={weighs.bold}>
-          Restaurant Name
-        </Text>
-      ),
-      marginBottom: 35,
-      right: {
-        element: <Exit />,
-        onClick: () => push("/map")
-      }
-    }
-  });
-
   const {
     props: keyword,
     debouncedValue,
@@ -47,7 +33,28 @@ const SearchPage = ({ type }: Props) => {
     debounceTimeout: 300
   });
 
-  useScrollToTopByKeywordChange(keyword.value);
+  const { focusController, isFocused } = useBlurController();
+
+  useSetNavigation({
+    top: isFocused
+      ? undefined
+      : {
+          title: (
+            <Text
+              _fontSize={19}
+              _color={colors.secondary[47]}
+              weight={weighs.bold}
+            >
+              Restaurant Name
+            </Text>
+          ),
+          marginBottom: 35,
+          right: {
+            element: <Exit />,
+            onClick: () => push("/map")
+          }
+        }
+  });
 
   return (
     <>
@@ -72,6 +79,7 @@ const SearchPage = ({ type }: Props) => {
           placeholder="Enter the restaurant name"
           setValue={setValue}
           {...keyword}
+          {...focusController}
         />
       </div>
     </>
