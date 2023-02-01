@@ -77,8 +77,8 @@ const PostAddPage = () => {
         <ComponentWithLabel label="Location" gutter={6}>
           <Input
             height={40}
-            disabled
             value={restaurant?.road_address_name}
+            readOnly
             padding={padding({
               x: 11
             })}

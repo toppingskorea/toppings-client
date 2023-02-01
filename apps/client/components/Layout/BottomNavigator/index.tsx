@@ -5,16 +5,16 @@ import type { EmotionJSX } from "@emotion/react/types/jsx-namespace";
 import { flex, padding, width100 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { InternalLink } from "~/components/Common";
-import { useInternalRouter } from "~/hooks";
+import { useInternalRouter, useProtectRouteModal } from "~/hooks";
 import navList from "./BottomNavigator.constants";
 
 const BottomNavigator = () => {
   const { colors, dimensions, zIndex } = useTheme();
-  const { asPath } = useInternalRouter();
+  const { asPath, push } = useInternalRouter();
   const noticeActivate = useNoticeActivateValue();
   const restaurantReset = useRestaurantReset();
   const postUploadReset = usePostUploadReset();
+  const { onClickProtectedButtonHandler } = useProtectRouteModal();
 
   const renderIcon = (
     icon: EmotionJSX.Element,
@@ -25,6 +25,16 @@ const BottomNavigator = () => {
 
     if (noticeActivate) return activatedIcon;
     return icon;
+  };
+
+  const onClickNavigationHandler = (
+    href: Util.ElementType<typeof navList>["href"]
+  ) => {
+    if (href === "/post/add") {
+      restaurantReset();
+      postUploadReset();
+    }
+    push(href);
   };
 
   return (
@@ -45,22 +55,23 @@ const BottomNavigator = () => {
       >
         {navList.map(({ icon, href, activatedIcon }) => (
           <motion.li key={href} whileTap={{ scale: 0.9 }}>
-            <InternalLink
-              href={href}
+            <button
+              type="button"
+              onClick={() => {
+                if (href === "/map") onClickNavigationHandler(href);
+                else
+                  onClickProtectedButtonHandler(() =>
+                    onClickNavigationHandler(href)
+                  );
+              }}
               css={css`
                 path {
                   fill: ${colors.secondary[href === asPath ? "6D" : "D9"]};
                 }
               `}
-              onClick={() => {
-                if (href === "/post/add") {
-                  restaurantReset();
-                  postUploadReset();
-                }
-              }}
             >
               {renderIcon(icon, activatedIcon, href)}
-            </InternalLink>
+            </button>
           </motion.li>
         ))}
       </ul>

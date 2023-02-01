@@ -16,17 +16,20 @@ interface PropsWithoutInformation {
     fn: VoidFunction;
     text: string;
   };
+  description?: string;
   information?: never;
 }
 interface PropsWithoutRightClick {
   exitFn: VoidFunction;
   rightClick?: never;
   information: string;
+  description?: never;
 }
 
 const Clickable = ({
   exitFn,
-  rightClick
+  rightClick,
+  description
 }: Required<Omit<PropsWithoutInformation, "information">>) => {
   const { colors, weighs } = useTheme();
 
@@ -37,8 +40,13 @@ const Clickable = ({
         ${gutter("vertical", 16)}
       `}
     >
-      <Text _fontSize={23} weight={weighs.heavy} _color={colors.white}>
-        Are you sure?
+      <Text
+        _fontSize={23}
+        weight={weighs.heavy}
+        _color={colors.white}
+        textAlign="center"
+      >
+        {description}
       </Text>
       <Styled.EllipseFlex>
         <motion.button
@@ -103,7 +111,8 @@ const NonClickable = ({
 const AlertModal = ({
   exitFn,
   rightClick,
-  information
+  information,
+  description = "Are you sure?"
 }: PropsWithoutInformation | PropsWithoutRightClick) => {
   const theme = useTheme();
   const { colors } = theme;
@@ -134,7 +143,11 @@ const AlertModal = ({
       </Flex.Center>
 
       {rightClick ? (
-        <Clickable rightClick={rightClick} exitFn={exitFn} />
+        <Clickable
+          description={description}
+          rightClick={rightClick}
+          exitFn={exitFn}
+        />
       ) : (
         <NonClickable information={information} />
       )}
