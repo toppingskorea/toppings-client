@@ -60,8 +60,7 @@ const MapPage = () => {
                 top: "0px",
                 left: "25px",
                 borderRadius: 25,
-                cursor: "pointer",
-                border: "1px solid"
+                cursor: "pointer"
               }}
             >
               <Pin
