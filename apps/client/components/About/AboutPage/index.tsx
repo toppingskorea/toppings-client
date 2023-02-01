@@ -2,6 +2,7 @@ import { css, useTheme } from "@emotion/react";
 import { gutter, padding, touchable } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { Text } from "~/components/Common/Typo";
+import { OpenGraph } from "~/components/Util";
 import {
   defaultSlideFadeInVariants,
   framerMocker,
@@ -30,6 +31,7 @@ const AboutPage = () => {
         ${padding({ x: 27 })}
       `}
     >
+      <OpenGraph title="About" />
       <motion.ul
         variants={staggerOne}
         {...framerMocker}
