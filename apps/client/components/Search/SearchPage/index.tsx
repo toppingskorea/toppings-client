@@ -6,7 +6,6 @@ import { Text } from "~/components/Common/Typo";
 import { Result } from "~/components/Search";
 import { OpenGraph } from "~/components/Util";
 import {
-  useDetectKeyboard,
   useInput,
   useInternalRouter,
   useScrollToTopByKeywordChange,
@@ -23,30 +22,20 @@ const SearchPage = ({ type }: Props) => {
   const { colors, dimensions, weighs } = useTheme();
   const { push } = useInternalRouter();
 
-  const isKeyboardOpen = useDetectKeyboard();
-
-  useSetNavigation(
-    isKeyboardOpen
-      ? undefined
-      : {
-          top: {
-            title: (
-              <Text
-                _fontSize={19}
-                _color={colors.secondary[47]}
-                weight={weighs.bold}
-              >
-                Restaurant Name
-              </Text>
-            ),
-            marginBottom: 35,
-            right: {
-              element: <Exit />,
-              onClick: () => push("/map")
-            }
-          }
-        }
-  );
+  useSetNavigation({
+    top: {
+      title: (
+        <Text _fontSize={19} _color={colors.secondary[47]} weight={weighs.bold}>
+          Restaurant Name
+        </Text>
+      ),
+      marginBottom: 35,
+      right: {
+        element: <Exit />,
+        onClick: () => push("/map")
+      }
+    }
+  });
 
   const {
     props: keyword,
@@ -70,7 +59,6 @@ const SearchPage = ({ type }: Props) => {
       >
         <Result value={debouncedValue} type={type} />
       </section>
-
       <div
         css={css`
           ${position("fixed", { bottom: 0 })}
