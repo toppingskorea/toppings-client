@@ -2,7 +2,6 @@ import dayjs from "dayjs";
 import type { NextMiddleware } from "next/server";
 import { NextResponse } from "next/server";
 import { env } from "~/constants";
-import { KAKAO_LOGIN_REDIRECT_URI } from "./hooks/auth/useProtectRouteModal";
 import { verifyToken } from "./utils";
 
 // 로그인한 유저만 접근할 수 있는 라우트
@@ -57,7 +56,7 @@ const middleware: NextMiddleware = async request => {
 
     // 이미 가입한 유저인 경우, 어디서 로그인 했는지에 따라서 그쪽으로 보내줘야함
     const justLoginRedirectUri = request.cookies.get(
-      KAKAO_LOGIN_REDIRECT_URI
+      "kakao_login_redirect_uri"
     )?.value;
 
     const existingUserRedirectUri = justLoginRedirectUri ?? "/map";
