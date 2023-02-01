@@ -5,12 +5,8 @@ import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { Result } from "~/components/Search";
 import { OpenGraph } from "~/components/Util";
-import {
-  useInput,
-  useInternalRouter,
-  useScrollToTopByKeywordChange,
-  useSetNavigation
-} from "~/hooks";
+import { useDeviceInfo } from "~/contexts";
+import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
 import { useBlurController } from "./SearchPage.hooks";
 
 export type SearchType = "restaurant" | "local";
@@ -22,6 +18,7 @@ type Props = {
 const SearchPage = ({ type }: Props) => {
   const { colors, dimensions, weighs } = useTheme();
   const { push } = useInternalRouter();
+  const { isMobile } = useDeviceInfo();
 
   const {
     props: keyword,
@@ -35,8 +32,10 @@ const SearchPage = ({ type }: Props) => {
 
   const { focusController, isFocused } = useBlurController();
 
+  const isMobileFocused = isMobile && isFocused;
+
   useSetNavigation({
-    top: isFocused
+    top: isMobileFocused
       ? undefined
       : {
           title: (
@@ -62,6 +61,10 @@ const SearchPage = ({ type }: Props) => {
       <section
         css={css`
           ${padding({ x: 16, bottom: 75 })}
+          ${isMobileFocused &&
+          position("fixed", {
+            top: 0
+          })}
         `}
       >
         <Result value={debouncedValue} type={type} />
