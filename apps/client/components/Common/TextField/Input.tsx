@@ -103,8 +103,6 @@ const Input = ({
 
               &:disabled {
                 background-color: ${colors.white};
-                // disabled시 IOS User-agent로 border를 연하게 만들곤 합니다.
-                border: 1px solid ${colors.secondary.B8} !important;
               }
             `,
             ref: inputRef,

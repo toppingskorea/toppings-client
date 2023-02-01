@@ -8,7 +8,7 @@ interface Props {
   id: string;
 }
 const Likes = ({ id }: Props) => {
-  const { colors } = useTheme();
+  const { colors, weighs } = useTheme();
   const { data } = useFetchLikePercent(+id);
 
   return (
@@ -18,7 +18,11 @@ const Likes = ({ id }: Props) => {
       `}
     >
       <Flex justify="space-between">
-        <Text _fontSize={13} _color={colors.secondary[47]}>
+        <Text
+          _fontSize={13}
+          _color={colors.secondary[47]}
+          weight={weighs.semiBold}
+        >
           Nationality
         </Text>
 
@@ -42,7 +46,11 @@ const Likes = ({ id }: Props) => {
       </Flex>
 
       <Flex justify="space-between">
-        <Text _fontSize={13} _color={colors.secondary[47]}>
+        <Text
+          _fontSize={13}
+          _color={colors.secondary[47]}
+          weight={weighs.semiBold}
+        >
           Eating Habit
         </Text>
 
@@ -51,7 +59,11 @@ const Likes = ({ id }: Props) => {
             <PercentBar
               key={habit.habit}
               prepend={
-                <Text _fontSize={10} _color={colors.secondary[42]}>
+                <Text
+                  _fontSize={12}
+                  _color={colors.secondary[83]}
+                  weight={weighs.semiBold}
+                >
                   {habit.habit}
                 </Text>
               }

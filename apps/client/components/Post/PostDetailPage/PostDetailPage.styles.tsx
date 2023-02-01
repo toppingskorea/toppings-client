@@ -6,10 +6,10 @@ const EmptyText = () => {
 
   return (
     <Text
-      _fontSize={13}
+      _fontSize={14}
       lineHeight={16}
       _color={colors.secondary.A3}
-      weight={weighs.bold}
+      weight={weighs.semiBold}
       whiteSpace="pre"
       textAlign="center"
       css={css`

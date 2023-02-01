@@ -40,8 +40,8 @@ const ProfilePostsPage = () => {
               {generateComponent(
                 <Skeleton.Box
                   size={{
-                    width: 344,
-                    height: 174
+                    width: 366,
+                    height: 156
                   }}
                 />,
                 2
