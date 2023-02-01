@@ -54,7 +54,7 @@ const SearchPage = ({ type }: Props) => {
       <OpenGraph title={type} />
       <section
         css={css`
-          ${padding({ x: 16 })}
+          ${padding({ x: 16, bottom: 75 })}
         `}
       >
         <Result value={debouncedValue} type={type} />
