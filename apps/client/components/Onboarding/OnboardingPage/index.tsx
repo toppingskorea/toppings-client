@@ -1,21 +1,14 @@
 import { css, useTheme } from "@emotion/react";
 import { Flex, gutter } from "@toss/emotion-utils";
-import { useRouter } from "next/router";
 import { FilledButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { OrangeSection } from "~/components/Section";
 import { OpenGraph } from "~/components/Util";
-import { env } from "~/constants";
+import { useOnLogin } from "./OnboardingPage.hooks";
 
 const Onboarding = () => {
   const { colors, weighs } = useTheme();
-  const router = useRouter();
-
-  const kakaoUrl = `${env.TOPPINGS_SERVER_URL}/oauth2/authorization/kakao?redirect_uri=${env.REDIRECT_URI}`;
-
-  const onLoginHandler = () => {
-    router.replace(kakaoUrl);
-  };
+  const { onLoginHandler } = useOnLogin();
 
   return (
     <>
