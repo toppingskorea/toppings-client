@@ -5,23 +5,40 @@ import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SearchNationality } from "~/components/Section";
 import { OpenGraph } from "~/components/Util";
-import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
+import { useDeviceInfo } from "~/contexts";
+import {
+  useBlurController,
+  useInput,
+  useInternalRouter,
+  useSetNavigation
+} from "~/hooks";
 
 const RegisterNationalityPage = () => {
   const { push } = useInternalRouter();
+  const { isIos } = useDeviceInfo();
   const { colors, weighs, dimensions } = useTheme();
   const [register, setRegister] = useRegisterState();
 
+  const { focusController, isFocused } = useBlurController();
+
+  const isIosFocused = isIos && isFocused;
+
   useSetNavigation({
-    top: {
-      marginBottom: 35,
-      title: (
-        <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
-          Select a Nationality
-        </Text>
-      ),
-      hideBackButton: true
-    }
+    top: isIosFocused
+      ? undefined
+      : {
+          marginBottom: 35,
+          title: (
+            <Text
+              _fontSize={19}
+              weight={weighs.bold}
+              _color={colors.secondary[47]}
+            >
+              Select a Nationality
+            </Text>
+          ),
+          hideBackButton: true
+        }
   });
 
   const { props: keyword, setValue } = useInput({});
@@ -35,6 +52,7 @@ const RegisterNationalityPage = () => {
           setRegister({ ...register, country: name });
           push("/register/eatingHabits");
         }}
+        isFixedPosition={isIosFocused}
       />
 
       <div
@@ -50,6 +68,7 @@ const RegisterNationalityPage = () => {
           placeholder="Search for a nationality"
           setValue={setValue}
           {...keyword}
+          {...focusController}
         />
       </div>
     </>

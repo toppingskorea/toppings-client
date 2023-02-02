@@ -1,7 +1,6 @@
-/* eslint-disable import/prefer-default-export */
 import { useBooleanState } from "~/hooks";
 
-export const useBlurController = () => {
+const useBlurController = () => {
   const [isFocused, setTrue, setFalse] = useBooleanState();
 
   const controller = {
@@ -14,3 +13,5 @@ export const useBlurController = () => {
     focusController: controller
   };
 };
+
+export default useBlurController;
