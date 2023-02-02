@@ -13,7 +13,7 @@ import { useCallback, useState } from "react";
  */
 const useBooleanState = (
   defaultValue = false
-): readonly [boolean, () => void, () => void, () => void] => {
+): readonly [boolean, VoidFunction, VoidFunction, VoidFunction] => {
   const [bool, setBool] = useState(defaultValue);
 
   const setTrue = useCallback(() => {
