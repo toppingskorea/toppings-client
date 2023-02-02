@@ -62,7 +62,7 @@ const SearchPage = ({ type }: Props) => {
         css={css`
           ${padding({ x: 16, bottom: 75 })}
           ${isMobileFocused &&
-          position("fixed", {
+          position("sticky", {
             top: 0
           })}
         `}
