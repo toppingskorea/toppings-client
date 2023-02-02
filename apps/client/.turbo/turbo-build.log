@@ -2,52 +2,54 @@ info  - Loaded env from /Users/donggyukim/Desktop/dev/toppings-client/apps/clien
 info  - Linting and checking validity of types...
 error - ESLint must be installed in order to run during builds: yarn add --dev eslint
 info  - Creating an optimized production build...
+> [PWA] Compile client (static)
+> [PWA] Auto register service worker with: /Users/donggyukim/Desktop/dev/toppings-client/.yarn/__virtual__/next-pwa-virtual-941debd704/0/cache/next-pwa-npm-5.6.0-0f61704f10-47f249a819.zip/node_modules/next-pwa/register.js
+> [PWA] Service worker: /Users/donggyukim/Desktop/dev/toppings-client/apps/client/public/sw.js
+> [PWA]   url: /sw.js
+> [PWA]   scope: /
+> [PWA] Compile server
+> [PWA] Compile server
 info  - Compiled successfully
 info  - Collecting page data...
-info  - Generating static pages (0/24)
-info  - Generating static pages (6/24)
-info  - Generating static pages (12/24)
-info  - Generating static pages (18/24)
-info  - Generating static pages (24/24)
-info  - Finalizing page optimization...
+Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
+Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
 
 Route (pages)                              Size     First Load JS
-┌ ○ /                                      2.13 kB         365 kB
-├   /_app                                  0 B             363 kB
-├ ○ /404                                   900 B           364 kB
-├ ○ /about                                 566 B           363 kB
-├ ○ /login                                 462 B           363 kB
-├ ○ /login/redirect                        272 B           363 kB
-├ ○ /map                                   229 B           374 kB
-├ ○ /map/viewList                          237 B           374 kB
-├ ○ /notice                                4.18 kB         372 kB
-├ λ /post/[id]                             254 B           377 kB
-├ ○ /post/add                              234 B           377 kB
-├ ○ /profile                               232 B           376 kB
-├ ○ /profile/edit                          237 B           376 kB
-├ ○ /profile/edit/eatingHabits             246 B           376 kB
-├ ○ /profile/edit/nationality              242 B           376 kB
-├ ○ /profile/menu                          237 B           376 kB
-├ ○ /profile/posts                         237 B           376 kB
-├ ○ /profile/reviews                       238 B           376 kB
-├ ○ /profile/saved                         238 B           376 kB
-├ ○ /recent                                228 B           375 kB
-├ ○ /recent/eatingHabit                    242 B           375 kB
-├ ○ /recent/nationality                    240 B           375 kB
-├ ○ /recent/restaurant                     237 B           375 kB
-├ ○ /register/eatingHabits                 238 B           367 kB
-├ ○ /register/nationality                  237 B           367 kB
-├ λ /review/[id]                           2.03 kB         373 kB
-├ λ /review/add/[restaurantId]             2.03 kB         373 kB
-└ λ /search/[type]                         1.94 kB         365 kB
-+ First Load JS shared by all              363 kB
+┌ λ /                                      2.24 kB         377 kB
+├   /_app                                  0 B             375 kB
+├ λ /404                                   900 B           376 kB
+├ λ /about                                 1.23 kB         376 kB
+├ λ /login                                 462 B           376 kB
+├ λ /login/redirect                        272 B           375 kB
+├ λ /map                                   226 B           381 kB
+├ λ /map/viewList                          231 B           381 kB
+├ λ /notice                                4.28 kB         379 kB
+├ λ /post/[id]                             251 B           385 kB
+├ λ /post/add                              231 B           385 kB
+├ λ /profile                               227 B           383 kB
+├ λ /profile/edit                          232 B           383 kB
+├ λ /profile/edit/eatingHabits             240 B           383 kB
+├ λ /profile/edit/nationality              240 B           383 kB
+├ λ /profile/menu                          231 B           383 kB
+├ λ /profile/posts                         231 B           383 kB
+├ λ /profile/reviews                       232 B           383 kB
+├ λ /profile/saved                         232 B           383 kB
+├ λ /recent                                224 B           382 kB
+├ λ /recent/filter/eatingHabit             238 B           382 kB
+├ λ /recent/filter/nationality             240 B           382 kB
+├ λ /recent/filter/restaurant              238 B           382 kB
+├ λ /register/eatingHabits                 2.71 kB         378 kB
+├ λ /register/nationality                  2.71 kB         378 kB
+├ λ /review/[id]                           2.19 kB         381 kB
+├ λ /review/add/[restaurantId]             2.19 kB         381 kB
+└ λ /search/[type]                         2.04 kB         377 kB
++ First Load JS shared by all              375 kB
   ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
-  ├ chunks/main-02cafb80b503f99e.js        30.7 kB
-  ├ chunks/pages/_app-9b52f8739f6d3495.js  285 kB
+  ├ chunks/main-ad4cfd227aad6c0b.js        33 kB
+  ├ chunks/pages/_app-e3f0218a98f304b3.js  296 kB
   └ chunks/webpack-235955b20eb3ee85.js     1.15 kB
 
-ƒ Middleware                               64.7 kB
+ƒ Middleware                               65 kB
 
 λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
-○  (Static)  automatically rendered as static HTML (uses no initial props)
 

@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
-import { List } from "@svgs/map";
+import { List, Pin } from "@svgs/map";
 import { Flex, padding, position, size } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
-import { pin, rocket } from "~/assets/json";
+import { rocket } from "~/assets/json";
 import { Text } from "~/components/Common/Typo";
 import { MapMarker } from "~/components/Kakao";
 import KakaoMap from "~/components/Kakao/KakaoMap";
@@ -57,28 +57,24 @@ const MapPage = () => {
                 width: "50px",
                 height: "50px",
                 position: "relative",
-                top: "-7px",
+                top: "0px",
                 left: "25px",
                 borderRadius: 25,
                 cursor: "pointer"
               }}
             >
-              <Lottie
-                loop
-                autoplay
-                animationData={pin}
+              <Pin
                 css={css`
-                  ${size({
-                    width: 100,
-                    height: 115
+                  ${position("absolute", {
+                    top: 0,
+                    left: "50%"
                   })}
-                  position: absolute;
-                  top: -38px;
-                  right: -25px;
+                  transform: translateX(-50%);
                   pointer-events: none;
                   user-select: none;
                 `}
               />
+
               <Flex.Center
                 css={css`
                   ${padding({

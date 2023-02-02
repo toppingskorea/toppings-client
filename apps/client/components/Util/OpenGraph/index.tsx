@@ -1,5 +1,5 @@
-import { orangeLogo } from "@images/common";
 import Head from "next/head";
+import { ogLogo } from "~/assets/images/og";
 
 interface Props {
   title: string;
@@ -24,7 +24,7 @@ const OpenGraph = ({
   imageUrl
 }: Props) => {
   const computedTitle = `TOPPINGS | ${title}`;
-  const computedImageUrl = imageUrl ?? orangeLogo.src;
+  const computedImageUrl = imageUrl ?? ogLogo.src;
 
   return (
     <Head>
