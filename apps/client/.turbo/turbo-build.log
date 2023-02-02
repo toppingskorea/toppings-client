@@ -2,27 +2,14 @@ info  - Loaded env from /Users/donggyukim/Desktop/dev/toppings-client/apps/clien
 info  - Linting and checking validity of types...
 error - ESLint must be installed in order to run during builds: yarn add --dev eslint
 info  - Creating an optimized production build...
-> [PWA] Compile server
-> [PWA] Compile server
 > [PWA] Compile client (static)
-> [PWA] Auto register service worker with: /Users/donggyukim/Desktop/dev/toppings-client/.yarn/__virtual__/next-pwa-virtual-cf16b78f39/0/cache/next-pwa-npm-5.6.0-0f61704f10-47f249a819.zip/node_modules/next-pwa/register.js
+> [PWA] Auto register service worker with: /Users/donggyukim/Desktop/dev/toppings-client/.yarn/__virtual__/next-pwa-virtual-941debd704/0/cache/next-pwa-npm-5.6.0-0f61704f10-47f249a819.zip/node_modules/next-pwa/register.js
 > [PWA] Service worker: /Users/donggyukim/Desktop/dev/toppings-client/apps/client/public/sw.js
 > [PWA]   url: /sw.js
 > [PWA]   scope: /
-<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (267kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
-warn  - Compiled with warnings
-
-../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js
-A Node.js API is used (Buffer at line: 138) which is not supported in the Edge Runtime.
-Learn more: https://nextjs.org/docs/api-reference/edge-runtime
-
-Import trace for requested module:
-../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js
-../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/axios.js
-../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/index.js
-./constants/Api.ts
-./constants/index.ts
-
+> [PWA] Compile server
+> [PWA] Compile server
+info  - Compiled successfully
 info  - Collecting page data...
 Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
 Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
@@ -58,8 +45,8 @@ Route (pages)                              Size     First Load JS
 └ λ /search/[type]                         2.04 kB         377 kB
 + First Load JS shared by all              375 kB
   ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
-  ├ chunks/main-3e0e69573473e572.js        33 kB
-  ├ chunks/pages/_app-0420c316d9cba211.js  296 kB
+  ├ chunks/main-ad4cfd227aad6c0b.js        33 kB
+  ├ chunks/pages/_app-e3f0218a98f304b3.js  296 kB
   └ chunks/webpack-235955b20eb3ee85.js     1.15 kB
 
 ƒ Middleware                               65 kB
