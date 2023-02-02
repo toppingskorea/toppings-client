@@ -1,6 +1,13 @@
 info  - Linting and checking validity of types...
 error - ESLint must be installed in order to run during builds: yarn add --dev eslint
 info  - Creating an optimized production build...
+> [PWA] Compile client (static)
+> [PWA] Auto register service worker with: /Users/donggyukim/Desktop/dev/toppings-client/.yarn/__virtual__/next-pwa-virtual-cf16b78f39/0/cache/next-pwa-npm-5.6.0-0f61704f10-47f249a819.zip/node_modules/next-pwa/register.js
+> [PWA] Service worker: /Users/donggyukim/Desktop/dev/toppings-client/apps/admin/public/sw.js
+> [PWA]   url: /sw.js
+> [PWA]   scope: /
+> [PWA] Compile server
+> [PWA] Compile server
 info  - Compiled successfully
 info  - Collecting page data...
 info  - Generating static pages (0/9)
@@ -11,18 +18,18 @@ info  - Generating static pages (9/9)
 info  - Finalizing page optimization...
 
 Route (pages)                              Size     First Load JS
-┌ ○ /                                      340 B           205 kB
-├   /_app                                  0 B             205 kB
-├ ○ /404                                   182 B           205 kB
-├ ○ /login                                 4.73 kB         227 kB
-├ ○ /overview                              1.87 kB         229 kB
-├ ○ /posts                                 2.83 kB         234 kB
-├ ○ /restaurant/[id]                       2.81 kB         234 kB
-├ ○ /review/[id]                           2.57 kB         233 kB
-└ ○ /reviews                               2.58 kB         233 kB
-+ First Load JS shared by all              205 kB
+┌ ○ /                                      340 B           208 kB
+├   /_app                                  0 B             207 kB
+├ ○ /404                                   182 B           207 kB
+├ ○ /login                                 4.73 kB         230 kB
+├ ○ /overview                              1.87 kB         231 kB
+├ ○ /posts                                 2.83 kB         236 kB
+├ ○ /restaurant/[id]                       2.81 kB         236 kB
+├ ○ /review/[id]                           2.57 kB         236 kB
+└ ○ /reviews                               2.58 kB         236 kB
++ First Load JS shared by all              207 kB
   ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
-  ├ chunks/main-383f5b188f3e53c1.js        30.6 kB
+  ├ chunks/main-3965b2738208127e.js        32.8 kB
   ├ chunks/pages/_app-5d4366f962d41651.js  128 kB
   └ chunks/webpack-2d6c20b89449f43d.js     1.04 kB
 
