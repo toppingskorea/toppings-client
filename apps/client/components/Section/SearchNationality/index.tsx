@@ -4,6 +4,7 @@ import {
   flex,
   gutter,
   padding,
+  position,
   Spacing,
   touchable
 } from "@toss/emotion-utils";
@@ -16,10 +17,16 @@ import { OrangeTypo, Text } from "../../Common/Typo";
 interface Props {
   keyword: string;
   onCountryClick: (name: string) => void;
+  isFixedPosition?: boolean;
 }
 
-const SearchNationality = ({ keyword, onCountryClick }: Props) => {
+const SearchNationality = ({
+  keyword,
+  onCountryClick,
+  isFixedPosition
+}: Props) => {
   const { colors, weighs } = useTheme();
+
   const filteredCountries = useMemo(() => {
     const obj: Partial<typeof countries> = {};
 
@@ -63,6 +70,11 @@ const SearchNationality = ({ keyword, onCountryClick }: Props) => {
       css={css`
         ${flex({ direction: "row" })}
         ${padding({ x: 22 })}
+
+        ${isFixedPosition &&
+        position("fixed", {
+          top: 0
+        })}
       `}
     >
       <Flex direction="column">

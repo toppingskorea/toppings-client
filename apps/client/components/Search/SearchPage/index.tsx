@@ -6,8 +6,12 @@ import { Text } from "~/components/Common/Typo";
 import { Result } from "~/components/Search";
 import { OpenGraph } from "~/components/Util";
 import { useDeviceInfo } from "~/contexts";
-import { useInput, useInternalRouter, useSetNavigation } from "~/hooks";
-import { useBlurController } from "./SearchPage.hooks";
+import {
+  useBlurController,
+  useInput,
+  useInternalRouter,
+  useSetNavigation
+} from "~/hooks";
 
 export type SearchType = "restaurant" | "local";
 
@@ -18,7 +22,7 @@ type Props = {
 const SearchPage = ({ type }: Props) => {
   const { colors, dimensions, weighs } = useTheme();
   const { push } = useInternalRouter();
-  const { isMobile } = useDeviceInfo();
+  const { isIos } = useDeviceInfo();
 
   const {
     props: keyword,
@@ -32,10 +36,10 @@ const SearchPage = ({ type }: Props) => {
 
   const { focusController, isFocused } = useBlurController();
 
-  const isMobileFocused = isMobile && isFocused;
+  const isIosFocused = isIos && isFocused;
 
   useSetNavigation({
-    top: isMobileFocused
+    top: isIosFocused
       ? undefined
       : {
           title: (
@@ -61,8 +65,8 @@ const SearchPage = ({ type }: Props) => {
       <section
         css={css`
           ${padding({ x: 16, bottom: 75 })}
-          ${isMobileFocused &&
-          position("sticky", {
+          ${isIosFocused &&
+          position("fixed", {
             top: 0
           })}
         `}

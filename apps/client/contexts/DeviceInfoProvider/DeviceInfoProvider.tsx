@@ -19,7 +19,7 @@ export const DeviceInfoProvider = ({
   children
 }: PropsWithChildren<DeviceInfoProviderProps>) => {
   const clientUserAgent = userAgent ?? globalThis.navigator?.userAgent ?? "";
-  const [isMobile, _] = useState<boolean>(
+  const [isMobile] = useState<boolean>(
     hints?.isMobile ?? validateMobile(clientUserAgent)
   );
 

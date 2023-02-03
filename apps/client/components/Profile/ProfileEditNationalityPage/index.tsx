@@ -6,7 +6,9 @@ import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { SearchNationality } from "~/components/Section";
 import { OpenGraph } from "~/components/Util";
+import { useDeviceInfo } from "~/contexts";
 import {
+  useBlurController,
   useInput,
   useInternalRouter,
   useScrollToTopByKeywordChange,
@@ -15,22 +17,29 @@ import {
 
 const ProfileEditNationalityPage = () => {
   const { push, back } = useInternalRouter();
+  const { isIos } = useDeviceInfo();
   const { colors, weighs, dimensions } = useTheme();
   const [edit, setEdit] = useEditState();
 
+  const { focusController, isFocused } = useBlurController();
+
+  const isIosFocused = isIos && isFocused;
+
   useSetNavigation({
-    top: {
-      marginBottom: 35,
-      title: (
-        <Text _fontSize={23} weight={weighs.bold}>
-          Select a Nationality
-        </Text>
-      ),
-      right: {
-        element: <Exit />,
-        onClick: () => push("/map")
-      }
-    }
+    top: isIosFocused
+      ? undefined
+      : {
+          marginBottom: 35,
+          title: (
+            <Text _fontSize={23} weight={weighs.bold}>
+              Select a Nationality
+            </Text>
+          ),
+          right: {
+            element: <Exit />,
+            onClick: () => push("/map")
+          }
+        }
   });
 
   const { props: keyword, setValue } = useInput({});
@@ -45,6 +54,7 @@ const ProfileEditNationalityPage = () => {
           setEdit({ ...edit, country: name });
           back();
         }}
+        isFixedPosition={isIosFocused}
       />
 
       <OpenGraph title="Edit Nationality" />
