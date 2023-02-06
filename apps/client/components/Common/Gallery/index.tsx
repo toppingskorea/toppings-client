@@ -13,9 +13,10 @@ import { useId } from "react";
 import { hiddenScroll } from "~/styles/emotionUtils";
 import { imageUploader } from "~/utils";
 import { Text } from "../Typo";
+import { useHideInput } from "./Gallery.hooks";
 import Item from "./Item";
 
-interface Props {
+export interface Props {
   images: string[];
   setImages: (images: string[]) => void;
   totalNumber?: number;
@@ -24,6 +25,8 @@ interface Props {
 const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
   const id = useId();
   const { colors } = useTheme();
+
+  const { hideInput } = useHideInput({ images, totalNumber });
 
   return (
     <ul
@@ -42,52 +45,55 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
           onClick={() => setImages(images.filter(item => item !== image))}
         />
       ))}
-      <li
-        css={css`
-          position: relative;
-          display: inline-block;
-          border: 1px dashed ${colors.secondary.B8};
-          border-radius: 10px;
-        `}
-      >
-        <label htmlFor={id}>
-          <Flex.Center
-            css={css`
-              ${size({
-                width: 100,
-                height: 100
-              })};
-
-              ${touchable}
-            `}
-          >
-            <GrayPlus />
-          </Flex.Center>
-
-          <Text
-            _fontSize={10}
-            _color={colors.secondary[79]}
-            css={css`
-              ${position("absolute", { bottom: 10, left: "50%" })}
-              transform: translate3d(-50%,0,0);
-            `}
-          >
-            {images.length} / {totalNumber}
-          </Text>
-        </label>
-        <input
-          id={id}
-          type="file"
-          accept="image/*"
-          onChange={async e => {
-            const base64 = await imageUploader(e, true);
-            if (base64) setImages([...images, base64]);
-          }}
+      {!hideInput && (
+        <li
           css={css`
-            display: none;
+            position: relative;
+            display: inline-block;
+            border: 1px dashed ${colors.secondary.B8};
+            border-radius: 10px;
           `}
-        />
-      </li>
+        >
+          <label htmlFor={id}>
+            <Flex.Center
+              css={css`
+                ${size({
+                  width: 100,
+                  height: 100
+                })};
+
+                ${touchable}
+              `}
+            >
+              <GrayPlus />
+            </Flex.Center>
+
+            <Text
+              _fontSize={10}
+              _color={colors.secondary[79]}
+              css={css`
+                ${position("absolute", { bottom: 10, left: "50%" })}
+                transform: translate3d(-50%,0,0);
+              `}
+            >
+              {images.length} / {totalNumber}
+            </Text>
+          </label>
+          <input
+            id={id}
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={async e => {
+              const base64 = await imageUploader(e, true);
+              if (base64) setImages([...images, base64]);
+            }}
+            css={css`
+              display: none;
+            `}
+          />
+        </li>
+      )}
     </ul>
   );
 };
