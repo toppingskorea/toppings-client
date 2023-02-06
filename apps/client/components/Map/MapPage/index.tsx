@@ -52,7 +52,7 @@ const MapPage = () => {
               animate={{ scale: 1, y: 0 }}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
-              onTap={() => app.push(`post/${item.id}`)}
+              onClick={() => app.push(`post/${item.id}`)}
               style={{
                 width: "50px",
                 height: "50px",
