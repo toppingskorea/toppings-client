@@ -12,14 +12,14 @@ import { OpenGraph } from "~/components/Util";
 import type { diets } from "~/constants/data/common";
 import { useSetNavigation } from "~/hooks";
 import { useUploadRecentHistory } from "~/server/recent";
-import { replaceSpace } from "~/utils";
+import { isLoggedIn, replaceSpace } from "~/utils";
 
 const FilterEatingHabitPage = () => {
   const { colors, weighs } = useTheme();
   useSetNavigation({
     top: {
       marginBottom: 37,
-      backDirectlyURL: "/recent",
+      backDirectlyURL: isLoggedIn() ? "/recent" : "/map",
       title: (
         <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
           Select a Eating Habit
@@ -49,11 +49,12 @@ const FilterEatingHabitPage = () => {
           setCurrentSelectKeyword(removeSpaceContent);
           setCurrentSelectCategory("Habit");
 
-          uploadRecentHistoryMutate({
-            type: "Filter",
-            keyword: removeSpaceContent,
-            category: "Habit"
-          });
+          if (isLoggedIn())
+            uploadRecentHistoryMutate({
+              type: "Filter",
+              keyword: removeSpaceContent,
+              category: "Habit"
+            });
 
           push("/map");
         }}
