@@ -47,7 +47,7 @@ const ProfileImage = () => {
         accept="image/*"
         onChange={async e => {
           const base64 = await imageUploader(e, true);
-          if (base64) setEdit({ ...edit, profile: base64 });
+          if (base64) setEdit({ ...edit, profile: base64[0] });
         }}
         css={css`
           display: none;

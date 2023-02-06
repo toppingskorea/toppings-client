@@ -1,6 +1,5 @@
 import { css, useTheme } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
-import { Exit } from "@svgs/common";
 import {
   flex,
   padding,
@@ -12,13 +11,12 @@ import {
 import { Text } from "~/components/Common/Typo";
 import Skeleton from "~/components/Skeleton";
 import { OpenGraph } from "~/components/Util";
-import { useInternalRouter, useSetNavigation } from "~/hooks";
+import { useSetNavigation } from "~/hooks";
 import { generateComponent } from "~/utils";
 import RegisterButton from "./RegisterButton";
 import UserInfo from "./UserInfo";
 
 const ProfileEditPage = () => {
-  const { push } = useInternalRouter();
   const { colors, weighs } = useTheme();
 
   useSetNavigation({
@@ -28,10 +26,6 @@ const ProfileEditPage = () => {
           Edit Profile
         </Text>
       ),
-      right: {
-        element: <Exit />,
-        onClick: () => push("/map")
-      },
       marginBottom: 24,
       backButtonCaution: true
     },

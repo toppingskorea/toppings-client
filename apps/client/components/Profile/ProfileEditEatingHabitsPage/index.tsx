@@ -1,6 +1,5 @@
 import { useEditState, useProfileEatingHabitChangedSetter } from "@atoms/edit";
 import { css, useTheme } from "@emotion/react";
-import { Exit } from "@svgs/common";
 import { flex, position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { useCallback } from "react";
@@ -12,7 +11,7 @@ import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 
 const ProfileEditEatingHabitsPage = () => {
-  const { push, back } = useInternalRouter();
+  const { back } = useInternalRouter();
   const { colors, weighs, dimensions } = useTheme();
   const [edit, setEdit] = useEditState();
   const setProfileEatingHabitChanged = useProfileEatingHabitChangedSetter();
@@ -22,11 +21,7 @@ const ProfileEditEatingHabitsPage = () => {
         <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
           Select a Eating Habit
         </Text>
-      ),
-      right: {
-        element: <Exit />,
-        onClick: () => push("/map")
-      }
+      )
     },
     bottom: true
   });

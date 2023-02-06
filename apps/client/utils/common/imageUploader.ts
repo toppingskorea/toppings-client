@@ -14,16 +14,20 @@ const imageUploader = async (
   // 사용자가 파일 선택하다가 그만두는 경우.
   if (!e.target.files[0]) return null;
 
-  const img = e.target.files[0];
+  const imgList = e.target.files;
 
-  const base64 = await encodeFileToBase64(img);
+  const base64List = await Promise.all(
+    Array.from(imgList).map(encodeFileToBase64)
+  );
 
   if (compress) {
-    const resizedBase64 = await resizeBase64Img(base64 as string);
-    return resizedBase64 as string;
+    const resizedBase64List = await Promise.all(
+      base64List.map(base64 => resizeBase64Img(base64 as string))
+    );
+    return resizedBase64List as string[];
   }
 
-  return base64 as string;
+  return base64List as string[];
 };
 
 export default imageUploader;
