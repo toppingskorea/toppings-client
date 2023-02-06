@@ -12919,6 +12919,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dayjs", "npm:1.11.6"],\
             ["framer-motion", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:7.6.15"],\
             ["husky", "npm:8.0.2"],\
+            ["idb-keyval", "npm:6.2.0"],\
             ["jest", "virtual:93508a06acb8c83836bb21bb662cc6b56071d5ce9f5d68bff8a123f73353eb2d6124b50868f0070e4278b7656bee223bcb360277e9431606881c6d12515efd31#npm:29.3.1"],\
             ["jest-environment-jsdom", "virtual:93508a06acb8c83836bb21bb662cc6b56071d5ce9f5d68bff8a123f73353eb2d6124b50868f0070e4278b7656bee223bcb360277e9431606881c6d12515efd31#npm:29.3.1"],\
             ["js-cookie", "npm:3.0.1"],\
@@ -21813,6 +21814,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["idb-keyval", [\
+        ["npm:6.2.0", {\
+          "packageLocation": "./.yarn/cache/idb-keyval-npm-6.2.0-bda8041a97-ddd58f9582.zip/node_modules/idb-keyval/",\
+          "packageDependencies": [\
+            ["idb-keyval", "npm:6.2.0"],\
+            ["safari-14-idb-fix", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["ieee754", [\
         ["npm:1.2.1", {\
           "packageLocation": "./.yarn/cache/ieee754-npm-1.2.1-fb63b3caeb-5144c0c981.zip/node_modules/ieee754/",\
@@ -28081,6 +28092,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["rxjs", "npm:7.5.7"],\
             ["tslib", "npm:2.4.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["safari-14-idb-fix", [\
+        ["npm:3.0.0", {\
+          "packageLocation": "./.yarn/cache/safari-14-idb-fix-npm-3.0.0-bc2975407c-30d5baf3d9.zip/node_modules/safari-14-idb-fix/",\
+          "packageDependencies": [\
+            ["safari-14-idb-fix", "npm:3.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\

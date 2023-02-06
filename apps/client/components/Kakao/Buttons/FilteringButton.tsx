@@ -11,6 +11,7 @@ import {
   touchable
 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
+import { del } from "idb-keyval";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
 import { useResetRecentRecoilState } from "~/hooks/map";
@@ -51,7 +52,13 @@ const FilteringButton = () => {
           <Text _fontSize={17} _color={colors.white}>
             {currentSelectKeyword}
           </Text>
-          <Exit onClick={executeResetAll} />
+          <Exit
+            onClick={() => {
+              del("currentSelectKeyword");
+              del("currentSelectCategory");
+              executeResetAll();
+            }}
+          />
         </Flex.Center>
       )}
 
