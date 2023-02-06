@@ -10,6 +10,7 @@ import {
   touchable
 } from "@toss/emotion-utils";
 import { useId } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { hiddenScroll } from "~/styles/emotionUtils";
 import { imageUploader } from "~/utils";
 import { Text } from "../Typo";
@@ -40,7 +41,7 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
     >
       {images.map(image => (
         <Item
-          key={image.slice(0, 1000)}
+          key={uuidv4()}
           image={image}
           onClick={() => setImages(images.filter(item => item !== image))}
         />
@@ -85,8 +86,8 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
             accept="image/*"
             multiple
             onChange={async e => {
-              const base64 = await imageUploader(e, true);
-              if (base64) setImages([...images, base64]);
+              const base64List = await imageUploader(e, true);
+              if (base64List) setImages([...images, ...base64List]);
             }}
             css={css`
               display: none;
