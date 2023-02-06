@@ -14,6 +14,7 @@ import { hiddenScroll } from "~/styles/emotionUtils";
 import { imageUploader } from "~/utils";
 import { Text } from "../Typo";
 import Item from "./Item";
+import { v4 as uuidv4 } from "uuid";
 
 interface Props {
   images: string[];
@@ -37,7 +38,7 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
     >
       {images.map(image => (
         <Item
-          key={image.slice(0, 1000)}
+          key={uuidv4()}
           image={image}
           onClick={() => setImages(images.filter(item => item !== image))}
         />
@@ -79,6 +80,7 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
           id={id}
           type="file"
           accept="image/*"
+          multiple
           onChange={async e => {
             const base64 = await imageUploader(e, true);
             if (base64) setImages([...images, base64]);
