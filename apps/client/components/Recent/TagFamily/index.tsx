@@ -24,7 +24,7 @@ const TagFamily = ({ isBlur }: Props) => {
           y: 20,
           left: 27
         })}
-        backdrop-filter: blur(10px);
+        background-color: ${colors.white};
       `}
     >
       <div
