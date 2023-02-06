@@ -1,5 +1,4 @@
 import { css, useTheme } from "@emotion/react";
-import { Exit } from "@svgs/common";
 import { padding, position, width100 } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
@@ -51,11 +50,7 @@ const SearchPage = ({ type }: Props) => {
               Restaurant Name
             </Text>
           ),
-          marginBottom: 35,
-          right: {
-            element: <Exit />,
-            onClick: () => push("/map")
-          }
+          marginBottom: 35
         }
   });
 
