@@ -11,16 +11,16 @@ import {
   touchable
 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
 import { useResetRecentRecoilState } from "~/hooks/map";
+import { useClickFilteringButton } from "./FilteringButton.hooks";
 
 const FilteringButton = () => {
   const { colors, zIndex } = useTheme();
-  const { push } = useRouter();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
   const { executeResetAll } = useResetRecentRecoilState();
+  const { onClickFilteringButtonHandler } = useClickFilteringButton();
 
   return (
     <Flex.Center
@@ -59,7 +59,7 @@ const FilteringButton = () => {
         type="button"
         {...framerMocker}
         variants={defaultScaleChangeVariants}
-        onClick={() => push("/recent")}
+        onClick={onClickFilteringButtonHandler}
         css={css`
           ${flex("center")}
           padding: 8px;

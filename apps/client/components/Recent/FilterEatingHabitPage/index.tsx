@@ -12,7 +12,7 @@ import { OpenGraph } from "~/components/Util";
 import type { diets } from "~/constants/data/common";
 import { useSetNavigation } from "~/hooks";
 import { useUploadRecentHistory } from "~/server/recent";
-import { replaceSpace } from "~/utils";
+import { isLoggedIn, replaceSpace } from "~/utils";
 
 const FilterEatingHabitPage = () => {
   const { colors, weighs } = useTheme();
@@ -49,11 +49,12 @@ const FilterEatingHabitPage = () => {
           setCurrentSelectKeyword(removeSpaceContent);
           setCurrentSelectCategory("Habit");
 
-          uploadRecentHistoryMutate({
-            type: "Filter",
-            keyword: removeSpaceContent,
-            category: "Habit"
-          });
+          if (isLoggedIn())
+            uploadRecentHistoryMutate({
+              type: "Filter",
+              keyword: removeSpaceContent,
+              category: "Habit"
+            });
 
           push("/map");
         }}

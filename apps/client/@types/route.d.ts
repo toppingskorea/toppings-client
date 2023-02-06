@@ -20,5 +20,8 @@ declare module Route {
     | "/register/nationality"
     | "/register/eatingHabits"
     | "/about"
-    | "/recent";
+    | "/recent"
+    | "/recent/filter/eatingHabit"
+    | "/recent/filter/nationality"
+    | "/recent/filter/restaurant";
 }

@@ -17,6 +17,7 @@ import {
   useSetNavigation
 } from "~/hooks";
 import { useUploadRecentHistory } from "~/server/recent";
+import { isLoggedIn } from "~/utils";
 
 const FilterNationalityPage = () => {
   const { colors, weighs } = useTheme();
@@ -58,11 +59,12 @@ const FilterNationalityPage = () => {
           setCurrentSelectKeyword(name);
           setCurrentSelectCategory("Country");
 
-          uploadRecentHistoryMutate({
-            type: "Filter",
-            keyword: name,
-            category: "Country"
-          });
+          if (isLoggedIn())
+            uploadRecentHistoryMutate({
+              type: "Filter",
+              keyword: name,
+              category: "Country"
+            });
 
           push("/map");
         }}

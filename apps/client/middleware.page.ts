@@ -16,10 +16,7 @@ const PROTECTED_ROUTE = [
   "/profile/edit/eatingHabits",
   "/post/add",
   "/notice",
-  "/recent",
-  "/recent/filter/restaurant",
-  "/recent/filter/nationality",
-  "/recent/filter/eatingHabit"
+  "/recent"
 ];
 
 // 로그인한 유저는 접근할 수 없는 라우트
