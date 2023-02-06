@@ -40,7 +40,7 @@ const useClickHandler = ({
     clipboard(address);
     overlay.open(({ exit }) => (
       <IconWithTextModal
-        text="Link copied"
+        text="Address copied"
         exitFn={exit}
         icon={
           <Flex.Center
