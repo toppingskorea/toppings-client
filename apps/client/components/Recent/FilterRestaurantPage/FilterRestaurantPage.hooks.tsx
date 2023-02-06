@@ -13,6 +13,7 @@ import {
   useFetchRestaurantByName,
   useUploadRecentHistory
 } from "~/server/recent";
+import { isLoggedIn } from "~/utils";
 
 const useFilterRestaurant = () => {
   const { colors, weighs } = useTheme();
@@ -22,7 +23,7 @@ const useFilterRestaurant = () => {
   useSetNavigation({
     top: {
       marginBottom: 37,
-      backDirectlyURL: "/recent",
+      backDirectlyURL: isLoggedIn() ? "/recent" : "/map",
       title: (
         <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
           {restaurantList?.length ?? "0"} Restaurants
