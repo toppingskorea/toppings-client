@@ -9,19 +9,7 @@ info  - Creating an optimized production build...
 > [PWA]   scope: /
 > [PWA] Compile server
 > [PWA] Compile server
-warn  - Compiled with warnings
-
-../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js
-A Node.js API is used (Buffer at line: 138) which is not supported in the Edge Runtime.
-Learn more: https://nextjs.org/docs/api-reference/edge-runtime
-
-Import trace for requested module:
-../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js
-../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/axios.js
-../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/index.js
-./constants/Api.ts
-./constants/index.ts
-
+info  - Compiled successfully
 info  - Collecting page data...
 Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
 Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
