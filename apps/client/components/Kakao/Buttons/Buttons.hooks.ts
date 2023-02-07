@@ -29,6 +29,7 @@ const useCurrentLocation = () => {
 
   const options: PositionOptions = useMemo(
     () => ({
+      timeout: 60000, // 60초
       maximumAge: 0
     }),
     []
