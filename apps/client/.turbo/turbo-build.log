@@ -58,7 +58,7 @@ Route (pages)                              Size     First Load JS
 + First Load JS shared by all              365 kB
   ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
   ├ chunks/main-ad4cfd227aad6c0b.js        33 kB
-  ├ chunks/pages/_app-dc5ef7b532bbdccf.js  286 kB
+  ├ chunks/pages/_app-ef5c79f9479cc709.js  286 kB
   └ chunks/webpack-235955b20eb3ee85.js     1.15 kB
 
 ƒ Middleware                               64.9 kB
