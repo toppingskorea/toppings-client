@@ -3,13 +3,18 @@ import { Flex, padding, Stack } from "@toss/emotion-utils";
 import { CircleCountry, PercentBar } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useFetchLikePercent } from "~/server/restaurant";
+import EmptyText from "./Likes.styles";
 
 interface Props {
   id: string;
 }
 const Likes = ({ id }: Props) => {
   const { colors, weighs } = useTheme();
-  const { data } = useFetchLikePercent(+id);
+  const { data: likePercent } = useFetchLikePercent(+id);
+
+  if (likePercent.countryPercent.length && likePercent.habitPercent.length) {
+    return <EmptyText />;
+  }
 
   return (
     <Stack.Vertical
@@ -27,7 +32,7 @@ const Likes = ({ id }: Props) => {
         </Text>
 
         <Stack.Vertical gutter={6}>
-          {data.countryPercent.map((country, index) => (
+          {likePercent.countryPercent.map((country, index) => (
             <PercentBar
               key={country.country}
               prepend={
@@ -55,7 +60,7 @@ const Likes = ({ id }: Props) => {
         </Text>
 
         <Stack.Vertical gutter={12} align="flex-end">
-          {data.habitPercent.map((habit, index) => (
+          {likePercent.habitPercent.map((habit, index) => (
             <PercentBar
               key={habit.habit}
               prepend={
