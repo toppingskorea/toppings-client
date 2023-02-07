@@ -1,20 +1,33 @@
 import { css } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
-import { Spacing, Stack } from "@toss/emotion-utils";
-import { Badge, ImageCarousel } from "~/components/Common";
-import { pick } from "~/utils";
+import { Flex, Spacing, Stack, width100 } from "@toss/emotion-utils";
+import { Badge } from "~/components/Common";
+import Skeleton from "~/components/Skeleton";
+import ImageCarouselWrapper from "./ImageCarouselWrapper";
 import Info from "./Info";
 import Likes from "./Likes";
-import usePostDetail from "./PostDetailPage.hooks";
-import EmptyText from "./PostDetailPage.styles";
+import NavigationSetter from "./NavigationSetter";
 import ReviewLeadingSection from "./ReviewLeadingSection";
 import Reviews from "./Reviews";
 
 const PostDetailPage = ({ id }: { id: string }) => {
-  const app = usePostDetail(id);
-
   return (
     <section>
+      <Suspense.CSROnly
+        fallback={
+          <>
+            <Skeleton.Box
+              size={{
+                width: "100%",
+                height: 84
+              }}
+            />
+            <Spacing size={20} />
+          </>
+        }
+      >
+        <NavigationSetter />
+      </Suspense.CSROnly>
       <Stack.Vertical
         align="center"
         gutter={0}
@@ -22,21 +35,31 @@ const PostDetailPage = ({ id }: { id: string }) => {
           margin: 0 13px;
         `}
       >
-        <ImageCarousel images={app.restaurantDetail.images} />
+        <Suspense.CSROnly
+          fallback={
+            <Flex.Center>
+              <Skeleton.Box size={{ width: 364, height: 364 }} />
+            </Flex.Center>
+          }
+        >
+          <ImageCarouselWrapper />
+        </Suspense.CSROnly>
         <Spacing size={18} />
-        <Info
-          {...pick({ ...app.restaurantDetail }, [
-            "id",
-            "name",
-            "address",
-            "description",
-            "type",
-            "scrap",
-            "like",
-            "likeCount",
-            "images"
-          ])}
-        />
+
+        <Suspense.CSROnly
+          fallback={
+            <div
+              css={css`
+                ${width100}
+                margin-top: 100px;
+              `}
+            >
+              <Skeleton.Paragraph line={6} />
+            </div>
+          }
+        >
+          <Info />
+        </Suspense.CSROnly>
       </Stack.Vertical>
       <Spacing size={20} />
 
@@ -50,12 +73,10 @@ const PostDetailPage = ({ id }: { id: string }) => {
         Likes
       </Badge>
       <Spacing size={20} />
-      {!app.likePercent.countryPercent.length &&
-      !app.likePercent.habitPercent.length ? (
-        <EmptyText />
-      ) : (
+
+      <Suspense.CSROnly>
         <Likes id={id} />
-      )}
+      </Suspense.CSROnly>
 
       <Spacing size={30} />
 
