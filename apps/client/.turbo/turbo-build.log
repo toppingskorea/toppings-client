@@ -9,7 +9,19 @@ info  - Creating an optimized production build...
 > [PWA]   scope: /
 > [PWA] Compile server
 > [PWA] Compile server
-info  - Compiled successfully
+warn  - Compiled with warnings
+
+../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js
+A Node.js API is used (Buffer at line: 138) which is not supported in the Edge Runtime.
+Learn more: https://nextjs.org/docs/api-reference/edge-runtime
+
+Import trace for requested module:
+../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js
+../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/axios.js
+../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/index.js
+./constants/Api.ts
+./constants/index.ts
+
 info  - Collecting page data...
 Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
 Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
@@ -24,7 +36,7 @@ Route (pages)                              Size     First Load JS
 ├ λ /map                                   229 B           377 kB
 ├ λ /map/viewList                          237 B           377 kB
 ├ λ /notice                                4.46 kB         375 kB
-├ λ /post/[id]                             255 B           380 kB
+├ λ /post/[id]                             254 B           380 kB
 ├ λ /post/add                              234 B           380 kB
 ├ λ /profile                               232 B           379 kB
 ├ λ /profile/edit                          238 B           379 kB
@@ -46,7 +58,7 @@ Route (pages)                              Size     First Load JS
 + First Load JS shared by all              365 kB
   ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
   ├ chunks/main-ad4cfd227aad6c0b.js        33 kB
-  ├ chunks/pages/_app-2fbeed6bc84df298.js  286 kB
+  ├ chunks/pages/_app-dc5ef7b532bbdccf.js  286 kB
   └ chunks/webpack-235955b20eb3ee85.js     1.15 kB
 
 ƒ Middleware                               64.9 kB
