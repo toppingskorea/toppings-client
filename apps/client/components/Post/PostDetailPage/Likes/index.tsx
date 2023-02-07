@@ -12,7 +12,7 @@ const Likes = ({ id }: Props) => {
   const { colors, weighs } = useTheme();
   const { data: likePercent } = useFetchLikePercent(+id);
 
-  if (likePercent.countryPercent.length && likePercent.habitPercent.length) {
+  if (!likePercent.countryPercent.length && !likePercent.habitPercent.length) {
     return <EmptyText />;
   }
 
