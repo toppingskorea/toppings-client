@@ -56,7 +56,7 @@ const useViewList = () => {
   useEffect(() => {
     if (searchByFiltering) set("searchByFiltering", searchByFiltering);
 
-    get("searchByFiltering").then(value => setSearchByFiltering(value));
+    get("searchByFiltering").then(setSearchByFiltering);
   }, [searchByFiltering, setSearchByFiltering]);
 
   useEffect(() => {
@@ -67,7 +67,9 @@ const useViewList = () => {
     get("currentSelectKeyword").then(value => {
       if (value) setCurrentSelectKeyword(value);
     });
-    get("currentSelectCategory").then(value => setCurrentSelectCategory(value));
+    get("currentSelectCategory").then(value => {
+      if (value) setCurrentSelectCategory(value);
+    });
   }, [
     currentSelectCategory,
     currentSelectKeyword,
