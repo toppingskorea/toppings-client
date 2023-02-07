@@ -11,7 +11,7 @@ const currentSelectKeywordAtom = atom<string>({
   default: ""
 });
 
-export const useCurrentSelectKeyword = () =>
+export const useCurrentSelectKeywordState = () =>
   useRecoilState(currentSelectKeywordAtom);
 export const useCurrentSelectKeywordValue = () =>
   useRecoilValue(currentSelectKeywordAtom);
@@ -37,7 +37,7 @@ const currentSelectCategoryAtom = atom<string>({
   default: ""
 });
 
-export const useCurrentSelectCategory = () =>
+export const useCurrentSelectCategoryState = () =>
   useRecoilState(currentSelectCategoryAtom);
 export const useCurrentSelectCategoryValue = () =>
   useRecoilValue(currentSelectCategoryAtom);
