@@ -8,6 +8,7 @@
   "short_name": "Toppings",
   "description": "Make your own topping",
   "orientation": "portrait",
+  "lang": "ko-KR",
   "icons": [
     {
       "src": "/android-icon-36x36.png",
