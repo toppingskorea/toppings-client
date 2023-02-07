@@ -35,3 +35,5 @@ export const useClickedCurrentPositionSetter = () =>
   useSetRecoilState(clickedCurrentPositionAtom);
 export const useClickedCurrentPositionValue = () =>
   useRecoilValue(clickedCurrentPositionAtom);
+export const useClickedCurrentPositionReset = () =>
+  useResetRecoilState(clickedCurrentPositionAtom);

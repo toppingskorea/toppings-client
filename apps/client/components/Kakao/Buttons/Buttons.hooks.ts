@@ -14,6 +14,7 @@ const useCurrentLocation = () => {
 
   const success: PositionCallback = useCallback(
     ({ coords: { latitude, longitude } }: GeolocationPosition) => {
+      console.log("success");
       if (latitude && longitude) {
         setClickedCurrentPosition({ latitude, longitude });
         setCurrentPositionLoading(false);
@@ -25,11 +26,14 @@ const useCurrentLocation = () => {
   );
 
   const error: PositionErrorCallback = useCallback(() => {
+    console.log("error");
+    setCurrentPositionLoading(false);
+
     setCurrentLocation({
       latitude: defaultLocation.DEFAULT_LATITUDE,
       longitude: defaultLocation.DEFAULT_LONGITUDE
     });
-  }, [setCurrentLocation]);
+  }, [setCurrentLocation, setCurrentPositionLoading]);
 
   const options: PositionOptions = useMemo(
     () => ({
@@ -40,6 +44,7 @@ const useCurrentLocation = () => {
 
   const getCurrentMapPosition = useCallback(() => {
     if (clickedCurrentPosition.latitude && clickedCurrentPosition.longitude) {
+      console.log("asdas");
       setCurrentLocation({
         latitude: clickedCurrentPosition.latitude,
         longitude: clickedCurrentPosition.longitude
