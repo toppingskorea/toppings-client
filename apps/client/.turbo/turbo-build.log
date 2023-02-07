@@ -15,41 +15,41 @@ Warning: You have opted-out of Automatic Static Optimization due to `getInitialP
 Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
 
 Route (pages)                              Size     First Load JS
-┌ λ /                                      2.24 kB         377 kB
-├   /_app                                  0 B             375 kB
-├ λ /404                                   900 B           376 kB
-├ λ /about                                 1.23 kB         376 kB
-├ λ /login                                 462 B           376 kB
-├ λ /login/redirect                        272 B           375 kB
-├ λ /map                                   226 B           381 kB
-├ λ /map/viewList                          231 B           381 kB
-├ λ /notice                                4.28 kB         379 kB
-├ λ /post/[id]                             251 B           385 kB
-├ λ /post/add                              231 B           385 kB
-├ λ /profile                               227 B           383 kB
-├ λ /profile/edit                          232 B           383 kB
-├ λ /profile/edit/eatingHabits             240 B           383 kB
-├ λ /profile/edit/nationality              240 B           383 kB
-├ λ /profile/menu                          231 B           383 kB
-├ λ /profile/posts                         231 B           383 kB
-├ λ /profile/reviews                       232 B           383 kB
-├ λ /profile/saved                         232 B           383 kB
-├ λ /recent                                224 B           382 kB
-├ λ /recent/filter/eatingHabit             238 B           382 kB
-├ λ /recent/filter/nationality             240 B           382 kB
-├ λ /recent/filter/restaurant              238 B           382 kB
-├ λ /register/eatingHabits                 2.71 kB         378 kB
-├ λ /register/nationality                  2.71 kB         378 kB
-├ λ /review/[id]                           2.19 kB         381 kB
-├ λ /review/add/[restaurantId]             2.19 kB         381 kB
-└ λ /search/[type]                         2.04 kB         377 kB
-+ First Load JS shared by all              375 kB
+┌ λ /                                      2.5 kB          368 kB
+├   /_app                                  0 B             365 kB
+├ λ /404                                   1.14 kB         367 kB
+├ λ /about                                 1.48 kB         367 kB
+├ λ /login                                 462 B           366 kB
+├ λ /login/redirect                        272 B           366 kB
+├ λ /map                                   229 B           377 kB
+├ λ /map/viewList                          237 B           377 kB
+├ λ /notice                                4.46 kB         375 kB
+├ λ /post/[id]                             255 B           380 kB
+├ λ /post/add                              234 B           380 kB
+├ λ /profile                               232 B           379 kB
+├ λ /profile/edit                          238 B           379 kB
+├ λ /profile/edit/eatingHabits             246 B           379 kB
+├ λ /profile/edit/nationality              242 B           379 kB
+├ λ /profile/menu                          237 B           379 kB
+├ λ /profile/posts                         237 B           379 kB
+├ λ /profile/reviews                       238 B           379 kB
+├ λ /profile/saved                         237 B           379 kB
+├ λ /recent                                228 B           378 kB
+├ λ /recent/filter/eatingHabit             244 B           378 kB
+├ λ /recent/filter/nationality             243 B           378 kB
+├ λ /recent/filter/restaurant              243 B           378 kB
+├ λ /register/eatingHabits                 238 B           370 kB
+├ λ /register/nationality                  237 B           370 kB
+├ λ /review/[id]                           2.19 kB         376 kB
+├ λ /review/add/[restaurantId]             2.19 kB         376 kB
+└ λ /search/[type]                         2.21 kB         368 kB
++ First Load JS shared by all              365 kB
   ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
   ├ chunks/main-ad4cfd227aad6c0b.js        33 kB
-  ├ chunks/pages/_app-e3f0218a98f304b3.js  296 kB
+  ├ chunks/pages/_app-2fbeed6bc84df298.js  286 kB
   └ chunks/webpack-235955b20eb3ee85.js     1.15 kB
 
-ƒ Middleware                               65 kB
+ƒ Middleware                               64.9 kB
 
 λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
 

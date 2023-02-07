@@ -13,7 +13,11 @@ import {
 import { motion } from "framer-motion";
 import { del } from "idb-keyval";
 import { Text } from "~/components/Common/Typo";
-import { defaultScaleChangeVariants, framerMocker } from "~/constants";
+import {
+  defaultScaleChangeVariants,
+  framerMocker,
+  indexedDBKeys
+} from "~/constants";
 import { useResetRecentRecoilState } from "~/hooks/map";
 import { useClickFilteringButton } from "./FilteringButton.hooks";
 
@@ -54,8 +58,8 @@ const FilteringButton = () => {
           </Text>
           <Exit
             onClick={() => {
-              del("currentSelectKeyword");
-              del("currentSelectCategory");
+              del(indexedDBKeys.currentSelectKeyword);
+              del(indexedDBKeys.currentSelectCategory);
               executeResetAll();
             }}
           />

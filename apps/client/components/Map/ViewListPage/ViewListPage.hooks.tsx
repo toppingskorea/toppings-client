@@ -7,6 +7,7 @@ import { useTheme } from "@emotion/react";
 import { del, get, set } from "idb-keyval";
 import { useRouter } from "next/router";
 import { useCallback, useEffect } from "react";
+import { indexedDBKeys } from "~/constants";
 import { useSetNavigation } from "~/hooks";
 import { useResetRecentRecoilState } from "~/hooks/map";
 import { useUploadRecentHistory } from "~/server/recent";
@@ -54,20 +55,22 @@ const useViewList = () => {
   };
 
   useEffect(() => {
-    if (searchByFiltering) set("searchByFiltering", searchByFiltering);
+    if (searchByFiltering)
+      set(indexedDBKeys.searchByFiltering, searchByFiltering);
 
-    get("searchByFiltering").then(setSearchByFiltering);
+    get(indexedDBKeys.searchByFiltering).then(setSearchByFiltering);
   }, [searchByFiltering, setSearchByFiltering]);
 
   useEffect(() => {
-    if (currentSelectKeyword) set("currentSelectKeyword", currentSelectKeyword);
+    if (currentSelectKeyword)
+      set(indexedDBKeys.currentSelectKeyword, currentSelectKeyword);
     if (currentSelectCategory)
-      set("currentSelectCategory", currentSelectCategory);
+      set(indexedDBKeys.currentSelectCategory, currentSelectCategory);
 
-    get("currentSelectKeyword").then(value => {
+    get(indexedDBKeys.currentSelectKeyword).then(value => {
       if (value) setCurrentSelectKeyword(value);
     });
-    get("currentSelectCategory").then(value => {
+    get(indexedDBKeys.currentSelectCategory).then(value => {
       if (value) setCurrentSelectCategory(value);
     });
   }, [
