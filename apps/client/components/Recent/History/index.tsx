@@ -14,7 +14,7 @@ const History = () => {
       <Flex.Center
         css={css`
           ${margin({
-            top: 38
+            top: 76
           })}
         `}
       >
