@@ -1,5 +1,6 @@
 import { useTheme } from "@emotion/react";
 import { Stack } from "@toss/emotion-utils";
+import { memo } from "react";
 import type { PropsWithChildren } from "react";
 import { Text } from "../Typo";
 
@@ -16,11 +17,7 @@ const ComponentWithLabel = ({
   const { colors, weighs } = useTheme();
   return (
     <Stack.Vertical gutter={gutter}>
-      <Text
-        _fontSize={16}
-        weight={weighs.bold}
-        _color={colors.secondary[62]}
-      >
+      <Text _fontSize={16} weight={weighs.bold} _color={colors.secondary[62]}>
         {label}
       </Text>
       {children}
@@ -28,4 +25,4 @@ const ComponentWithLabel = ({
   );
 };
 
-export default ComponentWithLabel;
+export default memo(ComponentWithLabel);
