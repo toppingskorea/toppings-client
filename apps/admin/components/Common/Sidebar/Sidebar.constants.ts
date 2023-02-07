@@ -8,6 +8,10 @@ const routes = [
     href: "/posts"
   },
   {
+    label: "Upload Post",
+    href: "/post/upload"
+  },
+  {
     label: "Reviews",
     href: "/reviews"
   }
