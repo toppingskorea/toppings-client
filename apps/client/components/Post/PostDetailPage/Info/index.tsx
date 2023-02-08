@@ -142,6 +142,7 @@ const Info = () => {
           weight={weighs.medium}
           css={css`
             word-wrap: break-word;
+            user-select: text;
           `}
         >
           {description}
