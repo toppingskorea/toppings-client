@@ -3,7 +3,7 @@ import axios from "axios";
 import type { GetServerSideProps } from "next";
 import { PostDetailPage } from "~/components/Post";
 import { env } from "~/constants";
-import { getLikePercent, Keys as RestaurantKeys } from "~/server/restaurant";
+import { Keys as RestaurantKeys } from "~/server/restaurant";
 
 export const getServerSideProps: GetServerSideProps<{
   id: string;
@@ -18,7 +18,10 @@ export const getServerSideProps: GetServerSideProps<{
       `${env.TOPPINGS_SERVER_URL}/api/v1/restaurant/${id}`,
       {
         headers: {
-          Authorization: `Bearer ${context.req.cookies[env.TOPPINGS_TOKEN_KEY]}`
+          Authorization: `Bearer ${
+            context.req.cookies[env.TOPPINGS_TOKEN_KEY]
+          }`,
+          Referer: env.TOPPINGS_CLIENT_URL
         }
       }
     );
@@ -26,9 +29,21 @@ export const getServerSideProps: GetServerSideProps<{
     return data.data;
   });
 
-  await queryClient.prefetchQuery(RestaurantKeys.likePercent(+id), () =>
-    getLikePercent({ id: +id, ssr: true })
-  );
+  await queryClient.prefetchQuery(RestaurantKeys.likePercent(+id), async () => {
+    const { data } = await axios.get<{ data: Restaurant.LikePercentDTO }>(
+      `${env.TOPPINGS_SERVER_URL}/api/v1/restaurant/${id}/like`,
+      {
+        headers: {
+          Authorization: `Bearer ${
+            context.req.cookies[env.TOPPINGS_TOKEN_KEY]
+          }`,
+          Referer: env.TOPPINGS_CLIENT_URL
+        }
+      }
+    );
+
+    return data.data;
+  });
 
   // 추후 SEO를 위해 남겨둠, SSR & Pagination
   // await queryClient.prefetchQuery(ReviewKeys.reviews(+id), async () => {
