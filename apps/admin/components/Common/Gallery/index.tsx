@@ -62,7 +62,6 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
                   width: 150,
                   height: 150
                 })};
-
                 ${touchable}
               `}
             >
