@@ -2,6 +2,9 @@
   "name": "@toppings/hooks",
   "version": "0.0.1",
   "main": "./src/index.ts",
+  "scripts": {
+    "type-check": "echo 'No Type check'"
+  },
   "peerDependencies": {
     "react": "*"
   },
