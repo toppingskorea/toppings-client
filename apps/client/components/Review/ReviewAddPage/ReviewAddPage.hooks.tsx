@@ -56,7 +56,11 @@ export const useAddReview = ({ restaurantId }: { restaurantId: string }) => {
     restaurantId
   });
 
-  const onChangeImagesHandler = (images: string[]) => setImages(images);
+  const onChangeImagesHandler = useCallback(
+    (images: string[]) => setImages(images),
+    []
+  );
+
   const onChangeDescriptionHandler = (
     event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => setDescription(event.currentTarget.value);
