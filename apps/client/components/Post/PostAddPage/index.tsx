@@ -3,7 +3,7 @@ import { css, useTheme } from "@emotion/react";
 import { Exit } from "@svgs/common";
 import { padding, size, Spacing, Stack, touchable } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import {
   AlertModal,
   ComponentWithLabel,
@@ -48,6 +48,12 @@ const PostAddPage = () => {
     bottom: false
   });
 
+  const gallerySetImages = useCallback(
+    (images: string[]) =>
+      setPostUpload(postUpload => ({ ...postUpload, images })),
+    [setPostUpload]
+  );
+
   return (
     <Stack.Vertical gutter={22}>
       <OpenGraph title="Add Post" />
@@ -58,10 +64,7 @@ const PostAddPage = () => {
         `}
       >
         <ComponentWithLabel label="Picture" gutter={6}>
-          <Gallery
-            images={postUpload.images}
-            setImages={images => setPostUpload({ ...postUpload, images })}
-          />
+          <Gallery images={postUpload.images} setImages={gallerySetImages} />
         </ComponentWithLabel>
 
         <ComponentWithLabel label="Name" gutter={6}>
