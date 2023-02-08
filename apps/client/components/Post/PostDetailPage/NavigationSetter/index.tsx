@@ -1,8 +1,10 @@
 import { useTheme } from "@emotion/react";
+import { grayNoRingLogo } from "@images/common";
+import { Edit } from "@svgs/common";
 import { Flex, Spacing } from "@toss/emotion-utils";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
-import { Edit } from "~/assets/svgs/common";
 import { CircleCountry } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useSetNavigation } from "~/hooks";
@@ -56,20 +58,26 @@ const NavigationSetter = () => {
     top: {
       title: (
         <Flex align="center">
-          <CircleCountry
-            padding={7}
-            size={18}
-            country={restaurantDetail.country}
-            isShadow
-          />
-          <Spacing direction="horizontal" size={14} />
-          <Text
-            _fontSize={20}
-            _color={colors.secondary[69]}
-            weight={weighs.medium}
-          >
-            {restaurantDetail.writer}
-          </Text>
+          {restaurantDetail.admin ? (
+            <Image src={grayNoRingLogo} alt="" width={176.5} height={32.75} />
+          ) : (
+            <>
+              <CircleCountry
+                padding={7}
+                size={18}
+                country={restaurantDetail.country}
+                isShadow
+              />
+              <Spacing direction="horizontal" size={14} />
+              <Text
+                _fontSize={20}
+                _color={colors.secondary[69]}
+                weight={weighs.medium}
+              >
+                {restaurantDetail.writer}
+              </Text>
+            </>
+          )}
         </Flex>
       ),
       right: restaurantDetail.mine
