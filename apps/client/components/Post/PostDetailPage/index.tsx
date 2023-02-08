@@ -1,8 +1,7 @@
 import { css } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
-import { Flex, Spacing, Stack, width100 } from "@toss/emotion-utils";
+import { Spacing, Stack } from "@toss/emotion-utils";
 import { Badge } from "~/components/Common";
-import Skeleton from "~/components/Skeleton";
 import ImageCarouselWrapper from "./ImageCarouselWrapper";
 import Info from "./Info";
 import Likes from "./Likes";
@@ -13,21 +12,7 @@ import Reviews from "./Reviews";
 const PostDetailPage = ({ id }: { id: string }) => {
   return (
     <section>
-      <Suspense.CSROnly
-        fallback={
-          <>
-            <Skeleton.Box
-              size={{
-                width: "100%",
-                height: 84
-              }}
-            />
-            <Spacing size={20} />
-          </>
-        }
-      >
-        <NavigationSetter />
-      </Suspense.CSROnly>
+      <NavigationSetter />
       <Stack.Vertical
         align="center"
         gutter={0}
@@ -35,31 +20,10 @@ const PostDetailPage = ({ id }: { id: string }) => {
           margin: 0 13px;
         `}
       >
-        <Suspense.CSROnly
-          fallback={
-            <Flex.Center>
-              <Skeleton.Box size={{ width: 364, height: 364 }} />
-            </Flex.Center>
-          }
-        >
-          <ImageCarouselWrapper />
-        </Suspense.CSROnly>
+        <ImageCarouselWrapper />
         <Spacing size={18} />
 
-        <Suspense.CSROnly
-          fallback={
-            <div
-              css={css`
-                ${width100}
-                margin-top: 100px;
-              `}
-            >
-              <Skeleton.Paragraph line={6} />
-            </div>
-          }
-        >
-          <Info />
-        </Suspense.CSROnly>
+        <Info />
       </Stack.Vertical>
       <Spacing size={20} />
 
@@ -74,9 +38,7 @@ const PostDetailPage = ({ id }: { id: string }) => {
       </Badge>
       <Spacing size={20} />
 
-      <Suspense.CSROnly>
-        <Likes id={id} />
-      </Suspense.CSROnly>
+      <Likes id={id} />
 
       <Spacing size={30} />
 
