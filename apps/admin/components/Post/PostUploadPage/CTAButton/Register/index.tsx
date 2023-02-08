@@ -18,15 +18,17 @@ const Register = () => {
   const postUpload = usePostUploadValue();
 
   const { mutate: uploadPostMutate, isLoading: uploadPostIsLoading } =
-    useUploadPost(() => {
-      restaurantReset();
-      postUploadReset();
+    useUploadPost({
+      onSuccess: () => {
+        restaurantReset();
+        postUploadReset();
 
-      toast({
-        title: "업로드 성공",
-        description: "실제 반영되었습니다.",
-        status: "success"
-      });
+        toast({
+          title: "업로드 성공",
+          description: "실제 반영되었습니다.",
+          status: "success"
+        });
+      }
     });
 
   const { verificationSubmitInClient } = useSubmitVerification({
