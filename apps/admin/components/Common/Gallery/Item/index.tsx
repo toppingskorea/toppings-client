@@ -33,9 +33,10 @@ const Item = ({ image, onClick }: Props) => (
     <Image
       src={image}
       alt=""
-      width={100}
-      height={100}
+      width={150}
+      height={150}
       css={css`
+        aspect-ratio: 1;
         border-radius: 10px;
       `}
     />

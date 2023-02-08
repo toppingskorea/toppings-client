@@ -6,3 +6,6 @@ export { default as objectKeys } from "./objectKeys";
 export { default as objectValues } from "./objectValues";
 export { default as pick } from "./pick";
 export { default as generateComponent } from "./generateComponent";
+export { default as imageUploader } from "./imageUploader";
+export { default as encodeFileToBase64 } from "./encodeFileToBase64";
+export { default as resizeBase64Img } from "./resizeBase64Img";

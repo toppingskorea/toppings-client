@@ -1,6 +1,7 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import Script from "next/script";
 import type { ReactElement } from "react";
+import { env } from "~/constants";
 
 type DocumentPropTypes = {
   // using `interface` is also ok
@@ -13,6 +14,11 @@ export default class MyDocument extends Document<DocumentPropTypes> {
     return (
       <Html lang="ko">
         <Head>
+          <script
+            type="text/javascript"
+            src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${env.KAKAO_JAVASCRIPT_KEY}&libraries=services`}
+          />
+
           <meta property="og:image" content="/link_image.png" />
           <meta property="og:title" content="toppings" />
           <meta name="description" content="The best restaurant for me" />

@@ -59,8 +59,8 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
             <Flex.Center
               css={css`
                 ${size({
-                  width: 100,
-                  height: 100
+                  width: 150,
+                  height: 150
                 })};
 
                 ${touchable}
