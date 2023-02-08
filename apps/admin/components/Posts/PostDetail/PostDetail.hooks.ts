@@ -6,6 +6,7 @@ import {
   useState
 } from "react";
 import { useToast } from "~/hooks";
+import { useSendNotification } from "~/server/notice";
 import { useFetchRestaurant, useUpdatePublication } from "~/server/restaurant";
 
 const useOnEventHandler = (id: number) => {
@@ -19,7 +20,7 @@ const useOnEventHandler = (id: number) => {
     setRejectCause
   });
 
-  const { mutate: updatePublicationMutate } = useUpdatePublication({
+  const { mutateAsync: updatePublicationMutateAsync } = useUpdatePublication({
     onSuccess: () =>
       toast({
         title: "변경 성공",
@@ -33,21 +34,27 @@ const useOnEventHandler = (id: number) => {
         status: "error"
       })
   });
+
+  const { mutate: sendNotificationMutate } = useSendNotification();
+
   const onApproveButtonClickHandler = () => {
-    updatePublicationMutate({
+    updatePublicationMutateAsync({
       id,
       isPub: true
     });
   };
 
-  const onRejectButtonClickHandler = () => {
+  const onRejectButtonClickHandler = async () => {
     if (verifyRejectCause()) return;
 
-    updatePublicationMutate({
+    const response = await updatePublicationMutateAsync({
       id,
       cause: rejectCause,
       isPub: false
     });
+
+    if (response.success)
+      sendNotificationMutate({ id, type: "RejectRestaurant" });
   };
 
   return {
