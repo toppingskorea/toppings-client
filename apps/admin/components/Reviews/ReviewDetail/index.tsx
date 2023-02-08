@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useToast } from "~/hooks";
+import { useSendNotification } from "~/server/notice";
 import { useFetchReview, useUpdatePublication } from "~/server/review";
 
 const ReviewDetail = () => {
@@ -11,7 +12,7 @@ const ReviewDetail = () => {
 
   const { data: review } = useFetchReview(Number(query.id));
 
-  const { mutate: updatePublicationMutate } = useUpdatePublication({
+  const { mutateAsync: updatePublicationMutateAsync } = useUpdatePublication({
     onSuccess: () =>
       toast({
         title: "변경 성공",
@@ -27,6 +28,35 @@ const ReviewDetail = () => {
   });
 
   const [rejectCause, setRejectCause] = useState("");
+
+  const { mutate: sendNotificationMutate } = useSendNotification();
+
+  const onApproveButtonClickHandler = () => {
+    updatePublicationMutateAsync({
+      id: Number(query.id),
+      isPub: true
+    });
+  };
+
+  const onRejectButtonClickHandler = async () => {
+    if (!rejectCause) {
+      toast({
+        title: "변경 실패",
+        description: "리젝 사유를 선택해주세요",
+        status: "error"
+      });
+      return;
+    }
+
+    const response = await updatePublicationMutateAsync({
+      id: Number(query.id),
+      cause: rejectCause,
+      isPub: false
+    });
+
+    if (response.success)
+      sendNotificationMutate({ id: Number(query.id), type: "RejectReview" });
+  };
 
   return (
     <VStack>
@@ -44,15 +74,7 @@ const ReviewDetail = () => {
       <Text fontSize="1xl">{review.modifiedAt}</Text>
 
       <HStack gap={10}>
-        <Button
-          colorScheme="teal"
-          onClick={() =>
-            updatePublicationMutate({
-              id: Number(query.id),
-              isPub: true
-            })
-          }
-        >
+        <Button colorScheme="teal" onClick={onApproveButtonClickHandler}>
           승인하기
         </Button>
 
@@ -65,16 +87,7 @@ const ReviewDetail = () => {
             <option value="Inappropriate photo">부적절한 사진</option>
             <option value="Inappropriate description">부적절한 설명</option>
           </Select>
-          <Button
-            colorScheme="red"
-            onClick={() =>
-              updatePublicationMutate({
-                id: Number(query.id),
-                cause: rejectCause,
-                isPub: false
-              })
-            }
-          >
+          <Button colorScheme="red" onClick={onRejectButtonClickHandler}>
             거절하기
           </Button>
         </Flex>
