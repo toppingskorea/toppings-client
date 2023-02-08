@@ -15,15 +15,15 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: `https://api.toppings.co.kr:28081/:path*`
+        destination: `${process.env.NEXT_PUBLIC_TOPPINGS_SERVER_URL}/:path*`
       },
       {
         source: "/v1/:path*",
-        destination: `https://api.toppings.co.kr:28081/api/v1/:path*`
+        destination: `${process.env.NEXT_PUBLIC_TOPPINGS_SERVER_URL}/api/v1/:path*`
       },
       {
         source: "/v2/:path*",
-        destination: `https://api.toppings.co.kr:28081/api/v2/:path*`
+        destination: `${process.env.NEXT_PUBLIC_TOPPINGS_SERVER_URL}/api/v2/:path*`
       }
     ];
   },
