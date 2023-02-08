@@ -1,55 +1,69 @@
-info  - Loaded env from /Users/donggyukim/Desktop/dev/toppings-client/apps/client/.env.local
+info  - Loaded env from /Users/chanhyuk/Desktop/personal/toppings-client/apps/client/.env.local
 info  - Linting and checking validity of types...
 error - ESLint must be installed in order to run during builds: yarn add --dev eslint
 info  - Creating an optimized production build...
 > [PWA] Compile client (static)
-> [PWA] Auto register service worker with: /Users/donggyukim/Desktop/dev/toppings-client/.yarn/__virtual__/next-pwa-virtual-941debd704/0/cache/next-pwa-npm-5.6.0-0f61704f10-47f249a819.zip/node_modules/next-pwa/register.js
-> [PWA] Service worker: /Users/donggyukim/Desktop/dev/toppings-client/apps/client/public/sw.js
+> [PWA] Auto register service worker with: /Users/chanhyuk/Desktop/personal/toppings-client/.yarn/__virtual__/next-pwa-virtual-941debd704/0/cache/next-pwa-npm-5.6.0-0f61704f10-47f249a819.zip/node_modules/next-pwa/register.js
+> [PWA] Service worker: /Users/chanhyuk/Desktop/personal/toppings-client/apps/client/public/sw.js
 > [PWA]   url: /sw.js
 > [PWA]   scope: /
 > [PWA] Compile server
 > [PWA] Compile server
-info  - Compiled successfully
+Warning: For production Image Optimization with Next.js, the optional 'sharp' package is strongly recommended. Run 'yarn add sharp', and Next.js will use it automatically for Image Optimization.
+Read more: https://nextjs.org/docs/messages/sharp-missing-in-production
+warn  - Compiled with warnings
+
+../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js
+A Node.js API is used (Buffer at line: 138) which is not supported in the Edge Runtime.
+Learn more: https://nextjs.org/docs/api-reference/edge-runtime
+
+Import trace for requested module:
+../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js
+../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/axios.js
+../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/index.js
+./constants/Api.ts
+./constants/index.ts
+
 info  - Collecting page data...
 Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
 Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
 
 Route (pages)                              Size     First Load JS
-┌ λ /                                      2.5 kB          368 kB
-├   /_app                                  0 B             365 kB
+┌ λ /                                      2.5 kB          369 kB
+├   /_app                                  0 B             366 kB
 ├ λ /404                                   1.14 kB         367 kB
-├ λ /about                                 1.48 kB         367 kB
-├ λ /login                                 462 B           366 kB
+├ λ /about                                 1.47 kB         367 kB
+├ λ /login                                 463 B           366 kB
 ├ λ /login/redirect                        272 B           366 kB
-├ λ /map                                   229 B           377 kB
-├ λ /map/viewList                          237 B           377 kB
-├ λ /notice                                4.46 kB         375 kB
-├ λ /post/[id]                             254 B           380 kB
-├ λ /post/add                              234 B           380 kB
-├ λ /profile                               232 B           379 kB
-├ λ /profile/edit                          238 B           379 kB
-├ λ /profile/edit/eatingHabits             246 B           379 kB
-├ λ /profile/edit/nationality              242 B           379 kB
-├ λ /profile/menu                          237 B           379 kB
-├ λ /profile/posts                         237 B           379 kB
-├ λ /profile/reviews                       238 B           379 kB
-├ λ /profile/saved                         237 B           379 kB
-├ λ /recent                                228 B           378 kB
-├ λ /recent/filter/eatingHabit             244 B           378 kB
-├ λ /recent/filter/nationality             243 B           378 kB
-├ λ /recent/filter/restaurant              243 B           378 kB
-├ λ /register/eatingHabits                 238 B           370 kB
-├ λ /register/nationality                  237 B           370 kB
-├ λ /review/[id]                           2.19 kB         376 kB
-├ λ /review/add/[restaurantId]             2.19 kB         376 kB
-└ λ /search/[type]                         2.21 kB         368 kB
-+ First Load JS shared by all              365 kB
-  ├ chunks/framework-a854c81c24cf2e55.js   45.4 kB
-  ├ chunks/main-ad4cfd227aad6c0b.js        33 kB
-  ├ chunks/pages/_app-ef5c79f9479cc709.js  286 kB
+├ λ /map                                   228 B           378 kB
+├ λ /map/viewList                          238 B           378 kB
+├ λ /notice                                4.46 kB         376 kB
+├ λ /post/[id]                             256 B           381 kB
+├ λ /post/add                              235 B           381 kB
+├ λ /profile                               234 B           380 kB
+├ λ /profile/edit                          235 B           380 kB
+├ λ /profile/edit/eatingHabits             246 B           380 kB
+├ λ /profile/edit/nationality              243 B           380 kB
+├ λ /profile/menu                          237 B           380 kB
+├ λ /profile/posts                         237 B           380 kB
+├ λ /profile/reviews                       238 B           380 kB
+├ λ /profile/saved                         238 B           380 kB
+├ λ /recent                                230 B           379 kB
+├ λ /recent/filter/eatingHabit             245 B           379 kB
+├ λ /recent/filter/nationality             243 B           379 kB
+├ λ /recent/filter/restaurant              238 B           379 kB
+├ λ /register/eatingHabits                 237 B           371 kB
+├ λ /register/nationality                  237 B           371 kB
+├ λ /review/[id]                           2.2 kB          377 kB
+├ λ /review/add/[restaurantId]             2.2 kB          377 kB
+└ λ /search/[type]                         2.22 kB         368 kB
++ First Load JS shared by all              366 kB
+  ├ chunks/framework-3437216d94e66f13.js   45.4 kB
+  ├ chunks/main-e1cb92b1abfba079.js        33.3 kB
+  ├ chunks/pages/_app-06889a017fb0409d.js  286 kB
   └ chunks/webpack-235955b20eb3ee85.js     1.15 kB
 
-ƒ Middleware                               64.9 kB
+ƒ Middleware                               64.8 kB
 
 λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
 

@@ -1,10 +1,10 @@
+import { useRestaurantSetter } from "@atoms/search";
 import { Badge, Box, Input, VStack } from "@chakra-ui/react";
 import { css } from "@emotion/react";
+import { useInput } from "@toppings/hooks";
 import { width100 } from "@toss/emotion-utils";
 import { useCallback, useEffect, useState } from "react";
 import { Text } from "~/components/Common";
-import { useInput } from "~/hooks";
-import { useRestaurantSetter } from "~/recoil/atoms/search";
 
 const RestaurantSearchSection = () => {
   const { props: keyword, debouncedValue } = useInput({

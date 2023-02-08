@@ -3,6 +3,7 @@ import {
   useCurrentSelectKeywordSetter
 } from "@atoms/index";
 import { useTheme } from "@emotion/react";
+import { useInput } from "@toppings/hooks";
 import { Spacing } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
@@ -11,7 +12,6 @@ import { TagFamily } from "~/components/Recent";
 import { SearchNationality } from "~/components/Section";
 import { OpenGraph } from "~/components/Util";
 import {
-  useInput,
   useInternalRouter,
   useScrollToTopByKeywordChange,
   useSetNavigation

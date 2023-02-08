@@ -1,16 +1,12 @@
 import { css, useTheme } from "@emotion/react";
+import { useInput } from "@toppings/hooks";
 import { padding, position, width100 } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { Result } from "~/components/Search";
 import { OpenGraph } from "~/components/Util";
 import { useDeviceInfo } from "~/contexts";
-import {
-  useBlurController,
-  useInput,
-  useInternalRouter,
-  useSetNavigation
-} from "~/hooks";
+import { useBlurController, useSetNavigation } from "~/hooks";
 
 export type SearchType = "restaurant" | "local";
 
@@ -20,7 +16,6 @@ type Props = {
 
 const SearchPage = ({ type }: Props) => {
   const { colors, dimensions, weighs } = useTheme();
-  const { push } = useInternalRouter();
   const { isIos } = useDeviceInfo();
 
   const {
