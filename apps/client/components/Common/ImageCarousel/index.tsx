@@ -24,6 +24,7 @@ const ImageCarousel = ({ images }: Props) => {
                 ${width100}
                 max-width: 364px;
                 aspect-ratio: 1;
+                object-fit: cover;
               `}
             />
           </SnapCarousel.Item>

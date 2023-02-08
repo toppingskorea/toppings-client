@@ -59,6 +59,7 @@ const Info = () => {
           css={css`
             min-width: 78px;
             border-radius: 50%;
+            object-fit: cover;
           `}
         />
 

@@ -37,6 +37,7 @@ const ProfileImage = () => {
           height={88}
           css={css`
             border-radius: 50%;
+            object-fit: cover;
           `}
         />
         <OrangePlus />
@@ -46,7 +47,7 @@ const ProfileImage = () => {
         type="file"
         accept="image/*"
         onChange={async e => {
-          const base64 = await imageUploader(e, true);
+          const base64 = await imageUploader(e);
           if (base64) setEdit({ ...edit, profile: base64[0] });
         }}
         css={css`
