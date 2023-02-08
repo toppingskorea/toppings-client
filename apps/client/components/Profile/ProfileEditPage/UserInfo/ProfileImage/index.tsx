@@ -37,6 +37,7 @@ const ProfileImage = () => {
           height={88}
           css={css`
             border-radius: 50%;
+            object-fit: cover;
           `}
         />
         <OrangePlus />
