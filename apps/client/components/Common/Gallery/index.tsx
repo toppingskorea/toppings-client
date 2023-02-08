@@ -86,7 +86,7 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
             accept="image/*"
             multiple
             onChange={async e => {
-              const base64List = await imageUploader(e, true);
+              const base64List = await imageUploader(e);
               if (base64List) setImages([...images, ...base64List]);
             }}
             css={css`
