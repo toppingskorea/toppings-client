@@ -1,6 +1,7 @@
 import { css, useTheme } from "@emotion/react";
 import { grayAvatar } from "@images/common";
 import { Hamburger } from "@svgs/common";
+import { hexToRgba } from "@toppings/utils";
 import { flex, gutter, Spacing, Stack } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -10,7 +11,6 @@ import { OpenGraph } from "~/components/Util";
 import { framerMocker, staggerOne } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { useFetchUserInfo } from "~/server/profile";
-import { hexToRgba } from "~/utils";
 import LabelWithEllipse from "./LabelWithEllipse";
 
 const Info = () => {

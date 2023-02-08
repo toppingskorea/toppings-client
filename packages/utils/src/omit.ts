@@ -2,6 +2,7 @@
 /* eslint-disable no-return-assign */
 import type { ObjectKeys } from "./objectKeys";
 import objectKeys from "./objectKeys";
+import type { ElementType } from "./types";
 
 const omit = <
   ObjectType extends Record<PropertyKey, unknown>,
@@ -12,12 +13,12 @@ const omit = <
 ) => {
   return objectKeys(obj)
     .filter(
-      (k): k is Exclude<ObjectKeys<ObjectType>, Util.ElementType<KeyTypes>> =>
+      (k): k is Exclude<ObjectKeys<ObjectType>, ElementType<KeyTypes>> =>
         !keys.includes(k)
     )
     .reduce(
       (acc, key) => ((acc[key] = obj[key]), acc),
-      {} as Omit<ObjectType, Util.ElementType<KeyTypes>>
+      {} as Omit<ObjectType, ElementType<KeyTypes>>
     );
 };
 

@@ -3,7 +3,7 @@ import { Suspense } from "@suspensive/react";
 import { ReviewTable } from "~/components/Reviews";
 import Skeleton from "~/components/Skeleton";
 import { useSetHeader } from "~/hooks";
-import { generateComponent } from "~/utils/common";
+import { generateComponent } from "~/utils";
 
 const Reviews = () => {
   useSetHeader("Reviews");
