@@ -28,8 +28,13 @@ export const updatePublication = async ({
   isPub: boolean;
   cause?: string;
 }) => {
-  await axios.put(`/v1/admin/restaurant/${id}`, {
-    isPub,
-    cause
-  });
+  const response = await axios.put<Common.Response<number>>(
+    `/v1/admin/restaurant/${id}`,
+    {
+      isPub,
+      cause
+    }
+  );
+
+  return response.data;
 };
