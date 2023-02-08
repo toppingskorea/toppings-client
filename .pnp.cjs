@@ -12849,11 +12849,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.6"],\
             ["@types/recoil", "npm:0.0.9"],\
             ["@types/testing-library__jest-dom", "npm:5.14.5"],\
+            ["@types/uuid", "npm:9.0.0"],\
             ["axios", "npm:1.2.0"],\
             ["framer-motion", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:7.6.15"],\
             ["husky", "npm:8.0.2"],\
             ["jest", "virtual:93508a06acb8c83836bb21bb662cc6b56071d5ce9f5d68bff8a123f73353eb2d6124b50868f0070e4278b7656bee223bcb360277e9431606881c6d12515efd31#npm:29.3.1"],\
             ["jest-environment-jsdom", "virtual:93508a06acb8c83836bb21bb662cc6b56071d5ce9f5d68bff8a123f73353eb2d6124b50868f0070e4278b7656bee223bcb360277e9431606881c6d12515efd31#npm:29.3.1"],\
+            ["kakao.maps.d.ts", "npm:0.1.33"],\
             ["lint-staged", "npm:13.0.4"],\
             ["lodash", "npm:4.17.21"],\
             ["next", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:13.0.5"],\
@@ -12862,7 +12864,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:18.2.0"],\
             ["react-hook-form", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:7.39.7"],\
             ["recoil", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:0.7.6"],\
-            ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=0102e9"]\
+            ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=0102e9"],\
+            ["uuid", "npm:9.0.0"]\
           ],\
           "linkType": "SOFT"\
         }]\

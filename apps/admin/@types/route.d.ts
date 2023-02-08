@@ -1,3 +1,9 @@
 declare module Route {
-  type Path = "/" | "/overview" | "/posts" | "/login" | "/reviews";
+  type Path =
+    | "/"
+    | "/overview"
+    | "/posts"
+    | "/login"
+    | "/reviews"
+    | "/post/upload";
 }
