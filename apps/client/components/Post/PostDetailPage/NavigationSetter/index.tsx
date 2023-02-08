@@ -1,10 +1,10 @@
 import { useTheme } from "@emotion/react";
+import { grayNoRingLogo } from "@images/common";
+import { Edit } from "@svgs/common";
 import { Flex, Spacing } from "@toss/emotion-utils";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
-import { grayNoRingLogo } from "~/assets/images/common";
-import { Edit } from "~/assets/svgs/common";
 import { CircleCountry } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useSetNavigation } from "~/hooks";
