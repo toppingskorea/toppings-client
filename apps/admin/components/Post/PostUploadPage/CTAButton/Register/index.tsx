@@ -1,11 +1,11 @@
+import { usePostUploadReset, usePostUploadValue } from "@atoms/post";
+import { useRestaurantReset, useRestaurantValue } from "@atoms/search";
 import { Button } from "@chakra-ui/react";
 import { css, useTheme } from "@emotion/react";
 import { useCallback } from "react";
 import { Text } from "~/components/Common/Typo";
 import { types } from "~/constants/data/common";
 import { useToast } from "~/hooks";
-import { usePostUploadReset, usePostUploadValue } from "~/recoil/atoms/post";
-import { useRestaurantReset, useRestaurantValue } from "~/recoil/atoms/search";
 import { useUploadPost } from "~/server/post";
 import useSubmitVerification from "../CTAButton.hooks";
 

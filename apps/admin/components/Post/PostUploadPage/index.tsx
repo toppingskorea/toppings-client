@@ -1,9 +1,9 @@
+import { usePostUploadState } from "@atoms/post";
+import { useRestaurantValue } from "@atoms/search";
 import { Input, Select, VStack } from "@chakra-ui/react";
 import { Spacing } from "@toss/emotion-utils";
 import { Gallery, Text } from "~/components/Common";
 import { types } from "~/constants/data/common";
-import { usePostUploadState } from "~/recoil/atoms/post";
-import { useRestaurantValue } from "~/recoil/atoms/search";
 import { Register } from "./CTAButton";
 import RestaurantSearchSection from "./RestaurantSearchSection";
 
