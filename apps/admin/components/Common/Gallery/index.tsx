@@ -32,10 +32,10 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
   return (
     <ul
       css={css`
-        ${flex({ direction: "row" })}
-        ${gutter({ direction: "horizontal", space: 6 })}
-          ${padding({ top: 8 })}
-          overflow-x: scroll;
+        ${flex({ direction: "row" })};
+        ${gutter({ direction: "horizontal", space: 6 })};
+        ${padding({ top: 8 })};
+        overflow-x: scroll;
         ${hiddenScroll}
       `}
     >
