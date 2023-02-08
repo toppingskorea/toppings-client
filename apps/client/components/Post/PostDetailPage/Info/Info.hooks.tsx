@@ -13,7 +13,6 @@ import {
   usePostScrap
 } from "~/server/restaurant";
 import { clipboard, hexToRgba } from "~/utils";
-import type { Props } from ".";
 
 const useClickHandler = ({
   id,
@@ -23,7 +22,7 @@ const useClickHandler = ({
   description,
   name
 }: Pick<
-  Props,
+  Restaurant.DetailDTO,
   "id" | "like" | "scrap" | "address" | "description" | "name"
 >) => {
   const { colors } = useTheme();

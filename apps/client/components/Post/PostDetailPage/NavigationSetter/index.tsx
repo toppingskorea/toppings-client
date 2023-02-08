@@ -1,18 +1,19 @@
-import { usePostUploadSetter, useRestaurantSetter } from "@atoms/index";
 import { useTheme } from "@emotion/react";
-import { Edit } from "@svgs/common";
 import { Flex, Spacing } from "@toss/emotion-utils";
+import { useRouter } from "next/router";
 import { useCallback } from "react";
+import { Edit } from "~/assets/svgs/common";
 import { CircleCountry } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import { useInternalRouter, useSetNavigation } from "~/hooks";
-import { useFetchLikePercent, useFetchRestaurant } from "~/server/restaurant";
+import { useSetNavigation } from "~/hooks";
+import { usePostUploadSetter, useRestaurantSetter } from "~/recoil/atoms";
+import { useFetchRestaurant } from "~/server/restaurant";
 
-const usePostDetail = (id: string) => {
+const NavigationSetter = () => {
   const { colors, weighs } = useTheme();
-  const { push } = useInternalRouter();
-  const { data: restaurantDetail } = useFetchRestaurant(+id);
-  const { data: likePercent } = useFetchLikePercent(+id);
+  const { query, push } = useRouter();
+
+  const { data: restaurantDetail } = useFetchRestaurant(Number(query.id));
 
   const setRestaurant = useRestaurantSetter();
   const setPostUpload = usePostUploadSetter();
@@ -20,7 +21,7 @@ const usePostDetail = (id: string) => {
   const goEditPostHandler = useCallback(() => {
     setRestaurant({
       address_name: restaurantDetail.address,
-      id,
+      id: String(query.id),
       category_group_name: "",
       place_name: restaurantDetail.name,
       road_address_name: restaurantDetail.address,
@@ -37,8 +38,8 @@ const usePostDetail = (id: string) => {
 
     push("/post/add");
   }, [
-    id,
     push,
+    query.id,
     restaurantDetail.address,
     restaurantDetail.description,
     restaurantDetail.id,
@@ -81,10 +82,7 @@ const usePostDetail = (id: string) => {
     bottom: true
   });
 
-  return {
-    restaurantDetail,
-    likePercent
-  };
+  return null;
 };
 
-export default usePostDetail;
+export default NavigationSetter;

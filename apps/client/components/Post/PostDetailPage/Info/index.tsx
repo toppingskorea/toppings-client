@@ -17,35 +17,30 @@ import {
   touchable
 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 import { Text } from "~/components/Common/Typo";
 import { OpenGraph } from "~/components/Util";
+import { useFetchRestaurant } from "~/server/restaurant";
 import useClickHandler from "./Info.hooks";
 
-export type Props = Pick<
-  Restaurant.DetailDTO,
-  | "id"
-  | "name"
-  | "address"
-  | "description"
-  | "type"
-  | "scrap"
-  | "like"
-  | "likeCount"
-  | "images"
->;
-
-const Info = ({
-  address,
-  description,
-  id,
-  like,
-  name,
-  scrap,
-  type,
-  likeCount,
-  images
-}: Props) => {
+const Info = () => {
   const { colors, weighs } = useTheme();
+
+  const { query } = useRouter();
+
+  const {
+    data: {
+      address,
+      description,
+      id,
+      like,
+      name,
+      scrap,
+      type,
+      likeCount,
+      images
+    }
+  } = useFetchRestaurant(Number(query.id));
 
   const {
     onClipboardClickHandler,
