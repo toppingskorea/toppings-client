@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
+import { hexToRgba } from "@toppings/utils";
 import { Flex } from "@toss/emotion-utils";
-import { hexToRgba } from "~/utils";
 
 export const EllipseFlex = styled(Flex.Center)`
   background-color: ${({ theme }) => hexToRgba(theme.colors.secondary.E2, 0.9)};

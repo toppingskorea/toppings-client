@@ -1,10 +1,10 @@
 import { css } from "@emotion/react";
+import { pick } from "@toppings/utils";
 import { padding, Spacing, Stack } from "@toss/emotion-utils";
 import { RestaurantCard, SearchInput } from "~/components/Common";
 import { SearchLayout } from "~/components/Layout";
 import { TagFamily } from "~/components/Recent";
 import { OpenGraph } from "~/components/Util";
-import { pick } from "~/utils";
 import useFilterRestaurant from "./FilterRestaurantPage.hooks";
 
 const FilterRestaurantPage = () => {

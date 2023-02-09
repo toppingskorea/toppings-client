@@ -1,6 +1,6 @@
 import { css, type Theme } from "@emotion/react";
+import { hexToRgba } from "@toppings/utils";
 import { position } from "@toss/emotion-utils";
-import { hexToRgba } from "~/utils";
 
 const commonLayoutCss = (theme: Theme) => css`
   ${position("fixed", { top: 0, right: 0, bottom: 0, left: 0 })}

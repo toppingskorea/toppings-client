@@ -1,5 +1,6 @@
 import { css, useTheme } from "@emotion/react";
 import { GrayPlus } from "@svgs/common";
+import { imageUploader } from "@toppings/utils";
 import {
   Flex,
   flex,
@@ -12,7 +13,6 @@ import {
 import { useId } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { hiddenScroll } from "~/styles/emotionUtils";
-import { imageUploader } from "~/utils";
 import { Text } from "../Typo";
 import { useHideInput } from "./Gallery.hooks";
 import Item from "./Item";
@@ -85,7 +85,7 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
             accept="image/*"
             multiple
             onChange={async e => {
-              const base64List = await imageUploader(e, true);
+              const base64List = await imageUploader(e);
               if (base64List) setImages([...images, ...base64List]);
             }}
             css={css`

@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { List, Pin } from "@svgs/map";
+import { hexToRgba } from "@toppings/utils";
 import { Flex, padding, position, size } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
@@ -8,7 +9,6 @@ import { Text } from "~/components/Common/Typo";
 import { MapMarker } from "~/components/Kakao";
 import KakaoMap from "~/components/Kakao/KakaoMap";
 import { OpenGraph } from "~/components/Util";
-import { hexToRgba } from "~/utils";
 import useMap from "./MapPage.hooks";
 
 const MapPage = () => {

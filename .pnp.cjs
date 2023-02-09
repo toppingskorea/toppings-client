@@ -42,6 +42,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {\
         "name": "@toppings/ts-config",\
         "reference": "workspace:packages/ts-config"\
+      },\
+      {\
+        "name": "@toppings/utils",\
+        "reference": "workspace:packages/utils"\
       }\
     ],\
     "enableTopLevelFallback": true,\
@@ -54,6 +58,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@toppings/monorepo-storybook-builder", ["workspace:packages/monorepo-storybook-builder"]],\
       ["@toppings/next-config", ["workspace:packages/next-config"]],\
       ["@toppings/ts-config", ["workspace:packages/ts-config"]],\
+      ["@toppings/utils", ["virtual:27c43faddac93ad9533907f4ab6105aed6cd4c55fe7e4ddb4901c32e6ac7f6aa1d918f82bb9a902b1c6985934680a0ca98cc6dd9ba618aa3a7d40518135b599b#workspace:packages/utils", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#workspace:packages/utils", "workspace:packages/utils"]],\
       ["toppings", ["workspace:."]]\
     ],\
     "fallbackPool": [\
@@ -12943,6 +12948,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@toppings/hooks", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#workspace:packages/hooks"],\
             ["@toppings/next-config", "workspace:packages/next-config"],\
             ["@toppings/ts-config", "workspace:packages/ts-config"],\
+            ["@toppings/utils", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#workspace:packages/utils"],\
             ["@toss/emotion-utils", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:1.1.3"],\
             ["@toss/use-overlay", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:1.2.1"],\
             ["@types/axios", "npm:0.14.0"],\
@@ -13006,6 +13012,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@toppings/hooks", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#workspace:packages/hooks"],\
             ["@toppings/next-config", "workspace:packages/next-config"],\
             ["@toppings/ts-config", "workspace:packages/ts-config"],\
+            ["@toppings/utils", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#workspace:packages/utils"],\
             ["@toss/emotion-utils", "virtual:9599e3a291f6ce069abce5d0d6a75dbe721c48c7e785ac9806e951bae0faa20e9762079eed1308389c1c9e5b08c36494ec7b98ff14d31306422f55f789db2137#npm:1.1.3"],\
             ["@toss/use-overlay", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:1.2.1"],\
             ["@types/axios", "npm:0.14.0"],\
@@ -13073,6 +13080,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@toppings/hooks", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#workspace:packages/hooks"],\
             ["@toppings/ts-config", "workspace:packages/ts-config"],\
+            ["@toppings/utils", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#workspace:packages/utils"],\
             ["@types/lodash", "npm:4.14.190"],\
             ["@types/node", "npm:18.13.0"],\
             ["@types/react", "npm:18.0.21"],\
@@ -13091,6 +13099,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@toppings/hooks", "workspace:packages/hooks"],\
             ["@toppings/ts-config", "workspace:packages/ts-config"],\
+            ["@toppings/utils", "virtual:27c43faddac93ad9533907f4ab6105aed6cd4c55fe7e4ddb4901c32e6ac7f6aa1d918f82bb9a902b1c6985934680a0ca98cc6dd9ba618aa3a7d40518135b599b#workspace:packages/utils"],\
             ["@types/lodash", "npm:4.14.190"],\
             ["@types/node", "npm:18.13.0"],\
             ["@types/react", "npm:18.0.27"],\
@@ -13145,6 +13154,51 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/ts-config/",\
           "packageDependencies": [\
             ["@toppings/ts-config", "workspace:packages/ts-config"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@toppings/utils", [\
+        ["virtual:27c43faddac93ad9533907f4ab6105aed6cd4c55fe7e4ddb4901c32e6ac7f6aa1d918f82bb9a902b1c6985934680a0ca98cc6dd9ba618aa3a7d40518135b599b#workspace:packages/utils", {\
+          "packageLocation": "./.yarn/__virtual__/@toppings-utils-virtual-f41ea9d55a/1/packages/utils/",\
+          "packageDependencies": [\
+            ["@toppings/utils", "virtual:27c43faddac93ad9533907f4ab6105aed6cd4c55fe7e4ddb4901c32e6ac7f6aa1d918f82bb9a902b1c6985934680a0ca98cc6dd9ba618aa3a7d40518135b599b#workspace:packages/utils"],\
+            ["@toppings/ts-config", "workspace:packages/ts-config"],\
+            ["@types/node", "npm:18.13.0"],\
+            ["@types/react", "npm:18.0.27"],\
+            ["react", null],\
+            ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=0102e9"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#workspace:packages/utils", {\
+          "packageLocation": "./.yarn/__virtual__/@toppings-utils-virtual-8e20bd7d43/1/packages/utils/",\
+          "packageDependencies": [\
+            ["@toppings/utils", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#workspace:packages/utils"],\
+            ["@toppings/ts-config", "workspace:packages/ts-config"],\
+            ["@types/node", "npm:18.13.0"],\
+            ["@types/react", "npm:18.0.21"],\
+            ["react", "npm:18.2.0"],\
+            ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=0102e9"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["workspace:packages/utils", {\
+          "packageLocation": "./packages/utils/",\
+          "packageDependencies": [\
+            ["@toppings/utils", "workspace:packages/utils"],\
+            ["@toppings/ts-config", "workspace:packages/ts-config"],\
+            ["@types/node", "npm:18.13.0"],\
+            ["@types/react", "npm:18.0.27"],\
+            ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=0102e9"]\
           ],\
           "linkType": "SOFT"\
         }]\

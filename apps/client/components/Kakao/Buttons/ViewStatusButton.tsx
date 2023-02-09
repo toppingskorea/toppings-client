@@ -1,10 +1,10 @@
 import { css, useTheme } from "@emotion/react";
+import { hexToRgba } from "@toppings/utils";
 import { flex, padding, position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import type { FC, SVGProps } from "react";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
-import { hexToRgba } from "~/utils";
 
 interface Props {
   text: string;

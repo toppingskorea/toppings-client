@@ -1,4 +1,5 @@
 import type { ObjectKeys } from "./objectKeys";
+import type { ElementType } from "./types";
 
 const pick = <
   ObjectType extends Record<PropertyKey, unknown>,
@@ -7,7 +8,7 @@ const pick = <
   obj: ObjectType,
   keys: KeyTypes
 ) => {
-  const picked = {} as Pick<ObjectType, Util.ElementType<KeyTypes>>;
+  const picked = {} as Pick<ObjectType, ElementType<KeyTypes>>;
   // eslint-disable-next-line no-restricted-syntax
   for (const key of keys) {
     picked[key] = obj[key];
