@@ -1,5 +1,6 @@
 import { useRegisterState } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
+import { useInput } from "@toppings/hooks";
 import { padding, position, width100 } from "@toss/emotion-utils";
 import { SearchInput } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
@@ -8,7 +9,6 @@ import { OpenGraph } from "~/components/Util";
 import { useDeviceInfo } from "~/contexts";
 import {
   useBlurController,
-  useInput,
   useInternalRouter,
   useSetNavigation
 } from "~/hooks";

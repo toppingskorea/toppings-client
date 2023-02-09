@@ -11,6 +11,7 @@ const nextConfig = {
 
     return config;
   },
+  transpilePackages: ["@toppings/hooks"],
   async rewrites() {
     return [
       {

@@ -1,10 +1,10 @@
 /* eslint-disable consistent-return */
 import type { messageCallbackType, StompHeaders } from "@stomp/stompjs";
 import { Stomp } from "@stomp/stompjs";
+import { useMounted } from "@toppings/hooks";
 import { useEffect } from "react";
 import SockJS from "sockjs-client";
 import { env } from "~/constants";
-import useMounted from "./useMounted";
 import useTokenCookie from "./useTokenCookie";
 
 /*
