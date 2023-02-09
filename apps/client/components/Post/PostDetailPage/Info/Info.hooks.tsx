@@ -1,6 +1,5 @@
 import { css, useTheme } from "@emotion/react";
 import { OrangeStar } from "@svgs/common";
-import { clipboard, hexToRgba } from "@toppings/utils";
 import { Flex, size } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { IconWithTextModal } from "~/components/Common";
@@ -13,6 +12,7 @@ import {
   usePostLike,
   usePostScrap
 } from "~/server/restaurant";
+import { clipboard, hexToRgba } from "~/utils";
 
 const useClickHandler = ({
   id,

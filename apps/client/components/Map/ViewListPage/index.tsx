@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
 import { SmallMarker } from "@svgs/map";
 import { SmallExit } from "@svgs/recent";
-import { pick } from "@toppings/utils";
 import {
   Flex,
   gutter,
@@ -17,6 +16,7 @@ import { Badge, RestaurantCard } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { KakaoMap } from "~/components/Kakao";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
+import { pick } from "~/utils";
 import useViewList from "./ViewListPage.hooks";
 
 const ViewListPage = () => {
