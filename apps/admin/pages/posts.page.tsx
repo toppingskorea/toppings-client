@@ -3,7 +3,7 @@ import { Suspense } from "@suspensive/react";
 import { RestaurantTable } from "~/components/Posts";
 import Skeleton from "~/components/Skeleton";
 import { useSetHeader } from "~/hooks";
-import { generateComponent } from "~/utils/common";
+import { generateComponent } from "~/utils";
 
 const Posts = () => {
   useSetHeader("Posts");

@@ -1,5 +1,5 @@
+import { isServer } from "@toppings/utils";
 import { useInternalRouter } from "~/hooks";
-import { isServer } from "~/utils";
 
 const getOriginURL =
   !isServer() && window.location.origin ? window.location.origin : "";

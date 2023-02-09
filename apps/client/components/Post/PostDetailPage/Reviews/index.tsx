@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
+import { lastItem } from "@toppings/utils";
 import { padding, Stack } from "@toss/emotion-utils";
 import Skeleton from "~/components/Skeleton";
 import { InfiniteScrollSensor } from "~/components/Util";
 import { useFetchReviews } from "~/server/review";
-import { lastItem } from "~/utils/common/lastItem";
 import ReviewItem from "./ReviewItem";
 
 interface Props {

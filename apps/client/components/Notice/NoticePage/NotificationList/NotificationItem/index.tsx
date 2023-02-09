@@ -1,11 +1,11 @@
 import { css, useTheme } from "@emotion/react";
 import { whiteAvatar } from "@images/common";
 import { RejectPalm } from "@svgs/notice";
+import { calculatePassedTime, omit, pick } from "@toppings/utils";
 import { Flex, margin, padding, Spacing } from "@toss/emotion-utils";
 import Image from "next/image";
 import { CircleCountry } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
-import { calculatePassedTime, omit, pick } from "~/utils";
 
 type Props = Notice.DTO;
 

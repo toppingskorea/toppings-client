@@ -1,0 +1,5 @@
+{
+  "extends": "@toppings/ts-config/base.json",
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

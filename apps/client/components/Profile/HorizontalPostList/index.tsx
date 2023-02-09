@@ -1,11 +1,11 @@
 import type { UseSuspenseInfiniteQueryResultOnSuccess } from "@suspensive/react-query";
+import { lastItem } from "@toppings/utils";
 import { Stack } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import { RestaurantCard } from "~/components/Common";
 import { EmptyView } from "~/components/Layout";
 import Skeleton from "~/components/Skeleton";
 import { InfiniteScrollSensor } from "~/components/Util";
-import { lastItem } from "~/utils/common/lastItem";
 
 interface Props {
   query: () => UseSuspenseInfiniteQueryResultOnSuccess<
