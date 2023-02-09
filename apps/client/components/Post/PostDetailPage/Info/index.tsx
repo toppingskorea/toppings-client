@@ -38,7 +38,8 @@ const Info = () => {
       scrap,
       type,
       likeCount,
-      images
+      images,
+      instagramId
     }
   } = useFetchRestaurant(Number(query.id));
 
@@ -148,7 +149,7 @@ const Info = () => {
           {description}
 
           <a
-            href="https://www.instagram.com/cute_kuma0603/"
+            href={`https://www.instagram.com/${instagramId}`}
             target="_blank"
             rel="noreferrer"
             css={css`
@@ -156,7 +157,7 @@ const Info = () => {
               ${touchable}
             `}
           >
-            &nbsp;by @cute_kuma0603
+            &nbsp;by @{instagramId}
           </a>
         </Text>
       </article>

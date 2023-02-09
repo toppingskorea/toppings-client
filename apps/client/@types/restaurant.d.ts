@@ -39,6 +39,7 @@ declare module Restaurant {
     scrap: boolean;
     mine: boolean;
     admin: boolean;
+    instagramId?: string;
   }
 
   interface LikePercentDTO {
