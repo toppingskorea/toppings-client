@@ -149,7 +149,7 @@ const Info = () => {
           {description}
 
           <a
-            href={`https://www.instagram.com/${instagramId}`}
+            href={`https://www.instagram.com/${instagramId ?? "cute_kuma0603"}`}
             target="_blank"
             rel="noreferrer"
             css={css`
@@ -157,7 +157,7 @@ const Info = () => {
               ${touchable}
             `}
           >
-            &nbsp;by @{instagramId}
+            &nbsp;by @{instagramId ?? "cute_kuma0603"}
           </a>
         </Text>
       </article>
