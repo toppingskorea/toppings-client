@@ -50,7 +50,10 @@ interface PageProps {
 function MyApp({ Component, pageProps }: AppProps<PageProps>) {
   useSentry({
     dsn: env.SENTRY_DSN,
-    allowUrls: ["https://toppings.co.kr/"]
+    allowUrls: [
+      "https://planet.toppings.co.kr/",
+      "https://dev-planet.toppings.co.kr/"
+    ]
   });
 
   return (
