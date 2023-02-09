@@ -1,8 +1,8 @@
 import { css, useTheme } from "@emotion/react";
+import { hexToRgba } from "@toppings/utils";
 import { flex, touchable, width100 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { defaultSlideFadeInVariants } from "~/constants";
-import { hexToRgba } from "~/utils";
 import type { Item } from ".";
 import { Text } from "../../Typo";
 

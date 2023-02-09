@@ -1,10 +1,10 @@
 import { css, useTheme } from "@emotion/react";
 import { grayAvatar } from "@images/common";
+import { hexToRgba } from "@toppings/utils";
 import { Flex, gutter, margin, padding, size } from "@toss/emotion-utils";
 import Image from "next/image";
 import { Text } from "~/components/Common/Typo";
 import { useFetchUserInfo } from "~/server/profile";
-import { hexToRgba } from "~/utils";
 
 const UserBadge = () => {
   const { colors, weighs } = useTheme();

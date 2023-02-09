@@ -1,4 +1,5 @@
 import { css, useTheme } from "@emotion/react";
+import { objectEntries, objectKeys, objectValues } from "@toppings/utils";
 import {
   Flex,
   flex,
@@ -10,8 +11,7 @@ import {
 } from "@toss/emotion-utils";
 import { Fragment, useCallback, useMemo } from "react";
 import { countries } from "~/constants/data/common";
-import { objectEntries, objectKeys, objectValues, queryChunk } from "~/utils";
-
+import { queryChunk } from "~/utils";
 import { OrangeTypo, Text } from "../../Common/Typo";
 
 interface Props {
