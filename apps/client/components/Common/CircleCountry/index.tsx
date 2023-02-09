@@ -1,8 +1,7 @@
 import { css, useTheme } from "@emotion/react";
-import { hexToRgba } from "@toppings/utils";
 import { Flex } from "@toss/emotion-utils";
 import Image from "next/image";
-import { countryToSvg } from "~/utils";
+import { countryToSvg, hexToRgba } from "~/utils";
 
 interface Props {
   isShadow?: boolean;

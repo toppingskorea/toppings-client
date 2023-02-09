@@ -1,8 +1,7 @@
-import { useInput } from "@toppings/hooks";
 import { useRouter } from "next/router";
 import type { FormEvent } from "react";
 import { useCallback } from "react";
-import { useToast } from "~/hooks";
+import { useInput, useToast } from "~/hooks";
 import { useLogin } from "~/server/auth";
 
 const useLoginPage = () => {

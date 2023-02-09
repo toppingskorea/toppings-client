@@ -1,5 +1,4 @@
 import { css, useTheme } from "@emotion/react";
-import { hexToRgba } from "@toppings/utils";
 import {
   Flex,
   flex,
@@ -13,6 +12,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { HeartWithNumber } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
+import { hexToRgba } from "~/utils";
 
 interface Props {
   post: Profile.PostDTO;

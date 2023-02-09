@@ -5,11 +5,10 @@ import {
   useSearchByFilteringSetter
 } from "@atoms/index";
 import { useTheme } from "@emotion/react";
-import { useInput } from "@toppings/hooks";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Text } from "~/components/Common/Typo";
-import { useSetNavigation } from "~/hooks";
+import { useInput, useSetNavigation } from "~/hooks";
 import {
   useFetchRestaurantByName,
   useUploadRecentHistory

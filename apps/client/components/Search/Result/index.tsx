@@ -1,11 +1,10 @@
 import { useRestaurantSetter } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
-import { neverChecker } from "@toppings/utils";
 import { flex, Flex, padding, Spacing, touchable } from "@toss/emotion-utils";
 import { useCallback, useEffect, useState } from "react";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter } from "~/hooks";
-import { queryChunk } from "~/utils";
+import { neverChecker, queryChunk } from "~/utils";
 import type { SearchType } from "../SearchPage";
 
 interface Props {
