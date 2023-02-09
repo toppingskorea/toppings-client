@@ -1,9 +1,7 @@
-info  - Loaded env from /Users/chanhyuk/Desktop/personal/toppings-client/apps/admin/.env.local
+info  - Loaded env from /Users/donggyukim/Desktop/dev/toppings-client/apps/admin/.env.local
 info  - Linting and checking validity of types...
 error - ESLint must be installed in order to run during builds: yarn add --dev eslint
 info  - Creating an optimized production build...
-Warning: For production Image Optimization with Next.js, the optional 'sharp' package is strongly recommended. Run 'yarn add sharp', and Next.js will use it automatically for Image Optimization.
-Read more: https://nextjs.org/docs/messages/sharp-missing-in-production
 info  - Compiled successfully
 info  - Collecting page data...
 info  - Generating static pages (0/10)
@@ -17,17 +15,17 @@ Route (pages)                              Size     First Load JS
 ┌ ○ /                                      341 B           224 kB
 ├   /_app                                  0 B             224 kB
 ├ ○ /404                                   182 B           224 kB
-├ ○ /login                                 3.18 kB         231 kB
-├ ○ /overview                              1.87 kB         230 kB
-├ ○ /post/upload                           3.78 kB         231 kB
-├ ○ /posts                                 2.94 kB         235 kB
-├ ○ /restaurant/[id]                       2.92 kB         235 kB
-├ ○ /review/[id]                           2.73 kB         235 kB
-└ ○ /reviews                               2.74 kB         235 kB
+├ ○ /login                                 3.2 kB          231 kB
+├ ○ /overview                              1.92 kB         230 kB
+├ ○ /post/upload                           3.8 kB          231 kB
+├ ○ /posts                                 4.02 kB         232 kB
+├ ○ /restaurant/[id]                       1.54 kB         234 kB
+├ ○ /review/[id]                           1.34 kB         234 kB
+└ ○ /reviews                               4.01 kB         232 kB
 + First Load JS shared by all              224 kB
   ├ chunks/framework-3437216d94e66f13.js   45.4 kB
   ├ chunks/main-8b4e465b8f33c2c9.js        31 kB
-  ├ chunks/pages/_app-6273d4de2ba92802.js  146 kB
+  ├ chunks/pages/_app-239210b0d97f12ef.js  146 kB
   └ chunks/webpack-2d6c20b89449f43d.js     1.04 kB
 
 ○  (Static)  automatically rendered as static HTML (uses no initial props)

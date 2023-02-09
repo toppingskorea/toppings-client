@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useRestaurantSetter } from "@atoms/search";
 import { Badge, Box, Input, VStack } from "@chakra-ui/react";
 import { css } from "@emotion/react";
