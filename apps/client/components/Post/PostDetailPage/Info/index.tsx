@@ -146,6 +146,18 @@ const Info = () => {
           `}
         >
           {description}
+
+          <a
+            href="https://www.instagram.com/cute_kuma0603/"
+            target="_blank"
+            rel="noreferrer"
+            css={css`
+              color: ${colors.secondary[44]};
+              ${touchable}
+            `}
+          >
+            &nbsp;by @cute_kuma0603
+          </a>
         </Text>
       </article>
     </Stack.Vertical>
