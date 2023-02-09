@@ -41,6 +41,15 @@ const PostUploadPage = () => {
         }
       />
 
+      <Input
+        placeholder="인스타그램 아이디를 입력하세요.(선택)"
+        value={postUpload.instagramId ?? ""}
+        maxLength={30}
+        onChange={e =>
+          setPostUpload({ ...postUpload, instagramId: e.target.value })
+        }
+      />
+
       <Select
         placeholder="음식점 타입"
         value={postUpload.type}
