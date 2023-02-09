@@ -24,7 +24,9 @@ const PostUploadPage = () => {
 
       <Text _fontSize={20}>음식점 정보</Text>
       <Input
-        value={`${restaurant?.place_name} / ${restaurant?.road_address_name}`}
+        value={`${restaurant?.place_name ?? "식당 이름"} / ${
+          restaurant?.road_address_name ?? "주소"
+        }`}
         readOnly
       />
 
