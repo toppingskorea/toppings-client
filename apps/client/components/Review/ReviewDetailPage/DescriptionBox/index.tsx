@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useFetchReview } from "~/server/review";
 
 const DescriptionBox = () => {
-  const { weighs, colors } = useTheme();
+  const { colors } = useTheme();
   const { query } = useRouter();
   const { data: reviewDetail } = useFetchReview(Number(query.id));
 
@@ -19,8 +19,10 @@ const DescriptionBox = () => {
     >
       <p
         css={css`
-          font-size: 11px;
-          line-height: 13px;
+          font-size: 15px;
+          line-height: 15px;
+          word-wrap: break-word;
+          user-select: text;
           color: ${colors.secondary[34]};
         `}
       >
