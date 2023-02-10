@@ -46,7 +46,10 @@ const PostUploadPage = () => {
         value={postUpload.instagramId ?? ""}
         maxLength={30}
         onChange={e =>
-          setPostUpload({ ...postUpload, instagramId: e.target.value })
+          setPostUpload(postUpload => ({
+            ...postUpload,
+            instagramId: e.target.value
+          }))
         }
       />
 
@@ -54,12 +57,12 @@ const PostUploadPage = () => {
         placeholder="음식점 타입"
         value={postUpload.type}
         onChange={event =>
-          setPostUpload({
+          setPostUpload(postUpload => ({
             ...postUpload,
             type: event.currentTarget.value as Util.ElementType<
               typeof types
             >["label"]
-          })
+          }))
         }
       >
         {types.map(type => (
