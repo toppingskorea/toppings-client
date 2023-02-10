@@ -148,17 +148,19 @@ const Info = () => {
         >
           {description}
 
-          <a
-            href={`https://www.instagram.com/${instagramId ?? "cute_kuma0603"}`}
-            target="_blank"
-            rel="noreferrer"
-            css={css`
-              color: ${colors.secondary[44]};
-              ${touchable}
-            `}
-          >
-            &nbsp;by @{instagramId ?? "cute_kuma0603"}
-          </a>
+          {instagramId && (
+            <a
+              href={`https://www.instagram.com/${instagramId}`}
+              target="_blank"
+              rel="noreferrer"
+              css={css`
+                color: ${colors.secondary[44]};
+                ${touchable}
+              `}
+            >
+              &nbsp;by @{instagramId}
+            </a>
+          )}
         </Text>
       </article>
     </Stack.Vertical>
