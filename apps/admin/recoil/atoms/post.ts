@@ -12,6 +12,7 @@ const postUploadAtom = atom<{
   images: string[];
   description: string;
   type?: Util.ElementType<typeof types>["label"];
+  instagramId?: string;
 }>({
   key: "postUploadAtom",
   default: {

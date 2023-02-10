@@ -10,6 +10,7 @@ export interface DefaultPayload {
   longitude: number;
   type: string;
   images: string[];
+  instagramId?: string;
 }
 
 // 음식점 등록하기
