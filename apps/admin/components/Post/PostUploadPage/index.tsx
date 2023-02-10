@@ -24,7 +24,9 @@ const PostUploadPage = () => {
 
       <Text _fontSize={20}>음식점 정보</Text>
       <Input
-        value={`${restaurant?.place_name} / ${restaurant?.road_address_name}`}
+        value={`${restaurant?.place_name ?? "식당 이름"} / ${
+          restaurant?.road_address_name ?? "주소"
+        }`}
         readOnly
       />
 
@@ -39,16 +41,28 @@ const PostUploadPage = () => {
         }
       />
 
+      <Input
+        placeholder="인스타그램 아이디를 입력하세요.(선택)"
+        value={postUpload.instagramId ?? ""}
+        maxLength={30}
+        onChange={e =>
+          setPostUpload(postUpload => ({
+            ...postUpload,
+            instagramId: e.target.value
+          }))
+        }
+      />
+
       <Select
         placeholder="음식점 타입"
         value={postUpload.type}
         onChange={event =>
-          setPostUpload({
+          setPostUpload(postUpload => ({
             ...postUpload,
             type: event.currentTarget.value as Util.ElementType<
               typeof types
             >["label"]
-          })
+          }))
         }
       >
         {types.map(type => (
