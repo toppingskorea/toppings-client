@@ -44,6 +44,7 @@ const Item = ({ post }: Props) => {
           min-width: 164px;
           border-radius: 20px;
           box-shadow: 0 4px 4px ${hexToRgba(colors.black, 0.25)};
+          object-fit: cover;
         `}
       />
 
