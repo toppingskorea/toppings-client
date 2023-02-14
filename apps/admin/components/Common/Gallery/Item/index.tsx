@@ -38,6 +38,7 @@ const Item = ({ image, onClick }: Props) => (
       css={css`
         aspect-ratio: 1;
         border-radius: 10px;
+        object-fit: cover;
       `}
     />
   </motion.li>
