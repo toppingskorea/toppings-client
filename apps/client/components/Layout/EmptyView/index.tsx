@@ -18,10 +18,11 @@ const EmptyView = ({ content, CTAButton }: Props) => {
       <Image
         src={grayLogo}
         alt="TOPPINGS"
-        width={250}
-        height={102}
+        width={205}
+        height={84}
+        quality={100}
         css={css`
-          margin-top: 188px;
+          margin-top: 223px;
         `}
       />
 
@@ -34,7 +35,7 @@ const EmptyView = ({ content, CTAButton }: Props) => {
           })}
         `}
       >
-        <Text _fontSize={17} weight={weighs.bold} _color={colors.secondary[69]}>
+        <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[69]}>
           {content}
         </Text>
 
