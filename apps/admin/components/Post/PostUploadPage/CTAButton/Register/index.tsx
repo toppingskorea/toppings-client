@@ -53,11 +53,13 @@ const Register = () => {
       longitude: +restaurant.x,
       name: restaurant.place_name,
       type: types.filter(({ label }) => label === postUpload.type)[0].value,
-      zipcode: "몰라집코드"
+      zipcode: "몰라집코드",
+      instagramId: postUpload.instagramId
     });
   }, [
     postUpload.description,
     postUpload.images,
+    postUpload.instagramId,
     postUpload.type,
     restaurant,
     uploadPostMutate,
