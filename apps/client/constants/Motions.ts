@@ -28,6 +28,23 @@ export const defaultFadeInVariants: Variants = {
     willChange: "opacity"
   }
 };
+export const doubleFadeInVariants: Variants = {
+  initial: {
+    opacity: 0,
+    transition: { duration: 0.6, ease: defaultEasing },
+    willChange: "opacity"
+  },
+  animate: {
+    opacity: 1,
+    transition: { duration: 0.6, ease: defaultEasing },
+    willChange: "opacity"
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.6, ease: defaultEasing },
+    willChange: "opacity"
+  }
+};
 
 export const defaultScaleChangeVariants: Variants = {
   initial: {

@@ -1,7 +1,9 @@
 import { css } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
 import { Spacing, Stack } from "@toss/emotion-utils";
+import { motion } from "framer-motion";
 import { Badge } from "~/components/Common";
+import { doubleFadeInVariants, framerMocker } from "~/constants";
 import ImageCarouselWrapper from "./ImageCarouselWrapper";
 import Info from "./Info";
 import Likes from "./Likes";
@@ -11,7 +13,7 @@ import Reviews from "./Reviews";
 
 const PostDetailPage = ({ id }: { id: string }) => {
   return (
-    <section>
+    <motion.section {...framerMocker} variants={doubleFadeInVariants}>
       <NavigationSetter />
       <Stack.Vertical
         align="center"
@@ -57,7 +59,7 @@ const PostDetailPage = ({ id }: { id: string }) => {
       <Suspense.CSROnly>
         <Reviews id={id} />
       </Suspense.CSROnly>
-    </section>
+    </motion.section>
   );
 };
 
