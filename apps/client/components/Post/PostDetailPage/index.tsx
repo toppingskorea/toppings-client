@@ -1,17 +1,29 @@
 import { css } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
 import { Spacing, Stack } from "@toss/emotion-utils";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { Badge } from "~/components/Common";
 import ImageCarouselWrapper from "./ImageCarouselWrapper";
 import Info from "./Info";
 import Likes from "./Likes";
 import NavigationSetter from "./NavigationSetter";
+import postVariants from "./Post.constants";
 import ReviewLeadingSection from "./ReviewLeadingSection";
 import Reviews from "./Reviews";
 
 const PostDetailPage = ({ id }: { id: string }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
   return (
-    <section>
+    <motion.section
+      initial="hidden"
+      animate={isInView ? "show" : "hidden"}
+      variants={postVariants}
+      exit="hidden"
+      ref={ref}
+    >
       <NavigationSetter />
       <Stack.Vertical
         align="center"
@@ -57,7 +69,7 @@ const PostDetailPage = ({ id }: { id: string }) => {
       <Suspense.CSROnly>
         <Reviews id={id} />
       </Suspense.CSROnly>
-    </section>
+    </motion.section>
   );
 };
 
