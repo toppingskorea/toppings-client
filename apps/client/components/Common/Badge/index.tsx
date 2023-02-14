@@ -10,6 +10,7 @@ interface Props {
   _fontSize?: number;
   children: string;
   attach: "left" | "right";
+  nonClickable?: true;
 }
 
 // 좌측에 붙을지 우측에 붙을지는 사용하는쪽에서 컨트롤해줍니다.
@@ -20,7 +21,8 @@ const Badge = ({
   paddingLeft = 22,
   paddingRight,
   _fontSize = 18,
-  attach
+  attach,
+  nonClickable
 }: Props) => {
   const { colors } = useTheme();
 
@@ -32,7 +34,7 @@ const Badge = ({
       css={css`
         ${size(_size)}
         ${padding({ left: paddingLeft, right: paddingRight })}
-        ${touchable}
+        ${!nonClickable && touchable}
         border-radius: ${isLeft ? `0 10px 10px  0` : `10px 0 0  10px`};
         background-color: ${colors.primary};
       `}
