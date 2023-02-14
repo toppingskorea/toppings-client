@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+const parseArgs = require('../src/parse-args').default;
+const build = require('../src/build').default;
+
+const args = parseArgs();
+
+build(args.OUTPUT_DIR, args.PACKAGES_DIRECTORY, 'build-storybook');
