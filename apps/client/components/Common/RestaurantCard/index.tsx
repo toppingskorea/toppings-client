@@ -39,6 +39,7 @@ const RestaurantCard = ({ onClick, item, whoLikes }: Props) => {
           alt=""
           css={css`
             border-radius: 7px;
+            object-fit: cover;
           `}
         />
         <Flex

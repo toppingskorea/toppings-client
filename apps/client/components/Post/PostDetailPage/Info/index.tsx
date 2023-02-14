@@ -38,7 +38,8 @@ const Info = () => {
       scrap,
       type,
       likeCount,
-      images
+      images,
+      instagramId
     }
   } = useFetchRestaurant(Number(query.id));
 
@@ -146,6 +147,20 @@ const Info = () => {
           `}
         >
           {description}
+
+          {instagramId && (
+            <a
+              href={`https://www.instagram.com/${instagramId}`}
+              target="_blank"
+              rel="noreferrer"
+              css={css`
+                color: ${colors.secondary[44]};
+                ${touchable}
+              `}
+            >
+              &nbsp;by @{instagramId}
+            </a>
+          )}
         </Text>
       </article>
     </Stack.Vertical>

@@ -1,0 +1,36 @@
+name-template: "v$RESOLVED_VERSION 🌈" ## 릴리즈 제목
+tag-template: "v$RESOLVED_VERSION" ## 태그
+categories:
+  - title: "🚀 Features"
+    labels:
+      - "feature"
+      - "enhancement"
+      - "app-client"
+      - "app-admin"
+  - title: "🐛 Bug Fixes"
+    labels:
+      - "fix"
+      - "bugfix"
+      - "bug"
+  - title: "🧰 Maintenance"
+    labels:
+      - "configuration"
+      - "documentation"
+      - "workflows"
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+version-resolver:
+  major:
+    labels:
+      - "major"
+  minor:
+    labels:
+      - "minor"
+  patch:
+    labels:
+      - "patch"
+  default: patch
+template: | # 릴리즈 내용
+  ## Changes (v$RESOLVED_VERSION)
+
+  $CHANGES
