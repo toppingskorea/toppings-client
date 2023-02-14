@@ -1,2 +1,2 @@
-export { default as ReviewTable } from "./ReviewTable";
-export { default as ReviewDetail } from "./ReviewDetail";
+/* eslint-disable import/prefer-default-export */
+export { default as ReviewsPage } from "./ReviewsPage";

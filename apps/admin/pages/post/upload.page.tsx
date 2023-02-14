@@ -1,3 +1,3 @@
-import PostUploadPage from "~/components/Post/PostUploadPage";
+import { PostUploadPage } from "~/components/Post";
 
 export default PostUploadPage;
