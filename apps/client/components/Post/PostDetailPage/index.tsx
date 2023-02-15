@@ -45,6 +45,7 @@ const PostDetailPage = ({ id }: { id: string }) => {
           width: 160,
           height: 34
         }}
+        nonClickable
       >
         Likes
       </Badge>
@@ -60,6 +61,7 @@ const PostDetailPage = ({ id }: { id: string }) => {
           width: 160,
           height: 34
         }}
+        nonClickable
       >
         Reviews
       </Badge>
