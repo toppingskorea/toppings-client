@@ -78,11 +78,12 @@ const TopNavigator = () => {
               variants={defaultSlideFadeInVariants("bottom")}
               {...framerMocker}
               css={css`
+                width: fit-content;
+                margin: -10px auto 0;
                 ${flex({
                   justify: "center",
                   align: "center"
                 })}
-                margin-top: -10px;
               `}
             >
               {state.top?.title}
