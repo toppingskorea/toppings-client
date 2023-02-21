@@ -2,9 +2,9 @@ import { Button, Flex, HStack, Select, Text, VStack } from "@chakra-ui/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useFetchRestaurant } from "~/server/restaurant";
-import useOnEventHandler from "./PostDetail.hooks";
+import useOnEventHandler from "./RestaurantPostDetail.hooks";
 
-const PostDetail = () => {
+const RestaurantPostDetail = () => {
   const { query } = useRouter();
 
   const { data: restaurant } = useFetchRestaurant(Number(query.id));
@@ -58,4 +58,4 @@ const PostDetail = () => {
   );
 };
 
-export default PostDetail;
+export default RestaurantPostDetail;

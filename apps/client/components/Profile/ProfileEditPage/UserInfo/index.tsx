@@ -25,6 +25,9 @@ const UserInfo = () => {
 
       return edit.habits && edit.habits[0].content;
     }
+
+    if (!userInfo?.habits) return "Not Selected";
+
     return userInfo?.habits && userInfo?.habits[0].content;
   }, [isProfileEatingHabitChanged, userInfo?.habits, edit.habits]);
 

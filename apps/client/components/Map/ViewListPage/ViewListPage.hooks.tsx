@@ -57,8 +57,7 @@ const useViewList = () => {
   useEffect(() => {
     if (searchByFiltering)
       set(indexedDBKeys.searchByFiltering, searchByFiltering);
-
-    get(indexedDBKeys.searchByFiltering).then(setSearchByFiltering);
+    else get(indexedDBKeys.searchByFiltering).then(setSearchByFiltering);
   }, [searchByFiltering, setSearchByFiltering]);
 
   useEffect(() => {

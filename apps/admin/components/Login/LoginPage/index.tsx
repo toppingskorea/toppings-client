@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import useLoginPage from "./login.hooks";
 
-const Login = () => {
+const LoginPage = () => {
   const app = useLoginPage();
 
   return (
@@ -45,4 +45,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
