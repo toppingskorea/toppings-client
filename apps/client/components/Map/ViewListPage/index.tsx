@@ -13,14 +13,19 @@ import {
   width100
 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
+import { memo } from "react";
 import { Badge, RestaurantCard } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { KakaoMap } from "~/components/Kakao";
+import { EmptyView } from "~/components/Layout";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import useViewList from "./ViewListPage.hooks";
 
 const ViewListPage = () => {
   const app = useViewList();
+
+  if (!app.searchByFiltering || app.searchByFiltering.length === 0)
+    return <EmptyView content="No posts." />;
 
   return (
     <div>
@@ -127,4 +132,4 @@ const ViewListPage = () => {
   );
 };
 
-export default ViewListPage;
+export default memo(ViewListPage);
