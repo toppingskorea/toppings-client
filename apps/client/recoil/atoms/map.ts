@@ -16,3 +16,15 @@ export const useCurrentPositionLoadingValue = () =>
   useRecoilValue(currentPositionLoadingAtom);
 export const useCurrentPositionLoadingSetter = () =>
   useSetRecoilState(currentPositionLoadingAtom);
+
+const currentZoomLevelAtom = atom<number>({
+  key: "currentZoomLevelAtom",
+  default: 5
+});
+
+export const useCurrentZoomLevelAtomState = () =>
+  useRecoilState(currentZoomLevelAtom);
+export const useCurrentZoomLevelAtomValue = () =>
+  useRecoilValue(currentZoomLevelAtom);
+export const useCurrentZoomLevelAtomSetter = () =>
+  useSetRecoilState(currentZoomLevelAtom);

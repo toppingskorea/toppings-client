@@ -6,6 +6,7 @@ import {
   useCurrentPositionLoadingValue,
   useCurrentSelectCategoryValue,
   useCurrentSelectKeywordValue,
+  useCurrentZoomLevelAtomState,
   useSearchByFilteringState
 } from "@atoms/index";
 import { useTheme } from "@emotion/react";
@@ -38,6 +39,8 @@ const useMap = () => {
     useSearchByFilteringState();
   const currentHabitTitle = useCurrentHabitTitleValue();
   const currentPositionLoading = useCurrentPositionLoadingValue();
+  const [currentZoomLevel, setCurrentZoomLevel] =
+    useCurrentZoomLevelAtomState();
 
   const mapMutateOnSuccess = useCallback(
     (data: Restaurant.SearchByFilteringDTO[]) => {
@@ -71,6 +74,7 @@ const useMap = () => {
   const mapEventHandler = (map: kakao.maps.Map) => {
     const bounds = map.getBounds() as Map.KakaoBounds;
     const getCenter = map.getCenter();
+    setCurrentZoomLevel(map.getLevel());
 
     setCurrentLocation({
       latitude: getCenter.getLat(),
@@ -111,7 +115,8 @@ const useMap = () => {
     push,
     currentPositionLoading,
     colors,
-    zIndex
+    zIndex,
+    currentZoomLevel
   };
 };
 
