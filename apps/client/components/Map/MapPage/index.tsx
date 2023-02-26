@@ -19,7 +19,7 @@ const MapPage = () => {
       <OpenGraph title="Map" />
       <KakaoMap
         center={app.currentLocation}
-        level={5}
+        level={app.currentZoomLevel}
         maxLevel={13}
         onDragEnd={app.mapEventHandler}
         onLoaded={app.mapEventHandler}
