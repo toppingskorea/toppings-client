@@ -3,7 +3,6 @@ import { useTheme } from "@emotion/react";
 import { Text } from "~/components/Common";
 import { useSetNavigation as useSetNavigationHook } from "~/hooks";
 
-// eslint-disable-next-line import/prefer-default-export
 export const useSetNavigation = () => {
   const { colors, weighs } = useTheme();
   const { clickBackButtonHandler } = useClickBackButton();
