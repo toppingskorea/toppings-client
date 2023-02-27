@@ -18,3 +18,4 @@ export * from "./TextField";
 export * from "./Modal";
 export * from "./SnapCarousel";
 export * from "./LoadingIndicator";
+export * from "./Typo";

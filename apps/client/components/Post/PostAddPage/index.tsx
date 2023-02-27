@@ -1,58 +1,29 @@
-import { usePostUploadState, useRestaurantValue } from "@atoms/index";
+import { useRestaurantValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
-import { Exit } from "@svgs/common";
 import { padding, size, Spacing, Stack, touchable } from "@toss/emotion-utils";
-import { useOverlay } from "@toss/use-overlay";
-import { useCallback, useMemo } from "react";
-import {
-  AlertModal,
-  ComponentWithLabel,
-  Gallery,
-  Input
-} from "~/components/Common";
-import { Text } from "~/components/Common/Typo";
+import { ComponentWithLabel, Gallery, Input } from "~/components/Common";
 import { OpenGraph } from "~/components/Util";
-import { useInternalRouter, useSetNavigation } from "~/hooks";
+import { useInternalRouter } from "~/hooks";
 import { hiddenScroll } from "~/styles/emotionUtils";
 import { Edit, Register } from "./CTAButton";
 import HorizontalCategories from "./HorizontalCategories";
+import {
+  useCategory,
+  useCheckModifyMode,
+  useGalleryImages,
+  useInputDescription,
+  useSetNavigation
+} from "./PostAddPage.hooks";
 
 const PostAddPage = () => {
-  const { colors, weighs } = useTheme();
-  const { push, back } = useInternalRouter();
+  useSetNavigation();
+  const { colors } = useTheme();
+  const { push } = useInternalRouter();
   const restaurant = useRestaurantValue();
-  const [postUpload, setPostUpload] = usePostUploadState();
-  const overlay = useOverlay();
-
-  const isModifyMode = useMemo(() => !!postUpload.id, [postUpload.id]);
-
-  useSetNavigation({
-    top: {
-      marginBottom: 35,
-      title: (
-        <Text _fontSize={19} _color={colors.secondary[47]} weight={weighs.bold}>
-          {isModifyMode ? "Edit Post" : "New Post"}
-        </Text>
-      ),
-      right: {
-        element: <Exit />,
-        onClick: () =>
-          overlay.open(({ exit }) => (
-            <AlertModal exitFn={exit} rightClick={{ fn: back, text: "sure" }} />
-          ))
-      },
-      backButtonCaution: true,
-      hideBackButton: true
-    },
-
-    bottom: false
-  });
-
-  const gallerySetImages = useCallback(
-    (images: string[]) =>
-      setPostUpload(postUpload => ({ ...postUpload, images })),
-    [setPostUpload]
-  );
+  const { isModifyMode } = useCheckModifyMode();
+  const galleryProps = useGalleryImages();
+  const descriptionProps = useInputDescription();
+  const categoryProps = useCategory();
 
   return (
     <Stack.Vertical gutter={22}>
@@ -64,7 +35,7 @@ const PostAddPage = () => {
         `}
       >
         <ComponentWithLabel label="Picture" gutter={6}>
-          <Gallery images={postUpload.images} setImages={gallerySetImages} />
+          <Gallery {...galleryProps} />
         </ComponentWithLabel>
 
         <ComponentWithLabel label="Name" gutter={6}>
@@ -106,10 +77,7 @@ const PostAddPage = () => {
             height={156}
             placeholder={`Please write a detailed description\nof the food`}
             padding={padding({ x: 11, y: 12 })}
-            value={postUpload.description}
-            onChange={e =>
-              setPostUpload({ ...postUpload, description: e.target.value })
-            }
+            {...descriptionProps}
             css={css`
               ${touchable}
               font-size: 16px;
@@ -134,10 +102,7 @@ const PostAddPage = () => {
               ${hiddenScroll}
             `}
           >
-            <HorizontalCategories
-              value={postUpload.type}
-              onClick={type => setPostUpload({ ...postUpload, type })}
-            />
+            <HorizontalCategories {...categoryProps} />
           </div>
         </ComponentWithLabel>
       </div>
