@@ -4,8 +4,7 @@ import { Exit } from "@svgs/common";
 import { useOverlay } from "@toss/use-overlay";
 import type { ChangeEvent } from "react";
 import { useCallback } from "react";
-import { AlertModal } from "~/components/Common";
-import { Text } from "~/components/Common/Typo";
+import { AlertModal, Text } from "~/components/Common";
 import type { types } from "~/constants/data/common";
 import {
   useInternalRouter,
