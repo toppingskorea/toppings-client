@@ -67,7 +67,7 @@ export const useInputDescription = () => {
   const [postUpload, setPostUpload] = usePostUploadState();
 
   const onChangeHandler = (
-    e: ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLInputElement>
+    e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
     setPostUpload(postUpload => ({
       ...postUpload,
