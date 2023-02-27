@@ -17,7 +17,16 @@ const TopNavigator = () => {
   const onClickBackButton = () => {
     if (state.top?.backButtonCaution) {
       overlay.open(({ exit }) => (
-        <AlertModal exitFn={exit} rightClick={{ fn: back, text: "sure" }} />
+        <AlertModal
+          exitFn={exit}
+          rightClick={{
+            fn: () => {
+              state.top?.backButtonClickHandler?.();
+              back();
+            },
+            text: "sure"
+          }}
+        />
       ));
 
       return;
@@ -27,6 +36,8 @@ const TopNavigator = () => {
       push(state.top.backDirectlyURL);
       return;
     }
+
+    state.top?.backButtonClickHandler?.();
 
     back();
   };

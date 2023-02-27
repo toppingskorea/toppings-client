@@ -9,19 +9,27 @@ import { SelectEatingHabit } from "~/components/Section";
 import { OpenGraph } from "~/components/Util";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
+import { useFetchUserInfo } from "~/server/profile";
 
 const ProfileEditEatingHabitsPage = () => {
   const { back } = useInternalRouter();
   const { colors, weighs, dimensions } = useTheme();
   const [edit, setEdit] = useEditState();
   const setProfileEatingHabitChanged = useProfileEatingHabitChangedSetter();
+
+  const { data: userInfo } = useFetchUserInfo();
+
   useSetNavigation({
     top: {
       title: (
         <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
           Select a Eating Habit
         </Text>
-      )
+      ),
+      backButtonClickHandler: () => {
+        const newHabits = userInfo?.habits || [];
+        setEdit(edit => ({ ...edit, habits: newHabits }));
+      }
     },
     bottom: true
   });
