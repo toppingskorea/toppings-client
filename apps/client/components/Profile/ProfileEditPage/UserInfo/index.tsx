@@ -58,8 +58,7 @@ const UserInfo = () => {
                   transform: translate3d(0,100%,0);
                 `}
               >
-                Enter only english or korean letters (a-z) and numbers within
-                6-20
+                Enter only english or korean letters and numbers within 6-20
                 {"\n"}characters for the user name.
               </Text>
             }
