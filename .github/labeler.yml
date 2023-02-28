@@ -13,13 +13,13 @@ next-config:
 ts-config:
   - packages/ts-config/*
   - packages/ts-config/**/*
-"@toppings/utils":
+toppings-utils:
   - packages/utils/*
   - packages/utils/**/*
-"@toppings/components":
+toppings-components:
   - packages/components/*
   - packages/components/**/*
-"@toppings/hooks":
+toppings-hooks:
   - packages/hooks/*
   - packages/hooks/**/*
 configuration:
