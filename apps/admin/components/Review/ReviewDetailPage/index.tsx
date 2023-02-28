@@ -1,6 +1,6 @@
 import { VStack } from "@chakra-ui/react";
 import { Suspense } from "@suspensive/react";
-import Skeleton from "~/components/Skeleton";
+import { Skeleton } from "@toppings/components";
 import { generateComponent } from "~/utils";
 import ReviewDetail from "../ReviewDetail";
 

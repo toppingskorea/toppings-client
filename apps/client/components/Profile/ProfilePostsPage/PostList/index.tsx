@@ -1,9 +1,9 @@
 import { css, useTheme } from "@emotion/react";
+import { Skeleton } from "@toppings/components";
 import { lastItem } from "@toppings/utils";
 import { padding } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { EmptyView } from "~/components/Layout";
-import Skeleton from "~/components/Skeleton";
 import { InfiniteScrollSensor } from "~/components/Util";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter } from "~/hooks";

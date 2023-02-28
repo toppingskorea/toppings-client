@@ -6191,6 +6191,7 @@ __metadata:
     "@tanstack/react-query-devtools": ^4.13.4
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.4.0
+    "@toppings/components": "*"
     "@toppings/hooks": "*"
     "@toppings/next-config": "*"
     "@toppings/ts-config": "*"
@@ -6255,6 +6256,7 @@ __metadata:
     "@tanstack/react-query-devtools": ^4.13.4
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.4.0
+    "@toppings/components": "*"
     "@toppings/hooks": "*"
     "@toppings/next-config": "*"
     "@toppings/ts-config": "*"
@@ -6300,6 +6302,22 @@ __metadata:
     sockjs-client: ^1.6.1
     typescript: 4.8.4
     uuid: ^9.0.0
+  languageName: unknown
+  linkType: soft
+
+"@toppings/components@*, @toppings/components@workspace:packages/components":
+  version: 0.0.0-use.local
+  resolution: "@toppings/components@workspace:packages/components"
+  dependencies:
+    "@emotion/react": ^11.10.5
+    "@emotion/styled": ^11.10.5
+    "@toppings/ts-config": "*"
+    "@toss/emotion-utils": ^1.0.5
+    "@toss/use-overlay": ^1.2.1
+    "@types/node": ^18.11.9
+    "@types/react": ^18.0.25
+    react: 18.2.0
+    typescript: 4.8.4
   languageName: unknown
   linkType: soft
 

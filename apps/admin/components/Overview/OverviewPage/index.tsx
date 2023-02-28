@@ -1,6 +1,6 @@
 import { HStack } from "@chakra-ui/react";
 import { Suspense } from "@suspensive/react";
-import Skeleton from "~/components/Skeleton";
+import { Skeleton } from "@toppings/components";
 import { useSetHeader } from "~/hooks";
 import { generateComponent } from "~/utils";
 import CountCards from "../CountCards";

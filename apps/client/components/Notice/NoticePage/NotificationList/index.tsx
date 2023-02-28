@@ -1,8 +1,8 @@
 /* eslint-disable react/no-array-index-key */
+import { Skeleton } from "@toppings/components";
 import { lastItem } from "@toppings/utils";
 import { Stack } from "@toss/emotion-utils";
 import { EmptyView } from "~/components/Layout";
-import Skeleton from "~/components/Skeleton";
 import { InfiniteScrollSensor } from "~/components/Util";
 import { useFetchNotificationList } from "~/server/notice";
 import NotificationItem from "./NotificationItem";

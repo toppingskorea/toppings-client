@@ -1,6 +1,6 @@
 import { Suspense } from "@suspensive/react";
+import { Skeleton } from "@toppings/components";
 import { Flex, Stack } from "@toss/emotion-utils";
-import Skeleton from "~/components/Skeleton";
 import { OpenGraph } from "~/components/Util";
 import { useSetNavigation } from "~/hooks";
 import { generateComponent } from "~/utils";
