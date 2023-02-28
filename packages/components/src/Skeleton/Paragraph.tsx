@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Box } from ".";
+import { Box } from "./Box";
 
 interface Props {
   line?: number;
