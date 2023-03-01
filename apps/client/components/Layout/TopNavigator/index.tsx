@@ -2,34 +2,16 @@ import { useNavigationValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { LeftArrow } from "@svgs/common";
 import { Flex, flex, padding, position, Spacing } from "@toss/emotion-utils";
-import { useOverlay } from "@toss/use-overlay";
 import { AnimatePresence, motion } from "framer-motion";
-import { AlertModal, MotionButton } from "~/components/Common";
+import { MotionButton } from "~/components/Common";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
-import { useInternalRouter } from "~/hooks";
+import { useClickBackButton } from "./TopNavigator.hooks";
 
 const TopNavigator = () => {
   const { zIndex } = useTheme();
-  const { back, push } = useInternalRouter();
   const state = useNavigationValue();
-  const overlay = useOverlay();
 
-  const onClickBackButton = () => {
-    if (state.top?.backButtonCaution) {
-      overlay.open(({ exit }) => (
-        <AlertModal exitFn={exit} rightClick={{ fn: back, text: "sure" }} />
-      ));
-
-      return;
-    }
-
-    if (state.top?.backDirectlyURL) {
-      push(state.top.backDirectlyURL);
-      return;
-    }
-
-    back();
-  };
+  const { onClickBackButton } = useClickBackButton();
 
   return (
     <AnimatePresence>
