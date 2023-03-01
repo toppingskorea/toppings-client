@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import { useHeaderStore } from "~/stores/common";
-import type { HeaderInitialState } from "~/stores/common/header/header.types";
+import { useHeaderStore, type HeaderInitialState } from "~/stores/common";
 
 const useSetHeader = (content: HeaderInitialState["content"]) => {
   const dispatchHeader = useHeaderStore(state => state.dispatchHeader);
