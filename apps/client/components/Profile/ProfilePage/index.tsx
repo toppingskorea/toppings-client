@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
 import { Hamburger } from "@svgs/common";
+import { Skeleton } from "@toppings/components";
 import { padding, Stack } from "@toss/emotion-utils";
-import Skeleton from "~/components/Skeleton";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { generateComponent } from "~/utils";
 import EditButton from "./EditButton";

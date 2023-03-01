@@ -1,9 +1,9 @@
 import { useTheme } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
+import { Skeleton } from "@toppings/components";
 import { Stack } from "@toss/emotion-utils";
 import { useEffect } from "react";
 import { Text } from "~/components/Common/Typo";
-import Skeleton from "~/components/Skeleton";
 import { OpenGraph } from "~/components/Util";
 import { useSetNavigation } from "~/hooks";
 import { useNoticeActivateSetter } from "~/recoil/atoms/noticeActivate";

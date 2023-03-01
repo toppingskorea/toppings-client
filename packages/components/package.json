@@ -1,20 +1,19 @@
 {
-  "name": "@toppings/hooks",
+  "name": "@toppings/components",
   "version": "0.0.1",
   "main": "./src/index.ts",
   "scripts": {
     "type-check": "echo 'No Type check'"
   },
-  "peerDependencies": {
-    "react": "*"
-  },
   "dependencies": {
-    "@toppings/utils": "*",
-    "lodash.debounce": "^4.0.8"
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@toss/emotion-utils": "^1.0.5",
+    "@toss/use-overlay": "^1.2.1",
+    "react": "18.2.0"
   },
   "devDependencies": {
     "@toppings/ts-config": "*",
-    "@types/lodash.debounce": "^4",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.25",
     "typescript": "4.8.4"

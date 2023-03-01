@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
 import { padding, Stack } from "@toss/emotion-utils";
-import Skeleton from "~/components/Skeleton";
+import { Skeleton } from "@toppings/components";
 import DescriptionBox from "./DescriptionBox";
 import ImageCarouselWrapper from "./ImageCarouselWrapper";
 import NavigationSetter from "./NavigationSetter";

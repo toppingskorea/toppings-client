@@ -1,9 +1,9 @@
 import { css, useTheme } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
+import { Skeleton } from "@toppings/components";
 import { padding, Stack } from "@toss/emotion-utils";
 import { Text } from "~/components/Common/Typo";
 import { HorizontalPostList } from "~/components/Profile";
-import Skeleton from "~/components/Skeleton";
 import { OpenGraph } from "~/components/Util";
 import { useSetNavigation } from "~/hooks";
 import { useFetchReviewedRestaurant } from "~/server/profile";

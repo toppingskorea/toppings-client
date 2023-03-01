@@ -1,31 +1,30 @@
 info  - Loaded env from /Users/donggyukim/Desktop/dev/toppings-client/apps/admin/.env.local
 info  - Linting and checking validity of types...
-error - ESLint must be installed in order to run during builds: yarn add --dev eslint
+warn  - The Next.js plugin was not detected in your ESLint configuration. See https://nextjs.org/docs/basic-features/eslint#migrating-existing-config
 info  - Creating an optimized production build...
 info  - Compiled successfully
 info  - Collecting page data...
-info  - Generating static pages (0/10)
-info  - Generating static pages (2/10)
-info  - Generating static pages (4/10)
-info  - Generating static pages (7/10)
-info  - Generating static pages (10/10)
+info  - Generating static pages (0/9)
+info  - Generating static pages (2/9)
+info  - Generating static pages (4/9)
+info  - Generating static pages (6/9)
+info  - Generating static pages (9/9)
 info  - Finalizing page optimization...
 
 Route (pages)                              Size     First Load JS
-┌ ○ /                                      341 B           224 kB
+┌ ○ /                                      3.21 kB         231 kB
 ├   /_app                                  0 B             224 kB
 ├ ○ /404                                   182 B           224 kB
-├ ○ /login                                 3.2 kB          231 kB
-├ ○ /overview                              1.92 kB         230 kB
-├ ○ /post/upload                           3.8 kB          231 kB
-├ ○ /posts                                 4.02 kB         232 kB
-├ ○ /restaurant/[id]                       1.54 kB         234 kB
-├ ○ /review/[id]                           1.34 kB         234 kB
-└ ○ /reviews                               4.01 kB         232 kB
+├ ○ /overview                              1.79 kB         231 kB
+├ ○ /post/upload                           3.95 kB         232 kB
+├ ○ /posts                                 3.97 kB         234 kB
+├ ○ /restaurant/[id]                       1.59 kB         235 kB
+├ ○ /review/[id]                           1.47 kB         235 kB
+└ ○ /reviews                               3.95 kB         233 kB
 + First Load JS shared by all              224 kB
   ├ chunks/framework-3437216d94e66f13.js   45.4 kB
   ├ chunks/main-8b4e465b8f33c2c9.js        31 kB
-  ├ chunks/pages/_app-239210b0d97f12ef.js  146 kB
+  ├ chunks/pages/_app-9afe1ab3fee4ff88.js  146 kB
   └ chunks/webpack-2d6c20b89449f43d.js     1.04 kB
 
 ○  (Static)  automatically rendered as static HTML (uses no initial props)
