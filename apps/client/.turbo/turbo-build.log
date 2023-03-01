@@ -19,6 +19,7 @@ Warning: For production Image Optimization with Next.js, the optional 'sharp' pa
 Read more: https://nextjs.org/docs/messages/sharp-missing-in-production
 warn  - Compiled with warnings
 
+
 /_next/static/chunks/pages/_app-3f95e639eb658887.js.map is 4.66 MB, and won't be precached. Configure maximumFileSizeToCacheInBytes to change this limit.
 
 ../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js

@@ -53,17 +53,14 @@ const useInput = ({
   const handleSetValue = useCallback(
     (value: string) => {
       setValue(value);
-      if (useDebounce) {
-        handleSetDebounceValue(value);
-      }
+
+      if (useDebounce) handleSetDebounceValue(value);
     },
     [handleSetDebounceValue, useDebounce]
   );
 
   const onChange = useCallback(
-    (
-      event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
-    ) => {
+    (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       handleSetValue(event.target.value);
     },
     [handleSetValue]
@@ -92,4 +89,5 @@ const useInput = ({
     debouncedValue
   };
 };
+
 export default useInput;
