@@ -2,16 +2,25 @@ info  - Loaded env from /Users/donggyukim/Desktop/dev/toppings-client/apps/clien
 info  - Linting and checking validity of types...
 error - ESLint must be installed in order to run during builds: yarn add --dev eslint
 info  - Creating an optimized production build...
+> [PWA] Compile server
+
+warn  - In order to be able to deminify errors, @sentry/nextjs creates sourcemaps and uploads them to the Sentry server. Depending on your deployment setup, this means your original code may be visible in browser devtools in production. To prevent this, set hideSourceMaps to true in the sentry options in your next.config.js. To disable this warning without changing sourcemap behavior, set hideSourceMaps to false. (In @sentry/nextjs version 8.0.0 and beyond, this option will default to true.) See https://webpack.js.org/configuration/devtool/ and https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#use-hidden-source-map for more information.
+
 > [PWA] Compile client (static)
 > [PWA] Auto register service worker with: /Users/donggyukim/Desktop/dev/toppings-client/.yarn/__virtual__/next-pwa-virtual-941debd704/0/cache/next-pwa-npm-5.6.0-0f61704f10-47f249a819.zip/node_modules/next-pwa/register.js
 > [PWA] Service worker: /Users/donggyukim/Desktop/dev/toppings-client/apps/client/public/sw.js
 > [PWA]   url: /sw.js
 > [PWA]   scope: /
 > [PWA] Compile server
-> [PWA] Compile server
+
+warn  - In order to be able to deminify errors, @sentry/nextjs creates sourcemaps and uploads them to the Sentry server. Depending on your deployment setup, this means your original code may be visible in browser devtools in production. To prevent this, set hideSourceMaps to true in the sentry options in your next.config.js. To disable this warning without changing sourcemap behavior, set hideSourceMaps to false. (In @sentry/nextjs version 8.0.0 and beyond, this option will default to true.) See https://webpack.js.org/configuration/devtool/ and https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#use-hidden-source-map for more information.
+
 Warning: For production Image Optimization with Next.js, the optional 'sharp' package is strongly recommended. Run 'yarn add sharp', and Next.js will use it automatically for Image Optimization.
 Read more: https://nextjs.org/docs/messages/sharp-missing-in-production
 warn  - Compiled with warnings
+
+
+/_next/static/chunks/pages/_app-3f95e639eb658887.js.map is 4.66 MB, and won't be precached. Configure maximumFileSizeToCacheInBytes to change this limit.
 
 ../../.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/lib/helpers/toFormData.js
 A Node.js API is used (Buffer at line: 138) which is not supported in the Edge Runtime.
@@ -29,41 +38,41 @@ Warning: You have opted-out of Automatic Static Optimization due to `getInitialP
 Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
 
 Route (pages)                              Size     First Load JS
-┌ λ /                                      2.55 kB         368 kB
-├   /_app                                  0 B             365 kB
-├ λ /404                                   1.14 kB         367 kB
-├ λ /about                                 1.47 kB         367 kB
-├ λ /login                                 463 B           366 kB
-├ λ /login/redirect                        272 B           366 kB
-├ λ /map                                   228 B           377 kB
-├ λ /map/viewList                          238 B           377 kB
-├ λ /notice                                4.74 kB         375 kB
-├ λ /post/[id]                             255 B           381 kB
-├ λ /post/add                              234 B           381 kB
-├ λ /profile                               234 B           379 kB
-├ λ /profile/edit                          235 B           379 kB
-├ λ /profile/edit/eatingHabits             246 B           379 kB
-├ λ /profile/edit/nationality              243 B           379 kB
-├ λ /profile/menu                          237 B           379 kB
-├ λ /profile/posts                         237 B           379 kB
-├ λ /profile/reviews                       238 B           379 kB
-├ λ /profile/saved                         238 B           379 kB
-├ λ /recent                                230 B           378 kB
-├ λ /recent/filter/eatingHabit             245 B           378 kB
-├ λ /recent/filter/nationality             243 B           378 kB
-├ λ /recent/filter/restaurant              238 B           378 kB
-├ λ /register/eatingHabits                 237 B           370 kB
-├ λ /register/nationality                  237 B           370 kB
-├ λ /review/[id]                           2.2 kB          376 kB
-├ λ /review/add/[restaurantId]             2.2 kB          376 kB
-└ λ /search/[type]                         2.23 kB         368 kB
-+ First Load JS shared by all              365 kB
-  ├ chunks/framework-3437216d94e66f13.js   45.4 kB
-  ├ chunks/main-e1cb92b1abfba079.js        33.3 kB
-  ├ chunks/pages/_app-324be80885e93167.js  286 kB
-  └ chunks/webpack-235955b20eb3ee85.js     1.15 kB
+┌ λ /                                      2.59 kB         369 kB
+├   /_app                                  0 B             366 kB
+├ λ /404                                   1.2 kB          367 kB
+├ λ /about                                 1.51 kB         368 kB
+├ λ /login                                 504 B           367 kB
+├ λ /login/redirect                        314 B           366 kB
+├ λ /map                                   265 B           378 kB
+├ λ /map/viewList                          278 B           378 kB
+├ λ /notice                                3.75 kB         378 kB
+├ λ /post/[id]                             296 B           384 kB
+├ λ /post/add                              275 B           384 kB
+├ λ /profile                               277 B           383 kB
+├ λ /profile/edit                          277 B           383 kB
+├ λ /profile/edit/eatingHabits             287 B           383 kB
+├ λ /profile/edit/nationality              288 B           383 kB
+├ λ /profile/menu                          279 B           383 kB
+├ λ /profile/posts                         277 B           383 kB
+├ λ /profile/reviews                       282 B           383 kB
+├ λ /profile/saved                         282 B           383 kB
+├ λ /recent                                276 B           381 kB
+├ λ /recent/filter/eatingHabit             286 B           381 kB
+├ λ /recent/filter/nationality             287 B           381 kB
+├ λ /recent/filter/restaurant              283 B           381 kB
+├ λ /register/eatingHabits                 278 B           371 kB
+├ λ /register/nationality                  275 B           371 kB
+├ λ /review/[id]                           300 B           379 kB
+├ λ /review/add/[restaurantId]             309 B           379 kB
+└ λ /search/[type]                         2.27 kB         368 kB
++ First Load JS shared by all              366 kB
+  ├ chunks/framework-c693d985374fcb69.js   45.4 kB
+  ├ chunks/main-9d518df239a3d97c.js        33.3 kB
+  ├ chunks/pages/_app-3f95e639eb658887.js  286 kB
+  └ chunks/webpack-7dd6b25d26533a7b.js     1.2 kB
 
-ƒ Middleware                               64.8 kB
+ƒ Middleware                               64.9 kB
 
 λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
 

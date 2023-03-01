@@ -1,7 +1,7 @@
 import { VStack } from "@chakra-ui/react";
 import { Suspense } from "@suspensive/react";
+import { Skeleton } from "@toppings/components";
 import { RestaurantTable } from "~/components/Posts";
-import Skeleton from "~/components/Skeleton";
 import { useSetHeader } from "~/hooks";
 import { generateComponent } from "~/utils";
 

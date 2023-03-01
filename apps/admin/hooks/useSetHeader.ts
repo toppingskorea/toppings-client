@@ -1,12 +1,12 @@
-import  { type useHeaderValue, useHeaderSetter } from "@atoms/header";
 import { useEffect } from "react";
+import { useHeaderStore, type HeaderInitialState } from "~/stores/common";
 
-const useSetHeader = (content: ReturnType<typeof useHeaderValue>) => {
-  const setHeader = useHeaderSetter();
+const useSetHeader = (content: HeaderInitialState["content"]) => {
+  const dispatchHeader = useHeaderStore(state => state.dispatchHeader);
 
   useEffect(() => {
-    setHeader(content);
-  }, [content, setHeader]);
+    dispatchHeader(content);
+  }, [content, dispatchHeader]);
 };
 
 export default useSetHeader;

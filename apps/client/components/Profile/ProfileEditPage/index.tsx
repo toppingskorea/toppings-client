@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
+import { Skeleton } from "@toppings/components";
 import {
   flex,
   padding,
@@ -8,7 +9,6 @@ import {
   Stack,
   width100
 } from "@toss/emotion-utils";
-import Skeleton from "~/components/Skeleton";
 import { OpenGraph } from "~/components/Util";
 import { generateComponent } from "~/utils";
 import { useSetNavigation } from "./ProfileEditPage.hooks";

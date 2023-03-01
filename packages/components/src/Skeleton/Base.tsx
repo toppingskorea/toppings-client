@@ -1,11 +1,7 @@
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
-const Base = styled.div`
-  ${({ theme }) => css`
-    background: ${theme.colors.grayE8};
-  `}
-
+export const Base = styled.div`
+  background: #e8e8e8;
   display: inline-block;
   border-radius: 4px;
   background-size: 200% 200%;
@@ -35,5 +31,3 @@ const Base = styled.div`
     }
   }
 `;
-
-export default Base;

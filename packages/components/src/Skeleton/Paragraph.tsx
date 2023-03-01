@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import { useCallback, useEffect, useMemo, useState } from "react";
-import Box from "./Box";
+import { Box } from "./Box";
 
 interface Props {
   line?: number;
@@ -10,7 +10,7 @@ interface Props {
   lineBreak?: number;
 }
 
-const Paragraph = ({
+export const Paragraph = ({
   line = 3,
   fontSize = 16,
   lineHeight = 1.6,
@@ -90,5 +90,3 @@ const Paragraph = ({
     </div>
   );
 };
-
-export default Paragraph;
