@@ -36,7 +36,8 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.38.0",
     "recoil": "^0.7.6",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "zustand": "^4.3.5"
   },
   "devDependencies": {
     "@babel/runtime": "^7.19.0",

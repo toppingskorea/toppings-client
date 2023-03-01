@@ -6249,6 +6249,7 @@ __metadata:
     recoil: ^0.7.6
     typescript: 4.8.4
     uuid: ^9.0.0
+    zustand: ^4.3.5
   languageName: unknown
   linkType: soft
 
@@ -6328,6 +6329,7 @@ __metadata:
     sockjs-client: ^1.6.1
     typescript: 4.8.4
     uuid: ^9.0.0
+    zustand: ^4.3.5
   languageName: unknown
   linkType: soft
 
@@ -21218,7 +21220,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.2.0":
+"use-sync-external-store@npm:1.2.0, use-sync-external-store@npm:^1.2.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:
@@ -22217,6 +22219,23 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"zustand@npm:^4.3.5":
+  version: 4.3.5
+  resolution: "zustand@npm:4.3.5"
+  dependencies:
+    use-sync-external-store: 1.2.0
+  peerDependencies:
+    immer: ">=9.0"
+    react: ">=16.8"
+  peerDependenciesMeta:
+    immer:
+      optional: true
+    react:
+      optional: true
+  checksum: 166099ecadd870e5e0f51b5b443b71145149447b2bfe557d73254891dd0fe603d55c93e560649a7c31a30b4a180dd6d4f4d90463636fd54c3393ace3b68dbc67
   languageName: node
   linkType: hard
 
