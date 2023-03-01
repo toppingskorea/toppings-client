@@ -31,7 +31,7 @@ const ErrorPage = () => {
             })}
           `}
         >
-          Page not found.
+          Something error.
         </Text>
       </Flex.Center>
     </>
