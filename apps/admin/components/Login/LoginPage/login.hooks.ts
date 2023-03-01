@@ -5,11 +5,26 @@ import { useCallback } from "react";
 import { useToast } from "~/hooks";
 import { useLogin } from "~/server/auth";
 
-const useLoginPage = () => {
-  const { replace } = useRouter();
-  const toast = useToast();
+export const useLoginState = () => {
   const { props: username } = useInput({});
   const { props: password } = useInput({});
+
+  return {
+    username,
+    password
+  };
+};
+
+export const useLoginSubmit = ({
+  username,
+  password
+}: {
+  username: string;
+  password: string;
+}) => {
+  const { replace } = useRouter();
+  const toast = useToast();
+
   const { mutate } = useLogin({
     onSuccess: () => {
       replace("/overview");
@@ -27,17 +42,14 @@ const useLoginPage = () => {
     (e: FormEvent<HTMLDivElement>) => {
       e.preventDefault();
       mutate({
-        username: username.value,
-        password: password.value
+        username,
+        password
       });
     },
-    [mutate, password.value, username.value]
+    [mutate, password, username]
   );
 
   return {
-    username,
-    password,
     onSubmitHandler
   };
 };
-export default useLoginPage;
