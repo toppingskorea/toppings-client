@@ -13046,7 +13046,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.8.2"],\
             ["@types/react", "npm:18.0.21"],\
             ["@types/react-dom", "npm:18.0.6"],\
-            ["@types/recoil", "npm:0.0.9"],\
             ["@types/testing-library__jest-dom", "npm:5.14.5"],\
             ["@types/uuid", "npm:9.0.0"],\
             ["axios", "npm:1.2.0"],\
@@ -13063,7 +13062,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-cookie", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:4.1.1"],\
             ["react-dom", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:18.2.0"],\
             ["react-hook-form", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:7.39.7"],\
-            ["recoil", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:0.7.6"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=0102e9"],\
             ["uuid", "npm:9.0.0"],\
             ["zustand", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:4.3.5"]\
@@ -13144,7 +13142,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:18.2.0"],\
             ["react-ga4", "npm:1.4.1"],\
             ["react-hook-form", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:7.39.7"],\
-            ["recoil", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:0.7.6"],\
+            ["recoil", "virtual:9599e3a291f6ce069abce5d0d6a75dbe721c48c7e785ac9806e951bae0faa20e9762079eed1308389c1c9e5b08c36494ec7b98ff14d31306422f55f789db2137#npm:0.7.6"],\
             ["sockjs-client", "npm:1.6.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=0102e9"],\
             ["uuid", "npm:9.0.0"],\
@@ -27971,10 +27969,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:0.7.6", {\
-          "packageLocation": "./.yarn/__virtual__/recoil-virtual-8431b5cf1d/0/cache/recoil-npm-0.7.6-6f8de04e3d-2b31dd29a7.zip/node_modules/recoil/",\
+        ["virtual:9599e3a291f6ce069abce5d0d6a75dbe721c48c7e785ac9806e951bae0faa20e9762079eed1308389c1c9e5b08c36494ec7b98ff14d31306422f55f789db2137#npm:0.7.6", {\
+          "packageLocation": "./.yarn/__virtual__/recoil-virtual-66bdbab333/0/cache/recoil-npm-0.7.6-6f8de04e3d-2b31dd29a7.zip/node_modules/recoil/",\
           "packageDependencies": [\
-            ["recoil", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:0.7.6"],\
+            ["recoil", "virtual:9599e3a291f6ce069abce5d0d6a75dbe721c48c7e785ac9806e951bae0faa20e9762079eed1308389c1c9e5b08c36494ec7b98ff14d31306422f55f789db2137#npm:0.7.6"],\
             ["@types/react", "npm:18.0.21"],\
             ["@types/react-dom", "npm:18.0.6"],\
             ["@types/react-native", null],\

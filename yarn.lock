@@ -6229,7 +6229,6 @@ __metadata:
     "@types/node": 18.8.2
     "@types/react": 18.0.21
     "@types/react-dom": 18.0.6
-    "@types/recoil": ^0.0.9
     "@types/testing-library__jest-dom": ^5.14.5
     "@types/uuid": ^9
     axios: 1.2.0
@@ -6246,7 +6245,6 @@ __metadata:
     react-cookie: ^4.1.1
     react-dom: 18.2.0
     react-hook-form: ^7.38.0
-    recoil: ^0.7.6
     typescript: 4.8.4
     uuid: ^9.0.0
     zustand: ^4.3.5
