@@ -22,6 +22,7 @@
     "@svgr/webpack": "^6.5.1",
     "@tanstack/react-query": "^4.13.4",
     "@tanstack/react-query-devtools": "^4.13.4",
+    "@toppings/components": "*",
     "@toppings/hooks": "*",
     "@toppings/utils": "*",
     "@toss/emotion-utils": "^1.0.5",
