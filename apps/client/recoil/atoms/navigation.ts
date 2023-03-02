@@ -17,6 +17,7 @@ const navigationAtom = atom<{
     hideBackButton?: true;
     backButtonCaution?: boolean;
     backDirectlyURL?: Route.Path;
+    backButtonClickHandler?: VoidFunction;
   };
   bottom?: boolean;
 }>({

@@ -1,41 +1,21 @@
-import { usePostUploadReset, useRestaurantReset } from "@atoms/index";
-import { useNoticeActivateValue } from "@atoms/noticeActivate";
 import { css, useTheme } from "@emotion/react";
-import type { EmotionJSX } from "@emotion/react/types/jsx-namespace";
 import { flex, padding, width100 } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
-import type { ReactNode } from "react";
 import { useInternalRouter, useProtectRouteModal } from "~/hooks";
 import navList from "./BottomNavigator.constants";
+import {
+  useClickNavigationHandler,
+  useRenderIcon
+} from "./BottomNavigator.hooks";
 
 const BottomNavigator = () => {
   const { colors, dimensions, zIndex } = useTheme();
-  const { asPath, push } = useInternalRouter();
-  const noticeActivate = useNoticeActivateValue();
-  const restaurantReset = useRestaurantReset();
-  const postUploadReset = usePostUploadReset();
+  const { asPath } = useInternalRouter();
+
   const { onClickProtectedButtonHandler } = useProtectRouteModal();
 
-  const renderIcon = (
-    icon: EmotionJSX.Element,
-    activatedIcon: ReactNode,
-    href: string
-  ) => {
-    if (href !== "/notice") return icon;
-
-    if (noticeActivate) return activatedIcon;
-    return icon;
-  };
-
-  const onClickNavigationHandler = (
-    href: Util.ElementType<typeof navList>["href"]
-  ) => {
-    if (href === "/post/add") {
-      restaurantReset();
-      postUploadReset();
-    }
-    push(href);
-  };
+  const { renderIcon } = useRenderIcon();
+  const { onClickNavigationHandler } = useClickNavigationHandler();
 
   return (
     <nav
