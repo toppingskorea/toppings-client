@@ -1,32 +1,41 @@
-import { usePostUploadState } from "@atoms/post";
-import { useRestaurantValue } from "@atoms/search";
 import { Input, Select, VStack } from "@chakra-ui/react";
 import { Spacing } from "@toss/emotion-utils";
 import { Gallery, Text } from "~/components/Common";
 import { types } from "~/constants/data/common";
+import { usePostSearchRestaurantStore } from "~/stores/post";
 import { Register } from "./CTAButton";
+import {
+  useDescription,
+  useImages,
+  useInstagramId,
+  useType
+} from "./PostUploadPage.hooks";
 import RestaurantSearchSection from "./RestaurantSearchSection";
 
 const PostUploadPage = () => {
-  const restaurant = useRestaurantValue();
-  const [postUpload, setPostUpload] = usePostUploadState();
+  const { placeName, roadAddressName } = usePostSearchRestaurantStore(
+    state => ({
+      placeName: state.place_name,
+      roadAddressName: state.road_address_name
+    })
+  );
+
+  const images = useImages();
+  const description = useDescription();
+  const instagramId = useInstagramId();
+  const type = useType();
 
   return (
     <VStack width="800px">
       <Text _fontSize={20}>Picture</Text>
 
-      <Gallery
-        images={postUpload.images}
-        setImages={images => setPostUpload({ ...postUpload, images })}
-      />
+      <Gallery {...images} />
 
       <RestaurantSearchSection />
 
       <Text _fontSize={20}>음식점 정보</Text>
       <Input
-        value={`${restaurant?.place_name ?? "식당 이름"} / ${
-          restaurant?.road_address_name ?? "주소"
-        }`}
+        value={`${placeName ?? "식당 이름"} / ${roadAddressName ?? "주소"}`}
         readOnly
       />
 
@@ -35,36 +44,16 @@ const PostUploadPage = () => {
         as="textarea"
         height={156}
         placeholder={`Please write a detailed description\nof the food`}
-        value={postUpload.description}
-        onChange={e =>
-          setPostUpload({ ...postUpload, description: e.target.value })
-        }
+        {...description}
       />
 
       <Input
         placeholder="인스타그램 아이디를 입력하세요.(선택)"
-        value={postUpload.instagramId ?? ""}
         maxLength={30}
-        onChange={e =>
-          setPostUpload(postUpload => ({
-            ...postUpload,
-            instagramId: e.target.value
-          }))
-        }
+        {...instagramId}
       />
 
-      <Select
-        placeholder="음식점 타입"
-        value={postUpload.type}
-        onChange={event =>
-          setPostUpload(postUpload => ({
-            ...postUpload,
-            type: event.currentTarget.value as Util.ElementType<
-              typeof types
-            >["label"]
-          }))
-        }
-      >
+      <Select placeholder="음식점 타입" {...type}>
         {types.map(type => (
           <option value={type.value} key={type.label}>
             {type.label}

@@ -1,5 +1,3 @@
-import { usePostUploadReset, usePostUploadValue } from "@atoms/post";
-import { useRestaurantReset, useRestaurantValue } from "@atoms/search";
 import { Button } from "@chakra-ui/react";
 import { css, useTheme } from "@emotion/react";
 import { useCallback } from "react";
@@ -7,21 +5,41 @@ import { Text } from "~/components/Common/Typo";
 import { types } from "~/constants/data/common";
 import { useToast } from "~/hooks";
 import { useUploadPost } from "~/server/post";
+import {
+  usePostSearchRestaurantStore,
+  usePostUploadStore
+} from "~/stores/post";
 import useSubmitVerification from "../CTAButton.hooks";
 
 const Register = () => {
   const { colors } = useTheme();
   const toast = useToast();
-  const restaurant = useRestaurantValue();
-  const restaurantReset = useRestaurantReset();
-  const postUploadReset = usePostUploadReset();
-  const postUpload = usePostUploadValue();
+
+  const { restaurant, dispatchPostSearchRestaurantInitialize } =
+    usePostSearchRestaurantStore(state => ({
+      restaurant: state,
+      dispatchPostSearchRestaurantInitialize: state.dispatchInitialize
+    }));
+
+  const {
+    images,
+    description,
+    type,
+    instagramId,
+    dispatchPostUploadInitialize
+  } = usePostUploadStore(state => ({
+    images: state.images,
+    description: state.description,
+    type: state.type,
+    instagramId: state.instagramId,
+    dispatchPostUploadInitialize: state.dispatchInitialize
+  }));
 
   const { mutate: uploadPostMutate, isLoading: uploadPostIsLoading } =
     useUploadPost({
       onSuccess: () => {
-        restaurantReset();
-        postUploadReset();
+        dispatchPostSearchRestaurantInitialize();
+        dispatchPostUploadInitialize();
 
         toast({
           title: "업로드 성공",
@@ -32,10 +50,10 @@ const Register = () => {
     });
 
   const { verificationSubmitInClient } = useSubmitVerification({
-    images: postUpload.images,
+    images,
     name: restaurant?.place_name,
-    description: postUpload.description,
-    type: postUpload.type
+    description,
+    type
   });
 
   const onRegisterHandler = useCallback(() => {
@@ -47,21 +65,21 @@ const Register = () => {
     uploadPostMutate({
       address: restaurant.address_name,
       code: restaurant.id,
-      description: postUpload.description,
-      images: postUpload.images,
+      description,
+      images,
       latitude: +restaurant.y,
       longitude: +restaurant.x,
       name: restaurant.place_name,
-      type: types.filter(({ label }) => label === postUpload.type)[0].value,
+      type: types.filter(({ label }) => label === type)[0].value,
       zipcode: "몰라집코드",
-      instagramId: postUpload.instagramId
+      instagramId
     });
   }, [
-    postUpload.description,
-    postUpload.images,
-    postUpload.instagramId,
-    postUpload.type,
+    description,
+    images,
+    instagramId,
     restaurant,
+    type,
     uploadPostMutate,
     verificationSubmitInClient
   ]);

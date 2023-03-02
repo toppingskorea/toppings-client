@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
-import { useRestaurantSetter } from "@atoms/search";
 import { Badge, Box, Input, VStack } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { useInput } from "@toppings/hooks";
 import { width100 } from "@toss/emotion-utils";
 import { useCallback, useEffect, useState } from "react";
 import { Text } from "~/components/Common";
+import { usePostSearchRestaurantStore } from "~/stores/post";
 
 const RestaurantSearchSection = () => {
   const { props: keyword, debouncedValue } = useInput({
@@ -14,7 +14,9 @@ const RestaurantSearchSection = () => {
     debounceTimeout: 300
   });
 
-  const setRestaurant = useRestaurantSetter();
+  const dispatchAllPostSearchRestaurantState = usePostSearchRestaurantStore(
+    state => state.dispatchAll
+  );
 
   const [result, setResult] = useState<kakao.maps.services.PlacesSearchResult>(
     []
@@ -51,7 +53,7 @@ const RestaurantSearchSection = () => {
 
   const onItemClickHandler = useCallback(
     (item: kakao.maps.services.PlacesSearchResultItem) => {
-      setRestaurant({
+      dispatchAllPostSearchRestaurantState({
         address_name: item.address_name,
         category_group_name: item.category_group_name,
         id: item.id,
@@ -61,7 +63,7 @@ const RestaurantSearchSection = () => {
         y: item.y
       });
     },
-    [setRestaurant]
+    [dispatchAllPostSearchRestaurantState]
   );
 
   return (
