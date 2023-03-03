@@ -12,11 +12,11 @@ info  - Generating static pages (9/9)
 info  - Finalizing page optimization...
 
 Route (pages)                              Size     First Load JS
-┌ ○ /                                      3.19 kB         208 kB
+┌ ○ /                                      3.21 kB         208 kB
 ├   /_app                                  0 B             202 kB
 ├ ○ /404                                   182 B           202 kB
 ├ ○ /overview                              1.79 kB         209 kB
-├ ○ /post/upload                           4.08 kB         209 kB
+├ ○ /post/upload                           4.09 kB         209 kB
 ├ ○ /posts                                 3.97 kB         211 kB
 ├ ○ /restaurant/[id]                       1.59 kB         212 kB
 ├ ○ /review/[id]                           1.47 kB         212 kB

@@ -40,7 +40,7 @@ warn  - In order to be able to deminify errors, @sentry/nextjs creates sourcemap
 
 warn  - Compiled with warnings
 
-/_next/static/chunks/pages/_app-d8921fb3d99f352b.js.map is 4.82 MB, and won't be precached. Configure maximumFileSizeToCacheInBytes to change this limit.
+/_next/static/chunks/pages/_app-04588300f96ecd6d.js.map is 4.82 MB, and won't be precached. Configure maximumFileSizeToCacheInBytes to change this limit.
 
 info  - Collecting page data...
 Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
@@ -72,13 +72,13 @@ Route (pages)                              Size     First Load JS
 ├ λ /recent/filter/restaurant              280 B           387 kB
 ├ λ /register/eatingHabits                 278 B           380 kB
 ├ λ /register/nationality                  275 B           380 kB
-├ λ /review/[id]                           296 B           384 kB
+├ λ /review/[id]                           296 B           385 kB
 ├ λ /review/add/[restaurantId]             308 B           385 kB
 └ λ /search/[type]                         2.27 kB         379 kB
 + First Load JS shared by all              377 kB
   ├ chunks/framework-c693d985374fcb69.js   45.4 kB
   ├ chunks/main-9d518df239a3d97c.js        33.3 kB
-  ├ chunks/pages/_app-d8921fb3d99f352b.js  297 kB
+  ├ chunks/pages/_app-04588300f96ecd6d.js  297 kB
   └ chunks/webpack-7dd6b25d26533a7b.js     1.2 kB
 
 ƒ Middleware                               64.8 kB

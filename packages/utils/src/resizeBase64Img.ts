@@ -7,7 +7,7 @@
  * @param {Number} MAX_HEIGHT - The height of the image in pixels
  */
 
-const resizeBase64Img = async (
+export const resizeBase64Img = async (
   base64Str: string,
   MAX_WIDTH = 450,
   MAX_HEIGHT = 450
@@ -38,5 +38,3 @@ const resizeBase64Img = async (
   });
   return resizedBase64;
 };
-
-export default resizeBase64Img;

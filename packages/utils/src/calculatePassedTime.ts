@@ -1,4 +1,4 @@
-const calculatePassedTime = (createdAt: string) => {
+export const calculatePassedTime = (createdAt: string) => {
   const now = new Date();
   // chrome에서는 일반적으로 잘 동작하지만, 사파리 및 IOS에서 파싱에러가 발생해서 정규화해줌.
   const writeDay = new Date(createdAt.replace(/\./g, "-").replace(" ", "T"));
@@ -19,5 +19,3 @@ const calculatePassedTime = (createdAt: string) => {
   const years = days / 365;
   return `${Math.floor(years)}y`;
 };
-
-export default calculatePassedTime;

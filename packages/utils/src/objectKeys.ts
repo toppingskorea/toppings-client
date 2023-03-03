@@ -3,10 +3,8 @@ export type ObjectKeys<T extends Record<PropertyKey, unknown>> = Exclude<
   symbol
 >;
 
-const objectKeys = <Type extends Record<PropertyKey, unknown>>(
+export const objectKeys = <Type extends Record<PropertyKey, unknown>>(
   obj: Type
 ): Array<ObjectKeys<Type>> => {
   return Object.keys(obj) as Array<ObjectKeys<Type>>;
 };
-
-export default objectKeys;
