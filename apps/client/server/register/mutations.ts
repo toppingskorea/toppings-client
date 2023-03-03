@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { useMutation, type UseMutationOptions } from "@tanstack/react-query";
-import { register } from "./apis";
+import { register } from ".";
 
 export const useRegister = (
   options: Pick<

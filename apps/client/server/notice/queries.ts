@@ -1,6 +1,5 @@
 import { useSuspenseInfiniteQuery } from "@suspensive/react-query";
-import { getNotificationList } from "./apis";
-import Keys from "./keys";
+import { getNotificationList, Keys } from ".";
 
 // eslint-disable-next-line import/prefer-default-export
 export const useFetchNotificationList = () => {
