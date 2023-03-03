@@ -1,3 +1,3 @@
-export { default as verifyToken } from "./verifyToken";
-export { default as getCookieToken } from "./getCookieToken";
-export { default as isLoggedIn } from "./isLoggedIn";
+export * from "./getCookieToken";
+export * from "./isLoggedIn";
+export * from "./verifyToken";
