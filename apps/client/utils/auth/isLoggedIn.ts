@@ -1,4 +1,3 @@
-import getCookieToken from "./getCookieToken";
+import { getCookieToken } from "./getCookieToken";
 
-const isLoggedIn = () => Boolean(getCookieToken());
-export default isLoggedIn;
+export const isLoggedIn = () => Boolean(getCookieToken());

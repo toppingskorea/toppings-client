@@ -1,4 +1,4 @@
-export { default as queryChunk } from "./queryChunk";
-export { default as replaceSpace } from "./replaceSpace";
-export { default as ellipsisTextByLength } from "./ellipsisTextByLength";
-export { default as generateComponent } from "./generateComponent";
+export { ellipsisTextByLength } from "./ellipsisTextByLength";
+export { generateComponent } from "./generateComponent";
+export { queryChunk } from "./queryChunk";
+export { replaceSpace } from "./replaceSpace";
