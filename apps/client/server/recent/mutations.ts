@@ -8,7 +8,7 @@ import {
   getRestaurantByCountry,
   getRestaurantByEatingHabit,
   getRestaurantByName
-} from "./apis";
+} from ".";
 
 export const useDeleteAllRecentHistory = (
   options: Pick<

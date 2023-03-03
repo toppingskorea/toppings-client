@@ -7,9 +7,9 @@ import {
   getUserInfo,
   getUserPosts,
   getUserReviewedRestaurant,
-  getUserScraps
-} from "./apis";
-import Keys from "./keys";
+  getUserScraps,
+  Keys
+} from ".";
 
 export const useFetchUserInfo = () => {
   const cookie = useTokenCookie();

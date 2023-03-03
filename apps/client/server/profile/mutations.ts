@@ -1,6 +1,6 @@
 import type { UseMutationOptions } from "@tanstack/react-query";
 import { useMutation } from "@tanstack/react-query";
-import { logout, updateUserInfo } from "./apis";
+import { logout, updateUserInfo } from ".";
 
 export const useLogout = (
   options: Pick<
