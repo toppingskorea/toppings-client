@@ -1,3 +1,3 @@
-export { getCookieToken } from "./getCookieToken";
-export { isLoggedIn } from "./isLoggedIn";
-export { verifyToken } from "./verifyToken";
+export * from "./getCookieToken";
+export * from "./isLoggedIn";
+export * from "./verifyToken";

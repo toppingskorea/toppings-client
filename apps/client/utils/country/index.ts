@@ -1,1 +1,1 @@
-export { countryToSvg } from "./countryToSvg";
+export * from "./countryToSvg";

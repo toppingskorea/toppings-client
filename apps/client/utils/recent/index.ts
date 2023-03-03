@@ -1,1 +1,1 @@
-export { habitTitleChecker } from "./habitTitleChecker";
+export * from "./habitTitleChecker";
