@@ -1,9 +1,8 @@
 import type { ChangeEvent } from "react";
-import encodeFileToBase64 from "./encodeFileToBase64";
-import resizeBase64Img from "./resizeBase64Img";
+import { encodeFileToBase64, resizeBase64Img } from ".";
 
 // 이벤트 인자를 받아서 base64 encoded 된 string을 반환합니다.
-const imageUploader = async (
+export const imageUploader = async (
   e: ChangeEvent<HTMLInputElement>,
   compress = false
 ) => {
@@ -29,5 +28,3 @@ const imageUploader = async (
 
   return base64List as string[];
 };
-
-export default imageUploader;

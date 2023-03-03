@@ -1,10 +1,10 @@
 /* eslint-disable no-sequences */
 /* eslint-disable no-return-assign */
 import type { ObjectKeys } from "./objectKeys";
-import objectKeys from "./objectKeys";
+import { objectKeys } from "./objectKeys";
 import type { ElementType } from "./types";
 
-const omit = <
+export const omit = <
   ObjectType extends Record<PropertyKey, unknown>,
   KeyTypes extends Array<ObjectKeys<ObjectType>>
 >(
@@ -21,5 +21,3 @@ const omit = <
       {} as Omit<ObjectType, ElementType<KeyTypes>>
     );
 };
-
-export default omit;
