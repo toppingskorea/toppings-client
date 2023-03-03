@@ -45,6 +45,7 @@ const useWebSocket = (
   const isMounted = useMounted();
 
   useEffect(() => {
+    return;
     if (!isMounted) return;
 
     if (!requireAuth || (requireAuth && !!cookie.get())) {
