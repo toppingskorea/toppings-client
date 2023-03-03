@@ -10,5 +10,5 @@ export const queryChunk = (str: string, query: string) => {
     return str; // bail early
   }
   const l = q.length;
-  return [str.substr(0, x), str.substr(x, l), str.substr(x + l)];
+  return [str.substring(0, x), str.substring(x, l + 1), str.substring(x + l)];
 };
