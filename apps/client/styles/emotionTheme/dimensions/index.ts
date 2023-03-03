@@ -5,10 +5,8 @@
 
  <Dummy height={dimensions.bottomNavigationHeight}/>
 */
-const dimensions = {
+export const dimensions = {
   bottomNavigationHeight: 85,
   defaultWidth: 390,
   viewWidth: 590
 } as const;
-
-export default dimensions;

@@ -1,5 +1,5 @@
 import "@emotion/react";
-import type emotionTheme from "~/styles/emotionTheme";
+import type { emotionTheme } from "~/styles";
 
 declare module "@emotion/react" {
   type EmotionTheme = typeof emotionTheme;

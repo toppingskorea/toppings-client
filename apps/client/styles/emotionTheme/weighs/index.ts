@@ -5,7 +5,7 @@
 
  <Dummy height={weighs.light}/>
 */
-const weighs = {
+export const weighs = {
   light: 300,
   normal: 400,
   medium: 500,
@@ -14,5 +14,3 @@ const weighs = {
   extraBold: 800,
   heavy: 900
 } as const;
-
-export default weighs;

@@ -1,1 +1,1 @@
-export { default as hiddenScroll } from "./hiddenScroll";
+export * from "./hiddenScroll";
