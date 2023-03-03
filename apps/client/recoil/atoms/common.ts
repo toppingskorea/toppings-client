@@ -23,3 +23,16 @@ export const useCurrentLocationValue = () =>
   useRecoilValue(currentLocationAtom);
 export const useCurrentLocationReset = () =>
   useResetRecoilState(currentLocationAtom);
+
+const fixedCurrentLocationAtom = atom<Common.Coordinate>({
+  key: "fixedCurrentLocationAtom",
+  default: {
+    latitude: 0,
+    longitude: 0
+  }
+});
+
+export const useFixedCurrentLocationSetter = () =>
+  useSetRecoilState(fixedCurrentLocationAtom);
+export const useFixedCurrentLocationValue = () =>
+  useRecoilValue(fixedCurrentLocationAtom);

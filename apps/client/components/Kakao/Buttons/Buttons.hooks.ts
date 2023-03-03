@@ -1,6 +1,7 @@
 import {
   useCurrentLocationSetter,
-  useCurrentPositionLoadingSetter
+  useCurrentPositionLoadingSetter,
+  useFixedCurrentLocationSetter
 } from "@atoms/index";
 import { useCallback, useMemo } from "react";
 import { defaultLocation } from "~/constants";
@@ -8,14 +9,20 @@ import { defaultLocation } from "~/constants";
 const useCurrentLocation = () => {
   const setCurrentLocation = useCurrentLocationSetter();
   const setCurrentPositionLoading = useCurrentPositionLoadingSetter();
+  const setFixedCurrentLocationSetter = useFixedCurrentLocationSetter();
 
   const success: PositionCallback = useCallback(
     ({ coords: { latitude, longitude } }: GeolocationPosition) => {
       if (latitude && longitude) setCurrentPositionLoading(false);
 
       setCurrentLocation({ latitude, longitude });
+      setFixedCurrentLocationSetter({ latitude, longitude });
     },
-    [setCurrentLocation, setCurrentPositionLoading]
+    [
+      setCurrentLocation,
+      setCurrentPositionLoading,
+      setFixedCurrentLocationSetter
+    ]
   );
 
   const error: PositionErrorCallback = useCallback(() => {
