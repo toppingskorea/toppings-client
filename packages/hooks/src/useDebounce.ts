@@ -15,7 +15,7 @@ import { usePreservedCallback, usePreservedReference } from ".";
  * @ref
  * https://slash.page/libraries/react/react/src/hooks/useDebounce.ts.tossdocs/
  */
-const useDebounce = <F extends (...args: any[]) => any>(
+export const useDebounce = <F extends (...args: any[]) => any>(
   callback: F,
   wait: number,
   options: Parameters<typeof debounce>[2] = {}
@@ -35,5 +35,3 @@ const useDebounce = <F extends (...args: any[]) => any>(
 
   return debounced;
 };
-
-export default useDebounce;

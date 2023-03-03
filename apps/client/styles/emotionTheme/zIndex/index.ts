@@ -5,11 +5,9 @@
 
  <Dummy height={zIndex.one}/>
 */
-const zIndex = {
+export const zIndex = {
   zero: 0,
   one: 1,
   two: 2,
   four: 4
 } as const;
-
-export default zIndex;

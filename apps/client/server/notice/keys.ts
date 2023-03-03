@@ -1,5 +1,3 @@
-const Keys = {
-  notifications: () => ["notifications"]
-};
-
-export default Keys;
+export const Keys = {
+  notifications: () => ["notifications"] as const
+} as const;

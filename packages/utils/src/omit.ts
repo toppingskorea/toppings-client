@@ -1,7 +1,6 @@
 /* eslint-disable no-sequences */
 /* eslint-disable no-return-assign */
-import type { ObjectKeys } from "./objectKeys";
-import { objectKeys } from "./objectKeys";
+import { objectKeys, type ObjectKeys } from ".";
 import type { ElementType } from "./types";
 
 export const omit = <

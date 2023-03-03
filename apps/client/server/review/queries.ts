@@ -3,8 +3,7 @@ import {
   useSuspenseQuery
 } from "@suspensive/react-query";
 import { type UseQueryOptions } from "@tanstack/react-query";
-import { getReview, getReviews } from "./apis";
-import Keys from "./keys";
+import { getReview, getReviews, Keys } from ".";
 
 export const useFetchReviews = (id: number) =>
   useSuspenseInfiniteQuery(

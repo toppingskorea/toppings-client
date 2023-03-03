@@ -1,28 +1,25 @@
 import { useNavigationValue } from "@atoms/index";
-import { useNoticeActivateSetter } from "@atoms/noticeActivate";
 import { css } from "@emotion/react";
 import { flex, height100, Stack } from "@toss/emotion-utils";
 import { PageLoader, ScrollContainer } from "~/components/Common";
 import { TopNavigator } from "~/components/Layout";
 import BottomNavigator from "~/components/Layout/BottomNavigator";
-import { useWebSocket } from "~/hooks";
-import { useFetchUserInfo } from "~/server/profile";
 
 const AppLayout = ({ children }: Util.PropsWithChild) => {
   const state = useNavigationValue();
 
-  const setNoticeActivate = useNoticeActivateSetter();
-  const { data: profile } = useFetchUserInfo();
+  // const setNoticeActivate = useNoticeActivateSetter();
+  // const { data: profile } = useFetchUserInfo();
 
-  useWebSocket(
-    {
-      destination: `/sub/${profile?.id}`,
-      callback: () => {
-        setNoticeActivate(true);
-      }
-    },
-    true
-  );
+  // useWebSocket(
+  //   {
+  //     destination: `/sub/${profile?.id}`,
+  //     callback: () => {
+  //       setNoticeActivate(true);
+  //     }
+  //   },
+  //   true
+  // );
 
   return (
     <Stack.Vertical

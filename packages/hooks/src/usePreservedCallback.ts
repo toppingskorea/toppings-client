@@ -26,7 +26,7 @@ import { useCallback, useEffect, useRef } from "react";
  * @ref
  * https://slash.page/libraries/react/react/src/hooks/usepreservedcallback.ts.tossdocs/
  */
-const usePreservedCallback = <Callback extends (...args: any[]) => any>(
+export const usePreservedCallback = <Callback extends (...args: any[]) => any>(
   callback: Callback
 ) => {
   const callbackRef = useRef<Callback>(callback);
@@ -42,5 +42,3 @@ const usePreservedCallback = <Callback extends (...args: any[]) => any>(
     [callbackRef]
   ) as Callback;
 };
-
-export default usePreservedCallback;

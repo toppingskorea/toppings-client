@@ -1,6 +1,5 @@
 import { useSuspenseQuery } from "@suspensive/react-query";
-import { getLikePercent, getRestaurant } from "./apis";
-import Keys from "./keys";
+import { getLikePercent, getRestaurant, Keys } from ".";
 
 export const useFetchRestaurant = (id: number) => {
   return useSuspenseQuery(Keys.restaurant(id), () => getRestaurant(id));

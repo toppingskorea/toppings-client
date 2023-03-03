@@ -7,7 +7,7 @@ import { css } from "@emotion/react";
  * const hiddenScroll: SerializedStyles;
  * ```
  */
-const hiddenScroll = css`
+export const hiddenScroll = css`
   ::-webkit-scrollbar {
     display: none;
     width: 0;
@@ -15,5 +15,3 @@ const hiddenScroll = css`
   }
   scrollbar-width: none;
 `;
-
-export default hiddenScroll;

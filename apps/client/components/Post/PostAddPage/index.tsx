@@ -4,7 +4,7 @@ import { padding, size, Spacing, Stack, touchable } from "@toss/emotion-utils";
 import { ComponentWithLabel, Gallery, Input } from "~/components/Common";
 import { OpenGraph } from "~/components/Util";
 import { useInternalRouter } from "~/hooks";
-import { hiddenScroll } from "~/styles/emotionUtils";
+import { hiddenScroll } from "~/styles";
 import { Edit, Register } from "./CTAButton";
 import HorizontalCategories from "./HorizontalCategories";
 import {

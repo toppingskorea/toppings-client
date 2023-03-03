@@ -2,7 +2,7 @@ import { css, useTheme } from "@emotion/react";
 import { padding, position } from "@toss/emotion-utils";
 import { useRouter } from "next/router";
 import { RoundedTag } from "~/components/Common";
-import { hiddenScroll } from "~/styles/emotionUtils";
+import { hiddenScroll } from "~/styles";
 import tagList from "./TagFamily.constants";
 
 interface Props {

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { useEffect, useState } from "react";
 import { checkDeeplyEqual } from "@toppings/utils";
+import { useEffect, useState } from "react";
 
 type NotNullishValue = {};
 
@@ -32,7 +32,7 @@ type NotNullishValue = {};
  * https://slash.page/libraries/react/react/src/hooks/usepreservedreference.ts.tossdocs/
  */
 
-const usePreservedReference = <T extends NotNullishValue>(
+export const usePreservedReference = <T extends NotNullishValue>(
   value: T,
   checkValuesEqual: (a: T, b: T) => boolean = checkDeeplyEqual
 ) => {
@@ -46,5 +46,3 @@ const usePreservedReference = <T extends NotNullishValue>(
 
   return reference;
 };
-
-export default usePreservedReference;

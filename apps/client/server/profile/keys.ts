@@ -1,8 +1,6 @@
-const Keys = {
-  user: () => ["user"],
-  posts: () => ["posts"],
-  scraps: () => ["scraps"],
-  reviews: () => ["reviews"]
-};
-
-export default Keys;
+export const Keys = {
+  user: () => ["user"] as const,
+  posts: () => ["posts"] as const,
+  scraps: () => ["scraps"] as const,
+  reviews: () => ["reviews"] as const
+} as const;

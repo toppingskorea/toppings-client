@@ -1,9 +1,8 @@
-import type { UseQueryOptions } from "@tanstack/react-query";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, type UseQueryOptions } from "@tanstack/react-query";
 import { useOverlay } from "@toss/use-overlay";
 import type { AxiosError } from "axios";
 import DuplicatedOverlay from "~/components/Post/PostAddPage/DuplicatedOverlay";
-import { deletePost, updatePost, uploadPost } from "./apis";
+import { deletePost, updatePost, uploadPost } from ".";
 
 export const useDeletePost = (
   onSuccess: Pick<UseQueryOptions, "onSuccess">["onSuccess"]
