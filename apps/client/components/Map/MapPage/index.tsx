@@ -1,10 +1,14 @@
+import {
+  useCurrentLocationValue,
+  useFixedCurrentLocationValue
+} from "@atoms/common";
 import { css } from "@emotion/react";
 import { List, Pin } from "@svgs/map";
 import { hexToRgba } from "@toppings/utils";
 import { Flex, padding, position, size } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
-import { rocket } from "~/assets/json";
+import { myLocation, rocket } from "~/assets/json";
 import { Text } from "~/components/Common/Typo";
 import { MapMarker } from "~/components/Kakao";
 import KakaoMap from "~/components/Kakao/KakaoMap";
@@ -13,6 +17,8 @@ import useMap from "./MapPage.hooks";
 
 const MapPage = () => {
   const app = useMap();
+  const currentLocation = useCurrentLocationValue();
+  const fixedCurrentLocation = useFixedCurrentLocationValue();
 
   return (
     <>
@@ -126,6 +132,27 @@ const MapPage = () => {
               `}
             />
           </Flex.Center>
+        )}
+
+        {fixedCurrentLocation.latitude && fixedCurrentLocation.longitude && (
+          <MapMarker
+            position={{
+              latitude: fixedCurrentLocation.latitude,
+              longitude: fixedCurrentLocation.longitude
+            }}
+          >
+            <Lottie
+              loop
+              autoPlay
+              animationData={myLocation}
+              css={css`
+                ${size({
+                  width: 30,
+                  height: 30
+                })}
+              `}
+            />
+          </MapMarker>
         )}
       </KakaoMap>
     </>

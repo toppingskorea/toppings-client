@@ -10,7 +10,7 @@ import {
   size,
   touchable
 } from "@toss/emotion-utils";
-import { useId } from "react";
+import { memo, useId } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { hiddenScroll } from "~/styles/emotionUtils";
 import { Text } from "../Typo";
@@ -98,4 +98,4 @@ const Gallery = ({ images, setImages, totalNumber = 5 }: Props) => {
   );
 };
 
-export default Gallery;
+export default memo(Gallery);

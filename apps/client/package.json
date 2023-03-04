@@ -43,7 +43,8 @@
     "react-hook-form": "^7.38.0",
     "recoil": "^0.7.6",
     "sockjs-client": "^1.6.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "zustand": "^4.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

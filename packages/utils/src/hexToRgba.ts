@@ -5,7 +5,7 @@ const isRGBDecimalValue = (rgbDecimal: number) =>
 
 const isAlphaValue = (alpha: number) => alpha >= 0 && alpha <= 1;
 
-const hexToRgba = (hex: string, alpha = 1) => {
+export const hexToRgba = (hex: string, alpha = 1) => {
   if (!isAlphaValue(alpha)) {
     throw new Error(`잘못된 알파값 입니다(0~1): ${alpha}`);
   }
@@ -23,4 +23,3 @@ const hexToRgba = (hex: string, alpha = 1) => {
 
   return `rgba(${r},${g},${b},${alpha})`;
 };
-export default hexToRgba;

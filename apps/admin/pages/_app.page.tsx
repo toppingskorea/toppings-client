@@ -9,7 +9,6 @@ import {
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { OverlayProvider } from "@toss/use-overlay";
 import type { AppProps } from "next/app";
-import { RecoilRoot } from "recoil";
 import AppLayout from "~/layouts/AppLayout";
 import { emotionTheme, GlobalCSS } from "~/styles";
 
@@ -29,18 +28,16 @@ function MyApp({
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <RecoilRoot>
-          <ChakraProvider>
-            <ThemeProvider theme={emotionTheme}>
-              <GlobalCSS />
-              <OverlayProvider>
-                <AppLayout>
-                  <Component {...pageProps} />
-                </AppLayout>
-              </OverlayProvider>
-            </ThemeProvider>
-          </ChakraProvider>
-        </RecoilRoot>
+        <ChakraProvider>
+          <ThemeProvider theme={emotionTheme}>
+            <GlobalCSS />
+            <OverlayProvider>
+              <AppLayout>
+                <Component {...pageProps} />
+              </AppLayout>
+            </OverlayProvider>
+          </ThemeProvider>
+        </ChakraProvider>
       </Hydrate>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

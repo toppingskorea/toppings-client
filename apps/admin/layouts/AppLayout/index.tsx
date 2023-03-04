@@ -1,4 +1,3 @@
-import { useHeaderValue } from "@atoms/header";
 import {
   Box,
   Button,
@@ -14,9 +13,10 @@ import { padding } from "@toss/emotion-utils";
 import type { PropsWithChildren } from "react";
 import { Sidebar } from "~/components/Common";
 import { useInternalRouter } from "~/hooks";
+import { useHeaderStore } from "~/stores/common";
 
 const AppLayout = ({ children }: PropsWithChildren) => {
-  const header = useHeaderValue();
+  const header = useHeaderStore(state => state.content);
   const { replace } = useInternalRouter();
 
   return (

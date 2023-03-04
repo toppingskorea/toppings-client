@@ -1,7 +1,7 @@
 import type { ObjectKeys } from "./objectKeys";
 import type { ElementType } from "./types";
 
-const pick = <
+export const pick = <
   ObjectType extends Record<PropertyKey, unknown>,
   KeyTypes extends Array<ObjectKeys<ObjectType>>
 >(
@@ -15,5 +15,3 @@ const pick = <
   }
   return picked;
 };
-
-export default pick;

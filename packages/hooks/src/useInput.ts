@@ -37,7 +37,7 @@ interface Props {
  *   debounceTimeout: 300
  * });
  */
-const useInput = ({
+export const useInput = ({
   initialValue = "",
   useDebounce = false,
   debounceTimeout = 150
@@ -89,5 +89,3 @@ const useInput = ({
     debouncedValue
   };
 };
-
-export default useInput;

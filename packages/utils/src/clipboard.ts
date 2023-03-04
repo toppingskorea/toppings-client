@@ -1,4 +1,4 @@
-const clipboard = async (text: string): Promise<boolean> => {
+export const clipboard = async (text: string): Promise<boolean> => {
   if (!clipboardSupported()) return false;
 
   try {
@@ -54,5 +54,3 @@ const copy = (text: string) => {
   document.execCommand("copy");
   focusingContainer.removeChild(textArea);
 };
-
-export default clipboard;

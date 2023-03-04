@@ -1,4 +1,4 @@
-const encodeFileToBase64 = (image: File) =>
+export const encodeFileToBase64 = (image: File) =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(image);
@@ -6,4 +6,3 @@ const encodeFileToBase64 = (image: File) =>
       resolve(event?.target?.result);
     reader.onerror = error => reject(error);
   });
-export default encodeFileToBase64;

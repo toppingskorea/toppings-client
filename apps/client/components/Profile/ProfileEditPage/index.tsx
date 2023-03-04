@@ -1,4 +1,4 @@
-import { css, useTheme } from "@emotion/react";
+import { css } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
 import { Skeleton } from "@toppings/components";
 import {
@@ -9,28 +9,14 @@ import {
   Stack,
   width100
 } from "@toss/emotion-utils";
-import { Text } from "~/components/Common/Typo";
 import { OpenGraph } from "~/components/Util";
-import { useSetNavigation } from "~/hooks";
 import { generateComponent } from "~/utils";
+import { useSetNavigation } from "./ProfileEditPage.hooks";
 import RegisterButton from "./RegisterButton";
 import UserInfo from "./UserInfo";
 
 const ProfileEditPage = () => {
-  const { colors, weighs } = useTheme();
-
-  useSetNavigation({
-    top: {
-      title: (
-        <Text _fontSize={19} _color={colors.secondary[47]} weight={weighs.bold}>
-          Edit Profile
-        </Text>
-      ),
-      marginBottom: 24,
-      backButtonCaution: true
-    },
-    bottom: true
-  });
+  useSetNavigation();
 
   return (
     <section

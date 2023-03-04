@@ -5,7 +5,7 @@
 
  <Dummy _color={colors.black}/>
 */
-const colors = {
+export const colors = {
   white: "#FFFFFF",
   black: "#000000",
   grayE8: "#E8E8E8",
@@ -48,5 +48,3 @@ const colors = {
   },
   kakaoYellow: "#FEE102"
 } as const;
-
-export default colors;

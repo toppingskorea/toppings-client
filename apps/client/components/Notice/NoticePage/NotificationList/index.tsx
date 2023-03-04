@@ -11,6 +11,7 @@ const NotificationList = () => {
   const {
     data: notificationList,
     fetchNextPage: fetchNotificationListNextPage
+    // refetch
   } = useFetchNotificationList();
 
   // const { data: profile } = useFetchUserInfo();

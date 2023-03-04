@@ -1,7 +1,8 @@
 import { css } from "@emotion/react";
 import { padding, touchable } from "@toss/emotion-utils";
 import type { ComponentProps } from "react";
-import weighs from "~/styles/emotionTheme/weighs";
+import { weighs } from "~/styles";
+
 import { Text } from "../Typo";
 
 export type CommonProps = Omit<ComponentProps<typeof Text>, "_fontSize"> & {

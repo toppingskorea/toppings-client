@@ -1,7 +1,7 @@
 import { css, Global } from "@emotion/react";
 import { height100, position } from "@toss/emotion-utils";
 
-const GlobalCSS = () => {
+export const GlobalCSS = () => {
   return (
     <Global
       styles={css`
@@ -85,5 +85,3 @@ const GlobalCSS = () => {
     />
   );
 };
-
-export default GlobalCSS;

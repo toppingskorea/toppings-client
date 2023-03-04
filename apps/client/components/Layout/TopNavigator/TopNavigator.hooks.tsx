@@ -11,7 +11,16 @@ export const useClickBackButton = () => {
   const onClickBackButton = () => {
     if (state.top?.backButtonCaution) {
       overlay.open(({ exit }) => (
-        <AlertModal exitFn={exit} rightClick={{ fn: back, text: "sure" }} />
+        <AlertModal
+          exitFn={exit}
+          rightClick={{
+            fn: () => {
+              state.top?.backButtonClickHandler?.();
+              back();
+            },
+            text: "sure"
+          }}
+        />
       ));
 
       return;
@@ -21,6 +30,8 @@ export const useClickBackButton = () => {
       push(state.top.backDirectlyURL);
       return;
     }
+
+    state.top?.backButtonClickHandler?.();
 
     back();
   };

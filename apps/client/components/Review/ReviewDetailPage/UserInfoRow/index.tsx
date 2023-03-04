@@ -29,6 +29,7 @@ const UserInfoRow = () => {
             width={32}
             height={32}
             css={css`
+              object-fit: cover;
               border-radius: 50%;
             `}
           />
