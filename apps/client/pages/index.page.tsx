@@ -1,3 +1,3 @@
-import { OnboardingPage } from "~/components/Onboarding";
+import { MapPage } from "~/components/Map";
 
-export default OnboardingPage;
+export default MapPage;
