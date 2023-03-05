@@ -38,7 +38,7 @@ const BottomNavigator = () => {
             <button
               type="button"
               onClick={() => {
-                if (href === "/map") onClickNavigationHandler(href);
+                if (href === "/") onClickNavigationHandler(href);
                 else
                   onClickProtectedButtonHandler(() =>
                     onClickNavigationHandler(href)

@@ -1,7 +1,8 @@
 declare module Route {
   type Path =
     | "/"
-    | "/map"
+    | "/onboarding"
+    | "/map/viewList"
     | "/login"
     | "/login/redirect"
     | "/search/restaurant"

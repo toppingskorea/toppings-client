@@ -33,7 +33,7 @@ const Edit = () => {
       overlay.close();
       restaurantReset();
       postUploadReset();
-      router.replace("/map");
+      router.replace("/");
     }, 3000);
   }, [overlay, postUploadReset, restaurantReset, router]);
 

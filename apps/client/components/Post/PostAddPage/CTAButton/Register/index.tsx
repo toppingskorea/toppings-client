@@ -30,7 +30,7 @@ const Register = () => {
       overlay.open(() => <SuccessModal />);
       setTimeout(() => {
         overlay.close();
-        router.replace("/map");
+        router.replace("/");
       }, 3000);
     });
 

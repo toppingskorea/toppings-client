@@ -29,7 +29,7 @@ const FilterNationalityPage = () => {
   useSetNavigation({
     top: {
       marginBottom: 37,
-      backDirectlyURL: isLoggedIn() ? "/recent" : "/map",
+      backDirectlyURL: isLoggedIn() ? "/recent" : "/",
       title: (
         <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
           Select a Nationality
@@ -66,7 +66,7 @@ const FilterNationalityPage = () => {
               category: "Country"
             });
 
-          push("/map");
+          push("/");
         }}
       />
       <Spacing size={150} />

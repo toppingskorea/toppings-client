@@ -25,7 +25,7 @@ const PostList = () => {
             {...framerMocker}
             variants={defaultSlideFadeInVariants("bottom")}
             title="move link"
-            onClick={() => push("/map")}
+            onClick={() => push("/")}
             css={css`
               ${padding({
                 x: 28,

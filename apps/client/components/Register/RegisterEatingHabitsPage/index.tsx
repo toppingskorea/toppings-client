@@ -24,7 +24,7 @@ const EatingHabitsPage = () => {
     onSuccess: () => {
       openSuccessModal();
       setTimeout(() => {
-        push("/map");
+        push("/");
       }, 3000);
     }
   });
