@@ -1,8 +1,4 @@
-import {
-  usePostUploadReset,
-  usePostUploadValue,
-  useRestaurantReset
-} from "@atoms/index";
+import { usePostUploadReset, usePostUploadValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { useOverlay } from "@toss/use-overlay";
 import { useCallback } from "react";
@@ -19,13 +15,15 @@ const Register = () => {
   const overlay = useOverlay();
   const router = useInternalRouter();
   const restaurant = usePostSearchRestaurantStore();
-  const restaurantReset = useRestaurantReset();
+  const resetPostSearchRestaurant = usePostSearchRestaurantStore(
+    state => state.dispatchInitialize
+  );
   const postUploadReset = usePostUploadReset();
   const postUpload = usePostUploadValue();
 
   const { mutate: uploadPostMutate, isLoading: uploadPostIsLoading } =
     useUploadPost(() => {
-      restaurantReset();
+      resetPostSearchRestaurant();
       postUploadReset();
       overlay.open(() => <SuccessModal />);
       setTimeout(() => {
