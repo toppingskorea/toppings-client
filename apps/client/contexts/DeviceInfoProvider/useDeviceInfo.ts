@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { DeviceInfoContext, type DeviceInfoContextType } from ".";
 
-const useDeviceInfo = (): DeviceInfoContextType => {
+export const useDeviceInfo = (): DeviceInfoContextType => {
   const { userAgent, isMobile, isIos, isAndroid } =
     useContext(DeviceInfoContext);
 
@@ -12,5 +12,3 @@ const useDeviceInfo = (): DeviceInfoContextType => {
     isAndroid
   };
 };
-
-export default useDeviceInfo;
