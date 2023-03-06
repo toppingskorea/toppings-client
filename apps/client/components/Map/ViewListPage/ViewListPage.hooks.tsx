@@ -8,8 +8,7 @@ import { del, get, set } from "idb-keyval";
 import { useRouter } from "next/router";
 import { useCallback, useEffect } from "react";
 import { indexedDBKeys } from "~/constants";
-import { useSetNavigation } from "~/hooks";
-import { useResetRecentRecoilState } from "~/hooks/map";
+import { useResetRecentRecoilState, useSetNavigation } from "~/hooks";
 import { useUploadRecentHistory } from "~/server/recent";
 
 const useViewList = () => {
