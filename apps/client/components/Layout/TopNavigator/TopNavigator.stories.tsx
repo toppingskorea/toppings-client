@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useNavigationSetter } from "@atoms/index";
 import type { ComponentMeta, Story } from "@storybook/react";
 import { Edit } from "@svgs/common";

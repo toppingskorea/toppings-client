@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { ComponentMeta, Story } from "@storybook/react";
 import type { ComponentProps } from "react";
 import AlertModal from ".";

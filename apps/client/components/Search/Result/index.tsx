@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useRestaurantSetter } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { neverChecker } from "@toppings/utils";

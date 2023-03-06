@@ -20,7 +20,7 @@ const ProfileEditNationalityPage = () => {
   const { colors, weighs, dimensions } = useTheme();
   const [edit, setEdit] = useEditState();
 
-  const { focusController, isFocused } = useBlurController();
+  const { isFocused } = useBlurController();
 
   const isIosFocused = isIos && isFocused;
 
