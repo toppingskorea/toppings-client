@@ -5,7 +5,7 @@ import { PageLoader, ScrollContainer } from "~/components/Common";
 import { TopNavigator } from "~/components/Layout";
 import BottomNavigator from "~/components/Layout/BottomNavigator";
 
-const AppLayout = ({ children }: Util.PropsWithChild) => {
+export const AppLayout = ({ children }: Util.PropsWithChild) => {
   const state = useNavigationValue();
 
   // const setNoticeActivate = useNoticeActivateSetter();
@@ -47,4 +47,3 @@ const AppLayout = ({ children }: Util.PropsWithChild) => {
     </Stack.Vertical>
   );
 };
-export default AppLayout;
