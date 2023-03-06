@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-const useDetectKeyboardOpen = (minKeyboardHeight = 300) => {
+// ? 현재 사용되고 있지 않습니다.
+export const useDetectKeyboardOpen = (minKeyboardHeight = 300) => {
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
 
   useEffect(() => {
@@ -25,5 +26,3 @@ const useDetectKeyboardOpen = (minKeyboardHeight = 300) => {
 
   return isKeyboardOpen;
 };
-
-export default useDetectKeyboardOpen;

@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import * as Sentry from "@sentry/nextjs";
+import { useEffect } from "react";
 
-const useSentry = ({
+export const useSentry = ({
   dsn,
   allowUrls
 }: {
@@ -16,5 +16,3 @@ const useSentry = ({
     });
   }, [allowUrls, dsn]);
 };
-
-export default useSentry;
