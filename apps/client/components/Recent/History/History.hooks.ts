@@ -45,12 +45,12 @@ const useHistory = () => {
         setCurrentSelectKeyword(keyword);
         setCurrentHabitTitle(habitTitleChecker(keyword));
         setCurrentSelectCategory(category);
-        push("/map");
+        push("/");
         break;
       default:
         setCurrentSelectKeyword(keyword);
         setCurrentSelectCategory(category);
-        push("/map");
+        push("/");
     }
   };
 

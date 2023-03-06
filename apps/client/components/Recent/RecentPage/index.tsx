@@ -23,7 +23,7 @@ const RecentPage = () => {
       marginBottom: 38,
       right: {
         element: <Exit />,
-        onClick: () => push("/map")
+        onClick: () => push("/")
       },
       hideBackButton: true
     }

@@ -24,7 +24,7 @@ const useFilterRestaurant = () => {
   useSetNavigation({
     top: {
       marginBottom: 37,
-      backDirectlyURL: isLoggedIn() ? "/recent" : "/map",
+      backDirectlyURL: isLoggedIn() ? "/recent" : "/",
       title: (
         <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
           {restaurantList?.length ?? "0"} Restaurants
@@ -84,7 +84,7 @@ const useFilterRestaurant = () => {
     setCurrentSelectKeyword(item.name);
     setCurrentSelectCategory("Name");
 
-    push("/map");
+    push("/");
   };
 
   return {

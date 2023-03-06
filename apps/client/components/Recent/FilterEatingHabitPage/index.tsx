@@ -19,7 +19,7 @@ const FilterEatingHabitPage = () => {
   useSetNavigation({
     top: {
       marginBottom: 37,
-      backDirectlyURL: isLoggedIn() ? "/recent" : "/map",
+      backDirectlyURL: isLoggedIn() ? "/recent" : "/",
       title: (
         <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[47]}>
           Select a Eating Habit
@@ -56,7 +56,7 @@ const FilterEatingHabitPage = () => {
               category: "Habit"
             });
 
-          push("/map");
+          push("/");
         }}
       />
     </>

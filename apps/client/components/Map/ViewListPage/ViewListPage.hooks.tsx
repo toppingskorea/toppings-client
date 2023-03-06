@@ -51,7 +51,7 @@ const useViewList = () => {
     del("currentSelectCategory");
     executeResetAll();
 
-    replace("/map");
+    replace("/");
   };
 
   useEffect(() => {

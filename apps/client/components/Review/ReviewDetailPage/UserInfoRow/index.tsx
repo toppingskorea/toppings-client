@@ -42,9 +42,11 @@ const UserInfoRow = () => {
           <Text _fontSize={14} weight={weighs.semiBold} lineHeight={17}>
             {reviewDetail.name}
           </Text>
-          <Text _fontSize={12} lineHeight={14} _color={colors.secondary[69]}>
-            {reviewDetail.habits[0]}
-          </Text>
+          {reviewDetail.habits.length > 0 && (
+            <Text _fontSize={12} lineHeight={14} _color={colors.secondary[69]}>
+              {reviewDetail.habits[0]}
+            </Text>
+          )}
         </Flex>
       </Flex>
 

@@ -4,7 +4,7 @@ const navList = [
   {
     icon: <Marker />,
     activatedIcon: null,
-    href: "/map"
+    href: "/"
   },
   {
     icon: <Plus />,

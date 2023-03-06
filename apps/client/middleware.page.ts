@@ -40,11 +40,11 @@ const middleware: NextMiddleware = async request => {
   // 로그인 안한사람 방지
   if (PROTECTED_ROUTE.includes(request.nextUrl.pathname))
     if (!toppingsToken || !verifyToken(toppingsToken))
-      return NextResponse.redirect(new URL("/", request.url));
+      return NextResponse.redirect(new URL("/onboarding", request.url));
   // 로그인 한 사람 접근 불가
   if (LOGIN_PROTECTED_ROUTE.includes(request.nextUrl.pathname))
     if (toppingsToken && verifyToken(toppingsToken))
-      return NextResponse.redirect(new URL("/map", request.url));
+      return NextResponse.redirect(new URL("/", request.url));
 
   // 로그인 리다이렉트
   if (request.nextUrl.pathname.startsWith("/login/redirect")) {
@@ -56,7 +56,7 @@ const middleware: NextMiddleware = async request => {
       "kakao_login_redirect_uri"
     )?.value;
 
-    const existingUserRedirectUri = justLoginRedirectUri ?? "/map";
+    const existingUserRedirectUri = justLoginRedirectUri ?? "/";
 
     const response = NextResponse.redirect(
       new URL(
