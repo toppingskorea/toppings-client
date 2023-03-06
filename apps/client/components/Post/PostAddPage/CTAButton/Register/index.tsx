@@ -1,8 +1,7 @@
 import {
   usePostUploadReset,
   usePostUploadValue,
-  useRestaurantReset,
-  useRestaurantValue
+  useRestaurantReset
 } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { useOverlay } from "@toss/use-overlay";
@@ -12,13 +11,14 @@ import { Text } from "~/components/Common/Typo";
 import { types } from "~/constants/data/common";
 import { useInternalRouter } from "~/hooks";
 import { useUploadPost } from "~/server/post";
+import { usePostSearchRestaurantStore } from "~/stores/post";
 import useSubmitVerification from "../CTAButton.hooks";
 
 const Register = () => {
   const { colors } = useTheme();
   const overlay = useOverlay();
   const router = useInternalRouter();
-  const restaurant = useRestaurantValue();
+  const restaurant = usePostSearchRestaurantStore();
   const restaurantReset = useRestaurantReset();
   const postUploadReset = usePostUploadReset();
   const postUpload = usePostUploadValue();

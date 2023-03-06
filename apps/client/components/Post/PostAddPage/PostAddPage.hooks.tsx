@@ -10,6 +10,7 @@ import {
   useInternalRouter,
   useSetNavigation as useSetNavigationHook
 } from "~/hooks";
+import { usePostSearchRestaurantStore } from "~/stores/post";
 
 export const useCheckModifyMode = () => {
   const postUpload = usePostUploadValue();
@@ -94,5 +95,19 @@ export const useCategory = () => {
   return {
     value: postUpload.type,
     onClick: onClickHandler
+  };
+};
+
+export const useGetFoundRestaurantField = () => {
+  const { placeName, roadAddressName } = usePostSearchRestaurantStore(
+    state => ({
+      placeName: state.place_name,
+      roadAddressName: state.road_address_name
+    })
+  );
+
+  return {
+    placeName,
+    roadAddressName
   };
 };

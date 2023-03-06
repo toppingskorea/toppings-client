@@ -3,8 +3,7 @@
 import {
   usePostUploadReset,
   usePostUploadValue,
-  useRestaurantReset,
-  useRestaurantValue
+  useRestaurantReset
 } from "@atoms/index";
 import { useTheme } from "@emotion/react";
 import { Stack } from "@toss/emotion-utils";
@@ -15,13 +14,14 @@ import { Text } from "~/components/Common/Typo";
 import { types } from "~/constants/data/common";
 import { useInternalRouter } from "~/hooks";
 import { useDeletePost, useUpdatePost } from "~/server/post";
+import { usePostSearchRestaurantStore } from "~/stores/post";
 import useSubmitVerification from "../CTAButton.hooks";
 
 const Edit = () => {
   const { colors } = useTheme();
   const overlay = useOverlay();
   const router = useInternalRouter();
-  const restaurant = useRestaurantValue();
+  const restaurant = usePostSearchRestaurantStore();
   const restaurantReset = useRestaurantReset();
   const postUploadReset = usePostUploadReset();
   const postUpload = usePostUploadValue();

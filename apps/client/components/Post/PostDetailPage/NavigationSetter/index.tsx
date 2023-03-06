@@ -8,8 +8,9 @@ import { useCallback } from "react";
 import { CircleCountry } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { useSetNavigation } from "~/hooks";
-import { usePostUploadSetter, useRestaurantSetter } from "~/recoil/atoms";
+import { usePostUploadSetter } from "~/recoil/atoms";
 import { useFetchRestaurant } from "~/server/restaurant";
+import { usePostSearchRestaurantStore } from "~/stores/post";
 
 const NavigationSetter = () => {
   const { colors, weighs } = useTheme();
@@ -17,11 +18,13 @@ const NavigationSetter = () => {
 
   const { data: restaurantDetail } = useFetchRestaurant(Number(query.id));
 
-  const setRestaurant = useRestaurantSetter();
+  const dispatchAllPostSearchRestaurantState = usePostSearchRestaurantStore(
+    state => state.dispatchAll
+  );
   const setPostUpload = usePostUploadSetter();
 
   const goEditPostHandler = useCallback(() => {
-    setRestaurant({
+    dispatchAllPostSearchRestaurantState({
       address_name: restaurantDetail.address,
       id: String(query.id),
       category_group_name: "",
@@ -40,6 +43,7 @@ const NavigationSetter = () => {
 
     push("/post/add");
   }, [
+    dispatchAllPostSearchRestaurantState,
     push,
     query.id,
     restaurantDetail.address,
@@ -50,8 +54,7 @@ const NavigationSetter = () => {
     restaurantDetail.longitude,
     restaurantDetail.name,
     restaurantDetail.type,
-    setPostUpload,
-    setRestaurant
+    setPostUpload
   ]);
 
   useSetNavigation({

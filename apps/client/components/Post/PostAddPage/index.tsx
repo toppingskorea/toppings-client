@@ -1,4 +1,3 @@
-import { useRestaurantValue } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { padding, size, Spacing, Stack, touchable } from "@toss/emotion-utils";
 import { ComponentWithLabel, Gallery, Input } from "~/components/Common";
@@ -11,6 +10,7 @@ import {
   useCategory,
   useCheckModifyMode,
   useGalleryImages,
+  useGetFoundRestaurantField,
   useInputDescription,
   useSetNavigation
 } from "./PostAddPage.hooks";
@@ -19,11 +19,11 @@ const PostAddPage = () => {
   useSetNavigation();
   const { colors } = useTheme();
   const { push } = useInternalRouter();
-  const restaurant = useRestaurantValue();
   const { isModifyMode } = useCheckModifyMode();
   const galleryProps = useGalleryImages();
   const descriptionProps = useInputDescription();
   const categoryProps = useCategory();
+  const { placeName, roadAddressName } = useGetFoundRestaurantField();
 
   return (
     <Stack.Vertical gutter={22}>
@@ -44,7 +44,7 @@ const PostAddPage = () => {
             placeholder="Please click to find your restaurant"
             height={39}
             onClick={() => push("/search/restaurant")}
-            value={restaurant?.place_name}
+            value={placeName}
             padding={padding({
               x: 11
             })}
@@ -63,7 +63,7 @@ const PostAddPage = () => {
         <ComponentWithLabel label="Location" gutter={6}>
           <Input
             height={40}
-            value={restaurant?.road_address_name}
+            value={roadAddressName}
             readOnly
             padding={padding({
               x: 11
