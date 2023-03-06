@@ -12,7 +12,7 @@ const sendPageView = (pathname: string) => {
   GA.send({ hitType: "pageview", page: pathname });
 };
 
-const AnalyticsProvider = ({ children }: Util.PropsWithChild) => {
+export const AnalyticsProvider = ({ children }: Util.PropsWithChild) => {
   const router = useRouter();
 
   useEffect(
@@ -28,5 +28,3 @@ const AnalyticsProvider = ({ children }: Util.PropsWithChild) => {
 
   return <Context.Provider value={providerValue}>{children}</Context.Provider>;
 };
-
-export default AnalyticsProvider;
