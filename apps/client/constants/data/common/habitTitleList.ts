@@ -1,3 +1,1 @@
-const habitTitleList = ["Diet", "Religion"] as const;
-
-export default habitTitleList;
+export const habitTitleList = ["Diet", "Religion"] as const;

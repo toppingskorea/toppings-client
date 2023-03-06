@@ -2,8 +2,7 @@ import { css, useTheme } from "@emotion/react";
 import { Flex, flex, gutter, padding, Spacing } from "@toss/emotion-utils";
 import { PrimaryTag } from "~/components/Common";
 import { OrangeTypo, Text } from "~/components/Common/Typo";
-import { diets, religions } from "~/constants/data/common";
-import habitTitleList from "~/constants/data/common/habitTitleList";
+import { diets, habitTitleList, religions } from "~/constants/data/common";
 
 interface Props {
   onClick: (title: Common.EatingHabit, content: string) => void;
