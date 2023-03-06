@@ -1,4 +1,4 @@
-const diets = [
+export const diets = [
   "Vegan",
   "Vegetarian",
   "Low carb",
@@ -6,5 +6,3 @@ const diets = [
   "Muslim friendly",
   "Halal"
 ] as const;
-
-export default diets;
