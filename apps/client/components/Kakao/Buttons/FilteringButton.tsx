@@ -18,7 +18,7 @@ import {
   framerMocker,
   indexedDBKeys
 } from "~/constants";
-import { useResetRecentRecoilState } from "~/hooks/map";
+import { useResetRecentRecoilState } from "~/hooks";
 import { useClickFilteringButton } from "./FilteringButton.hooks";
 
 const FilteringButton = () => {

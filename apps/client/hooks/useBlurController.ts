@@ -1,6 +1,6 @@
 import { useBooleanState } from "~/hooks";
 
-const useBlurController = () => {
+export const useBlurController = () => {
   const [isFocused, setTrue, setFalse] = useBooleanState();
 
   const controller = {
@@ -13,5 +13,3 @@ const useBlurController = () => {
     focusController: controller
   };
 };
-
-export default useBlurController;

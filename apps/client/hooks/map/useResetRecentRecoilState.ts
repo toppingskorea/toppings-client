@@ -5,7 +5,7 @@ import {
   useSearchByFilteringReset
 } from "@atoms/index";
 
-const useResetRecentRecoilState = () => {
+export const useResetRecentRecoilState = () => {
   const currentSelectCategoryReset = useCurrentSelectCategoryReset();
   const currentHabitTitleReset = useCurrentHabitTitleReset();
   const currentSelectKeywordReset = useCurrentSelectKeywordReset();
@@ -22,5 +22,3 @@ const useResetRecentRecoilState = () => {
     executeResetAll
   };
 };
-
-export default useResetRecentRecoilState;

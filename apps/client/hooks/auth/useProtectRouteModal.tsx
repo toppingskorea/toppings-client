@@ -9,7 +9,7 @@ import { isLoggedIn } from "~/utils";
 
 export const KAKAO_LOGIN_REDIRECT_URI = "kakao_login_redirect_uri";
 // 로그인이 필요한 버튼에 onClickProtectedButtonHandler 를 사용합니다.
-const useProtectRouteModal = () => {
+export const useProtectRouteModal = () => {
   const overlay = useOverlay();
   const { replace } = useRouter();
   const [_, setCookie, __] = useCookies();
@@ -43,5 +43,3 @@ const useProtectRouteModal = () => {
     onClickProtectedButtonHandler
   };
 };
-
-export default useProtectRouteModal;

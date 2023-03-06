@@ -5,7 +5,7 @@ import { useMounted } from "@toppings/hooks";
 import { useEffect } from "react";
 import SockJS from "sockjs-client";
 import { env } from "~/constants";
-import useTokenCookie from "./useTokenCookie";
+import { useTokenCookie } from ".";
 
 /*
  props로 subscribe method의 Params 를 갖고 오고 싶지만, class method는 type safety하게 접근불가
@@ -32,7 +32,7 @@ import useTokenCookie from "./useTokenCookie";
 
 
 */
-const useWebSocket = (
+export const useWebSocket = (
   subscribes: Util.SingleOrArray<{
     destination: string;
     callback: messageCallbackType;
@@ -72,5 +72,3 @@ const useWebSocket = (
     }
   }, [cookie, isMounted, requireAuth, subscribes]);
 };
-
-export default useWebSocket;

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useScrollContainer } from "~/components/Common";
 
-const useScrollToTopByKeywordChange = (keyword: string) => {
+export const useScrollToTopByKeywordChange = (keyword: string) => {
   const { scrollToTop } = useScrollContainer();
 
   useEffect(() => {
@@ -10,5 +10,3 @@ const useScrollToTopByKeywordChange = (keyword: string) => {
     }
   }, [keyword, scrollToTop]);
 };
-
-export default useScrollToTopByKeywordChange;
