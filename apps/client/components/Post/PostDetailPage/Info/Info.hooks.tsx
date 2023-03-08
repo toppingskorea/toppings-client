@@ -4,8 +4,7 @@ import { clipboard, hexToRgba } from "@toppings/utils";
 import { Flex, size } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import { IconWithTextModal } from "~/components/Common";
-import { useProtectRouteModal } from "~/hooks";
-import useOriginURL from "~/hooks/useOriginURL";
+import { useOriginURL, useProtectRouteModal } from "~/hooks";
 import { useSendNotification } from "~/server/notice";
 import {
   useDeleteLike,

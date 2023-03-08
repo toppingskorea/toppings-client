@@ -7,6 +7,7 @@ import {
   useCurrentSelectCategoryValue,
   useCurrentSelectKeywordValue,
   useCurrentZoomLevelAtomState,
+  useFixedCurrentLocationValue,
   useSearchByFilteringState
 } from "@atoms/index";
 import { useTheme } from "@emotion/react";
@@ -41,6 +42,7 @@ const useMap = () => {
   const currentPositionLoading = useCurrentPositionLoadingValue();
   const [currentZoomLevel, setCurrentZoomLevel] =
     useCurrentZoomLevelAtomState();
+  const fixedCurrentLocation = useFixedCurrentLocationValue();
 
   const mapMutateOnSuccess = useCallback(
     (data: Restaurant.SearchByFilteringDTO[]) => {
@@ -116,7 +118,8 @@ const useMap = () => {
     currentPositionLoading,
     colors,
     zIndex,
-    currentZoomLevel
+    currentZoomLevel,
+    fixedCurrentLocation
   };
 };
 

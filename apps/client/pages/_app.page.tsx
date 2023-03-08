@@ -14,7 +14,7 @@ import { RecoilRoot } from "recoil";
 import { env } from "~/constants";
 import { AnalyticsProvider, DeviceInfoProvider } from "~/contexts";
 import { useSentry } from "~/hooks";
-import AppLayout from "~/layouts/AppLayout";
+import { AppLayout } from "~/layouts";
 import { emotionTheme, GlobalCSS } from "~/styles";
 
 const queryClient = new QueryClient({

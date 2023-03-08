@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { useCookies } from "react-cookie";
 import { env } from "~/constants";
 
-const useTokenCookie = () => {
+export const useTokenCookie = () => {
   const [cookies, setCookie, removeCookie] = useCookies();
 
   return {
@@ -17,5 +17,3 @@ const useTokenCookie = () => {
     remove: () => removeCookie(`${env.TOPPINGS_TOKEN_KEY}`, { path: "/" })
   };
 };
-
-export default useTokenCookie;

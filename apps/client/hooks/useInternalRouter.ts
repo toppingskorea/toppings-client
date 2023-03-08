@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-export default function useInternalRouter() {
+export const useInternalRouter = () => {
   const router = useRouter();
 
   return {
@@ -21,4 +21,4 @@ export default function useInternalRouter() {
     },
     asPath: router.asPath as Route.Path
   };
-}
+};

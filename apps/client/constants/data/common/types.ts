@@ -1,4 +1,4 @@
-const types = [
+export const types = [
   {
     label: "Coffee & Desert",
     value: "CoffeeAndDesert"
@@ -44,5 +44,3 @@ const types = [
     value: "Indonesian"
   }
 ] as const;
-
-export default types;

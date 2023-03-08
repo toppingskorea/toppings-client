@@ -15,7 +15,7 @@ import { Sidebar } from "~/components/Common";
 import { useInternalRouter } from "~/hooks";
 import { useHeaderStore } from "~/stores/common";
 
-const AppLayout = ({ children }: PropsWithChildren) => {
+export const AppLayout = ({ children }: PropsWithChildren) => {
   const header = useHeaderStore(state => state.content);
   const { replace } = useInternalRouter();
 
@@ -57,5 +57,3 @@ const AppLayout = ({ children }: PropsWithChildren) => {
     </Box>
   );
 };
-
-export default AppLayout;

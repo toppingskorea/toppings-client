@@ -17,7 +17,7 @@ type Props = {
   children: ReactNode;
 };
 
-const MapProvider = ({
+export const MapProvider = ({
   center,
   level,
   draggable,
@@ -130,5 +130,3 @@ const MapProvider = ({
     </Context.Provider>
   );
 };
-
-export default MapProvider;

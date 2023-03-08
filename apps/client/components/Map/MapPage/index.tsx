@@ -1,7 +1,3 @@
-import {
-  useCurrentLocationValue,
-  useFixedCurrentLocationValue
-} from "@atoms/common";
 import { css } from "@emotion/react";
 import { List, Pin } from "@svgs/map";
 import { hexToRgba } from "@toppings/utils";
@@ -17,8 +13,6 @@ import useMap from "./MapPage.hooks";
 
 const MapPage = () => {
   const app = useMap();
-  const currentLocation = useCurrentLocationValue();
-  const fixedCurrentLocation = useFixedCurrentLocationValue();
 
   return (
     <>
@@ -134,26 +128,27 @@ const MapPage = () => {
           </Flex.Center>
         )}
 
-        {fixedCurrentLocation.latitude && fixedCurrentLocation.longitude && (
-          <MapMarker
-            position={{
-              latitude: fixedCurrentLocation.latitude,
-              longitude: fixedCurrentLocation.longitude
-            }}
-          >
-            <Lottie
-              loop
-              autoPlay
-              animationData={myLocation}
-              css={css`
-                ${size({
-                  width: 30,
-                  height: 30
-                })}
-              `}
-            />
-          </MapMarker>
-        )}
+        {app.fixedCurrentLocation.latitude &&
+          app.fixedCurrentLocation.longitude && (
+            <MapMarker
+              position={{
+                latitude: app.fixedCurrentLocation.latitude,
+                longitude: app.fixedCurrentLocation.longitude
+              }}
+            >
+              <Lottie
+                loop
+                autoPlay
+                animationData={myLocation}
+                css={css`
+                  ${size({
+                    width: 30,
+                    height: 30
+                  })}
+                `}
+              />
+            </MapMarker>
+          )}
       </KakaoMap>
     </>
   );

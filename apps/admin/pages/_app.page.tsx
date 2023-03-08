@@ -1,5 +1,5 @@
-import { ThemeProvider } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";
+import { ThemeProvider } from "@emotion/react";
 import {
   Hydrate,
   QueryClient,
@@ -9,7 +9,7 @@ import {
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { OverlayProvider } from "@toss/use-overlay";
 import type { AppProps } from "next/app";
-import AppLayout from "~/layouts/AppLayout";
+import { AppLayout } from "~/layouts";
 import { emotionTheme, GlobalCSS } from "~/styles";
 
 const queryClient = new QueryClient({

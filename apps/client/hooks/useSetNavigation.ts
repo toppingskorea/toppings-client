@@ -1,7 +1,7 @@
 import { useNavigationSetter, type useNavigationValue } from "@atoms/index";
 import { useEffect } from "react";
 
-const useSetNavigation = (
+export const useSetNavigation = (
   props: ReturnType<typeof useNavigationValue> = {
     top: undefined,
     bottom: false
@@ -20,5 +20,3 @@ const useSetNavigation = (
     };
   }, [props, setter]);
 };
-
-export default useSetNavigation;
