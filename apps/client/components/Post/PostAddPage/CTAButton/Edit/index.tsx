@@ -1,11 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 // Edit이 랜더링 된다는 것은 postUpload.id 가 있다는 것입니다.
-import {
-  usePostUploadReset,
-  usePostUploadValue,
-  useRestaurantReset,
-  useRestaurantValue
-} from "@atoms/index";
+import { usePostUploadReset, usePostUploadValue } from "@atoms/index";
 import { useTheme } from "@emotion/react";
 import { Stack } from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
@@ -15,14 +10,17 @@ import { Text } from "~/components/Common/Typo";
 import { types } from "~/constants/data/common";
 import { useInternalRouter } from "~/hooks";
 import { useDeletePost, useUpdatePost } from "~/server/post";
+import { usePostSearchRestaurantStore } from "~/stores/post";
 import useSubmitVerification from "../CTAButton.hooks";
 
 const Edit = () => {
   const { colors } = useTheme();
   const overlay = useOverlay();
   const router = useInternalRouter();
-  const restaurant = useRestaurantValue();
-  const restaurantReset = useRestaurantReset();
+  const restaurant = usePostSearchRestaurantStore();
+  const resetPostSearchRestaurant = usePostSearchRestaurantStore(
+    state => state.dispatchInitialize
+  );
   const postUploadReset = usePostUploadReset();
   const postUpload = usePostUploadValue();
 
@@ -31,11 +29,11 @@ const Edit = () => {
     overlay.open(() => <SuccessModal />);
     setTimeout(() => {
       overlay.close();
-      restaurantReset();
+      resetPostSearchRestaurant();
       postUploadReset();
       router.replace("/");
     }, 3000);
-  }, [overlay, postUploadReset, restaurantReset, router]);
+  }, [overlay, postUploadReset, resetPostSearchRestaurant, router]);
 
   const { mutate: updatePostMutate, isLoading: updatePostIsLoading } =
     useUpdatePost(() => {

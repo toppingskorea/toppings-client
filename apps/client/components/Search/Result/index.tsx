@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
-import { useRestaurantSetter } from "@atoms/index";
 import { css, useTheme } from "@emotion/react";
 import { neverChecker } from "@toppings/utils";
 import { flex, Flex, padding, Spacing, touchable } from "@toss/emotion-utils";
 import { useCallback, useEffect, useState } from "react";
 import { Text } from "~/components/Common/Typo";
 import { useInternalRouter } from "~/hooks";
+import { usePostSearchRestaurantStore } from "~/stores/post";
 import { queryChunk } from "~/utils";
 import type { SearchType } from "../SearchPage";
 
@@ -17,7 +17,9 @@ interface Props {
 const Result = ({ value, type }: Props) => {
   const { colors, weighs } = useTheme();
   const { push } = useInternalRouter();
-  const setRestaurant = useRestaurantSetter();
+  const dispatchAllPostSearchRestaurantState = usePostSearchRestaurantStore(
+    state => state.dispatchAll
+  );
   const [result, setResult] = useState<kakao.maps.services.PlacesSearchResult>(
     []
   );
@@ -80,7 +82,7 @@ const Result = ({ value, type }: Props) => {
 
   const onItemClickHandler = useCallback(
     (item: kakao.maps.services.PlacesSearchResultItem) => {
-      setRestaurant({
+      dispatchAllPostSearchRestaurantState({
         address_name: item.address_name,
         category_group_name: item.category_group_name,
         id: item.id,
@@ -90,7 +92,7 @@ const Result = ({ value, type }: Props) => {
         y: item.y
       });
     },
-    [setRestaurant]
+    [dispatchAllPostSearchRestaurantState]
   );
 
   return (
