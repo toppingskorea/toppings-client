@@ -1,30 +1,11 @@
 info  - Loaded env from /Users/donggyukim/Desktop/dev/toppings-client/apps/client/.env.local
 info  - Linting and checking validity of types...
 warn  - The Next.js plugin was not detected in your ESLint configuration. See https://nextjs.org/docs/basic-features/eslint#migrating-existing-config
-
-./components/Common/Modal/AlertModal/AlertModal.stories.tsx
-13:17  Warning: Unexpected console statement.  no-console
-15:15  Warning: Unexpected console statement.  no-console
-21:17  Warning: Unexpected console statement.  no-console
-
-./components/Layout/TopNavigator/TopNavigator.stories.tsx
-46:20  Warning: Unexpected console statement.  no-console
-
-./components/Map/MapPage/index.tsx
-20:9  Warning: 'currentLocation' is assigned a value but never used. Allowed unused vars must match /^_/u.  unused-imports/no-unused-vars
-20:9  Warning: 'currentLocation' is assigned a value but never used.  @typescript-eslint/no-unused-vars
-
-./components/Profile/ProfileEditNationalityPage/index.tsx
-23:11  Warning: 'focusController' is assigned a value but never used. Allowed unused vars must match /^_/u.  unused-imports/no-unused-vars
-23:11  Warning: 'focusController' is assigned a value but never used.  @typescript-eslint/no-unused-vars
-
-./components/Search/Result/index.tsx
-33:15  Warning: Unexpected console statement.  no-console
-37:15  Warning: Unexpected console statement.  no-console
-41:15  Warning: Unexpected console statement.  no-console
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
 info  - Creating an optimized production build...
+> [PWA] Compile server
+
+warn  - In order to be able to deminify errors, @sentry/nextjs creates sourcemaps and uploads them to the Sentry server. Depending on your deployment setup, this means your original code may be visible in browser devtools in production. To prevent this, set hideSourceMaps to true in the sentry options in your next.config.js. To disable this warning without changing sourcemap behavior, set hideSourceMaps to false. (In @sentry/nextjs version 8.0.0 and beyond, this option will default to true.) See https://webpack.js.org/configuration/devtool/ and https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#use-hidden-source-map for more information.
+
 > [PWA] Compile server
 
 warn  - In order to be able to deminify errors, @sentry/nextjs creates sourcemaps and uploads them to the Sentry server. Depending on your deployment setup, this means your original code may be visible in browser devtools in production. To prevent this, set hideSourceMaps to true in the sentry options in your next.config.js. To disable this warning without changing sourcemap behavior, set hideSourceMaps to false. (In @sentry/nextjs version 8.0.0 and beyond, this option will default to true.) See https://webpack.js.org/configuration/devtool/ and https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#use-hidden-source-map for more information.
@@ -34,54 +15,50 @@ warn  - In order to be able to deminify errors, @sentry/nextjs creates sourcemap
 > [PWA] Service worker: /Users/donggyukim/Desktop/dev/toppings-client/apps/client/public/sw.js
 > [PWA]   url: /sw.js
 > [PWA]   scope: /
-> [PWA] Compile server
-
-warn  - In order to be able to deminify errors, @sentry/nextjs creates sourcemaps and uploads them to the Sentry server. Depending on your deployment setup, this means your original code may be visible in browser devtools in production. To prevent this, set hideSourceMaps to true in the sentry options in your next.config.js. To disable this warning without changing sourcemap behavior, set hideSourceMaps to false. (In @sentry/nextjs version 8.0.0 and beyond, this option will default to true.) See https://webpack.js.org/configuration/devtool/ and https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#use-hidden-source-map for more information.
-
 warn  - Compiled with warnings
 
-/_next/static/chunks/pages/_app-04588300f96ecd6d.js.map is 4.82 MB, and won't be precached. Configure maximumFileSizeToCacheInBytes to change this limit.
+/_next/static/chunks/pages/_app-2ead68a5c4009deb.js.map is 4.67 MB, and won't be precached. Configure maximumFileSizeToCacheInBytes to change this limit.
 
 info  - Collecting page data...
 Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
 Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
 
 Route (pages)                              Size     First Load JS
-┌ λ /                                      2.59 kB         379 kB
-├   /_app                                  0 B             377 kB
-├ λ /404                                   1.2 kB          378 kB
-├ λ /about                                 1.51 kB         378 kB
-├ λ /login                                 504 B           377 kB
-├ λ /login/redirect                        314 B           377 kB
-├ λ /map                                   262 B           384 kB
-├ λ /map/viewList                          271 B           384 kB
-├ λ /notice                                3.8 kB          384 kB
-├ λ /post/[id]                             295 B           389 kB
-├ λ /post/add                              272 B           389 kB
-├ λ /profile                               275 B           388 kB
-├ λ /profile/edit                          274 B           388 kB
-├ λ /profile/edit/eatingHabits             285 B           388 kB
-├ λ /profile/edit/nationality              285 B           388 kB
-├ λ /profile/menu                          279 B           388 kB
-├ λ /profile/posts                         279 B           388 kB
-├ λ /profile/reviews                       280 B           388 kB
-├ λ /profile/saved                         279 B           388 kB
-├ λ /recent                                273 B           387 kB
-├ λ /recent/filter/eatingHabit             283 B           387 kB
-├ λ /recent/filter/nationality             284 B           387 kB
-├ λ /recent/filter/restaurant              280 B           387 kB
-├ λ /register/eatingHabits                 278 B           380 kB
-├ λ /register/nationality                  275 B           380 kB
-├ λ /review/[id]                           296 B           385 kB
-├ λ /review/add/[restaurantId]             308 B           385 kB
-└ λ /search/[type]                         2.27 kB         379 kB
-+ First Load JS shared by all              377 kB
+┌ λ /                                      267 B           379 kB
+├   /_app                                  0 B             368 kB
+├ λ /404                                   1.2 kB          369 kB
+├ λ /about                                 1.51 kB         369 kB
+├ λ /login                                 504 B           368 kB
+├ λ /login/redirect                        314 B           368 kB
+├ λ /map/viewList                          278 B           379 kB
+├ λ /notice                                3.77 kB         379 kB
+├ λ /onboarding                            2.58 kB         370 kB
+├ λ /post/[id]                             298 B           385 kB
+├ λ /post/add                              277 B           385 kB
+├ λ /profile                               277 B           384 kB
+├ λ /profile/edit                          277 B           384 kB
+├ λ /profile/edit/eatingHabits             287 B           384 kB
+├ λ /profile/edit/nationality              288 B           384 kB
+├ λ /profile/menu                          279 B           384 kB
+├ λ /profile/posts                         277 B           384 kB
+├ λ /profile/reviews                       282 B           384 kB
+├ λ /profile/saved                         282 B           384 kB
+├ λ /recent                                276 B           382 kB
+├ λ /recent/filter/eatingHabit             286 B           382 kB
+├ λ /recent/filter/nationality             287 B           382 kB
+├ λ /recent/filter/restaurant              283 B           382 kB
+├ λ /register/eatingHabits                 278 B           372 kB
+├ λ /register/nationality                  275 B           372 kB
+├ λ /review/[id]                           300 B           380 kB
+├ λ /review/add/[restaurantId]             309 B           380 kB
+└ λ /search/[type]                         2.28 kB         370 kB
++ First Load JS shared by all              368 kB
   ├ chunks/framework-c693d985374fcb69.js   45.4 kB
   ├ chunks/main-9d518df239a3d97c.js        33.3 kB
-  ├ chunks/pages/_app-04588300f96ecd6d.js  297 kB
+  ├ chunks/pages/_app-2ead68a5c4009deb.js  288 kB
   └ chunks/webpack-7dd6b25d26533a7b.js     1.2 kB
 
-ƒ Middleware                               64.8 kB
+ƒ Middleware                               64.7 kB
 
 λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
 
