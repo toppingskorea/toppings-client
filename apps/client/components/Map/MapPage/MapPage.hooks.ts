@@ -1,13 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
   useCurrentHabitTitleValue,
-  useCurrentLocationReset,
-  useCurrentLocationState,
-  useCurrentPositionLoadingValue,
   useCurrentSelectCategoryValue,
   useCurrentSelectKeywordValue,
-  useCurrentZoomLevelAtomState,
-  useFixedCurrentLocationValue,
   useSearchByFilteringState
 } from "@atoms/index";
 import { useTheme } from "@emotion/react";
@@ -19,6 +14,7 @@ import {
   useFetchRestaurantByCountry,
   useFetchRestaurantByEatingHabit
 } from "~/server/recent";
+import { useMapStore } from "~/stores/map";
 
 const useMap = () => {
   useSetNavigation({
@@ -29,9 +25,16 @@ const useMap = () => {
 
   const [_bounds, setBounds] = useState<Map.KakaoBounds>();
   const { push } = useRouter();
+  const {
+    currentLocation,
+    dispatchCurrentLocation,
+    dispatchCurrentLocationReset,
+    fixedCurrentLocation,
+    currentLocationLoading,
+    currentZoomLevel,
+    dispatchCurrentZoomLevel
+  } = useMapStore(state => state);
 
-  const [currentLocation, setCurrentLocation] = useCurrentLocationState();
-  const currentLocationReset = useCurrentLocationReset();
   const [searchByFilteringList, setSearchByFilteringList] =
     useState<Restaurant.SearchByFilteringDTO[]>();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
@@ -39,10 +42,6 @@ const useMap = () => {
   const [mapSearchByFiltering, setMapSearchByFiltering] =
     useSearchByFilteringState();
   const currentHabitTitle = useCurrentHabitTitleValue();
-  const currentPositionLoading = useCurrentPositionLoadingValue();
-  const [currentZoomLevel, setCurrentZoomLevel] =
-    useCurrentZoomLevelAtomState();
-  const fixedCurrentLocation = useFixedCurrentLocationValue();
 
   const mapMutateOnSuccess = useCallback(
     (data: Restaurant.SearchByFilteringDTO[]) => {
@@ -61,7 +60,12 @@ const useMap = () => {
     if (!currentSelectKeyword) {
       defaultMapMutate(_bounds!);
     }
-  }, [_bounds, currentLocationReset, currentSelectKeyword, defaultMapMutate]);
+  }, [
+    _bounds,
+    currentSelectKeyword,
+    defaultMapMutate,
+    dispatchCurrentLocationReset
+  ]);
 
   const { mutate: fetchRestaurantByEatingHabitMutate } =
     useFetchRestaurantByEatingHabit({
@@ -76,9 +80,9 @@ const useMap = () => {
   const mapEventHandler = (map: kakao.maps.Map) => {
     const bounds = map.getBounds() as Map.KakaoBounds;
     const getCenter = map.getCenter();
-    setCurrentZoomLevel(map.getLevel());
+    dispatchCurrentZoomLevel(map.getLevel());
 
-    setCurrentLocation({
+    dispatchCurrentLocation({
       latitude: getCenter.getLat(),
       longitude: getCenter.getLng()
     });
@@ -115,7 +119,7 @@ const useMap = () => {
     currentSelectCategory,
     searchByFilteringList,
     push,
-    currentPositionLoading,
+    currentLocationLoading,
     colors,
     zIndex,
     currentZoomLevel,

@@ -9,7 +9,8 @@
   "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
   "cSpell.words": [
     "bordercolor",
-    "hotjar"
+    "hotjar",
+    "immer"
   ],
   "git.ignoreLimitWarning": true
 }
