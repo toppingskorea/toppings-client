@@ -1,11 +1,11 @@
 /* eslint-disable no-param-reassign */
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import { currentLocationInitialize } from "./map.constants";
+import { defaultCurrentLocation } from "./map.constants";
 import type { MapInitialState, MapState } from "./map.types";
 
 const initialState: MapInitialState = {
-  currentLocation: currentLocationInitialize,
+  currentLocation: defaultCurrentLocation,
   fixedCurrentLocation: {
     latitude: 0,
     longitude: 0
@@ -23,7 +23,7 @@ export const useMapStore = create(
       }),
     dispatchCurrentLocationReset: () =>
       set(state => {
-        state.currentLocation = currentLocationInitialize;
+        state.currentLocation = defaultCurrentLocation;
       }),
     dispatchFixedCurrentLocation: coordinate =>
       set(state => {
