@@ -2,7 +2,7 @@
 import { useReviewUploadSetter } from "@atoms/review";
 import { css, useTheme } from "@emotion/react";
 import { CircleThreeDot } from "@svgs/common";
-import { ShowMoreText } from "@svgs/post";
+import { OrangeRightArrow } from "@svgs/post";
 import {
   Flex,
   position,
@@ -178,7 +178,7 @@ const ReviewItem = ({ review }: Props) => {
             {ellipsisTextByLength(review.description, 100)}
           </Text>
 
-          <ShowMoreText
+          <OrangeRightArrow
             css={css`
               ${position("absolute", {
                 top: "50%",

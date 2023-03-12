@@ -1,1 +1,1 @@
-export { default as ShowMoreText } from "./showMoreText.svg";
+export { default as OrangeRightArrow } from "./orangeRightArrow.svg";
