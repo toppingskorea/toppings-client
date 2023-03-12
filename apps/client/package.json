@@ -42,6 +42,7 @@
     "react-dom": "18.2.0",
     "react-ga4": "^1.4.1",
     "react-hook-form": "^7.38.0",
+    "react-hotjar": "^5.4.1",
     "recoil": "^0.7.6",
     "sockjs-client": "^1.6.1",
     "uuid": "^9.0.0",

@@ -6324,6 +6324,7 @@ __metadata:
     react-dom: 18.2.0
     react-ga4: ^1.4.1
     react-hook-form: ^7.38.0
+    react-hotjar: ^5.4.1
     recoil: ^0.7.6
     sockjs-client: ^1.6.1
     typescript: 4.8.4
@@ -18163,6 +18164,13 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
   checksum: b748e19ef768f8a42aeb9069234f3a7303038b9e16c143f48001edccc4ea92be6ca642c48d6efdbdf936ea4eed1b8da5ce8dd8529aeacca238d00e292e206126
+  languageName: node
+  linkType: hard
+
+"react-hotjar@npm:^5.4.1":
+  version: 5.4.1
+  resolution: "react-hotjar@npm:5.4.1"
+  checksum: 773f408842334fcdec86f15795c0541eb29c16475c9644dc5e2b0d22addc899305c0ba093555e70866fcca78911db14bc006e287ab9c0363ddfe2574c90dbfa3
   languageName: node
   linkType: hard
 
