@@ -30,6 +30,7 @@
     "dayjs": "^1.11.6",
     "framer-motion": "^7.6.2",
     "idb-keyval": "^6.2.0",
+    "immer": "^9.0.19",
     "js-cookie": "^3.0.1",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",

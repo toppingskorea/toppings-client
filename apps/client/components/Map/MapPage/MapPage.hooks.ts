@@ -1,13 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
   useCurrentHabitTitleValue,
-  useCurrentLocationReset,
-  useCurrentLocationState,
   useCurrentPositionLoadingValue,
   useCurrentSelectCategoryValue,
   useCurrentSelectKeywordValue,
   useCurrentZoomLevelAtomState,
-  useFixedCurrentLocationValue,
   useSearchByFilteringState
 } from "@atoms/index";
 import { useTheme } from "@emotion/react";
@@ -19,6 +16,7 @@ import {
   useFetchRestaurantByCountry,
   useFetchRestaurantByEatingHabit
 } from "~/server/recent";
+import { useMapStore } from "~/stores/map";
 
 const useMap = () => {
   useSetNavigation({
@@ -29,9 +27,13 @@ const useMap = () => {
 
   const [_bounds, setBounds] = useState<Map.KakaoBounds>();
   const { push } = useRouter();
+  const {
+    currentLocation,
+    dispatchCurrentLocation,
+    dispatchCurrentLocationReset,
+    fixedCurrentLocation
+  } = useMapStore(state => state);
 
-  const [currentLocation, setCurrentLocation] = useCurrentLocationState();
-  const currentLocationReset = useCurrentLocationReset();
   const [searchByFilteringList, setSearchByFilteringList] =
     useState<Restaurant.SearchByFilteringDTO[]>();
   const currentSelectKeyword = useCurrentSelectKeywordValue();
@@ -42,7 +44,6 @@ const useMap = () => {
   const currentPositionLoading = useCurrentPositionLoadingValue();
   const [currentZoomLevel, setCurrentZoomLevel] =
     useCurrentZoomLevelAtomState();
-  const fixedCurrentLocation = useFixedCurrentLocationValue();
 
   const mapMutateOnSuccess = useCallback(
     (data: Restaurant.SearchByFilteringDTO[]) => {
@@ -61,7 +62,12 @@ const useMap = () => {
     if (!currentSelectKeyword) {
       defaultMapMutate(_bounds!);
     }
-  }, [_bounds, currentLocationReset, currentSelectKeyword, defaultMapMutate]);
+  }, [
+    _bounds,
+    currentSelectKeyword,
+    defaultMapMutate,
+    dispatchCurrentLocationReset
+  ]);
 
   const { mutate: fetchRestaurantByEatingHabitMutate } =
     useFetchRestaurantByEatingHabit({
@@ -78,7 +84,7 @@ const useMap = () => {
     const getCenter = map.getCenter();
     setCurrentZoomLevel(map.getLevel());
 
-    setCurrentLocation({
+    dispatchCurrentLocation({
       latitude: getCenter.getLat(),
       longitude: getCenter.getLng()
     });

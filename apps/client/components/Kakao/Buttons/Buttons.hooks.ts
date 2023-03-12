@@ -1,38 +1,36 @@
-import {
-  useCurrentLocationSetter,
-  useCurrentPositionLoadingSetter,
-  useFixedCurrentLocationSetter
-} from "@atoms/index";
+import { useCurrentPositionLoadingSetter } from "@atoms/index";
 import { useCallback, useMemo } from "react";
 import { defaultLocation } from "~/constants";
+import { useMapStore } from "~/stores/map";
 
 const useCurrentLocation = () => {
-  const setCurrentLocation = useCurrentLocationSetter();
+  const { dispatchCurrentLocation, dispatchFixedCurrentLocation } = useMapStore(
+    state => state
+  );
   const setCurrentPositionLoading = useCurrentPositionLoadingSetter();
-  const setFixedCurrentLocationSetter = useFixedCurrentLocationSetter();
 
   const success: PositionCallback = useCallback(
     ({ coords: { latitude, longitude } }: GeolocationPosition) => {
       if (latitude && longitude) setCurrentPositionLoading(false);
 
-      setCurrentLocation({ latitude, longitude });
-      setFixedCurrentLocationSetter({ latitude, longitude });
+      dispatchCurrentLocation({ latitude, longitude });
+      dispatchFixedCurrentLocation({ latitude, longitude });
     },
     [
-      setCurrentLocation,
-      setCurrentPositionLoading,
-      setFixedCurrentLocationSetter
+      dispatchCurrentLocation,
+      dispatchFixedCurrentLocation,
+      setCurrentPositionLoading
     ]
   );
 
   const error: PositionErrorCallback = useCallback(() => {
     setCurrentPositionLoading(false);
 
-    setCurrentLocation({
+    dispatchCurrentLocation({
       latitude: defaultLocation.DEFAULT_LATITUDE,
       longitude: defaultLocation.DEFAULT_LONGITUDE
     });
-  }, [setCurrentLocation, setCurrentPositionLoading]);
+  }, [dispatchCurrentLocation, setCurrentPositionLoading]);
 
   const options: PositionOptions = useMemo(
     () => ({

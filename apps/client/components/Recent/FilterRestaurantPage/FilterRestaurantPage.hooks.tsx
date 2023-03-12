@@ -1,5 +1,4 @@
 import {
-  useCurrentLocationSetter,
   useCurrentSelectCategorySetter,
   useCurrentSelectKeywordSetter,
   useSearchByFilteringSetter
@@ -14,6 +13,7 @@ import {
   useFetchRestaurantByName,
   useUploadRecentHistory
 } from "~/server/recent";
+import { useMapStore } from "~/stores/map";
 import { isLoggedIn } from "~/utils";
 
 const useFilterRestaurant = () => {
@@ -35,7 +35,9 @@ const useFilterRestaurant = () => {
 
   const { push } = useRouter();
 
-  const setCurrentLocation = useCurrentLocationSetter();
+  const dispatchCurrentLocation = useMapStore(
+    state => state.dispatchCurrentLocation
+  );
   const setCurrentSelectCategory = useCurrentSelectCategorySetter();
   const setCurrentSelectKeyword = useCurrentSelectKeywordSetter();
   const mapSearchByFiltering = useSearchByFilteringSetter();
@@ -75,7 +77,7 @@ const useFilterRestaurant = () => {
       restaurantId: item.id
     });
 
-    setCurrentLocation({
+    dispatchCurrentLocation({
       latitude: item.latitude,
       longitude: item.longitude
     });
