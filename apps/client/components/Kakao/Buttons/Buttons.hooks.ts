@@ -1,38 +1,36 @@
-import {
-  useCurrentLocationSetter,
-  useCurrentPositionLoadingSetter,
-  useFixedCurrentLocationSetter
-} from "@atoms/index";
 import { useCallback, useMemo } from "react";
 import { defaultLocation } from "~/constants";
+import { useMapStore } from "~/stores/map";
 
 const useCurrentLocation = () => {
-  const setCurrentLocation = useCurrentLocationSetter();
-  const setCurrentPositionLoading = useCurrentPositionLoadingSetter();
-  const setFixedCurrentLocationSetter = useFixedCurrentLocationSetter();
+  const {
+    dispatchCurrentLocation,
+    dispatchFixedCurrentLocation,
+    dispatchCurrentLocationLoading
+  } = useMapStore(state => state);
 
   const success: PositionCallback = useCallback(
     ({ coords: { latitude, longitude } }: GeolocationPosition) => {
-      if (latitude && longitude) setCurrentPositionLoading(false);
+      if (latitude && longitude) dispatchCurrentLocationLoading(false);
 
-      setCurrentLocation({ latitude, longitude });
-      setFixedCurrentLocationSetter({ latitude, longitude });
+      dispatchCurrentLocation({ latitude, longitude });
+      dispatchFixedCurrentLocation({ latitude, longitude });
     },
     [
-      setCurrentLocation,
-      setCurrentPositionLoading,
-      setFixedCurrentLocationSetter
+      dispatchCurrentLocation,
+      dispatchCurrentLocationLoading,
+      dispatchFixedCurrentLocation
     ]
   );
 
   const error: PositionErrorCallback = useCallback(() => {
-    setCurrentPositionLoading(false);
+    dispatchCurrentLocationLoading(false);
 
-    setCurrentLocation({
+    dispatchCurrentLocation({
       latitude: defaultLocation.DEFAULT_LATITUDE,
       longitude: defaultLocation.DEFAULT_LONGITUDE
     });
-  }, [setCurrentLocation, setCurrentPositionLoading]);
+  }, [dispatchCurrentLocation, dispatchCurrentLocationLoading]);
 
   const options: PositionOptions = useMemo(
     () => ({
@@ -43,10 +41,10 @@ const useCurrentLocation = () => {
   );
 
   const getCurrentMapPosition = useCallback(() => {
-    setCurrentPositionLoading(true);
+    dispatchCurrentLocationLoading(true);
 
     navigator.geolocation.getCurrentPosition(success, error, options);
-  }, [error, options, setCurrentPositionLoading, success]);
+  }, [dispatchCurrentLocationLoading, error, options, success]);
 
   return { getCurrentMapPosition };
 };
