@@ -1,9 +1,9 @@
-import { css, useTheme } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 import type { EmotionJSX } from "@emotion/react/types/jsx-namespace";
 import { grayLogo } from "@images/common";
-import { Flex, position } from "@toss/emotion-utils";
-import Image from "next/image";
+import { Flex } from "@toss/emotion-utils";
 import { Text } from "~/components/Common/Typo";
+import { BottomContainer, GrayLogoImage } from "./EmptyView.styles";
 
 interface Props {
   content: string;
@@ -11,36 +11,25 @@ interface Props {
 }
 
 const EmptyView = ({ content, CTAButton }: Props) => {
-  const { colors, weighs, dimensions } = useTheme();
+  const { colors, weighs } = useTheme();
 
   return (
     <Flex.Center>
-      <Image
+      <GrayLogoImage
         src={grayLogo}
         alt="TOPPINGS"
         width={205}
         height={84}
         quality={100}
-        css={css`
-          margin-top: 223px;
-        `}
       />
 
-      <Flex
-        direction="column"
-        align="center"
-        css={css`
-          ${position("fixed", {
-            bottom: dimensions.bottomNavigationHeight + 104
-          })}
-        `}
-      >
+      <BottomContainer direction="column" align="center">
         <Text _fontSize={19} weight={weighs.bold} _color={colors.secondary[69]}>
           {content}
         </Text>
 
         {CTAButton}
-      </Flex>
+      </BottomContainer>
     </Flex.Center>
   );
 };

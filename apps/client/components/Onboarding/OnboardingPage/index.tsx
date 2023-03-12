@@ -1,32 +1,22 @@
-import { css, useTheme } from "@emotion/react";
-import { Flex, gutter } from "@toss/emotion-utils";
-import { useRouter } from "next/router";
+import { useTheme } from "@emotion/react";
 import { FilledButton } from "~/components/Common";
 import { Text } from "~/components/Common/Typo";
 import { OrangeSection } from "~/components/Section";
 import { OpenGraph } from "~/components/Util";
-import { env } from "~/constants";
+import { useLoginClick } from "./OnboardingPage.hooks";
+import { DescriptionContainer } from "./OnboardingPage.styles";
 
 const Onboarding = () => {
   const { colors, weighs } = useTheme();
-  const router = useRouter();
 
-  const kakaoUrl = `${env.TOPPINGS_SERVER_URL}/oauth2/authorization/kakao?redirect_uri=${env.REDIRECT_URI}`;
-
-  const onLoginHandler = () => {
-    router.replace(kakaoUrl);
-  };
+  const { onLoginHandler } = useLoginClick();
 
   return (
     <>
       <OpenGraph title="onboarding" />
       <OrangeSection
         description={
-          <Flex
-            css={css`
-              ${gutter({ space: 6, direction: "horizontal" })}
-            `}
-          >
+          <DescriptionContainer>
             <Text _fontSize={21} _color={colors.white} weight={weighs.medium}>
               Do you want to
             </Text>
@@ -37,7 +27,7 @@ const Onboarding = () => {
             >
               JOIN
             </Text>
-          </Flex>
+          </DescriptionContainer>
         }
         button={
           <FilledButton
