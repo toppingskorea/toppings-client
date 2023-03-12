@@ -103,7 +103,7 @@ const MapPage = () => {
             </motion.div>
           </MapMarker>
         ))}
-        {app.currentPositionLoading && (
+        {app.currentLocationLoading && (
           <Flex.Center
             css={css`
               ${position("absolute", {

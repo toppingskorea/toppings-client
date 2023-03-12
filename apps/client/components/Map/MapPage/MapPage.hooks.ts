@@ -1,10 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
   useCurrentHabitTitleValue,
-  useCurrentPositionLoadingValue,
   useCurrentSelectCategoryValue,
   useCurrentSelectKeywordValue,
-  useCurrentZoomLevelAtomState,
   useSearchByFilteringState
 } from "@atoms/index";
 import { useTheme } from "@emotion/react";
@@ -31,7 +29,10 @@ const useMap = () => {
     currentLocation,
     dispatchCurrentLocation,
     dispatchCurrentLocationReset,
-    fixedCurrentLocation
+    fixedCurrentLocation,
+    currentLocationLoading,
+    currentZoomLevel,
+    dispatchCurrentZoomLevel
   } = useMapStore(state => state);
 
   const [searchByFilteringList, setSearchByFilteringList] =
@@ -41,9 +42,6 @@ const useMap = () => {
   const [mapSearchByFiltering, setMapSearchByFiltering] =
     useSearchByFilteringState();
   const currentHabitTitle = useCurrentHabitTitleValue();
-  const currentPositionLoading = useCurrentPositionLoadingValue();
-  const [currentZoomLevel, setCurrentZoomLevel] =
-    useCurrentZoomLevelAtomState();
 
   const mapMutateOnSuccess = useCallback(
     (data: Restaurant.SearchByFilteringDTO[]) => {
@@ -82,7 +80,7 @@ const useMap = () => {
   const mapEventHandler = (map: kakao.maps.Map) => {
     const bounds = map.getBounds() as Map.KakaoBounds;
     const getCenter = map.getCenter();
-    setCurrentZoomLevel(map.getLevel());
+    dispatchCurrentZoomLevel(map.getLevel());
 
     dispatchCurrentLocation({
       latitude: getCenter.getLat(),
@@ -121,7 +119,7 @@ const useMap = () => {
     currentSelectCategory,
     searchByFilteringList,
     push,
-    currentPositionLoading,
+    currentLocationLoading,
     colors,
     zIndex,
     currentZoomLevel,

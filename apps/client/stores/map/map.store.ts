@@ -1,15 +1,17 @@
 /* eslint-disable no-param-reassign */
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import {
-  currentLocationInitialize,
-  fixedCurrentLocationInitialize
-} from "./map.constants";
+import { currentLocationInitialize } from "./map.constants";
 import type { MapInitialState, MapState } from "./map.types";
 
 const initialState: MapInitialState = {
   currentLocation: currentLocationInitialize,
-  fixedCurrentLocation: fixedCurrentLocationInitialize
+  fixedCurrentLocation: {
+    latitude: 0,
+    longitude: 0
+  },
+  currentLocationLoading: false,
+  currentZoomLevel: 5
 };
 
 export const useMapStore = create(
@@ -26,6 +28,14 @@ export const useMapStore = create(
     dispatchFixedCurrentLocation: coordinate =>
       set(state => {
         state.fixedCurrentLocation = coordinate;
+      }),
+    dispatchCurrentLocationLoading: value =>
+      set(state => {
+        state.currentLocationLoading = value;
+      }),
+    dispatchCurrentZoomLevel: value =>
+      set(state => {
+        state.currentZoomLevel = value;
       })
   }))
 );
