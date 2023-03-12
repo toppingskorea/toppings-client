@@ -13142,6 +13142,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:18.2.0"],\
             ["react-ga4", "npm:1.4.1"],\
             ["react-hook-form", "virtual:6fc4e92145fccf375f0f35cf8b2d1d3947abaac087aa054409c14113a3fb7ef324ec4a64d6668f77c444d8aed328d2ddadf62521528c9f75afec5856b3e4e20a#npm:7.39.7"],\
+            ["react-hotjar", "npm:5.4.1"],\
             ["recoil", "virtual:9599e3a291f6ce069abce5d0d6a75dbe721c48c7e785ac9806e951bae0faa20e9762079eed1308389c1c9e5b08c36494ec7b98ff14d31306422f55f789db2137#npm:0.7.6"],\
             ["sockjs-client", "npm:1.6.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=0102e9"],\
@@ -27715,6 +27716,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/react",\
             "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-hotjar", [\
+        ["npm:5.4.1", {\
+          "packageLocation": "./.yarn/cache/react-hotjar-npm-5.4.1-15ca61cf66-773f408842.zip/node_modules/react-hotjar/",\
+          "packageDependencies": [\
+            ["react-hotjar", "npm:5.4.1"]\
           ],\
           "linkType": "HARD"\
         }]\
