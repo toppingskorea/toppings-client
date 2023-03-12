@@ -2,7 +2,15 @@
 import { useReviewUploadSetter } from "@atoms/review";
 import { css, useTheme } from "@emotion/react";
 import { CircleThreeDot } from "@svgs/common";
-import { Flex, size, Spacing, touchable, width100 } from "@toss/emotion-utils";
+import { OrangeRightArrow } from "@svgs/post";
+import {
+  Flex,
+  position,
+  size,
+  Spacing,
+  touchable,
+  width100
+} from "@toss/emotion-utils";
 import { useOverlay } from "@toss/use-overlay";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -96,6 +104,7 @@ const ReviewItem = ({ review }: Props) => {
         <Flex
           direction="column"
           css={css`
+            position: relative;
             ${width100}
           `}
         >
@@ -162,11 +171,23 @@ const ReviewItem = ({ review }: Props) => {
             lineHeight={12}
             _color={colors.secondary[34]}
             css={css`
+              width: calc(100% - 18px);
               word-break: break-all;
             `}
           >
             {ellipsisTextByLength(review.description, 100)}
           </Text>
+
+          <OrangeRightArrow
+            css={css`
+              ${position("absolute", {
+                top: "50%",
+                right: 0
+              })}
+              transform: translate(0, -50%);
+            `}
+          />
+
           <Spacing size={4} />
         </Flex>
       </Flex>

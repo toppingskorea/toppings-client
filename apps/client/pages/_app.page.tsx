@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@emotion/react";
 import * as Sentry from "@sentry/nextjs";
+import { hotjar } from "react-hotjar";
 import {
   Hydrate,
   QueryClient,
@@ -10,12 +11,14 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { OverlayProvider } from "@toss/use-overlay";
 import type { AppContext, AppProps } from "next/app";
 import NextAppBase from "next/app";
+import { useEffect } from "react";
 import { RecoilRoot } from "recoil";
 import { env } from "~/constants";
 import { AnalyticsProvider, DeviceInfoProvider } from "~/contexts";
 import { useSentry } from "~/hooks";
 import { AppLayout } from "~/layouts";
 import { emotionTheme, GlobalCSS } from "~/styles";
+import { HJID, HJSV } from "~/constants/data/common";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -55,6 +58,12 @@ function MyApp({ Component, pageProps }: AppProps<PageProps>) {
       "https://dev-planet.toppings.co.kr/"
     ]
   });
+
+  useEffect(() => {
+    if (process.env.NODE_ENV !== "development") {
+      hotjar.initialize(HJID, HJSV);
+    }
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

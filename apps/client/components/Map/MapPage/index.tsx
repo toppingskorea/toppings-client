@@ -103,7 +103,7 @@ const MapPage = () => {
             </motion.div>
           </MapMarker>
         ))}
-        {app.currentPositionLoading && (
+        {app.currentLocationLoading && (
           <Flex.Center
             css={css`
               ${position("absolute", {
@@ -129,26 +129,26 @@ const MapPage = () => {
         )}
 
         {app.fixedCurrentLocation.latitude &&
-          app.fixedCurrentLocation.longitude && (
-            <MapMarker
-              position={{
-                latitude: app.fixedCurrentLocation.latitude,
-                longitude: app.fixedCurrentLocation.longitude
-              }}
-            >
-              <Lottie
-                loop
-                autoPlay
-                animationData={myLocation}
-                css={css`
-                  ${size({
-                    width: 30,
-                    height: 30
-                  })}
-                `}
-              />
-            </MapMarker>
-          )}
+        app.fixedCurrentLocation.longitude ? (
+          <MapMarker
+            position={{
+              latitude: app.fixedCurrentLocation.latitude,
+              longitude: app.fixedCurrentLocation.longitude
+            }}
+          >
+            <Lottie
+              loop
+              autoPlay
+              animationData={myLocation}
+              css={css`
+                ${size({
+                  width: 30,
+                  height: 30
+                })}
+              `}
+            />
+          </MapMarker>
+        ) : null}
       </KakaoMap>
     </>
   );
