@@ -1,38 +1,21 @@
 import { useNavigationValue } from "@atoms/index";
-import { css, useTheme } from "@emotion/react";
 import { LeftArrow } from "@svgs/common";
-import { Flex, flex, padding, position, Spacing } from "@toss/emotion-utils";
-import { AnimatePresence, motion } from "framer-motion";
+import { Flex, Spacing } from "@toss/emotion-utils";
+import { AnimatePresence } from "framer-motion";
 import { MotionButton } from "~/components/Common";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useClickBackButton } from "./TopNavigator.hooks";
+import { Header, Nav, Title } from "./TopNavigator.styles";
 
 const TopNavigator = () => {
-  const { zIndex } = useTheme();
   const state = useNavigationValue();
 
   const { onClickBackButton } = useClickBackButton();
 
   return (
     <AnimatePresence>
-      <header
-        css={css`
-          ${position("sticky", { top: 0 })}
-          z-index: ${zIndex.one};
-        `}
-      >
-        <nav
-          css={css`
-            ${flex({ direction: "column" })}
-            ${padding({
-              x: 28,
-              top: 31,
-              bottom: state.top?.marginBottom ?? 24
-            })}
-            
-            background-color: white;
-          `}
-        >
+      <Header>
+        <Nav paddingBottom={state.top?.marginBottom}>
           {state.top?.hideBackButton && !state.top.right ? (
             <Spacing size={28} />
           ) : (
@@ -56,23 +39,15 @@ const TopNavigator = () => {
           )}
 
           {state.top?.title && (
-            <motion.div
+            <Title
               variants={defaultSlideFadeInVariants("bottom")}
               {...framerMocker}
-              css={css`
-                width: fit-content;
-                margin: -10px auto 0;
-                ${flex({
-                  justify: "center",
-                  align: "center"
-                })}
-              `}
             >
               {state.top?.title}
-            </motion.div>
+            </Title>
           )}
-        </nav>
-      </header>
+        </Nav>
+      </Header>
     </AnimatePresence>
   );
 };

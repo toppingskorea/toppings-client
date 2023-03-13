@@ -3,7 +3,7 @@ import { usePostUploadReset } from "@atoms/post";
 import type { EmotionJSX } from "@emotion/react/types/jsx-namespace";
 import type { ReactNode } from "react";
 import { useResetProfileEditPageState } from "~/components/Profile/ProfileEditPage/ProfileEditPage.hooks";
-import { useInternalRouter } from "~/hooks";
+import { useInternalRouter, useProtectRouteModal } from "~/hooks";
 import { usePostSearchRestaurantStore } from "~/stores/post";
 import type navList from "./BottomNavigator.constants";
 
@@ -25,7 +25,7 @@ export const useRenderIcon = () => {
   };
 };
 
-export const useClickNavigationHandler = () => {
+const useClickNavigationHandler = () => {
   const { push } = useInternalRouter();
   const { resetProfileEditPageState } = useResetProfileEditPageState();
   const resetPostSearchRestaurant = usePostSearchRestaurantStore(
@@ -50,5 +50,20 @@ export const useClickNavigationHandler = () => {
 
   return {
     onClickNavigationHandler
+  };
+};
+
+export const useIconButtonClick = () => {
+  const { onClickNavigationHandler } = useClickNavigationHandler();
+  const { onClickProtectedButtonHandler } = useProtectRouteModal();
+
+  const onClickIconButtonHandler =
+    () => (href: Util.ElementType<typeof navList>["href"]) => {
+      if (href === "/") onClickNavigationHandler(href);
+      else onClickProtectedButtonHandler(() => onClickNavigationHandler(href));
+    };
+
+  return {
+    onClickIconButtonHandler
   };
 };

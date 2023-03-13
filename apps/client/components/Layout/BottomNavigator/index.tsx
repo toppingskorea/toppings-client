@@ -1,61 +1,34 @@
-import { css, useTheme } from "@emotion/react";
-import { flex, padding, width100 } from "@toss/emotion-utils";
+import { useTheme } from "@emotion/react";
 import { motion } from "framer-motion";
-import { useInternalRouter, useProtectRouteModal } from "~/hooks";
+import { useInternalRouter } from "~/hooks";
 import navList from "./BottomNavigator.constants";
-import {
-  useClickNavigationHandler,
-  useRenderIcon
-} from "./BottomNavigator.hooks";
+import { useIconButtonClick, useRenderIcon } from "./BottomNavigator.hooks";
+import { Container, IconButton, ListContainer } from "./BottomNavigator.styles";
 
 const BottomNavigator = () => {
-  const { colors, dimensions, zIndex } = useTheme();
+  const { colors } = useTheme();
   const { asPath } = useInternalRouter();
 
-  const { onClickProtectedButtonHandler } = useProtectRouteModal();
-
   const { renderIcon } = useRenderIcon();
-  const { onClickNavigationHandler } = useClickNavigationHandler();
+
+  const { onClickIconButtonHandler } = useIconButtonClick();
 
   return (
-    <nav
-      css={css`
-        ${width100}
-        background-color: ${colors.white};
-        max-width: inherit;
-        height: ${dimensions.bottomNavigationHeight}px;
-        ${padding({ x: 45, top: 20 })}
-        z-index: ${zIndex.two};
-      `}
-    >
-      <ul
-        css={css`
-          ${flex({ justify: "space-between", align: "center" })};
-        `}
-      >
+    <Container>
+      <ListContainer>
         {navList.map(({ icon, href, activatedIcon }) => (
           <motion.li key={href} whileTap={{ scale: 0.9 }}>
-            <button
+            <IconButton
               type="button"
-              onClick={() => {
-                if (href === "/") onClickNavigationHandler(href);
-                else
-                  onClickProtectedButtonHandler(() =>
-                    onClickNavigationHandler(href)
-                  );
-              }}
-              css={css`
-                path {
-                  fill: ${colors.secondary[href === asPath ? "6D" : "D9"]};
-                }
-              `}
+              onClick={onClickIconButtonHandler}
+              fill={colors.secondary[href === asPath ? "6D" : "D9"]}
             >
               {renderIcon(icon, activatedIcon, href)}
-            </button>
+            </IconButton>
           </motion.li>
         ))}
-      </ul>
-    </nav>
+      </ListContainer>
+    </Container>
   );
 };
 
