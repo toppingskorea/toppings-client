@@ -37,12 +37,8 @@ const ProfilePage = () => {
     >
       <Suspense.CSROnly
         fallback={
-          <Stack.Vertical
-            css={css`
-              padding-top: 140px;
-            `}
-          >
-            <Stack.Horizontal align="center">
+          <Stack.Vertical>
+            <Stack.Horizontal align="center" gutter={220}>
               <Skeleton.Circle size={78} />
 
               <Stack.Horizontal>
