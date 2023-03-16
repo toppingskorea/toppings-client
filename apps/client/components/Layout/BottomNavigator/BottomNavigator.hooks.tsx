@@ -58,7 +58,7 @@ export const useIconButtonClick = () => {
   const { onClickProtectedButtonHandler } = useProtectRouteModal();
 
   const onClickIconButtonHandler =
-    () => (href: Util.ElementType<typeof navList>["href"]) => {
+    (href: Util.ElementType<typeof navList>["href"]) => () => {
       if (href === "/") onClickNavigationHandler(href);
       else onClickProtectedButtonHandler(() => onClickNavigationHandler(href));
     };

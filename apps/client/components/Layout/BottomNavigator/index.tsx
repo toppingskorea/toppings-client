@@ -20,7 +20,7 @@ const BottomNavigator = () => {
           <motion.li key={href} whileTap={{ scale: 0.9 }}>
             <IconButton
               type="button"
-              onClick={onClickIconButtonHandler}
+              onClick={onClickIconButtonHandler(href)}
               fill={colors.secondary[href === asPath ? "6D" : "D9"]}
             >
               {renderIcon(icon, activatedIcon, href)}
