@@ -3,6 +3,8 @@ import { Suspense } from "@suspensive/react";
 import { Hamburger } from "@svgs/common";
 import { Skeleton } from "@toppings/components";
 import { padding, Stack } from "@toss/emotion-utils";
+import { motion } from "framer-motion";
+import { fadeInVariants, framerMocker } from "~/constants";
 import { useInternalRouter, useSetNavigation } from "~/hooks";
 import { generateComponent } from "~/utils";
 import EditButton from "./EditButton";
@@ -60,7 +62,9 @@ const ProfilePage = () => {
           </Stack.Vertical>
         }
       >
-        <Info />
+        <motion.div {...framerMocker} variants={fadeInVariants(0.6)}>
+          <Info />
+        </motion.div>
       </Suspense.CSROnly>
 
       <EditButton />
