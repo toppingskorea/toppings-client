@@ -39,7 +39,7 @@ export const AppLayout = ({ children }: PropsWithChildren) => {
                   <Center>
                     <Button
                       onClick={() => {
-                        replace("/login");
+                        replace("/");
                         queryError.reset();
                       }}
                     >
