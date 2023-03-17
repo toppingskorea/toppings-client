@@ -29,6 +29,26 @@ export const defaultFadeInVariants: Variants = {
   }
 };
 
+export const fadeInVariants: (duration: number) => Variants = (
+  duration: number
+) => ({
+  initial: {
+    opacity: 0,
+    transition: { duration, ease: defaultEasing },
+    willChange: "opacity"
+  },
+  animate: {
+    opacity: 1,
+    transition: { duration, ease: defaultEasing },
+    willChange: "opacity"
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration, ease: defaultEasing },
+    willChange: "opacity"
+  }
+});
+
 export const defaultScaleChangeVariants: Variants = {
   initial: {
     scale: 0

@@ -2,9 +2,11 @@ import { useTheme } from "@emotion/react";
 import { Suspense } from "@suspensive/react";
 import { Skeleton } from "@toppings/components";
 import { Stack } from "@toss/emotion-utils";
+import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { Text } from "~/components/Common/Typo";
 import { OpenGraph } from "~/components/Util";
+import { fadeInVariants, framerMocker } from "~/constants";
 import { useSetNavigation } from "~/hooks";
 import { useNoticeActivateSetter } from "~/recoil/atoms/noticeActivate";
 import { generateComponent } from "~/utils";
@@ -47,7 +49,9 @@ const Notice = () => {
           </Stack.Vertical>
         }
       >
-        <NotificationList />
+        <motion.div {...framerMocker} variants={fadeInVariants(0.6)}>
+          <NotificationList />
+        </motion.div>
       </Suspense.CSROnly>
     </div>
   );
