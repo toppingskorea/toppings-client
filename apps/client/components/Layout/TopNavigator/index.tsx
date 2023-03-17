@@ -2,10 +2,9 @@ import { useNavigationValue } from "@atoms/index";
 import { LeftArrow } from "@svgs/common";
 import { Flex, Spacing } from "@toss/emotion-utils";
 import { AnimatePresence } from "framer-motion";
-import { MotionButton } from "~/components/Common";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useClickBackButton } from "./TopNavigator.hooks";
-import { Header, Nav, Title } from "./TopNavigator.styles";
+import { Header, Nav, PaddedMotionButton, Title } from "./TopNavigator.styles";
 
 const TopNavigator = () => {
   const state = useNavigationValue();
@@ -15,7 +14,7 @@ const TopNavigator = () => {
   return (
     <AnimatePresence>
       <Header>
-        <Nav paddingBottom={state.top?.marginBottom}>
+        <Nav>
           {state.top?.hideBackButton && !state.top.right ? (
             <Spacing size={28} />
           ) : (
@@ -23,15 +22,21 @@ const TopNavigator = () => {
               {state.top?.hideBackButton ? (
                 <div id="dummy-element" />
               ) : (
-                <MotionButton onClick={onClickBackButton}>
+                <PaddedMotionButton
+                  onClick={onClickBackButton}
+                  paddingBottom={state.top?.marginBottom}
+                >
                   <LeftArrow />
-                </MotionButton>
+                </PaddedMotionButton>
               )}
 
               {state.top?.right ? (
-                <MotionButton onClick={state.top.right.onClick}>
+                <PaddedMotionButton
+                  onClick={state.top.right.onClick}
+                  paddingBottom={state.top?.marginBottom}
+                >
                   {state.top?.right.element}
-                </MotionButton>
+                </PaddedMotionButton>
               ) : (
                 <Spacing size={0} />
               )}
