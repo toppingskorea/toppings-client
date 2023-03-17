@@ -1,6 +1,6 @@
 import { css, useTheme } from "@emotion/react";
 import { hexToRgba } from "@toppings/utils";
-import { flex, padding, position } from "@toss/emotion-utils";
+import { flex, padding, position, touchable } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import type { FC, SVGProps } from "react";
 import { Text } from "~/components/Common/Typo";
@@ -37,6 +37,7 @@ const ViewStatusButton = ({ text, onClick, Icon }: Props) => {
         transform: translateX(-50%) !important;
         box-shadow: 0px 4px 4px ${hexToRgba(colors.black, 0.25)};
         z-index: ${zIndex.two};
+        ${touchable};
       `}
     >
       <Icon />
