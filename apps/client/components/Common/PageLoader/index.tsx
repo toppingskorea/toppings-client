@@ -97,6 +97,7 @@ const PageLoader = () => {
             exit={{ opacity: 0 }}
             css={css`
               height: 100%;
+              background-color: ${colors.white};
             `}
           />
         </div>
