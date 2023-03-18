@@ -4,7 +4,13 @@ import { Flex, Spacing } from "@toss/emotion-utils";
 import { AnimatePresence } from "framer-motion";
 import { defaultSlideFadeInVariants, framerMocker } from "~/constants";
 import { useClickBackButton } from "./TopNavigator.hooks";
-import { Header, Nav, PaddedMotionButton, Title } from "./TopNavigator.styles";
+import {
+  Header,
+  Nav,
+  PaddedMotionButton,
+  paddingBottom,
+  Title
+} from "./TopNavigator.styles";
 
 const TopNavigator = () => {
   const state = useNavigationValue();
@@ -24,7 +30,7 @@ const TopNavigator = () => {
               ) : (
                 <PaddedMotionButton
                   onClick={onClickBackButton}
-                  paddingBottom={state.top?.marginBottom}
+                  css={paddingBottom(state.top?.marginBottom)}
                 >
                   <LeftArrow />
                 </PaddedMotionButton>
@@ -33,7 +39,7 @@ const TopNavigator = () => {
               {state.top?.right ? (
                 <PaddedMotionButton
                   onClick={state.top.right.onClick}
-                  paddingBottom={state.top?.marginBottom}
+                  css={paddingBottom(state.top?.marginBottom)}
                 >
                   {state.top?.right.element}
                 </PaddedMotionButton>
