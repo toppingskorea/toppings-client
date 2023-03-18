@@ -1,6 +1,6 @@
 import { CurrentPlace } from "@svgs/map";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
-import useCurrentLocation from "../Buttons.hooks";
+import { useCurrentLocation } from "./CurrentLocationButton.hooks";
 import { Button } from "./CurrentLocationButton.styles";
 
 export const CurrentLocationButton = () => {
