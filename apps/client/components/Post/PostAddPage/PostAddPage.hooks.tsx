@@ -39,7 +39,11 @@ export const useSetNavigation = () => {
   const { isModifyMode } = useCheckModifyMode();
   const overlay = useOverlay();
   const { colors, weighs } = useTheme();
-  const { back } = useInternalRouter();
+  const { push } = useInternalRouter();
+
+  const onClickAlertModalRightHandler = () => {
+    push("/");
+  };
 
   useSetNavigationHook({
     top: {
@@ -53,7 +57,10 @@ export const useSetNavigation = () => {
         element: <Exit />,
         onClick: () =>
           overlay.open(({ exit }) => (
-            <AlertModal exitFn={exit} rightClick={{ fn: back, text: "sure" }} />
+            <AlertModal
+              exitFn={exit}
+              rightClick={{ fn: onClickAlertModalRightHandler, text: "sure" }}
+            />
           ))
       },
       backButtonCaution: true,
