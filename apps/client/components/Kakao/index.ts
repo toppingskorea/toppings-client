@@ -1,2 +1,3 @@
-export { default as KakaoMap } from "./KakaoMap";
-export { default as MapMarker } from "./MapMarker";
+export * from "./Buttons";
+export * from "./Map";
+export * from "./MapMarker";

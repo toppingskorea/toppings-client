@@ -1,15 +1,15 @@
 import { useCallback, useEffect } from "react";
 import { useKakaoMap } from "~/contexts";
 
-const useMapEvent = (
-  target: kakao.maps.event.EventTarget | null,
+export const useMapEvent = (
+  target: Map.EventTarget | null,
   type: string,
-  callback?: (map: kakao.maps.Map, e: kakao.maps.event.MouseEvent) => void
+  callback?: Map.WithMouseEvent
 ) => {
   const { map, render } = useKakaoMap();
 
   const handler = useCallback(
-    (e: kakao.maps.event.MouseEvent) => {
+    (e: Map.KakaoMouseEvent) => {
       if (map) {
         callback?.(map, e);
       }
@@ -28,5 +28,3 @@ const useMapEvent = (
     }
   }, [handler, target, type]);
 };
-
-export default useMapEvent;

@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useKakaoMap } from "~/contexts";
 
-const MapMarker = ({
+export const MapMarker = ({
   position,
   children
 }: PropsWithChildren<{ position: Common.Coordinate }>) => {
@@ -37,5 +37,3 @@ const MapMarker = ({
     createPortal(children, container.current.parentElement)
   );
 };
-
-export default MapMarker;

@@ -1,20 +1,10 @@
 import { css } from "@emotion/react";
 import { size } from "@toss/emotion-utils";
-import type { CSSProperties, ReactNode } from "react";
 import { useKakaoMap } from "~/contexts";
-import useMapEvent from "./Kakao.hooks";
+import { useMapEvent } from "../Map.hooks";
+import type { Props } from "./Container.types";
 
-type Props = {
-  onClick?: (map: kakao.maps.Map, e: kakao.maps.event.MouseEvent) => void;
-  onDragStart?: (map: kakao.maps.Map, e: kakao.maps.event.MouseEvent) => void;
-  onDragEnd?: (map: kakao.maps.Map, e: kakao.maps.event.MouseEvent) => void;
-  onZoomChanged?: (map: kakao.maps.Map) => void;
-  onTilesloaded?: (map: kakao.maps.Map) => void;
-  style?: CSSProperties;
-  children?: ReactNode;
-};
-
-const Container = ({
+export const Container = ({
   onClick,
   onDragStart,
   onDragEnd,
@@ -44,5 +34,3 @@ const Container = ({
     </div>
   );
 };
-
-export default Container;

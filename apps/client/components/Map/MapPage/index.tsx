@@ -6,8 +6,13 @@ import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import { myLocation, rocket } from "~/assets/json";
 import { Text } from "~/components/Common/Typo";
-import { MapMarker } from "~/components/Kakao";
-import KakaoMap from "~/components/Kakao/KakaoMap";
+import {
+  CurrentLocationButton,
+  FilteringButton,
+  Map,
+  MapMarker,
+  ViewStatusButton
+} from "~/components/Kakao";
 import { OpenGraph } from "~/components/Util";
 import useMap from "./MapPage.hooks";
 
@@ -17,7 +22,7 @@ const MapPage = () => {
   return (
     <>
       <OpenGraph title="Map" />
-      <KakaoMap
+      <Map
         center={app.currentLocation}
         level={app.currentZoomLevel}
         maxLevel={13}
@@ -26,10 +31,10 @@ const MapPage = () => {
         onZoomChanged={app.mapEventHandler}
         onTilesloaded={app.mapEventHandler}
       >
-        <KakaoMap.CurrentLocationButton />
-        <KakaoMap.FilteringButton />
+        <CurrentLocationButton />
+        <FilteringButton />
         {app.currentSelectCategory !== "Name" && (
-          <KakaoMap.ViewStatusButton
+          <ViewStatusButton
             Icon={List}
             text="View lists"
             onClick={() => app.push("/map/viewList")}
@@ -149,7 +154,7 @@ const MapPage = () => {
             />
           </MapMarker>
         ) : null}
-      </KakaoMap>
+      </Map>
     </>
   );
 };

@@ -23,4 +23,12 @@ declare module Map {
   }
 
   type KakaoBounds = kakao.maps.LatLngBounds & Map.Direction;
+
+  type EventTarget = kakao.maps.event.EventTarget;
+
+  type KakaoMouseEvent = kakao.maps.event.MouseEvent;
+
+  type WithMouseEvent = (map: kakao.maps.Map, e: KakaoMouseEvent) => void;
+
+  type Event = (map: kakao.maps.Map) => void;
 }
