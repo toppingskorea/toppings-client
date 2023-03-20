@@ -1,4 +1,5 @@
-import { css, useTheme } from "@emotion/react";
+import { useTheme } from "@emotion/react";
+import { Spacing } from "@toss/emotion-utils";
 import type { FC, SVGProps } from "react";
 import { Text } from "~/components/Common/Typo";
 import { defaultScaleChangeVariants, framerMocker } from "~/constants";
@@ -21,13 +22,13 @@ export const ViewStatusButton = ({ onClick, text, Icon }: Props) => {
       {...framerMocker}
     >
       <Icon />
+
+      <Spacing size={19} direction="horizontal" />
+
       <Text
         _fontSize={15}
         weight={weighs.medium}
         _color={colors.secondary["6D"]}
-        css={css`
-          margin-left: 19px;
-        `}
       >
         {text}
       </Text>
