@@ -12,7 +12,9 @@
     "hotjar",
     "immer",
     "keyval",
-    "svgs"
+    "onTilesloaded",
+    "svgs",
+    "zoomable"
   ],
   "git.ignoreLimitWarning": true
 }
