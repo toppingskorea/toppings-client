@@ -1,10 +1,7 @@
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import {
-  type CSSPixelValue,
-  flex,
-  padding,
-  position
-} from "@toss/emotion-utils";
+import type { CSSPixelValue } from "@toss/emotion-utils";
+import { flex, padding, position } from "@toss/emotion-utils";
 import { motion } from "framer-motion";
 import { MotionButton } from "~/components/Common";
 
@@ -30,13 +27,14 @@ export const Title = styled(motion.div)`
   })};
 `;
 
-export const PaddedMotionButton = styled(MotionButton)<{
-  paddingBottom?: CSSPixelValue;
-}>`
-  ${({ paddingBottom = 24 }) =>
-    padding({
-      x: 28,
-      top: 31,
-      bottom: paddingBottom
-    })};
+export const PaddedMotionButton = styled(MotionButton)`
+  ${padding({
+    x: 28,
+    top: 31,
+    bottom: 24
+  })};
+`;
+
+export const paddingBottom = (bottom?: CSSPixelValue) => css`
+  ${bottom && `padding-bottom: ${bottom}px;`}
 `;

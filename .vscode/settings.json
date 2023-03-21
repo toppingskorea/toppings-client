@@ -10,7 +10,9 @@
   "cSpell.words": [
     "bordercolor",
     "hotjar",
-    "immer"
+    "immer",
+    "keyval",
+    "svgs"
   ],
   "git.ignoreLimitWarning": true
 }

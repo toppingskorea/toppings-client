@@ -1,8 +1,11 @@
 import type { CSSProperties, ReactNode } from "react";
 import { defaultLocation } from "~/constants";
 import { MapProvider } from "~/contexts";
-import { FilteringButton, ViewStatusButton } from "./Buttons";
-import CurrentLocationButton from "./Buttons/CurrentLocationButton";
+import {
+  CurrentLocationButton,
+  FilteringButton,
+  ViewStatusButton
+} from "./Buttons";
 import Container from "./Container";
 
 // 서울의 경도, 위도

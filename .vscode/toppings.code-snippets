@@ -13,6 +13,13 @@
      ],
      "description": "color output"
    },
+   "Create z index": {
+    "prefix": "z-index",
+     "body": [
+			 "z-index: ${({ theme }) => theme.zIndex.$1};",
+     ],
+     "description": "zIndex output"
+   },
    "Create Story": {
     "prefix": "story",
      "body": [
