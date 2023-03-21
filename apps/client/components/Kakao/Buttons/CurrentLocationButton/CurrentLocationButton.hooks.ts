@@ -2,7 +2,7 @@ import { useCallback, useMemo } from "react";
 import { defaultLocation } from "~/constants";
 import { useMapStore } from "~/stores/map";
 
-const useCurrentLocation = () => {
+export const useCurrentLocation = () => {
   const {
     dispatchCurrentLocation,
     dispatchFixedCurrentLocation,
@@ -48,5 +48,3 @@ const useCurrentLocation = () => {
 
   return { getCurrentMapPosition };
 };
-
-export default useCurrentLocation;
